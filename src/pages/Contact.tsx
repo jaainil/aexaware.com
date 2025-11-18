@@ -1,3 +1,4 @@
+/* stylelint-disable */
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, MapPin, Phone } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Clock,
+  Linkedin,
+  Instagram,
+  Twitter,
+  Facebook,
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -43,19 +53,15 @@ const Contact = () => {
             {/* Left Column: Copy & Info */}
             <div>
               <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                Get in touch
+                Contact Us
               </span>
               <h1 className="mt-6 font-serif text-5xl font-medium leading-tight text-foreground md:text-6xl">
-                Let's start a <br />
-                <span className="italic text-muted-foreground">
-                  conversation
-                </span>
-                .
+                Get in touch <br />
+                <span className="italic text-muted-foreground">with us</span>.
               </h1>
               <p className="mt-8 text-xl text-muted-foreground leading-relaxed">
-                Whether you have a concrete project in mind or just a vague
-                idea, we're here to listen. No sales pressure, just honest
-                advice.
+                We Should Talk. Whether you have a concrete project in mind or
+                just a vague idea, we're here to listen.
               </p>
 
               <div className="mt-12 space-y-8">
@@ -64,11 +70,13 @@ const Contact = () => {
                     <Mail className="size-5" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-foreground">Email us</h3>
-                    <p className="text-muted-foreground">hello@aexaware.com</p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      We usually reply within 24 hours.
-                    </p>
+                    <h3 className="font-medium text-foreground">Email</h3>
+                    <a
+                      href="mailto:support@aexawareinfotech.com"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      support@aexawareinfotech.com
+                    </a>
                   </div>
                 </div>
 
@@ -77,11 +85,13 @@ const Contact = () => {
                     <Phone className="size-5" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-foreground">Call us</h3>
-                    <p className="text-muted-foreground">+91 81407 34392</p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Mon-Fri, 9am - 6pm IST.
-                    </p>
+                    <h3 className="font-medium text-foreground">Phone</h3>
+                    <a
+                      href="tel:+918140734392"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      +91 81407 34392
+                    </a>
                   </div>
                 </div>
 
@@ -90,69 +100,113 @@ const Contact = () => {
                     <MapPin className="size-5" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-foreground">Visit us</h3>
+                    <h3 className="font-medium text-foreground">Address</h3>
+                    <p className="text-muted-foreground max-w-xs">
+                      Office no 13, 3rd Floor Aarya’s landmark, Canal Ring Road,
+                      Sevasi Vadodara, Gujarat 391101
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
+                    <Clock className="size-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-medium text-foreground">
+                      Working Hours
+                    </h3>
                     <p className="text-muted-foreground">
-                      Vadodara, Gujarat, India
+                      Mon – Fri : 9AM – 6PM
                     </p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      Coffee is on us.
-                    </p>
+                    <p className="text-muted-foreground">Sat : 10AM - 12AM</p>
+                    <p className="text-muted-foreground">Sun : Closed</p>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <h3 className="font-medium text-foreground mb-4">
+                    Follow us
+                  </h3>
+                  <div className="flex gap-4">
+                    {[
+                      { icon: Linkedin, href: "#" },
+                      { icon: Instagram, href: "#" },
+                      { icon: Twitter, href: "#" },
+                      { icon: Facebook, href: "#" },
+                    ].map((social, i) => (
+                      <a
+                        key={i}
+                        href={social.href}
+                        className="flex size-10 items-center justify-center rounded-full border border-border bg-background text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground hover:border-primary"
+                      >
+                        <social.icon className="size-5" />
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Right Column: Form */}
-            <div className="rounded-3xl bg-secondary/30 p-8 md:p-10">
+            <div className="rounded-[2.5rem] bg-secondary/30 p-8 md:p-12 border border-border/50">
+              <h2 className="text-2xl font-medium mb-6">Send us a message</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    className="bg-background border-transparent focus:border-primary h-12"
+                  />
+                </div>
+
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      placeholder="Jane Doe"
-                      required
-                      className="bg-background border-transparent focus:border-primary"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">Email Address</Label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="jane@example.com"
+                      placeholder="you@example.com"
                       required
-                      className="bg-background border-transparent focus:border-primary"
+                      className="bg-background border-transparent focus:border-primary h-12"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone Number (optional)</Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+91 ..."
+                      className="bg-background border-transparent focus:border-primary h-12"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="interest">I'm interested in...</Label>
-                  <Select name="interest">
-                    <SelectTrigger className="bg-background border-transparent focus:border-primary">
+                  <Label htmlFor="subject">Subject</Label>
+                  <Select name="subject">
+                    <SelectTrigger className="bg-background border-transparent focus:border-primary h-12">
                       <SelectValue placeholder="Select a topic" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="web">Web Development</SelectItem>
-                      <SelectItem value="app">Mobile App</SelectItem>
-                      <SelectItem value="design">UI/UX Design</SelectItem>
-                      <SelectItem value="consulting">Consulting</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="project">Start a Project</SelectItem>
+                      <SelectItem value="career">Join the Team</SelectItem>
+                      <SelectItem value="general">General Inquiry</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">
-                    Tell us a bit about your project
-                  </Label>
+                  <Label htmlFor="message">How can we help you?</Label>
                   <Textarea
                     id="message"
                     name="message"
-                    placeholder="What are you building? What are your goals?"
+                    placeholder="Tell us about your project or inquiry..."
                     rows={5}
                     required
                     className="bg-background border-transparent focus:border-primary resize-none"
@@ -162,15 +216,11 @@ const Contact = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full rounded-full text-lg"
+                  className="w-full rounded-full text-lg h-12"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
-
-                <p className="text-center text-xs text-muted-foreground">
-                  We respect your privacy. No spam, ever.
-                </p>
               </form>
             </div>
           </div>
