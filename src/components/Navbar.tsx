@@ -30,7 +30,7 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-primary/20 shadow-lg shadow-primary/5"
+          ? "bg-background/80 backdrop-blur-md border-b border-border/50"
           : "bg-transparent"
       }`}
     >
@@ -51,24 +51,21 @@ export const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`relative text-sm font-medium transition-colors hover:text-primary ${
+                className={`relative text-sm font-medium transition-colors hover:text-foreground ${
                   location.pathname === link.path
-                    ? "text-primary"
+                    ? "text-foreground font-semibold"
                     : "text-muted-foreground"
                 }`}
               >
                 {link.name}
-                {location.pathname === link.path && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-                )}
               </Link>
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
-            <Button asChild variant="hero">
-              <Link to="/contact">╰┈➤ˎˊ˗ Get a Quote</Link>
+            <Button asChild className="rounded-full px-6">
+              <Link to="/contact">Start a Project</Link>
             </Button>
           </div>
 

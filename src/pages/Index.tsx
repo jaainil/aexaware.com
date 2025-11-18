@@ -2,386 +2,247 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
-import { FeatureCard } from "@/components/FeatureCard";
-import { ServiceCard } from "@/components/ServiceCard";
-import { IndustryCard } from "@/components/IndustryCard";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight,
-  Quote,
-  Linkedin,
-  Instagram,
-  Twitter,
-  Facebook,
-  Mail,
-  PhoneCall,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, ArrowUpRight } from "lucide-react";
 
 const Index = () => {
-  const featureHighlights = [
-    {
-      number: "01",
-      eyebrow: "Agile Team",
-      title: "Experienced & Agile Team",
-      description:
-        "Our skilled professionals bring deep expertise in modern technologies and follow agile practices to deliver high-quality solutions efficiently and flexibly.",
-    },
-    {
-      number: "02",
-      eyebrow: "Client-First Approach",
-      title: "Customer-Centric Approach",
-      description:
-        "Your goals are our priority. We collaborate closely with you throughout the project to ensure the final product reflects your vision and business objectives.",
-    },
-    {
-      number: "03",
-      eyebrow: "Secure & Scalable",
-      title: "Scalable & Secure Solutions",
-      description:
-        "We design robust and secure systems that scale with your business whether it’s a startup MVP or an enterprise-grade platform.",
-    },
-  ];
-
-  const services = [
-    {
-      number: "01",
-      title: "Web Development",
-      description:
-        "Custom websites and web apps built for performance, scalability, and seamless user experiences.",
-      link: "/services",
-    },
-    {
-      number: "02",
-      title: "App Development",
-      description:
-        "Native and cross-platform mobile apps that are fast, functional, and user-friendly.",
-      link: "/services",
-    },
-    {
-      number: "03",
-      title: "UI/UX Design",
-      description:
-        "Modern, intuitive interfaces focused on user experience, engagement, and conversion optimization.",
-      link: "/services",
-    },
-    {
-      number: "04",
-      title: "Software Solutions",
-      description:
-        "Custom ERP, CRM, and SaaS platforms tailored to streamline and scale your business operations.",
-      link: "/services",
-    },
-    {
-      number: "05",
-      title: "E-com Development",
-      description:
-        "High-performance e-commerce sites built to convert visitors into loyal customers.",
-      link: "/services",
-    },
-    {
-      number: "06",
-      title: "Cloud & DevOps",
-      description:
-        "Reliable cloud infrastructure and automated DevOps processes for better deployment and scalability.",
-      link: "/services",
-    },
-    {
-      number: "07",
-      title: "AI/ML Integration",
-      description:
-        "Smart AI/ML-powered features that automate, analyze, and optimize your business workflows.",
-      link: "/services",
-    },
-  ];
-
-  const industries = [
-    {
-      number: "01",
-      title: "Health Care Tech",
-      description:
-        "Custom EHR, EMR, ERX, and medical software for hospitals, laboratories, and pharmacies to simplify digital transformation.",
-      subtext: "Hospitals · Labs · Pharmacies",
-    },
-    {
-      number: "02",
-      title: "EdTech Solutions",
-      description:
-        "E-learning platforms, LMS, and digital tools that improve access, engagement, and management for educators and learners.",
-      subtext: "Schools · Colleges · EdTech Startups",
-    },
-    {
-      number: "03",
-      title: "Smart Logistics",
-      description:
-        "Fleet tracking, supply chain orchestration, and route optimization software for faster, data-driven operations.",
-      subtext: "Logistics Providers · Warehousing",
-    },
-    {
-      number: "04",
-      title: "Online Marketplaces",
-      description:
-        "Multi-vendor ecosystems, listing systems, and secure payment gateways that connect vendors and buyers globally.",
-      subtext: "B2B · B2C · Niche Platforms",
-    },
-    {
-      number: "05",
-      title: "Retail Systems",
-      description:
-        "POS integrations, omnichannel commerce, and customer engagement tools that boost sales and streamline operations.",
-      subtext: "Offline & Online Retail Brands",
-    },
-    {
-      number: "06",
-      title: "Travel Platforms",
-      description:
-        "Booking engines, itinerary planners, and travel management solutions that elevate customer journeys worldwide.",
-      subtext: "Agencies · OTAs · Global Travel",
-    },
-  ];
-
-  const testimonials = [
-    {
-      quote:
-        "Aexaware mapped our entire product vision into a phased roadmap and delivered each release with impeccable quality.",
-      author: "Product Lead, SaaS Startup",
-    },
-    {
-      quote:
-        "They proactively guided our team on experience design, architecture, and security so we could scale confidently.",
-      author: "CTO, Retail Enterprise",
-    },
-  ];
-
-  const contactLinks = [
-    {
-      label: "Contact",
-      value: "+91 81407 34392",
-      href: "tel:+918140734392",
-    },
-    {
-      label: "Work with us",
-      value: "+91 81407 34392",
-      href: "tel:+918140734392",
-    },
-    {
-      label: "Support",
-      value: "support@aexawareinfotech.com",
-      href: "mailto:support@aexawareinfotech.com",
-    },
-  ];
-
-  const socialLinks = [
-    { label: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com" },
-    { label: "Instagram", icon: Instagram, href: "https://www.instagram.com" },
-    { label: "X (Twitter)", icon: Twitter, href: "https://www.twitter.com" },
-    { label: "Facebook", icon: Facebook, href: "https://www.facebook.com" },
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-sans selection:bg-accent/20 selection:text-accent-foreground">
       <Navbar />
       <Hero />
 
-      <main className="space-y-0">
-        {/* Feature Pillars */}
-        <section className="bg-card/30 py-24">
+      <main>
+        {/* Philosophy / Intro */}
+        <section className="py-24 lg:py-32">
           <div className="container mx-auto px-6 lg:px-8">
-            <div className="mb-12 max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                Agile Team · Client-First · Secure & Scalable
-              </p>
-              <h2 className="mt-4 text-4xl font-bold leading-tight text-foreground">
-                Your trusted IT innovation partner for modern, resilient digital
-                platforms.
-              </h2>
-            </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {featureHighlights.map((feature) => (
-                <FeatureCard key={feature.number} {...feature} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section className="relative overflow-hidden bg-background py-24">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-          <div className="container relative z-10 mx-auto px-6 lg:px-8">
-            <div className="mb-12 flex flex-col gap-6 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                What We Offer
-              </p>
-              <h2 className="text-4xl font-bold leading-tight text-foreground">
-                IT Services That Drive Growth
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                From concept to launch to optimization, our full-stack team
-                builds the products and platforms your users love.
-              </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {services.map((service) => (
-                <ServiceCard key={service.number} {...service} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Industries */}
-        <section className="bg-card py-24">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="mb-12 flex flex-col gap-6 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                Industries We Serve
-              </p>
-              <h2 className="text-4xl font-bold leading-tight text-foreground">
-                Solutions by Industry
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Purpose-built platforms for healthcare, education, logistics,
-                retail, travel, and more.
-              </p>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              {industries.map((industry) => (
-                <IndustryCard key={industry.number} {...industry} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials */}
-        <section className="bg-background py-24">
-          <div className="container mx-auto px-6 lg:px-8">
-            <div className="mb-12 max-w-3xl text-center mx-auto space-y-4">
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                Client Feedback
-              </p>
-              <h2 className="text-4xl font-bold text-foreground">
-                What Our Clients Say
-              </h2>
-            </div>
-            <div className="grid gap-8 md:grid-cols-2">
-              {testimonials.map((testimonial, index) => (
-                <Card
-                  key={index}
-                  className="relative flex h-full flex-col gap-6 border-primary/20 bg-card/70 p-8"
-                >
-                  <Quote className="size-10 text-primary/40" />
-                  <p className="text-lg text-foreground leading-relaxed">
-                    {testimonial.quote}
-                  </p>
-                  <div className="text-sm font-semibold text-muted-foreground">
-                    {testimonial.author}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="relative overflow-hidden bg-card py-24">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20" />
-          <div className="container relative z-10 mx-auto px-6 lg:px-8">
-            <Card className="mx-auto max-w-5xl border-primary/30 bg-background/80 p-12 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                Let’s Bring It to Life
-              </p>
-              <h2 className="mt-4 text-4xl font-bold text-foreground">
-                Book Your Free Expert Consultation Today!
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                We help startups and enterprises translate ambitious ideas into
-                scalable, secure digital products.
-              </p>
-              <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Button asChild size="lg" variant="hero">
-                  <Link to="/contact">
-                    Get Free Consultation
-                    <ArrowRight className="ml-2 size-5" />
-                  </Link>
-                </Button>
-                <Button asChild size="lg" variant="outline">
-                  <Link to="/services">Explore Services</Link>
-                </Button>
-              </div>
-            </Card>
-          </div>
-        </section>
-
-        {/* Contact & Social */}
-        <section className="bg-background py-24">
-          <div className="container mx-auto grid gap-12 px-6 lg:grid-cols-2 lg:px-8">
-            <div className="space-y-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                Looking for something else?
-              </p>
-              <h2 className="text-4xl font-bold text-foreground">Contact Us</h2>
-              <div className="space-y-4">
-                {contactLinks.map((contact) => (
-                  <a
-                    key={contact.label}
-                    href={contact.href}
-                    className="flex items-center gap-4 rounded-2xl border border-primary/20 bg-card/70 p-4 transition hover:border-primary/60"
-                  >
-                    {contact.label === "Support" ? (
-                      <Mail className="size-5 text-primary" />
-                    ) : (
-                      <PhoneCall className="size-5 text-primary" />
-                    )}
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                        {contact.label}
-                      </p>
-                      <p className="text-lg font-semibold text-foreground">
-                        {contact.value}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-8">
+            <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                  Follow us
+                <h2 className="font-serif text-4xl font-medium leading-tight text-foreground md:text-5xl">
+                  We believe technology should feel{" "}
+                  <span className="italic text-muted-foreground">human</span>.
+                </h2>
+              </div>
+              <div className="space-y-8">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  In a world of cookie-cutter templates and automated responses,
+                  we take a different approach. We’re a team of craftsmen who
+                  care deeply about the details—the way a button clicks, the
+                  speed of a page load, the clarity of a line of copy.
                 </p>
-                <div className="mt-4 flex flex-wrap gap-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      className="flex items-center gap-2 rounded-full border border-primary/20 px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary/60"
-                      target="_blank"
-                      rel="noreferrer"
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  We don't just build websites or apps; we build relationships.
+                  We work with a select group of clients to ensure every project
+                  gets the attention it deserves. No assembly lines, no
+                  outsourcing, just honest work.
+                </p>
+                <div className="pt-4">
+                  <Button
+                    variant="link"
+                    className="p-0 text-lg font-medium text-primary hover:text-accent"
+                    asChild
+                  >
+                    <Link to="/about">
+                      Read more about our philosophy{" "}
+                      <ArrowRight className="ml-2 size-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services - Editorial Layout */}
+        <section className="bg-secondary/30 py-24 lg:py-32">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="mb-16 md:mb-24">
+              <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                What we do
+              </span>
+              <h2 className="mt-4 font-serif text-4xl font-medium text-foreground md:text-5xl">
+                Hand-crafted digital solutions.
+              </h2>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "Web Development",
+                  desc: "Fast, accessible, and beautiful websites built with modern tools like React and Tailwind.",
+                },
+                {
+                  title: "Application Design",
+                  desc: "Complex functionality wrapped in simple, intuitive interfaces that users actually enjoy using.",
+                },
+                {
+                  title: "Brand Identity",
+                  desc: "More than just a logo. We help define your voice, your look, and your story in the digital space.",
+                },
+                {
+                  title: "E-Commerce",
+                  desc: "Online stores that convert. Smooth checkouts, easy management, and delightful shopping experiences.",
+                },
+                {
+                  title: "Custom Software",
+                  desc: "Have a unique problem? We build bespoke tools to streamline your operations and save you time.",
+                },
+                {
+                  title: "Consultancy",
+                  desc: "Not sure where to start? We offer honest advice and technical strategy to guide your next move.",
+                },
+              ].map((service, i) => (
+                <div
+                  key={i}
+                  className="group relative overflow-hidden rounded-3xl bg-background p-8 transition-all hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div className="mb-6 flex size-10 items-center justify-center rounded-full bg-secondary text-lg font-serif font-medium text-primary">
+                    {i + 1}
+                  </div>
+                  <h3 className="mb-3 text-xl font-medium text-foreground">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {service.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Selected Work / Industries - List Layout */}
+        <section className="py-24 lg:py-32">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end mb-16">
+              <div>
+                <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                  Who we help
+                </span>
+                <h2 className="mt-4 font-serif text-4xl font-medium text-foreground md:text-5xl">
+                  Industries we know inside out.
+                </h2>
+              </div>
+              <Button variant="outline" className="rounded-full" asChild>
+                <Link to="/portfolio">View all projects</Link>
+              </Button>
+            </div>
+
+            <div className="divide-y divide-border">
+              {[
+                {
+                  name: "Healthcare & Medicine",
+                  detail:
+                    "Patient portals, telemedicine, and practice management.",
+                },
+                {
+                  name: "Education & EdTech",
+                  detail:
+                    "LMS platforms, student dashboards, and interactive learning.",
+                },
+                {
+                  name: "Logistics & Supply Chain",
+                  detail:
+                    "Fleet tracking, inventory systems, and route optimization.",
+                },
+                {
+                  name: "Retail & E-Commerce",
+                  detail:
+                    "Custom storefronts, POS integrations, and loyalty programs.",
+                },
+                {
+                  name: "Travel & Hospitality",
+                  detail:
+                    "Booking engines, itinerary planners, and guest experiences.",
+                },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="group flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between transition-colors hover:bg-secondary/20 px-4 -mx-4 rounded-xl"
+                >
+                  <h3 className="text-2xl font-medium text-foreground group-hover:text-primary transition-colors">
+                    {item.name}
+                  </h3>
+                  <div className="flex items-center gap-4 md:gap-8">
+                    <p className="text-muted-foreground md:text-right">
+                      {item.detail}
+                    </p>
+                    <ArrowUpRight className="size-5 text-muted-foreground opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-1" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials - Simple & Clean */}
+        <section className="bg-primary text-primary-foreground py-24 lg:py-32">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="mx-auto max-w-4xl text-center">
+              <div className="mb-8 flex justify-center">
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg
+                      key={star}
+                      className="size-5 fill-accent text-accent"
+                      viewBox="0 0 20 20"
                     >
-                      <social.icon className="size-4 text-primary" />
-                      {social.label}
-                    </a>
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
                   ))}
                 </div>
               </div>
+              <blockquote className="font-serif text-3xl font-medium leading-snug md:text-4xl lg:text-5xl">
+                "Aexaware didn't just build us a website; they helped us clarify
+                our entire business model. The level of care and thought they
+                put into every pixel is unmatched."
+              </blockquote>
+              <div className="mt-12">
+                <cite className="not-italic">
+                  <span className="block text-lg font-semibold">
+                    Sarah Jenkins
+                  </span>
+                  <span className="block text-primary-foreground/70">
+                    Product Lead, SaaS Startup
+                  </span>
+                </cite>
+              </div>
+            </div>
+          </div>
+        </section>
 
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                  Join us
+        {/* CTA - Organic */}
+        <section className="py-24 lg:py-32">
+          <div className="container mx-auto px-6 lg:px-8">
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-secondary/50 px-6 py-24 text-center sm:px-16">
+              {/* Decorative blobs */}
+              <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-white blur-3xl opacity-60" />
+              <div className="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-accent/20 blur-3xl opacity-60" />
+
+              <div className="relative z-10 mx-auto max-w-2xl">
+                <h2 className="font-serif text-4xl font-medium text-foreground md:text-5xl">
+                  Ready to build something real?
+                </h2>
+                <p className="mt-6 text-lg text-muted-foreground">
+                  No sales pitches, no pressure. Just a friendly chat about your
+                  project and how we can help.
                 </p>
-                <div className="mt-4 flex flex-col gap-4">
-                  <a
-                    href="mailto:support@aexawareinfotech.com"
-                    className="rounded-2xl border border-primary/20 bg-card/70 px-6 py-4 text-left transition hover:border-primary/60"
+                <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                  <Button
+                    size="lg"
+                    className="h-14 rounded-full px-8 text-lg"
+                    asChild
                   >
-                    <p className="text-base font-semibold text-foreground">
-                      Apply Now
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      support@aexawareinfotech.com
-                    </p>
-                  </a>
+                    <Link to="/contact">Let's Talk</Link>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="h-14 rounded-full px-8 text-lg bg-transparent"
+                    asChild
+                  >
+                    <Link to="/services">Explore Services</Link>
+                  </Button>
                 </div>
               </div>
             </div>

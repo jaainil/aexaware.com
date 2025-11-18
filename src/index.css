@@ -8,59 +8,57 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* OrbitalCore IT - Premium Futuristic Corporate Design System */
+    /* Aexaware - Organic Studio Theme */
     
-    /* Base colors - Deep space theme */
-    --background: 227 73% 6%; /* #050814 - Main dark background */
-    --foreground: 0 0% 100%; /* #FFFFFF - Primary text */
+    /* Base colors - Warm Paper & Ink */
+    --background: 40 20% 99%; /* #FDFBF9 - Warm off-white */
+    --foreground: 220 20% 10%; /* #14161F - Soft Ink Black */
 
-    --card: 0 0% 0%; /* #000000 - Card background */
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
 
-    --popover: 227 73% 6%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
 
-    /* Primary - Orbital Blue */
-    --primary: 227 89% 59%; /* #3348F3 - Main brand accent */
-    --primary-foreground: 0 0% 100%;
+    /* Primary - Deep Charcoal/Ink */
+    --primary: 220 20% 10%;
+    --primary-foreground: 40 20% 99%;
     
-    /* Secondary - Cosmic Blue */
-    --secondary: 229 100% 75%; /* #7C8CFF - Highlights & borders */
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary - Warm Beige/Grey */
+    --secondary: 30 15% 92%;
+    --secondary-foreground: 220 20% 10%;
 
     /* Muted - Subdued text */
-    --muted: 220 13% 18%;
-    --muted-foreground: 220 9% 64%; /* #9CA3AF */
+    --muted: 30 10% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Accent - Used for hover states */
-    --accent: 227 89% 59%;
+    /* Accent - Vibrant Human Touch (Burnt Orange) */
+    --accent: 24 90% 55%;
     --accent-foreground: 0 0% 100%;
 
     /* Semantic colors */
-    --success: 142 71% 45%; /* #22C55E */
+    --success: 142 60% 45%;
     --success-foreground: 0 0% 100%;
     
-    --warning: 43 96% 56%; /* #FACC15 */
-    --warning-foreground: 0 0% 0%;
+    --warning: 40 90% 60%;
+    --warning-foreground: 220 20% 10%;
     
-    --destructive: 0 72% 60%; /* #EF4444 */
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
     /* UI Elements */
-    --border: 229 100% 75% / 0.2; /* Subtle secondary blue */
-    --input: 220 13% 18%;
-    --ring: 227 89% 59%;
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --ring: 220 20% 10%;
 
-    --radius: 0.5rem;
+    --radius: 1rem; /* Soft, friendly corners */
 
-    /* Custom tokens for cosmic effects */
-    --gradient-cosmic: linear-gradient(135deg, hsl(227 73% 6%) 0%, hsl(227 90% 8%) 50%, hsl(227 73% 6%) 100%);
-    --glow-primary: 0 0 20px hsl(227 89% 59% / 0.3);
-    --glow-secondary: 0 0 15px hsl(229 100% 75% / 0.2);
+    /* Custom tokens */
+    --gradient-warm: linear-gradient(135deg, hsl(40 20% 99%) 0%, hsl(30 20% 95%) 100%);
     
     /* Transitions */
-    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -71,6 +69,32 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
+    /* Dark mode - Deep Charcoal & Cream */
+    --background: 220 20% 10%;
+    --foreground: 40 20% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 40 20% 95%;
+    --primary-foreground: 220 20% 10%;
+
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 24 90% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 40 20% 95%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -92,53 +116,39 @@ All colors MUST be HSL.
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  /* Typography scale - Premium corporate hierarchy */
+  /* Typography scale - Human & Conversational */
   h1 {
-    @apply text-5xl md:text-6xl font-bold tracking-tight;
+    @apply text-4xl md:text-6xl font-bold tracking-tight leading-[1.1];
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-semibold tracking-tight;
+    @apply text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2];
   }
 
   h3 {
-    @apply text-2xl md:text-3xl font-medium;
+    @apply text-xl md:text-2xl font-medium leading-snug;
   }
 
   h4 {
-    @apply text-lg md:text-xl font-medium;
+    @apply text-lg font-medium;
   }
 
   p {
-    @apply text-base md:text-lg leading-relaxed;
+    @apply text-base md:text-lg leading-relaxed text-muted-foreground;
   }
 }
 
 @layer utilities {
-  /* Cosmic glow effects */
-  .glow-primary {
-    box-shadow: var(--glow-primary);
+  .text-balance {
+    text-wrap: balance;
   }
-
-  .glow-secondary {
-    box-shadow: var(--glow-secondary);
+  
+  .glass-panel {
+    @apply bg-white/50 backdrop-blur-md border border-white/20 shadow-sm;
   }
-
-  /* Starfield animation base */
-  .starfield {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  /* Smooth transitions */
-  .transition-smooth {
-    transition: var(--transition-smooth);
-  }
-
-  .transition-fast {
-    transition: var(--transition-fast);
+  
+  .dark .glass-panel {
+    @apply bg-black/50 border-white/10;
   }
 }
 

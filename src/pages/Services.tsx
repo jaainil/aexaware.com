@@ -1,375 +1,200 @@
 /* stylelint-disable */
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { ServiceCard } from "@/components/ServiceCard";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import {
-  Server,
-  Cloud,
-  Shield,
-  Code,
-  Sparkles,
-  Layers,
-  Database,
+  ArrowRight,
+  Code2,
   Smartphone,
-  ShoppingBag,
-  Brain,
-  Building,
-  Rocket,
-  Users,
+  Palette,
+  Cloud,
+  Database,
+  LineChart,
 } from "lucide-react";
 
 const Services = () => {
   const services = [
     {
-      icon: Server,
-      title: "Managed IT & Support",
+      icon: Code2,
+      title: "Web Development",
       description:
-        "Proactive monitoring, maintenance, and 24/7 support that keeps your critical systems running smoothly without interruption.",
-      link: "/services#managed-it",
-      features: [
-        "24/7 monitoring with proactive alerts and rapid response",
-        "Help desk support and user onboarding assistance",
-        "Backup and disaster recovery planning",
-      ],
-    },
-    {
-      icon: Cloud,
-      title: "Cloud & DevOps",
-      description:
-        "Modern infrastructure automation, CI/CD pipelines, and cloud optimization for faster, more reliable deployments.",
-      link: "/services#cloud-devops",
-      features: [
-        "Infrastructure as code with automated scaling and deployment",
-        "Cloud cost optimization and performance tuning",
-        "Container orchestration and microservices architecture",
-      ],
-    },
-    {
-      icon: Shield,
-      title: "Security & Compliance",
-      description:
-        "Enterprise security frameworks, vulnerability management, and compliance solutions for SOC 2, HIPAA, and GDPR.",
-      link: "/services#security",
-      features: [
-        "Security audits, penetration testing, and incident response",
-        "Compliance documentation and regulatory alignment",
-        "Employee security training and awareness programs",
-      ],
-    },
-    {
-      icon: Code,
-      title: "Custom Software & Integrations",
-      description:
-        "Tailored solutions, API development, and system integrations designed for your unique business requirements.",
-      link: "/services#custom-engineering",
-      features: [
-        "Custom API development and third-party system integration",
-        "Legacy system modernization and data migration",
-        "Workflow automation and business process optimization",
-      ],
+        "We build fast, responsive websites that look great on any device. From simple landing pages to complex web applications, we write clean code that scales.",
+      tags: ["React", "Next.js", "TypeScript", "Tailwind"],
     },
     {
       icon: Smartphone,
-      title: "App Development",
+      title: "Mobile Apps",
       description:
-        "Native and cross-platform applications with delightful UX, seamless performance, and modern feature sets.",
-      link: "/services#apps",
-      features: [
-        "iOS and Android native experiences",
-        "Cross-platform builds using React Native / Flutter",
-        "Publishing, analytics, and lifecycle management",
-      ],
+        "Need an app for iOS or Android? We create native-feeling experiences that users love, using modern cross-platform technologies to save you time and money.",
+      tags: ["React Native", "Flutter", "iOS", "Android"],
     },
     {
-      icon: Sparkles,
-      title: "Experience Design (UI/UX)",
+      icon: Palette,
+      title: "UI/UX Design",
       description:
-        "Strategic research, UX mapping, and modern interface design that elevates every user journey.",
-      link: "/services#uiux",
-      features: [
-        "User research, persona development, and journey mapping",
-        "Design systems, component libraries, and prototypes",
-        "Conversion optimization and accessibility audits",
-      ],
+        "Design is more than just making things pretty. We focus on usability and user experience, ensuring your product is intuitive and solves real problems.",
+      tags: ["Figma", "Prototyping", "User Research", "Design Systems"],
+    },
+    {
+      icon: Cloud,
+      title: "Cloud Solutions",
+      description:
+        "Move your business to the cloud securely. We handle server setup, deployment pipelines, and infrastructure management so you can focus on growth.",
+      tags: ["AWS", "Azure", "DevOps", "CI/CD"],
     },
     {
       icon: Database,
-      title: "Software Solutions (ERP/CRM)",
+      title: "Custom Software",
       description:
-        "Custom ERP, CRM, and internal tools engineered to automate operations and centralize intelligence.",
-      link: "/services#software-solutions",
-      features: [
-        "ERP/CRM customization and integration",
-        "Data migration, warehousing, and reporting",
-        "Workflow automation and governance",
-      ],
+        "Off-the-shelf software not cutting it? We build bespoke internal tools, CRMs, and automation scripts tailored exactly to your business workflows.",
+      tags: ["Node.js", "Python", "SQL", "API Integration"],
     },
     {
-      icon: ShoppingBag,
-      title: "E-commerce Engineering",
+      icon: LineChart,
+      title: "Digital Strategy",
       description:
-        "Headless storefronts, marketplaces, and omnichannel commerce optimized for conversion and retention.",
-      link: "/services#ecommerce",
-      features: [
-        "Platform builds on Shopify, Magento, and custom stacks",
-        "Multi-vendor marketplace experiences",
-        "Payment, fulfillment, and loyalty integrations",
-      ],
-    },
-    {
-      icon: Brain,
-      title: "AI/ML Enablement",
-      description:
-        "Intelligent automations, data models, and copilots that unlock new efficiencies across your value chain.",
-      link: "/services#ai-ml",
-      features: [
-        "Use-case discovery and ROI analysis",
-        "Model development, training, and evaluation",
-        "Deployment, monitoring, and responsible AI guardrails",
-      ],
-    },
-    {
-      icon: Layers,
-      title: "Product Strategy & PMO",
-      description:
-        "Fractional product leadership, roadmapping, and delivery governance to keep releases on track.",
-      link: "/services#product",
-      features: [
-        "Roadmap and release planning",
-        "Design/engineering squad orchestration",
-        "KPIs, analytics, and iteration cadences",
-      ],
-    },
-  ];
-
-  const deliveryHighlights = [
-    {
-      title: "Discovery to Launch",
-      description:
-        "Product audits, roadmaps, and iterative delivery with stakeholder workshops every sprint.",
-    },
-    {
-      title: "Managed Delivery Pods",
-      description:
-        "Cross-functional squads with engineering, design, QA, and PM coverage embedded into your org.",
-    },
-    {
-      title: "Continuous Optimization",
-      description:
-        "Post-launch enhancements, observability, and growth experiments to sustain momentum.",
-    },
-  ];
-
-  const industries = [
-    {
-      icon: Rocket,
-      title: "Startups",
-      description:
-        "Fast setup, scalable from day one, no upfront infrastructure investment.",
-    },
-    {
-      icon: Building,
-      title: "Mid-Market",
-      description:
-        "Balance growth and stability with managed services and security oversight.",
-    },
-    {
-      icon: Users,
-      title: "Enterprise",
-      description:
-        "Full-scale infrastructure management with dedicated support and compliance.",
+        "Technology is an investment. We help you plan your digital roadmap, choose the right tech stack, and optimize your online presence for maximum ROI.",
+      tags: ["Consulting", "SEO", "Analytics", "Growth"],
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-background pt-32 pb-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-background" />
-
-        <div className="container relative z-10 mx-auto px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center space-y-6">
-            <div className="inline-flex items-center space-x-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary">
-              Complete Digital Product Services
-            </div>
-
-            <h1 className="text-5xl font-bold leading-tight md:text-6xl">
-              Services that move your{" "}
-              <span className="text-primary">business forward</span>
+      {/* Hero */}
+      <section className="pt-32 pb-16 lg:pt-48 lg:pb-32">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+              Our Expertise
+            </span>
+            <h1 className="mt-6 font-serif text-5xl font-medium leading-tight text-foreground md:text-6xl lg:text-7xl">
+              Everything you need to <br />
+              <span className="italic text-muted-foreground">thrive</span>{" "}
+              online.
             </h1>
-
-            <p className="text-xl text-muted-foreground">
-              From concept to scale, Aexaware Infotech delivers the engineering,
-              experience design, and operations you need to launch faster and
-              grow smarter.
+            <p className="mt-8 text-xl text-muted-foreground leading-relaxed">
+              We don't believe in one-size-fits-all solutions. Whether you're a
+              startup looking for an MVP or an enterprise needing a system
+              overhaul, we tailor our services to fit your specific goals.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Service Grid */}
-      <section className="relative overflow-hidden bg-background py-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
-
-        <div className="container relative z-10 mx-auto px-6 lg:px-8">
-          <div className="mb-16 flex flex-col gap-4 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-              Capabilities
-            </p>
-            <h2 className="text-4xl font-bold leading-tight text-foreground">
-              Build, launch, and optimize with confidence
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              A single partner for strategy, product, design, engineering,
-              DevOps, and growth.
-            </p>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2">
-            {services.map((service) => (
-              <div key={service.title} className="space-y-6">
-                <div className="rounded-3xl border border-primary/20 bg-card/70 p-8">
-                  <div className="flex items-center gap-4">
-                    <div className="flex size-12 items-center justify-center rounded-2xl border border-primary/30 bg-primary/10 text-primary">
-                      <service.icon className="size-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold text-foreground">
-                        {service.title}
-                      </h3>
-                      <p className="text-sm text-primary/80">
-                        {service.description}
-                      </p>
-                    </div>
+      {/* Services Grid */}
+      <section className="py-24 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="group relative flex flex-col justify-between rounded-3xl bg-background p-8 transition-all hover:shadow-lg hover:-translate-y-1"
+              >
+                <div>
+                  <div className="mb-6 inline-flex rounded-2xl bg-secondary p-3 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <service.icon className="size-6" />
                   </div>
-                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                  <h3 className="mb-3 text-2xl font-medium text-foreground">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
                     {service.description}
                   </p>
-                  <Link
-                    to={service.link}
-                    className="inline-flex items-center text-sm font-semibold text-primary"
-                  >
-                    Explore offering →
-                  </Link>
                 </div>
-
-                <ul className="space-y-4 rounded-3xl border border-dashed border-primary/20 bg-background/80 p-6">
-                  {service.features?.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-start gap-3 text-sm text-muted-foreground"
+                <div className="flex flex-wrap gap-2">
+                  {service.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-border bg-secondary/50 px-3 py-1 text-xs font-medium text-muted-foreground"
                     >
-                      <span className="mt-2 size-1.5 rounded-full bg-primary" />
-                      <span>{feature}</span>
-                    </li>
+                      {tag}
+                    </span>
                   ))}
-                </ul>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Delivery philosophy */}
-      <section className="bg-card py-24">
-        <div className="container mx-auto grid gap-12 px-6 lg:grid-cols-[0.8fr,1.2fr] lg:px-8">
-          <div className="space-y-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-              How we deliver
-            </p>
-            <h2 className="text-4xl font-bold leading-tight text-foreground">
-              Orchestrated teams, measurable outcomes
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              We blend onshore strategy with offshore execution to bring
-              experienced product minds, designers, and engineers into a single
-              pod aligned to your roadmap.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {deliveryHighlights.map((highlight) => (
-              <Card
-                key={highlight.title}
-                className="h-full border-primary/20 bg-background/80 p-6"
-              >
-                <h3 className="text-xl font-semibold text-foreground">
-                  {highlight.title}
-                </h3>
-                <p className="mt-3 text-muted-foreground">
-                  {highlight.description}
-                </p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Engagement fit */}
-      <section className="bg-background py-24">
+      {/* Process - Simple Steps */}
+      <section className="py-24 lg:py-32">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="mb-12 max-w-3xl text-center mx-auto">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-              Engagement fit
-            </p>
-            <h2 className="text-4xl font-bold leading-tight text-foreground">
-              Who we serve
+          <div className="mb-16 md:text-center max-w-3xl mx-auto">
+            <h2 className="font-serif text-4xl font-medium text-foreground">
+              How we work together.
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Whether you are validating an MVP or modernizing enterprise
-              systems, we adapt to your velocity and governance needs.
+              No black boxes. We keep our process simple and transparent so you
+              always know where your project stands.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            {industries.map((segment) => (
-              <Card
-                key={segment.title}
-                className="border-primary/20 bg-card/80 p-8 text-center"
-              >
-                <div className="mx-auto mb-6 flex size-16 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-primary">
-                  <segment.icon className="size-8" />
+          <div className="grid gap-12 md:grid-cols-4 relative">
+            {/* Connecting line for desktop */}
+            <div className="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-border -z-10" />
+
+            {[
+              {
+                step: "01",
+                title: "Discovery",
+                desc: "We listen. We learn about your business, your users, and your goals.",
+              },
+              {
+                step: "02",
+                title: "Strategy",
+                desc: "We plan. We define the scope, the tech stack, and the timeline.",
+              },
+              {
+                step: "03",
+                title: "Build",
+                desc: "We code. We design. We build your product with regular updates.",
+              },
+              {
+                step: "04",
+                title: "Launch",
+                desc: "We deliver. We test, deploy, and support you as you go live.",
+              },
+            ].map((item, i) => (
+              <div key={i} className="bg-background pt-4 md:pt-0">
+                <div className="mb-6 flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground text-lg font-bold mx-auto md:mx-0">
+                  {item.step}
                 </div>
-                <h3 className="text-2xl font-semibold text-foreground">
-                  {segment.title}
+                <h3 className="text-xl font-medium text-foreground mb-2 md:text-left text-center">
+                  {item.title}
                 </h3>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  {segment.description}
+                <p className="text-muted-foreground text-center md:text-left">
+                  {item.desc}
                 </p>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-card py-24">
-        <div className="container mx-auto px-6 lg:px-8">
-          <Card className="mx-auto max-w-4xl border-primary/20 bg-background/70 p-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-              Let’s plan your next release
-            </p>
-            <h2 className="mt-4 text-4xl font-bold text-foreground">
-              Build smarter, move faster
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Share your goals—our solution architects will craft a sprint-based
-              plan with transparent milestones, resourcing, and budgets.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">Schedule Consultation</Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link to="/portfolio">View Case Studies</Link>
-              </Button>
-            </div>
-          </Card>
+      {/* CTA */}
+      <section className="py-24 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-6 lg:px-8 text-center">
+          <h2 className="font-serif text-4xl font-medium md:text-5xl">
+            Have a project in mind?
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80 leading-relaxed">
+            Let's discuss how we can help bring your vision to life. No
+            commitment, just a conversation.
+          </p>
+          <div className="mt-10">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="rounded-full px-8 h-14 text-lg"
+              asChild
+            >
+              <Link to="/contact">Get a Free Quote</Link>
+            </Button>
+          </div>
         </div>
       </section>
 

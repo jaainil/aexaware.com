@@ -2,235 +2,128 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 const About = () => {
-  const services = [
-    { number: "01", title: "UI/UX design" },
-    { number: "02", title: "Web development" },
-    { number: "03", title: "Software Solutions" },
-    { number: "04", title: "Cloud & DevOps" },
-  ];
-
-  const pillars = [
-    {
-      number: "01",
-      title: "Our Mission",
-      description:
-        "We deliver strategic, expertly crafted 360° digital solutions seamlessly executed to drive measurable ROI and ensure 100% client satisfaction.",
-    },
-    {
-      number: "02",
-      title: "Our Vision",
-      description:
-        "To be the best result-oriented digital partner known for empowering businesses with a holistic approach to marketing and technology.",
-    },
-    {
-      number: "03",
-      title: "Our Value",
-      description:
-        "Committed to innovative, reliable, and efficient digital solutions that help businesses grow, adapt, and succeed in a rapidly changing world.",
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background font-sans">
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-background pt-32 pb-16">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-background" />
-        <div className="container relative z-10 mx-auto px-6 lg:px-8">
-          <div className="max-w-4xl space-y-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-              About Us
-            </p>
-            <h1 className="text-4xl font-bold leading-tight text-foreground md:text-6xl">
-              Who we are
+      {/* Hero - Personal & Direct */}
+      <section className="pt-32 pb-16 lg:pt-48 lg:pb-32">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+              Our Story
+            </span>
+            <h1 className="mt-6 font-serif text-5xl font-medium leading-tight text-foreground md:text-6xl lg:text-7xl">
+              We’re not just coders. <br />
+              We’re{" "}
+              <span className="italic text-muted-foreground">partners</span>.
             </h1>
-            <p className="text-lg text-muted-foreground">
-              At Aexaware Infotech, strategic planning and precise execution are
-              at the core of every solution we deliver—tailored to each client’s
-              unique goals and business challenges.
+            <p className="mt-8 text-xl text-muted-foreground leading-relaxed">
+              Aexaware started with a simple idea: software development
+              shouldn't feel like a transaction. It should feel like a
+              collaboration. We built this studio to bridge the gap between
+              complex technology and the humans who use it.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Studio intro */}
-      <section className="bg-card py-16">
-        <div className="container mx-auto grid gap-12 px-6 lg:grid-cols-[1.1fr,0.9fr] lg:px-8">
-          <div className="space-y-6">
-            <h2 className="text-4xl font-bold leading-tight text-foreground">
-              We are a creative development studio
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Aexaware Infotech is a full-service digital agency dedicated to
-              helping businesses grow in the digital world. From custom web
-              design and app development to branding, digital marketing, and
-              content strategy, we provide end-to-end solutions that elevate
-              your online presence and drive real results.
-            </p>
-            <Button variant="hero" size="lg" asChild>
-              <Link to="/contact">
-                Get in Touch
-                <ArrowRight className="ml-2 size-5" />
-              </Link>
-            </Button>
-          </div>
-
-          <div className="rounded-3xl border border-primary/20 bg-background/80 p-8">
-            <div className="grid gap-6">
-              {services.map((service) => (
-                <Card
-                  key={service.number}
-                  className="border-none bg-card/80 p-6"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                      {service.number}
-                    </span>
-                    <span className="text-sm font-medium text-primary/70">
-                      Read More
-                    </span>
-                  </div>
-                  <h3 className="mt-3 text-2xl font-semibold text-foreground">
-                    {service.title}
-                  </h3>
-                </Card>
-              ))}
+      {/* The "Why" - Narrative Block */}
+      <section className="py-24 bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
+            <div className="relative aspect-square overflow-hidden rounded-3xl bg-white/50 p-8 md:p-12">
+              {/* Abstract visual representation of collaboration */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent" />
+              <div className="relative h-full w-full rounded-2xl border-2 border-dashed border-primary/10 flex items-center justify-center">
+                <span className="font-serif text-2xl text-primary/40 italic">
+                  Craftsmanship
+                </span>
+              </div>
+            </div>
+            <div className="space-y-8">
+              <h2 className="font-serif text-4xl font-medium text-foreground">
+                Quality over quantity. Always.
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                In an industry obsessed with scaling fast and breaking things,
+                we prefer to move intentionally and build things that last. We
+                don't churn out templates. We don't outsource our core work.
+                Every line of code is written with purpose.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our team is small by design. This allows us to maintain a level
+                of quality and personal attention that larger agencies simply
+                can't match. When you work with us, you're not just another
+                ticket in a queue; you're a partner.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Approach */}
-      <section className="bg-background py-24">
+      {/* Values - Human Centric */}
+      <section className="py-24 lg:py-32">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="mb-12 text-center space-y-4">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-              Our Approach
-            </p>
-            <h2 className="text-4xl font-bold text-foreground">
-              Crafting impactful digital experiences
+          <div className="mb-16 max-w-2xl">
+            <h2 className="font-serif text-4xl font-medium text-foreground">
+              The principles that guide us.
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Aexaware Infotech is a digital agency delivering expert solutions
-              in web development, branding, UI/UX, SEO, and digital
-              strategy—driving growth through innovation since day one.
-            </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            {pillars.map((pillar) => (
-              <Card
-                key={pillar.number}
-                className="border-primary/20 bg-card/80 p-8"
-              >
-                <span className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                  {pillar.number}
-                </span>
-                <h3 className="mt-4 text-2xl font-semibold text-foreground">
-                  {pillar.title}
+          <div className="grid gap-12 md:grid-cols-3">
+            {[
+              {
+                title: "Transparency First",
+                desc: "No hidden fees, no technical jargon designed to confuse. We explain everything in plain English so you're always in the loop.",
+              },
+              {
+                title: "User-Obsessed",
+                desc: "We don't build for algorithms; we build for people. If it's not intuitive and enjoyable to use, it's not finished.",
+              },
+              {
+                title: "Long-Term Thinking",
+                desc: "We build scalable, maintainable systems that grow with your business, not quick fixes that break in six months.",
+              },
+            ].map((value, i) => (
+              <div key={i} className="space-y-4">
+                <div className="text-sm font-bold text-accent">0{i + 1}</div>
+                <h3 className="text-2xl font-medium text-foreground">
+                  {value.title}
                 </h3>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  {pillar.description}
+                <p className="text-muted-foreground leading-relaxed">
+                  {value.desc}
                 </p>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-card py-24">
-        <div className="container mx-auto px-6 lg:px-8">
-          <Card className="mx-auto max-w-4xl border-primary/20 bg-background/70 p-12 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-              Let’s Bring It to Life
-            </p>
-            <h2 className="mt-4 text-4xl font-bold text-foreground">
-              Book Your Free Expert Consultation Today!
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              We help startups and enterprises translate ambitious ideas into
-              scalable, secure digital products.
-            </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Button variant="hero" size="lg" asChild>
-                <Link to="/contact">Get Free Consultation</Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <Link to="/services">Explore Services</Link>
-              </Button>
-            </div>
-          </Card>
-        </div>
-      </section>
-
-      {/* Contact strip */}
-      <section className="bg-background py-24">
-        <div className="container mx-auto grid gap-12 px-6 lg:grid-cols-2 lg:px-8">
-          <div className="space-y-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-              Looking for something else?
-            </p>
-            <h2 className="text-4xl font-bold text-foreground">Contact Us</h2>
-            <div className="space-y-4">
-              {["Contact", "Work with us", "Support"].map((label) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-4 rounded-2xl border border-primary/20 bg-card/70 p-4"
-                >
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                      {label}
-                    </p>
-                    <p className="text-lg font-semibold text-foreground">
-                      {label === "Support"
-                        ? "support@aexawareinfotech.com"
-                        : "+91 81407 34392"}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                Follow us
-              </p>
-              <div className="mt-4 flex flex-wrap gap-4">
-                {["LinkedIn", "Instagram", "X (Twitter)", "Facebook"].map(
-                  (social) => (
-                    <button
-                      key={social}
-                      className="rounded-full border border-primary/20 px-4 py-2 text-sm font-semibold text-foreground"
-                    >
-                      {social}
-                    </button>
-                  )
-                )}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-primary/70">
-                Join us
-              </p>
-              <div className="mt-4 rounded-2xl border border-primary/20 bg-card/70 px-6 py-4">
-                <p className="text-base font-semibold text-foreground">
-                  Apply Now
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  support@aexawareinfotech.com
-                </p>
-              </div>
-            </div>
+      {/* Team/Culture - "Join Us" Soft Sell */}
+      <section className="py-24 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-6 lg:px-8 text-center">
+          <h2 className="font-serif text-4xl font-medium md:text-5xl">
+            Want to build something meaningful?
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80 leading-relaxed">
+            We're always looking for talented designers and developers who share
+            our passion for craftsmanship. If you care about the details, we'd
+            love to hear from you.
+          </p>
+          <div className="mt-10">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="rounded-full px-8"
+              asChild
+            >
+              <a href="mailto:careers@aexaware.com">Say Hello</a>
+            </Button>
           </div>
         </div>
       </section>
