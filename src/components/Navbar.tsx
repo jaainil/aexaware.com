@@ -19,11 +19,11 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "Services", path: "/services" },
     { name: "Blogs", path: "/blog" },
     { name: "About us", path: "/about" },
+    { name: "Services", path: "/services" },
     { name: "Portfolio", path: "/portfolio" },
-    { name: "Contact", path: "/contact" },
+    { name: "Contact Us", path: "/contact" },
   ];
 
   return (
@@ -65,7 +65,7 @@ export const Navbar = () => {
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
             <Button asChild className="rounded-full px-6">
-              <Link to="/contact">Start a Project</Link>
+              <Link to="/contact">╰┈➤ˎˊ˗ Get a Quote</Link>
             </Button>
           </div>
 

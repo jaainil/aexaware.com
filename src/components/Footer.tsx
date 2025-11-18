@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Twitter, Github, Mail } from "lucide-react";
 import Logo from "@/assets/logo 2.svg";
+import asciiArt from "@/assets/ascci.txt?raw";
 
 export const Footer = () => {
   return (
@@ -19,10 +20,14 @@ export const Footer = () => {
               />
             </Link>
             <p className="text-base text-muted-foreground leading-relaxed max-w-xs">
-              Crafting digital experiences with purpose, precision, and a human
-              touch.
+              We help startups, enterprises, and businesses transform their
+              ideas into cutting-edge digital experiences.
             </p>
-            <div className="flex gap-4">
+            <div className="space-y-2 text-muted-foreground">
+              <p>Email: info@aexaware.com</p>
+              <p>Phone: +91 81407 34392</p>
+            </div>
+            <div className="flex gap-4 pt-4">
               {[Linkedin, Twitter, Github, Mail].map((Icon, i) => (
                 <a
                   key={i}
@@ -42,9 +47,12 @@ export const Footer = () => {
             <ul className="space-y-4">
               {[
                 "Web Development",
-                "Mobile Apps",
+                "App Development",
                 "UI/UX Design",
-                "Cloud Solutions",
+                "Software Solutions",
+                "E-com Development",
+                "Cloud & DevOps",
+                "AI/ML Integration",
               ].map((item) => (
                 <li key={item}>
                   <Link
@@ -78,38 +86,38 @@ export const Footer = () => {
 
           <div>
             <h4 className="font-serif text-lg font-medium text-foreground mb-6">
-              Newsletter
+              Join us
             </h4>
             <p className="text-muted-foreground mb-4">
-              Occasional updates on design, tech, and studio life. No spam.
+              Looking for something else? Work with us.
             </p>
-            <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-              <Input
-                type="email"
-                placeholder="Email address"
-                className="bg-secondary/30 border-transparent focus:border-primary rounded-full px-4"
-              />
-              <Button
-                type="submit"
-                size="icon"
-                className="rounded-full shrink-0"
-              >
-                <Mail size={16} />
-              </Button>
-            </form>
+            <Button asChild className="rounded-full px-6">
+              <Link to="/contact">Apply Now</Link>
+            </Button>
+            <div className="mt-6 text-muted-foreground">
+              <p>+91 81407 34392</p>
+              <p>support@aexawareinfotech.com</p>
+            </div>
           </div>
         </div>
 
         <div className="mt-24 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-border/40 pt-8 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Aexaware Infotech. Made with care.</p>
+          <p>© 2025 / Aexaware infotech. All rights reserved.</p>
           <div className="flex gap-8">
-            <Link to="#" className="hover:text-foreground transition-colors">
-              Privacy
-            </Link>
-            <Link to="#" className="hover:text-foreground transition-colors">
-              Terms
-            </Link>
+            <span>VADODARA/IND</span>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="hover:text-foreground transition-colors"
+            >
+              Scroll to Top
+            </button>
           </div>
+        </div>
+
+        <div className="mt-12 w-full overflow-hidden flex justify-center opacity-50 pointer-events-none select-none bg-gradient-to-t from-muted/20 to-transparent">
+          <pre className="font-mono text-[10px] leading-[10px] md:text-xs md:leading-3 whitespace-pre text-muted-foreground">
+            {asciiArt}
+          </pre>
         </div>
       </div>
     </footer>

@@ -16,38 +16,27 @@ const Index = () => {
         {/* Philosophy / Intro */}
         <section className="py-24 lg:py-32">
           <div className="container mx-auto px-6 lg:px-8">
-            <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
-              <div>
-                <h2 className="font-serif text-4xl font-medium leading-tight text-foreground md:text-5xl">
-                  We believe technology should feel{" "}
-                  <span className="italic text-muted-foreground">human</span>.
-                </h2>
+            <div className="grid gap-12 md:grid-cols-3">
+              <div className="space-y-4">
+                <div className="text-4xl font-serif text-primary/20 font-bold">01</div>
+                <h3 className="text-xl font-medium text-foreground">Experienced & Agile Team</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Our skilled professionals bring deep expertise in modern technologies and follow agile practices to deliver high-quality solutions efficiently and flexibly.
+                </p>
               </div>
-              <div className="space-y-8">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  In a world of cookie-cutter templates and automated responses,
-                  we take a different approach. We’re a team of craftsmen who
-                  care deeply about the details—the way a button clicks, the
-                  speed of a page load, the clarity of a line of copy.
+              <div className="space-y-4">
+                <div className="text-4xl font-serif text-primary/20 font-bold">02</div>
+                <h3 className="text-xl font-medium text-foreground">Customer-Centric Approach</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Your goals are our priority. We collaborate closely with you throughout the project to ensure the final product reflects your vision and business objectives.
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  We don't just build websites or apps; we build relationships.
-                  We work with a select group of clients to ensure every project
-                  gets the attention it deserves. No assembly lines, no
-                  outsourcing, just honest work.
+              </div>
+              <div className="space-y-4">
+                <div className="text-4xl font-serif text-primary/20 font-bold">03</div>
+                <h3 className="text-xl font-medium text-foreground">Scalable & Secure Solutions</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  We design robust and secure systems that scale with your business whether it’s a startup MVP or an enterprise-grade platform.
                 </p>
-                <div className="pt-4">
-                  <Button
-                    variant="link"
-                    className="p-0 text-lg font-medium text-primary hover:text-accent"
-                    asChild
-                  >
-                    <Link to="/about">
-                      Read more about our philosophy{" "}
-                      <ArrowRight className="ml-2 size-4" />
-                    </Link>
-                  </Button>
-                </div>
               </div>
             </div>
           </div>
@@ -58,10 +47,10 @@ const Index = () => {
           <div className="container mx-auto px-6 lg:px-8">
             <div className="mb-16 md:mb-24">
               <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                What we do
+                What We Offer
               </span>
               <h2 className="mt-4 font-serif text-4xl font-medium text-foreground md:text-5xl">
-                Hand-crafted digital solutions.
+                IT Services That Drive Growth
               </h2>
             </div>
 
@@ -69,27 +58,31 @@ const Index = () => {
               {[
                 {
                   title: "Web Development",
-                  desc: "Fast, accessible, and beautiful websites built with modern tools like React and Tailwind.",
+                  desc: "Custom websites and web apps built for performance, scalability, and seamless user experiences.",
                 },
                 {
-                  title: "Application Design",
-                  desc: "Complex functionality wrapped in simple, intuitive interfaces that users actually enjoy using.",
+                  title: "App Development",
+                  desc: "Native and cross-platform mobile apps that are fast, functional, and user-friendly.",
                 },
                 {
-                  title: "Brand Identity",
-                  desc: "More than just a logo. We help define your voice, your look, and your story in the digital space.",
+                  title: "UI/UX Design",
+                  desc: "Modern, intuitive interfaces focused on user experience, engagement, and conversion optimization.",
                 },
                 {
-                  title: "E-Commerce",
-                  desc: "Online stores that convert. Smooth checkouts, easy management, and delightful shopping experiences.",
+                  title: "Software Solutions",
+                  desc: "Custom ERP, CRM, and SaaS platforms tailored to streamline and scale your business operations.",
                 },
                 {
-                  title: "Custom Software",
-                  desc: "Have a unique problem? We build bespoke tools to streamline your operations and save you time.",
+                  title: "E-com Development",
+                  desc: "High-performance e-commerce sites built to convert visitors into loyal customers.",
                 },
                 {
-                  title: "Consultancy",
-                  desc: "Not sure where to start? We offer honest advice and technical strategy to guide your next move.",
+                  title: "Cloud & DevOps",
+                  desc: "Reliable cloud infrastructure and automated DevOps processes for better deployment and scalability.",
+                },
+                {
+                  title: "AI/ML Integration",
+                  desc: "Smart AI/ML-powered features that automate, analyze and optimize your business workflows.",
                 },
               ].map((service, i) => (
                 <div
@@ -102,9 +95,12 @@ const Index = () => {
                   <h3 className="mb-3 text-xl font-medium text-foreground">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed mb-4">
                     {service.desc}
                   </p>
+                  <Button variant="link" className="p-0 h-auto text-primary hover:text-accent">
+                    Read More <ArrowRight className="ml-2 size-4" />
+                  </Button>
                 </div>
               ))}
             </div>
@@ -117,10 +113,10 @@ const Index = () => {
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end mb-16">
               <div>
                 <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
-                  Who we help
+                  Industries We Serve
                 </span>
                 <h2 className="mt-4 font-serif text-4xl font-medium text-foreground md:text-5xl">
-                  Industries we know inside out.
+                  Solutions by Industry
                 </h2>
               </div>
               <Button variant="outline" className="rounded-full" asChild>
@@ -131,43 +127,51 @@ const Index = () => {
             <div className="divide-y divide-border">
               {[
                 {
-                  name: "Healthcare & Medicine",
+                  name: "Health Care Tech",
                   detail:
-                    "Patient portals, telemedicine, and practice management.",
+                    "Custom EHR, EMR, ERX, and other software solutions for healthcare and medicine. We help established businesses such as hospitals, laboratories, and pharmacies, create turnkey products and simplify digital transformation.",
                 },
                 {
-                  name: "Education & EdTech",
+                  name: "EdTech Solutions",
                   detail:
-                    "LMS platforms, student dashboards, and interactive learning.",
+                    "E-learning platforms, LMS, and digital tools for schools, colleges, and EdTech startups. We develop scalable, user-friendly learning systems that improve access, engagement, and management for educators, institutions, and students.",
                 },
                 {
-                  name: "Logistics & Supply Chain",
+                  name: "Smart Logistics",
                   detail:
-                    "Fleet tracking, inventory systems, and route optimization.",
+                    "Smart logistics, fleet tracking, and supply chain software for faster, more efficient operations. Our custom logistics platforms streamline route planning, shipment tracking, and inventory management for logistics providers and warehousing businesses.",
                 },
                 {
-                  name: "Retail & E-Commerce",
+                  name: "Online Marketplaces",
                   detail:
-                    "Custom storefronts, POS integrations, and loyalty programs.",
+                    "Multi-vendor marketplaces, product listing systems, and secure payment gateways for B2B and B2C commerce. We create seamless, scalable marketplaces that enable vendors and customers to connect, transact, and grow—across industries and geographies.",
                 },
                 {
-                  name: "Travel & Hospitality",
+                  name: "Retail Systems",
                   detail:
-                    "Booking engines, itinerary planners, and guest experiences.",
+                    "E-commerce stores, POS integrations, and customer engagement tools for online and offline retailers. We empower retail brands with technology that boosts sales, streamlines operations, and enhances the customer shopping experience.",
+                },
+                {
+                  name: "Travel Platforms",
+                  detail:
+                    "Booking engines, itinerary planners, and travel management tools for agencies and platforms. We build modern, user-centric travel tech solutions that simplify planning, enhance bookings, and improve customer experiences globally.",
                 },
               ].map((item, i) => (
                 <div
                   key={i}
-                  className="group flex flex-col gap-4 py-8 md:flex-row md:items-center md:justify-between transition-colors hover:bg-secondary/20 px-4 -mx-4 rounded-xl"
+                  className="group flex flex-col gap-4 py-8 md:flex-row md:items-start md:justify-between transition-colors hover:bg-secondary/20 px-4 -mx-4 rounded-xl"
                 >
-                  <h3 className="text-2xl font-medium text-foreground group-hover:text-primary transition-colors">
-                    {item.name}
-                  </h3>
-                  <div className="flex items-center gap-4 md:gap-8">
-                    <p className="text-muted-foreground md:text-right">
+                  <div className="flex items-center gap-4">
+                    <span className="text-lg font-serif text-primary/40 font-bold">0{i + 1}</span>
+                    <h3 className="text-2xl font-medium text-foreground group-hover:text-primary transition-colors">
+                      {item.name}
+                    </h3>
+                  </div>
+                  <div className="flex items-start gap-4 md:gap-8 max-w-2xl">
+                    <p className="text-muted-foreground md:text-right leading-relaxed">
                       {item.detail}
                     </p>
-                    <ArrowUpRight className="size-5 text-muted-foreground opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-1" />
+                    <ArrowUpRight className="size-5 text-muted-foreground opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-1 mt-1" />
                   </div>
                 </div>
               ))}
@@ -221,11 +225,10 @@ const Index = () => {
 
               <div className="relative z-10 mx-auto max-w-2xl">
                 <h2 className="font-serif text-4xl font-medium text-foreground md:text-5xl">
-                  Ready to build something real?
+                  Let’s Bring It to Life
                 </h2>
                 <p className="mt-6 text-lg text-muted-foreground">
-                  No sales pitches, no pressure. Just a friendly chat about your
-                  project and how we can help.
+                  Book Your Free Expert Consultation Today!
                 </p>
                 <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Button
@@ -233,15 +236,7 @@ const Index = () => {
                     className="h-14 rounded-full px-8 text-lg"
                     asChild
                   >
-                    <Link to="/contact">Let's Talk</Link>
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="h-14 rounded-full px-8 text-lg bg-transparent"
-                    asChild
-                  >
-                    <Link to="/services">Explore Services</Link>
+                    <Link to="/contact">Get Free Consultation</Link>
                   </Button>
                 </div>
               </div>

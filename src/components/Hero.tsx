@@ -16,19 +16,21 @@ export const Hero = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
-            Accepting new partnerships for Q4
+            We build trends
           </div>
 
           <h1 className="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
-            We build software that <br className="hidden sm:block" />
-            <span className="italic text-muted-foreground">actually</span> works
-            for you.
+            Your Trusted IT <br className="hidden sm:block" />
+            <span className="italic text-muted-foreground">
+              Innovation
+            </span>{" "}
+            Partner
           </h1>
 
           <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            No jargon, no bloat, just clean code and thoughtful design. We’re
-            Aexaware, a digital studio dedicated to turning your complex
-            problems into simple, elegant solutions.
+            Transforming Ideas into Scalable Digital Solutions. At Aexaware
+            Infotech, we don’t just build software—we create solutions that
+            empower businesses to grow, adapt, and succeed in the digital world.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -38,7 +40,7 @@ export const Hero = () => {
               className="h-12 rounded-full px-8 text-base"
             >
               <Link to="/contact">
-                Start a Conversation
+                Get a Quote
                 <ArrowRight className="ml-2 size-4" />
               </Link>
             </Button>
