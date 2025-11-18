@@ -1,7 +1,9 @@
+/* stylelint-disable */
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Twitter, Github, Mail } from "lucide-react";
+import Logo from "@/assets/logo 2.svg";
 
 export const Footer = () => {
   return (
@@ -11,42 +13,36 @@ export const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary flex items-center justify-center">
-                <div className="w-5 h-5 rounded-full border-2 border-primary relative">
-                  <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-secondary" />
-                </div>
-              </div>
-              <span className="text-xl font-bold">
-                Orbital<span className="text-primary">Core</span>
-              </span>
+              <img src={Logo} alt="Aexaware Infotech" className="h-12 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Infrastructure engineered for your next orbit. We design, deploy, and maintain the systems your business can't afford to lose.
+              We help startups and enterprises turn ideas into scalable digital
+              experiences powered by cloud, product, and design excellence.
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.linkedin.com"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.twitter.com"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Twitter"
               >
                 <Twitter size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.github.com"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="GitHub"
               >
                 <Github size={20} />
               </a>
               <a
-                href="#"
+                href="mailto:support@aexawareinfotech.com"
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Email"
               >
@@ -64,7 +60,23 @@ export const Footer = () => {
                   to="/services"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Managed IT & Support
+                  Web Development
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  App Development
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  UI/UX Design
                 </Link>
               </li>
               <li>
@@ -73,22 +85,6 @@ export const Footer = () => {
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   Cloud & DevOps
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Security & Compliance
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/services"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  Custom Engineering
                 </Link>
               </li>
             </ul>
@@ -119,7 +115,7 @@ export const Footer = () => {
                   to="/blog"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Blog
+                  Blogs
                 </Link>
               </li>
               <li>
@@ -127,7 +123,7 @@ export const Footer = () => {
                   to="/contact"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Contact
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -137,7 +133,8 @@ export const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold mb-4">Stay Updated</h4>
             <p className="text-sm text-muted-foreground mb-4">
-              Get insights from mission control delivered to your inbox.
+              Get product insights and technology updates directly in your
+              inbox.
             </p>
             <form className="space-y-2" onSubmit={(e) => e.preventDefault()}>
               <Input
@@ -155,7 +152,8 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-primary/20 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} OrbitalCore IT. All rights reserved.
+            © {new Date().getFullYear()} Aexaware Infotech. All rights reserved.
+            VADODARA/IND
           </p>
           <div className="flex space-x-6">
             <Link

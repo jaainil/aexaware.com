@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import Logo from "@/assets/logo 2.svg";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,10 +18,12 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
+    { name: "Home", path: "/" },
     { name: "Services", path: "/services" },
+    { name: "Blogs", path: "/blog" },
+    { name: "About us", path: "/about" },
     { name: "Portfolio", path: "/portfolio" },
-    { name: "About", path: "/about" },
-    { name: "Blog", path: "/blog" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -35,14 +38,11 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary flex items-center justify-center group-hover:bg-primary/30 transition-smooth">
-              <div className="w-5 h-5 rounded-full border-2 border-primary relative">
-                <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-secondary animate-pulse" />
-              </div>
-            </div>
-            <span className="text-xl font-bold tracking-tight">
-              Orbital<span className="text-primary">Core</span>
-            </span>
+            <img
+              src={Logo}
+              alt="Aexaware Infotech"
+              className="h-10 w-auto transition group-hover:scale-[1.02]"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -67,8 +67,8 @@ export const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
-            <Button asChild>
-              <Link to="/contact">Book a Call</Link>
+            <Button asChild variant="hero">
+              <Link to="/contact">╰┈➤ˎˊ˗ Get a Quote</Link>
             </Button>
           </div>
 
@@ -100,9 +100,9 @@ export const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Button asChild className="w-full">
+              <Button asChild className="w-full" variant="hero">
                 <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                  Book a Call
+                  ╰┈➤ˎˊ˗ Get a Quote
                 </Link>
               </Button>
             </div>

@@ -1,0 +1,10 @@
+Homepage rebuild plan:
+- Sections: Hero, Intro Features, Services, Industries, Testimonials, CTA, Footer contact strip.
+- Components to create/use:
+  * Hero (rewrite existing) with CTA + contact info using shadcn Button + Badge.
+  * FeatureCard (new) for "Agile Team" / "Client-First" / "Secure & Scalable".
+  * ServiceCard v2 (new layout) to list 7 service offerings with numbering + CTA link.
+  * IndustryCard (new) to present industry focus with number + description.
+  * Simple Testimonial section using Card + quote icon.
+- Data derived from user-provided copy; keep arrays in page for easy updates.
+- Update Navbar/Footer branding to "Aexaware Infotech" and surface contact info.
