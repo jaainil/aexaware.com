@@ -1,4 +1,6 @@
-# Copilot instructions (Non-Obvious Only)
+# AGENTS.md
+
+This file provides guidance to agents when working with code in this repository.
 
 ## Commands (non-standard)
 
