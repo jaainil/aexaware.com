@@ -80,16 +80,18 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 bg-card">
-        <div className="container mx-auto px-6 lg:px-8">
+      <section className="py-24 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-card/30 to-transparent" />
+        
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <div key={index}>
+              <div key={index} className="space-y-6">
                 <ServiceCard {...service} />
-                <div className="mt-4 pl-8 space-y-3">
+                <div className="pl-6 space-y-4 border-l-2 border-primary/20">
                   <div className="flex items-start space-x-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                    <p className="text-sm text-muted-foreground">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {index === 0 && "24/7 monitoring with proactive alerts and rapid response"}
                       {index === 1 && "Infrastructure as code with automated scaling and deployment"}
                       {index === 2 && "Security audits, penetration testing, and incident response"}
@@ -97,8 +99,8 @@ const Services = () => {
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                    <p className="text-sm text-muted-foreground">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {index === 0 && "Help desk support and user onboarding assistance"}
                       {index === 1 && "Cloud cost optimization and performance tuning"}
                       {index === 2 && "Compliance documentation and regulatory alignment"}
@@ -106,8 +108,8 @@ const Services = () => {
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2" />
-                    <p className="text-sm text-muted-foreground">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       {index === 0 && "Backup and disaster recovery planning"}
                       {index === 1 && "Container orchestration and microservices architecture"}
                       {index === 2 && "Employee security training and awareness programs"}
