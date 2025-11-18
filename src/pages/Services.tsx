@@ -11,26 +11,50 @@ const Services = () => {
     {
       icon: Server,
       title: "Managed IT & Support",
-      description: "Proactive monitoring, maintenance, and 24/7 support that keeps your critical systems running smoothly without interruption.",
+      description:
+        "Proactive monitoring, maintenance, and 24/7 support that keeps your critical systems running smoothly without interruption.",
       link: "/services",
+      features: [
+        "24/7 monitoring with proactive alerts and rapid response",
+        "Help desk support and user onboarding assistance",
+        "Backup and disaster recovery planning",
+      ],
     },
     {
       icon: Cloud,
       title: "Cloud & DevOps",
-      description: "Modern infrastructure automation, CI/CD pipelines, and cloud optimization for faster, more reliable deployments.",
+      description:
+        "Modern infrastructure automation, CI/CD pipelines, and cloud optimization for faster, more reliable deployments.",
       link: "/services",
+      features: [
+        "Infrastructure as code with automated scaling and deployment",
+        "Cloud cost optimization and performance tuning",
+        "Container orchestration and microservices architecture",
+      ],
     },
     {
       icon: Shield,
       title: "Security & Compliance",
-      description: "Enterprise security frameworks, vulnerability management, and compliance solutions for SOC 2, HIPAA, and GDPR.",
+      description:
+        "Enterprise security frameworks, vulnerability management, and compliance solutions for SOC 2, HIPAA, and GDPR.",
       link: "/services",
+      features: [
+        "Security audits, penetration testing, and incident response",
+        "Compliance documentation and regulatory alignment",
+        "Employee security training and awareness programs",
+      ],
     },
     {
       icon: Code,
       title: "Custom Software & Integrations",
-      description: "Tailored solutions, API development, and system integrations designed for your unique business requirements.",
+      description:
+        "Tailored solutions, API development, and system integrations designed for your unique business requirements.",
       link: "/services",
+      features: [
+        "Custom API development and third-party system integration",
+        "Legacy system modernization and data migration",
+        "Workflow automation and business process optimization",
+      ],
     },
   ];
 
@@ -88,35 +112,14 @@ const Services = () => {
             {services.map((service, index) => (
               <div key={index} className="space-y-6">
                 <ServiceCard {...service} />
-                <div className="pl-6 space-y-4 border-l-2 border-primary/20">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {index === 0 && "24/7 monitoring with proactive alerts and rapid response"}
-                      {index === 1 && "Infrastructure as code with automated scaling and deployment"}
-                      {index === 2 && "Security audits, penetration testing, and incident response"}
-                      {index === 3 && "Custom API development and third-party system integration"}
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {index === 0 && "Help desk support and user onboarding assistance"}
-                      {index === 1 && "Cloud cost optimization and performance tuning"}
-                      {index === 2 && "Compliance documentation and regulatory alignment"}
-                      {index === 3 && "Legacy system modernization and data migration"}
-                    </p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {index === 0 && "Backup and disaster recovery planning"}
-                      {index === 1 && "Container orchestration and microservices architecture"}
-                      {index === 2 && "Employee security training and awareness programs"}
-                      {index === 3 && "Workflow automation and business process optimization"}
-                    </p>
-                  </div>
-                </div>
+                <ul className="pl-6 space-y-4 border-l-2 border-primary/20">
+                  {service.features?.map((feature: string) => (
+                    <li key={feature} className="flex items-start gap-3 text-sm text-muted-foreground leading-relaxed">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
