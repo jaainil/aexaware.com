@@ -113,12 +113,12 @@ export const Footer = () => {
             </button>
           </div>
         </div>
+      </div>
 
-        <div className="mt-12 w-full overflow-hidden flex justify-center opacity-50 pointer-events-none select-none bg-gradient-to-t from-muted/20 to-transparent">
-          <pre className="font-mono text-[10px] leading-[10px] md:text-xs md:leading-3 whitespace-pre text-muted-foreground">
-            {asciiArt}
-          </pre>
-        </div>
+      <div className="mt-12 w-full overflow-hidden flex justify-center opacity-50 pointer-events-none select-none bg-gradient-to-t from-muted/20 to-transparent">
+        <pre className="font-mono text-[1.2vw] leading-[1.2vw] whitespace-pre text-muted-foreground">
+          {asciiArt}
+        </pre>
       </div>
     </footer>
   );

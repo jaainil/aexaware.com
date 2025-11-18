@@ -16,21 +16,20 @@ export const Hero = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
             </span>
-            We build trends
+            Aexaware Infotech
           </div>
 
           <h1 className="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
-            Your Trusted IT <br className="hidden sm:block" />
+            Strategic Innovation. <br className="hidden sm:block" />
             <span className="italic text-muted-foreground">
-              Innovation
-            </span>{" "}
-            Partner
+              Flawless Execution.
+            </span>
           </h1>
 
           <p className="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Transforming Ideas into Scalable Digital Solutions. At Aexaware
-            Infotech, we don’t just build software—we create solutions that
-            empower businesses to grow, adapt, and succeed in the digital world.
+            We are a full-service digital agency dedicated to helping businesses
+            grow in the digital world. From custom web design to data-driven
+            marketing, we provide end-to-end solutions that drive real results.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -50,7 +49,7 @@ export const Hero = () => {
               variant="outline"
               className="h-12 rounded-full px-8 text-base bg-transparent border-primary/20 hover:bg-primary/5"
             >
-              <Link to="/portfolio">See Our Work</Link>
+              <Link to="/services">Explore Services</Link>
             </Button>
           </div>
         </div>
