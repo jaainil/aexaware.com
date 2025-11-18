@@ -91,24 +91,18 @@ export const Hero = () => {
           </div>
 
           {/* Trust Indicators */}
-          <div className="animate-element pt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-muted-foreground">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-bold">99.9%</span>
-              </div>
-              <span>Uptime SLA</span>
+          <div className="animate-element pt-12 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm">
+            <div className="flex items-center space-x-3 px-4 py-2 rounded-lg border border-primary/20 bg-primary/5">
+              <span className="text-primary font-bold text-base">99.9%</span>
+              <span className="text-muted-foreground">Uptime SLA</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-bold">24/7</span>
-              </div>
-              <span>Support</span>
+            <div className="flex items-center space-x-3 px-4 py-2 rounded-lg border border-primary/20 bg-primary/5">
+              <span className="text-primary font-bold text-base">24/7</span>
+              <span className="text-muted-foreground">Support</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded bg-primary/10 flex items-center justify-center">
-                <span className="text-primary font-bold">SOC 2</span>
-              </div>
-              <span>Compliant</span>
+            <div className="flex items-center space-x-3 px-4 py-2 rounded-lg border border-primary/20 bg-primary/5">
+              <span className="text-primary font-bold text-base whitespace-nowrap">SOC 2</span>
+              <span className="text-muted-foreground">Compliant</span>
             </div>
           </div>
         </div>
