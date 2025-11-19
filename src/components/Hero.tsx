@@ -1,17 +1,23 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 
 export const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-background pt-32 pb-24 lg:pt-48 lg:pb-32">
+      <InteractiveGridPattern
+        className="absolute inset-0 z-0 opacity-40"
+        squares={[60, 40]}
+        squaresClassName="hover:fill-primary/20"
+      />
       {/* Organic background shape */}
-      <div className="absolute top-0 right-0 -z-10 h-[600px] w-[600px] translate-x-1/3 -translate-y-1/4 rounded-full bg-secondary/50 blur-3xl" />
-      <div className="absolute bottom-0 left-0 -z-10 h-[400px] w-[400px] -translate-x-1/3 translate-y-1/4 rounded-full bg-accent/10 blur-3xl" />
+      <div className="pointer-events-none absolute top-0 right-0 -z-10 h-[600px] w-[600px] translate-x-1/3 -translate-y-1/4 rounded-full bg-secondary/50 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-0 left-0 -z-10 h-[400px] w-[400px] -translate-x-1/3 translate-y-1/4 rounded-full bg-accent/10 blur-3xl" />
 
-      <div className="container relative z-10 mx-auto px-6 lg:px-8">
+      <div className="container relative z-10 mx-auto px-6 lg:px-8 pointer-events-none">
         <div className="mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white/50 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-sm transition-colors hover:bg-white/80">
+          <div className="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-primary/10 bg-white/50 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-sm transition-colors hover:bg-white/80">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
@@ -32,7 +38,7 @@ export const Hero = () => {
             marketing, we provide end-to-end solutions that drive real results.
           </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row pointer-events-auto">
             <Button
               asChild
               size="lg"
