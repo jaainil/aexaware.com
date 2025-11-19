@@ -1,44 +1,54 @@
-/* stylelint-disable */
 import { Link } from "react-router-dom";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Linkedin, Twitter, Github, Mail } from "lucide-react";
+import {
+  Linkedin,
+  Twitter,
+  Github,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  ExternalLink,
+} from "lucide-react";
 import Logo from "@/assets/logo 2.svg";
 import asciiArt from "@/assets/ascci.txt?raw";
 
 export const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="relative border-t border-border/40 bg-background pt-24 pb-12">
-      <div className="container mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-4">
-          <div className="space-y-6">
-            <Link to="/" className="block">
+    <footer className="relative border-t border-border/40 bg-background pt-16 pb-8 md:pt-24 md:pb-12 overflow-hidden">
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 mb-16">
+          {/* Brand Section - Spans 4 columns */}
+          <div className="lg:col-span-4 space-y-6">
+            <Link to="/" className="block w-fit">
               <img
                 src={Logo}
                 alt="Aexaware Infotech"
-                className="h-10 w-auto opacity-90"
+                className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity"
               />
             </Link>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-xs">
+            <p className="text-muted-foreground leading-relaxed max-w-xs">
               We help startups, enterprises, and businesses transform their
               ideas into cutting-edge digital experiences.
             </p>
-            <div className="space-y-2 text-muted-foreground">
-              <p>Email: info@aexaware.com</p>
-              <p>Phone: +91 98254 38119</p>
-            </div>
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-4 pt-2">
               {[
-                { icon: Linkedin, label: "LinkedIn" },
-                { icon: Twitter, label: "Twitter" },
-                { icon: Github, label: "GitHub" },
-                { icon: Mail, label: "Email" },
-              ].map(({ icon: Icon, label }, i) => (
+                { icon: Linkedin, label: "LinkedIn", href: "#" },
+                { icon: Twitter, label: "Twitter", href: "#" },
+                { icon: Github, label: "GitHub", href: "#" },
+                {
+                  icon: Mail,
+                  label: "Email",
+                  href: "mailto:info@aexaware.com",
+                },
+              ].map(({ icon: Icon, label, href }, i) => (
                 <a
                   key={i}
-                  href="#"
+                  href={href}
                   aria-label={label}
-                  className="flex size-10 items-center justify-center rounded-full bg-secondary/50 text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                  className="flex size-9 items-center justify-center rounded-full bg-secondary/50 text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground hover:scale-110"
                 >
                   <Icon size={18} />
                 </a>
@@ -46,11 +56,12 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div>
+          {/* Services - Spans 3 columns */}
+          <div className="lg:col-span-3">
             <h3 className="font-serif text-lg font-medium text-foreground mb-6">
               Services
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {[
                 "Web Development",
                 "App Development",
@@ -63,57 +74,112 @@ export const Footer = () => {
                 <li key={item}>
                   <Link
                     to="/services"
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="group flex items-center text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
-                    {item}
+                    <ArrowRight className="mr-2 h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                    <span className="transition-transform group-hover:translate-x-1">
+                      {item}
+                    </span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
+          {/* Company - Spans 2 columns */}
+          <div className="lg:col-span-2">
             <h3 className="font-serif text-lg font-medium text-foreground mb-6">
               Company
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {["About Us", "Portfolio", "Blog", "Contact"].map((item) => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase().replace(" ", "")}`}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="group flex items-center text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
-                    {item}
+                    <ArrowRight className="mr-2 h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                    <span className="transition-transform group-hover:translate-x-1">
+                      {item}
+                    </span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <h3 className="font-serif text-lg font-medium text-foreground mb-6">
-              Join us
-            </h3>
-            <p className="text-muted-foreground mb-4">
-              Looking for something else? Work with us.
-            </p>
-            <Button asChild className="rounded-full px-6">
-              <Link to="/contact">Apply Now</Link>
-            </Button>
-            <div className="mt-6 text-muted-foreground">
-              <p>+91 98254 38119</p>
-              <p>info@aexaware.com</p>
+          {/* Contact & CTA - Spans 3 columns */}
+          <div className="lg:col-span-3 space-y-8">
+            <div>
+              <h3 className="font-serif text-lg font-medium text-foreground mb-6">
+                Contact Us
+              </h3>
+              <div className="space-y-4 text-sm text-muted-foreground">
+                <a
+                  href="mailto:info@aexaware.com"
+                  className="flex items-center gap-3 hover:text-foreground transition-colors group"
+                >
+                  <div className="flex size-8 items-center justify-center rounded-full bg-secondary/30 group-hover:bg-primary/10 transition-colors">
+                    <Mail className="h-4 w-4 text-primary" />
+                  </div>
+                  <span>info@aexaware.com</span>
+                </a>
+                <a
+                  href="tel:+919825438119"
+                  className="flex items-center gap-3 hover:text-foreground transition-colors group"
+                >
+                  <div className="flex size-8 items-center justify-center rounded-full bg-secondary/30 group-hover:bg-primary/10 transition-colors">
+                    <Phone className="h-4 w-4 text-primary" />
+                  </div>
+                  <span>+91 98254 38119</span>
+                </a>
+                <div className="flex items-start gap-3 group">
+                  <div className="flex size-8 items-center justify-center rounded-full bg-secondary/30 mt-0.5">
+                    <MapPin className="h-4 w-4 text-primary" />
+                  </div>
+                  <span>Anand, Gujarat, India</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl bg-secondary/20 p-5 border border-border/50 backdrop-blur-sm">
+              <h4 className="font-medium text-foreground mb-1">
+                Join our team
+              </h4>
+              <p className="text-xs text-muted-foreground mb-3">
+                We are always looking for talent.
+              </p>
+              <Button
+                asChild
+                className="w-full rounded-full h-9 text-xs"
+                variant="outline"
+              >
+                <Link to="/contact">
+                  Apply Now <ExternalLink className="ml-2 h-3 w-3" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
 
-        <div className="mt-24 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-border/40 pt-8 text-sm text-muted-foreground">
-          <p>© 2025 / Aexaware infotech. All rights reserved.</p>
-          <div className="flex gap-8">
-            <span>ANAND/IND</span>
+        <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+          <p>© {currentYear} Aexaware Infotech. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link
+              to="/privacy"
+              className="hover:text-foreground transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms"
+              className="hover:text-foreground transition-colors"
+            >
+              Terms of Service
+            </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="hover:text-foreground transition-colors"
+              className="hover:text-foreground transition-colors ml-2"
             >
               Scroll to Top
             </button>
@@ -121,7 +187,8 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-12 w-full overflow-hidden flex justify-center opacity-50 pointer-events-none select-none bg-gradient-to-t from-muted/20 to-transparent">
+      {/* ASCII Art Background */}
+      <div className="mt-12 w-full overflow-hidden flex justify-center opacity-30 pointer-events-none select-none bg-gradient-to-t from-muted/20 to-transparent">
         <pre className="font-mono text-[1.2vw] leading-[1.2vw] whitespace-pre text-muted-foreground">
           {asciiArt}
         </pre>
