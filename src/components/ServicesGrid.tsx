@@ -54,6 +54,9 @@ export const ServicesGrid = () => {
               <img 
                 src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop" 
                 alt="Global Connectivity" 
+                loading="lazy"
+                width="400"
+                height="600"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>

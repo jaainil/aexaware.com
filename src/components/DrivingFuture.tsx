@@ -13,6 +13,9 @@ export const DrivingFuture = () => {
             <img
               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop"
               alt="Modern Architecture"
+              loading="lazy"
+              width="400"
+              height="400"
               className="absolute inset-0 w-full h-full object-cover rounded-[3rem] transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-lg"
             />
           </div>
@@ -75,6 +78,9 @@ export const DrivingFuture = () => {
             <img
               src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop"
               alt="Team Working"
+              loading="lazy"
+              width="400"
+              height="400"
               className="absolute inset-0 w-full h-full object-cover rounded-[3rem] transform -rotate-3 hover:rotate-0 transition-transform duration-500 shadow-lg"
             />
           </div>

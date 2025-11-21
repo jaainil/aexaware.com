@@ -147,19 +147,33 @@ All colors MUST be HSL.
   }
 }
 
-/* ---break---
-*/
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
 @layer utilities {
+  @keyframes beam {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes beam-vertical {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .animate-beam {
+    animation: beam 3s linear infinite;
+  }
+
+  .animate-beam-vertical {
+    animation: beam-vertical 3s linear infinite;
+  }
+
   @keyframes marquee {
     from {
       transform: translateX(0);

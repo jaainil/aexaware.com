@@ -58,7 +58,12 @@ export const Hero = () => {
             
             {/* Central Image Placeholder (Robot Head) */}
             <div className="relative z-10 h-[400px] w-[300px] sm:h-[500px] sm:w-[400px] rounded-full bg-gradient-to-b from-primary/20 to-accent/20 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
-               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-80 mix-blend-overlay"></div>
+               <div 
+                 className="absolute inset-0 bg-cover bg-center opacity-80 mix-blend-overlay"
+                 style={{ backgroundImage: "url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=1000&auto=format&fit=crop')" }}
+                 role="img"
+                 aria-label="Futuristic technology and innovation visual"
+               />
                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
             </div>
 
@@ -69,7 +74,7 @@ export const Hero = () => {
             </svg>
 
             {/* AI Technology Badge */}
-            <div className="absolute top-1/3 -right-4 lg:right-0 z-20 animate-bounce duration-[3000ms]">
+            <div className="absolute top-1/3 -right-4 lg:right-0 z-20 animate-[bounce_3s_infinite]">
                <div className="flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 shadow-lg backdrop-blur-md">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 text-primary">
                     <Plus className="h-4 w-4" />
@@ -89,7 +94,14 @@ export const Hero = () => {
                   <div className="flex -space-x-2">
                      {[1, 2, 3].map((i) => (
                         <div key={i} className="h-8 w-8 rounded-full border-2 border-background bg-gray-200 overflow-hidden">
-                           <img src={`https://i.pravatar.cc/100?img=${10 + i}`} alt="User" className="h-full w-full object-cover" />
+                           <img 
+                             src={`https://i.pravatar.cc/100?img=${10 + i}`} 
+                             alt={`Satisfied client testimonial avatar ${i}`}
+                             loading="lazy"
+                             width="32"
+                             height="32"
+                             className="h-full w-full object-cover" 
+                           />
                         </div>
                      ))}
                   </div>

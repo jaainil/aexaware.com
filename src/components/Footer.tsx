@@ -48,6 +48,8 @@ export const Footer = () => {
                   key={i}
                   href={href}
                   aria-label={label}
+                  target={href.startsWith('http') ? "_blank" : undefined}
+                  rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
                   className="flex size-9 items-center justify-center rounded-full bg-secondary/50 text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground hover:scale-110"
                 >
                   <Icon size={18} />

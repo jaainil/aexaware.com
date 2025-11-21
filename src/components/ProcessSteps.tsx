@@ -23,24 +23,6 @@ export const ProcessSteps = () => {
 
   return (
     <section className="py-24 bg-background">
-      <style>
-        {`
-          @keyframes beam {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-          }
-          @keyframes beam-vertical {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
-          }
-          .animate-beam {
-            animation: beam 3s linear infinite;
-          }
-          .animate-beam-vertical {
-            animation: beam-vertical 3s linear infinite;
-          }
-        `}
-      </style>
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-6">
           <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight text-foreground">

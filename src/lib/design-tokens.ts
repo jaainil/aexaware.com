@@ -53,5 +53,5 @@ export function dt(
   token: keyof (typeof designTokens)[typeof category],
   ...inputs: ClassValue[]
 ) {
-  return cn((designTokens[category] as any)[token], ...inputs);
+  return cn((designTokens[category] as Record<string, ClassValue>)[token], ...inputs);
 }

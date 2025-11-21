@@ -13,6 +13,9 @@ export const SmartSolutions = () => {
               <img
                 src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop"
                 alt="IT Professional"
+                loading="lazy"
+                width="600"
+                height="750"
                 className="h-full w-full object-cover"
               />
             </div>
@@ -20,6 +23,9 @@ export const SmartSolutions = () => {
               <img
                 src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop"
                 alt="Team Collaboration"
+                loading="lazy"
+                width="500"
+                height="500"
                 className="h-full w-full object-cover"
               />
             </div>
