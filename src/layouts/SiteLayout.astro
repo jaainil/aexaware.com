@@ -1,0 +1,39 @@
+---
+import "@/styles/globals.css";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Orbiting Systems", description = "Orbiting Systems - Future Tech" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <!-- Wrap React components that need context/providers -->
+    <TooltipProvider client:idle>
+        <Navbar client:load />
+        <slot />
+        <Footer client:visible />
+        <Toaster client:idle />
+        <Sonner client:idle />
+    </TooltipProvider>
+  </body>
+</html>

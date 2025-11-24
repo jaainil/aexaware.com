@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, Code, Smartphone, Cloud, Brain } from "lucide-react";
-import { Link } from "react-router-dom";
 
 export const ServicesGrid = () => {
   return (
@@ -11,10 +10,10 @@ export const ServicesGrid = () => {
             Scalable Solutions <br />
             for Every Stage
           </h2>
-          <Button asChild variant="default" className="rounded-full px-6 h-12">
-            <Link to="/services">
+          <Button size="lg" variant="outline" className="rounded-full px-8" asChild>
+            <a href="/services">
               View All Services <ArrowUpRight className="ml-2 h-4 w-4" />
-            </Link>
+            </a>
           </Button>
         </div>
 
@@ -31,9 +30,9 @@ export const ServicesGrid = () => {
                 <p className="text-muted-foreground text-sm mb-4">
                   Build secure, scalable web portals, SaaS platforms, and enterprise software tailored to your specific business workflows.
                 </p>
-                <Link to="/services" className="inline-flex items-center text-primary text-sm font-medium hover:underline">
+                <a href="/services" className="inline-flex items-center text-primary text-sm font-medium hover:underline">
                   Learn More <ArrowUpRight className="ml-1 h-3 w-3" />
-                </Link>
+                </a>
               </div>
             </div>
             {/* Bottom Card (Small) */}

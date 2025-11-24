@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Plus, Star } from "lucide-react";
+import { ArrowUpRight, Plus, Star, ArrowRight } from "lucide-react";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 
 export const Hero = () => {
@@ -43,12 +42,13 @@ export const Hero = () => {
                 <p className="mb-6 text-sm text-muted-foreground">
                   Transform your vision into reality with secure, future-proof technology tailored to your growth.
                 </p>
-                <Button asChild className="w-full justify-between rounded-full" size="lg">
-                  <Link to="/contact">
-                    Get Started Now
-                    <ArrowUpRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-primary-foreground transition-all duration-200 bg-primary rounded-full hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                >
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </div>
             </div>
           </div>

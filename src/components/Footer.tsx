@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Linkedin,
@@ -22,13 +21,11 @@ export const Footer = () => {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 mb-16">
           {/* Brand Section - Spans 4 columns */}
           <div className="lg:col-span-4 space-y-6">
-            <Link to="/" className="block w-fit">
-              <img
-                src={Logo}
-                alt="Aexaware Infotech"
-                className="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity"
-              />
-            </Link>
+              <a href="/" className="flex items-center space-x-2 group">
+                <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent group-hover:opacity-80 transition-opacity">
+                  Aexaware
+                </span>
+              </a>
             <p className="text-muted-foreground leading-relaxed max-w-xs">
               We help startups, enterprises, and businesses transform their
               ideas into cutting-edge digital experiences.
@@ -74,15 +71,15 @@ export const Footer = () => {
                 "AI/ML Integration",
               ].map((item) => (
                 <li key={item}>
-                  <Link
-                    to="/services"
+                  <a
+                    href="/services"
                     className="group flex items-center text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     <ArrowRight className="mr-2 h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
                     <span className="transition-transform group-hover:translate-x-1">
                       {item}
                     </span>
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -96,15 +93,15 @@ export const Footer = () => {
             <ul className="space-y-3">
               {["About Us", "Portfolio", "Blog", "Contact"].map((item) => (
                 <li key={item}>
-                  <Link
-                    to={`/${item.toLowerCase().replace(" ", "")}`}
+                  <a
+                    href={`/${item.toLowerCase().replace(" ", "")}`}
                     className="group flex items-center text-muted-foreground hover:text-primary transition-colors text-sm"
                   >
                     <ArrowRight className="mr-2 h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
                     <span className="transition-transform group-hover:translate-x-1">
                       {item}
                     </span>
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -156,9 +153,9 @@ export const Footer = () => {
                 className="w-full rounded-full h-9 text-xs"
                 variant="outline"
               >
-                <Link to="/contact">
+                <a href="/contact">
                   Apply Now <ExternalLink className="ml-2 h-3 w-3" />
-                </Link>
+                </a>
               </Button>
             </div>
           </div>
@@ -167,18 +164,18 @@ export const Footer = () => {
         <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
           <p>© {currentYear} Aexaware Infotech. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link
-              to="/privacy"
+            <a
+              href="/privacy"
               className="hover:text-foreground transition-colors"
             >
               Privacy Policy
-            </Link>
-            <Link
-              to="/terms"
+            </a>
+            <a
+              href="/terms"
               className="hover:text-foreground transition-colors"
             >
               Terms of Service
-            </Link>
+            </a>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="hover:text-foreground transition-colors ml-2"

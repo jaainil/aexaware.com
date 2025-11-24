@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 export const SmartSolutions = () => {
   return (
@@ -57,11 +56,11 @@ export const SmartSolutions = () => {
               ))}
             </div>
 
-            <Button asChild className="rounded-full px-8 h-12">
-              <Link to="/contact">
-                Contact Us <ArrowUpRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
+            <Button size="lg" className="rounded-full px-8" asChild>
+            <a href="/contact">
+              Get a Custom Solution <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
           </div>
         </div>
       </div>

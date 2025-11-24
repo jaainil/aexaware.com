@@ -1,0 +1,77 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { Hero } from "@/components/Hero";
+import { DrivingFuture } from "@/components/DrivingFuture";
+import { ServicesGrid } from "@/components/ServicesGrid";
+import { SmartSolutions } from "@/components/SmartSolutions";
+import { Industries } from "@/components/Industries";
+import { ProcessSteps } from "@/components/ProcessSteps";
+import { Button } from "@/components/ui/button";
+import { TestimonialsCarousel } from "@/components/TestimonialsCarousel";
+
+
+---
+
+<SiteLayout
+  title="Aexaware Infotech – Custom Web, Mobile & AI Solutions from Anand, Gujarat"
+  description="Aexaware Infotech builds scalable web, mobile, AI, and DevOps solutions for startups and enterprises – Made in Anand, Serving Globally."
+>
+  <div class="min-h-screen bg-background font-sans selection:bg-accent/20 selection:text-accent-foreground">
+    <Hero client:load />
+
+    <main>
+      <DrivingFuture client:visible />
+      <ServicesGrid client:visible />
+      <SmartSolutions client:visible />
+      <Industries client:visible />
+      <ProcessSteps client:visible />
+
+      {/* Testimonials - Carousel */}
+      <section class="bg-primary text-primary-foreground py-24 lg:py-32">
+        <div class="container mx-auto px-6 lg:px-8">
+          <div class="mb-16 text-center">
+            <span class="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
+              Testimonials
+            </span>
+            <h2 class="mt-4 font-serif text-4xl font-medium md:text-5xl">
+              Trusted by innovative businesses.
+            </h2>
+          </div>
+
+          <div class="mx-auto max-w-5xl">
+            <TestimonialsCarousel client:visible />
+          </div>
+        </div>
+      </section>
+
+      {/* CTA - Organic */}
+      <section class="py-24 lg:py-32">
+        <div class="container mx-auto px-6 lg:px-8">
+          <div class="relative overflow-hidden rounded-[2.5rem] bg-secondary/50 px-6 py-24 text-center sm:px-16">
+            {/* Decorative blobs */}
+            <div class="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-white blur-3xl opacity-60" />
+            <div class="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-accent/20 blur-3xl opacity-60" />
+
+            <div class="relative z-10 mx-auto max-w-2xl">
+              <h2 class="font-serif text-4xl font-medium text-foreground md:text-5xl">
+                Let’s Bring It to Life
+              </h2>
+              <p class="mt-6 text-lg text-muted-foreground">
+                Book Your Free Expert Consultation Today!
+              </p>
+              <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Button
+                  size="lg"
+                  className="h-14 rounded-full px-8 text-lg"
+                  asChild
+                >
+                  <a href="/contact">Get Free Consultation</a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</SiteLayout>

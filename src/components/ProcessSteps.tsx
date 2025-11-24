@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 
 export const ProcessSteps = () => {
   const steps = [
@@ -29,10 +28,10 @@ export const ProcessSteps = () => {
             From Idea to Impact <br />
             in 3 Steps
           </h2>
-          <Button asChild className="rounded-full px-6 h-12">
-            <Link to="/contact">
-              Start Your Project <ArrowUpRight className="ml-2 h-4 w-4" />
-            </Link>
+          <Button size="lg" className="rounded-full px-8" asChild>
+            <a href="/contact">
+              Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
           </Button>
         </div>
 

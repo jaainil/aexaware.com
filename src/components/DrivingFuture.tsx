@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { ArrowRight, Zap, Shield, Globe, ArrowUpRight } from "lucide-react";
 
 export const DrivingFuture = () => {
   return (
@@ -65,11 +64,11 @@ export const DrivingFuture = () => {
               We empower startups and enterprises with innovative web, mobile, and AI
               solutions that streamline operations and deliver measurable results.
             </p>
-            <Button asChild size="lg" className="rounded-full px-8 h-14 text-lg">
-              <Link to="/contact">
-                Discover Our Solutions <ArrowUpRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
+            <Button size="lg" className="rounded-full px-8" asChild>
+            <a href="/about">
+              Discover Our Vision <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
           </div>
 
           {/* Right Image - Tilted */}

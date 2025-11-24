@@ -1,0 +1,216 @@
+---
+import SiteLayout from "@/layouts/SiteLayout.astro";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { PortfolioFAQ } from "@/components/PortfolioFAQ";
+
+const projects = [
+  {
+    title: "J K Fertilizers",
+    year: "2025",
+    category: "Web Development",
+    description:
+      "A comprehensive digital presence for a leading fertilizer manufacturer, featuring product catalogs and dealer locators.",
+    tags: ["React", "Tailwind CSS", "Node.js"],
+    image:
+      "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "SV Engineering",
+    year: "2025",
+    category: "Corporate Website",
+    description:
+      "Modern corporate website showcasing engineering solutions, project portfolios, and technical capabilities.",
+    tags: ["Next.js", "TypeScript", "Framer Motion"],
+    image:
+      "https://images.unsplash.com/photo-1581094794329-cd1096a7a438?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Bharat Krushi Bio Fertilizer",
+    year: "2025",
+    category: "E-Commerce",
+    description:
+      "Full-featured e-commerce platform for bio-fertilizers with secure payment integration and inventory management.",
+    tags: ["Shopify", "Custom Theme", "Liquid"],
+    image:
+      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Qreius",
+    year: "2025",
+    category: "SaaS Platform",
+    description:
+      "A robust software ecosystem built from the ground up, handling complex data workflows and user management.",
+    tags: ["React", "Python", "AWS"],
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    title: "Algogist",
+    year: "2025",
+    category: "Tech Blog",
+    description:
+      "A high-performance technical blog and resource hub for developers and algorithm enthusiasts.",
+    tags: ["Gatsby", "GraphQL", "MDX"],
+    image:
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+  },
+];
+
+const faqs = [
+  {
+    question: "What web development services does your team provide?",
+    answer:
+      "We provide complete web development solutions including custom website design, front-end and back-end development, WordPress sites, and eCommerce platforms. Our websites are secure, responsive, fast-loading, and built to support your business goals with scalable performance and clean user experience.",
+  },
+  {
+    question: "Do you build Android and iOS mobile applications?",
+    answer:
+      "Yes, we specialize in developing high-quality mobile applications for both Android and iOS platforms. We use modern cross-platform technologies like React Native and Flutter to ensure a seamless user experience and efficient development process.",
+  },
+  {
+    question: "Can you redesign or improve existing UX/UI designs?",
+    answer:
+      "Absolutely. We can audit your current design, identify pain points, and create a refreshed, user-centric UI/UX that improves engagement and conversion rates.",
+  },
+  {
+    question: "What technologies do you use in software development?",
+    answer:
+      "We use a wide range of modern technologies including React, Next.js, Node.js, Python, TypeScript, and cloud services like AWS and Azure, selecting the best stack for each specific project.",
+  },
+  {
+    question: "Do you offer cloud setup and DevOps support?",
+    answer:
+      "Yes, we provide comprehensive cloud infrastructure setup, migration services, and ongoing DevOps support to ensure your applications are scalable, secure, and reliable.",
+  },
+  {
+    question: "How do you ensure security and scalability?",
+    answer:
+      "We follow industry best practices for security, including regular audits and secure coding standards. Our architectures are designed to be scalable from day one, utilizing cloud-native solutions that grow with your business.",
+  },
+];
+---
+
+<SiteLayout
+  title="Portfolio – Aexaware Projects"
+  description="Explore Aexaware’s recent projects in web, mobile and AI development for global clients."
+>
+  <div class="min-h-screen bg-background font-sans">
+    {/* Hero Section */}
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
+            Our Work
+          </span>
+          <h1 class="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
+            Selected projects & <br class="hidden md:block" />
+            <span class="italic text-muted-foreground">
+              success stories.
+            </span>
+          </h1>
+          <p class="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+            Explore how we've helped businesses across various industries
+            transform their digital presence and achieve their goals.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Projects Grid */}
+    <section class="py-24 bg-secondary/30">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <div
+              class="group relative flex flex-col overflow-hidden rounded-3xl bg-background border border-border/50 transition-all hover:shadow-xl hover:-translate-y-1"
+            >
+              <div class="aspect-[4/3] overflow-hidden bg-muted">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div class="flex flex-1 flex-col p-6">
+                <div class="mb-4 flex items-center justify-between">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-primary">
+                    {project.category}
+                  </span>
+                  <span class="text-sm text-muted-foreground">
+                    {project.year}
+                  </span>
+                </div>
+                <h3 class="mb-2 text-2xl font-medium text-foreground">
+                  {project.title}
+                </h3>
+                <p class="mb-6 text-muted-foreground leading-relaxed line-clamp-3">
+                  {project.description}
+                </p>
+                <div class="mt-auto flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      class="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FAQ Section */}
+    <section class="py-24 lg:py-32">
+      <div class="container mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-3 gap-12">
+          <div class="lg:col-span-1">
+            <span class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+              FAQ
+            </span>
+            <h2 class="mt-4 font-serif text-4xl font-medium text-foreground">
+              Frequently Asked Questions
+            </h2>
+            <p class="mt-4 text-lg text-muted-foreground">
+              Got questions? We've got answers. If you don't see what you're
+              looking for, feel free to reach out.
+            </p>
+            <Button className="mt-8 rounded-full" asChild>
+              <a href="/contact">Contact Support</a>
+            </Button>
+          </div>
+          <div class="lg:col-span-2">
+            <PortfolioFAQ faqs={faqs} client:visible />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CTA Section */}
+    <section class="py-24 bg-primary text-primary-foreground">
+      <div class="container mx-auto px-6 lg:px-8 text-center">
+        <h2 class="font-serif text-4xl font-medium md:text-5xl">
+          Let’s Bring It to Life
+        </h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80 leading-relaxed">
+          Ready to start your next project? Book your free expert consultation
+          today!
+        </p>
+        <div class="mt-10">
+          <Button
+            variant="secondary"
+            size="lg"
+            className="rounded-full px-8 h-14 text-lg"
+            asChild
+          >
+            <a href="/contact">Get Free Consultation</a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  </div>
+</SiteLayout>

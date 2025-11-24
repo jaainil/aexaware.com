@@ -1,5 +1,4 @@
 /* stylelint-disable */
-import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -50,14 +49,13 @@ export const ServiceCard = ({
       <h3 className="text-2xl font-semibold text-foreground">{title}</h3>
       <p className="text-muted-foreground leading-relaxed">{description}</p>
 
-      <Link
-        to={link}
-        aria-label={`Discover more about ${title}`}
-        className="mt-auto inline-flex items-center text-sm font-semibold text-primary transition group-hover:translate-x-1"
+      <a
+        href={link}
+        aria-label={`Learn more about ${title}`}
+        className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 transition-colors"
       >
-        Discover more
-        <ArrowRight className="ml-2 size-4" aria-hidden="true" />
-      </Link>
+        Learn more <ArrowRight className="ml-1 h-4 w-4" />
+      </a>
     </Card>
   );
 };
