@@ -27,7 +27,7 @@ export const Hero = () => {
                 Build. Scale.
               </h1>
               <p className="max-w-lg text-lg text-muted-foreground leading-relaxed">
-                Your trusted partner for scalable web, mobile, and AI solutions. Made in Anand, serving businesses globally.
+                Your trusted partner for scalable web, mobile, and AI solutions. Made in Vadodara, serving businesses globally.
               </p>
             </div>
 

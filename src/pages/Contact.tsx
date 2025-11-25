@@ -92,10 +92,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-medium text-foreground">Phone</h3>
                     <a
-                      href="tel:+919825438119"
+                      href="tel:+918140734392"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      +91 98254 38119
+                      +91 81407 34392
                     </a>
                   </div>
                 </div>
@@ -107,8 +107,8 @@ const Contact = () => {
                   <div>
                     <h3 className="font-medium text-foreground">Address</h3>
                     <p className="text-muted-foreground max-w-xs">
-                      C/O Monali Patel, Sahyog Society, Vasad, Anand, Gujarat
-                      388306
+                      Office no 13, 3rd Floor Aarya’s landmark, Canal Ring Road,
+                      Sevasi Vadodara, Gujarat 391101
                     </p>
                   </div>
                 </div>

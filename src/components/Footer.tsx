@@ -127,19 +127,22 @@ export const Footer = () => {
                   <span>info@aexaware.com</span>
                 </a>
                 <a
-                  href="tel:+919825438119"
+                  href="tel:+918140734392"
                   className="flex items-center gap-3 hover:text-foreground transition-colors group"
                 >
                   <div className="flex size-8 items-center justify-center rounded-full bg-secondary/30 group-hover:bg-primary/10 transition-colors">
                     <Phone className="h-4 w-4 text-primary" />
                   </div>
-                  <span>+91 98254 38119</span>
+                  <span>+91 81407 34392</span>
                 </a>
                 <div className="flex items-center gap-3 group">
                   <div className="flex size-8 items-center justify-center rounded-full bg-secondary/30 transition-colors">
                     <MapPin className="h-4 w-4 text-primary" />
                   </div>
-                  <span>Anand, Gujarat, India</span>
+                  <span>
+                    Office no 13, 3rd Floor Aarya’s landmark, Canal Ring Road,
+                    Sevasi Vadodara, Gujarat 391101
+                  </span>
                 </div>
               </div>
             </div>

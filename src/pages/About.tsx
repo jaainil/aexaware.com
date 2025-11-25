@@ -19,7 +19,7 @@ const About = () => {
     <div className="min-h-screen bg-background font-sans">
       <SEO
         title="About Aexaware Infotech – Trusted Innovation Partner"
-        description="Learn how Aexaware Infotech grew from Anand to a global digital agency delivering web, AI and app solutions."
+        description="Learn how Aexaware Infotech grew from Vadodara to a global digital agency delivering web, AI and app solutions."
       />
       <Navbar />
 
@@ -243,7 +243,7 @@ const About = () => {
       </section>
 
       {/* Meet the Team (New Section) */}
-      <section className="py-24">
+      {/* <section className="py-24">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl font-medium text-foreground mb-6">
@@ -274,7 +274,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-24 bg-secondary/30">

@@ -41,7 +41,7 @@ export const DrivingFuture = () => {
                     </defs>
                     <text className="text-[10px] uppercase tracking-widest fill-primary font-bold">
                       <textPath href="#curve-top" startOffset="50%" textAnchor="middle">
-                        Made in Anand
+                        Made in India
                       </textPath>
                     </text>
                     <text className="text-[10px] uppercase tracking-widest fill-primary font-bold" dy={5}>

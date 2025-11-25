@@ -22,8 +22,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-accent/20 selection:text-accent-foreground">
       <SEO
-        title="Aexaware Infotech – Custom Web, Mobile & AI Solutions from Anand, Gujarat"
-        description="Aexaware Infotech builds scalable web, mobile, AI, and DevOps solutions for startups and enterprises – Made in Anand, Serving Globally."
+        title="Aexaware Infotech – Custom Web, Mobile & AI Solutions from Vadodara, Gujarat"
+        description="Aexaware Infotech builds scalable web, mobile, AI, and DevOps solutions for startups and enterprises – Made in Vadodara, Serving Globally."
       />
       <Navbar />
       <Hero />

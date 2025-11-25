@@ -1,7 +1,7 @@
 # Aexaware Infotech - Site Documentation for LLMs
 
 ## Overview
-Aexaware Infotech is a software development company based in Anand, Gujarat, India. We specialize in building scalable web, mobile, AI, and DevOps solutions for startups and enterprises.
+Aexaware Infotech is a software development company based in Vadodara, Gujarat, India. We specialize in building scalable web, mobile, AI, and DevOps solutions for startups and enterprises.
 
 ## Core Services
 - **Web Development**: Custom web applications using React, Node.js, and modern frameworks.
@@ -21,8 +21,8 @@ Aexaware Infotech is a software development company based in Anand, Gujarat, Ind
 
 ## Contact Information
 - **Email**: info@aexaware.com
-- **Phone**: +91-98254-38119
-- **Location**: Anand, Gujarat, India
+- **Phone**: +91 81407 34392
+- **Location**: Vadodara, Gujarat, India
 - **Social Media**:
   - Twitter: @Aexaware
   - LinkedIn: /company/aexaware
