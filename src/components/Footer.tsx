@@ -94,7 +94,7 @@ export const Footer = () => {
               Company
             </h3>
             <ul className="space-y-3">
-              {["About Us", "Portfolio", "Blog", "Contact"].map((item) => (
+              {["About", "Portfolio", "Blog", "Contact"].map((item) => (
                 <li key={item}>
                   <Link
                     to={`/${item.toLowerCase().replace(" ", "")}`}
