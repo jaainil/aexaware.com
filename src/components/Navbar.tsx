@@ -3,12 +3,16 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
 import Logo from "@/assets/logo 2.svg";
+import { cn } from "@/lib/utils";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,7 +44,7 @@ export const Navbar = () => {
         { name: "AI/ML Integration", path: "/services/ai-ml-integration" },
       ],
     },
-    { name: "Pages", path: "/portfolio" }, // Mapping Pages to Portfolio for now as placeholder
+    { name: "Portfolio", path: "/portfolio" }, // Mapping Pages to Portfolio for now as placeholder
     { name: "Blog", path: "/blog" },
     { name: "Contact Us", path: "/contact" },
   ];
@@ -49,7 +53,7 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? "bg-background/80 backdrop-blur-md border-b border-border/50"
+          ? "bg-background/95 backdrop-blur-md border-b border-border/50"
           : "bg-transparent"
       }`}
     >
@@ -66,38 +70,51 @@ export const Navbar = () => {
 
           {/* Desktop Navigation - Centered */}
           <div className="hidden md:flex items-center justify-center flex-1 px-8">
-            <div className="flex items-center space-x-8">
-              {navLinks.map((link) =>
-                link.dropdown ? (
-                  <DropdownMenu key={link.name}>
-                    <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors outline-none">
-                      {link.name} <ChevronDown className="h-4 w-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="center">
-                      {link.dropdown.map((item) => (
-                        <DropdownMenuItem key={item.path} asChild>
-                          <Link to={item.path} className="w-full cursor-pointer">
-                            {item.name}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                ) : (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    className={`relative text-sm font-medium transition-colors hover:text-primary ${
-                      location.pathname === link.path
-                        ? "text-foreground font-semibold"
-                        : "text-muted-foreground"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                )
-              )}
-            </div>
+            <NavigationMenu>
+              <NavigationMenuList>
+                {navLinks.map((link) => (
+                  <NavigationMenuItem key={link.name}>
+                    {link.dropdown ? (
+                      <>
+                        <NavigationMenuTrigger className="bg-transparent hover:bg-transparent hover:text-primary focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent">
+                          {link.name}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                            {link.dropdown.map((item) => (
+                              <li key={item.path}>
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    to={item.path}
+                                    className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                                  >
+                                    <div className="text-sm font-medium leading-none">{item.name}</div>
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <Link to={link.path}>
+                        <NavigationMenuLink
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            "bg-transparent hover:bg-transparent hover:text-primary focus:bg-transparent data-[active]:bg-transparent",
+                            location.pathname === link.path
+                              ? "text-foreground font-semibold"
+                              : "text-muted-foreground"
+                          )}
+                        >
+                          {link.name}
+                        </NavigationMenuLink>
+                      </Link>
+                    )}
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
 
           {/* CTA Button */}
@@ -121,7 +138,7 @@ export const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-6 border-t border-primary/20 animate-fade-in bg-background/95 backdrop-blur-sm absolute left-0 right-0 px-6 shadow-lg">
+          <div className="md:hidden py-6 border-t border-primary/20 animate-fade-in bg-background/95 backdrop-blur-md absolute top-20 left-0 right-0 px-6 shadow-lg">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) =>
                 link.dropdown ? (
