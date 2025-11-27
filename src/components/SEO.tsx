@@ -28,9 +28,13 @@ export const SEO = ({
   structuredData,
 }: SEOProps) => {
   const siteUrl = "https://aexaware.com";
-  const fullUrl = canonical ? (canonical.startsWith("http") ? canonical : `${siteUrl}${canonical}`) : siteUrl;
   
-  // Ensure image path is clean
+  // Ensure canonical URL is absolute
+  const fullUrl = canonical 
+    ? (canonical.startsWith("http") ? canonical : `${siteUrl}${canonical}`) 
+    : (typeof window !== "undefined" ? window.location.href : siteUrl);
+
+  // Ensure image path is absolute
   const cleanImage = image.startsWith("/") ? image : `/${image}`;
   const fullImage = image.startsWith("http") ? image : `${siteUrl}${cleanImage}`;
 
@@ -51,6 +55,7 @@ export const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={fullImage} />
       <meta property="og:site_name" content={name} />
+      <meta property="og:locale" content="en_US" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
