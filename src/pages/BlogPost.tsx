@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Comments } from "@/components/Comments";
+import BlogEngagement from "@/components/BlogEngagement";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User } from "lucide-react";
@@ -126,6 +127,11 @@ const BlogPost = () => {
               )}
             </div>
           )}
+
+          <BlogEngagement 
+            url={window.location.href} 
+            title={frontmatter?.title} 
+          />
 
           <div className="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-medium prose-h1:text-4xl prose-h1:leading-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-3xl prose-img:shadow-lg">
             <Suspense
