@@ -1,24 +1,103 @@
+# ------------------------------
+# Node / Package Managers
+# ------------------------------
+node_modules/
+bun.lockb
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# ------------------------------
+# Vite Build Outputs
+# ------------------------------
+dist/
+build/
+vite.config.ts.timestamp*
+
+# Vite temporary cache
+.vite/
+.vite/deps/
+
+# ------------------------------
+# TypeScript
+# ------------------------------
+*.tsbuildinfo
+
+# ------------------------------
 # Logs
-logs
-*.log
+# ------------------------------
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
+*.log
+logs/
+debug.log
 
-node_modules
-dist
-dist-ssr
+# ------------------------------
+# Env Files
+# ------------------------------
+.env
+.env.*
+!.env.example
+
+# ------------------------------
+# OS Junk
+# ------------------------------
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+# Editor Folders
+# ------------------------------
+.vscode/
+.idea/
+*.swp
+
+# ------------------------------
+# Tailwind / PostCSS
+# ------------------------------
+.tailwind/
+.postcss-cache/
+
+# ------------------------------
+# Storybook (if ever added)
+# ------------------------------
+.storybook-out/
+
+# ------------------------------
+# Test Coverage
+# ------------------------------
+coverage/
+
+# ------------------------------
+# Astro / MDX / Static Tools
+# ------------------------------
+.mdx-cache/
+
+# ------------------------------
+# React Query / Cache
+# ------------------------------
+.rq-cache/
+
+# ------------------------------
+# Local Runtime Files
+# ------------------------------
+*.pid
+*.pid.lock
+*.seed
 *.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# ------------------------------
+# Git Internal Folder
+# (You had full .git/ accidentally included earlier!)
+# ------------------------------
+.git/
+.git/*
+
+# ------------------------------
+# Optional: Ignore PDFs / Docs in DEtailes/
+# Remove if you want to commit them
+# ------------------------------
+DEtailes/*.docx
+DEtailes/*.pdf
