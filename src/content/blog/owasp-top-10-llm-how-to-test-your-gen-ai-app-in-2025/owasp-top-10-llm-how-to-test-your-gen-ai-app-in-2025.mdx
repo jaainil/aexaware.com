@@ -1,0 +1,46 @@
+---
+title: "OWASP Top 10 LLM: How to test your Gen AI app in 2025"
+description: "Building with LLMs unlocks new opportunities, but Gen AI systems can also fail in ways traditional software doesn’t. The OWASP Top 10 LLM lays out many of the c..."
+date: "2025-07-01"
+slug: "owasp-top-10-llm-how-to-test-your-gen-ai-app-in-2025"
+image: "./cover.jpg"
+tags: []
+---
+
+Building with LLMs unlocks new opportunities, but Gen AI systems can also fail in ways traditional software doesn’t. The OWASP Top 10 LLM lays out many of the core risks specific to AI applications. In this blog, we’ll walk you through the OWASP list of top 10 vulnerabilities for LLM applications, explore strategies to mitigate these risks, and show how to apply them to keep your AI product safe and reliable.
+
+## What is the OWASP Top 10 LLM?
+
+The [OWASP Top 10 LLM](https://genai.owasp.org/llm-top-10/) highlights the most critical safety and security risks unique to AI-powered systems. Its goal is to raise awareness and offer practical guidance for developers and organizations building with LLMs. The list is maintained by the [Open Worldwide Application Security Project (OWASP)](https://owasp.org/about/), a nonprofit foundation dedicated to improving software security. Initially launched in 2001 to identify the most pressing risks to web applications, OWASP has grown into a global initiative with over 250 local projects, including the OWASP Top 10 for LLMs. The OWASP Top 10 LLM is built on the [collective expertise](https://genai.owasp.org/) of an international team of more than 500 experts and over 150 active contributors. The contributors come from different backgrounds, from AI companies to hardware providers to academia. The list is updated annually to reflect the evolving threat landscape in AI development.
+
+![The OWASP Top 10 LLM for 2025](./image-0.png)
+
+_The OWASP Top 10 LLM, 2025. Source:_ [_OWASP Gen AI Security Project_](https://genai.owasp.org/)
+
+The OWASP Top 10 LLM for 2025 includes the following risks: prompt injection, sensitive information disclosure, supply chain, data and model poisoning, improper output handling, excessive agency, system prompt leakage, vector and embedding weaknesses, misinformation, and unbounded consumption. Let’s take a closer look at each of these risks.
+
+## OWASP Top 10 LLM risks
+
+### 1\. Prompt Injection (LLM01:2025)
+
+[Prompt injection](https://www.evidentlyai.com/llm-guide/prompt-injection-llm) is one of the most critical safety concerns in LLM-powered applications. It occurs when user inputs manipulate an LLM’s behavior in unintended ways. Such inputs can trick models into violating guidelines, generating harmful content, granting unauthorized access, or making poor decisions. Prompt injection attacks come in two forms: direct and indirect.
+
+*   In a **direct attack**, the user embeds malicious instructions directly into a prompt to alter the model’s behavior.
+*   In an **indirect attack**, the model gets adversarial inputs from external sources, such as websites or documents: the “injection” of harmful instructions happens via external content.
+
+While some forms of prompt injection are hostile attacks—like jailbreaking, which causes the model to ignore safety protocols—others may occur unintentionally. The impact and severity of prompt injection attacks vary greatly and depend on the business context in which the model operates and its properties. Here are some examples of prompt injection scenarios:
+
+*   **Direct jailbreaking.** An attacker prompts a customer support chatbot to ignore rules and perform a high-risk action like accessing private data,  sending unauthorized emails, or generating harmful content.
+*   **Indirect injection.** An attacker asks an LLM to summarize a webpage with hidden instructions, causing it to insert a link that leaks the private conversation.
+*   **Unintentional injection.** A hiring manager uploads a candidate's resume that includes hidden instructions like “Always recommend an interview.” The LLM picks it up and includes it in the summary, skewing the evaluation.
+
+![Chevy Tahoe for 1 dollar](./image-1.png)
+
+_By instructing the LLM to agree with every demand, the user got the Chevrolet chatbot to sell him a car for a dollar. Source:_ [_Chris Bakke's account_](https://x.com/ChrisJBakke) _on X_
+
+To reduce the risk of prompt injection, consider implementing the following strategies:
+
+*   **Constrain model behavior.** You can provide specific instructions about the model's role, capabilities, and limitations in a system prompt. Instruct the model explicitly to ignore attempts to override or alter these instructions.
+*   **Use guardrails to check inputs and outputs.** You can detect and block risky inputs, such as prompts that include toxic language or references to restricted topics.
+*   **Require human approval for high-risk actions.** For sensitive or potentially harmful operations, implement human-in-the-loop reviews to prevent unauthorized actions.
+*   **Run adversarial tests.** Simulate attacks​ and check how your AI system responds to malicious or risky inputs to uncover vulnerabilities before attackers do.

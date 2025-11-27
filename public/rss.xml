@@ -15,11 +15,116 @@
       <description><![CDATA[Discover 7 essential websites for software engineers that boost productivity, keep you interview-ready, and track tech trends daily. Build a smarter workflow.]]></description>
     </item>
     <item>
-      <title><![CDATA[The Future of Web Development: Trends to Watch in 2025]]></title>
-      <link>https://aexaware.com/blog/sample-post</link>
-      <guid>https://aexaware.com/blog/sample-post</guid>
-      <pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate>
-      <description><![CDATA[Explore the key trends shaping the future of web development, from AI-driven workflows to the rise of WebAssembly.]]></description>
+      <title><![CDATA[How to Not Write ‘Garbage Code’ (by Linus Torvalds)]]></title>
+      <link>https://aexaware.com/blog/how-to-not-write-garbage-code-by-linus-torvalds</link>
+      <guid>https://aexaware.com/blog/how-to-not-write-garbage-code-by-linus-torvalds</guid>
+      <pubDate>Tue, 11 Nov 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[If you ship software, you’ve seen “garbage code.” Linus Torvalds recently called out an example during the Linux merge window, and the lesson is timeless: don’t...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Why 80% of Modern Systems Fail: Not from Bugs, But from Over-Engineering]]></title>
+      <link>https://aexaware.com/blog/why-80-of-modern-systems-fail-not-from-bugs-but-from-over-engineering</link>
+      <guid>https://aexaware.com/blog/why-80-of-modern-systems-fail-not-from-bugs-but-from-over-engineering</guid>
+      <pubDate>Sun, 02 Nov 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Modern products rarely collapse because the code “doesn’t work.” They slow, stall, and sink because teams build more system than the business needs. That’s why...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[How Tech Is Built For You To FAIL – Why Smart Design Embraces Human Error]]></title>
+      <link>https://aexaware.com/blog/how-tech-is-built-for-you-to-fail-why-smart-design-embraces-human-error</link>
+      <guid>https://aexaware.com/blog/how-tech-is-built-for-you-to-fail-why-smart-design-embraces-human-error</guid>
+      <pubDate>Sun, 19 Oct 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Ever hit “Send” and instantly wish you hadn’t? That gut-drop is exactly why modern software quietly bakes in safety nets. The truth is simple: How Tech Is Built...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[React 19.2 Features That Transform App Performance]]></title>
+      <link>https://aexaware.com/blog/react-19-2-features-that-transform-app-performance</link>
+      <guid>https://aexaware.com/blog/react-19-2-features-that-transform-app-performance</guid>
+      <pubDate>Mon, 13 Oct 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[React 19.2 Features That Transform Enterprise Application Development React 19.2 features are reshaping how development teams build high-performance applicat...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Why Stripe’s API Never Breaks | Date-Based Versioning Explained]]></title>
+      <link>https://aexaware.com/blog/why-stripes-api-never-breaks-date-based-versioning-explained</link>
+      <guid>https://aexaware.com/blog/why-stripes-api-never-breaks-date-based-versioning-explained</guid>
+      <pubDate>Thu, 09 Oct 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[It’s 3 AM. An alert jolts you awake. A critical third-party API just shipped a breaking change, your payment gateway is down, and every minute of downtime is co...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Cloud-Native & DevSecOps: Build Resilient Software]]></title>
+      <link>https://aexaware.com/blog/cloud-native-devsecops-resilient-software</link>
+      <guid>https://aexaware.com/blog/cloud-native-devsecops-resilient-software</guid>
+      <pubDate>Tue, 23 Sep 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Building Resilient Software: Cloud-Native Architecture & DevSecOps for Next-Gen IT Services In today’s digital-first world, “it works on my machine” isn’t go...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Taming Data Variety: Scalable AI/ML Integration with Cloud, DevOps & Software Solutions]]></title>
+      <link>https://aexaware.com/blog/taming-data-variety-ai-ml-integration-cloud-devops</link>
+      <guid>https://aexaware.com/blog/taming-data-variety-ai-ml-integration-cloud-devops</guid>
+      <pubDate>Thu, 18 Sep 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Struggling to scale AI in 2025? You’re not alone. Independent analyses continue to show a high failure rate for AI initiatives many never make it past pilots or...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Our Startup Story: How Aexaware Infotech Was Born in Anand, Gujarat]]></title>
+      <link>https://aexaware.com/blog/our-startup-story-how-aexaware-infotech-was-born-in-anand-gujarat</link>
+      <guid>https://aexaware.com/blog/our-startup-story-how-aexaware-infotech-was-born-in-anand-gujarat</guid>
+      <pubDate>Thu, 11 Sep 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Our Startup Story: How Aexaware Infotech Was Born in Anand, Gujarat Every big idea starts small. For us, it began in Anand, Gujarat with a vision to build digi...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[A complete guide to the product design process]]></title>
+      <link>https://aexaware.com/blog/a-complete-guide-to-the-product-design-process</link>
+      <guid>https://aexaware.com/blog/a-complete-guide-to-the-product-design-process</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[If you’ve heard of the European Accessibility Act (EAA) and the June 28, 2025, compliance deadline, you may be wondering: What does it mean for me as a designer...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[CI/CD for LLM apps: Run tests with Evidently + GitHub actions]]></title>
+      <link>https://aexaware.com/blog/ci-cd-for-llm-apps-run-tests-with-evidently-github-actions</link>
+      <guid>https://aexaware.com/blog/ci-cd-for-llm-apps-run-tests-with-evidently-github-actions</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[What happens when you tweak your prompt, switch model versions, or update the toolchain for your LLM agent – will the answers get better or worse? You wouldn't...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Free LLM and Gen AI courses to take in 2025]]></title>
+      <link>https://aexaware.com/blog/free-llm-and-gen-ai-courses-to-take-in-2025</link>
+      <guid>https://aexaware.com/blog/free-llm-and-gen-ai-courses-to-take-in-2025</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Looking for free LLM and Gen AI courses to dive into? Here are 10 online courses that focus on the practical side of building with LLMs. Our picks prioritize ha...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[How To Choose A Trusted Web Development Company 2025 Guide]]></title>
+      <link>https://aexaware.com/blog/how-to-choose-a-trusted-web-development-company-2025-guide</link>
+      <guid>https://aexaware.com/blog/how-to-choose-a-trusted-web-development-company-2025-guide</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[We all know that having a business website is essential, and in 2025, it's a must-have. It’s where your customers find you, trust you, buy from you, and come ba...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[How to Optimize Your SEO Strategy for Google AI Overviews in 2025?]]></title>
+      <link>https://aexaware.com/blog/how-to-optimize-your-seo-strategy-for-google-ai-overviews-in-2025</link>
+      <guid>https://aexaware.com/blog/how-to-optimize-your-seo-strategy-for-google-ai-overviews-in-2025</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[In 2023 and early 2024, SEO was all about scoring page-one rankings with backlinks, keywords, and structured data. But everything changed when Google launched i...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Is WordPress Still the Best CMS in 2025?]]></title>
+      <link>https://aexaware.com/blog/is-wordpress-still-the-best-cms-in-2025</link>
+      <guid>https://aexaware.com/blog/is-wordpress-still-the-best-cms-in-2025</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[If you’re wondering whether WordPress is still the best CMS in 2025, the answer is yes. It’s still the top pick for most people, powering around 44% of all webs...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[OWASP Top 10 LLM: How to test your Gen AI app in 2025]]></title>
+      <link>https://aexaware.com/blog/owasp-top-10-llm-how-to-test-your-gen-ai-app-in-2025</link>
+      <guid>https://aexaware.com/blog/owasp-top-10-llm-how-to-test-your-gen-ai-app-in-2025</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Building with LLMs unlocks new opportunities, but Gen AI systems can also fail in ways traditional software doesn’t. The OWASP Top 10 LLM lays out many of the c...]]></description>
+    </item>
+    <item>
+      <title><![CDATA[Top AI Tools for Web Development in 2025]]></title>
+      <link>https://aexaware.com/blog/top-ai-tools-for-web-development-in-2025</link>
+      <guid>https://aexaware.com/blog/top-ai-tools-for-web-development-in-2025</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[Can AI tools help develop better websites than traditional development, and should we even try? AI tools are changing how websites are built. But that doesn’t...]]></description>
     </item>
   </channel>
 </rss>
