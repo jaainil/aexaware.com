@@ -6,7 +6,7 @@ import { Comments } from "@/components/Comments";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User } from "lucide-react";
-import { lazy, Suspense, useState, useEffect } from "react";
+import { lazy, Suspense, useState, useMemo } from "react";
 
 interface Frontmatter {
   title: string;
@@ -17,27 +17,43 @@ interface Frontmatter {
   tags?: string[];
 }
 
+// Get all available posts and images outside component to avoid recreation
+const modules = import.meta.glob("/src/content/blog/**/*.mdx");
+const images = import.meta.glob("/src/content/blog/**/*.{png,jpg,jpeg,webp}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+}) as Record<string, string>;
+
 const BlogPost = () => {
   const { slug } = useParams();
   const [frontmatter, setFrontmatter] = useState<Frontmatter | null>(null);
 
-  // Get all available posts
-  const modules = import.meta.glob("/src/content/blog/*.mdx");
-
   // Find the matching post
   const postPath = Object.keys(modules).find((path) => path.includes(`${slug}.mdx`));
   
-  let PostContent;
-
-  if (postPath && modules[postPath]) {
-    const Post = lazy(async () => {
-      const module = await modules[postPath]() as { default: React.ComponentType<any>, frontmatter: Frontmatter };
-      setFrontmatter(module.frontmatter);
-      return module;
-    });
-    PostContent = Post;
-  } else {
-    PostContent = () => (
+  const PostContent = useMemo(() => {
+    if (postPath && modules[postPath]) {
+      return lazy(async () => {
+        const module = await modules[postPath]() as { default: React.ComponentType<any>, frontmatter: Frontmatter };
+        
+        let image = module.frontmatter.image;
+        if (image && image.startsWith("./")) {
+          const imagePath = postPath.replace(/[^/]*$/, image.replace("./", ""));
+          image = images[imagePath] || image;
+        }
+        
+        // Only set frontmatter if it hasn't been set yet or is different
+        // Note: This side effect in lazy load is tricky, but with useMemo it should run once per post
+        setFrontmatter(prev => {
+          if (prev?.title === module.frontmatter.title) return prev;
+          return { ...module.frontmatter, image };
+        });
+        
+        return module;
+      });
+    }
+    return () => (
       <div className="text-center py-20">
         <h2 className="text-2xl font-bold">Post not found</h2>
         <p className="text-muted-foreground mt-2">
@@ -45,7 +61,7 @@ const BlogPost = () => {
         </p>
       </div>
     );
-  }
+  }, [postPath]);
 
   return (
     <div className="min-h-screen bg-background font-sans">

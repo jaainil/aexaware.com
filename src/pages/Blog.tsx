@@ -8,18 +8,32 @@ import { ArrowRight, Calendar, User } from "lucide-react";
 
 const Blog = () => {
   // Dynamically import all MDX files from the content/blog directory
-  const modules = import.meta.glob<{ frontmatter: any }>("/src/content/blog/*.mdx", {
+  const modules = import.meta.glob<{ frontmatter: any }>("/src/content/blog/**/*.mdx", {
     eager: true,
   });
+
+  const images = import.meta.glob("/src/content/blog/**/*.{png,jpg,jpeg,webp}", {
+    eager: true,
+    query: "?url",
+    import: "default",
+  }) as Record<string, string>;
 
   console.log("Blog modules:", modules);
 
   const posts = Object.entries(modules)
     .map(([path, module]) => {
       const slug = path.split("/").pop()?.replace(".mdx", "") || "";
+      let image = module.frontmatter.image;
+
+      if (image && image.startsWith("./")) {
+        const imagePath = path.replace(/[^/]*$/, image.replace("./", ""));
+        image = images[imagePath] || image;
+      }
+
       return {
         slug,
         ...module.frontmatter,
+        image,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

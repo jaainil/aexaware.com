@@ -10,12 +10,21 @@ const BLOG_DIR = path.join(__dirname, '../src/content/blog');
 
 function getBlogPosts() {
   if (!fs.existsSync(BLOG_DIR)) return [];
+
+  function getFiles(dir) {
+    const dirents = fs.readdirSync(dir, { withFileTypes: true });
+    const files = dirents.map((dirent) => {
+      const res = path.resolve(dir, dirent.name);
+      return dirent.isDirectory() ? getFiles(res) : res;
+    });
+    return Array.prototype.concat(...files);
+  }
   
-  const files = fs.readdirSync(BLOG_DIR);
+  const files = getFiles(BLOG_DIR);
   return files
     .filter(file => file.endsWith('.mdx'))
     .map(file => {
-      const content = fs.readFileSync(path.join(BLOG_DIR, file), 'utf-8');
+      const content = fs.readFileSync(file, 'utf-8');
       const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
       
       const metadata = {};
@@ -37,7 +46,7 @@ function getBlogPosts() {
       
       // Fallback slug
       if (!metadata.slug) {
-        metadata.slug = file.replace('.mdx', '');
+        metadata.slug = path.basename(file, '.mdx');
       }
       
       return metadata;
