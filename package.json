@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-sitemap.js && node scripts/generate-rss.js",
+    "build": "vite build && node scripts/generate-sitemap.js && node scripts/generate-rss.js && node scripts/generate-og-images.js && node scripts/generate-og.js",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -24,10 +24,12 @@
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-toggle": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@resvg/resvg-js": "^2.6.2",
     "@tanstack/react-query": "^5.90.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.6.0",
+    "gray-matter": "^4.0.3",
     "gsap": "^3.13.0",
     "lucide-react": "^0.554.0",
     "next-themes": "^0.4.6",
@@ -39,6 +41,8 @@
     "react-transition-group": "^4.4.5",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
+    "satori": "^0.18.3",
+    "satori-html": "^0.3.2",
     "sonner": "^2.0.7",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"

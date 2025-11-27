@@ -16,6 +16,7 @@ interface Frontmatter {
   date?: string;
   image?: string;
   tags?: string[];
+  slug?: string;
 }
 
 // Get all available posts and images outside component to avoid recreation
@@ -62,7 +63,11 @@ const BlogPost = () => {
         </p>
       </div>
     );
-  }, [postPath]);
+  }, [postPath, slug]); // Added slug to dependency array
+
+  const ogImage = frontmatter?.slug 
+    ? `https://aexaware.com/og-images/${frontmatter.slug}.png`
+    : frontmatter?.image;
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -70,10 +75,11 @@ const BlogPost = () => {
         <SEO
           title={frontmatter.title}
           description={frontmatter.description || ""}
-          image={frontmatter.image}
+          image={ogImage}
           type="article"
           schemaType="article"
           date={frontmatter.date}
+          canonical={`/og/${frontmatter.slug}.html`}
         />
       )}
       <Navbar />
