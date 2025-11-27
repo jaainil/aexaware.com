@@ -24,7 +24,9 @@ export const Hero = () => {
             <div className="space-y-4">
               <h1 className="font-serif text-5xl font-bold leading-tight text-foreground sm:text-6xl lg:text-7xl tracking-tight">
                 Innovate. <br />
-                Build. Scale.
+                <span className="italic">
+                  Build. Scale. 
+                </span>
               </h1>
               <p className="max-w-lg text-lg text-muted-foreground leading-relaxed">
                 Your trusted partner for scalable web, mobile, and AI solutions. Made in Vadodara, serving businesses globally.
