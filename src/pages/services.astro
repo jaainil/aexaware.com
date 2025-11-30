@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Button } from '@/components/ui/button';
 import {
   ArrowRight,
   Code2,
@@ -121,23 +120,12 @@ const techStack = [
           solutions, e-commerce development and AI/ML integration.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="h-12 rounded-full px-8 text-base"
-            asChild
-          >
-            <a href="/contact" aria-label="Start a project with us">
-              Start a Project <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="h-12 rounded-full px-8 text-base"
-            asChild
-          >
-            <a href="#capabilities">Explore Services</a>
-          </Button>
+          <a href="/contact" aria-label="Start a project with us" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+            Start a Project <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
+          <a href="#capabilities" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
+            Explore Services
+          </a>
         </div>
       </div>
     </div>
@@ -271,21 +259,12 @@ const techStack = [
           free consultation and quote.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="rounded-full px-10 h-14 text-lg"
-            asChild
-          >
-            <a href="/contact" aria-label="Get a free quote">Get a Free Quote</a>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="rounded-full px-10 h-14 text-lg"
-            asChild
-          >
-            <a href="tel:+918140734392">Call Us Now</a>
-          </Button>
+          <a href="/contact" aria-label="Get a free quote" class="inline-flex items-center justify-center rounded-full px-10 h-14 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-md">
+            Get a Free Quote
+          </a>
+          <a href="tel:+918140734392" class="inline-flex items-center justify-center rounded-full px-10 h-14 text-lg font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
+            Call Us Now
+          </a>
         </div>
       </div>
     </div>

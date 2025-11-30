@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import { Button } from '@/components/ui/button';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import BlogEngagement from '@/components/react/BlogEngagement';
 import { Comments } from '@/components/react/Comments';
@@ -36,16 +35,10 @@ const formatDate = (date: Date) => {
   <article class="pt-32 pb-24 lg:pt-48 lg:pb-32">
     <div class="container mx-auto px-6 lg:px-8 max-w-3xl">
       <div class="mb-8">
-        <Button
-          variant="ghost"
-          asChild
-          className="-ml-4 text-muted-foreground hover:text-primary"
-        >
-          <a href="/blog">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Blog
-          </a>
-        </Button>
+        <a href="/blog" class="inline-flex items-center -ml-4 text-muted-foreground hover:text-primary transition-colors">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Blog
+        </a>
       </div>
 
       <div class="mb-10">

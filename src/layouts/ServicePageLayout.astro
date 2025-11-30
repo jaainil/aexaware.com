@@ -1,6 +1,5 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Button } from '@/components/ui/button';
 import { ArrowRight } from "lucide-react";
 
 interface Props {
@@ -57,23 +56,12 @@ const {
           {heroDescription}
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="h-12 rounded-full px-8 text-base"
-            asChild
-          >
-            <a href="/contact">
-              Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="h-12 rounded-full px-8 text-base"
-            asChild
-          >
-            <a href="#services">Explore Services</a>
-          </Button>
+          <a href="/contact" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+            Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
+          <a href="#services" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
+            Explore Services
+          </a>
         </div>
       </div>
     </div>
@@ -192,21 +180,12 @@ const {
             {ctaDescription}
           </p>
           <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              size="lg"
-              className="h-14 rounded-full px-10 text-lg shadow-xl shadow-primary/20"
-              asChild
-            >
-              <a href="/contact">Contact Us</a>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="h-14 rounded-full px-10 text-lg bg-background/50 backdrop-blur-sm"
-              asChild
-            >
-              <a href="tel:+918140734392">+91 81407 34392</a>
-            </Button>
+            <a href="/contact" class="inline-flex items-center justify-center h-14 rounded-full px-10 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-xl shadow-primary/20">
+              Contact Us
+            </a>
+            <a href="tel:+918140734392" class="inline-flex items-center justify-center h-14 rounded-full px-10 text-lg font-medium border border-input bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground transition-colors">
+              +91 81407 34392
+            </a>
           </div>
         </div>
       </div>

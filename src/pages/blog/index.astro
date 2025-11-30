@@ -1,7 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { getCollection } from 'astro:content';
-import { Button } from '@/components/ui/button';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 import { Image } from 'astro:assets';
 
@@ -88,15 +87,10 @@ const formatDate = (date: Date) => {
                   <User className="size-4" />
                   {post.data.author}
                 </div>
-                <Button
-                  variant="link"
-                  className="p-0 h-auto text-primary hover:text-accent"
-                  asChild
-                >
-                  <a href={`/blog/${post.slug}`}>
-                    Read More <ArrowRight className="ml-2 size-4" />
-                  </a>
-                </Button>
+                <a href={`/blog/${post.slug}`} class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link">
+                  Read More 
+                  <ArrowRight className="size-4 transition-transform group-hover/link:translate-x-1" />
+                </a>
               </div>
             </div>
           </div>
