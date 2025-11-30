@@ -139,7 +139,7 @@ export const Footer = () => {
                     <MapPin className="h-4 w-4 text-primary" />
                   </div>
                   <span>
-                    Office no 13, 3rd Floor Aarya’s landmark, Canal Ring Road,
+                    Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road,
                     Sevasi Vadodara, Gujarat 391101
                   </span>
                 </div>
