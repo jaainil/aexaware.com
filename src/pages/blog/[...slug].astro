@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
-import BlogEngagement from '@/components/react/BlogEngagement';
-import { Comments } from '@/components/react/Comments';
+import BlogEngagement from '@/components/BlogEngagement.astro';
+import Comments from '@/components/Comments.astro';
 import { Image } from 'astro:assets';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
 
@@ -125,7 +125,6 @@ const breadcrumbSchema = generateBreadcrumbSchema({
       </div>
 
       <BlogEngagement 
-        client:load 
         url={Astro.url.href} 
         title={post.data.title} 
       />
@@ -134,7 +133,7 @@ const breadcrumbSchema = generateBreadcrumbSchema({
         <Content />
       </div>
       
-      <Comments client:visible />
+      <Comments />
     </div>
   </article>
 </Layout>

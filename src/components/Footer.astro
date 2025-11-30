@@ -1,0 +1,207 @@
+---
+import { buttonVariants } from "@/components/ui/button-variants";
+import {
+  Linkedin,
+  Twitter,
+  Github,
+  Mail,
+  Phone,
+  MapPin,
+  ArrowRight,
+  ExternalLink,
+} from "lucide-react";
+import Logo from "@/assets/logo 2.svg";
+import asciiArt from "@/assets/ascci.txt?raw";
+
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { icon: Linkedin, label: "LinkedIn", href: "#" },
+  { icon: Twitter, label: "Twitter", href: "#" },
+  { icon: Github, label: "GitHub", href: "#" },
+  { icon: Mail, label: "Email", href: "mailto:info@aexaware.com" },
+];
+
+const services = [
+  { name: "Web Development", path: "/services/web-development" },
+  { name: "App Development", path: "/services/mobile-development" },
+  { name: "UI/UX Design", path: "/services/ui-ux-design" },
+  { name: "Software Solutions", path: "/services/software-solutions" },
+  { name: "E-com Development", path: "/services/ecommerce" },
+  { name: "Cloud & DevOps", path: "/services/cloud-devops" },
+  { name: "AI/ML Integration", path: "/services/ai-ml-integration" },
+];
+
+const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
+---
+
+<footer class="relative border-t border-border/40 bg-background pt-16 pb-8 md:pt-24 md:pb-12 overflow-hidden">
+  <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 mb-16">
+      {/* Brand Section - Spans 4 columns */}
+      <div class="lg:col-span-4 space-y-6">
+        <a href="/" class="block w-fit">
+          <img
+            src={Logo.src}
+            alt="Aexaware Infotech"
+            class="h-10 w-auto opacity-90 hover:opacity-100 transition-opacity"
+          />
+        </a>
+        <p class="text-muted-foreground leading-relaxed max-w-xs">
+          We help startups, enterprises, and businesses transform their
+          ideas into cutting-edge digital experiences.
+        </p>
+        <div class="flex gap-4 pt-2">
+          {socialLinks.map(({ icon: Icon, label, href }) => (
+            <a
+              href={href}
+              aria-label={label}
+              target={href.startsWith('http') ? "_blank" : undefined}
+              rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
+              class="flex size-9 items-center justify-center rounded-full bg-secondary/50 text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground hover:scale-110"
+            >
+              <Icon size={18} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Services - Spans 3 columns */}
+      <div class="lg:col-span-3">
+        <h3 class="font-serif text-lg font-medium text-foreground mb-6">
+          Services
+        </h3>
+        <ul class="space-y-3">
+          {services.map((item) => (
+            <li>
+              <a
+                href={item.path}
+                class="group flex items-center text-muted-foreground hover:text-primary transition-colors text-sm"
+              >
+                <ArrowRight className="mr-2 h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                <span class="transition-transform group-hover:translate-x-1">
+                  {item.name}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Company - Spans 2 columns */}
+      <div class="lg:col-span-2">
+        <h3 class="font-serif text-lg font-medium text-foreground mb-6">
+          Company
+        </h3>
+        <ul class="space-y-3">
+          {companyLinks.map((item) => (
+            <li>
+              <a
+                href={`/${item.toLowerCase().replace(" ", "")}`}
+                class="group flex items-center text-muted-foreground hover:text-primary transition-colors text-sm"
+              >
+                <ArrowRight className="mr-2 h-3 w-3 opacity-0 -translate-x-2 transition-all group-hover:opacity-100 group-hover:translate-x-0" />
+                <span class="transition-transform group-hover:translate-x-1">
+                  {item}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Contact & CTA - Spans 3 columns */}
+      <div class="lg:col-span-3 space-y-8">
+        <div>
+          <h3 class="font-serif text-lg font-medium text-foreground mb-6">
+            Contact Us
+          </h3>
+          <div class="space-y-4 text-sm text-muted-foreground">
+            <a
+              href="mailto:info@aexaware.com"
+              class="flex items-center gap-3 hover:text-foreground transition-colors group"
+            >
+              <div class="flex size-8 items-center justify-center rounded-full bg-secondary/30 group-hover:bg-primary/10 transition-colors">
+                <Mail className="h-4 w-4 text-primary" />
+              </div>
+              <span>info@aexaware.com</span>
+            </a>
+            <a
+              href="tel:+918140734392"
+              class="flex items-center gap-3 hover:text-foreground transition-colors group"
+            >
+              <div class="flex size-8 items-center justify-center rounded-full bg-secondary/30 group-hover:bg-primary/10 transition-colors">
+                <Phone className="h-4 w-4 text-primary" />
+              </div>
+              <span>+91 81407 34392</span>
+            </a>
+            <div class="flex items-center gap-3 group">
+              <div class="flex size-8 items-center justify-center rounded-full bg-secondary/30 transition-colors">
+                <MapPin className="h-4 w-4 text-primary" />
+              </div>
+              <span>
+                Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road,
+                Sevasi Vadodara, Gujarat 391101
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-secondary/20 p-5 border border-border/50 backdrop-blur-sm">
+          <h4 class="font-medium text-foreground mb-1">
+            Join our team
+          </h4>
+          <p class="text-xs text-muted-foreground mb-3">
+            We are always looking for talent.
+          </p>
+          <a
+            href="/contact"
+            class={buttonVariants({ variant: "outline", className: "w-full rounded-full h-9 text-xs" })}
+          >
+            Apply Now <ExternalLink className="ml-2 h-3 w-3" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+      <p>© {currentYear} Aexaware Infotech. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a
+          href="/privacy"
+          class="hover:text-foreground transition-colors"
+        >
+          Privacy Policy
+        </a>
+        <a
+          href="/terms"
+          class="hover:text-foreground transition-colors"
+        >
+          Terms of Service
+        </a>
+        <button
+          id="scroll-to-top"
+          class="hover:text-foreground transition-colors ml-2"
+        >
+          Scroll to Top
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {/* ASCII Art Background */}
+  <div class="mt-12 w-full overflow-hidden flex justify-center opacity-40 pointer-events-none select-none bg-gradient-to-t from-muted/20 to-transparent py-8">
+    <pre class="font-mono text-xs md:text-sm lg:text-base leading-tight whitespace-pre text-muted-foreground">
+{asciiArt}
+    </pre>
+  </div>
+</footer>
+
+<script>
+  const scrollToTopBtn = document.getElementById('scroll-to-top');
+  if (scrollToTopBtn) {
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>

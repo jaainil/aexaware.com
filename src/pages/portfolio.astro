@@ -3,7 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Image } from 'astro:assets';
-import { PortfolioFAQ } from "@/components/react/PortfolioFAQ";
+import PortfolioFAQ from "@/components/PortfolioFAQ.astro";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 const projects = [
@@ -185,7 +185,7 @@ const faqs = [
           <a href="/contact" class={cn(buttonVariants(), "mt-8 rounded-full")}>Contact Support</a>
         </div>
         <div class="lg:col-span-2">
-          <PortfolioFAQ client:visible faqs={faqs} />
+          <PortfolioFAQ faqs={faqs} />
         </div>
       </div>
     </div>

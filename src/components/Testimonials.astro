@@ -1,0 +1,131 @@
+---
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button-variants";
+import { cn } from "@/lib/utils";
+
+const testimonials = [
+  {
+    quote: "We partnered with Aexaware to bring our vision of a modern e-commerce platform to life. From design to deployment, they handled everything with precision. The site not only looks great but also scales smoothly as our customer base grows.",
+    author: "Pavan D.",
+    role: "Zeck Switches",
+  },
+  {
+    quote: "Aexaware built and deployed our software ecosystem from the ground up. They took charge of everything—website development, infrastructure setup, and scaling strategies. The result was a robust, secure, and future-proof platform.",
+    author: "Rajan R.",
+    role: "Qreius.com",
+  },
+  {
+    quote: "We needed an e-commerce solution that was both functional and easy for our customers to use. Aexaware delivered exactly that. Their team guided us from concept to a fully operational online store, ensuring smooth deployment and ongoing reliability.",
+    author: "Arvind S.",
+    role: "Bharat Krushi Biofertilizer",
+  },
+  {
+    quote: "The team at Aexaware is simply outstanding. They understood our complex requirements and delivered a custom software solution that has streamlined our operations significantly. Their attention to detail and commitment to quality are commendable.",
+    author: "Meera K.",
+    role: "TechInnovate Solutions",
+  },
+];
+---
+
+<section class="bg-primary text-primary-foreground py-24 lg:py-32">
+  <div class="container mx-auto px-6 lg:px-8">
+    <div class="mb-16 text-center">
+      <span class="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
+        Testimonials
+      </span>
+      <h2 class="mt-4 font-serif text-4xl font-medium md:text-5xl">
+        Trusted by innovative businesses.
+      </h2>
+    </div>
+
+    <div class="mx-auto max-w-5xl relative group">
+      <!-- Carousel Container -->
+      <div 
+        class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 px-1 scrollbar-hide scroll-smooth"
+        id="testimonials-carousel"
+      >
+        {testimonials.map((testimonial, i) => (
+          <div class="snap-start shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+            <div class="flex h-full flex-col justify-between rounded-3xl bg-primary-foreground/5 p-8 backdrop-blur-sm">
+              <div>
+                <div class="mb-6 flex gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg
+                      class="size-4 fill-accent text-accent"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <blockquote class="text-lg leading-relaxed text-primary-foreground/90">
+                  "{testimonial.quote}"
+                </blockquote>
+              </div>
+              <div class="mt-8 border-t border-primary-foreground/10 pt-6">
+                <cite class="not-italic">
+                  <span class="block font-semibold">
+                    {testimonial.author}
+                  </span>
+                  <span class="block text-sm text-primary-foreground/60">
+                    {testimonial.role}
+                  </span>
+                </cite>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="mt-12 flex justify-center gap-4">
+        <button
+          id="prev-btn"
+          class={cn(buttonVariants({ variant: "outline", size: "icon" }), "rounded-full bg-transparent border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground")}
+          aria-label="Previous slide"
+        >
+          <ArrowLeft className="h-4 w-4" />
+        </button>
+        <button
+          id="next-btn"
+          class={cn(buttonVariants({ variant: "outline", size: "icon" }), "rounded-full bg-transparent border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground")}
+          aria-label="Next slide"
+        >
+          <ArrowRight className="h-4 w-4" />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  const carousel = document.getElementById('testimonials-carousel');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  if (carousel && prevBtn && nextBtn) {
+    const scrollAmount = () => {
+      // Scroll by one item width
+      const item = carousel.firstElementChild as HTMLElement;
+      return item ? item.offsetWidth : 300;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+    });
+  }
+</script>

@@ -1,11 +1,14 @@
-import { useEffect, useRef } from 'react';
+---
+---
 
-export const Comments = () => {
-  const commentsRef = useRef<HTMLDivElement>(null);
+<div class="w-full mt-16 pt-8 border-t border-border" id="comments-container">
+  <!-- Giscus will be injected here -->
+</div>
 
-  useEffect(() => {
-    if (!commentsRef.current) return;
-
+<script>
+  const container = document.getElementById('comments-container');
+  
+  if (container) {
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
     script.setAttribute('data-repo', 'jaainil/aexaware.com');
@@ -23,14 +26,6 @@ export const Comments = () => {
     script.crossOrigin = 'anonymous';
     script.async = true;
 
-    // Clear any existing children to prevent duplicates if re-rendered
-    commentsRef.current.innerHTML = '';
-    commentsRef.current.appendChild(script);
-  }, []);
-
-  return (
-    <div className="w-full mt-16 pt-8 border-t border-border">
-      <div ref={commentsRef} />
-    </div>
-  );
-};
+    container.appendChild(script);
+  }
+</script>

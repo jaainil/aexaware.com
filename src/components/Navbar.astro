@@ -1,0 +1,218 @@
+---
+import { buttonVariants } from "@/components/ui/button-variants";
+import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
+import Logo from "@/assets/logo 2.svg";
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = "" } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  {
+    name: "Services",
+    path: "/services",
+    dropdown: [
+      { name: "All Services", path: "/services" },
+      { name: "Web Development", path: "/services/web-development" },
+      { name: "Mobile App Development", path: "/services/mobile-development" },
+      { name: "UI/UX Design", path: "/services/ui-ux-design" },
+      { name: "Software Solutions", path: "/services/software-solutions" },
+      { name: "E-Commerce", path: "/services/ecommerce" },
+      { name: "Cloud & DevOps", path: "/services/cloud-devops" },
+      { name: "AI/ML Integration", path: "/services/ai-ml-integration" },
+    ],
+  },
+  { name: "Portfolio", path: "/portfolio" },
+  { name: "Blog", path: "/blog" },
+  { name: "Contact Us", path: "/contact" },
+];
+
+const isActive = (linkPath: string) => {
+  if (linkPath === '/' && pathname !== '/') return false;
+  return pathname.startsWith(linkPath);
+};
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+>
+  <div class="container mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      {/* Logo */}
+      <a href="/" class="flex items-center space-x-3 group shrink-0" aria-label="Aexaware Infotech Home">
+        <img
+          src={Logo.src}
+          alt="Aexaware Infotech Logo"
+          class="h-8 w-auto transition group-hover:scale-[1.02]"
+        />
+      </a>
+
+      {/* Desktop Navigation - Centered */}
+      <div class="hidden md:flex items-center justify-center flex-1 px-8">
+        <ul class="flex items-center space-x-1">
+          {navLinks.map((link) => (
+            <li class="relative group">
+              {link.dropdown ? (
+                <div class="dropdown-container">
+                  <a
+                    href={link.path}
+                    class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors outline-none focus:text-primary dropdown-trigger"
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    aria-label={`${link.name} menu`}
+                  >
+                    {link.name}
+                    <ChevronDown className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
+                  </a>
+                  <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[500px]">
+                    <div class="bg-popover border border-border rounded-md shadow-lg p-4 grid grid-cols-2 gap-3">
+                      {link.dropdown.map((item) => (
+                        <a
+                          href={item.path}
+                          class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        >
+                          <div class="text-sm font-medium leading-none">{item.name}</div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  href={link.path}
+                  class:list={[
+                    "px-4 py-2 text-sm font-medium transition-colors hover:text-primary",
+                    isActive(link.path) ? "text-foreground font-semibold" : "text-muted-foreground"
+                  ]}
+                >
+                  {link.name}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* CTA Button */}
+      <div class="hidden md:flex items-center shrink-0">
+        <a
+          href="/contact"
+          class={buttonVariants({ className: "rounded-full px-6" })}
+        >
+          Get Started <ArrowUpRight className="ml-2 h-4 w-4" />
+        </a>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        id="mobile-menu-toggle"
+        class="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+        aria-label="Toggle menu"
+      >
+        <Menu id="menu-icon" class="h-6 w-6" />
+        <X id="close-icon" class="h-6 w-6 hidden" />
+      </button>
+    </div>
+
+    {/* Mobile Menu */}
+    <div
+      id="mobile-menu"
+      class="md:hidden hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/50 px-6 py-6 shadow-lg"
+    >
+      <div class="flex flex-col space-y-4">
+        {navLinks.map((link) =>
+          link.dropdown ? (
+            <div class="flex flex-col space-y-2">
+              <span class="text-base font-medium text-foreground px-2">{link.name}</span>
+              <div class="pl-4 flex flex-col space-y-2 border-l border-primary/20 ml-2">
+                {link.dropdown.map((item) => (
+                  <a
+                    href={item.path}
+                    class:list={[
+                      "text-sm font-medium transition-colors hover:text-primary",
+                      isActive(item.path) ? "text-primary" : "text-muted-foreground"
+                    ]}
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a
+              href={link.path}
+              class:list={[
+                "text-base font-medium transition-colors hover:text-primary",
+                isActive(link.path) ? "text-primary" : "text-muted-foreground"
+              ]}
+            >
+              {link.name}
+            </a>
+          )
+        )}
+        <a
+          href="/contact"
+          class={buttonVariants({ className: "w-full mt-4" })}
+        >
+          Get Started <ArrowUpRight className="ml-2 h-4 w-4" />
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  // Scroll Effect
+  function handleScroll() {
+    if (window.scrollY > 20 || mobileMenu?.classList.contains('block')) {
+      navbar?.classList.add('bg-background/95', 'backdrop-blur-md', 'border-b', 'border-border/50');
+      navbar?.classList.remove('bg-transparent');
+    } else {
+      navbar?.classList.remove('bg-background/95', 'backdrop-blur-md', 'border-b', 'border-border/50');
+      navbar?.classList.add('bg-transparent');
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+
+  // Mobile Menu Toggle
+  mobileMenuToggle?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('hidden');
+    
+    if (isOpen) {
+      mobileMenu?.classList.remove('hidden');
+      mobileMenu?.classList.add('block', 'animate-in', 'slide-in-from-top-5');
+      menuIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('block', 'animate-in', 'slide-in-from-top-5');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+    handleScroll();
+  });
+
+  // Close mobile menu on link click
+  const mobileLinks = mobileMenu?.querySelectorAll('a');
+  mobileLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+      handleScroll();
+    });
+  });
+</script>

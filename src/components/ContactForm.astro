@@ -1,0 +1,103 @@
+---
+import { buttonVariants } from "@/components/ui/button-variants";
+import { cn } from "@/lib/utils";
+---
+
+<form class="space-y-6" id="contact-form">
+  <div class="space-y-2">
+    <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Name</label>
+    <input
+      id="name"
+      name="name"
+      placeholder="Your Name"
+      required
+      class="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-transparent focus:border-primary"
+    />
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    <div class="space-y-2">
+      <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email Address</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        placeholder="you@example.com"
+        required
+        class="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-transparent focus:border-primary"
+      />
+    </div>
+    <div class="space-y-2">
+      <label for="phone" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Phone Number (optional)</label>
+      <input
+        id="phone"
+        name="phone"
+        type="tel"
+        placeholder="+91 ..."
+        class="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-transparent focus:border-primary"
+      />
+    </div>
+  </div>
+
+  <div class="space-y-2">
+    <label for="subject" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Subject</label>
+    <div class="relative">
+      <select
+        id="subject"
+        name="subject"
+        class="flex h-12 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-transparent focus:border-primary appearance-none"
+      >
+        <option value="" disabled selected>Select a topic</option>
+        <option value="project">Start a Project</option>
+        <option value="career">Join the Team</option>
+        <option value="general">General Inquiry</option>
+      </select>
+      <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="space-y-2">
+    <label for="message" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">How can we help you?</label>
+    <textarea
+      id="message"
+      name="message"
+      placeholder="Tell us about your project or inquiry..."
+      rows="5"
+      required
+      class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 border-transparent focus:border-primary resize-none"
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class={cn(buttonVariants({ size: "lg" }), "w-full rounded-full text-lg h-12")}
+    id="submit-btn"
+  >
+    Send Message
+  </button>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const originalBtnText = submitBtn?.innerText;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn) return;
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Sending...";
+
+    // Simulate submission
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    alert("Message sent! Thanks for reaching out. We'll get back to you shortly.");
+    
+    submitBtn.disabled = false;
+    submitBtn.innerText = originalBtnText;
+    form.reset();
+  });
+</script>

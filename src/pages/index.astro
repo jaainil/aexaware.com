@@ -6,7 +6,7 @@ import ServicesGrid from '@/components/astro/ServicesGrid.astro';
 import SmartSolutions from '@/components/astro/SmartSolutions.astro';
 import Industries from '@/components/astro/Industries.astro';
 import ProcessSteps from '@/components/astro/ProcessSteps.astro';
-import { Testimonials } from '@/components/react/Testimonials';
+import Testimonials from '@/components/Testimonials.astro';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 ---
@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
   <SmartSolutions />
   <Industries />
   <ProcessSteps />
-  <Testimonials client:visible />
+  <Testimonials />
 
   {/* CTA Section */}
   <section class="py-24 lg:py-32">

@@ -1,7 +1,7 @@
 ---
 import '@/styles/global.css';
-import { Navbar } from '@/components/react/Navbar';
-import { Footer } from '@/components/react/Footer';
+import Navbar from '@/components/Navbar.astro';
+import Footer from '@/components/Footer.astro';
 import { Toaster as Sonner } from '@/components/ui/sonner';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schema';
 import { SEO } from "astro-seo";
@@ -70,6 +70,7 @@ const websiteSchema = generateWebSiteSchema({
 <!doctype html>
 <html lang={lang}>
   <head>
+    <meta charset="UTF-8" />
     <SEO
       title={title}
       description={description}
@@ -142,11 +143,11 @@ const websiteSchema = generateWebSiteSchema({
     <slot name="head" />
   </head>
   <body>
-    <Navbar client:load currentPath={currentPath} />
+    <Navbar currentPath={currentPath} />
     <main>
       <slot />
     </main>
-    <Footer client:visible />
+    <Footer />
     <Sonner client:idle />
   </body>
 </html>
