@@ -1,25 +1,27 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Hero } from '@/components/react/Hero';
-import { DrivingFuture } from '@/components/react/DrivingFuture';
-import { ServicesGrid } from '@/components/react/ServicesGrid';
-import { SmartSolutions } from '@/components/react/SmartSolutions';
-import { Industries } from '@/components/react/Industries';
-import { ProcessSteps } from '@/components/react/ProcessSteps';
+import Hero from '@/components/astro/Hero.astro';
+import DrivingFuture from '@/components/astro/DrivingFuture.astro';
+import ServicesGrid from '@/components/astro/ServicesGrid.astro';
+import SmartSolutions from '@/components/astro/SmartSolutions.astro';
+import Industries from '@/components/astro/Industries.astro';
+import ProcessSteps from '@/components/astro/ProcessSteps.astro';
 import { Testimonials } from '@/components/react/Testimonials';
 import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 ---
 
 <Layout 
   title="Aexaware Infotech – Custom Web, Mobile & AI Solutions from Vadodara, Gujarat" 
   description="Aexaware Infotech builds scalable web, mobile, AI, and DevOps solutions for startups and enterprises – Made in Vadodara, Serving Globally."
 >
-  <Hero client:load />
-  <DrivingFuture client:visible />
-  <ServicesGrid client:visible />
-  <SmartSolutions client:visible />
-  <Industries client:visible />
-  <ProcessSteps client:visible />
+  <Hero />
+  <DrivingFuture />
+  <ServicesGrid />
+  <SmartSolutions />
+  <Industries />
+  <ProcessSteps />
   <Testimonials client:visible />
 
   {/* CTA Section */}
@@ -38,9 +40,12 @@ import { Button } from '@/components/ui/button';
             Book Your Free Expert Consultation Today!
           </p>
           <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button size="lg" className="h-14 rounded-full px-8 text-lg" asChild client:visible>
-              <a href="/contact">Get Free Consultation</a>
-            </Button>
+            <a 
+              href="/contact" 
+              class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-8 text-lg")}
+            >
+              Get Free Consultation
+            </a>
           </div>
         </div>
       </div>

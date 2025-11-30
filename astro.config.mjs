@@ -16,4 +16,7 @@ export default defineConfig({
         sitemap(),
     ],
     output: 'static',
+    image: {
+        domains: ['images.unsplash.com', 'i.pravatar.cc'],
+    },
 });

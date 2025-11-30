@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import {
   ArrowRight,
   Target,
@@ -104,9 +105,11 @@ const capabilities = [
       <div class="grid gap-16 lg:grid-cols-2 items-center">
         <div class="relative">
           <div class="aspect-square rounded-3xl overflow-hidden bg-white shadow-xl">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
               alt="Team collaboration"
+              width={800}
+              height={800}
               class="w-full h-full object-cover"
             />
           </div>

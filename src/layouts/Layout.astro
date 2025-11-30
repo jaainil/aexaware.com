@@ -118,7 +118,7 @@ const websiteSchema = generateWebSiteSchema({
     <meta name="twitter:creator" content="@aexaware" />
     
     <!-- Sitemap & RSS -->
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="sitemap" href="/sitemap.xml" />
     <link rel="alternate" type="application/rss+xml" title="Aexaware Infotech Blog" href="/rss.xml" />
     
     <!-- Preconnect for fonts -->
@@ -142,6 +142,7 @@ const websiteSchema = generateWebSiteSchema({
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={organizationSchema} />
     <script type="application/ld+json" set:html={websiteSchema} />
+    <slot name="head" />
   </head>
   <body>
     <Navbar client:load currentPath={currentPath} />
