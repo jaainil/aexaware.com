@@ -1,22 +1,24 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
-
 export const ProcessSteps = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
+
   useGSAP(() => {
     const steps = gsap.utils.toArray<HTMLElement>(".process-step");
-    
+
     steps.forEach((step, i) => {
       gsap.fromTo(step,
-        { 
-          opacity: 0, 
+        {
+          opacity: 0,
           y: 100,
           scale: 0.9
         },
@@ -75,7 +77,7 @@ export const ProcessSteps = () => {
     <section ref={containerRef} className="relative py-32 overflow-hidden bg-slate-950 text-white">
       {/* Deep Space Background Effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-slate-950 to-slate-950" />
-      
+
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] animate-pulse delay-1000" />
@@ -100,12 +102,12 @@ export const ProcessSteps = () => {
 
         {/* Vertical Timeline */}
         <div className="relative max-w-5xl mx-auto">
-          
+
 
           <div className="space-y-24">
             {steps.map((step, i) => (
               <div key={i} className={`process-step relative flex flex-col md:flex-row gap-8 md:gap-16 items-center ${i % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                
+
                 {/* Step Number Node */}
                 <div className="flex items-center justify-center w-20 h-20 rounded-full bg-slate-950 border border-blue-500/50 shadow-[0_0_20px_rgba(59,130,246,0.4)] z-10 group-hover:scale-110 transition-transform duration-300">
                   <span className="text-2xl font-bold text-blue-400">{step.number}</span>
@@ -116,9 +118,9 @@ export const ProcessSteps = () => {
                   <div className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
                     {/* Holographic Gradient Hover */}
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                    
+
                     <div className="relative z-10">
-                      
+
                       <h3 className="text-2xl font-medium text-white mb-4 group-hover:text-blue-200 transition-colors">
                         {step.title}
                       </h3>

@@ -1,12 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { Button } from '@/components/ui/button';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { PortfolioFAQ } from "@/components/react/PortfolioFAQ";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 const projects = [
@@ -188,18 +183,9 @@ const faqs = [
           </Button>
         </div>
         <div class="lg:col-span-2">
-          <Accordion type="single" collapsible className="w-full" client:visible>
-            {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-lg font-medium text-left">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed text-base">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+        <div class="lg:col-span-2">
+          <PortfolioFAQ client:visible faqs={faqs} />
+        </div>
         </div>
       </div>
     </div>
