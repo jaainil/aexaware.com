@@ -3,7 +3,7 @@ title: "Why Stripe’s API Never Breaks | Date-Based Versioning Explained"
 description: "It’s 3 AM. An alert jolts you awake. A critical third-party API just shipped a breaking change, your payment gateway is down, and every minute of downtime is co..."
 date: "2025-10-09"
 slug: "why-stripes-api-never-breaks-date-based-versioning-explained"
-image: "./cover.png"
+image: "/blog-images/why-stripes-api-never-breaks-date-based-versioning-explained/cover.png"
 tags: ["API Design &amp; Strategy","DevOps &amp; Architecture","Engineering Insights","Fintech Innovation"]
 ---
 
@@ -47,7 +47,7 @@ Think of it as a time machine for your code. You can send one request using your
 
 * * *
 
-![](./image-0.png)
+![](/blog-images/why-stripes-api-never-breaks-date-based-versioning-explained/image-0.png)
 
 _Caption: This flowchart shows Stripe's decision logic for every API call. It prioritizes an explicit_ `Stripe-Version` _header, falling back to the account's default, ensuring both flexibility and predictability. (Source: Stripe Docs on request-level override, account default versioning, and Connect precedence)._
 
@@ -64,7 +64,7 @@ This system transforms API upgrades from a monolithic risk into a managed proces
 
 * * *
 
-![](./image-1.png)
+![](/blog-images/why-stripes-api-never-breaks-date-based-versioning-explained/image-1.png)
 
 _Caption: Stripe's predictable release schedule allows teams to plan upgrades strategically. Monthly updates are safe to adopt, while major releases are flagged well in advance. (Source: Stripe Docs on release cadence)._
 
@@ -78,7 +78,7 @@ The `Stripe-Version` header is the perfect tool for canary testing. Before commi
 
 * * *
 
-![](./image-2.png)
+![](/blog-images/why-stripes-api-never-breaks-date-based-versioning-explained/image-2.png)
 
 _Caption: This sequence diagram illustrates a canary test. While the application's default version remains stable, specific requests can be sent with a new version header to safely test changes in a live environment. (Source: Stripe Docs on per-request overrides)._
 
@@ -90,7 +90,7 @@ The process involves running two webhook endpoints in parallel. First, you creat
 
 * * *
 
-![](./image-3.png)
+![](/blog-images/why-stripes-api-never-breaks-date-based-versioning-explained/image-3.png)
 
 _Caption: Stripe's recommended two-endpoint strategy for webhook upgrades ensures zero downtime. By running old and new endpoints in parallel during the transition, event processing is never interrupted. (Source: Stripe's official webhook upgrade guide)._
 
@@ -100,7 +100,7 @@ For SaaS platforms and marketplaces using Stripe Connect, there is a critical ve
 
 * * *
 
-![](./image-4.png)
+![](/blog-images/why-stripes-api-never-breaks-date-based-versioning-explained/image-4.png)
 
 _Caption: For Stripe Connect platforms, the platform's API version takes precedence by default when acting on behalf of a connected account, ensuring a consistent API experience for the platform developer. (Source: Stripe Docs on_ `Stripe-Context` _and Connect version precedence)._
 
@@ -112,7 +112,7 @@ Our process involves canary testing with header overrides, validating new respon
 
 * * *
 
-![](./image-5.png)
+![](/blog-images/why-stripes-api-never-breaks-date-based-versioning-explained/image-5.png)
 
 _Caption: Aexaware's proven DevOps playbook for Stripe upgrades leverages canary testing, contract validation, and phased rollouts to de-risk the entire process, turning API maintenance into a routine, automated task. (Source: Stripe Docs on Workbench upgrades and the 72-hour rollback window)._
 

@@ -5,6 +5,7 @@ import BlogEngagement from "@/components/BlogEngagement";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { getPostBySlug, getAllPosts } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
@@ -96,10 +97,12 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
                         </div>
                         {post.image && (
                             <div className="mt-8 aspect-video rounded-3xl overflow-hidden bg-muted relative">
-                                <img
+                                <Image
                                     src={post.image}
                                     alt={post.title}
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
+                                    priority
                                 />
                             </div>
                         )}

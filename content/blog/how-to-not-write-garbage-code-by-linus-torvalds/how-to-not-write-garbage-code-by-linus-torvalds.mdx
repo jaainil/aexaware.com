@@ -3,7 +3,7 @@ title: "How to Not Write ‘Garbage Code’ (by Linus Torvalds)"
 description: "If you ship software, you’ve seen “garbage code.” Linus Torvalds recently called out an example during the Linux merge window, and the lesson is timeless: don’t..."
 date: "2025-11-11"
 slug: "how-to-not-write-garbage-code-by-linus-torvalds"
-image: "./cover.png"
+image: "/blog-images/how-to-not-write-garbage-code-by-linus-torvalds/cover.png"
 tags: []
 ---
 
@@ -15,7 +15,7 @@ During an August 2025 kernel cycle, Torvalds rejected a late RISC-V pull request
 
 ### Reduce cognitive load, not just lines of code
 
-![](./image-0.png)
+![](/blog-images/how-to-not-write-garbage-code-by-linus-torvalds/image-0.png)
 
 Modern code is read by humans and, increasingly, by AI code assistants. Every extra indirection, helper, or premature abstraction forces a micro context-switch. Consequently, readers must mentally jump to another file or function to understand what’s going on. Torvalds’ example reminds us to keep intent local, even if that means repeating a tiny operation. Engineer’s Codex frames this as optimizing for lower cognitive load, not maximal DRY.
 
@@ -37,7 +37,7 @@ Ambiguous helpers invite subtle bugs (e.g., word order confusion). Torvalds’ p
 
 ## Design around data structures first
 
-![](./image-1.png)
+![](/blog-images/how-to-not-write-garbage-code-by-linus-torvalds/image-1.png)
 
 Torvalds has long argued that great programmers think about data structures and their relationships more than lines of code. When you let data lead, code gets simpler because the operations become natural consequences of the model. That mindset reduces incidental complexity and slashes **technical debt**.
 
@@ -49,7 +49,7 @@ In his TED talk, Torvalds illustrates “good taste” with a linked-list deleti
 
 ## Aexaware’s 7-point checklist to avoid “garbage code”
 
-![](./image-2.png)
+![](/blog-images/how-to-not-write-garbage-code-by-linus-torvalds/image-2.png)
 
 1.  **Make intent local.** Keep meaning at the call site. Inline trivial operations; avoid generic helpers that hide semantics.
 2.  **Model the data first.** Let structures drive behavior; simplify code by simplifying relationships.

@@ -3,7 +3,7 @@ title: "CI/CD for LLM apps: Run tests with Evidently + GitHub actions"
 description: "What happens when you tweak your prompt, switch model versions, or update the toolchain for your LLM agent – will the answers get better or worse? You wouldn't..."
 date: "2025-07-01"
 slug: "ci-cd-for-llm-apps-run-tests-with-evidently-github-actions"
-image: "./cover.jpg"
+image: "/blog-images/ci-cd-for-llm-apps-run-tests-with-evidently-github-actions/cover.jpg"
 tags: []
 ---
 
@@ -20,7 +20,7 @@ Developing LLM apps means constant iteration. You:
 
 But even tiny changes can produce regressions: less helpful responses, shorter or longer completions, or weird tone shifts. And they’re often silent – your code checks pass, but your LLM behavior changes. By running tests on your LLM or agent's outputs – not just your functions – you can catch these changes early.
 
-![LLM regression testing](./image-0.png)
+![LLM regression testing](/blog-images/ci-cd-for-llm-apps-run-tests-with-evidently-github-actions/image-0.png)
 
 Regression testing for LLM apps is one of the key [LLM evaluation workflows](https://www.evidentlyai.com/llm-guide/llm-evaluation). In this approach, you run evaluations on a pre-built test dataset to check if your AI system or agent still behaves as expected. There are two common ways to do this:
 
@@ -29,6 +29,6 @@ Regression testing for LLM apps is one of the key [LLM evaluation workflows](ht
 
 Think of it as unit testing – but for your LLM system’s behavior. And because language models are non-deterministic and designed to handle diverse, open-ended inputs, they’re best evaluated using structured **test datasets** rather than isolated test cases.
 
-![Reference-based LLM evals](./image-1.png)
+![Reference-based LLM evals](/blog-images/ci-cd-for-llm-apps-run-tests-with-evidently-github-actions/image-1.png)
 
 _Reference-based evals: comparing responses against expected ones._
