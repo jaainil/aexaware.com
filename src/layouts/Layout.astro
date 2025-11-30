@@ -2,7 +2,6 @@
 import '@/styles/global.css';
 import { Navbar } from '@/components/react/Navbar';
 import { Footer } from '@/components/react/Footer';
-import { Toaster } from '@/components/ui/toaster';
 import { Toaster as Sonner } from '@/components/ui/sonner';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schema';
 
@@ -15,6 +14,7 @@ interface Props {
   modifiedTime?: string;
   author?: string;
   tags?: string[];
+  lang?: string;
 }
 
 const { 
@@ -25,7 +25,8 @@ const {
   publishedTime,
   modifiedTime,
   author,
-  tags
+  tags,
+  lang = "en"
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -66,7 +67,7 @@ const websiteSchema = generateWebSiteSchema({
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -118,7 +119,7 @@ const websiteSchema = generateWebSiteSchema({
     <meta name="twitter:creator" content="@aexaware" />
     
     <!-- Sitemap & RSS -->
-    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title="Aexaware Infotech Blog" href="/rss.xml" />
     
     <!-- Preconnect for fonts -->
@@ -150,7 +151,6 @@ const websiteSchema = generateWebSiteSchema({
       <slot />
     </main>
     <Footer client:visible />
-    <Toaster client:idle />
     <Sonner client:idle />
   </body>
 </html>

@@ -1,13 +1,14 @@
 import type { APIRoute } from 'astro';
 
-const robotsTxt = `
+export const GET: APIRoute = ({ site }) => {
+    const siteUrl = site?.toString().replace(/\/$/, '') || 'https://aexaware.com';
+    const robotsTxt = `
 User-agent: *
 Allow: /
 
-Sitemap: https://aexaware.com/sitemap.xml
+Sitemap: ${siteUrl}/sitemap-index.xml
 `.trim();
 
-export const GET: APIRoute = () => {
     return new Response(robotsTxt, {
         headers: {
             'Content-Type': 'text/plain; charset=utf-8',

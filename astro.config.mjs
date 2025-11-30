@@ -13,7 +13,11 @@ export default defineConfig({
             applyBaseStyles: false,
         }),
         mdx(),
-        sitemap(),
+        sitemap({
+            changefreq: 'weekly',
+            priority: 0.7,
+            lastmod: new Date(),
+        }),
     ],
     output: 'static',
     image: {

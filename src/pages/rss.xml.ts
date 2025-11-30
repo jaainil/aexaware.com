@@ -29,9 +29,9 @@ export const GET: APIRoute = async ({ site }) => {
         customData: `<language>en-us</language>
 <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
 <image>
-  <url>https://aexaware.com/og-image.png</url>
+  <url>${site || 'https://aexaware.com'}/og-image.png</url>
   <title>Aexaware Infotech Blog</title>
-  <link>https://aexaware.com/blog</link>
+  <link>${site || 'https://aexaware.com'}/blog</link>
 </image>`,
         stylesheet: false,
     });
