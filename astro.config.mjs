@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import mermaid from 'astro-mermaid';
+import compress from '@playform/compress';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,6 +23,16 @@ export default defineConfig({
             changefreq: 'weekly',
             priority: 0.7,
             lastmod: new Date(),
+        }),
+        // Compress integration must be last for optimal compression
+        compress({
+            CSS: true,
+            HTML: true,
+            Image: true,
+            JavaScript: true,
+            JSON: true,
+            SVG: true,
+            Logger: 2,
         }),
     ],
     output: 'static',
