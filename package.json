@@ -16,6 +16,7 @@
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^6.0.2",
+    "@dotenvx/dotenvx": "^1.51.1",
     "@gsap/react": "^2.1.2",
     "@mdx-js/rollup": "^3.1.1",
     "@radix-ui/react-accordion": "^1.2.12",
@@ -52,7 +53,6 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@dotenvx/dotenvx": "^1.51.1",
     "@eslint/js": "^9.39.1",
     "@mdx-js/react": "^3.1.1",
     "@playform/compress": "0.2.0",
