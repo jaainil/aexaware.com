@@ -3,7 +3,6 @@ import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import mermaid from 'astro-mermaid';
 import compress from '@playform/compress';
 
 // https://astro.build/config
@@ -14,18 +13,6 @@ export default defineConfig({
         react(),
         tailwind({
             applyBaseStyles: false,
-        }),
-        mermaid({
-            theme: 'neutral',
-            autoTheme: true,
-            mermaidConfig: {
-                startOnLoad: false,
-                logLevel: 'error',
-                securityLevel: 'strict',
-                flowchart: {
-                    curve: 'basis'
-                }
-            }
         }),
         mdx({
             optimize: true,
