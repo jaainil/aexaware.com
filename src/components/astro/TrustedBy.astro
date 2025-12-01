@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+
+const companies = [
+  { name: "Company 1", logo: "https://cdn.simpleicons.org/google/808080" },
+  { name: "Company 2", logo: "https://cdn.simpleicons.org/microsoft/808080" },
+  { name: "Company 3", logo: "https://cdn.simpleicons.org/amazon/808080" },
+  { name: "Company 4", logo: "https://cdn.simpleicons.org/spotify/808080" },
+  { name: "Company 5", logo: "https://cdn.simpleicons.org/netflix/808080" },
+  { name: "Company 6", logo: "https://cdn.simpleicons.org/airbnb/808080" },
+];
+---
+
+<section class="py-12 border-b border-border/40 bg-background">
+  <div class="container mx-auto px-6 lg:px-8 text-center">
+    <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">Trusted by innovative companies</p>
+    
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+      {companies.map((company) => (
+        <img 
+          src={company.logo} 
+          alt={`${company.name} logo`} 
+          class="h-8 w-auto object-contain dark:invert"
+          loading="lazy"
+        />
+      ))}
+    </div>
+  </div>
+</section>

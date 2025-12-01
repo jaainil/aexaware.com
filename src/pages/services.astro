@@ -94,12 +94,42 @@ const techStack = [
   "Figma",
   "GraphQL",
 ];
+
+const serviceSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Digital Transformation Services",
+  "provider": {
+    "@type": "Organization",
+    "name": "Aexaware Infotech",
+    "url": "https://aexaware.com"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Global"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "IT Services",
+    "itemListElement": services.map((service) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": service.title,
+        "description": service.desc
+      }
+    }))
+  }
+});
 ---
 
 <Layout 
   title="Services – Aexaware Infotech" 
   description="Explore our comprehensive range of digital services including web development, mobile apps, AI/ML integration, and cloud solutions."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={serviceSchema} />
+  </Fragment>
   {/* Hero Section */}
   <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />

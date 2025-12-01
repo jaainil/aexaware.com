@@ -25,12 +25,12 @@ const stars = [1, 2, 3, 4, 5];
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
       
       <!-- Left Column -->
-      <div class="flex flex-col space-y-8">
+      <div class="flex flex-col space-y-8 relative z-20">
         <div class="space-y-4">
           <h1 class="font-serif text-5xl font-bold leading-tight text-foreground sm:text-6xl lg:text-7xl tracking-tight">
-            Innovate. <br />
-            <span class="italic">
-              Build. Scale. 
+            Engineering <br />
+            <span class="italic text-primary">
+              Digital Intelligence.
             </span>
           </h1>
           <p class="max-w-lg text-lg text-muted-foreground leading-relaxed">
@@ -62,18 +62,18 @@ const stars = [1, 2, 3, 4, 5];
       </div>
 
       <!-- Right Column -->
-      <div class="relative flex justify-center lg:justify-end min-h-[500px] items-center">
+      <div class="relative flex justify-center lg:justify-end min-h-[500px] items-center z-10">
         
-        <!-- Central Image Placeholder (Robot Head) -->
+        <!-- Central Image Placeholder (Abstract Tech) -->
         <div class="relative z-10 h-[400px] w-[300px] sm:h-[500px] sm:w-[400px] rounded-full bg-gradient-to-b from-primary/20 to-accent/20 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden shadow-2xl">
            <Image 
-             src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?q=80&w=1000&auto=format&fit=crop"
-             alt="Futuristic technology and innovation visual"
+             src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1000&auto=format&fit=crop"
+             alt="Abstract 3D digital intelligence visualization"
              width={400}
              height={500}
-             class="absolute inset-0 h-full w-full object-cover opacity-80 mix-blend-overlay"
+             class="absolute inset-0 h-full w-full object-cover opacity-90 mix-blend-normal"
            />
-           <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+           <div class="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent"></div>
         </div>
 
         <!-- Connecting Line (Decorative) -->
@@ -93,7 +93,7 @@ const stars = [1, 2, 3, 4, 5];
         </div>
 
         <!-- Testimonial Card -->
-        <div class="absolute bottom-0 right-0 lg:-right-8 z-20 max-w-[260px] rounded-2xl border border-border/50 bg-card/90 p-5 shadow-xl backdrop-blur-md">
+        <div class="absolute bottom-0 right-0 lg:right-0 z-20 max-w-[260px] rounded-2xl border border-border/50 bg-card/90 p-5 shadow-xl backdrop-blur-md">
            
            <p class="mt-2 text-sm text-muted-foreground">
              "Aexaware delivered a robust, secure platform that scales perfectly with our growth."

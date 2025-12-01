@@ -1,0 +1,35 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ProjectCalculator from '@/components/react/ProjectCalculator';
+import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+---
+
+<Layout 
+  title="Start Your Project | Aexaware Infotech" 
+  description="Get a free estimate for your web, mobile, or AI project. Use our interactive calculator to tell us about your vision."
+>
+  <main class="relative min-h-screen pt-32 lg:pt-40 pb-16 overflow-hidden">
+    <InteractiveGridPattern
+      client:idle
+      className="absolute inset-0 z-0 opacity-20"
+      squares={[40, 40]}
+      squaresClassName="hover:fill-primary/5"
+    />
+    
+    <!-- Background Gradients -->
+    <div class="pointer-events-none absolute top-0 left-1/2 -z-10 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-3xl" />
+    
+    <div class="container relative z-10 mx-auto px-4">
+      <div class="text-center mb-12 space-y-4">
+        <h1 class="font-serif text-4xl font-bold md:text-5xl lg:text-6xl">
+          Let's Build Something <span class="text-primary">Amazing</span>
+        </h1>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Tell us a little about your project, and we'll help you bring it to life with a custom roadmap and estimate.
+        </p>
+      </div>
+
+      <ProjectCalculator client:load />
+    </div>
+  </main>
+</Layout>
