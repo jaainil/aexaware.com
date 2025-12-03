@@ -1,12 +1,17 @@
 ---
-
+import { Image } from 'astro:assets';
+import partner1 from '@/assets/1.png';
+import partner2 from '@/assets/2.png';
+import partner3 from '@/assets/3.png';
+import partner4 from '@/assets/4.png';
+import partner5 from '@/assets/5.png';
 
 const companies = [
-  { name: "Partner 1", logo: "/1.png" },
-  { name: "Partner 2", logo: "/2.png" },
-  { name: "Partner 3", logo: "/3.png" },
-  { name: "Partner 4", logo: "/4.png" },
-  { name: "Partner 5", logo: "/5.png" },
+  { name: "Partner 1", logo: partner1 },
+  { name: "Partner 2", logo: partner2 },
+  { name: "Partner 3", logo: partner3 },
+  { name: "Partner 4", logo: partner4 },
+  { name: "Partner 5", logo: partner5 },
 ];
 ---
 
@@ -16,9 +21,10 @@ const companies = [
     
     <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
       {companies.map((company) => (
-        <img 
+        <Image 
           src={company.logo} 
           alt={`${company.name} logo`} 
+          width={200}
           class="h-20 w-auto object-contain"
           loading="lazy"
         />

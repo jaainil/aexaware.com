@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://aexaware.com/sitemap-index.xml
-
-# Crawl delay (politeness)
-Crawl-delay: 0.5
