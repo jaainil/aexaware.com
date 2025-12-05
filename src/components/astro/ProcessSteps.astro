@@ -109,38 +109,37 @@ const steps = [
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  const steps = gsap.utils.toArray(".process-step");
-
-  steps.forEach((step: any) => {
-    gsap.to(step, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: step,
-        start: "top 80%",
-        end: "top 50%",
-        scrub: 1,
-        toggleActions: "play none none reverse"
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-[50px]', 'translate-y-[100px]', 'scale-90');
+        entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+        observer.unobserve(entry.target);
       }
     });
-  });
+  }, observerOptions);
 
-  // Animate header
-  gsap.to(".process-header", {
-    opacity: 1,
-    y: 0,
-    duration: 1,
-    scrollTrigger: {
-      trigger: ".process-header",
-      start: "top 80%",
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.process-header');
+    const steps = document.querySelectorAll('.process-step');
+
+    if (header) {
+      // Add transition classes for smooth animation
+      header.classList.add('transition-all', 'duration-1000', 'ease-out');
+      observer.observe(header);
     }
+    
+    steps.forEach((step, index) => {
+      // Add transition classes with staggered delay
+      step.classList.add('transition-all', 'duration-1000', 'ease-out');
+      // Add specific delay based on index if needed, or rely on scroll position
+      observer.observe(step);
+    });
   });
 </script>
