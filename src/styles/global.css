@@ -106,12 +106,21 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    @apply scroll-smooth;
+    scroll-padding-top: 100px; /* Offset for fixed navbar */
+  }
+
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
   /* Typography scale - Human & Conversational */
+  h1, h2, h3, h4, h5, h6 {
+    scroll-margin-top: 100px; /* Ensure headings don't hide behind navbar */
+  }
+
   h1 {
     @apply text-4xl md:text-6xl font-bold tracking-tight leading-[1.1];
   }

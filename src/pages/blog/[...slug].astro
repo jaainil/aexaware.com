@@ -5,6 +5,7 @@ import { ArrowLeft, Calendar, User } from 'lucide-astro';
 import BlogEngagement from '@/components/BlogEngagement.astro';
 import Comments from '@/components/Comments.astro';
 import { Image } from 'astro:assets';
+import BlogSidebar from '@/components/BlogSidebar.astro';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
 
 export async function getStaticPaths() {
@@ -16,7 +17,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 
 // Helper to format date
 const formatDate = (date: Date) => {
@@ -80,60 +81,75 @@ const breadcrumbSchema = generateBreadcrumbSchema({
   <script type="application/ld+json" set:html={breadcrumbSchema} slot="head" />
   
   <article class="pt-32 pb-24 lg:pt-48 lg:pb-32">
-    <div class="container mx-auto px-6 lg:px-8 max-w-3xl">
-      <div class="mb-8">
-        <a href="/blog" class="inline-flex items-center -ml-4 text-muted-foreground hover:text-primary transition-colors">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Blog
-        </a>
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="mb-8 text-sm text-muted-foreground">
+        <nav class="flex items-center gap-2">
+          <a href="/" class="hover:text-primary transition-colors">Home</a>
+          <span class="text-border">/</span>
+          <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+          <span class="text-border">/</span>
+          <span class="text-foreground font-medium truncate max-w-[200px] md:max-w-md">
+            {post.data.title}
+          </span>
+        </nav>
       </div>
 
-      <div class="mb-10">
-        <div class="flex flex-wrap gap-2 mb-6">
-          {post.data.tags?.map((tag) => (
-            <span
-              class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
-            >
-              {tag}
-            </span>
-          ))}
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        {/* Main Content Column */}
+        <div class="lg:col-span-8">
+          <div class="mb-10">
+            <div class="flex flex-wrap gap-2 mb-6">
+              {post.data.tags?.map((tag) => (
+                <span
+                  class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h1 class="font-serif text-4xl md:text-5xl font-medium leading-tight text-foreground mb-6">
+              {post.data.title}
+            </h1>
+            <div class="flex items-center gap-6 text-muted-foreground text-sm">
+              <div class="flex items-center gap-2">
+                <User className="size-4" />
+                {post.data.author}
+              </div>
+              <div class="flex items-center gap-2">
+                <Calendar className="size-4" />
+                {formatDate(post.data.date)}
+              </div>
+            </div>
+            {post.data.image && (
+              <div class="mt-8 aspect-video rounded-3xl overflow-hidden bg-muted">
+                <Image
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class="w-full h-full object-cover"
+                  width={1200}
+                  height={675}
+                />
+              </div>
+            )}
+          </div>
+
+          <BlogEngagement 
+            url={Astro.url.href} 
+            title={post.data.title} 
+          />
+
+          <div class="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-medium prose-h1:text-4xl prose-h1:leading-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-3xl prose-img:shadow-lg">
+            <Content />
+          </div>
+          
+          <Comments />
         </div>
-        <h1 class="font-serif text-4xl md:text-5xl font-medium leading-tight text-foreground mb-6">
-          {post.data.title}
-        </h1>
-        <div class="flex items-center gap-6 text-muted-foreground text-sm">
-          <div class="flex items-center gap-2">
-            <User className="size-4" />
-            {post.data.author}
-          </div>
-          <div class="flex items-center gap-2">
-            <Calendar className="size-4" />
-            {formatDate(post.data.date)}
-          </div>
+
+        {/* Sidebar Column */}
+        <div class="hidden lg:block lg:col-span-4">
+          <BlogSidebar headings={headings} />
         </div>
-        {post.data.image && (
-          <div class="mt-8 aspect-video rounded-3xl overflow-hidden bg-muted">
-            <Image
-              src={post.data.image}
-              alt={post.data.title}
-              class="w-full h-full object-cover"
-              width={1200}
-              height={675}
-            />
-          </div>
-        )}
       </div>
-
-      <BlogEngagement 
-        url={Astro.url.href} 
-        title={post.data.title} 
-      />
-
-      <div class="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-medium prose-h1:text-4xl prose-h1:leading-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-3xl prose-img:shadow-lg">
-        <Content />
-      </div>
-      
-      <Comments />
     </div>
   </article>
 </Layout>

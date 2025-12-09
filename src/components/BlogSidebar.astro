@@ -1,0 +1,37 @@
+---
+import { buttonVariants } from "@/components/ui/button-variants";
+import { ArrowUpRight } from "lucide-astro";
+import TableOfContents from "./TableOfContents.astro";
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<aside class="space-y-8 sticky top-32 h-fit">
+  {/* CTA Card */}
+  <div class="rounded-2xl bg-secondary/30 p-6 border border-border/50 backdrop-blur-sm">
+    <h3 class="font-serif text-xl font-medium text-foreground mb-2">
+      Build your next idea
+    </h3>
+    <p class="text-sm text-muted-foreground mb-4 leading-relaxed">
+      Turn your vision into reality with our expert development team.
+    </p>
+    <a
+      href="/start-project"
+      class={buttonVariants({ className: "w-full rounded-full" })}
+    >
+      Start Project <ArrowUpRight className="ml-2 h-4 w-4" />
+    </a>
+  </div>
+
+  {/* Table of Contents */}
+  <div class="hidden lg:block">
+    <TableOfContents headings={headings} />
+  </div>
+
+
+</aside>

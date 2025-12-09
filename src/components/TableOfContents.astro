@@ -1,0 +1,83 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+// Filter out h1 (title) and distinct headings
+const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
+---
+
+<nav class="toc-container text-sm">
+  <h3 class="font-semibold text-foreground mb-4 uppercase tracking-wider text-xs">Table of Contents</h3>
+  <ul class="space-y-3 border-l border-border pl-4">
+    {toc.map((heading) => (
+      <li>
+        <a
+          href={`#${heading.slug}`}
+          class={`block text-muted-foreground hover:text-primary transition-colors line-clamp-2 ${
+            heading.depth === 3 ? "pl-4" : ""
+          }`}
+        >
+          {heading.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  // Robust Active State Highlighting
+  const tocLinks = document.querySelectorAll('.toc-container a');
+  const headings = document.querySelectorAll('h2, h3');
+  
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    // 1. Update state of intersecting headings
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute('id');
+      if (!id) return;
+      
+      const link = document.querySelector(`.toc-container a[href="#${id}"]`);
+      if (link) {
+        if (entry.isIntersecting) {
+          link.classList.add('is-visible');
+        } else {
+          link.classList.remove('is-visible');
+        }
+      }
+    });
+
+    // 2. Find the *first* visible link in the TOC and make it active
+    let hasActive = false;
+    const links = Array.from(tocLinks);
+    
+    // Clear all active states first
+    links.forEach(link => {
+       link.classList.remove('text-primary', 'font-medium', 'border-l-2', '-ml-[17px]', 'pl-[15px]', 'border-primary');
+    });
+
+    // Find the first visible one
+    for (const link of links) {
+      if (link.classList.contains('is-visible')) {
+         link.classList.add('text-primary', 'font-medium');
+         hasActive = true;
+         break; // Only highlight the first one
+      }
+    }
+
+    // Fallback: If nothing is visible (e.g. at top of page), maybe clear all? 
+    // Or if we scrolled past everything? 
+    // Usually sticking to the last one or first one is fine.
+  };
+
+  const observer = new IntersectionObserver(observerCallback, {
+    rootMargin: '-100px 0px -66% 0px' 
+  });
+
+  headings.forEach((heading) => {
+    observer.observe(heading);
+  });
+</script>
