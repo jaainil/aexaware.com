@@ -2,10 +2,11 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import { ArrowLeft, Calendar, User } from 'lucide-astro';
+import { Image } from 'astro:assets';
 import BlogEngagement from '@/components/BlogEngagement.astro';
 import Comments from '@/components/Comments.astro';
-import { Image } from 'astro:assets';
 import BlogSidebar from '@/components/BlogSidebar.astro';
+import ReadNext from '@/components/ReadNext.astro';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
 
 export async function getStaticPaths() {
@@ -64,6 +65,10 @@ const breadcrumbSchema = generateBreadcrumbSchema({
     },
   ],
 });
+
+// Safe tag for breadcrumb
+const primaryTag = post.data.tags && post.data.tags.length > 0 ? post.data.tags[0] : null;
+
 ---
 
 <Layout 
@@ -83,12 +88,20 @@ const breadcrumbSchema = generateBreadcrumbSchema({
   <article class="pt-32 pb-24 lg:pt-48 lg:pb-32">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="mb-8 text-sm text-muted-foreground">
-        <nav class="flex items-center gap-2">
+        <nav class="flex items-center gap-2 flex-wrap">
           <a href="/" class="hover:text-primary transition-colors">Home</a>
           <span class="text-border">/</span>
           <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+          {primaryTag && (
+            <>
+              <span class="text-border">/</span>
+              <span class="text-foreground font-medium hover:text-primary transition-colors cursor-pointer">
+                {primaryTag}
+              </span>
+            </>
+          )}
           <span class="text-border">/</span>
-          <span class="text-foreground font-medium truncate max-w-[200px] md:max-w-md">
+          <span class="text-muted-foreground truncate max-w-[150px] md:max-w-md" title={post.data.title}>
             {post.data.title}
           </span>
         </nav>
@@ -101,19 +114,21 @@ const breadcrumbSchema = generateBreadcrumbSchema({
             <div class="flex flex-wrap gap-2 mb-6">
               {post.data.tags?.map((tag) => (
                 <span
-                  class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  class="inline-flex items-center px-3 py-1 rounded-full bg-secondary/50 text-secondary-foreground text-xs font-medium hover:bg-secondary/70 transition-colors cursor-pointer"
                 >
                   {tag}
                 </span>
               ))}
             </div>
-            <h1 class="font-serif text-4xl md:text-5xl font-medium leading-tight text-foreground mb-6">
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-foreground mb-8 text-balance">
               {post.data.title}
             </h1>
-            <div class="flex items-center gap-6 text-muted-foreground text-sm">
+            <div class="flex items-center gap-6 text-muted-foreground text-sm border-b border-border/40 pb-8">
               <div class="flex items-center gap-2">
-                <User className="size-4" />
-                {post.data.author}
+                <div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <User className="size-4" />
+                </div>
+                <span class="font-medium text-foreground">{post.data.author}</span>
               </div>
               <div class="flex items-center gap-2">
                 <Calendar className="size-4" />
@@ -121,13 +136,14 @@ const breadcrumbSchema = generateBreadcrumbSchema({
               </div>
             </div>
             {post.data.image && (
-              <div class="mt-8 aspect-video rounded-3xl overflow-hidden bg-muted">
+              <div class="mt-8 aspect-video rounded-3xl overflow-hidden bg-muted shadow-sm">
                 <Image
                   src={post.data.image}
                   alt={post.data.title}
                   class="w-full h-full object-cover"
                   width={1200}
                   height={675}
+                  priority
                 />
               </div>
             )}
@@ -138,10 +154,11 @@ const breadcrumbSchema = generateBreadcrumbSchema({
             title={post.data.title} 
           />
 
-          <div class="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-medium prose-h1:text-4xl prose-h1:leading-tight prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-3xl prose-img:shadow-lg">
+          <div class="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-medium prose-h1:text-3xl prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-6 prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-img:rounded-3xl prose-img:shadow-lg prose-blockquote:border-l-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-li:marker:text-primary">
             <Content />
           </div>
           
+          <ReadNext currentSlug={post.slug} tags={post.data.tags} />
           <Comments />
         </div>
 

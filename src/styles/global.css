@@ -63,6 +63,7 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
   .dark {
     /* Dark mode - Deep Navy & Electric Blue */
     --background: 222 47% 11%;
@@ -108,7 +109,8 @@ All colors MUST be HSL.
 
   html {
     @apply scroll-smooth;
-    scroll-padding-top: 100px; /* Offset for fixed navbar */
+    scroll-padding-top: 100px;
+    /* Offset for fixed navbar */
   }
 
   body {
@@ -117,8 +119,14 @@ All colors MUST be HSL.
   }
 
   /* Typography scale - Human & Conversational */
-  h1, h2, h3, h4, h5, h6 {
-    scroll-margin-top: 100px; /* Ensure headings don't hide behind navbar */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    scroll-margin-top: 100px;
+    /* Ensure headings don't hide behind navbar */
   }
 
   h1 {
@@ -154,7 +162,7 @@ All colors MUST be HSL.
   .dark .glass-panel {
     @apply bg-black/50 border-white/10;
   }
-  
+
   /* Screen reader only - for skip links */
   .sr-only {
     position: absolute;
@@ -167,7 +175,7 @@ All colors MUST be HSL.
     white-space: nowrap;
     border-width: 0;
   }
-  
+
   .focus\:not-sr-only:focus {
     position: static;
     width: auto;
@@ -185,6 +193,7 @@ All colors MUST be HSL.
     0% {
       transform: translateX(-100%);
     }
+
     100% {
       transform: translateX(100%);
     }
@@ -194,6 +203,7 @@ All colors MUST be HSL.
     0% {
       transform: translateY(-100%);
     }
+
     100% {
       transform: translateY(100%);
     }
@@ -211,6 +221,7 @@ All colors MUST be HSL.
     from {
       transform: translateX(0);
     }
+
     to {
       transform: translateX(-50%);
     }
@@ -219,7 +230,7 @@ All colors MUST be HSL.
   .animate-marquee {
     animation: marquee 40s linear infinite;
   }
-  
+
   .pause-on-hover:hover .animate-marquee {
     animation-play-state: paused;
   }
