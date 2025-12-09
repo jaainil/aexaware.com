@@ -1,0 +1,10 @@
+{
+    "tasks": {
+        "dev": "deno run -A npm:astro dev",
+        "build": "deno run -A npm:astro build",
+        "preview": "deno run -A npm:astro preview --host",
+        "start": "deno run -A npm:serve dist -l 4321",
+        "astro": "deno run -A npm:astro"
+    },
+    "nodeModulesDir": "auto"
+}
