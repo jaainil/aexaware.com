@@ -72,7 +72,7 @@ import { cn } from "@/lib/utils";
     </div>
 
     <div class="space-y-2 flex justify-center md:justify-start">
-      <div id="contact-turnstile-widget" data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY}></div>
+      <!-- Turnstile removed -->
     </div>
 
     <button
@@ -100,18 +100,7 @@ import { cn } from "@/lib/utils";
   </button>
 </div>
 
-<script is:inline>
-  window.onContactTurnstileLoad = function () {
-    const container = document.getElementById('contact-turnstile-widget');
-    if (container && window.turnstile) {
-      const siteKey = container.getAttribute('data-sitekey');
-      window.contactTurnstileId = window.turnstile.render('#contact-turnstile-widget', {
-        sitekey: siteKey,
-      });
-    }
-  };
-</script>
-<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onContactTurnstileLoad" async defer></script>
+
 
 <script>
   const form = document.getElementById('contact-form');
@@ -126,12 +115,7 @@ import { cn } from "@/lib/utils";
     if (!submitBtn) return;
 
     const formData = new FormData(form);
-    const turnstileToken = formData.get('cf-turnstile-response');
 
-    if (!turnstileToken) {
-      alert('Please complete the security check.');
-      return;
-    }
 
     submitBtn.disabled = true;
     submitBtn.innerText = "Sending...";
@@ -141,20 +125,19 @@ import { cn } from "@/lib/utils";
     console.log('Sending contact form data:', data);
 
     try {
-      const response = await fetch(import.meta.env.PUBLIC_CONTACT_WEBHOOK_URL, {
+      const response = await fetch("https://formspree.io/f/xpwvdjyq", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
         body: JSON.stringify(data),
       });
 
       if (response.ok) {
         form.reset();
-        // Reset Turnstile widget
-        if (window.turnstile && window.contactTurnstileId) {
-            window.turnstile.reset(window.contactTurnstileId);
-        }
+        form.reset();
+
         
         formContainer?.classList.add('hidden');
         successMessage?.classList.remove('hidden');
