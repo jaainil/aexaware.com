@@ -19,13 +19,13 @@ const companies = [
   <div class="container mx-auto px-6 lg:px-8 text-center">
     <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">Trusted by innovative companies</p>
     
-    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
       {companies.map((company) => (
         <Image 
           src={company.logo} 
           alt={`${company.name} logo`} 
           width={200}
-          class="h-20 w-auto object-contain"
+          class="h-20 w-auto object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
           loading="lazy"
         />
       ))}
