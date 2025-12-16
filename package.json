@@ -27,6 +27,7 @@
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-toggle": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.2.8",
+    "@yeskunall/astro-umami": "^0.0.7",
     "astro": "^5.16.4",
     "astro-mermaid": "^1.2.0",
     "astro-robots-txt": "^1.0.0",

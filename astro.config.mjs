@@ -6,12 +6,14 @@ import sitemap from '@astrojs/sitemap';
 import compress from '@playform/compress';
 import mermaid from 'astro-mermaid';
 import robotsTxt from 'astro-robots-txt';
+import umami from "@yeskunall/astro-umami";
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://aexaware.com',
     prefetch: true,
     integrations: [
+        umami({ id: "7401816d-713e-4916-960b-d314f2b36d3d" }),
         react(),
         tailwind({
             applyBaseStyles: false,
