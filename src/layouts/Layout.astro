@@ -123,12 +123,12 @@ const websiteSchema = generateWebSiteSchema({
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Preload critical fonts -->
+    <!-- Font loading with media swap to prevent FOUC -->
     <link
-      rel="preload"
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      media="print"
+      onload="this.media='all'"
     />
     <noscript>
       <link
@@ -143,8 +143,14 @@ const websiteSchema = generateWebSiteSchema({
     <slot name="head" />
   </head>
   <body>
+    <a 
+      href="#main-content" 
+      class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
+    >
+      Skip to main content
+    </a>
     <Navbar currentPath={currentPath} />
-    <main>
+    <main id="main-content">
       <slot />
     </main>
     <Footer />
