@@ -8,6 +8,7 @@ import mermaid from 'astro-mermaid';
 import robotsTxt from 'astro-robots-txt';
 import umami from "@yeskunall/astro-umami";
 import llmsTxtIntegration from "astro-llms-txt-generator";
+import compressor from "astro-compressor";
 import writenex from "@writenex/astro";
 
 // https://astro.build/config
@@ -67,6 +68,7 @@ export default defineConfig({
             SVG: true,
             Logger: 2,
         }),
+        compressor(),
     ],
     output: 'static',
     image: {
