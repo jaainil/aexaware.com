@@ -66,8 +66,19 @@ const breadcrumbSchema = generateBreadcrumbSchema({
   ],
 });
 
+// Helper to slugify tags
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')     // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-');  // Replace multiple - with single -
+};
+
 // Safe tag for breadcrumb
-const primaryTag = post.data.tags && post.data.tags.length > 0 ? post.data.tags[0] : null;
+const primaryCategory = post.data.category;
 
 ---
 
@@ -92,12 +103,12 @@ const primaryTag = post.data.tags && post.data.tags.length > 0 ? post.data.tags[
           <a href="/" class="hover:text-primary transition-colors">Home</a>
           <span class="text-border">/</span>
           <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
-          {primaryTag && (
+          {primaryCategory && (
             <>
               <span class="text-border">/</span>
-              <span class="text-foreground font-medium hover:text-primary transition-colors cursor-pointer">
-                {primaryTag}
-              </span>
+              <a href={`/blog/category/${slugify(primaryCategory)}`} class="text-foreground font-medium hover:text-primary transition-colors cursor-pointer">
+                {primaryCategory}
+              </a>
             </>
           )}
           <span class="text-border">/</span>
@@ -111,15 +122,18 @@ const primaryTag = post.data.tags && post.data.tags.length > 0 ? post.data.tags[
         {/* Main Content Column */}
         <div class="lg:col-span-8">
           <div class="mb-10">
-            <div class="flex flex-wrap gap-2 mb-6">
-              {post.data.tags?.map((tag) => (
-                <span
-                  class="inline-flex items-center px-3 py-1 rounded-full bg-secondary/50 text-secondary-foreground text-xs font-medium hover:bg-secondary/70 transition-colors cursor-pointer"
+            {/* Category Badge */}
+            <div class="mb-6">
+              {primaryCategory && (
+                <a
+                  href={`/blog/category/${slugify(primaryCategory)}`}
+                  class="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
                 >
-                  {tag}
-                </span>
-              ))}
+                  {primaryCategory}
+                </a>
+              )}
             </div>
+            
             <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-medium leading-tight text-foreground mb-8 text-balance">
               {post.data.title}
             </h1>
@@ -156,6 +170,21 @@ const primaryTag = post.data.tags && post.data.tags.length > 0 ? post.data.tags[
 
           <div class="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-medium prose-h1:text-3xl prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-6 prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-img:rounded-3xl prose-img:shadow-lg prose-blockquote:border-l-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-li:marker:text-primary">
             <Content />
+          </div>
+
+          {/* Tags Section */}
+          <div class="mt-12 pt-8 border-t border-border/40">
+            <h4 class="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Tags</h4>
+            <div class="flex flex-wrap gap-2">
+              {post.data.tags?.map((tag) => (
+                <a
+                  href={`/blog/tags/${slugify(tag)}`}
+                  class="inline-flex items-center px-3 py-1 rounded-full bg-secondary/50 text-secondary-foreground text-xs font-medium hover:bg-secondary/70 transition-colors cursor-pointer"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
           </div>
           
           <ReadNext currentSlug={post.slug} tags={post.data.tags} />

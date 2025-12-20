@@ -4,9 +4,37 @@ import { getCollection } from 'astro:content';
 import { ArrowRight, Calendar, User } from 'lucide-astro';
 import { Image } from 'astro:assets';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+export async function getStaticPaths() {
+  // Helper to slugify tags
+  const slugify = (text: string) => {
+    return text
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-')     // Replace spaces with -
+      .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+      .replace(/\-\-+/g, '-');  // Replace multiple - with single -
+  };
+
+  const allPosts = await getCollection('blog');
+  const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+  return uniqueTags.map((tag) => {
+    // Filter posts that contain the original tag
+    const filteredPosts = allPosts.filter((post) => 
+      post.data.tags && post.data.tags.includes(tag as string)
+    ).sort(
+      (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+    );
+    return {
+      params: { tag: slugify(tag as string) },
+      props: { posts: filteredPosts, tagName: tag },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts, tagName } = Astro.props;
 
 // Helper to format date
 const formatDate = (date: Date) => {
@@ -19,8 +47,8 @@ const formatDate = (date: Date) => {
 ---
 
 <Layout 
-  title="Aexaware Tech Blog – Web, Mobile & AI Insights" 
-  description="Read Aexaware’s blogs on web development, AI, DevOps and digital innovation."
+  title={`Blog Posts Tagged with ${tag} | Aexaware Tech Blog`} 
+  description={`Explore our latest articles and insights on ${tag}.`}
 >
   {/* Hero Section */}
   <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
@@ -28,17 +56,16 @@ const formatDate = (date: Date) => {
     <div class="container mx-auto px-6 lg:px-8">
       <div class="max-w-4xl mx-auto text-center">
         <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
-          Our Blog
+          Tag Archive
         </span>
         <h1 class="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
-          Insights, updates, and <br/>
-          <span class="italic text-muted-foreground">
-            expert opinions.
+          Posts tagged with <br/>
+          <span class="italic text-primary">
+            #{tagName}
           </span>
         </h1>
         <p class="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-          Stay informed with the latest trends in technology, design, and
-          digital strategy.
+          Browse our collection of articles related to {tagName}.
         </p>
       </div>
     </div>
@@ -67,7 +94,7 @@ const formatDate = (date: Date) => {
             <div class="flex flex-1 flex-col p-6">
               <div class="mb-4 flex items-center gap-4 text-xs text-muted-foreground">
                 <span class="font-semibold uppercase tracking-wider text-primary">
-                  {post.data.category || 'Tech'}
+                  {post.data.tags ? post.data.tags[0] : 'Tech'}
                 </span>
                 <div class="flex items-center gap-1">
                   <Calendar className="size-3" />

@@ -1,11 +1,36 @@
 ---
-title: "Our Startup Story: How Aexaware Infotech Was Born in Anand, Gujarat"
-description: "Our Startup Story: How Aexaware Infotech Was Born in Anand, Gujarat Every big idea starts small. For us, it began in Anand, Gujarat with a vision to build digi..."
-date: "2025-09-11"
-slug: "our-startup-story-how-aexaware-infotech-was-born-in-anand-gujarat"
-image: "./cover.jpg"
+title: "CI/CD for LLM apps: Run tests with Evidently + GitHub actions"
+description: What happens when you tweak your prompt, switch model versions, or update the toolchain for your LLM agent – will the answers get better or worse? You wouldn't...
+date: "2025-07-01T00:00:00.000Z"
+slug: ci-cd-for-llm-apps-run-tests-with-evidently-github-actions
+image: ./cover.jpg
 tags: []
-author: "Aexaware Team"
+author: Aexaware Team
+category: Tech
 ---
 
-**Our Startup Story: How Aexaware Infotech Was Born in Anand, Gujarat** Every big idea starts small. For us, it began in Anand, Gujarat with a vision to build digital solutions that empower businesses. 💡 The Spark During internships and local projects, we saw many startups and SMEs struggling to access modern, scalable tech. That’s when Aexaware Infotech was born to provide custom software, AI-driven platforms, and web/app development tailored for growing businesses. 👥 Built in Anand, With Passion What started with a group of local engineers soon became a full-fledged IT company. We believe great companies don’t only rise from Silicon Valley—they can start from Anand too. 🏗 From Small Projects to Global Clients We began with freelance projects for local shops and startups. Word-of-mouth led us to clients in Ahmedabad, Mumbai, Bangalore, and even the U.S. This growth shaped Aexaware Infotech Pvt. Ltd. into a trusted IT partner. 💼 What We Do Website & Web App Development Mobile Apps (iOS, Android, Hybrid) AI/ML Solutions UI/UX Design IT Consultation 🌍 Made in Anand, Serving Globally Headquartered in Anand, we’re proud of our local roots and global reach helping businesses in India, the U.S., and beyond achieve their digital goals. 🤝 Let’s Build Together Whether you’re a startup in Gujarat or a brand overseas, Aexaware is here to create impactful digital solutions with purpose and performance.
+What happens when you tweak your prompt, switch model versions, or update the toolchain for your LLM agent – will the answers get better or worse? You wouldn't merge backend code without running tests. You shouldn't ship LLM code or prompt changes without validating output quality, either. Now you don’t have to. We just released a GitHub Action that lets you automatically test your LLM application outputs  – every time you push code. It runs as part of your CI workflow, using the Evidently open-source library and (optionally) Evidently Cloud. Let’s walk through what it does and how to use it.
+
+## 🤖 Why test LLM outputs?
+
+Developing LLM apps means constant iteration. You:
+
+* Refactor the agent logic
+* Adjust system prompts
+* Swap a model or tool
+* Try a few “quick” fixes…
+
+But even tiny changes can produce regressions: less helpful responses, shorter or longer completions, or weird tone shifts. And they’re often silent – your code checks pass, but your LLM behavior changes. By running tests on your LLM or agent's outputs – not just your functions – you can catch these changes early.
+
+![LLM regression testing](./image-0.png)
+
+Regression testing for LLM apps is one of the key [LLM evaluation workflows](https://www.evidentlyai.com/llm-guide/llm-evaluation). In this approach, you run evaluations on a pre-built test dataset to check if your AI system or agent still behaves as expected. There are two common ways to do this:
+
+* **Reference-based evaluations:** compare the generated responses against expected ground truth answers.
+* **Reference-free evaluations:** provide a set of test inputs, then automatically assess specific qualities of the responses  – such as helpfulness, tone, correctness, or length.
+
+Think of it as unit testing – but for your LLM system’s behavior. And because language models are non-deterministic and designed to handle diverse, open-ended inputs, they’re best evaluated using structured **test datasets** rather than isolated test cases.
+
+![Reference-based LLM evals](./image-1.png)
+
+*Reference-based evals: comparing responses against expected ones.*
