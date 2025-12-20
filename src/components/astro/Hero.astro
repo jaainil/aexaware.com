@@ -4,6 +4,7 @@ import { Briefcase, ArrowRight } from "lucide-astro";
 import { cn } from "@/lib/utils";
 import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
 import TrustedBy from "@/components/astro/TrustedBy.astro";
+import Typewriter from "astro-typewriter";
 
 ---
 
@@ -23,7 +24,14 @@ import TrustedBy from "@/components/astro/TrustedBy.astro";
       <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight text-foreground">
         <span class="font-serif italic font-medium">We Build</span>
         <br />
-        <span class="font-sans font-bold text-primary">Digital Products That Scale.</span>
+        <span class="font-sans font-bold text-primary inline-block min-h-[1.2em]">
+          <Typewriter 
+            messages={["Jamstack Apps","UI/UX Designs","Mobile Applications","Web Applications","E-Commerce Stores","Scalable AI Systems","Cloud Solutions"]} 
+            writeSpeed={100}
+            deleteSpeed={50}
+            waitWritten={2000}
+          />
+        </span>
       </h1>
 
       {/* Subheadline */}
