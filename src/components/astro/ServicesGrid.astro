@@ -3,6 +3,43 @@ import { buttonVariants } from "@/components/ui/button";
 import { ArrowUpRight, Code, Smartphone, Cloud, Brain } from "lucide-astro";
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
+
+const services = [
+  {
+    id: "web",
+    title: "Custom Web & Software",
+    description: "Build secure, scalable web platforms designed to support 10k+ concurrent users from day one. Perfect for SaaS, portals, and enterprise apps.",
+    icon: Code,
+    href: "/services/web-development",
+    variant: "large"
+  },
+  {
+    id: "mobile",
+    title: "Mobile App Development",
+    description: "Native and hybrid apps built for performance, speed, and 4.5+ star retention on iOS and Android.",
+    icon: Smartphone,
+    href: "/services/mobile-development",
+    variant: "small"
+  },
+  {
+    id: "cloud",
+    title: "Cloud & DevOps",
+    description: "Reduce deploy times by 80% with automated CI/CD pipelines and secure cloud infrastructure that scales.",
+    icon: Cloud,
+    href: "/services/cloud-devops",
+    variant: "small"
+  },
+  {
+    id: "ai",
+    title: "AI & ML Integration",
+    description: "Custom AI that automates workflows and increases conversions by up to 40% with intelligent recommendations and predictive analytics.",
+    icon: Brain,
+    href: "/services/ai-ml-integration",
+    variant: "large"
+  }
+];
+
+const [webService, mobileService, cloudService, aiService] = services;
 ---
 
 <section class="py-24 bg-secondary/20">
@@ -24,66 +61,91 @@ import { cn } from "@/lib/utils";
       <!-- Column 1 -->
       <div class="flex flex-col gap-6 h-full">
         <!-- Top Card (Large) -->
-        <div class="flex-1 bg-card border border-border rounded-3xl p-8 flex flex-col justify-between group hover:shadow-lg transition-all">
-          <div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4">
-            <Code className="h-6 w-6" />
+        <div class="relative flex-1 bg-card border border-border rounded-3xl p-8 flex flex-col justify-between group hover:shadow-lg transition-all overflow-hidden">
+          <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground mb-4 shrink-0">
+            <webService.icon className="h-6 w-6" />
           </div>
           <div>
-            <h3 class="text-xl font-bold mb-2 text-foreground">Custom Web & Software</h3>
+            <h3 class="text-xl font-bold mb-2 text-foreground">
+              <a href={webService.href} class="focus:outline-none">
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                {webService.title}
+              </a>
+            </h3>
             <p class="text-muted-foreground text-sm mb-4">
-              Build secure, scalable web platforms designed to support 10k+ concurrent users from day one. Perfect for SaaS, portals, and enterprise apps.
+              {webService.description}
             </p>
-            <a href="/services" class="inline-flex items-center text-primary text-sm font-medium hover:underline" aria-label="Explore Custom Web & Software Services">
+            <div class="inline-flex items-center text-primary text-sm font-medium group-hover:underline">
               Explore Web Services <ArrowUpRight className="ml-1 h-3 w-3" />
-            </a>
+            </div>
           </div>
         </div>
+
         <!-- Bottom Card (Small) -->
-        <div class="h-1/3 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-center group hover:bg-secondary/70 transition-colors">
-           <div class="h-10 w-10 rounded-full bg-background flex items-center justify-center mb-3 text-primary">
-            <Smartphone className="h-5 w-5" />
+        <div class="relative h-1/3 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-center group hover:bg-secondary/70 transition-colors overflow-hidden">
+           <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center mb-3 text-primary-foreground shrink-0">
+            <mobileService.icon className="h-5 w-5" />
           </div>
-          <h3 class="text-lg font-bold mb-1 text-foreground">Mobile App Development</h3>
+          <h3 class="text-lg font-bold mb-1 text-foreground">
+            <a href={mobileService.href} class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              {mobileService.title}
+            </a>
+          </h3>
           <p class="text-muted-foreground text-xs">
-            Native and hybrid apps built for performance, speed, and 4.5+ star retention on iOS and Android.
+            {mobileService.description}
           </p>
         </div>
       </div>
 
       <!-- Column 2 (Center Image) -->
-      <div class="md:col-span-1 h-full">
+      <div class="md:col-span-1 h-full min-h-[300px]">
         <div class="h-full w-full rounded-3xl overflow-hidden relative group border border-border">
           <Image 
             src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop" 
-            alt="Global Connectivity" 
+            alt="Global Connectivity representing digital transformation" 
             width={400}
             height={600}
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6">
+             <p class="text-white font-medium text-lg leading-tight">Connecting your business to the future of technology.</p>
+          </div>
         </div>
       </div>
 
       <!-- Column 3 -->
       <div class="flex flex-col gap-6 h-full">
          <!-- Top Card (Small) -->
-         <div class="h-1/3 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-center group hover:bg-secondary/70 transition-colors">
-           <div class="h-10 w-10 rounded-full bg-background flex items-center justify-center mb-3 text-primary">
-            <Cloud className="h-5 w-5" />
+         <div class="relative h-1/3 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-center group hover:bg-secondary/70 transition-colors overflow-hidden">
+           <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center mb-3 text-primary-foreground shrink-0">
+            <cloudService.icon className="h-5 w-5" />
           </div>
-          <h3 class="text-lg font-bold mb-1 text-foreground">Cloud & DevOps</h3>
+          <h3 class="text-lg font-bold mb-1 text-foreground">
+            <a href={cloudService.href} class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              {cloudService.title}
+            </a>
+          </h3>
           <p class="text-muted-foreground text-xs">
-            Reduce deploy times by 80% with automated CI/CD pipelines and secure cloud infrastructure that scales.
+            {cloudService.description}
           </p>
         </div>
+
         <!-- Bottom Card (Large) -->
-        <div class="flex-1 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-end group hover:bg-secondary/70 transition-colors">
-           <div class="h-12 w-12 rounded-full bg-background flex items-center justify-center mb-4 text-primary">
-            <Brain className="h-6 w-6" />
+        <div class="relative flex-1 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-end group hover:bg-secondary/70 transition-colors overflow-hidden">
+           <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center mb-4 text-primary-foreground shrink-0">
+            <aiService.icon className="h-6 w-6" />
           </div>
-          <h3 class="text-xl font-bold mb-2 text-foreground">AI & ML Integration</h3>
+          <h3 class="text-xl font-bold mb-2 text-foreground">
+             <a href={aiService.href} class="focus:outline-none">
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              {aiService.title}
+            </a>
+          </h3>
           <p class="text-muted-foreground text-sm">
-            Custom AI that automates workflows and increases conversions by up to 40% with intelligent recommendations and predictive analytics.
+            {aiService.description}
           </p>
         </div>
       </div>

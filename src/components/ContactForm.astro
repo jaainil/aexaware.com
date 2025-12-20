@@ -12,6 +12,8 @@ import { cn } from "@/lib/utils";
         name="name"
         placeholder="Your Name"
         required
+        aria-required="true"
+        autocomplete="name"
         class="flex h-12 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm ring-offset-background transition-all duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50"
       />
     </div>
@@ -25,6 +27,8 @@ import { cn } from "@/lib/utils";
           type="email"
           placeholder="you@example.com"
           required
+          aria-required="true"
+          autocomplete="email"
           class="flex h-12 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm ring-offset-background transition-all duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
@@ -35,6 +39,7 @@ import { cn } from "@/lib/utils";
           name="phone"
           type="tel"
           placeholder="+91 ..."
+          autocomplete="tel"
           class="flex h-12 w-full rounded-lg border border-border bg-background px-4 py-2 text-sm ring-offset-background transition-all duration-200 file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50"
         />
       </div>
@@ -67,6 +72,7 @@ import { cn } from "@/lib/utils";
         placeholder="Tell us about your project or inquiry..."
         rows="5"
         required
+        aria-required="true"
         class="flex min-h-[80px] w-full rounded-lg border border-border bg-background px-4 py-3 text-sm ring-offset-background transition-all duration-200 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 resize-none"
       ></textarea>
     </div>
@@ -155,7 +161,13 @@ import { cn } from "@/lib/utils";
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      alert(`Error: ${error instanceof Error ? error.message : "Something went wrong"}. Please try again later.`);
+      // Show error message inline instead of alert
+      const errorMsg = error instanceof Error ? error.message : "Something went wrong";
+      const errorEl = document.createElement('div');
+      errorEl.className = 'fixed bottom-4 right-4 max-w-sm bg-destructive text-destructive-foreground px-4 py-3 rounded-lg shadow-lg z-50 animate-in slide-in-from-bottom-5';
+      errorEl.innerHTML = `<p class="font-medium">Error</p><p class="text-sm opacity-90">${errorMsg}. Please try again later.</p>`;
+      document.body.appendChild(errorEl);
+      setTimeout(() => errorEl.remove(), 5000);
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerText = originalBtnText;

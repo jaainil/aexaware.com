@@ -44,6 +44,14 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
+    /* Additional semantic colors */
+    --surface: 0 0% 98%;
+    --surface-hover: 0 0% 96%;
+    --overlay: 222 47% 11%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --rating: 45 93% 47%;
+
     /* UI Elements */
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
@@ -54,14 +62,7 @@ All colors MUST be HSL.
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+
   }
 
   .dark {
@@ -91,20 +92,33 @@ All colors MUST be HSL.
     --input: 217 32% 17%;
     --ring: 224 76% 48%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Additional semantic colors - dark */
+    --surface: 222 47% 15%;
+    --surface-hover: 222 47% 18%;
+    --overlay: 210 40% 98%;
+    --info: 199 89% 60%;
+    --info-foreground: 222 47% 11%;
+    --rating: 45 93% 58%;
+
+
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+  }
+
+  /* Enhanced focus states for keyboard accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Focus on dark backgrounds */
+  .bg-primary :focus-visible,
+  .bg-foreground :focus-visible,
+  [class*="bg-slate-9"] :focus-visible {
+    @apply outline-white;
   }
 
   html {
@@ -233,5 +247,18 @@ All colors MUST be HSL.
 
   .pause-on-hover:hover .animate-marquee {
     animation-play-state: paused;
+  }
+}
+
+/* Reduced Motion Support (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
