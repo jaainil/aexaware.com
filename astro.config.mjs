@@ -7,6 +7,7 @@ import compress from '@playform/compress';
 import mermaid from 'astro-mermaid';
 import robotsTxt from 'astro-robots-txt';
 import umami from "@yeskunall/astro-umami";
+import llmsTxtIntegration from "astro-llms-txt-generator";
 import writenex from "@writenex/astro";
 
 // https://astro.build/config
@@ -14,6 +15,7 @@ export default defineConfig({
     site: 'https://aexaware.com',
     prefetch: true,
     integrations: [
+        llmsTxtIntegration(),
         umami({ id: "7401816d-713e-4916-960b-d314f2b36d3d" }),
         writenex(),
         react(),
