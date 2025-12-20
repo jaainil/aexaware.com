@@ -13,22 +13,44 @@ const companies = [
   { name: "Partner 4", logo: partner4 },
   { name: "Partner 5", logo: partner5 },
 ];
+const { minimal = false } = Astro.props;
 ---
 
-<section class="py-12 border-b border-border/40 bg-background">
-  <div class="container mx-auto px-6 lg:px-8 text-center">
-    <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">Trusted by innovative companies</p>
-    
-    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+{/* Minimal version (for Hero) */}
+{minimal && (
+  <div class="mt-4 md:mt-8 border-t border-border/20 pt-8">
+     {/* Content duplicated for stability */}
+    <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-6">Trusted by innovative companies</p>
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-70">
       {companies.map((company) => (
         <Image 
           src={company.logo} 
           alt={`${company.name} logo`} 
-          width={200}
-          class="h-20 w-auto object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-          loading="lazy"
+          width={140}
+          class="h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+          loading="eager"
         />
       ))}
     </div>
   </div>
-</section>
+)}
+
+{/* Full version (Standalone) */}
+{!minimal && (
+  <section class="py-12 border-b border-border/40 bg-background">
+    <div class="container mx-auto px-6 lg:px-8 text-center">
+      <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">Trusted by innovative companies</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        {companies.map((company) => (
+          <Image 
+            src={company.logo} 
+            alt={`${company.name} logo`} 
+            width={200}
+            class="h-20 w-auto object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+)}

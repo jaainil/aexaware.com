@@ -6,21 +6,24 @@ import { cn } from "@/lib/utils";
 const steps = [
   {
     number: "01",
-    title: "Consultation & Roadmap",
-    desc: "We start by listening. We analyze your business goals and technical challenges to craft a custom roadmap for scalable growth.",
-    features: ["Requirement Analysis", "Tech Stack Selection", "Strategic Planning"],
+    title: "Discovery & Planning",
+    timeline: "Week 1-2",
+    desc: "We start by deeply understanding your business goals, users, and technical requirements. You'll receive a detailed roadmap and architecture plan before any development begins.",
+    features: ["Requirements Doc", "Architecture Plan", "Tech Stack Selection"],
   },
   {
     number: "02",
-    title: "Build & Integrate",
-    desc: "Our agile team brings your vision to life using the latest web, mobile, and AI technologies—delivering secure, high-performance code on time.",
-    features: ["Agile Development", "CI/CD Implementation", "Quality Assurance"],
+    title: "Design & Build",
+    timeline: "Week 3-8",
+    desc: "From Figma prototypes to working code — our agile team delivers iteratively so you can see progress weekly and provide feedback at every stage.",
+    features: ["UI/UX Prototype", "Working MVP", "Weekly Progress Demos"],
   },
   {
     number: "03",
-    title: "Support & Evolution",
-    desc: "We don’t just launch and leave. We provide ongoing maintenance, optimization, and feature upgrades to ensure your product scales with you.",
-    features: ["24/7 Monitoring", "Performance Tuning", "Feature Scaling"],
+    title: "Launch & Growth",
+    timeline: "Ongoing",
+    desc: "We don't just launch and leave. We handle deployment, monitoring, and continuous optimization to help your product scale and succeed.",
+    features: ["Production Deployment", "24/7 Monitoring", "Performance Optimization"],
   },
 ];
 ---
@@ -70,6 +73,9 @@ const steps = [
 
                 <div class="relative z-10">
 
+                  <span class="inline-block px-3 py-1 text-xs font-medium text-blue-300 bg-blue-500/20 rounded-full mb-3">
+                    {step.timeline}
+                  </span>
                   <h3 class="text-2xl font-medium text-white mb-4 group-hover:text-blue-200 transition-colors">
                     {step.title}
                   </h3>

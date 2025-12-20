@@ -12,7 +12,6 @@ const pathname = new URL(Astro.request.url).pathname;
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
   {
     name: "Services",
     path: "/services",
@@ -27,9 +26,10 @@ const navLinks = [
       { name: "AI/ML Integration", path: "/services/ai-ml-integration" },
     ],
   },
-  { name: "Portfolio", path: "/portfolio" },
+  { name: "Case Studies", path: "/portfolio" },
+  { name: "About", path: "/about" },
   { name: "Blog", path: "/blog" },
-  { name: "Contact Us", path: "/contact" },
+  { name: "Contact", path: "/contact" },
 ];
 
 const isActive = (linkPath: string) => {
@@ -105,10 +105,10 @@ const isActive = (linkPath: string) => {
       {/* CTA Button */}
       <div class="hidden xl:flex items-center shrink-0">
         <a
-          href="/start-project"
+          href="/contact"
           class={buttonVariants({ className: "rounded-full px-6" })}
         >
-          Start Project <ArrowUpRight className="ml-2 h-4 w-4" />
+          Book Free Strategy Call <ArrowUpRight className="ml-2 h-4 w-4" />
         </a>
       </div>
 
@@ -160,10 +160,10 @@ const isActive = (linkPath: string) => {
           )
         )}
         <a
-          href="/start-project"
+          href="/contact"
           class={buttonVariants({ className: "w-full mt-4" })}
         >
-          Start Project <ArrowUpRight className="ml-2 h-4 w-4" />
+          Book Free Strategy Call <ArrowUpRight className="ml-2 h-4 w-4" />
         </a>
       </div>
     </div>

@@ -186,17 +186,26 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
 
         <div class="rounded-2xl bg-secondary/20 p-5 border border-border/50 backdrop-blur-sm">
           <h4 class="font-medium text-foreground mb-1">
-            Join our team
+            Get Our Strategy Guide
           </h4>
           <p class="text-xs text-muted-foreground mb-3">
-            We are always looking for talent.
+            Actionable insights delivered to your inbox.
           </p>
-          <a
-            href="/contact"
-            class={buttonVariants({ variant: "outline", className: "w-full rounded-full h-9 text-xs" })}
-          >
-            Apply Now <ExternalLink className="ml-2 h-3 w-3" />
-          </a>
+          <form class="flex flex-col gap-2" action="/api/newsletter" method="POST">
+            <input 
+              type="email" 
+              name="email"
+              placeholder="Enter your email"
+              required
+              class="w-full h-9 px-3 rounded-full bg-background border border-border text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+            />
+            <button
+              type="submit"
+              class={buttonVariants({ className: "w-full rounded-full h-9 text-xs" })}
+            >
+              Subscribe <Mail className="ml-2 h-3 w-3" />
+            </button>
+          </form>
         </div>
       </div>
     </div>
