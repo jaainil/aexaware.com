@@ -76,13 +76,8 @@ export default defineConfig({
     image: {
         domains: ['images.unsplash.com', 'i.pravatar.cc'],
     },
-    vite: {
-        server: {
-            host: true,
-            allowedHosts: ['aexaware.com', 'www.aexaware.com'],
-        },
-        preview: {
-            allowedHosts: ['aexaware.com', 'www.aexaware.com'],
-        },
+    server: {
+        host: true,
+        allowedHosts: true,
     },
 });
