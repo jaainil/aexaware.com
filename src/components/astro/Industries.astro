@@ -14,6 +14,8 @@ const industries = [
 
 const firstRow = industries.slice(0, Math.ceil(industries.length / 2));
 const secondRow = industries.slice(Math.ceil(industries.length / 2));
+
+import IndustriesMarquee from "@/components/IndustriesMarquee";
 ---
 
 <section class="py-24 bg-secondary/30 overflow-hidden">
@@ -33,90 +35,19 @@ const secondRow = industries.slice(Math.ceil(industries.length / 2));
 
   <div class="flex flex-col gap-8">
     <!-- First Row -->
-    <div class="relative w-full overflow-hidden group">
-      <div class="flex w-max animate-marquee gap-4 md:gap-6 pr-4 md:pr-6">
-        {[...firstRow, ...firstRow, ...firstRow, ...firstRow, ...firstRow, ...firstRow].map((name, i) => (
-          <div
-            class="px-8 py-4 rounded-full text-lg md:text-xl font-medium whitespace-nowrap shadow-sm border border-border bg-card text-card-foreground transition-colors duration-300 hover:bg-primary hover:text-primary-foreground cursor-default"
-          >
-            {name}
-          </div>
-        ))}
-      </div>
-       <div class="absolute top-0 flex w-max animate-marquee-two gap-4 md:gap-6 pr-4 md:pr-6">
-        {[...firstRow, ...firstRow, ...firstRow, ...firstRow, ...firstRow, ...firstRow].map((name, i) => (
-          <div
-            class="px-8 py-4 rounded-full text-lg md:text-xl font-medium whitespace-nowrap shadow-sm border border-border bg-card text-card-foreground transition-colors duration-300 hover:bg-primary hover:text-primary-foreground cursor-default"
-          >
-            {name}
-          </div>
-        ))}
-      </div>
-    </div>
+    <IndustriesMarquee 
+      client:visible 
+      items={firstRow} 
+      speed={30}
+    />
 
     <!-- Second Row - Offset -->
-    <div class="relative w-full overflow-hidden group">
-      <div class="flex w-max animate-marquee-reverse gap-4 md:gap-6 pr-4 md:pr-6">
-         {[...secondRow, ...secondRow, ...secondRow, ...secondRow, ...secondRow, ...secondRow].map((name, i) => (
-          <div
-            class="px-8 py-4 rounded-full text-lg md:text-xl font-medium whitespace-nowrap shadow-sm border border-border bg-card text-card-foreground transition-colors duration-300 hover:bg-primary hover:text-primary-foreground cursor-default"
-          >
-            {name}
-          </div>
-        ))}
-      </div>
-       <div class="absolute top-0 flex w-max animate-marquee-reverse-two gap-4 md:gap-6 pr-4 md:pr-6">
-         {[...secondRow, ...secondRow, ...secondRow, ...secondRow, ...secondRow, ...secondRow].map((name, i) => (
-          <div
-            class="px-8 py-4 rounded-full text-lg md:text-xl font-medium whitespace-nowrap shadow-sm border border-border bg-card text-card-foreground transition-colors duration-300 hover:bg-primary hover:text-primary-foreground cursor-default"
-          >
-            {name}
-          </div>
-        ))}
-      </div>
-    </div>
+    <IndustriesMarquee 
+      client:visible 
+      items={secondRow} 
+      direction="right" 
+      speed={30}
+      className="-ml-12"
+    />
   </div>
 </section>
-
-<style>
-  .animate-marquee {
-    animation: marquee 80s linear infinite;
-  }
-  .animate-marquee-two {
-    animation: marquee-two 80s linear infinite;
-  }
-  
-  /* Reverse direction for second row */
-   .animate-marquee-reverse {
-    animation: marquee-reverse 80s linear infinite;
-  }
-  .animate-marquee-reverse-two {
-    animation: marquee-reverse-two 80s linear infinite;
-  }
-
-  @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-100%); }
-  }
-  @keyframes marquee-two {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(0%); }
-  }
-
-   @keyframes marquee-reverse {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(0%); }
-  }
-  @keyframes marquee-reverse-two {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(100%); }
-  }
-  
-  /* Pause on hover */
-  .group:hover .animate-marquee,
-  .group:hover .animate-marquee-two,
-  .group:hover .animate-marquee-reverse,
-  .group:hover .animate-marquee-reverse-two {
-    animation-play-state: paused;
-  }
-</style>
