@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import { ArrowLeft, Calendar, User } from 'lucide-astro';
+import { ArrowLeft, Calendar, User, Clock } from 'lucide-astro';
 import { Image } from 'astro:assets';
 import BlogEngagement from '@/components/BlogEngagement.astro';
 import Comments from '@/components/Comments.astro';
@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content, headings } = await post.render();
+const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
 // Helper to format date
 const formatDate = (date: Date) => {
@@ -147,6 +147,10 @@ const primaryCategory = post.data.category;
               <div class="flex items-center gap-2">
                 <Calendar className="size-4" />
                 {formatDate(post.data.date)}
+              </div>
+              <div class="flex items-center gap-2">
+                <Clock className="size-4" />
+                {remarkPluginFrontmatter.minutesRead}
               </div>
             </div>
             {post.data.image && (

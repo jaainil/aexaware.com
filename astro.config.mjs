@@ -11,6 +11,7 @@ import umami from "@yeskunall/astro-umami";
 import llmsTxtIntegration from "astro-llms-txt-generator";
 import compressor from "astro-compressor";
 import writenex from "@writenex/astro";
+import readingTime from "astro-reading-time";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,6 +22,7 @@ export default defineConfig({
         llmsTxtIntegration(),
         umami({ id: "7401816d-713e-4916-960b-d314f2b36d3d" }),
         writenex(),
+        readingTime(),
         react(),
         tailwind({
             applyBaseStyles: false,
