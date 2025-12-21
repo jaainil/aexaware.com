@@ -45,6 +45,7 @@ export function InteractiveGridPattern({
               hoveredSquare === i ? "fill-neutral-600/30" : "fill-transparent",
               squaresClassName
             )}
+            vectorEffect="non-scaling-stroke"
             onMouseEnter={() => setHoveredSquare(i)}
             onMouseLeave={() => setHoveredSquare(null)}
           />
