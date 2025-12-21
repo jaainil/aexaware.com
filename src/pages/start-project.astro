@@ -1,7 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import ProjectCalculator from '@/components/ProjectCalculator.astro';
-import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern";
+import { GridPattern } from "@/components/ui/interactive-grid-pattern";
 ---
 
 <Layout 
@@ -9,11 +9,22 @@ import { InteractiveGridPattern } from "@/components/ui/interactive-grid-pattern
   description="Get a free estimate for your web, mobile, or AI project. Use our interactive calculator to tell us about your vision."
 >
   <main class="relative min-h-screen pt-32 lg:pt-40 pb-16 overflow-hidden">
-    <InteractiveGridPattern
+    <GridPattern
       client:idle
-      className="absolute inset-0 z-0 opacity-20"
-      squares={[40, 40]}
-      squaresClassName="hover:fill-primary/5"
+      width={40}
+      height={40}
+      x={-1}
+      y={-1}
+      strokeDasharray="4 2"
+      className="absolute inset-0 z-0 opacity-70 fill-primary/10 stroke-primary/20"
+      squares={[
+        [5, 5],
+        [10, 10],
+        [15, 15],
+        [20, 20],
+        [25, 5],
+        [30, 10]
+      ]}
     />
     
     <!-- Background Gradients -->

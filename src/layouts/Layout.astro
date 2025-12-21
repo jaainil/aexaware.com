@@ -8,12 +8,6 @@ import { SEO } from "astro-seo";
 
 
 
-// Fonts - Inter
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-
 // Fonts - Plus Jakarta Sans
 import "@fontsource/plus-jakarta-sans/200.css";
 import "@fontsource/plus-jakarta-sans/200-italic.css";
@@ -182,5 +176,9 @@ const websiteSchema = generateWebSiteSchema({
     </main>
     <Footer />
     <Sonner client:idle />
+    <script>
+      import { followingDotCursor } from "cursor-effects";
+      new followingDotCursor({ color: ["#323232a6"] });
+    </script>
   </body>
 </html>

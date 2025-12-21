@@ -23,8 +23,12 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
-        serif: ["Playfair Display", "Georgia", "serif"],
+        // Use Plus Jakarta Sans for UI/Body text
+        sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+        // Use Plus Jakarta Sans specifically for Headings to maintain brand identity
+        heading: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+        // Playfair for elegant accents
+        serif: ["Playfair Display", ...defaultTheme.fontFamily.serif],
       },
       colors: {
         border: "hsl(var(--border))",

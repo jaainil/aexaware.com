@@ -43,6 +43,7 @@
     "astro-typewriter": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cursor-effects": "^1.0.18",
     "embla-carousel-react": "^8.6.0",
     "gray-matter": "^4.0.3",
     "lucide-astro": "^0.555.0",

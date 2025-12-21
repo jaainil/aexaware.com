@@ -110,7 +110,7 @@
 
   /* Typography System 
      - Headings: Plus Jakarta Sans (via font-heading)
-     - Body: Inter (via font-sans)
+     - Body: Plus Jakarta Sans (via font-sans)
   */
   h1,
   h2,
@@ -118,7 +118,7 @@
   h4,
   h5,
   h6 {
-    @apply font-heading tracking-tight text-foreground;
+    @apply font-heading tracking-tight;
   }
 
   h1 {

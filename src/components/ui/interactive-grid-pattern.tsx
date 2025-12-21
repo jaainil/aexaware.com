@@ -1,56 +1,72 @@
-import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import { useId } from "react";
 
-interface InteractiveGridPatternProps extends React.SVGProps<SVGSVGElement> {
+import { cn } from "@/lib/utils";
+
+interface GridPatternProps extends React.SVGProps<SVGSVGElement> {
   width?: number;
   height?: number;
-  squares?: [number, number]; // [columns, rows]
+  x?: number;
+  y?: number;
+  squares?: Array<[number, number]>;
+  strokeDasharray?: string;
   className?: string;
-  squaresClassName?: string;
+  [key: string]: any;
 }
 
-export function InteractiveGridPattern({
+export function GridPattern({
   width = 40,
   height = 40,
-  squares = [24, 24],
+  x = -1,
+  y = -1,
+  squares,
+  strokeDasharray,
   className,
-  squaresClassName,
   ...props
-}: InteractiveGridPatternProps) {
-  const [horizontal, vertical] = squares;
-  const [hoveredSquare, setHoveredSquare] = useState<number | null>(null);
+}: GridPatternProps) {
+  const id = useId();
 
   return (
     <svg
-      width={width * horizontal}
-      height={height * vertical}
+      aria-hidden="true"
       className={cn(
-        "absolute inset-0 h-full w-full border border-gray-400/30",
-        className
+        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
+        className,
       )}
       {...props}
     >
-      {Array.from({ length: horizontal * vertical }).map((_, i) => {
-        const x = (i % horizontal) * width;
-        const y = Math.floor(i / horizontal) * height;
-        return (
-          <rect
-            key={i}
-            x={x}
-            y={y}
-            width={width}
-            height={height}
-            className={cn(
-              "stroke-gray-400/30 transition-all duration-300 ease-in-out [&:not(:hover)]:duration-1000",
-              hoveredSquare === i ? "fill-neutral-600/30" : "fill-transparent",
-              squaresClassName
-            )}
-            vectorEffect="non-scaling-stroke"
-            onMouseEnter={() => setHoveredSquare(i)}
-            onMouseLeave={() => setHoveredSquare(null)}
+      <defs>
+        <pattern
+          id={id}
+          width={width}
+          height={height}
+          patternUnits="userSpaceOnUse"
+          x={x}
+          y={y}
+        >
+          <path
+            d={`M.5 ${height}V.5H${width}`}
+            fill="none"
+            strokeDasharray={strokeDasharray}
           />
-        );
-      })}
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" strokeWidth={0} fill={`url(#${id})`} />
+      {squares && (
+        <svg x={x} y={y} className="overflow-visible">
+          {squares.map(([sqX, sqY]) => (
+            <rect
+              strokeWidth="0"
+              key={`${sqX}-${sqY}`}
+              width={width - 1}
+              height={height - 1}
+              x={sqX * width + 1}
+              y={sqY * height + 1}
+            />
+          ))}
+        </svg>
+      )}
     </svg>
   );
 }
+
+export default GridPattern;
