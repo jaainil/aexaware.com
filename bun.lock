@@ -37,7 +37,6 @@
         "astro-typewriter": "^1.1.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
-        "cursor-effects": "^1.0.18",
         "embla-carousel-react": "^8.6.0",
         "gray-matter": "^4.0.3",
         "lucide-astro": "^0.555.0",
@@ -1098,8 +1097,6 @@
     "cssstyle": ["cssstyle@4.6.0", "", { "dependencies": { "@asamuzakjp/css-color": "^3.2.0", "rrweb-cssom": "^0.8.0" } }, "sha512-2z+rWdzbbSZv6/rhtvzvqeZQHrBaqgogqt85sqFNbabZOuFbCVFb8kPeEtZjiKkbrm395irpNKiYeFeLiQnFPg=="],
 
     "csstype": ["csstype@3.2.3", "", {}, "sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ=="],
-
-    "cursor-effects": ["cursor-effects@1.0.18", "", {}, "sha512-GCmSfiuoBjcOq2e4IewxYvOTAjPVVy0MSxhiyQ1Rz+Obsy9mG5NAd4+utIPhu8RxvlrjjDD/d1XSFY0BL3fp7g=="],
 
     "cytoscape": ["cytoscape@3.33.1", "", {}, "sha512-iJc4TwyANnOGR1OmWhsS9ayRS3s+XQ185FmuHObThD+5AeJCakAAbWv8KimMTt08xCCLNgneQwFp+JRJOr9qGQ=="],
 
