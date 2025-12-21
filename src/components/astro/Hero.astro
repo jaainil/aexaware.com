@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { GridPattern } from "@/components/ui/interactive-grid-pattern";
 import TrustedBy from "@/components/astro/TrustedBy.astro";
 import Typewriter from "astro-typewriter";
-
 ---
 
 <section class="relative overflow-hidden bg-background min-h-screen flex items-center justify-center pt-20">
@@ -38,12 +37,13 @@ import Typewriter from "astro-typewriter";
 
   <div class="container relative z-10 px-6 mx-auto text-center">
     <div class="max-w-4xl mx-auto space-y-6 md:space-y-8 text-center flex flex-col items-center">
-      {/* Brand Logo or Icon (Optional based on image, but keeping simple for now if needed) */}
       
       {/* Main Headline */}
-      <h1 class="text-4xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight text-foreground">
+      {/* FIX 1: Changed text-4xl to text-3xl to prevent wrapping on small screens */}
+      <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight text-foreground">
         <span class="font-serif italic font-medium block">We Build</span>
-        <span class="font-sans font-bold text-primary inline-block min-h-[1.2em]">
+        {/* FIX 2: Changed min-h to 90px (fixed pixels) to strictly reserve space for 2 lines */}
+        <span class="font-sans font-bold text-primary inline-block min-h-[90px] sm:min-h-[1.2em] align-top">
           <Typewriter 
             messages={["Jamstack Apps","UI/UX Designs","Mobile Applications","Web Applications","E-Commerce Stores","Scalable AI Systems","Cloud Solutions"]} 
             writeSpeed={100}
