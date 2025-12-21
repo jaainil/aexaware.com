@@ -22,6 +22,7 @@ const portfolioCollection = defineCollection({
         date: z.string().or(z.date()).transform((val) => new Date(val)),
         technologies: z.array(z.string()),
         duration: z.string().optional(),
+        year: z.string().optional(),
         website: z.string().url().optional(),
         featured: z.boolean().default(false),
         image: image(),

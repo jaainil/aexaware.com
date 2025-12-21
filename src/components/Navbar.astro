@@ -51,7 +51,7 @@ const isActive = (linkPath: string) => {
       </a>
 
       {/* Desktop Navigation - Centered */}
-      <div class="hidden xl:flex items-center justify-center flex-1 px-8">
+      <div class="hidden lg:flex items-center justify-center flex-1 px-8">
         <ul class="flex items-center space-x-1">
           {navLinks.map((link) => (
             <li class="relative group">
@@ -98,7 +98,7 @@ const isActive = (linkPath: string) => {
       </div>
 
       {/* CTA Button */}
-      <div class="hidden xl:flex items-center shrink-0">
+      <div class="hidden lg:flex items-center shrink-0">
         <a
           href="/contact"
           class={buttonVariants({ className: "rounded-full px-6" })}
@@ -110,7 +110,7 @@ const isActive = (linkPath: string) => {
       {/* Mobile Menu Button */}
       <button
         id="mobile-menu-toggle"
-        class="xl:hidden p-2 text-foreground hover:text-primary transition-colors"
+        class="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
         aria-label="Toggle menu"
       >
         <Menu id="menu-icon" class="h-6 w-6" />
@@ -121,7 +121,7 @@ const isActive = (linkPath: string) => {
     {/* Mobile Menu */}
     <div
       id="mobile-menu"
-      class="xl:hidden hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-md border-t border-primary/20 px-6 py-6 shadow-lg h-[calc(100vh-5rem)] overflow-y-auto"
+      class="lg:hidden hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-md border-t border-primary/20 px-6 py-6 shadow-lg h-[calc(100vh-5rem)] overflow-y-auto"
     >
       <div class="flex flex-col space-y-4">
         {navLinks.map((link) =>

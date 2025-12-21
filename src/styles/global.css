@@ -144,7 +144,7 @@ All colors MUST be HSL.
   }
 
   h1 {
-    @apply text-4xl md:text-6xl font-bold tracking-tight leading-[1.1];
+    @apply text-4xl md:text-6xl font-bold tracking-tight leading-tight;
   }
 
   h2 {
@@ -160,13 +160,22 @@ All colors MUST be HSL.
   }
 
   p {
-    @apply text-base md:text-lg leading-relaxed text-muted-foreground;
+    @apply leading-relaxed text-muted-foreground;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-body-large {
+    @apply text-base md:text-lg;
+  }
+
+  /* Standardized vertical rhythm for sections */
+  .section-padding {
+    @apply py-16 md:py-24;
   }
 
   .glass-panel {
