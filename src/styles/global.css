@@ -2,15 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Aexaware - Enterprise Theme */
-
-    /* Base colors - Clean White & Deep Navy */
+    /* Base Colors - Clean White & Deep Navy */
     --background: 0 0% 100%;
     --foreground: 222 47% 11%;
 
@@ -20,11 +14,10 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* Electric Blue */
+    /* Brand Colors - Electric Blue & Slate */
     --primary: 221 83% 53%;
     --primary-foreground: 210 40% 98%;
 
-    /* Slate Grey */
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222 47% 11%;
 
@@ -34,39 +27,33 @@ All colors MUST be HSL.
     --accent: 210 40% 96.1%;
     --accent-foreground: 222 47% 11%;
 
-    /* Semantic colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    /* Semantic & Functional Colors */
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
 
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
 
-    /* Additional semantic colors */
     --surface: 0 0% 98%;
     --surface-hover: 0 0% 96%;
     --overlay: 222 47% 11%;
-    --info: 199 89% 48%;
-    --info-foreground: 0 0% 100%;
     --rating: 45 93% 47%;
 
-    /* UI Elements */
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
-
     --radius: 0.5rem;
-
-    /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-
   }
 
   .dark {
-    /* Dark mode - Deep Navy & Electric Blue */
+    /* Dark Mode - Deep Navy & Electric Blue */
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
@@ -88,19 +75,21 @@ All colors MUST be HSL.
     --accent: 217 32% 17%;
     --accent-foreground: 210 40% 98%;
 
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
     --border: 217 32% 17%;
     --input: 217 32% 17%;
     --ring: 224 76% 48%;
 
-    /* Additional semantic colors - dark */
+    /* Semantic & Functional - Dark */
     --surface: 222 47% 15%;
     --surface-hover: 222 47% 18%;
     --overlay: 210 40% 98%;
-    --info: 199 89% 60%;
-    --info-foreground: 222 47% 11%;
     --rating: 45 93% 58%;
 
-
+    --info: 199 89% 60%;
+    --info-foreground: 222 47% 11%;
   }
 }
 
@@ -109,58 +98,52 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  /* Enhanced focus states for keyboard accessibility */
-  :focus-visible {
-    @apply outline-2 outline-offset-2 outline-primary;
-  }
-
-  /* Focus on dark backgrounds */
-  .bg-primary :focus-visible,
-  .bg-foreground :focus-visible,
-  [class*="bg-slate-9"] :focus-visible {
-    @apply outline-white;
-  }
-
   html {
     @apply scroll-smooth;
-    scroll-padding-top: 100px;
-    /* Offset for fixed navbar */
+    scroll-padding-top: 5rem;
   }
 
   body {
-    @apply bg-background text-foreground antialiased font-sans;
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  /* Typography scale - Human & Conversational */
+  /* Typography System 
+     - Headings: Plus Jakarta Sans (via font-heading)
+     - Body: Inter (via font-sans)
+  */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    scroll-margin-top: 100px;
-    /* Ensure headings don't hide behind navbar */
+    @apply font-heading tracking-tight text-foreground;
   }
 
   h1 {
-    @apply text-4xl md:text-6xl font-bold tracking-tight leading-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2];
+    @apply text-3xl md:text-4xl font-semibold leading-tight;
   }
 
   h3 {
-    @apply text-xl md:text-2xl font-medium leading-snug;
+    @apply text-2xl md:text-3xl font-semibold;
   }
 
   h4 {
-    @apply text-lg font-medium;
+    @apply text-xl md:text-2xl font-medium;
   }
 
   p {
-    @apply leading-relaxed text-muted-foreground;
+    @apply leading-relaxed text-muted-foreground font-sans;
+  }
+
+  /* Accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
   }
 }
 
@@ -169,105 +152,38 @@ All colors MUST be HSL.
     text-wrap: balance;
   }
 
-  .text-body-large {
-    @apply text-base md:text-lg;
+  .text-pretty {
+    text-wrap: pretty;
   }
 
-  /* Standardized vertical rhythm for sections */
+  /* Layout Generators */
   .section-padding {
     @apply py-16 md:py-24;
   }
 
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Glassmorphism */
   .glass-panel {
-    @apply bg-white/50 backdrop-blur-md border border-white/20 shadow-sm;
+    @apply bg-white/50 dark:bg-black/50 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm;
   }
 
-  .dark .glass-panel {
-    @apply bg-black/50 border-white/10;
+  /* Animations */
+  .animate-accordion-down {
+    animation: accordion-down 0.2s ease-out;
   }
 
-  /* Screen reader only - for skip links */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+  .animate-accordion-up {
+    animation: accordion-up 0.2s ease-out;
   }
 
-  .focus\:not-sr-only:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
-  }
-}
-
-@layer utilities {
-  @keyframes beam {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(100%);
-    }
+  .animate-fade-up {
+    animation: fade-up 0.5s ease-out;
   }
 
-  @keyframes beam-vertical {
-    0% {
-      transform: translateY(-100%);
-    }
-
-    100% {
-      transform: translateY(100%);
-    }
-  }
-
-  .animate-beam {
-    animation: beam 3s linear infinite;
-  }
-
-  .animate-beam-vertical {
-    animation: beam-vertical 3s linear infinite;
-  }
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-
-    to {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-marquee {
-    animation: marquee 40s linear infinite;
-  }
-
-  .pause-on-hover:hover .animate-marquee {
-    animation-play-state: paused;
-  }
-}
-
-/* Reduced Motion Support (WCAG 2.3.3) */
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out;
   }
 }

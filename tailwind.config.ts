@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 import animate from "tailwindcss-animate";
 import typography from "@tailwindcss/typography";
 
@@ -51,14 +52,6 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        success: {
-          DEFAULT: "hsl(var(--success))",
-          foreground: "hsl(var(--success-foreground))",
-        },
-        warning: {
-          DEFAULT: "hsl(var(--warning))",
-          foreground: "hsl(var(--warning-foreground))",
-        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -67,10 +60,18 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-
+        // Custom semantic colors
         surface: {
           DEFAULT: "hsl(var(--surface))",
           hover: "hsl(var(--surface-hover))",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
         },
         info: {
           DEFAULT: "hsl(var(--info))",
@@ -84,50 +85,50 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      // MDX/Prose Configuration
+      typography: ({ theme }: { theme: any }) => ({
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": theme("colors.foreground"),
+            "--tw-prose-headings": theme("colors.foreground"),
+            "--tw-prose-links": theme("colors.primary.DEFAULT"),
+            "--tw-prose-bold": theme("colors.foreground"),
+            "--tw-prose-code": theme("colors.foreground"),
+            maxWidth: "65ch",
+            fontFamily: theme("fontFamily.sans"),
+            "h1, h2, h3, h4, h5, h6": {
+              fontFamily: theme("fontFamily.heading"),
+              fontWeight: "700",
+            },
+            // Remove backticks from inline code
+            "code::before": { content: '""' },
+            "code::after": { content: '""' },
+            code: {
+              fontWeight: "600",
+              backgroundColor: theme("colors.muted.DEFAULT"),
+              padding: "0.2em 0.4em",
+              borderRadius: "0.25rem",
+            },
+          },
+        },
+      }),
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
         "fade-up": {
-          from: {
-            opacity: "0",
-            transform: "translateY(20px)",
-          },
-          to: {
-            opacity: "1",
-            transform: "translateY(0)",
-          },
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
         },
-        "fade-in": {
-          from: {
-            opacity: "0",
-          },
-          to: {
-            opacity: "1",
-          },
-        },
+        "fade-in": { from: { opacity: "0" }, to: { opacity: "1" } },
         "scale-in": {
-          from: {
-            opacity: "0",
-            transform: "scale(0.95)",
-          },
-          to: {
-            opacity: "1",
-            transform: "scale(1)",
-          },
+          from: { opacity: "0", transform: "scale(0.95)" },
+          to: { opacity: "1", transform: "scale(1)" },
         },
       },
       animation: {
