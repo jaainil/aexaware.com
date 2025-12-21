@@ -2,39 +2,11 @@
 import { buttonVariants } from "@/components/ui/button-variants";
 import { Briefcase, ArrowRight } from "lucide-astro";
 import { cn } from "@/lib/utils";
-import { GridPattern } from "@/components/ui/interactive-grid-pattern";
 import TrustedBy from "@/components/astro/TrustedBy.astro";
 import Typewriter from "astro-typewriter";
 ---
 
-<section class="relative overflow-hidden bg-background min-h-screen flex items-center justify-center pt-20">
-  <GridPattern
-    client:idle
-    width={50}
-    height={50}
-    x={-1}
-    y={-1}
-    strokeDasharray="4 2"
-    className={cn(
-      "absolute inset-0 z-0 opacity-70 text-primary/30 [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]",
-      "stroke-primary/20 fill-primary/10"
-    )}
-    squares={[
-      [4, 4],
-      [5, 1],
-      [8, 2],
-      [5, 3],
-      [5, 5],
-      [10, 10],
-      [12, 15],
-      [15, 10],
-      [10, 15],
-      [15, 10],
-      [10, 15],
-      [15, 10]
-    ]}
-  />
-
+<section class="relative overflow-hidden bg-background min-h-[100svh] flex items-center justify-center pt-20">
   <div class="container relative z-10 px-6 mx-auto text-center">
     <div class="max-w-4xl mx-auto space-y-6 md:space-y-8 text-center flex flex-col items-center">
       
@@ -43,11 +15,12 @@ import Typewriter from "astro-typewriter";
       <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight text-foreground">
         <span class="font-serif italic font-medium block">We Build</span>
         {/* FIX 2: Changed min-h to 90px (fixed pixels) to strictly reserve space for 2 lines */}
-        <span class="font-sans font-bold text-primary inline-block min-h-[90px] sm:min-h-[1.2em] align-top">
+<span class="font-sans font-bold text-primary inline-flex items-center min-h-[90px] sm:min-h-[1.2em] whitespace-normal sm:whitespace-nowrap">
           <Typewriter 
             messages={["Jamstack Apps","UI/UX Designs","Mobile Applications","Web Applications","E-Commerce Stores","Scalable AI Systems","Cloud Solutions"]} 
             writeSpeed={100}
             deleteSpeed={50}
+            
             waitWritten={2000}
           />
         </span>
