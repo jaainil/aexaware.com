@@ -1,63 +1,15 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import { Image } from 'astro:assets';
 import PortfolioFAQ from "@/components/PortfolioFAQ.astro";
 import { ArrowRight, ExternalLink } from "lucide-astro";
 
-const projects = [
-  {
-    title: "J K Fertilizers",
-    year: "2025",
-    category: "Web Development",
-    description:
-      "A comprehensive digital presence for a leading fertilizer manufacturer, featuring product catalogs and dealer locators.",
-    tags: ["React", "Tailwind CSS", "Node.js"],
-    image:
-      "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "SV Engineering",
-    year: "2025",
-    category: "Corporate Website",
-    description:
-      "Modern corporate website showcasing engineering solutions, project portfolios, and technical capabilities.",
-    tags: ["Next.js", "TypeScript", "Framer Motion"],
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "Bharat Krushi Bio Fertilizer",
-    year: "2025",
-    category: "E-Commerce",
-    description:
-      "Full-featured e-commerce platform for bio-fertilizers with secure payment integration and inventory management.",
-    tags: ["Shopify", "Custom Theme", "Liquid"],
-    image:
-      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "Qreius",
-    year: "2025",
-    category: "SaaS Platform",
-    description:
-      "A robust software ecosystem built from the ground up, handling complex data workflows and user management.",
-    tags: ["React", "Python", "AWS"],
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "Algogist",
-    year: "2025",
-    category: "Tech Blog",
-    description:
-      "A high-performance technical blog and resource hub for developers and algorithm enthusiasts.",
-    tags: ["Gatsby", "GraphQL", "MDX"],
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-  },
-];
+const projects = (await getCollection('portfolio')).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 
 const faqs = [
   {
@@ -124,13 +76,14 @@ const faqs = [
     <div class="container mx-auto px-6 lg:px-8">
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
-          <div
+          <a
+            href={`/portfolio/${project.slug}`}
             class="group relative flex flex-col overflow-hidden rounded-3xl bg-background border border-border/50 transition-all hover:shadow-xl hover:-translate-y-1"
           >
             <div class="aspect-[4/3] overflow-hidden bg-muted">
               <Image
-                src={project.image}
-                alt={project.title}
+                src={project.data.image}
+                alt={project.data.title}
                 width={800}
                 height={600}
                 class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -139,20 +92,20 @@ const faqs = [
             <div class="flex flex-1 flex-col p-6">
               <div class="mb-4 flex items-center justify-between">
                 <span class="text-xs font-semibold uppercase tracking-wider text-primary">
-                  {project.category}
+                  {project.data.category}
                 </span>
                 <span class="text-sm text-muted-foreground">
-                  {project.year}
+                  {project.data.year}
                 </span>
               </div>
               <h3 class="mb-2 text-2xl font-medium text-foreground">
-                {project.title}
+                {project.data.title}
               </h3>
               <p class="mb-6 text-muted-foreground leading-relaxed line-clamp-3">
-                {project.description}
+                {project.data.description}
               </p>
               <div class="mt-auto flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
+                {project.data.technologies.map((tag) => (
                   <span
                     class="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
                   >
@@ -161,7 +114,7 @@ const faqs = [
                 ))}
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
