@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import { generateBreadcrumbSchema } from '@/lib/schema';
 import { ArrowRight } from "lucide-astro";
+import TechMarquee from '@/components/TechMarquee';
 
 interface ServiceItem {
   id: string;
@@ -189,27 +190,10 @@ const serviceSchema = JSON.stringify({
     {/* Marquee Container */}
     <div class="relative flex w-full overflow-hidden py-4">
       {/* Gradient Masks */}
-      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-foreground to-transparent z-10" aria-hidden="true" />
-      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-foreground to-transparent z-10" aria-hidden="true" />
+      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-foreground to-transparent z-10 pointer-events-none" aria-hidden="true" />
+      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-foreground to-transparent z-10 pointer-events-none" aria-hidden="true" />
 
-      <div class="flex animate-marquee whitespace-nowrap gap-16 min-w-full items-center">
-        {techStack.map((tech) => (
-          <span
-            class="text-4xl md:text-6xl font-bold text-white/10 hover:text-white/30 transition-colors cursor-default"
-          >
-            {tech}
-          </span>
-        ))}
-        {/* Duplicate for seamless loop - hidden from screen readers */}
-        {techStack.map((tech) => (
-          <span
-            class="text-4xl md:text-6xl font-bold text-white/10 hover:text-white/30 transition-colors cursor-default"
-            aria-hidden="true"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
+       <TechMarquee items={techStack} client:visible />
     </div>
   </section>
 
