@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import { ArrowLeft, Calendar, User, Clock } from 'lucide-astro';
+import { Calendar, User, Clock } from 'lucide-astro';
 import { Image } from 'astro:assets';
 import BlogEngagement from '@/components/BlogEngagement.astro';
 import Comments from '@/components/Comments.astro';
@@ -85,12 +85,12 @@ const primaryCategory = post.data.category;
 <Layout 
   title={post.data.title} 
   description={post.data.description}
-  image={post.data.image?.src}
+  image={post.data.image?.src ?? "/og-image.png"}
   type="article"
   publishedTime={post.data.date.toISOString()}
   modifiedTime={post.data.date.toISOString()}
   author={post.data.author}
-  tags={post.data.tags}
+  tags={post.data.tags ?? []}
 >
   <!-- Article JSON-LD -->
   <script type="application/ld+json" set:html={articleSchema} slot="head" />
@@ -161,7 +161,7 @@ const primaryCategory = post.data.category;
                   class="w-full h-full object-cover"
                   width={1200}
                   height={675}
-                  priority
+                  loading="eager"
                 />
               </div>
             )}
@@ -191,7 +191,7 @@ const primaryCategory = post.data.category;
             </div>
           </div>
           
-          <ReadNext currentSlug={post.slug} tags={post.data.tags} />
+          <ReadNext currentSlug={post.slug} tags={post.data.tags ?? []} />
           <Comments />
         </div>
 

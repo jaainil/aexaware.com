@@ -3,6 +3,15 @@ import Layout from '@/layouts/Layout.astro';
 import { generateBreadcrumbSchema } from '@/lib/schema';
 import { ArrowRight } from "lucide-astro";
 
+interface ServiceItem {
+  id: string;
+  icon: (_props: { className?: string }) => unknown;
+  title: string;
+  desc: string;
+  gradient: string;
+  iconColor: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -12,7 +21,7 @@ interface Props {
   heroBadge: string;
   servicesTitle: string;
   servicesDescription: string;
-  services: any[];
+  services: ServiceItem[];
   techStack: string[];
   ctaTitle?: string;
   ctaDescription?: string;
@@ -35,7 +44,6 @@ const {
 
 // Generate breadcrumb schema
 const siteUrl = Astro.site || 'https://aexaware.com';
-const currentPath = Astro.url.pathname;
 const breadcrumbSchema = generateBreadcrumbSchema({
   itemListElement: [
     {
@@ -80,11 +88,6 @@ const serviceSchema = JSON.stringify({
   <!-- Service and Breadcrumb JSON-LD -->
   <script type="application/ld+json" set:html={serviceSchema} slot="head" />
   <script type="application/ld+json" set:html={breadcrumbSchema} slot="head" />
-  
-  <!-- Skip to content link for accessibility -->
-  <a href="#services" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg">
-    Skip to main content
-  </a>
   
   {/* Hero Section */}
   <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">

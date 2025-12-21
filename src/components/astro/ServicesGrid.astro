@@ -1,5 +1,5 @@
 ---
-import { buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button-variants";
 import { ArrowUpRight, Code, Smartphone, Cloud, Brain } from "lucide-astro";
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
@@ -39,7 +39,10 @@ const services = [
   }
 ];
 
-const [webService, mobileService, cloudService, aiService] = services;
+const webService = services[0]!;
+const mobileService = services[1]!;
+const cloudService = services[2]!;
+const aiService = services[3]!;
 ---
 
 <section class="py-24 bg-secondary/20">

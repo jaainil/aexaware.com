@@ -109,12 +109,12 @@ import { cn } from "@/lib/utils";
 
 
 <script>
-  const form = document.getElementById('contact-form');
-  const submitBtn = document.getElementById('submit-btn');
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
   const formContainer = document.getElementById('form-container');
   const successMessage = document.getElementById('success-message');
   const resetBtn = document.getElementById('reset-btn');
-  const originalBtnText = submitBtn?.innerText;
+  const originalBtnText = submitBtn?.innerText ?? 'Send Message';
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -142,8 +142,6 @@ import { cn } from "@/lib/utils";
 
       if (response.ok) {
         form.reset();
-        form.reset();
-
         
         formContainer?.classList.add('hidden');
         successMessage?.classList.remove('hidden');
@@ -154,7 +152,7 @@ import { cn } from "@/lib/utils";
         try {
             const errorJson = JSON.parse(errorText);
             if (errorJson.message) errorMessage = errorJson.message;
-        } catch (e) {
+        } catch {
             // ignore JSON parse error
         }
         throw new Error(errorMessage);

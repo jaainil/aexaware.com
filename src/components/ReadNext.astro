@@ -28,7 +28,8 @@ const scoredPosts = allPosts
   .sort((a, b) => b.score - a.score); // Sort by score descending
 
 // Take top 1, fallback to just the most recent one if no tags match
-const nextPost = scoredPosts.length > 0 ? scoredPosts[0].post : (allPosts.filter(p => p.slug !== currentSlug)[0]);
+const fallbackPost = allPosts.find(p => p.slug !== currentSlug);
+const nextPost = scoredPosts[0]?.post ?? fallbackPost;
 ---
 
 {nextPost && (

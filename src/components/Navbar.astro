@@ -3,11 +3,6 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
 
-interface Props {
-  currentPath?: string;
-}
-
-const { currentPath = "" } = Astro.props;
 const pathname = new URL(Astro.request.url).pathname;
 
 const navLinks = [

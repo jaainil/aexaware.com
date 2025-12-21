@@ -1,11 +1,6 @@
 ---
-import { Button } from "@/components/ui/button";
 import { buttonVariants } from "@/components/ui/button-variants";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Check, ChevronRight, ChevronLeft, Smartphone, Globe, Bot, Code, DollarSign, Calendar, Send, Sparkles } from "lucide-astro";
+import { ChevronLeft, Smartphone, Globe, Bot, Code, DollarSign, Calendar, Send, Sparkles } from "lucide-astro";
 import { cn } from "@/lib/utils";
 
 const projectTypes = [
@@ -210,7 +205,16 @@ const timelines = [
     // State
     let currentStep = 0;
     const steps = ['type', 'budget', 'timeline', 'details', 'success'];
-    const data = {
+    const data: {
+        type: string;
+        budget: string;
+        timeline: string;
+        name: string;
+        email: string;
+        company: string;
+        description: string;
+        summary?: string;
+    } = {
         type: '',
         budget: '',
         timeline: '',
@@ -221,7 +225,7 @@ const timelines = [
     };
 
     // DOM Elements
-    const progressBar = document.getElementById('progress-bar');
+    const progressBar = document.getElementById('progress-bar') as HTMLElement | null;
     const stepIndicators = document.querySelectorAll('.step-indicator');
     const stepContents = document.querySelectorAll('.step-content');
     const stepTitle = document.getElementById('step-title');
@@ -232,11 +236,12 @@ const timelines = [
     const summaryType = document.getElementById('summary-type');
     const summaryBudget = document.getElementById('summary-budget');
     const summaryTimeline = document.getElementById('summary-timeline');
-    const form = document.getElementById('project-form');
-    const submitBtn = document.getElementById('submit-btn');
+    const form = document.getElementById('project-form') as HTMLFormElement | null;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
 
     // Content Data
-    const stepInfo = {
+    type StepName = 'type' | 'budget' | 'timeline' | 'details' | 'success';
+    const stepInfo: Record<StepName, { title: string; desc: string }> = {
         type: { title: "What are you building?", desc: "Select the category that best fits your project." },
         budget: { title: "What's your estimated budget?", desc: "This helps us recommend the right tech stack." },
         timeline: { title: "When do you need this?", desc: "We'll allocate resources accordingly." },
@@ -246,8 +251,8 @@ const timelines = [
 
     // Functions
     function updateUI() {
-        const stepName = steps[currentStep];
-        
+        const stepName = steps[currentStep] as StepName | undefined;
+        if (!stepName) return;
         // Update Progress Bar
         if (progressBar) {
             progressBar.style.width = `${(currentStep / 3) * 100}%`;
@@ -369,11 +374,7 @@ const timelines = [
         data.email = formData.get('email') as string;
         data.company = formData.get('company') as string;
         data.description = formData.get('description') as string;
-        // @ts-ignore
-
-
         // Add summary
-        // @ts-ignore
         data.summary = `Looking for a ${data.type} with a budget of ${data.budget}, needed ${data.timeline}.`;
 
         // Loading state
@@ -398,10 +399,6 @@ const timelines = [
             if (response.ok) {
                 currentStep = 4; // Success step
                 updateUI();
-                 // Reset Turnstile widget
-                if (window.turnstile && window.calculatorTurnstileId) {
-                 //   window.turnstile.reset(window.calculatorTurnstileId);
-                }
             } else {
                 const errorText = await response.text();
                 console.error('Webhook error response:', errorText);

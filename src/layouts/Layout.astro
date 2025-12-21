@@ -106,12 +106,14 @@ const websiteSchema = generateWebSiteSchema({
           locale: "en_US",
           description: description,
         },
-        article: type === 'article' ? {
-          publishedTime: publishedTime,
-          modifiedTime: modifiedTime,
-          authors: author ? [author] : undefined,
-          tags: tags,
-        } : undefined,
+        ...(type === 'article' && {
+          article: {
+            ...(publishedTime && { publishedTime }),
+            ...(modifiedTime && { modifiedTime }),
+            ...(author && { authors: [author] }),
+            ...(tags && { tags }),
+          },
+        }),
       }}
       twitter={{
         card: "summary_large_image",
@@ -156,7 +158,7 @@ const websiteSchema = generateWebSiteSchema({
     >
       Skip to main content
     </a>
-    <Navbar currentPath={currentPath} />
+    <Navbar />
     <main id="main-content">
       <slot />
     </main>
