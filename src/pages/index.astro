@@ -10,6 +10,8 @@ import ProcessSteps from '@/components/astro/ProcessSteps.astro';
 import Testimonials from '@/components/Testimonials.astro';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
+
+// NOTE: 'TrustedBy' is removed here because it is now integrated inside the fixed Hero.astro component.
 ---
 
 <Layout 
@@ -29,9 +31,10 @@ import { cn } from '@/lib/utils';
   <section class="py-24 lg:py-32">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="relative overflow-hidden rounded-[2.5rem] bg-secondary/50 px-6 py-24 text-center sm:px-16">
-        {/* Decorative blobs */}
-        <div class="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-white blur-3xl opacity-60" />
-        <div class="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-accent/20 blur-3xl opacity-60" />
+        
+        {/* Decorative blobs - Added 'pointer-events-none' to prevent touch interference */}
+        <div class="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-white blur-3xl opacity-60" />
+        <div class="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-accent/20 blur-3xl opacity-60" />
 
         <div class="relative z-10 mx-auto max-w-2xl">
           <h2 class="font-serif text-4xl font-medium text-foreground md:text-5xl">
@@ -43,7 +46,7 @@ import { cn } from '@/lib/utils';
           <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a 
               href="/contact" 
-              class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-8 text-lg")}
+              class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-8 text-lg transition-transform hover:scale-105")}
             >
               Get Free Consultation
             </a>

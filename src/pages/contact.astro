@@ -14,9 +14,9 @@ import {
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/company/aexaware" },
-  { icon: Instagram, href: "https://instagram.com/aexaware" }, // Assuming this based on pattern
+  { icon: Instagram, href: "https://instagram.com/aexaware" },
   { icon: Twitter, href: "https://twitter.com/aexaware" },
-  { icon: Facebook, href: "https://facebook.com/aexaware" }, // Assuming this based on pattern
+  { icon: Facebook, href: "https://facebook.com/aexaware" },
 ];
 ---
 
@@ -24,9 +24,14 @@ const socialLinks = [
   title="Contact Aexaware Infotech – Let’s Build Together" 
   description="Get in touch with Aexaware Infotech for custom web, mobile & AI solutions."
 >
-  <section class="pt-32 pb-16 lg:pt-48 lg:pb-24">
+  {/* Layout Fix:
+      1. Added 'min-h-[100svh]' to make it fill the screen on desktop.
+      2. Added 'flex flex-col justify-center' to vertically center it.
+      3. Added 'py-32' to ensure it doesn't get cut off on mobile.
+  */}
+  <section class="relative w-full min-h-[100svh] flex flex-col justify-center pt-32 pb-16 lg:py-48 overflow-hidden">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid gap-16 lg:grid-cols-2 lg:gap-24">
+      <div class="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
         {/* Left Column: Copy & Info */}
         <div>
           <span class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">

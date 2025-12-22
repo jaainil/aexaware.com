@@ -2,11 +2,8 @@
 import '@/styles/global.css';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
-import { Toaster as Sonner } from '@/components/ui/sonner';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schema';
 import { SEO } from "astro-seo";
-
-
 
 // Fonts - Plus Jakarta Sans
 import "@fontsource/plus-jakarta-sans/200.css";
@@ -100,7 +97,7 @@ const websiteSchema = generateWebSiteSchema({
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <SEO
@@ -118,14 +115,12 @@ const websiteSchema = generateWebSiteSchema({
           locale: "en_US",
           description: description,
         },
-        ...(type === 'article' && {
-          article: {
-            ...(publishedTime && { publishedTime }),
-            ...(modifiedTime && { modifiedTime }),
-            ...(author && { authors: [author] }),
-            ...(tags && { tags }),
-          },
-        }),
+        article: type === 'article' ? {
+          publishedTime: publishedTime,
+          modifiedTime: modifiedTime,
+          authors: author ? [author] : undefined,
+          tags: tags,
+        } : undefined,
       }}
       twitter={{
         card: "summary_large_image",
@@ -149,33 +144,28 @@ const websiteSchema = generateWebSiteSchema({
       }}
     />
     
-    <!-- Sitemap & RSS -->
     {import.meta.env.PROD && <link rel="sitemap" href="/sitemap-index.xml" />}
     <link rel="alternate" type="application/rss+xml" title="Aexaware Infotech Blog" href="/rss.xml" />
     
-    <!-- Font loading (Self-hosted) -->
-    <!-- Inter/Jakarta: Variable weights support -->
-    <!-- Playfair: Variable weights support -->
-    <!-- Imports handled in frontmatter (see top of file) -->
-    
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={organizationSchema} />
     <script type="application/ld+json" set:html={websiteSchema} />
     <slot name="head" />
   </head>
-  <body>
+ 
+  <body class="min-h-screen bg-background font-sans antialiased flex flex-col overflow-x-hidden">
     <a 
       href="#main-content" 
       class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
     >
       Skip to main content
     </a>
+    
     <Navbar />
-    <main id="main-content">
+    
+    <main id="main-content" class="flex-1 w-full">
       <slot />
     </main>
+    
     <Footer />
-    <Sonner client:idle />
-
   </body>
 </html>

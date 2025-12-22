@@ -5,7 +5,7 @@ import { ArrowRight, Calendar, User } from 'lucide-astro';
 import { Image } from 'astro:assets';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
 // Helper to format date
@@ -22,10 +22,14 @@ const formatDate = (date: Date) => {
   title="Aexaware Tech Blog – Web, Mobile & AI Insights" 
   description="Read Aexaware’s blogs on web development, AI, DevOps and digital innovation."
 >
-  {/* Hero Section */}
-  <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+  {/* Hero Section Fix:
+      1. Changed 'items-center' to 'flex-col justify-center'.
+      2. Added 'py-32 lg:py-48' to ensure vertical spacing on all screen sizes.
+      3. Added 'w-full' for layout stability.
+  */}
+  <section class="relative w-full min-h-[100svh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />
-    <div class="container mx-auto px-6 lg:px-8">
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
           Our Blog
