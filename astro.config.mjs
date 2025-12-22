@@ -21,7 +21,7 @@ export default defineConfig({
         lighthouse(),
         llmsTxtIntegration(),
         umami({ id: "7401816d-713e-4916-960b-d314f2b36d3d" }),
-        writenex(),
+        writenex({ allowProduction: false }),
         readingTime(),
         react(),
         tailwind({

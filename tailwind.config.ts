@@ -104,6 +104,9 @@ export default {
               fontFamily: theme("fontFamily.heading"),
               fontWeight: "700",
             },
+            "ul, ol, li": {
+              fontFamily: theme("fontFamily.sans"),
+            },
             // Remove backticks from inline code
             "code::before": { content: '""' },
             "code::after": { content: '""' },
