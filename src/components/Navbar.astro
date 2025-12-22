@@ -121,7 +121,7 @@ const isActive = (linkPath: string) => {
     {/* Mobile Menu */}
     <div
       id="mobile-menu"
-      class="lg:hidden hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-md border-t border-primary/20 px-6 py-6 shadow-lg h-[calc(100dvh-5rem)] overflow-y-auto"
+      class="lg:hidden hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-md border-t border-primary/20 px-6 py-6 shadow-lg h-[calc(100svh-5rem)] overflow-y-auto"
     >
       <div class="flex flex-col space-y-4">
         {navLinks.map((link) =>
@@ -175,10 +175,10 @@ const isActive = (linkPath: string) => {
   // Scroll Effect
   function handleScroll() {
     if (window.scrollY > 20 || mobileMenu?.classList.contains('block')) {
-      navbar?.classList.add('bg-background/95', 'backdrop-blur-md', 'border-b', 'border-border/50');
+      navbar?.classList.add('bg-background/60', 'backdrop-blur-xl', 'border-b', 'border-border/30');
       navbar?.classList.remove('bg-transparent');
     } else {
-      navbar?.classList.remove('bg-background/95', 'backdrop-blur-md', 'border-b', 'border-border/50');
+      navbar?.classList.remove('bg-background/60', 'backdrop-blur-xl', 'border-b', 'border-border/30');
       navbar?.classList.add('bg-transparent');
     }
   }
