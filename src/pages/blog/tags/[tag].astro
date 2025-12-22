@@ -50,19 +50,17 @@ const formatDate = (date: Date) => {
   title={`Blog Posts Tagged with ${tag} | Aexaware Tech Blog`} 
   description={`Explore our latest articles and insights on ${tag}.`}
 >
-  {/* Hero Section */}
-  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+  {/* Hero Section - Updated to match Main Blog */}
+  <section class="relative w-full min-h-[100svh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />
-    <div class="container mx-auto px-6 lg:px-8">
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
           Tag Archive
         </span>
         <h1 class="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
           Posts tagged with <br/>
-          <span class="italic text-primary">
-            #{tagName}
-          </span>
+          <span class="italic text-muted-foreground">#{tagName}</span>
         </h1>
         <p class="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
           Browse our collection of articles related to {tagName}.
