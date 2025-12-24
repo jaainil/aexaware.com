@@ -56,17 +56,17 @@ const aiService = services[3]!;
         href="/services" 
         class={cn(buttonVariants({ variant: "default" }), "rounded-full px-6 h-12")}
       >
-        View All Services <ArrowUpRight className="ml-2 h-4 w-4" />
+        View All Services <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
       </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[600px]">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr md:h-[600px]">
       <!-- Column 1 -->
       <div class="flex flex-col gap-6 h-full">
         <!-- Top Card (Large) -->
         <div class="relative flex-1 bg-card border border-border rounded-3xl p-8 flex flex-col justify-between group hover:shadow-lg transition-all overflow-hidden">
           <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground mb-4 shrink-0">
-            <webService.icon className="h-6 w-6" />
+            <webService.icon className="h-6 w-6" aria-hidden="true" />
           </div>
           <div>
             <h3 class="text-xl font-bold mb-2 text-foreground">
@@ -79,7 +79,7 @@ const aiService = services[3]!;
               {webService.description}
             </p>
             <div class="inline-flex items-center text-primary text-sm font-medium group-hover:underline">
-              Explore Web Services <ArrowUpRight className="ml-1 h-3 w-3" />
+              Explore Web Services <ArrowUpRight className="ml-1 h-3 w-3" aria-hidden="true" />
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ const aiService = services[3]!;
         <!-- Bottom Card (Small) -->
         <div class="relative h-1/3 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-center group hover:bg-secondary/70 transition-colors overflow-hidden">
            <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center mb-3 text-primary-foreground shrink-0">
-            <mobileService.icon className="h-5 w-5" />
+            <mobileService.icon className="h-5 w-5" aria-hidden="true" />
           </div>
           <h3 class="text-lg font-bold mb-1 text-foreground">
             <a href={mobileService.href} class="focus:outline-none">
@@ -111,7 +111,7 @@ const aiService = services[3]!;
             height={600}
             class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" aria-hidden="true"></div>
           <div class="absolute bottom-6 left-6 right-6">
              <p class="text-white font-medium text-lg leading-tight">Connecting your business to the future of technology.</p>
           </div>
@@ -123,7 +123,7 @@ const aiService = services[3]!;
          <!-- Top Card (Small) -->
          <div class="relative h-1/3 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-center group hover:bg-secondary/70 transition-colors overflow-hidden">
            <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center mb-3 text-primary-foreground shrink-0">
-            <cloudService.icon className="h-5 w-5" />
+            <cloudService.icon className="h-5 w-5" aria-hidden="true" />
           </div>
           <h3 class="text-lg font-bold mb-1 text-foreground">
             <a href={cloudService.href} class="focus:outline-none">
@@ -139,7 +139,7 @@ const aiService = services[3]!;
         <!-- Bottom Card (Large) -->
         <div class="relative flex-1 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-end group hover:bg-secondary/70 transition-colors overflow-hidden">
            <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center mb-4 text-primary-foreground shrink-0">
-            <aiService.icon className="h-6 w-6" />
+            <aiService.icon className="h-6 w-6" aria-hidden="true" />
           </div>
           <h3 class="text-xl font-bold mb-2 text-foreground">
              <a href={aiService.href} class="focus:outline-none">

@@ -170,20 +170,6 @@
     @apply bg-white/50 dark:bg-black/50 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm;
   }
 
-  /* Animations */
-  .animate-accordion-down {
-    animation: accordion-down 0.2s ease-out;
-  }
-
-  .animate-accordion-up {
-    animation: accordion-up 0.2s ease-out;
-  }
-
-  .animate-fade-up {
-    animation: fade-up 0.5s ease-out;
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.4s ease-out;
-  }
+  /* Note: Animation utilities (animate-accordion-down, animate-fade-up, etc.) 
+     are generated automatically by Tailwind from tailwind.config.ts */
 }

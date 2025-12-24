@@ -19,7 +19,7 @@ const technologies = [
 ---
 
 <section class="py-10 border-y border-border/40 bg-background/50 backdrop-blur-sm overflow-hidden">
-  <div class="container mx-auto px-4 mb-6 text-center">
+  <div class="container mx-auto px-6 lg:px-8 mb-6 text-center">
     <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest">Powered by Modern Tech Stack</p>
   </div>
   
@@ -107,5 +107,13 @@ const technologies = [
   .group:hover .animate-marquee,
   .group:hover .animate-marquee2 {
     animation-play-state: paused;
+  }
+
+  /* Respect user's reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-marquee2 {
+      animation: none;
+    }
   }
 </style>

@@ -35,6 +35,8 @@ const isActive = (linkPath: string) => {
 
 <nav
   id="navbar"
+  role="navigation"
+  aria-label="Main navigation"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
 >
   <div class="container mx-auto px-6 lg:px-8">
@@ -52,7 +54,7 @@ const isActive = (linkPath: string) => {
 
       {/* Desktop Navigation - Centered */}
       <div class="hidden lg:flex items-center justify-center flex-1 px-8">
-        <ul class="flex items-center space-x-1">
+        <ul class="flex items-center space-x-1" role="list">
           {navLinks.map((link) => (
             <li class="relative group">
               {link.dropdown ? (
