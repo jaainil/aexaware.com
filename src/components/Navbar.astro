@@ -133,55 +133,66 @@ const isActive = (linkPath: string) => {
     {/* Mobile Menu Drawer */}
     <div
       id="mobile-menu"
-      class="lg:hidden fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl hidden overflow-y-auto"
+      class="lg:hidden fixed inset-0 z-[100] bg-background/98 backdrop-blur-2xl hidden"
     >
-      <div class="container mx-auto px-6 py-8 flex flex-col min-h-screen">
-          <div class="flex items-center justify-between mb-12">
+      <div class="flex flex-col h-full overflow-y-auto">
+        <div class="px-6 py-6 flex items-center justify-between border-b border-white/5">
              <a href="/" class="block">
                 <img src={Logo.src} alt="Logo" class="h-8 w-auto" />
              </a>
-             <button id="mobile-menu-close" class="p-2 rounded-full bg-secondary/50">
-                 <X class="h-6 w-6" />
+             <button id="mobile-menu-close" class="p-2 -mr-2 rounded-full hover:bg-white/5 transition-colors">
+                 <X class="h-8 w-8 text-foreground" />
              </button>
-          </div>
+        </div>
 
-        <nav class="flex-1 flex flex-col items-center justify-center space-y-6 text-center">
-          {navLinks.map((link) =>
-            link.dropdown ? (
-              <div class="flex flex-col space-y-4 w-full max-w-xs">
-                <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground">{link.name}</span>
-                <div class="flex flex-col space-y-3">
-                  {link.dropdown.map((item) => (
+        <nav class="flex-1 flex flex-col px-6 py-12 space-y-2">
+          {navLinks.map((link, idx) => (
+            <div class={`animate-in slide-in-from-bottom-4 fade-in duration-500 delay-${idx * 100} fill-mode-both`}>
+             {link.dropdown ? (
+              <details class="group">
+                <summary class="list-none flex items-center justify-between text-4xl font-bold text-foreground py-3 cursor-pointer select-none transition-colors hover:text-primary marker:hidden [&::-webkit-details-marker]:hidden">
+                  {link.name}
+                  <ChevronDown class="h-6 w-6 text-muted-foreground transition-transform duration-300 group-open:-rotate-180" />
+                </summary>
+                <div class="pl-4 pt-2 pb-4 space-y-3 border-l-2 border-primary/10 ml-2">
+                  {link.dropdown.slice(0, 6).map((item) => (
                     <a
                       href={item.path}
                       class:list={[
-                        "text-xl font-medium transition-colors hover:text-primary",
-                        isActive(item.path) ? "text-primary" : "text-foreground"
+                        "block text-lg font-medium transition-colors hover:text-primary",
+                        isActive(item.path) ? "text-primary" : "text-muted-foreground"
                       ]}
                     >
                       {item.name}
                     </a>
                   ))}
+                  <a href="/services" class="block text-sm font-bold text-primary uppercase tracking-widest pt-2">View All Services →</a>
                 </div>
-              </div>
+              </details>
             ) : (
               <a
                 href={link.path}
                 class:list={[
-                  "text-3xl font-bold tracking-tight transition-colors hover:text-primary",
+                  "block text-4xl font-bold transition-colors hover:text-primary py-3",
                   isActive(link.path) ? "text-primary" : "text-foreground"
                 ]}
               >
                 {link.name}
               </a>
-            )
-          )}
+            )}
+            </div>
+          ))}
         </nav>
         
-        <div class="mt-12 flex flex-col gap-4 max-w-xs mx-auto w-full">
-            <a href="/contact" class={buttonVariants({ size: 'lg', className: "w-full rounded-full text-lg h-14" })}>
-                Book Free Strategy Call
+        <div class="p-6 mt-auto border-t border-white/5 bg-secondary/5">
+            <a href="/contact" class={buttonVariants({ size: 'lg', className: "w-full rounded-full text-lg h-14 shadow-xl" })}>
+                Start Your Project
             </a>
+             <div class="flex items-center justify-center gap-8 pt-6 pb-2 text-muted-foreground">
+                <a href="#" class="hover:text-primary transition-colors"><span class="sr-only">LinkedIn</span>LinkedIn</a>
+                <a href="#" class="hover:text-primary transition-colors"><span class="sr-only">Twitter</span>Twitter</a>
+                <a href="#" class="hover:text-primary transition-colors"><span class="sr-only">Instagram</span>Instagram</a>
+             </div>
         </div>
       </div>
     </div>
@@ -198,16 +209,16 @@ const isActive = (linkPath: string) => {
   // Scroll Effect
   function handleScroll() {
     if (window.scrollY > 20) {
-      navbar?.classList.remove('py-6');
-      navbar?.classList.add('py-4');
+      navbar?.classList.remove('py-4', 'lg:py-6');
+      navbar?.classList.add('py-2', 'lg:py-4');
       
-      navbarInner?.classList.add('bg-background/70', 'backdrop-blur-xl', 'border-white/10', 'shadow-lg');
+      navbarInner?.classList.add('bg-background/80', 'backdrop-blur-xl', 'border-white/10', 'shadow-lg');
       navbarInner?.classList.remove('border-transparent');
     } else {
-      navbar?.classList.add('py-6');
-      navbar?.classList.remove('py-4');
+      navbar?.classList.add('py-4', 'lg:py-6');
+      navbar?.classList.remove('py-2', 'lg:py-4');
 
-      navbarInner?.classList.remove('bg-background/70', 'backdrop-blur-xl', 'border-white/10', 'shadow-lg');
+      navbarInner?.classList.remove('bg-background/80', 'backdrop-blur-xl', 'border-white/10', 'shadow-lg');
       navbarInner?.classList.add('border-transparent');
     }
   }
