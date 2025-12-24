@@ -12,15 +12,18 @@ const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
 ---
 
 <nav class="toc-container text-sm">
-  <h3 class="font-semibold text-foreground mb-4 uppercase tracking-wider text-xs">Table of Contents</h3>
-  <ul class="space-y-3 border-l border-border pl-4">
+  <h3 class="font-bold text-foreground mb-6 uppercase tracking-widest text-xs">On this page</h3>
+  <ul class="space-y-1 relative">
+    {/* Track Line */}
+    <div class="absolute left-0 top-2 bottom-2 w-0.5 bg-border/40 rounded-full" />
+    
     {toc.map((heading) => (
       <li>
         <a
           href={`#${heading.slug}`}
-          class={`block text-muted-foreground hover:text-primary transition-colors line-clamp-2 ${
-            heading.depth === 3 ? "pl-4" : ""
-          }`}
+          class={`block py-1.5 transition-all duration-300 border-l-2 leading-relaxed hover:text-primary ${
+            heading.depth === 3 ? "pl-8 text-xs" : "pl-6"
+          } text-muted-foreground border-transparent hover:border-primary/30`}
         >
           {heading.text}
         </a>
@@ -51,26 +54,30 @@ const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
     });
 
     // 2. Find the *first* visible link in the TOC and make it active
-    let hasActive = false;
     const links = Array.from(tocLinks);
-    
-    // Clear all active states first
-    links.forEach(link => {
-       link.classList.remove('text-primary', 'font-medium', 'border-l-2', '-ml-[17px]', 'pl-[15px]', 'border-primary');
-    });
+    let activeLink: Element | null = null;
 
-    // Find the first visible one
+    // Find first visible link
     for (const link of links) {
-      if (link.classList.contains('is-visible')) {
-         link.classList.add('text-primary', 'font-medium');
-         hasActive = true;
-         break; // Only highlight the first one
-      }
+        if (link.classList.contains('is-visible')) {
+            activeLink = link;
+            break;
+        }
     }
 
-    // Fallback: If nothing is visible (e.g. at top of page), maybe clear all? 
-    // Or if we scrolled past everything? 
-    // Usually sticking to the last one or first one is fine.
+    // If no link is visible, maybe keep the last one active or check scroll position?
+    // For now, simpler is better.
+
+    // Update classes
+    links.forEach(link => {
+       if (link === activeLink) {
+           link.classList.add('text-primary', 'font-bold', 'border-primary');
+           link.classList.remove('text-muted-foreground', 'border-transparent');
+       } else {
+           link.classList.remove('text-primary', 'font-bold', 'border-primary');
+           link.classList.add('text-muted-foreground', 'border-transparent');
+       }
+    });
   };
 
   const observer = new IntersectionObserver(observerCallback, {

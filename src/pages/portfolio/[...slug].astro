@@ -4,7 +4,7 @@ import Layout from '@/layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
-import { ArrowLeft, ExternalLink, Calendar, Clock, Layers } from 'lucide-astro';
+import { ArrowLeft, ExternalLink, Calendar, Clock, Layers, Sparkles } from 'lucide-astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('portfolio');
@@ -19,125 +19,147 @@ const { Content } = await post.render();
 ---
 
 <Layout title={`${post.data.title} | Case Study`} description={post.data.description}>
+  
+  {/* Modern Grid Background - Fixed to stay behind content */}
+  <div class="fixed inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
+
   <div class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />
     
     <div class="container mx-auto px-6 lg:px-8">
       {/* Back Link */}
       <a 
         href="/portfolio" 
-        class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-12"
+        class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-16 group"
       >
-        <ArrowLeft class="size-4" />
+        <div class="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all">
+           <ArrowLeft class="size-4" />
+        </div>
         Back to Portfolio
       </a>
 
-      {/* Header */}
-      <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
-        <div>
+      {/* Header Section */}
+      <div class="grid lg:grid-cols-12 gap-12 items-start mb-20">
+        <div class="lg:col-span-8">
            {post.data.client && (
-            <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              {post.data.client}
-            </span>
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-6">
+              <Sparkles className="w-3 h-3 text-primary" />
+              <span class="text-xs font-bold text-primary tracking-widest uppercase">Client: {post.data.client}</span>
+            </div>
           )}
-          <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl font-medium leading-tight text-foreground mb-6">
+          
+          <h1 class="font-bold text-4xl sm:text-6xl lg:text-7xl tracking-tighter leading-[0.9] text-foreground mb-8">
             {post.data.title}
           </h1>
-          <p class="text-xl text-muted-foreground leading-relaxed">
+          
+          <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl border-l-4 border-primary pl-6">
             {post.data.description}
           </p>
         </div>
-        
-        {/* Project Meta */}
-        <div class="bg-secondary/30 rounded-3xl p-6 md:p-8 border border-border/50">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div>
-              <div class="flex items-center gap-2 text-muted-foreground mb-2">
-                <Layers class="size-4" />
-                <span class="text-sm font-medium">Category</span>
-              </div>
-              <p class="font-medium text-foreground">{post.data.category}</p>
-            </div>
-            
-            <div>
-              <div class="flex items-center gap-2 text-muted-foreground mb-2">
-                <Calendar class="size-4" />
-                <span class="text-sm font-medium">Year</span>
-              </div>
-              <p class="font-medium text-foreground">{post.data.year}</p>
-            </div>
-
-            <div>
-              <div class="flex items-center gap-2 text-muted-foreground mb-2">
-                <Clock class="size-4" />
-                <span class="text-sm font-medium">Duration</span>
-              </div>
-               <p class="font-medium text-foreground">{post.data.duration ?? "Ongoing"}</p>
-            </div>
-
-            {post.data.website && (
-              <div>
-                <span class="text-sm font-medium text-muted-foreground block mb-2">Live Site</span>
-                <a 
-                  href={post.data.website} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-1 text-primary hover:underline font-medium"
-                >
-                  Visit Website
-                  <ExternalLink class="size-3" />
-                </a>
-              </div>
-            )}
-          </div>
-
-          <div class="mt-8 pt-8 border-t border-border/50">
-           <span class="text-sm font-medium text-muted-foreground block mb-4">Technologies</span>
-            <div class="flex flex-wrap gap-2">
-              {post.data.technologies.map(tech => (
-                <span class="bg-background border border-border px-3 py-1 rounded-full text-sm text-muted-foreground">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
-
-       {/* Hero Image */}
-       <div class="aspect-video relative rounded-3xl overflow-hidden shadow-2xl border border-border/50 mb-20">
+ 
+       {/* Cinematic Hero Image */}
+       <div class="aspect-video relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-border/50 mb-24 group">
           <Image
             src={post.data.image}
             alt={post.data.imageAlt || post.data.title}
             width={1600}
             height={900}
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             loading="eager"
           />
+          <div class="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent opacity-40 pointer-events-none" />
        </div>
 
-      {/* Content */}
-      <div class="max-w-3xl mx-auto">
-        <div class="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-medium prose-p:text-muted-foreground prose-p:leading-relaxed prose-li:text-muted-foreground">
-          <Content />
+      <div class="grid lg:grid-cols-12 gap-12">
+        {/* Sticky Metadata Sidebar */}
+        <div class="lg:col-span-4 order-2 lg:order-1">
+          <div class="sticky top-32 bg-card/30 backdrop-blur-md rounded-[2rem] p-8 border border-border/50 shadow-sm">
+            <h3 class="font-serif text-2xl font-medium mb-8">Project Details</h3>
+            
+            <div class="space-y-8">
+              <div>
+                <div class="flex items-center gap-2 text-muted-foreground mb-2">
+                  <Layers class="size-4" />
+                  <span class="text-xs font-bold uppercase tracking-wider">Category</span>
+                </div>
+                <p class="font-medium text-foreground text-lg">{post.data.category}</p>
+              </div>
+              
+              <div>
+                <div class="flex items-center gap-2 text-muted-foreground mb-2">
+                  <Calendar class="size-4" />
+                  <span class="text-xs font-bold uppercase tracking-wider">Year</span>
+                </div>
+                <p class="font-medium text-foreground text-lg">{post.data.year}</p>
+              </div>
+  
+              <div>
+                <div class="flex items-center gap-2 text-muted-foreground mb-2">
+                  <Clock class="size-4" />
+                  <span class="text-xs font-bold uppercase tracking-wider">Duration</span>
+                </div>
+                 <p class="font-medium text-foreground text-lg">{post.data.duration ?? "Ongoing"}</p>
+              </div>
+  
+              {post.data.website && (
+                <div class="pt-4 border-t border-border/50">
+                  <span class="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-3">Live Site</span>
+                  <a 
+                    href={post.data.website} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class={cn(buttonVariants({ variant: "outline", size: "sm" }), "w-full justify-between group")}
+                  >
+                    Visit Website
+                    <ExternalLink class="size-3 text-muted-foreground group-hover:text-foreground transition-colors" />
+                  </a>
+                </div>
+              )}
+            </div>
+  
+            <div class="mt-10 pt-8 border-t border-border/50">
+             <span class="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-4">Tech Stack</span>
+              <div class="flex flex-wrap gap-2">
+                {post.data.technologies.map(tech => (
+                  <span class="bg-muted px-3 py-1.5 rounded-md text-xs font-medium text-foreground border border-border/50">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div class="lg:col-span-8 order-1 lg:order-2">
+          <div class="prose prose-lg md:prose-xl prose-slate dark:prose-invert max-w-none 
+            prose-headings:font-serif prose-headings:font-bold prose-headings:tracking-tight 
+            prose-p:text-muted-foreground prose-p:leading-relaxed 
+            prose-li:text-muted-foreground
+            prose-img:rounded-[2rem] prose-img:border prose-img:border-border/50 prose-img:shadow-lg
+            prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+            <Content />
+          </div>
         </div>
       </div>
       
        {/* CTA */}
-      <div class="max-w-3xl mx-auto mt-24 pt-12 border-t border-border">
-        <div class="bg-primary text-primary-foreground rounded-3xl p-8 md:p-12 text-center">
-            <h2 class="font-serif text-3xl md:text-4xl font-medium mb-4">Inspired by this project?</h2>
-            <p class="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
+      <section class="mt-32 relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+        
+        <div class="relative z-10 max-w-3xl mx-auto">
+            <h2 class="font-serif text-3xl md:text-5xl font-medium mb-6 text-background">Inspired by this project?</h2>
+            <p class="text-xl text-background/80 mb-10 leading-relaxed">
                 Let's discuss how we can build something similar for your business.
             </p>
             <a 
             href="/contact" 
-            class={cn(buttonVariants({ variant: "secondary", size: "lg" }), "rounded-full px-8")}
+            class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-10 text-lg font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
             >
             Start Your Project
             </a>
         </div>
-      </div>
+      </section>
 
     </div>
   </div>

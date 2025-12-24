@@ -1,5 +1,5 @@
 ---
-import { ArrowLeft, ArrowRight } from "lucide-astro";
+import { ArrowLeft, ArrowRight, Quote } from "lucide-astro";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 
@@ -27,33 +27,56 @@ const testimonials = [
 ];
 ---
 
-<section class="bg-primary text-primary-foreground py-24 lg:py-32" aria-labelledby="testimonials-heading">
+<section class="bg-foreground text-background py-32 overflow-hidden" aria-labelledby="testimonials-heading">
   <div class="container mx-auto px-6 lg:px-8">
-    <div class="mb-16 text-center">
-      <span class="text-sm font-semibold uppercase tracking-widest text-primary-foreground/60">
-        Testimonials
-      </span>
-      <h2 id="testimonials-heading" class="mt-4 font-serif text-4xl font-medium md:text-5xl">
-        Trusted by innovative businesses.
-      </h2>
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      <div>
+         <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4 block">
+          Client Success Stories
+        </span>
+        <h2 id="testimonials-heading" class="font-serif text-4xl md:text-6xl text-background">
+          Trusted by <span class="italic text-muted-foreground">Visionaries.</span>
+        </h2>
+      </div>
+      
+      <!-- Navigation Buttons -->
+      <div class="flex gap-4">
+        <button
+          id="prev-btn"
+          class="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300"
+          aria-label="Previous slide"
+        >
+          <ArrowLeft className="h-5 w-5" />
+        </button>
+        <button
+          id="next-btn"
+          class="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300"
+          aria-label="Next slide"
+        >
+          <ArrowRight className="h-5 w-5" />
+        </button>
+      </div>
     </div>
 
-    <div class="mx-auto max-w-5xl relative group">
+    <div class="mx-auto relative group">
       <!-- Carousel Container -->
       <div 
-        class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-4 px-1 scrollbar-hide scroll-smooth"
+        class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-12 scrollbar-hide scroll-smooth"
         id="testimonials-carousel"
         role="region"
         aria-label="Customer testimonials carousel"
       >
         {testimonials.map((testimonial, i) => (
-          <div class="snap-start shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
-            <div class="flex h-full flex-col justify-between rounded-3xl bg-primary-foreground/5 p-8 backdrop-blur-sm">
+          <div class="snap-start shrink-0 w-full md:w-[600px]">
+            <div class="h-full flex flex-col justify-between rounded-[2rem] bg-white/5 border border-white/10 p-10 hover:border-primary/30 transition-colors duration-500 relative">
+              
+              <Quote className="absolute top-10 right-10 w-12 h-12 text-primary/10" />
+
               <div>
-                <div class="mb-6 flex gap-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
+                <div class="flex gap-1 mb-8">
+                   {[1, 2, 3, 4, 5].map((star) => (
                     <svg
-                      class="size-4 fill-rating text-rating"
+                      class="size-5 fill-primary text-primary"
                       viewBox="0 0 20 20"
                       aria-hidden="true"
                     >
@@ -61,16 +84,20 @@ const testimonials = [
                     </svg>
                   ))}
                 </div>
-                <blockquote class="text-lg leading-relaxed text-primary-foreground/90">
+                <blockquote class="text-2xl md:text-3xl font-serif leading-tight text-background/90">
                   "{testimonial.quote}"
                 </blockquote>
               </div>
-              <div class="mt-8 border-t border-primary-foreground/10 pt-6">
+              
+              <div class="mt-10 pt-8 border-t border-white/10 flex items-center gap-4">
+                <div class="h-12 w-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-lg font-bold text-white">
+                  {testimonial.author.charAt(0)}
+                </div>
                 <cite class="not-italic">
-                  <span class="block font-semibold">
+                  <span class="block text-lg font-semibold text-background">
                     {testimonial.author}
                   </span>
-                  <span class="block text-sm text-primary-foreground/60">
+                  <span class="block text-sm text-muted-foreground">
                     {testimonial.role}
                   </span>
                 </cite>
@@ -78,24 +105,6 @@ const testimonials = [
             </div>
           </div>
         ))}
-      </div>
-
-      <!-- Navigation Buttons -->
-      <div class="mt-12 flex justify-center gap-4">
-        <button
-          id="prev-btn"
-          class={cn(buttonVariants({ variant: "outline", size: "icon" }), "rounded-full bg-transparent border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground")}
-          aria-label="Previous slide"
-        >
-          <ArrowLeft className="h-4 w-4" />
-        </button>
-        <button
-          id="next-btn"
-          class={cn(buttonVariants({ variant: "outline", size: "icon" }), "rounded-full bg-transparent border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground")}
-          aria-label="Next slide"
-        >
-          <ArrowRight className="h-4 w-4" />
-        </button>
       </div>
     </div>
   </div>
@@ -118,9 +127,9 @@ const testimonials = [
 
   if (carousel && prevBtn && nextBtn) {
     const scrollAmount = () => {
-      // Scroll by one item width
+      // Scroll by one item width + gap
       const item = carousel.firstElementChild as HTMLElement;
-      return item ? item.offsetWidth : 300;
+      return item ? item.offsetWidth + 32 : 600; 
     };
 
     prevBtn.addEventListener('click', () => {

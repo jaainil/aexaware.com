@@ -1,88 +1,76 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
-import { ArrowUpRight } from "lucide-astro";
+import { ArrowRight, Globe2, Trophy, Rocket } from "lucide-astro";
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
 ---
 
-<section class="py-24 overflow-hidden bg-background">
+<section class="py-32 bg-background relative overflow-hidden">
   <div class="container mx-auto px-6 lg:px-8">
-    <div class="grid lg:grid-cols-3 gap-8 items-center">
-      <!-- Left Image - Tilted -->
-      <div class="hidden lg:block relative h-[400px]" aria-hidden="true">
-        <div class="absolute inset-0 bg-secondary/20 rounded-3xl transform -rotate-6"></div>
-        <Image
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop"
-          alt="Modern Architecture"
-          width={400}
-          height={400}
-          class="absolute inset-0 w-full h-full object-cover rounded-3xl transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-lg"
-        />
-      </div>
+    <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      
+      {/* Left Content */}
+      <div class="flex-1 text-left">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <Globe2 className="w-3 h-3" />
+          Global Reach
+        </div>
+        
+        <h2 class="text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-6 leading-[0.9]">
+          Driving Digital <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Dominance.</span>
+        </h2>
+        
+        <p class="text-xl text-muted-foreground mb-10 leading-relaxed max-w-xl">
+          We empower ambitious startups and enterprises with innovative web, mobile, and AI solutions that streamline operations and deliver measurable results.
+        </p>
 
-      <!-- Center Content -->
-      <div class="text-center relative z-10">
-        <div class="inline-flex items-center justify-center p-1 mb-8 relative">
-          <div class="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-20 blur-xl rounded-full animate-pulse" aria-hidden="true"></div>
-          <div class="relative bg-background rounded-full p-4 border border-border shadow-sm">
-            <div class="w-24 h-24 rounded-full border-2 border-dashed border-primary/30 flex items-center justify-center animate-[spin_10s_linear_infinite]">
-              <svg viewBox="0 0 100 100" class="w-full h-full">
-                <defs>
-                  <path
-                    id="curve-top"
-                    d="M 15,50 A 35,35 0 1,1 85,50"
-                    fill="transparent"
-                  />
-                  <path
-                    id="curve-bottom"
-                    d="M 85,50 A 35,35 0 0,1 15,50"
-                    fill="transparent"
-                  />
-                </defs>
-                <text class="text-[10px] uppercase tracking-widest fill-primary font-bold">
-                  <textPath href="#curve-top" startOffset="50%" text-anchor="middle">
-                    Made in India
-                  </textPath>
-                </text>
-                <text class="text-[10px] uppercase tracking-widest fill-primary font-bold" dy="5">
-                  <textPath href="#curve-bottom" startOffset="50%" text-anchor="middle">
-                    Serving Globally
-                  </textPath>
-                </text>
-              </svg>
-            </div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <ArrowUpRight className="w-8 h-8 text-primary" aria-hidden="true" />
-            </div>
-          </div>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a 
+            href="/contact" 
+            class={cn(buttonVariants({ size: "lg" }), "rounded-full px-8 h-14 text-lg shadow-lg hover:shadow-primary/20 transition-all")}
+          >
+            Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
+          </a>
+          <a
+             href="/about"
+             class={cn(buttonVariants({ variant: "ghost", size: "lg" }), "rounded-full px-8 h-14 text-lg hover:bg-secondary/30")}
+          >
+            About Us
+          </a>
         </div>
 
-        <h2 class="text-4xl md:text-6xl font-serif font-bold leading-tight mb-6 text-foreground">
-          Driving Digital <br />
-          <span class="italic text-muted-foreground">Growth</span>
-        </h2>
-        <p class="text-muted-foreground mb-8 max-w-md mx-auto">
-          We empower startups and enterprises with innovative web, mobile, and AI
-          solutions that streamline operations and deliver measurable results.
-        </p>
-        <a 
-          href="/contact" 
-          class={cn(buttonVariants({ size: "lg" }), "rounded-full px-8 h-14 text-lg")}
-        >
-          Discover Our Solutions <ArrowUpRight className="ml-2 h-5 w-5" aria-hidden="true" />
-        </a>
+        <div class="mt-12 grid grid-cols-2 gap-8 border-t border-border/50 pt-8">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <Trophy className="w-5 h-5 text-primary" />
+              <span class="font-bold text-2xl text-foreground">50+</span>
+            </div>
+            <p class="text-sm text-muted-foreground">Successful Projects</p>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <Rocket className="w-5 h-5 text-primary" />
+              <span class="font-bold text-2xl text-foreground">100%</span>
+            </div>
+            <p class="text-sm text-muted-foreground">On-Time Delivery</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Right Image - Tilted -->
-      <div class="hidden lg:block relative h-[400px]" aria-hidden="true">
-        <div class="absolute inset-0 bg-secondary/20 rounded-3xl transform rotate-6"></div>
-        <Image
-          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop"
-          alt="Team Working"
-          width={400}
-          height={400}
-          class="absolute inset-0 w-full h-full object-cover rounded-3xl transform -rotate-3 hover:rotate-0 transition-transform duration-500 shadow-lg"
-        />
+      {/* Right Visual */}
+      <div class="flex-1 w-full max-w-[600px] lg:max-w-none">
+        <div class="relative rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl bg-secondary/10">
+          <Image
+            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop"
+            alt="Team Working"
+            width={600}
+            height={700}
+            class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700"
+          />
+          
+          <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
+        </div>
       </div>
     </div>
   </div>

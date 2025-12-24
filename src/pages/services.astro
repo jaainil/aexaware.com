@@ -12,8 +12,7 @@ import {
   ShieldCheck,
   Zap,
   Layers,
-  Cpu,
-  Server,
+  Sparkles,
 } from "lucide-astro";
 
 const services = [
@@ -131,32 +130,31 @@ const serviceSchema = JSON.stringify({
     <script type="application/ld+json" set:html={serviceSchema} />
   </Fragment>
 
-  {/* Hero Section Fix:
-      1. Removed 'items-center' to prevent vertical squishing on mobile.
-      2. Added 'flex-col justify-center' to maintain vertical centering visually on large screens.
-      3. Added 'py-32 lg:py-48' to ensure top/bottom spacing exists regardless of screen height.
-  */}
-  <section class="relative w-full min-h-[100svh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />
+  {/* Hero Section */}
+  <section class="relative w-full min-h-[80vh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden border-b border-border/40">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent -z-10" />
+    
     <div class="container mx-auto px-6 lg:px-8 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-        <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
-          Our Expertise
-        </span>
-        <h1 class="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
+         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span class="text-sm font-semibold text-primary tracking-wide uppercase">Our Expertise</span>
+        </div>
+
+        <h1 class="font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8 text-balance">
           Digital solutions that <br/>
-          <span class="italic text-muted-foreground">drive growth</span>.
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent italic">drive growth.</span>
         </h1>
-        <p class="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
           We provide custom web development, mobile-app development, UI/UX
-          design, cloud and DevOps support, custom software/ERP/CRM/SaaS
-          solutions, e-commerce development and AI/ML integration.
+          design, cloud and DevOps support, and AI/ML integration.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" aria-label="Start a project with us" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+          <a href="/contact" aria-label="Start a project with us" class="inline-flex items-center justify-center h-14 rounded-full px-8 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 hover:shadow-primary/40">
             Start a Project <ArrowRight className="ml-2 h-5 w-5" />
           </a>
-          <a href="#capabilities" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
+          <a href="#capabilities" class="inline-flex items-center justify-center h-14 rounded-full px-8 text-lg font-medium border border-border bg-background/50 hover:bg-secondary/50 backdrop-blur-sm transition-all hover:border-primary/20">
             Explore Services
           </a>
         </div>
@@ -165,13 +163,13 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* Core Capabilities */}
-  <section id="capabilities" class="py-24 bg-secondary/30">
+  <section id="capabilities" class="py-32 bg-background relative">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="font-serif text-4xl font-medium text-foreground mb-6">
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <h2 class="font-serif text-4xl md:text-5xl font-medium text-foreground mb-6">
           Core Capabilities
         </h2>
-        <p class="text-lg text-muted-foreground">
+        <p class="text-xl text-muted-foreground leading-relaxed">
           We offer a comprehensive suite of digital services designed to
           meet the evolving needs of modern businesses.
         </p>
@@ -181,20 +179,25 @@ const serviceSchema = JSON.stringify({
         {services.map((service) => (
           <a
             href={service.path}
-            class="group relative bg-background p-8 rounded-3xl border border-border/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block"
+            class="group relative bg-secondary/5 p-8 rounded-[2rem] border border-white/10 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden"
           >
-            <div class="mb-6 inline-flex p-4 rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+             <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+            <div class="mb-8 inline-flex p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
               <service.icon className="h-8 w-8" aria-hidden="true" />
             </div>
-            <h3 class="text-2xl font-medium text-foreground mb-3">
+            
+            <h3 class="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
               {service.title}
             </h3>
-            <p class="text-muted-foreground leading-relaxed mb-6">
+            
+            <p class="text-muted-foreground leading-relaxed mb-8 text-base">
               {service.desc}
             </p>
-            <div class="flex flex-wrap gap-2">
+            
+            <div class="flex flex-wrap gap-2 mt-auto">
               {service.tags.map((tag) => (
-                <span class="px-3 py-1 rounded-full bg-secondary text-xs font-medium text-muted-foreground">
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
                   {tag}
                 </span>
               ))}
@@ -206,55 +209,57 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* Our Solutions - Feature Highlight */}
-  <section class="py-24">
+  <section class="py-32 border-t border-border/40 bg-secondary/5">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div class="space-y-8">
-          <h2 class="font-serif text-4xl font-medium text-foreground">
-            Solutions tailored to your industry.
+        <div class="space-y-10">
+          <h2 class="font-serif text-4xl md:text-5xl font-medium text-foreground leading-tight">
+            Solutions tailored to <br /> <span class="text-primary italic">your industry.</span>
           </h2>
-          <p class="text-lg text-muted-foreground leading-relaxed">
+          <p class="text-xl text-muted-foreground leading-relaxed">
             We understand that every industry has unique challenges. Our
             team has deep expertise in delivering specialized solutions for
             various sectors.
           </p>
 
-          <div class="space-y-6">
+          <div class="space-y-8">
             {solutions.map((item) => (
-              <div class="flex gap-4">
-                <div class="mt-1 p-1 rounded-full bg-primary/10 text-primary h-fit">
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <div class="flex gap-6 group">
+                <div class="mt-1 p-2 rounded-full bg-primary/10 text-primary h-fit group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 class="font-medium text-foreground text-lg">
+                  <h3 class="font-bold text-foreground text-xl mb-2 group-hover:text-primary transition-colors">
                     {item.title}
                   </h3>
-                  <p class="text-muted-foreground">{item.desc}</p>
+                  <p class="text-muted-foreground text-lg">{item.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
+        
         <div class="relative">
-          <div class="aspect-[4/3] rounded-3xl overflow-hidden bg-secondary/50 border border-border">
-            {/* Abstract representation of industry solutions */}
+          <div class="aspect-square lg:aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-background border border-border/50 shadow-2xl relative">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
-            <div class="grid grid-cols-2 gap-4 p-8 h-full">
-              <div class="bg-background rounded-2xl shadow-sm p-6 flex flex-col justify-center items-center text-center">
-                <Globe className="h-10 w-10 text-primary mb-4" aria-hidden="true" />
-                <span class="font-medium">Global Reach</span>
+            
+            {/* Abstract Visual Grid */}
+            <div class="grid grid-cols-2 gap-6 p-12 h-full content-center">
+              <div class="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
+                <Globe className="h-12 w-12 text-primary mb-4" aria-hidden="true" />
+                <span class="font-bold text-lg">Global Reach</span>
               </div>
-              <div class="bg-background rounded-2xl shadow-sm p-6 flex flex-col justify-center items-center text-center mt-8">
-                <ShieldCheck className="h-10 w-10 text-primary mb-4" aria-hidden="true" />
-                <span class="font-medium">Secure</span>
+              <div class="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg mt-12">
+                <ShieldCheck className="h-12 w-12 text-primary mb-4" aria-hidden="true" />
+                <span class="font-bold text-lg">Secure</span>
               </div>
-              <div class="bg-background rounded-2xl shadow-sm p-6 flex flex-col justify-center items-center text-center -mt-8">
-                <Zap className="h-10 w-10 text-primary mb-4" aria-hidden="true" />
-                <span class="font-medium">Fast</span>
+              <div class="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg -mt-12">
+                <Zap className="h-12 w-12 text-primary mb-4" aria-hidden="true" />
+                <span class="font-bold text-lg">Fast</span>
               </div>
-              <div class="bg-background rounded-2xl shadow-sm p-6 flex flex-col justify-center items-center text-center">
-                <Layers className="h-10 w-10 text-primary mb-4" aria-hidden="true" />
-                <span class="font-medium">Scalable</span>
+              <div class="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
+                <Layers className="h-12 w-12 text-primary mb-4" aria-hidden="true" />
+                <span class="font-bold text-lg">Scalable</span>
               </div>
             </div>
           </div>
@@ -264,16 +269,16 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* Technology Stack */}
-  <section class="py-24 bg-primary text-primary-foreground">
+  <section class="py-32 bg-background border-t border-border/40">
     <div class="container mx-auto px-6 lg:px-8 text-center">
-      <h2 class="font-serif text-4xl font-medium mb-16">
+      <h2 class="font-serif text-3xl md:text-4xl font-medium mb-16 text-foreground">
         Powered by modern technology.
       </h2>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 opacity-80">
+      <div class="flex flex-wrap justify-center gap-4 md:gap-6 opacity-90 max-w-5xl mx-auto">
         {techStack.map((tech) => (
-          <div class="flex items-center justify-center p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 hover:bg-white/20 transition-colors">
-            <span class="font-medium">{tech}</span>
+          <div class="flex items-center justify-center px-6 py-3 rounded-full bg-secondary/30 border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 cursor-default">
+            <span class="font-medium text-lg text-muted-foreground hover:text-foreground">{tech}</span>
           </div>
         ))}
       </div>
@@ -281,21 +286,24 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* CTA Section */}
-  <section class="py-24 bg-secondary/30">
-    <div class="container mx-auto px-6 lg:px-8 text-center">
-      <div class="max-w-3xl mx-auto bg-background rounded-3xl p-12 shadow-2xl border border-border/50">
-        <h2 class="font-serif text-4xl md:text-5xl font-medium text-foreground mb-6">
-          Ready to scale your business?
+  <section class="py-32 relative overflow-hidden">
+     <div class="absolute inset-0 bg-primary z-0" />
+     <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-20" />
+
+    <div class="container mx-auto px-6 lg:px-8 text-center relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-serif text-5xl md:text-7xl font-bold text-primary-foreground mb-8 tracking-tight">
+          Ready to scale?
         </h2>
-        <p class="text-xl text-muted-foreground mb-10 leading-relaxed">
+        <p class="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed max-w-2xl mx-auto">
           Let's build something amazing together. Contact us today for a
           free consultation and quote.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" aria-label="Get a free quote" class="inline-flex items-center justify-center rounded-full px-10 h-14 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-md">
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/contact" aria-label="Get a free quote" class="inline-flex items-center justify-center rounded-full px-10 h-16 text-lg font-bold bg-background text-foreground hover:bg-white/90 transition-colors shadow-2xl hover:scale-105 duration-300">
             Get a Free Quote
           </a>
-          <a href="tel:+918140734392" class="inline-flex items-center justify-center rounded-full px-10 h-14 text-lg font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
+          <a href="tel:+918140734392" class="inline-flex items-center justify-center rounded-full px-10 h-16 text-lg font-bold border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground hover:bg-primary-foreground/10 transition-colors backdrop-blur-sm">
             Call Us Now
           </a>
         </div>

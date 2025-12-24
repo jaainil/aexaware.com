@@ -1,14 +1,23 @@
 ---
+import { MessageSquare } from "lucide-astro";
 ---
 
-<div class="w-full mt-16 pt-8 border-t border-border" id="comments-container">
-  <!-- Giscus will be injected here -->
+<div class="w-full mt-16 pt-0" id="comments-container">
+  <div class="rounded-[2rem] bg-secondary/20 p-8 border border-border/40 backdrop-blur-sm">
+      <div class="flex items-center gap-2 mb-8 border-b border-border/40 pb-4">
+          <MessageSquare class="size-5 text-primary" />
+          <h3 class="text-xl font-medium font-serif">Join the Conversation</h3>
+      </div>
+      <!-- Giscus will be injected here -->
+  </div>
 </div>
 
 <script>
   const container = document.getElementById('comments-container');
+  // Target the inner div for injection
+  const injectionTarget = container?.querySelector('div');
   
-  if (container) {
+  if (injectionTarget) {
     const script = document.createElement('script');
     script.src = 'https://giscus.app/client.js';
     script.setAttribute('data-repo', 'jaainil/aexaware.com');
@@ -20,12 +29,12 @@
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '1');
     script.setAttribute('data-input-position', 'top');
-    script.setAttribute('data-theme', 'light');
+    script.setAttribute('data-theme', 'transparent_dark'); /* Changed styling for better blend */
     script.setAttribute('data-lang', 'en');
     script.setAttribute('data-loading', 'lazy');
     script.crossOrigin = 'anonymous';
     script.async = true;
 
-    container.appendChild(script);
+    injectionTarget.appendChild(script);
   }
 </script>

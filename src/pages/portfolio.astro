@@ -5,7 +5,7 @@ import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import { Image } from 'astro:assets';
 import PortfolioFAQ from "@/components/PortfolioFAQ.astro";
-import { ArrowRight, ExternalLink } from "lucide-astro";
+import { ArrowRight, ExternalLink, Sparkles } from "lucide-astro";
 
 const projects = (await getCollection('portfolio')).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -42,6 +42,11 @@ const faqs = [
     answer:
       "We follow industry best practices for security, including regular audits and secure coding standards. Our architectures are designed to be scalable from day one, utilizing cloud-native solutions that grow with your business.",
   },
+  {
+    question: "Do you provide maintenance and support after launch?",
+    answer:
+      "Yes, we offer comprehensive post-launch support and maintenance packages. We ensure your application stays updated, secure, and performs optimally as your user base grows."
+  },
 ];
 ---
 
@@ -49,22 +54,26 @@ const faqs = [
   title="Portfolio – Aexaware Projects" 
   description="Explore Aexaware’s recent projects in web, mobile and AI development for global clients."
 >
-  {/* Hero Section Fix:
-      1. Changed 'items-center' to 'flex-col justify-center'.
-      2. Added 'py-32 lg:py-48' so content has room to expand on small screens without overlapping.
-  */}
-  <section class="relative w-full min-h-[100svh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />
+  
+  {/* Hero Section */}
+  <section class="relative w-full min-h-[60vh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden border-b border-border/40">
+    {/* Modern Grid Background */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
     <div class="container mx-auto px-6 lg:px-8 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-        <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
-          Our Work
-        </span>
-        <h1 class="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
-          Selected projects & <br/>
-          <span class="italic text-muted-foreground">success stories</span>.
+         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span class="text-sm font-semibold text-primary tracking-wide uppercase">Our Portfolio</span>
+        </div>
+
+        <h1 class="font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8">
+          Selected projects & <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+            Success Stories.
+          </span>
         </h1>
-        <p class="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
           Explore how we've helped businesses across various industries
           transform their digital presence and achieve their goals.
         </p>
@@ -73,46 +82,60 @@ const faqs = [
   </section>
 
   {/* Projects Grid */}
-  <section class="py-24 bg-secondary/30">
+  <section class="py-32 bg-background relative">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-12 md:grid-cols-2">
         {projects.map((project) => (
           <a
             href={`/portfolio/${project.slug}`}
-            class="group relative flex flex-col overflow-hidden rounded-3xl bg-background border border-border/50 transition-all hover:shadow-xl hover:-translate-y-1"
+            class="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-card border border-border/50 transition-all duration-500 hover:shadow-2xl hover:border-primary/50 hover:-translate-y-2"
           >
-            <div class="aspect-[4/3] overflow-hidden bg-muted">
+            <div class="aspect-[16/10] overflow-hidden bg-muted relative">
               <Image
                 src={project.data.image}
                 alt={project.data.title}
                 width={800}
                 height={600}
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
             </div>
-            <div class="flex flex-1 flex-col p-6">
-              <div class="mb-4 flex items-center justify-between">
-                <span class="text-xs font-semibold uppercase tracking-wider text-primary">
+            
+            <div class="flex flex-1 flex-col p-10 relative">
+               <div class="flex items-center justify-between mb-6">
+                <span class="text-xs font-bold uppercase tracking-widest text-primary border border-primary/20 px-3 py-1 rounded-full bg-primary/5">
                   {project.data.category}
                 </span>
-                <span class="text-sm text-muted-foreground">
+                <span class="text-sm font-medium text-muted-foreground tabular-nums">
                   {project.data.year}
                 </span>
               </div>
-              <h3 class="mb-2 text-2xl font-medium text-foreground">
+
+              <h3 class="mb-4 text-3xl font-bold text-foreground group-hover:text-primary transition-colors">
                 {project.data.title}
               </h3>
-              <p class="mb-6 text-muted-foreground leading-relaxed line-clamp-3">
+              
+              <p class="mb-8 text-muted-foreground leading-relaxed line-clamp-2 text-lg">
                 {project.data.description}
               </p>
-              <div class="mt-auto flex flex-wrap gap-2">
-                {project.data.technologies.map((tag) => (
-                  <span
-                    class="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground"
-                  >
-                    {tag}
-                  </span>
-                ))}
+
+              <div class="mt-auto flex items-center justify-between pt-8 border-t border-border/40">
+                <div class="flex flex-wrap gap-2">
+                  {project.data.technologies.slice(0, 3).map((tag) => (
+                    <span class="text-xs font-medium text-muted-foreground">
+                      #{tag}
+                    </span>
+                  ))}
+                  {project.data.technologies.length > 3 && (
+                    <span class="text-xs font-medium text-muted-foreground">
+                      +{project.data.technologies.length - 3} more
+                    </span>
+                  )}
+                </div>
+                
+                <div class="h-10 w-10 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all">
+                   <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
             </div>
           </a>
@@ -122,21 +145,21 @@ const faqs = [
   </section>
 
   {/* FAQ Section */}
-  <section class="py-24 lg:py-32">
+  <section class="py-24 lg:py-32 bg-secondary/5 border-y border-border/40">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid lg:grid-cols-3 gap-12">
+      <div class="grid lg:grid-cols-3 gap-16">
         <div class="lg:col-span-1">
-          <span class="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+          <span class="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
             FAQ
           </span>
-          <h2 class="mt-4 font-serif text-4xl font-medium text-foreground">
-            Frequently Asked Questions
+          <h2 class="font-serif text-4xl font-medium text-foreground mb-6">
+            Common Questions
           </h2>
-          <p class="mt-4 text-lg text-muted-foreground">
+          <p class="text-lg text-muted-foreground mb-8">
             Got questions? We've got answers. If you don't see what you're
             looking for, feel free to reach out.
           </p>
-          <a href="/contact" class={cn(buttonVariants(), "mt-8 rounded-full")}>Contact Support</a>
+          <a href="/contact" class={cn(buttonVariants({ variant: "outline" }), "rounded-full px-8 h-12")}>Contact Support</a>
         </div>
         <div class="lg:col-span-2">
           <PortfolioFAQ faqs={faqs} />
@@ -146,22 +169,34 @@ const faqs = [
   </section>
 
   {/* CTA Section */}
-  <section class="py-24 bg-primary text-primary-foreground">
-    <div class="container mx-auto px-6 lg:px-8 text-center">
-      <h2 class="font-serif text-4xl font-medium md:text-5xl">
-        Let’s Bring It to Life
-      </h2>
-      <p class="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80 leading-relaxed">
-        Ready to start your next project? Book your free expert consultation
-        today!
-      </p>
-      <div class="mt-10">
-        <a 
-          href="/contact" 
-          class={cn(buttonVariants({ variant: "secondary", size: "lg" }), "rounded-full px-8 h-14 text-lg")}
-        >
-          Get Free Consultation
-        </a>
+  <section class="py-24 lg:py-32 bg-background relative overflow-hidden">
+    
+    {/* Background Grid */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+      <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
+        
+        {/* Glow Effects */}
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+
+        <div class="relative z-10 mx-auto max-w-3xl">
+          <h2 class="font-bold text-4xl font-serif text-background md:text-6xl tracking-tight mb-8">
+            Let’s Build Something <br />
+            <span class="text-primary italic">Extraordinary.</span>
+          </h2>
+          <p class="text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed">
+            Ready to transform your digital presence? Book a free consultation and let's map out your success.
+          </p>
+          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a 
+              href="/contact" 
+              class={cn(buttonVariants({ size: "lg" }), "h-16 rounded-full px-10 text-xl font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
+            >
+              Start Project
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

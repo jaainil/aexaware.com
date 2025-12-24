@@ -7,6 +7,9 @@ import {
   Users,
   Server,
   Settings,
+  Code2,
+  Zap,
+  ShieldCheck,
 } from "lucide-astro";
 
 const services = [
@@ -54,18 +57,41 @@ const services = [
     id: "06",
     icon: Settings,
     title: "Website Maintenance",
-    desc: "The care that a website demands on an ongoing basis. Updates, backups, bug fixes, search engine optimization and many others to ensure its safety and reduce the risk of failure.",
+    desc: "The care that a website demands on an ongoing basis. Updates, backups, bug fixes, search engine optimization and many others to ensure its safety and reduce risk of failure.",
     gradient: "from-indigo-500/20 to-violet-500/20",
     iconColor: "text-indigo-600",
   },
 ];
 
 const techStack = [
-  "Bootstrap",
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
   "Tailwind CSS",
-  "AngularJS",
-  "ReactJS",
-  "jQuery",
+  "WordPress",
+  "Drupal",
+  "Joomla",
+  "PostgreSQL",
+  "MongoDB",
+];
+
+const features = [
+  {
+    icon: Zap,
+    title: "Lightning Fast",
+    desc: "Optimized for speed and performance"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure & Reliable",
+    desc: "Enterprise-grade security standards"
+  },
+  {
+    icon: Code2,
+    title: "Scalable Code",
+    desc: "Built to grow with your business"
+  },
 ];
 ---
 
@@ -80,4 +106,6 @@ const techStack = [
   servicesDescription="We offer high-performance, scalable, and secure solutions that are customized for your company, from intricate web apps to unique websites."
   services={services}
   techStack={techStack}
+  ctaTitle="Ready to build your web presence?"
+  ctaDescription="Let's create a stunning website that drives results for your business."
 />

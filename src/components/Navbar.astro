@@ -37,10 +37,13 @@ const isActive = (linkPath: string) => {
   id="navbar"
   role="navigation"
   aria-label="Main navigation"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-6"
 >
   <div class="container mx-auto px-6 lg:px-8">
-    <div class="flex items-center justify-between h-20">
+    <div 
+      class="flex items-center justify-between h-16 rounded-full px-6 transition-all duration-300 border border-transparent"
+      id="navbar-inner"
+    >
       {/* Logo */}
       <a href="/" class="flex items-center space-x-3 group shrink-0" aria-label="Aexaware Infotech Home">
         <img
@@ -48,36 +51,43 @@ const isActive = (linkPath: string) => {
           alt="Aexaware Infotech Logo"
           width="120"
           height="32"
-          class="h-8 w-auto transition group-hover:scale-[1.02]"
+          class="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
         />
       </a>
 
       {/* Desktop Navigation - Centered */}
       <div class="hidden lg:flex items-center justify-center flex-1 px-8">
-        <ul class="flex items-center space-x-1" role="list">
+        <ul class="flex items-center space-x-2" role="list">
           {navLinks.map((link) => (
             <li class="relative group">
               {link.dropdown ? (
-                <div class="dropdown-container">
-                  <a
-                    href={link.path}
-                    class="flex items-center gap-1 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors outline-none focus:text-primary dropdown-trigger"
+                <div class="dropdown-container relative">
+                  <button
+                    class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none hover:bg-white/10 ${
+                         isActive(link.path) ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-foreground"
+                    }`}
                     aria-expanded="false"
                     aria-haspopup="true"
                     aria-label={`${link.name} menu`}
                   >
                     {link.name}
-                    <ChevronDown className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180" />
-                  </a>
-                  <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out min-w-[500px] translate-y-2 group-hover:translate-y-0">
-                    <div class="bg-popover border border-border rounded-md shadow-lg p-4 grid grid-cols-2 gap-3">
+                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-rotate-180" />
+                  </button>
+                  
+                  {/* Dropdown Menu */}
+                  <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out min-w-[600px] perspective-[1000px]">
+                    <div class="bg-background/80 backdrop-blur-2xl border border-white/20 rounded-[2rem] shadow-2xl p-6 grid grid-cols-2 gap-4 origin-top rotate-x-[-10deg] opacity-0 translate-y-4 group-hover:rotate-x-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 relative overflow-hidden">
+                       <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
                       {link.dropdown.map((item) => (
                         <a
                           href={item.path}
                           aria-label={item.name}
-                          class="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                          class="block select-none space-y-1 rounded-xl p-3 leading-none no-underline outline-none transition-all hover:bg-primary/10 hover:text-primary focus:bg-primary/10 group/item"
                         >
-                          <div class="text-sm font-medium leading-none">{item.name}</div>
+                          <div class="text-sm font-bold leading-none flex items-center gap-2">
+                              {item.name}
+                              <ArrowUpRight class="w-3 h-3 opacity-0 -translate-x-2 transition-all duration-300 group-hover/item:opacity-100 group-hover/item:translate-x-0" />
+                          </div>
                         </a>
                       ))}
                     </div>
@@ -87,8 +97,8 @@ const isActive = (linkPath: string) => {
                 <a
                   href={link.path}
                   class:list={[
-                    "px-4 py-2 text-sm font-medium transition-colors hover:text-primary focus-visible:outline-none focus-visible:text-primary focus-visible:underline underline-offset-4",
-                    isActive(link.path) ? "text-foreground font-semibold" : "text-muted-foreground"
+                    "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:bg-white/10",
+                    isActive(link.path) ? "text-foreground font-bold bg-white/10" : "text-muted-foreground hover:text-foreground"
                   ]}
                 >
                   {link.name}
@@ -103,16 +113,16 @@ const isActive = (linkPath: string) => {
       <div class="hidden lg:flex items-center shrink-0">
         <a
           href="/contact"
-          class={buttonVariants({ className: "rounded-full px-6" })}
+          class={buttonVariants({ className: "rounded-full px-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300" })}
         >
-          Book Free Strategy Call <ArrowUpRight className="ml-2 h-4 w-4" />
+          Book Strategy Call <ArrowUpRight className="ml-2 h-4 w-4" />
         </a>
       </div>
 
       {/* Mobile Menu Button */}
       <button
         id="mobile-menu-toggle"
-        class="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
+        class="lg:hidden p-2 text-foreground hover:text-primary transition-colors bg-secondary/50 rounded-full backdrop-blur-sm"
         aria-label="Toggle menu"
       >
         <Menu id="menu-icon" class="h-6 w-6" />
@@ -120,48 +130,59 @@ const isActive = (linkPath: string) => {
       </button>
     </div>
 
-    {/* Mobile Menu */}
+    {/* Mobile Menu Drawer */}
     <div
       id="mobile-menu"
-      class="lg:hidden hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-md border-t border-primary/20 px-6 py-6 shadow-lg h-[calc(100svh-5rem)] overflow-y-auto"
+      class="lg:hidden fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl hidden overflow-y-auto"
     >
-      <div class="flex flex-col space-y-4 pb-20">
-        {navLinks.map((link) =>
-          link.dropdown ? (
-            <div class="flex flex-col space-y-2">
-              <span class="text-base font-medium text-foreground px-2">{link.name}</span>
-              <div class="pl-4 flex flex-col space-y-2 border-l border-primary/20 ml-2">
-                {link.dropdown.map((item) => (
-                  <a
-                    href={item.path}
-                    class:list={[
-                      "text-sm font-medium transition-colors hover:text-primary",
-                      isActive(item.path) ? "text-primary" : "text-muted-foreground"
-                    ]}
-                  >
-                    {item.name}
-                  </a>
-                ))}
+      <div class="container mx-auto px-6 py-8 flex flex-col min-h-screen">
+          <div class="flex items-center justify-between mb-12">
+             <a href="/" class="block">
+                <img src={Logo.src} alt="Logo" class="h-8 w-auto" />
+             </a>
+             <button id="mobile-menu-close" class="p-2 rounded-full bg-secondary/50">
+                 <X class="h-6 w-6" />
+             </button>
+          </div>
+
+        <nav class="flex-1 flex flex-col items-center justify-center space-y-6 text-center">
+          {navLinks.map((link) =>
+            link.dropdown ? (
+              <div class="flex flex-col space-y-4 w-full max-w-xs">
+                <span class="text-xs font-bold uppercase tracking-widest text-muted-foreground">{link.name}</span>
+                <div class="flex flex-col space-y-3">
+                  {link.dropdown.map((item) => (
+                    <a
+                      href={item.path}
+                      class:list={[
+                        "text-xl font-medium transition-colors hover:text-primary",
+                        isActive(item.path) ? "text-primary" : "text-foreground"
+                      ]}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                </div>
               </div>
-            </div>
-          ) : (
-            <a
-              href={link.path}
-              class:list={[
-                "text-base font-medium transition-colors hover:text-primary",
-                isActive(link.path) ? "text-primary" : "text-muted-foreground"
-              ]}
-            >
-              {link.name}
+            ) : (
+              <a
+                href={link.path}
+                class:list={[
+                  "text-3xl font-bold tracking-tight transition-colors hover:text-primary",
+                  isActive(link.path) ? "text-primary" : "text-foreground"
+                ]}
+              >
+                {link.name}
+              </a>
+            )
+          )}
+        </nav>
+        
+        <div class="mt-12 flex flex-col gap-4 max-w-xs mx-auto w-full">
+            <a href="/contact" class={buttonVariants({ size: 'lg', className: "w-full rounded-full text-lg h-14" })}>
+                Book Free Strategy Call
             </a>
-          )
-        )}
-        <a
-          href="/contact"
-          class={buttonVariants({ className: "w-full mt-4" })}
-        >
-          Book Free Strategy Call <ArrowUpRight className="ml-2 h-4 w-4" />
-        </a>
+        </div>
       </div>
     </div>
   </div>
@@ -169,62 +190,43 @@ const isActive = (linkPath: string) => {
 
 <script>
   const navbar = document.getElementById('navbar');
+  const navbarInner = document.getElementById('navbar-inner');
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
   const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
 
   // Scroll Effect
   function handleScroll() {
-    // FIX: Changed bg-background/60 to bg-background/95 to prevent text bleed-through
-    if (window.scrollY > 20 || mobileMenu?.classList.contains('block')) {
-      navbar?.classList.add('bg-background/95', 'backdrop-blur-md', 'border-b', 'border-border/50', 'shadow-sm');
-      navbar?.classList.remove('bg-transparent');
+    if (window.scrollY > 20) {
+      navbar?.classList.remove('py-6');
+      navbar?.classList.add('py-4');
+      
+      navbarInner?.classList.add('bg-background/70', 'backdrop-blur-xl', 'border-white/10', 'shadow-lg');
+      navbarInner?.classList.remove('border-transparent');
     } else {
-      navbar?.classList.remove('bg-background/95', 'backdrop-blur-md', 'border-b', 'border-border/50', 'shadow-sm');
-      navbar?.classList.add('bg-transparent');
+      navbar?.classList.add('py-6');
+      navbar?.classList.remove('py-4');
+
+      navbarInner?.classList.remove('bg-background/70', 'backdrop-blur-xl', 'border-white/10', 'shadow-lg');
+      navbarInner?.classList.add('border-transparent');
     }
   }
 
   window.addEventListener('scroll', handleScroll);
 
-  // Close mobile menu helper
-  function closeMobileMenu() {
-    mobileMenu?.classList.add('hidden');
-    mobileMenu?.classList.remove('block', 'animate-in', 'slide-in-from-top-5');
-    menuIcon?.classList.remove('hidden');
-    closeIcon?.classList.add('hidden');
-    handleScroll();
+  // Mobile Menu Logic
+  function toggleMenu() {
+      const isHidden = mobileMenu?.classList.contains('hidden');
+      if (isHidden) {
+          mobileMenu?.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+      } else {
+          mobileMenu?.classList.add('hidden');
+          document.body.style.overflow = '';
+      }
   }
 
-  // Mobile Menu Toggle
-  mobileMenuToggle?.addEventListener('click', () => {
-    const isOpen = mobileMenu?.classList.contains('hidden');
-    
-    if (isOpen) {
-      mobileMenu?.classList.remove('hidden');
-      mobileMenu?.classList.add('block', 'animate-in', 'slide-in-from-top-5');
-      menuIcon?.classList.add('hidden');
-      closeIcon?.classList.remove('hidden');
-    } else {
-      closeMobileMenu();
-    }
-    handleScroll();
-  });
+  mobileMenuToggle?.addEventListener('click', toggleMenu);
+  mobileMenuClose?.addEventListener('click', toggleMenu);
 
-  // Close mobile menu on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
-      closeMobileMenu();
-      mobileMenuToggle?.focus();
-    }
-  });
-
-  // Close mobile menu on link click
-  const mobileLinks = mobileMenu?.querySelectorAll('a');
-  mobileLinks?.forEach(link => {
-    link.addEventListener('click', () => {
-      closeMobileMenu();
-    });
-  });
 </script>

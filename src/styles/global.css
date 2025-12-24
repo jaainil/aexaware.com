@@ -170,6 +170,6 @@
     @apply bg-white/50 dark:bg-black/50 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-sm;
   }
 
-  /* Note: Animation utilities (animate-accordion-down, animate-fade-up, etc.) 
+  /* Note: Animation utilities (animate-accordion-down, etc.) 
      are generated automatically by Tailwind from tailwind.config.ts */
 }

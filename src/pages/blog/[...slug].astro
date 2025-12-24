@@ -1,13 +1,15 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import { Calendar, User, Clock } from 'lucide-astro';
+import { Calendar, User, Clock, ChevronRight, Share2, Sparkles, Hash } from 'lucide-astro';
 import { Image } from 'astro:assets';
 import BlogEngagement from '@/components/BlogEngagement.astro';
 import Comments from '@/components/Comments.astro';
 import BlogSidebar from '@/components/BlogSidebar.astro';
 import ReadNext from '@/components/ReadNext.astro';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/schema';
+import { cn } from '@/lib/utils';
+import { buttonVariants } from '@/components/ui/button-variants';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -79,7 +81,6 @@ const slugify = (text: string) => {
 
 // Safe tag for breadcrumb
 const primaryCategory = post.data.category;
-
 ---
 
 <Layout 
@@ -96,96 +97,105 @@ const primaryCategory = post.data.category;
   <script type="application/ld+json" set:html={articleSchema} slot="head" />
   <script type="application/ld+json" set:html={breadcrumbSchema} slot="head" />
   
-  <article class="pt-32 pb-24 lg:pt-48 lg:pb-32">
+  {/* Modern Grid Background - Fixed to stay behind content */}
+  <div class="fixed inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
+
+  <article class="pt-32 pb-24 lg:pt-48 lg:pb-32 relative">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="mb-8 text-sm text-muted-foreground">
-        <nav class="flex items-center gap-2 flex-wrap">
-          <a href="/" class="hover:text-primary transition-colors">Home</a>
-          <span class="text-border">/</span>
-          <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
-          {primaryCategory && (
-            <>
-              <span class="text-border">/</span>
-              <a href={`/blog/category/${slugify(primaryCategory)}`} class="text-foreground font-medium hover:text-primary transition-colors cursor-pointer">
-                {primaryCategory}
-              </a>
-            </>
-          )}
-          <span class="text-border">/</span>
-          <span class="text-muted-foreground truncate max-w-[150px] md:max-w-md" title={post.data.title}>
+      
+      {/* Article Header */}
+      <div class="max-w-5xl mx-auto text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
+         
+         {/* Breadcrumbs */}
+         <div class="flex items-center justify-center gap-2 mb-8 text-sm text-muted-foreground">
+             <a href="/" class="hover:text-primary transition-colors">Home</a>
+             <ChevronRight class="size-3 text-muted-foreground/50" />
+             <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+             {primaryCategory && (
+                <>
+                  <ChevronRight class="size-3 text-muted-foreground/50" />
+                  <a href={`/blog/category/${slugify(primaryCategory)}`} class="font-medium text-foreground hover:text-primary transition-colors">
+                    {primaryCategory}
+                  </a>
+                </>
+             )}
+         </div>
+
+         {/* Category Badge */}
+         {primaryCategory && (
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-6">
+                <Sparkles className="w-3 h-3 text-primary" />
+                <span class="text-xs font-bold text-primary tracking-widest uppercase">{primaryCategory}</span>
+            </div>
+         )}
+         
+         <h1 class="font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tighter leading-[0.9] text-foreground mb-8 text-balance">
             {post.data.title}
-          </span>
-        </nav>
+         </h1>
+
+         <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 text-muted-foreground text-sm">
+             <div class="flex items-center gap-2">
+                 <div class="size-8 rounded-full bg-muted flex items-center justify-center border border-border">
+                     <User className="size-4" />
+                 </div>
+                 <span class="font-medium text-foreground">{post.data.author}</span>
+             </div>
+             <div class="flex items-center gap-2">
+                 <Calendar className="size-4" />
+                 {formatDate(post.data.date)}
+             </div>
+             <div class="flex items-center gap-2">
+                 <Clock className="size-4" />
+                 {remarkPluginFrontmatter.minutesRead}
+             </div>
+         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        {/* Main Content Column */}
-        <div class="lg:col-span-8">
-          <div class="mb-10">
-            {/* Category Badge */}
-            <div class="mb-6">
-              {primaryCategory && (
-                <a
-                  href={`/blog/category/${slugify(primaryCategory)}`}
-                  class="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium hover:bg-primary/20 transition-colors"
-                >
-                  {primaryCategory}
-                </a>
-              )}
-            </div>
-            
-            <h1 class="font-serif text-3xl md:text-5xl lg:text-6xl font-medium leading-tight text-foreground mb-8 text-balance">
-              {post.data.title}
-            </h1>
-            <div class="flex flex-wrap items-center gap-y-4 gap-x-6 text-muted-foreground text-sm border-b border-border/40 pb-8">
-              <div class="flex items-center gap-2">
-                <div class="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                  <User className="size-4" />
-                </div>
-                <span class="font-medium text-foreground">{post.data.author}</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <Calendar className="size-4" />
-                {formatDate(post.data.date)}
-              </div>
-              <div class="flex items-center gap-2">
-                <Clock className="size-4" />
-                {remarkPluginFrontmatter.minutesRead}
-              </div>
-            </div>
-            {post.data.image && (
-              <div class="mt-8 aspect-video rounded-3xl overflow-hidden bg-muted shadow-sm">
+      {/* Cinematic Image */}
+      {post.data.image && (
+        <div class="max-w-[1400px] mx-auto mb-20">
+             <div class="aspect-video relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-border/50">
                 <Image
-                  src={post.data.image}
-                  alt={post.data.title}
-                  class="w-full h-full object-cover"
-                  width={1200}
-                  height={675}
-                  loading="eager"
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class="w-full h-full object-cover"
+                    width={1400}
+                    height={800}
+                    loading="eager"
                 />
-              </div>
-            )}
-          </div>
+                 <div class="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+             </div>
+        </div>
+      )}
 
-          <BlogEngagement 
-            url={Astro.url.href} 
-            title={post.data.title} 
-          />
-
-          <div class="prose prose-lg prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-headings:font-medium prose-h1:text-3xl prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-6 prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline prose-img:rounded-3xl prose-img:shadow-lg prose-blockquote:border-l-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-li:marker:text-primary prose-li:font-sans prose-li:text-muted-foreground">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 max-w-[1400px] mx-auto">
+        {/* Main Content Column */}
+        <div class="lg:col-span-8 order-1">
+          <div class="prose prose-lg md:prose-xl prose-slate dark:prose-invert max-w-none 
+              prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
+              prose-h1:text-4xl prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 
+              prose-p:text-muted-foreground prose-p:leading-relaxed 
+              prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline 
+              prose-img:rounded-[2rem] prose-img:shadow-xl prose-img:border prose-img:border-border/50
+              prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic
+              prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+              prose-li:marker:text-primary">
             <Content />
           </div>
 
           {/* Tags Section */}
-          <div class="mt-12 pt-8 border-t border-border/40">
-            <h4 class="text-sm font-medium text-muted-foreground mb-4 uppercase tracking-wider">Tags</h4>
-            <div class="flex flex-wrap gap-2">
+          <div class="mt-16 pt-10 border-t border-border/50">
+             <div class="flex items-center gap-2 mb-6">
+                <Hash class="size-5 text-primary" />
+                <h4 class="text-sm font-bold uppercase tracking-wider text-muted-foreground">Related Topics</h4>
+             </div>
+            <div class="flex flex-wrap gap-3">
               {post.data.tags?.map((tag) => (
                 <a
                   href={`/blog/tags/${slugify(tag)}`}
-                  class="inline-flex items-center px-3 py-1 rounded-full bg-secondary/50 text-secondary-foreground text-xs font-medium hover:bg-secondary/70 transition-colors cursor-pointer"
+                  class="inline-flex items-center px-4 py-2 rounded-xl bg-secondary/50 text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-white transition-all cursor-pointer border border-border/50 hover:border-primary"
                 >
-                  {tag}
+                  #{tag}
                 </a>
               ))}
             </div>
@@ -196,10 +206,33 @@ const primaryCategory = post.data.category;
         </div>
 
         {/* Sidebar Column */}
-        <div class="hidden lg:block lg:col-span-4">
-          <BlogSidebar headings={headings} />
+        <div class="hidden lg:block lg:col-span-4 order-2">
+            <BlogSidebar 
+                headings={headings} 
+                url={Astro.url.href}
+                title={post.data.title}
+            />
         </div>
       </div>
     </div>
   </article>
+
+   {/* CTA */}
+  <section class="mt-32 max-w-5xl mx-auto px-6 lg:px-8 mb-24">
+      <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-20 text-center sm:px-16 shadow-2xl">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+        <div class="relative z-10">
+            <h2 class="font-bold text-3xl md:text-5xl mb-6 text-background tracking-tight">Need expert tech solutions?</h2>
+            <p class="text-lg text-background/80 mb-10 max-w-xl mx-auto">
+                Turn these insights into action. Let's build your next big project together.
+            </p>
+            <a 
+            href="/contact" 
+            class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-10 text-lg font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
+            >
+            Get Expert Help
+            </a>
+        </div>
+      </div>
+  </section>
 </Layout>

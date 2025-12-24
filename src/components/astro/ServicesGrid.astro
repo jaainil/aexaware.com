@@ -1,157 +1,109 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
-import { ArrowUpRight, Code, Smartphone, Cloud, Brain } from "lucide-astro";
+import { ArrowUpRight, Code, Smartphone, Cloud, Brain, ArrowRight } from "lucide-astro";
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
 
 const services = [
   {
     id: "web",
-    title: "Custom Web & Software",
-    description: "Build secure, scalable web platforms designed to support 10k+ concurrent users from day one. Perfect for SaaS, portals, and enterprise apps.",
+    title: "Custom Web Platforms",
+    description: "Architecting secure, scalable web solutions that handle millions of requests.",
     icon: Code,
     href: "/services/web-development",
-    variant: "large"
-  },
-  {
-    id: "mobile",
-    title: "Mobile App Development",
-    description: "Native and hybrid apps built for performance, speed, and 4.5+ star retention on iOS and Android.",
-    icon: Smartphone,
-    href: "/services/mobile-development",
-    variant: "small"
-  },
-  {
-    id: "cloud",
-    title: "Cloud & DevOps",
-    description: "Reduce deploy times by 80% with automated CI/CD pipelines and secure cloud infrastructure that scales.",
-    icon: Cloud,
-    href: "/services/cloud-devops",
-    variant: "small"
+    class: "md:col-span-2 md:row-span-2", // Large square
+    gradient: "from-primary/20 via-primary/5 to-transparent"
   },
   {
     id: "ai",
     title: "AI & ML Integration",
-    description: "Custom AI that automates workflows and increases conversions by up to 40% with intelligent recommendations and predictive analytics.",
+    description: "Intelligent automation and predictive analytics to drive business growth.",
     icon: Brain,
     href: "/services/ai-ml-integration",
-    variant: "large"
+    class: "md:col-span-1 md:row-span-2", // Tall vertical
+    gradient: "from-accent/20 via-accent/5 to-transparent"
+  },
+  {
+    id: "mobile",
+    title: "Mobile Apps",
+    description: "Native & Hybrid apps with superior performance.",
+    icon: Smartphone,
+    href: "/services/mobile-development",
+    class: "md:col-span-1 md:row-span-1",
+    gradient: "from-primary/10 via-transparent to-transparent"
+  },
+  {
+    id: "cloud",
+    title: "Cloud & DevOps",
+    description: "Automated pipelines and secure infrastructure.",
+    icon: Cloud,
+    href: "/services/cloud-devops",
+    class: "md:col-span-2 md:row-span-1", // Wide horizontal
+    gradient: "from-secondary/30 via-transparent to-transparent"
   }
 ];
-
-const webService = services[0]!;
-const mobileService = services[1]!;
-const cloudService = services[2]!;
-const aiService = services[3]!;
 ---
 
-<section class="py-24 bg-secondary/20">
-  <div class="container mx-auto px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
-      <h2 class="text-4xl md:text-5xl font-serif font-bold leading-tight max-w-xl text-foreground">
-        Scalable Solutions <br />
-        for Every Stage
-      </h2>
+<section class="py-32 bg-background relative overflow-hidden">
+  
+  {/* Subtle grid background */}
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+  <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+      <div class="max-w-2xl">
+        <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground mb-4">
+          Services Beyond <br/>
+          <span class="text-muted-foreground">Expectation.</span>
+        </h2>
+        <p class="text-xl text-muted-foreground max-w-lg">
+           We don't just write code. We engineer digital dominance for your brand.
+        </p>
+      </div>
+      
       <a 
         href="/services" 
-        class={cn(buttonVariants({ variant: "default" }), "rounded-full px-6 h-12")}
+        class={cn(buttonVariants({ variant: "ghost" }), "group text-lg font-medium px-0 hover:bg-transparent hover:text-primary")}
       >
-        View All Services <ArrowUpRight className="ml-2 h-4 w-4" aria-hidden="true" />
+        Explore All Services <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
       </a>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr md:h-[600px]">
-      <!-- Column 1 -->
-      <div class="flex flex-col gap-6 h-full">
-        <!-- Top Card (Large) -->
-        <div class="relative flex-1 bg-card border border-border rounded-3xl p-8 flex flex-col justify-between group hover:shadow-lg transition-all overflow-hidden">
-          <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground mb-4 shrink-0">
-            <webService.icon className="h-6 w-6" aria-hidden="true" />
-          </div>
-          <div>
-            <h3 class="text-xl font-bold mb-2 text-foreground">
-              <a href={webService.href} class="focus:outline-none">
-                <span class="absolute inset-0" aria-hidden="true"></span>
-                {webService.title}
-              </a>
-            </h3>
-            <p class="text-muted-foreground text-sm mb-4">
-              {webService.description}
-            </p>
-            <div class="inline-flex items-center text-primary text-sm font-medium group-hover:underline">
-              Explore Web Services <ArrowUpRight className="ml-1 h-3 w-3" aria-hidden="true" />
+    {/* Bento Grid */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
+      {services.map((service) => (
+        <div class={cn(
+          "group relative overflow-hidden rounded-[2rem] border border-border/40 bg-card/50 backdrop-blur-sm p-8 flex flex-col justify-between transition-all duration-300 hover:border-primary/50 hover:shadow-2xl",
+          service.class
+        )}>
+          
+          {/* Hover Gradient */}
+          <div class={cn(
+            "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300",
+            service.gradient
+          )} />
+
+          <div class="relative z-10">
+            <div class="h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center text-foreground mb-6 shadow-sm group-hover:scale-110 transition-transform duration-500">
+              <service.icon className="h-7 w-7" strokeWidth={1.5} />
             </div>
+            
+            <h3 class="text-2xl md:text-3xl font-bold text-foreground mb-3 tracking-tight">
+              {service.title}
+            </h3>
+            <p class="text-muted-foreground leading-relaxed text-base md:text-lg">
+              {service.description}
+            </p>
           </div>
-        </div>
 
-        <!-- Bottom Card (Small) -->
-        <div class="relative h-1/3 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-center group hover:bg-secondary/70 transition-colors overflow-hidden">
-           <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center mb-3 text-primary-foreground shrink-0">
-            <mobileService.icon className="h-5 w-5" aria-hidden="true" />
-          </div>
-          <h3 class="text-lg font-bold mb-1 text-foreground">
-            <a href={mobileService.href} class="focus:outline-none">
-              <span class="absolute inset-0" aria-hidden="true"></span>
-              {mobileService.title}
-            </a>
-          </h3>
-          <p class="text-muted-foreground text-xs">
-            {mobileService.description}
-          </p>
-        </div>
-      </div>
-
-      <!-- Column 2 (Center Image) -->
-      <div class="md:col-span-1 h-full min-h-[300px]">
-        <div class="h-full w-full rounded-3xl overflow-hidden relative group border border-border">
-          <Image 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000&auto=format&fit=crop" 
-            alt="Global Connectivity representing digital transformation" 
-            width={400}
-            height={600}
-            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" aria-hidden="true"></div>
-          <div class="absolute bottom-6 left-6 right-6">
-             <p class="text-white font-medium text-lg leading-tight">Connecting your business to the future of technology.</p>
+          <div class="relative z-10 pt-8 flex justify-end">
+             <a href={service.href} class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-foreground text-background opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+               <ArrowUpRight className="h-5 w-5" />
+             </a>
           </div>
         </div>
-      </div>
-
-      <!-- Column 3 -->
-      <div class="flex flex-col gap-6 h-full">
-         <!-- Top Card (Small) -->
-         <div class="relative h-1/3 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-center group hover:bg-secondary/70 transition-colors overflow-hidden">
-           <div class="h-10 w-10 rounded-full bg-primary flex items-center justify-center mb-3 text-primary-foreground shrink-0">
-            <cloudService.icon className="h-5 w-5" aria-hidden="true" />
-          </div>
-          <h3 class="text-lg font-bold mb-1 text-foreground">
-            <a href={cloudService.href} class="focus:outline-none">
-              <span class="absolute inset-0" aria-hidden="true"></span>
-              {cloudService.title}
-            </a>
-          </h3>
-          <p class="text-muted-foreground text-xs">
-            {cloudService.description}
-          </p>
-        </div>
-
-        <!-- Bottom Card (Large) -->
-        <div class="relative flex-1 bg-secondary/50 rounded-3xl p-8 flex flex-col justify-end group hover:bg-secondary/70 transition-colors overflow-hidden">
-           <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center mb-4 text-primary-foreground shrink-0">
-            <aiService.icon className="h-6 w-6" aria-hidden="true" />
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-foreground">
-             <a href={aiService.href} class="focus:outline-none">
-              <span class="absolute inset-0" aria-hidden="true"></span>
-              {aiService.title}
-            </a>
-          </h3>
-          <p class="text-muted-foreground text-sm">
-            {aiService.description}
-          </p>
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>

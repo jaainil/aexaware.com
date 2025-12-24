@@ -26,18 +26,20 @@ const timelines = [
 ---
 
 <div class="w-full max-w-4xl mx-auto p-4" id="project-calculator">
-    <div class="mb-8">
+    {/* Progress Header */}
+    <div class="mb-12 relative px-4">
         <div class="flex justify-between items-center relative">
-            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-secondary -z-10 rounded-full"></div>
-            <div id="progress-bar" class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-primary transition-all duration-500 rounded-full w-[0%]"></div>
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-secondary rounded-full overflow-hidden">
+                <div id="progress-bar" class="absolute left-0 top-0 h-full bg-primary transition-all duration-700 w-[0%] shadow-[0_0_10px_rgba(var(--primary),0.5)]"></div>
+            </div>
 
             {['type', 'budget', 'timeline', 'details'].map((s, i) => (
-                <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center border-4 transition-colors duration-300 bg-background border-secondary text-muted-foreground" data-step={s} data-index={i}>
+                <div class="step-indicator relative z-10 w-12 h-12 rounded-full flex items-center justify-center border-4 transition-all duration-500 bg-background border-secondary text-muted-foreground font-semibold shadow-lg" data-step={s} data-index={i}>
                     {i + 1}
                 </div>
             ))}
         </div>
-        <div class="flex justify-between mt-2 text-xs font-medium text-muted-foreground px-1">
+        <div class="flex justify-between mt-4 text-xs font-bold uppercase tracking-widest text-muted-foreground px-1">
             <span>Type</span>
             <span>Budget</span>
             <span>Timeline</span>
@@ -45,27 +47,29 @@ const timelines = [
         </div>
     </div>
 
-    <div class="rounded-xl border border-border/50 shadow-xl backdrop-blur-sm bg-card/95 text-card-foreground">
-        <div class="flex flex-col space-y-1.5 p-6 text-center">
-            <h3 id="step-title" class="font-serif text-2xl md:text-3xl font-semibold leading-none tracking-tight">What are you building?</h3>
+    <div class="rounded-[2.5rem] border border-white/10 shadow-2xl backdrop-blur-xl bg-card/40 text-card-foreground overflow-hidden relative">
+         <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
+         
+        <div class="flex flex-col space-y-2 p-8 md:p-12 pb-2 text-center relative z-10">
+            <h3 id="step-title" class="font-serif text-3xl md:text-4xl font-medium leading-none tracking-tight text-foreground">What are you building?</h3>
             <p id="step-desc" class="text-lg text-muted-foreground">Select the category that best fits your project.</p>
         </div>
 
-        <div class="p-6 md:p-8 pt-0 relative z-10">
+        <div class="p-8 md:p-12 relative z-10 min-h-[400px]">
             <!-- Step 1: Type -->
             <div id="step-type" class="step-content">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {projectTypes.map((item) => (
                         <button
-                            class="type-option flex flex-col items-center justify-center p-6 rounded-3xl border-2 transition-all duration-200 hover:border-primary/50 hover:bg-accent/50 text-center gap-4 group border-border"
+                            class="type-option flex flex-col items-center justify-center p-8 rounded-3xl border border-white/10 bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-6 group"
                             data-value={item.label}
                         >
-                            <div class="p-4 rounded-full bg-secondary group-hover:bg-primary/10 transition-colors icon-container">
+                            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
                                 <item.icon class="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
                             <div>
-                                <h3 class="font-semibold text-lg">{item.label}</h3>
-                                <p class="text-sm text-muted-foreground">{item.desc}</p>
+                                <h3 class="font-bold text-xl mb-1">{item.label}</h3>
+                                <p class="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors">{item.desc}</p>
                             </div>
                         </button>
                     ))}
@@ -74,17 +78,19 @@ const timelines = [
 
             <!-- Step 2: Budget -->
             <div id="step-budget" class="step-content hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {budgetRanges.map((item) => (
                         <button
-                            class="budget-option flex flex-col items-center justify-center p-6 rounded-3xl border-2 transition-all duration-200 hover:border-primary/50 hover:bg-accent/50 text-center gap-2 group border-border"
+                            class="budget-option flex flex-col items-center justify-center p-8 rounded-3xl border border-white/10 bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
                             data-value={item.label}
                         >
-                            <div class="p-3 rounded-full bg-secondary group-hover:bg-primary/10 transition-colors icon-container">
+                            <div class="p-4 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
                                 <DollarSign class="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
-                            <h3 class="font-semibold text-lg">{item.label}</h3>
-                            <p class="text-sm text-muted-foreground">{item.desc}</p>
+                            <div>
+                                <h3 class="font-bold text-2xl mb-1">{item.label}</h3>
+                                <p class="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors">{item.desc}</p>
+                            </div>
                         </button>
                     ))}
                 </div>
@@ -92,17 +98,19 @@ const timelines = [
 
             <!-- Step 3: Timeline -->
             <div id="step-timeline" class="step-content hidden">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {timelines.map((item) => (
                         <button
-                            class="timeline-option flex flex-col items-center justify-center p-6 rounded-3xl border-2 transition-all duration-200 hover:border-primary/50 hover:bg-accent/50 text-center gap-2 group border-border"
+                            class="timeline-option flex flex-col items-center justify-center p-8 rounded-3xl border border-white/10 bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
                             data-value={item.label}
                         >
-                            <div class="p-3 rounded-full bg-secondary group-hover:bg-primary/10 transition-colors icon-container">
+                             <div class="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
                                 <Calendar class="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
-                            <h3 class="font-semibold text-lg">{item.label}</h3>
-                            <p class="text-sm text-muted-foreground">{item.desc}</p>
+                            <div>
+                                <h3 class="font-bold text-xl mb-1">{item.label}</h3>
+                                <p class="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors">{item.desc}</p>
+                            </div>
                         </button>
                     ))}
                 </div>
@@ -113,54 +121,57 @@ const timelines = [
                 <form id="project-form" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
-                            <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Full Name</label>
+                            <label for="name" class="text-sm font-medium leading-none text-foreground/80">Full Name</label>
                             <input
                                 id="name"
                                 name="name"
                                 placeholder="John Doe"
                                 required
-                                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                class="flex h-12 w-full rounded-xl border border-white/10 bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
                             />
                         </div>
                         <div class="space-y-2">
-                            <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email Address</label>
+                            <label for="email" class="text-sm font-medium leading-none text-foreground/80">Email Address</label>
                             <input
                                 id="email"
                                 name="email"
                                 type="email"
                                 placeholder="john@company.com"
                                 required
-                                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                class="flex h-12 w-full rounded-xl border border-white/10 bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
                             />
                         </div>
                         <div class="space-y-2 md:col-span-2">
-                            <label for="company" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Company Name (Optional)</label>
+                            <label for="company" class="text-sm font-medium leading-none text-foreground/80">Company Name (Optional)</label>
                             <input
                                 id="company"
                                 name="company"
                                 placeholder="Your Company Ltd."
-                                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                class="flex h-12 w-full rounded-xl border border-white/10 bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
                             />
                         </div>
                         <div class="space-y-2 md:col-span-2">
-                            <label for="description" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Project Details</label>
+                            <label for="description" class="text-sm font-medium leading-none text-foreground/80">Project Details</label>
                             <textarea
                                 id="description"
                                 name="description"
                                 placeholder="Tell us a bit more about your vision..."
-                                class="flex min-h-[100px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                class="flex min-h-[120px] w-full rounded-xl border border-white/10 bg-secondary/20 px-4 py-3 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 resize-y"
                             ></textarea>
                         </div>
                     </div>
 
-                    <div class="rounded-lg bg-secondary/50 p-4 text-sm text-muted-foreground">
-                        <p class="font-semibold text-foreground mb-1">Summary:</p>
-                        <p>Looking for a <span class="text-primary" id="summary-type">...</span> with a budget of <span class="text-primary" id="summary-budget">...</span>, needed <span class="text-primary" id="summary-timeline">...</span>.</p>
+                    <div class="rounded-xl bg-primary/5 border border-primary/10 p-6 text-sm text-foreground/80">
+                        <p class="font-bold text-lg mb-2 text-primary flex items-center gap-2">
+                            <Sparkles class="w-4 h-4" />
+                            Project Summary
+                        </p>
+                        <p class="text-base leading-relaxed">Looking for a <span class="text-primary font-semibold" id="summary-type">...</span> with a budget of <span class="text-primary font-semibold" id="summary-budget">...</span>, needed <span class="text-primary font-semibold" id="summary-timeline">...</span>.</p>
                     </div>
 
                     <div class="flex flex-col md:flex-row justify-end pt-4 items-center gap-4">
                         <!-- Turnstile removed -->
-                        <button type="submit" id="submit-btn" class={cn(buttonVariants({ size: "lg" }), "w-full md:w-auto rounded-full")}>
+                        <button type="submit" id="submit-btn" class={cn(buttonVariants({ size: "lg" }), "w-full md:w-auto rounded-full shadow-lg shadow-primary/20")}>
                             Get My Estimate
                             <Send class="ml-2 h-4 w-4" />
                         </button>
@@ -170,29 +181,29 @@ const timelines = [
 
             <!-- Step 5: Success -->
             <div id="step-success" class="step-content hidden">
-                <div class="flex flex-col items-center justify-center py-12 text-center space-y-6">
-                    <div class="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
-                        <Sparkles class="w-10 h-10 text-green-600 dark:text-green-400" />
+                <div class="flex flex-col items-center justify-center py-16 text-center space-y-8 animate-in zoom-in-95 duration-500">
+                    <div class="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center border border-green-500/20 shadow-xl shadow-green-500/10">
+                        <Sparkles class="w-12 h-12 text-green-500" />
                     </div>
-                    <div class="space-y-2">
-                        <h3 class="text-2xl font-bold">Thank You!</h3>
-                        <p class="text-muted-foreground max-w-md mx-auto">
+                    <div class="space-y-4">
+                        <h3 class="text-4xl font-serif font-medium">Thank You!</h3>
+                        <p class="text-muted-foreground text-lg max-w-md mx-auto leading-relaxed">
                             We've received your project details. One of our tech experts will analyze your requirements and send you a preliminary estimate within 24 hours.
                         </p>
                     </div>
-                    <a href="/blog" class={cn(buttonVariants({ variant: "outline" }), "rounded-full")}>
+                    <a href="/blog" class={cn(buttonVariants({ variant: "outline" }), "rounded-full h-12 px-8 border-white/10 hover:bg-white/5")}>
                         Read our Blog
                     </a>
                 </div>
             </div>
         </div>
 
-        <div id="footer-nav" class="flex justify-between border-t border-border/50 p-6">
-            <button id="back-btn" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 rounded-full hidden">
+        <div id="footer-nav" class="flex justify-between border-t border-white/10 p-8 bg-black/20 backdrop-blur-md">
+            <button id="back-btn" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-white/10 hover:text-foreground h-10 px-4 py-2 rounded-full hidden text-muted-foreground">
                 <ChevronLeft class="mr-2 h-4 w-4" />
                 Back
             </button>
-            <div id="step-counter" class="text-sm text-muted-foreground flex items-center">
+            <div id="step-counter" class="text-sm font-semibold text-muted-foreground flex items-center uppercase tracking-wider">
                 Step 1 of 4
             </div>
         </div>

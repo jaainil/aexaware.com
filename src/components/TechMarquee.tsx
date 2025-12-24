@@ -25,7 +25,7 @@ export default function TechMarquee({ items, direction = "left", className, spee
                 {items.map((name, i) => (
                     <span
                         key={i}
-                        className="mx-8 text-4xl md:text-6xl font-bold text-white/10 hover:text-white/30 transition-colors cursor-default"
+                        className="mx-8 text-4xl md:text-6xl font-bold text-foreground/10 hover:text-foreground/30 transition-colors cursor-default"
                     >
                         {name}
                     </span>

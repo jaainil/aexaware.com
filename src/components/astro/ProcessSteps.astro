@@ -1,151 +1,103 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-astro";
+import { ArrowRight, CheckCircle2, Sparkles, Layers, Rocket, Search } from "lucide-astro";
 import { cn } from "@/lib/utils";
 
 const steps = [
   {
     number: "01",
-    title: "Discovery & Planning",
+    title: "Discovery",
+    icon: Search,
     timeline: "Week 1-2",
-    desc: "We start by deeply understanding your business goals, users, and technical requirements. You'll receive a detailed roadmap and architecture plan before any development begins.",
-    features: ["Requirements Doc", "Architecture Plan", "Tech Stack Selection"],
+    desc: "We dive deep into your goals. No assumptions. Just pure strategy and architectural planning to set a rock-solid foundation.",
+    features: ["Tech Roadmap", "Architecture Design", "UX Research"],
   },
   {
     number: "02",
-    title: "Design & Build",
+    title: "Build",
+    icon: Layers,
     timeline: "Week 3-8",
-    desc: "From Figma prototypes to working code — our agile team delivers iteratively so you can see progress weekly and provide feedback at every stage.",
-    features: ["UI/UX Prototype", "Working MVP", "Weekly Progress Demos"],
+    desc: "Agile development with weekly sprints. You see your product evolve in real-time, ensuring we hit every milestone perfectly.",
+    features: ["Rapid Prototyping", "Scalable Code", "Weekly Demos"],
   },
   {
     number: "03",
-    title: "Launch & Growth",
+    title: "Launch",
+    icon: Rocket,
     timeline: "Ongoing",
-    desc: "We don't just launch and leave. We handle deployment, monitoring, and continuous optimization to help your product scale and succeed.",
-    features: ["Production Deployment", "24/7 Monitoring", "Performance Optimization"],
+    desc: "Seamless deployment and beyond. We ensure high availability, security, and performance as your user base grows.",
+    features: ["CI/CD Pipeline", "24/7 Monitoring", "Growth Support"],
   },
 ];
 ---
 
-<section class="relative py-32 overflow-hidden bg-foreground text-background" aria-labelledby="process-heading">
-  <!-- Deep Space Background Effects -->
-  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-foreground to-foreground" aria-hidden="true" />
-
-  <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none" aria-hidden="true">
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
-    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[100px] animate-pulse delay-1000" />
-  </div>
-
+<section class="relative py-32 overflow-hidden bg-background" aria-labelledby="process-heading">
+  
+  {/* Connected Line Background */}
+  <div class="absolute top-1/2 left-0 w-full h-px bg-border -translate-y-1/2 hidden md:block" />
+  
   <div class="container relative z-10 mx-auto px-6 lg:px-8">
     <!-- Header -->
-    <div class="process-header text-center max-w-3xl mx-auto mb-24 opacity-0 translate-y-[50px]">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8">
-        <Sparkles className="w-4 h-4 text-primary" aria-hidden="true" />
-        <span class="text-sm font-medium text-primary/80 tracking-wide uppercase">
-          The Journey
-        </span>
+    <div class="text-center max-w-3xl mx-auto mb-20">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+        <Sparkles className="w-3 h-3" />
+        Process
       </div>
-      <h2 id="process-heading" class="text-5xl md:text-7xl font-serif font-medium tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-background via-background/90 to-background/50 mb-6">
-        From Idea to Impact
+      <h2 id="process-heading" class="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+        From Concept to Code.
       </h2>
-      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-        A seamless, transparent process designed to transform your vision into a digital reality.
+      <p class="text-xl text-muted-foreground">
+        A transparent, agile workflow designed for speed and quality.
       </p>
     </div>
 
-    <!-- Vertical Timeline -->
-    <div class="relative max-w-5xl mx-auto">
-      <div class="space-y-24">
-        {steps.map((step, i) => (
-          <div class={`process-step relative flex flex-col md:flex-row gap-8 md:gap-16 items-center ${i % 2 === 0 ? 'md:flex-row-reverse' : ''} opacity-0 translate-y-[100px] scale-90`}>
+    <!-- Steps Grid -->
+    <div class="grid md:grid-cols-3 gap-8 relative">
+      {steps.map((step, i) => (
+        <div class="group relative bg-card border border-border/50 rounded-3xl p-8 hover:border-primary/50 transition-colors duration-300">
+          
+          {/* Step Number Background */}
+          <span class="absolute top-6 right-8 text-6xl font-bold text-foreground/5 pointer-events-none select-none group-hover:text-primary/10 transition-colors">
+            {step.number}
+          </span>
 
-            <!-- Step Number Node -->
-            <div class="flex items-center justify-center w-20 h-20 rounded-full bg-foreground border border-primary/50 shadow-[0_0_20px_hsl(var(--primary)/0.4)] z-10 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
-              <span class="text-2xl font-bold text-primary">{step.number}</span>
+          <div class="mb-8 relative">
+            <div class="h-14 w-14 rounded-2xl bg-secondary flex items-center justify-center text-foreground mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm">
+              <step.icon className="h-7 w-7 text-primary" strokeWidth={1.5} />
+            </div>
+            
+            <div class="inline-block px-3 py-1 bg-secondary/50 rounded-full text-xs font-medium text-muted-foreground mb-4">
+              {step.timeline}
             </div>
 
-            <!-- Content Card -->
-            <div class="w-full md:w-1/2 md:pl-0">
-              <div class="group relative p-8 rounded-3xl bg-background/5 border border-background/10 backdrop-blur-md hover:bg-background/10 hover:border-primary/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)]">
-                <!-- Holographic Gradient Hover -->
-                <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" aria-hidden="true" />
-
-                <div class="relative z-10">
-
-                  <span class="inline-block px-3 py-1 text-xs font-medium text-primary bg-primary/20 rounded-full mb-3">
-                    {step.timeline}
-                  </span>
-                  <h3 class="text-2xl font-medium text-background mb-4 group-hover:text-primary/80 transition-colors">
-                    {step.title}
-                  </h3>
-                  <p class="text-muted-foreground leading-relaxed mb-6 group-hover:text-background/80 transition-colors">
-                    {step.desc}
-                  </p>
-
-                  <ul class="space-y-3">
-                    {step.features.map((feature) => (
-                      <li class="flex items-center gap-3 text-sm text-background/70 group-hover:text-background transition-colors">
-                        <CheckCircle2 className="w-4 h-4 text-primary group-hover:text-primary/80 group-hover:shadow-[0_0_10px_hsl(var(--primary)/0.5)] rounded-full transition-all" aria-hidden="true" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Empty spacer for the other side (layout purposes) -->
-            <div class="hidden md:block w-1/2" />
+            <h3 class="text-2xl font-bold text-foreground mb-3">
+              {step.title}
+            </h3>
+            <p class="text-muted-foreground leading-relaxed mb-6">
+              {step.desc}
+            </p>
           </div>
-        ))}
-      </div>
+
+          <ul class="space-y-3 border-t border-border/40 pt-6">
+            {step.features.map((feature) => (
+              <li class="flex items-center gap-3 text-sm font-medium text-foreground/80">
+                <CheckCircle2 className="w-4 h-4 text-primary" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
 
     <!-- CTA -->
-    <div class="mt-32 text-center relative z-10">
+    <div class="mt-20 text-center">
       <a 
         href="/contact" 
-        class={cn(buttonVariants({ size: "lg" }), "h-16 rounded-full px-10 text-lg bg-background text-foreground hover:bg-primary/10 hover:scale-105 transition-all duration-300 shadow-[0_0_30px_hsl(var(--background)/0.3)]")}
+        class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-8 text-lg hover:shadow-lg transition-all")}
       >
         Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
       </a>
     </div>
   </div>
 </section>
-
-<script>
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.remove('opacity-0', 'translate-y-[50px]', 'translate-y-[100px]', 'scale-90');
-        entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('.process-header');
-    const steps = document.querySelectorAll('.process-step');
-
-    if (header) {
-      // Add transition classes for smooth animation
-      header.classList.add('transition-all', 'duration-1000', 'ease-out');
-      observer.observe(header);
-    }
-    
-    steps.forEach((step, index) => {
-      // Add transition classes with staggered delay
-      step.classList.add('transition-all', 'duration-1000', 'ease-out');
-      // Add specific delay based on index if needed, or rely on scroll position
-      observer.observe(step);
-    });
-  });
-</script>

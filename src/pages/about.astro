@@ -11,23 +11,29 @@ import {
   Code2,
   BarChart3,
   Globe,
+  Sparkles
 } from "lucide-astro";
+import { buttonVariants } from '@/components/ui/button-variants';
+import { cn } from '@/lib/utils';
 
 const values = [
   {
     icon: Target,
     title: "Our Mission",
     desc: "To help startups and enterprises turn their ideas into scalable web, mobile, AI/ML and UI/UX solutions.",
+    gradient: "from-blue-500/20 to-cyan-500/20"
   },
   {
     icon: Lightbulb,
     title: "Our Vision",
     desc: "To be a trusted IT innovation partner, empowering businesses globally with modern, scalable technology.",
+    gradient: "from-purple-500/20 to-pink-500/20"
   },
   {
     icon: Rocket,
     title: "Our Values",
     desc: "Innovation, Customer-Centricity, Reliability, Integrity, and Agility.",
+    gradient: "from-amber-500/20 to-orange-500/20"
   },
 ];
 
@@ -59,6 +65,8 @@ const capabilities = [
   { icon: Code2, label: "AI/ML Integration" },
   { icon: Users, label: "UI/UX Design" },
   { icon: BarChart3, label: "Cloud & DevOps" },
+  { icon: Rocket, label: "Mobile Apps" },
+  { icon: CheckCircle2, label: "QA Testing" },
 ];
 ---
 
@@ -66,34 +74,34 @@ const capabilities = [
   title="About Aexaware Infotech – Trusted Innovation Partner" 
   description="Learn how Aexaware Infotech grew from Vadodara to a global digital agency delivering web, AI and app solutions."
 >
-  {/* Hero Section Fix:
-      1. Changed to 'flex-col justify-center' (removed items-center).
-      2. Added 'py-32 lg:py-48' to ensure content pushes the section open on mobile.
-      3. Added 'w-full' for safety.
-  */}
-  <section class="relative w-full min-h-[100svh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />
+  
+  {/* Hero Section */}
+  <section class="relative w-full min-h-[85vh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden border-b border-border/40">
+    {/* Modern Grid Background */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
     <div class="container mx-auto px-6 lg:px-8 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-        <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
-          About Aexaware Infotech
-        </span>
+         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span class="text-sm font-semibold text-primary tracking-wide uppercase">Who We Are</span>
+        </div>
 
-        <h1 class="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
+        <h1 class="font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8">
           Strategic Innovation. <br/>
-          <span class="italic text-muted-foreground">Flawless Execution</span>.
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Flawless Execution.</span>
         </h1>
-        <p class="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
+        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
           Aexaware Infotech is a full-service digital agency that helps
           startups and enterprises turn their ideas into scalable web,
           mobile, AI/ML and UI/UX solutions.
         </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/contact" class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-10 text-lg shadow-lg hover:shadow-primary/20 transition-all")}>
             Get a Quote 
             <ArrowRight className="ml-2 h-5 w-5" />
           </a>
-          <a href="#story" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
+          <a href="#story" class={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-14 rounded-full px-10 text-lg bg-background/50 hover:bg-background")}>
             Our Story
           </a>
         </div>
@@ -101,54 +109,71 @@ const capabilities = [
     </div>
   </section>
 
-  {/* Who We Are Section */}
-  <section id="story" class="py-24 bg-secondary/30">
+  {/* Who We Are & Capabilities */}
+  <section id="story" class="py-32 bg-background relative overflow-hidden">
     <div class="container mx-auto px-6 lg:px-8">
       <div class="grid gap-16 lg:grid-cols-2 items-center">
-        <div class="relative">
-          <div class="aspect-square rounded-3xl overflow-hidden bg-white shadow-xl">
+        
+        {/* Visual */}
+        <div class="relative group">
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-[2.5rem] blur-2xl opacity-50 -z-10 group-hover:opacity-70 transition-opacity duration-700" />
+          <div class="aspect-square rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl relative">
             <Image
               src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
               alt="Team collaboration"
               width={800}
               height={800}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
             />
+             <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
           </div>
-          <div class="absolute -bottom-8 -right-8 bg-primary p-8 rounded-3xl shadow-lg hidden md:block max-w-xs">
-            <p class="font-serif text-2xl font-medium mb-2 text-primary-foreground">100%</p>
-            <p class="text-sm opacity-90 text-primary-foreground">
+          
+          {/* Floating Stats Card */}
+          <div class="absolute -bottom-8 -right-8 bg-card/80 backdrop-blur-md p-8 rounded-[2rem] border border-border/50 shadow-xl hidden md:block max-w-xs">
+            <div class="flex items-center gap-4 mb-2">
+                <div class="p-2 bg-primary/10 rounded-full text-primary">
+                    <CheckCircle2 class="w-6 h-6" />
+                </div>
+                <span class="text-sm font-bold uppercase tracking-wider text-muted-foreground">Guarantee</span>
+            </div>
+            <p class="font-serif text-3xl font-bold mb-1 text-foreground">100%</p>
+            <p class="text-sm text-muted-foreground">
               Client Satisfaction Commitment
             </p>
           </div>
         </div>
-        <div class="space-y-8">
-          <h2 class="font-serif text-4xl font-medium text-foreground">
-            More than just a development studio.
-          </h2>
-          <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
-            <p>
-              At Aexaware Infotech, we emphasize a customer-centric
-              approach, full-stack expertise, agile workflows, and
-              end-to-end execution. We listen to clients first, tailor
-              solutions to specific business challenges, and promise on-time
-              delivery with transparent communication.
-            </p>
-            <p>
-              We aren't just service providers; we are your trusted IT
-              innovation partners. Whether it's crafting a stunning UI/UX,
-              developing robust software, or integrating AI/ML solutions,
-              our team is dedicated to elevating your digital presence.
-            </p>
+
+        {/* Content */}
+        <div class="space-y-10">
+          <div>
+              <span class="text-sm font-bold uppercase tracking-widest text-primary mb-4 block">Our DNA</span>
+              <h2 class="font-bold text-4xl md:text-5xl text-foreground mb-6 leading-tight">
+                More than just a <br/> development studio.
+              </h2>
+              <div class="space-y-6 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  At Aexaware Infotech, we emphasize a customer-centric
+                  approach, full-stack expertise, agile workflows, and
+                  end-to-end execution. We listen to clients first, tailor
+                  solutions to specific business challenges, and promise on-time
+                  delivery with transparent communication.
+                </p>
+                <p>
+                  We aren't just service providers; we are your trusted IT
+                  innovation partners. Whether it's crafting a stunning UI/UX,
+                  developing robust software, or integrating AI/ML solutions,
+                  our team is dedicated to elevating your digital presence.
+                </p>
+              </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-6 pt-4">
+          <div class="grid grid-cols-2 gap-4">
             {capabilities.map((item) => (
-              <div class="flex items-center gap-3">
-                <div class="p-2 rounded-lg bg-primary/10 text-primary">
-                  <item.icon className="h-5 w-5" />
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-secondary/30 hover:bg-secondary/50 transition-colors border border-border/50">
+                <div class="p-2 rounded-lg bg-background text-primary shadow-sm">
+                  <item.icon className="h-4 w-4" />
                 </div>
-                <span class="font-medium text-foreground">
+                <span class="font-medium text-foreground text-sm">
                   {item.label}
                 </span>
               </div>
@@ -160,13 +185,14 @@ const capabilities = [
   </section>
 
   {/* Mission, Vision, Values */}
-  <section class="py-24">
+  <section class="py-32 bg-secondary/5 border-y border-border/40">
     <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="font-serif text-4xl font-medium text-foreground mb-6">
+      <div class="text-center max-w-3xl mx-auto mb-20">
+        <span class="text-sm font-bold uppercase tracking-widest text-primary mb-4 block">Core Principles</span>
+        <h2 class="font-bold text-4xl md:text-5xl text-foreground mb-6">
           Our Guiding Principles
         </h2>
-        <p class="text-lg text-muted-foreground">
+        <p class="text-xl text-muted-foreground">
           We are driven by a commitment to excellence and a passion for
           innovation.
         </p>
@@ -175,51 +201,63 @@ const capabilities = [
       <div class="grid gap-8 md:grid-cols-3">
         {values.map((item) => (
           <div
-            class="group p-8 rounded-3xl bg-card border border-border/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+            class="group p-10 rounded-[2.5rem] bg-background border border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
           >
-            <div class="mb-6 inline-flex p-4 rounded-2xl bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-              <item.icon className="h-8 w-8" />
+             {/* Hover Gradient Background */}
+            <div class={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
+
+            <div class="relative z-10">
+                <div class="mb-8 inline-flex p-4 rounded-2xl bg-secondary text-primary group-hover:scale-110 transition-transform duration-500 shadow-sm border border-border/50">
+                <item.icon className="h-8 w-8" />
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-foreground">
+                {item.title}
+                </h3>
+                <p class="text-muted-foreground leading-relaxed text-lg">
+                {item.desc}
+                </p>
             </div>
-            <h3 class="text-2xl font-serif font-medium mb-4">
-              {item.title}
-            </h3>
-            <p class="text-muted-foreground leading-relaxed">
-              {item.desc}
-            </p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  {/* Our Process (New Section) */}
-  <section class="py-24 bg-primary text-primary-foreground">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+  {/* Our Process */}
+  <section class="py-32 bg-foreground text-background overflow-hidden relative">
+     {/* Background Grid */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-20" />
+
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-20 items-center">
         <div>
-          <h2 class="font-serif text-4xl font-medium mb-6">
+          <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/20 text-sm font-bold mb-6">
+              Workflow
+          </span>
+          <h2 class="font-bold text-4xl md:text-6xl mb-8 leading-tight">
             How We Work
           </h2>
-          <p class="text-lg opacity-90 leading-relaxed mb-8 text-primary-foreground">
+          <p class="text-xl opacity-80 leading-relaxed mb-10 text-background/80 max-w-lg">
             We believe in a transparent, collaborative process that keeps
             you involved at every step. From the initial spark of an idea to
             the final launch, we ensure precision and quality.
           </p>
-          <a href="/contact" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
-            Start Your Project
+          <a href="/contact" class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-10 text-lg bg-background text-foreground hover:bg-background/90")}>
+            Start Project
           </a>
         </div>
-        <div class="grid gap-8">
+        
+        <div class="grid gap-6">
           {process.map((phase) => (
             <div
-              class="flex gap-6 items-start p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300"
+              class="flex gap-6 items-start p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 hover:border-primary/50 group"
             >
-              <span class="text-4xl font-serif font-bold opacity-30 text-white">
+              <span class="text-5xl font-bold opacity-20 text-white group-hover:text-primary group-hover:opacity-100 transition-all font-serif">
                 {phase.step}
               </span>
-              <div>
-                <h3 class="text-xl font-medium mb-3 text-white">{phase.title}</h3>
-                <p class="text-blue-100/90 text-base leading-relaxed">
+              <div class="pt-2">
+                <h3 class="text-xl font-bold mb-2 text-white">{phase.title}</h3>
+                <p class="text-white/60 text-base leading-relaxed">
                   {phase.desc}
                 </p>
               </div>
@@ -231,24 +269,36 @@ const capabilities = [
   </section>
 
   {/* CTA Section */}
-  <section class="py-24 bg-secondary/30">
-    <div class="container mx-auto px-6 lg:px-8 text-center">
-      <div class="max-w-3xl mx-auto bg-background rounded-3xl p-12 shadow-2xl border border-border/50">
-        <h2 class="font-serif text-4xl md:text-5xl font-medium text-foreground mb-6">
-          Let’s Bring It to Life
-        </h2>
-        <p class="text-xl text-muted-foreground mb-10 leading-relaxed">
-          Ready to transform your digital presence? Book your free expert
-          consultation today and let's discuss how we can help you achieve
-          your goals.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" class="inline-flex items-center justify-center rounded-full px-10 h-14 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-md">
-            Book Free Consultation
+  <section class="py-24 lg:py-32 bg-background relative overflow-hidden">
+    
+    {/* Background Grid */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+      <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
+        
+        {/* Glow Effects */}
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+
+        <div class="relative z-10 mx-auto max-w-3xl">
+          <h2 class="font-bold text-4xl font-serif text-background md:text-6xl tracking-tight mb-8">
+            Let’s Build Something <br />
+            <span class="text-primary italic">Extraordinary.</span>
+          </h2>
+          <p class="text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed">
+             Ready to transform your digital presence? Book a free consultation and let's map out your success.
+          </p>
+          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a 
+              href="/contact" 
+              class={cn(buttonVariants({ size: "lg" }), "h-16 rounded-full px-10 text-xl font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
+            >
+              Book Free Consultation
+            </a>
+            <a href="tel:+918140734392" class="inline-flex items-center justify-center rounded-full px-10 h-16 text-lg font-bold border border-white/20 text-background hover:bg-white/10 transition-colors backdrop-blur-sm">
+             Call Us Now
           </a>
-          <a href="tel:+918140734392" class="inline-flex items-center justify-center rounded-full px-10 h-14 text-lg font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
-            Call Us Now
-          </a>
+          </div>
         </div>
       </div>
     </div>

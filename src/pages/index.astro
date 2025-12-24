@@ -28,25 +28,29 @@ import { cn } from '@/lib/utils';
   <Testimonials />
 
   {/* CTA Section */}
-  <section class="py-24 lg:py-32">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="relative overflow-hidden rounded-3xl bg-secondary/50 px-6 py-24 text-center sm:px-16">
-        
-        {/* Decorative blobs */}
-        <div class="pointer-events-none absolute -top-24 -left-24 h-64 w-64 rounded-full bg-white blur-3xl opacity-60" aria-hidden="true" />
-        <div class="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-accent/20 blur-3xl opacity-60" aria-hidden="true" />
+  <section class="py-24 lg:py-32 bg-background relative overflow-hidden">
+    
+    {/* Background Grid */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-        <div class="relative z-10 mx-auto max-w-2xl">
-          <h2 class="font-serif text-4xl font-medium text-foreground md:text-5xl">
-            Let’s Bring It to Life
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+      <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
+        
+        {/* Glow Effects */}
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-3xl rounded-full pointer-events-none" />
+
+        <div class="relative z-10 mx-auto max-w-3xl">
+          <h2 class="font-bold text-4xl font-serif text-background md:text-6xl tracking-tight mb-8">
+            Let’s Build Something <br />
+            <span class="text-primary italic">Extraordinary.</span>
           </h2>
-          <p class="mt-6 text-lg text-muted-foreground">
-            Book Your Free Expert Consultation Today!
+          <p class="text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed">
+            Ready to transform your digital presence? Book a free consultation and let's map out your success.
           </p>
-          <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a 
               href="/contact" 
-              class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-8 text-lg transition-transform hover:scale-105")}
+              class={cn(buttonVariants({ size: "lg" }), "h-16 rounded-full px-10 text-xl font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
             >
               Get Free Consultation
             </a>

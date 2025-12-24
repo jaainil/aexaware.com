@@ -13,16 +13,20 @@ interface Props {
 const { faqs } = Astro.props;
 ---
 
-<div class="w-full space-y-2">
+<div class="w-full space-y-4">
   {faqs.map((faq, index) => (
-    <div class="border-b border-border">
+    <div class="border-b border-white/10 last:border-0">
       <details class="group">
-        <summary class="flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[open]>svg]:rotate-180 cursor-pointer list-none text-lg text-left">
+        <summary class="flex flex-1 items-center justify-between py-6 font-medium transition-all cursor-pointer list-none text-lg text-left text-foreground hover:text-primary">
           {faq.question}
-          <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 text-muted-foreground" />
+          <div class="shrink-0 transition-transform duration-300 group-open:rotate-180">
+             <ChevronDown className="h-5 w-5 text-muted-foreground" />
+          </div>
         </summary>
-        <div class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down pb-4 pt-0 text-muted-foreground leading-relaxed text-base">
-          {faq.answer}
+        <div class="overflow-hidden text-muted-foreground leading-relaxed text-base pb-6 animate-in slide-in-from-top-1 fade-in duration-300">
+          <p class="max-w-3xl">
+             {faq.answer}
+          </p>
         </div>
       </details>
     </div>

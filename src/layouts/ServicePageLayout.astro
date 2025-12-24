@@ -1,8 +1,10 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { generateBreadcrumbSchema } from '@/lib/schema';
-import { ArrowRight } from "lucide-astro";
+import { ArrowRight, Sparkles } from "lucide-astro";
 import TechMarquee from '@/components/TechMarquee';
+import { buttonVariants } from '@/components/ui/button-variants';
+import { cn } from '@/lib/utils';
 
 interface ServiceItem {
   id: string;
@@ -39,8 +41,8 @@ const {
   servicesDescription,
   services,
   techStack,
-  ctaTitle = "Looking for something else?",
-  ctaDescription = "Work with us to build your dream project.",
+  ctaTitle = "Ready to transform your business?",
+  ctaDescription = "Let's build something extraordinary together.",
 } = Astro.props;
 
 // Generate breadcrumb schema
@@ -89,33 +91,42 @@ const serviceSchema = JSON.stringify({
   <script type="application/ld+json" set:html={serviceSchema} slot="head" />
   <script type="application/ld+json" set:html={breadcrumbSchema} slot="head" />
   
-  {/* Hero Section Fix:
-      1. Changed 'items-center' to 'flex-col justify-center'.
-      2. Added 'py-32 lg:py-48' to handle tall content on mobile.
-      3. Added 'w-full' for safety.
-  */}
-  <section class="relative w-full min-h-[100svh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent -z-10" />
+  {/* Hero Section */}
+  <section class="relative w-full min-h-[85vh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden border-b border-border/40">
+    
+    {/* Modern Grid Background */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    
     <div class="container mx-auto px-6 lg:px-8 relative z-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
-          {heroBadge}
-        </span>
+      <div class="max-w-5xl mx-auto text-center">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span class="text-sm font-semibold text-primary tracking-wide uppercase">{heroBadge}</span>
+        </div>
 
-        <h1 class="mt-8 font-serif text-5xl font-medium leading-tight text-foreground sm:text-6xl lg:text-7xl">
+        <h1 class="font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8">
           {heroTitle} <br class="hidden md:block" />
-          <span class="italic text-muted-foreground">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
             {heroSubtitle}
           </span>
         </h1>
-        <p class="mx-auto mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+        
+        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed whitespace-pre-line">
           {heroDescription}
         </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" aria-label="Get a quote for our services" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
-            Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
+        
+        <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contact" 
+            class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-10 text-lg shadow-lg hover:shadow-primary/20 transition-all")}
+          >
+            Start Project <ArrowRight className="ml-2 h-5 w-5" />
           </a>
-          <a href="#services" aria-label="Explore our services" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-colors">
+          <a 
+            href="#services" 
+            class={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-14 rounded-full px-10 text-lg bg-background/50 hover:bg-background")}
+          >
             Explore Services
           </a>
         </div>
@@ -124,48 +135,45 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* Services Section */}
-  <section id="services" class="py-32 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent -z-10" />
+  <section id="services" class="py-32 relative overflow-hidden bg-background">
+     {/* Subtle grid background */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-50" />
 
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-20">
-        <span class="text-primary font-medium tracking-widest uppercase text-sm border border-primary/20 px-4 py-1.5 rounded-full">
-          Our Services
-        </span>
-        <h2 class="mt-6 font-serif text-4xl md:text-5xl font-medium text-foreground mb-6">
-          {servicesTitle}
-        </h2>
-        <p class="text-xl text-muted-foreground">
-          {servicesDescription}
-        </p>
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+      
+      <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-border/40 pb-8">
+        <div class="max-w-3xl">
+          <span class="text-sm font-semibold text-primary uppercase tracking-widest mb-3 block">Our Capabilities</span>
+          <h2 class="text-4xl md:text-5xl font-bold leading-tight text-foreground">
+            {servicesTitle}
+          </h2>
+          <p class="mt-4 text-xl text-muted-foreground">
+            {servicesDescription}
+          </p>
+        </div>
       </div>
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
-          <div
-            class="group relative bg-white/50 dark:bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/20 dark:border-white/10 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-          >
+          <div class="group relative bg-card/50 backdrop-blur-sm p-10 rounded-[2rem] border border-border/50 hover:border-primary/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+            
             {/* Hover Gradient Background */}
-            <div
-              class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-            />
+            <div class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
             <div class="relative z-10">
               <div class="flex justify-between items-start mb-8">
-                <div
-                  class={`inline-flex p-4 rounded-2xl bg-background shadow-sm ${service.iconColor} group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <service.icon className="h-8 w-8" aria-hidden="true" />
+                <div class={`h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500`}>
+                  <service.icon className={cn("h-7 w-7", service.iconColor)} strokeWidth={1.5} />
                 </div>
-                <span class="text-5xl font-serif font-bold text-muted-foreground/10 group-hover:text-foreground/10 transition-colors" aria-hidden="true">
+                <span class="text-6xl font-bold text-muted-foreground/5 group-hover:text-foreground/5 transition-colors select-none">
                   {service.id}
                 </span>
               </div>
 
-              <h3 class="text-2xl font-medium text-foreground mb-4 group-hover:translate-x-1 transition-transform duration-300">
+              <h3 class="text-2xl font-bold text-foreground mb-4">
                 {service.title}
               </h3>
-              <p class="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">
+              <p class="text-muted-foreground leading-relaxed text-base">
                 {service.desc}
               </p>
             </div>
@@ -176,55 +184,55 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* Technical Toolbox - Marquee */}
-  <section class="py-24 bg-foreground text-background overflow-hidden" aria-label="Technology stack">
-    <div class="container mx-auto px-6 lg:px-8 text-center mb-16">
-      <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium mb-4 border border-white/10">
-        Our Technical Toolbox
+  <section class="py-24 border-y border-border/40 bg-secondary/10 overflow-hidden relative">
+     <div class="container mx-auto px-6 lg:px-8 text-center mb-12">
+      <span class="text-sm font-semibold text-muted-foreground uppercase tracking-widest block mb-4">
+        Powered By Modern Tech
       </span>
-      <h2 class="font-serif text-4xl font-medium mb-6 text-white">
-        Technology Stack We Work With
+      <h2 class="text-3xl md:text-4xl font-bold text-foreground">
+        Our Technical Toolbox
       </h2>
-      <p class="max-w-2xl mx-auto text-lg text-white/60">
-        We build safe, scalable, and high-performance digital solutions using
-        the most up-to-date technologies.
-      </p>
     </div>
 
     {/* Marquee Container */}
-    <div class="relative flex w-full overflow-hidden py-4">
+    <div class="relative flex w-full overflow-hidden">
       {/* Gradient Masks */}
-      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-foreground to-transparent z-10 pointer-events-none" aria-hidden="true" />
-      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-foreground to-transparent z-10 pointer-events-none" aria-hidden="true" />
+      <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" aria-hidden="true" />
+      <div class="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" aria-hidden="true" />
 
-       <TechMarquee items={techStack} client:visible />
+       {/* Using text-foreground/20 for better adaptability between light/dark modes compared to hard white */}
+       <div class="[&_span]:text-foreground/20 [&_span]:hover:text-foreground/60">
+         <TechMarquee items={techStack} client:visible />
+       </div>
     </div>
   </section>
 
   {/* CTA Section */}
-  <section class="py-24 lg:py-32" aria-label="Contact call to action">
-    <div class="container mx-auto px-6 lg:px-8">
-      <div class="relative overflow-hidden rounded-3xl bg-secondary/50 px-6 py-24 text-center sm:px-16 border border-border/50">
-        {/* Decorative blobs */}
-        <div class="absolute -top-24 -left-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl opacity-60 animate-pulse" aria-hidden="true" />
-        <div
-          class="absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-accent/20 blur-3xl opacity-60 animate-pulse"
-          style="animation-delay: 1s;"
-          aria-hidden="true"
-        />
+  <section class="py-24 lg:py-32 bg-background relative overflow-hidden">
+    
+    {/* Background Grid */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-        <div class="relative z-10 mx-auto max-w-2xl">
-          <h2 class="font-serif text-4xl font-medium text-foreground md:text-5xl">
-            {ctaTitle}
+    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+      <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
+        
+        {/* Glow Effects */}
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+
+        <div class="relative z-10 mx-auto max-w-3xl">
+          <h2 class="font-bold text-4xl font-serif text-background md:text-6xl tracking-tight mb-8">
+            Let’s Build Something <br />
+            <span class="text-primary italic">Extraordinary.</span>
           </h2>
-          <p class="mt-6 text-xl text-muted-foreground">
+          <p class="text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed">
             {ctaDescription}
           </p>
-          <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a href="/contact" aria-label="Contact us to discuss your project" class="inline-flex items-center justify-center h-14 rounded-full px-10 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-xl shadow-primary/20">
-              Contact Us
-            </a>
-            <a href="tel:+918140734392" aria-label="Call us at +91 81407 34392" class="inline-flex items-center justify-center h-14 rounded-full px-10 text-lg font-medium border border-input bg-background/50 backdrop-blur-sm hover:bg-accent hover:text-accent-foreground transition-colors">
-              +91 81407 34392
+          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a 
+              href="/contact" 
+              class={cn(buttonVariants({ size: "lg" }), "h-16 rounded-full px-10 text-xl font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
+            >
+              Start Project
             </a>
           </div>
         </div>
