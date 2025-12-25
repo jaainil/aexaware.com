@@ -92,12 +92,12 @@ const serviceSchema = JSON.stringify({
   <script type="application/ld+json" set:html={breadcrumbSchema} slot="head" />
   
   {/* Hero Section */}
-  <section class="relative w-full min-h-[85vh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden border-b border-border/40">
+  <section class="relative w-full min-h-[85vh] flex flex-col justify-center section-padding pt-32 lg:pt-48 overflow-hidden border-b border-border/40">
     
     {/* Modern Grid Background */}
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
     
-    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    <div class="container-normal relative z-10">
       <div class="max-w-5xl mx-auto text-center">
         
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -112,7 +112,7 @@ const serviceSchema = JSON.stringify({
           </span>
         </h1>
         
-        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed whitespace-pre-line">
+        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed whitespace-pre-line text-pretty">
           {heroDescription}
         </p>
         
@@ -135,11 +135,11 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* Services Section */}
-  <section id="services" class="py-32 relative overflow-hidden bg-background">
+  <section id="services" class="section-padding relative overflow-hidden bg-background">
      {/* Subtle grid background */}
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-50" />
 
-    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    <div class="container-normal relative z-10">
       
       <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-border/40 pb-8">
         <div class="max-w-3xl">
@@ -184,8 +184,8 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* Technical Toolbox - Marquee */}
-  <section class="py-24 border-y border-border/40 bg-secondary/10 overflow-hidden relative">
-     <div class="container mx-auto px-6 lg:px-8 text-center mb-12">
+  <section class="section-padding border-y border-border/40 bg-secondary/10 overflow-hidden relative">
+     <div class="container-normal text-center mb-12">
       <span class="text-sm font-semibold text-muted-foreground uppercase tracking-widest block mb-4">
         Powered By Modern Tech
       </span>
@@ -208,12 +208,12 @@ const serviceSchema = JSON.stringify({
   </section>
 
   {/* CTA Section */}
-  <section class="py-24 lg:py-32 bg-background relative overflow-hidden">
+  <section class="section-padding bg-background relative overflow-hidden">
     
     {/* Background Grid */}
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    <div class="container-normal relative z-10">
       <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
         
         {/* Glow Effects */}

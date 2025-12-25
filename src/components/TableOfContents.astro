@@ -15,7 +15,7 @@ const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
   <h3 class="font-bold text-foreground mb-6 uppercase tracking-widest text-xs">On this page</h3>
   <ul class="space-y-1 relative">
     {/* Track Line */}
-    <div class="absolute left-0 top-2 bottom-2 w-0.5 bg-border/40 rounded-full" />
+    <div class="absolute left-0 top-2 bottom-2 w-0.5 bg-border rounded-full" />
     
     {toc.map((heading) => (
       <li>

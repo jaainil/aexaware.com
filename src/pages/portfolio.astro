@@ -56,24 +56,24 @@ const faqs = [
 >
   
   {/* Hero Section */}
-  <section class="relative w-full min-h-[60vh] flex flex-col justify-center py-32 lg:py-48 overflow-hidden border-b border-border/40">
+  <section class="relative w-full min-h-[60vh] flex flex-col justify-center section-padding pt-32 lg:pt-48 overflow-hidden border-b border-border/40">
     {/* Modern Grid Background */}
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
-    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    <div class="container-normal relative z-10">
       <div class="max-w-4xl mx-auto text-center">
          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <Sparkles className="w-4 h-4 text-primary" />
           <span class="text-sm font-semibold text-primary tracking-wide uppercase">Our Portfolio</span>
         </div>
 
-        <h1 class="font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8">
+        <h1 class="font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance">
           Selected projects & <br />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
             Success Stories.
           </span>
         </h1>
-        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
+        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty">
           Explore how we've helped businesses across various industries
           transform their digital presence and achieve their goals.
         </p>
@@ -82,8 +82,8 @@ const faqs = [
   </section>
 
   {/* Projects Grid */}
-  <section class="py-32 bg-background relative">
-    <div class="container mx-auto px-6 lg:px-8">
+  <section class="section-padding bg-background relative">
+    <div class="container-normal">
       <div class="grid gap-12 md:grid-cols-2">
         {projects.map((project) => (
           <a
@@ -145,8 +145,8 @@ const faqs = [
   </section>
 
   {/* FAQ Section */}
-  <section class="py-24 lg:py-32 bg-secondary/5 border-y border-border/40">
-    <div class="container mx-auto px-6 lg:px-8">
+  <section class="section-padding bg-secondary/5 border-y border-border/40">
+    <div class="container-normal">
       <div class="grid lg:grid-cols-3 gap-16">
         <div class="lg:col-span-1">
           <span class="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
@@ -169,12 +169,12 @@ const faqs = [
   </section>
 
   {/* CTA Section */}
-  <section class="py-24 lg:py-32 bg-background relative overflow-hidden">
+  <section class="section-padding bg-background relative overflow-hidden">
     
     {/* Background Grid */}
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
-    <div class="container mx-auto px-6 lg:px-8 relative z-10">
+    <div class="container-normal relative z-10">
       <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
         
         {/* Glow Effects */}

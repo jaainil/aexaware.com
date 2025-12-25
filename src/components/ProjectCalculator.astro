@@ -30,7 +30,7 @@ const timelines = [
     <div class="mb-12 relative px-4">
         <div class="flex justify-between items-center relative">
             <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-secondary rounded-full overflow-hidden">
-                <div id="progress-bar" class="absolute left-0 top-0 h-full bg-primary transition-all duration-700 w-[0%] shadow-[0_0_10px_rgba(var(--primary),0.5)]"></div>
+                <div id="progress-bar" class="absolute left-0 top-0 h-full bg-primary transition-all duration-700 w-[0%] shadow-[0_0_10px_hsl(var(--primary)/0.5)]"></div>
             </div>
 
             {['type', 'budget', 'timeline', 'details'].map((s, i) => (
@@ -47,7 +47,7 @@ const timelines = [
         </div>
     </div>
 
-    <div class="rounded-[2.5rem] border border-white/10 shadow-2xl backdrop-blur-xl bg-card/40 text-card-foreground overflow-hidden relative">
+    <div class="rounded-[2.5rem] border border-border/50 shadow-2xl backdrop-blur-xl bg-card/90 text-card-foreground overflow-hidden relative">
          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
          
         <div class="flex flex-col space-y-2 p-8 md:p-12 pb-2 text-center relative z-10">
@@ -61,10 +61,10 @@ const timelines = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {projectTypes.map((item) => (
                         <button
-                            class="type-option flex flex-col items-center justify-center p-8 rounded-3xl border border-white/10 bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-6 group"
+                            class="type-option flex flex-col items-center justify-center p-8 rounded-3xl border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-6 group"
                             data-value={item.label}
                         >
-                            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
+                            <div class="p-4 rounded-2xl bg-secondary/5 border border-border group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
                                 <item.icon class="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
                             <div>
@@ -81,10 +81,10 @@ const timelines = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {budgetRanges.map((item) => (
                         <button
-                            class="budget-option flex flex-col items-center justify-center p-8 rounded-3xl border border-white/10 bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
+                            class="budget-option flex flex-col items-center justify-center p-8 rounded-3xl border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
                             data-value={item.label}
                         >
-                            <div class="p-4 rounded-full bg-white/5 border border-white/10 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
+                            <div class="p-4 rounded-full bg-secondary/5 border border-border group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
                                 <DollarSign class="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
                             <div>
@@ -101,10 +101,10 @@ const timelines = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {timelines.map((item) => (
                         <button
-                            class="timeline-option flex flex-col items-center justify-center p-8 rounded-3xl border border-white/10 bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
+                            class="timeline-option flex flex-col items-center justify-center p-8 rounded-3xl border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
                             data-value={item.label}
                         >
-                             <div class="p-4 rounded-2xl bg-white/5 border border-white/10 group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
+                             <div class="p-4 rounded-2xl bg-secondary/5 border border-border group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
                                 <Calendar class="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
                             <div>
@@ -127,7 +127,7 @@ const timelines = [
                                 name="name"
                                 placeholder="John Doe"
                                 required
-                                class="flex h-12 w-full rounded-xl border border-white/10 bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
+                                class="flex h-12 w-full rounded-xl border border-border bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
                             />
                         </div>
                         <div class="space-y-2">
@@ -138,7 +138,7 @@ const timelines = [
                                 type="email"
                                 placeholder="john@company.com"
                                 required
-                                class="flex h-12 w-full rounded-xl border border-white/10 bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
+                                class="flex h-12 w-full rounded-xl border border-border bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
                             />
                         </div>
                         <div class="space-y-2 md:col-span-2">
@@ -147,7 +147,7 @@ const timelines = [
                                 id="company"
                                 name="company"
                                 placeholder="Your Company Ltd."
-                                class="flex h-12 w-full rounded-xl border border-white/10 bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
+                                class="flex h-12 w-full rounded-xl border border-border bg-secondary/20 px-4 py-2 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300"
                             />
                         </div>
                         <div class="space-y-2 md:col-span-2">
@@ -156,7 +156,7 @@ const timelines = [
                                 id="description"
                                 name="description"
                                 placeholder="Tell us a bit more about your vision..."
-                                class="flex min-h-[120px] w-full rounded-xl border border-white/10 bg-secondary/20 px-4 py-3 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 resize-y"
+                                class="flex min-h-[120px] w-full rounded-xl border border-border bg-secondary/20 px-4 py-3 text-sm text-foreground/90 ring-offset-background placeholder:text-muted-foreground/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:border-primary/50 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 resize-y"
                             ></textarea>
                         </div>
                     </div>
@@ -198,7 +198,7 @@ const timelines = [
             </div>
         </div>
 
-        <div id="footer-nav" class="flex justify-between border-t border-white/10 p-8 bg-black/20 backdrop-blur-md">
+        <div id="footer-nav" class="flex justify-between border-t border-border/10 p-8 bg-card/80 backdrop-blur-md">
             <button id="back-btn" class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-white/10 hover:text-foreground h-10 px-4 py-2 rounded-full hidden text-muted-foreground">
                 <ChevronLeft class="mr-2 h-4 w-4" />
                 Back
