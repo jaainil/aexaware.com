@@ -17,13 +17,13 @@ const { headings, url, title } = Astro.props;
 <aside class="space-y-8 sticky top-32 h-fit">
   
   {/* Table of Contents - Glass Card */}
-  <div class="hidden lg:block rounded-[2rem] bg-card/30 backdrop-blur-md p-8 border border-border shadow-sm">
+  <div class="hidden lg:block rounded-[2rem] bg-card/30 backdrop-blur-md p-8 border border-border/50 shadow-sm">
     <TableOfContents headings={headings} />
   </div>
 
   {/* Engagement Actions (Summary & Share) - Glass Card */}
-  <div class="rounded-[2rem] bg-card/30 backdrop-blur-md p-6 border border-border shadow-sm">
-      <h3 class="font-bold text-lg mb-4 flex items-center gap-2 text-foreground/80">
+  <div class="rounded-[2rem] bg-card/30 backdrop-blur-md p-6 border border-border/50 shadow-sm">
+      <h3 class="font-heading font-bold text-lg mb-4 flex items-center gap-2 text-foreground/80">
           <Sparkles class="size-4 text-primary" />
           AI & Share
       </h3>
@@ -38,21 +38,19 @@ const { headings, url, title } = Astro.props;
             <Sparkles class="size-3" />
             Partner with us
         </div>
-        <h3 class="font-bold text-2xl text-foreground mb-3 leading-tight">
+        <h3 class="font-heading font-bold text-2xl text-foreground mb-3 leading-tight">
           Build your next big idea
         </h3>
         <p class="text-muted-foreground mb-6 leading-relaxed">
           Turn your vision into reality with our expert development team.
         </p>
-        <a
-          href="/contact"
+        <a 
+          href="/contact" 
           class={buttonVariants({ className: "w-full rounded-xl h-12 text-base font-semibold shadow-md group-hover:shadow-primary/25 transition-all" })}
         >
           Start Project <ArrowUpRight className="ml-2 h-4 w-4" />
         </a>
     </div>
   </div>
-
-
 
 </aside>

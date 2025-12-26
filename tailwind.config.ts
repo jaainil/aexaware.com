@@ -23,74 +23,71 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Use Plus Jakarta Sans for UI/Body text
         sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
-        // Use Plus Jakarta Sans specifically for Headings to maintain brand identity
         heading: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
-        // Playfair for elegant accents
         serif: ["Playfair Display", ...defaultTheme.fontFamily.serif],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        // FIX: Added / <alpha-value> to allow classes like bg-primary/50
+        border: "hsl(var(--border) / <alpha-value>)",
+        input: "hsl(var(--input) / <alpha-value>)",
+        ring: "hsl(var(--ring) / <alpha-value>)",
+        background: "hsl(var(--background) / <alpha-value>)",
+        foreground: "hsl(var(--foreground) / <alpha-value>)",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+          foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
+          foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
+          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "hsl(var(--muted) / <alpha-value>)",
+          foreground: "hsl(var(--muted-foreground) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "hsl(var(--accent) / <alpha-value>)",
+          foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "hsl(var(--popover) / <alpha-value>)",
+          foreground: "hsl(var(--popover-foreground) / <alpha-value>)",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "hsl(var(--card) / <alpha-value>)",
+          foreground: "hsl(var(--card-foreground) / <alpha-value>)",
         },
-        // Custom semantic colors
         surface: {
-          DEFAULT: "hsl(var(--surface))",
-          hover: "hsl(var(--surface-hover))",
+          DEFAULT: "hsl(var(--surface) / <alpha-value>)",
+          hover: "hsl(var(--surface-hover) / <alpha-value>)",
         },
         success: {
-          DEFAULT: "hsl(var(--success))",
-          foreground: "hsl(var(--success-foreground))",
+          DEFAULT: "hsl(var(--success) / <alpha-value>)",
+          foreground: "hsl(var(--success-foreground) / <alpha-value>)",
         },
         warning: {
-          DEFAULT: "hsl(var(--warning))",
-          foreground: "hsl(var(--warning-foreground))",
+          DEFAULT: "hsl(var(--warning) / <alpha-value>)",
+          foreground: "hsl(var(--warning-foreground) / <alpha-value>)",
         },
         info: {
-          DEFAULT: "hsl(var(--info))",
-          foreground: "hsl(var(--info-foreground))",
+          DEFAULT: "hsl(var(--info) / <alpha-value>)",
+          foreground: "hsl(var(--info-foreground) / <alpha-value>)",
         },
+        // Overlay usually needs exact opacity control, but keeping consistency
         overlay: "hsl(var(--overlay) / 0.8)",
-        rating: "hsl(var(--rating))",
+        rating: "hsl(var(--rating) / <alpha-value>)",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      // MDX/Prose Configuration
-      typography: ({ theme }: { theme: any }) => ({
+      typography: ({ theme }: { theme: (path: string) => any }) => ({
         DEFAULT: {
           css: {
             "--tw-prose-body": theme("colors.foreground"),
@@ -104,17 +101,16 @@ export default {
               fontFamily: theme("fontFamily.heading"),
               fontWeight: "700",
             },
-            "ul, ol, li": {
-              fontFamily: theme("fontFamily.sans"),
-            },
-            // Remove backticks from inline code
-            "code::before": { content: '""' },
-            "code::after": { content: '""' },
+            // Fix: Explicitly remove quotes safely
+            "code::before": { content: '"\\""', display: "none" },
+            "code::after": { content: '"\\""', display: "none" },
             code: {
               fontWeight: "600",
               backgroundColor: theme("colors.muted.DEFAULT"),
               padding: "0.2em 0.4em",
               borderRadius: "0.25rem",
+              // Ensure no generated content breaks the layout
+              content: "none",
             },
           },
         },

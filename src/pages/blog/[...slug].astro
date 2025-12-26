@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import { Calendar, User, Clock, ChevronRight, Share2, Sparkles, Hash } from 'lucide-astro';
+import { Calendar, User, Clock, ChevronRight, Sparkles, Hash } from 'lucide-astro';
 import { Image } from 'astro:assets';
 import BlogEngagement from '@/components/BlogEngagement.astro';
 import Comments from '@/components/Comments.astro';
@@ -74,7 +74,7 @@ const slugify = (text: string) => {
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, '-')     // Replace spaces with -
+    .replace(/\s+/g, '-')      // Replace spaces with -
     .replace(/[^\w\-]+/g, '') // Remove all non-word chars
     .replace(/\-\-+/g, '-');  // Replace multiple - with single -
 };
@@ -93,12 +93,12 @@ const primaryCategory = post.data.category;
   author={post.data.author}
   tags={post.data.tags ?? []}
 >
-  <!-- Article JSON-LD -->
   <script type="application/ld+json" set:html={articleSchema} slot="head" />
   <script type="application/ld+json" set:html={breadcrumbSchema} slot="head" />
   
   {/* Modern Grid Background - Fixed to stay behind content */}
-  <div class="fixed inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
+  {/* FIX: Semantic Grid Background */}
+  <div class="fixed inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
 
   <article class="section-padding pt-32 lg:pt-48 relative">
     <div class="container-normal">
@@ -129,7 +129,8 @@ const primaryCategory = post.data.category;
             </div>
          )}
          
-         <h1 class="font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tighter leading-[0.9] text-foreground mb-8 text-balance">
+         {/* FIX: Use font-heading for main title */}
+         <h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tighter leading-[0.9] text-foreground mb-8 text-balance">
             {post.data.title}
          </h1>
 
@@ -161,6 +162,8 @@ const primaryCategory = post.data.category;
                     class="w-full h-full object-cover"
                     width={1400}
                     height={800}
+                    format="webp"
+                    quality={90}
                     loading="eager"
                 />
                  <div class="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent opacity-40 pointer-events-none" />
@@ -171,15 +174,16 @@ const primaryCategory = post.data.category;
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 max-w-[1400px] mx-auto">
         {/* Main Content Column */}
         <div class="lg:col-span-8 order-1">
-          <div class="prose prose-lg md:prose-xl prose-slate dark:prose-invert max-w-none 
-              prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
+          {/* FIX: Removed prose-slate and customized colors directly to match theme variables */}
+          <div class="prose prose-lg md:prose-xl dark:prose-invert max-w-none 
+              prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
               prose-h1:text-4xl prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 
               prose-p:text-muted-foreground prose-p:leading-relaxed 
               prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline 
               prose-img:rounded-[2rem] prose-img:shadow-xl prose-img:border prose-img:border-border/50
               prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic
               prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-              prose-li:marker:text-primary">
+              prose-li:text-muted-foreground prose-li:marker:text-primary">
             <Content />
           </div>
 
@@ -215,14 +219,14 @@ const primaryCategory = post.data.category;
         </div>
       </div>
     </div>
-  </article>
+ </article>
 
    {/* CTA */}
   <section class="mt-32 max-w-5xl mx-auto px-4 lg:px-8 mb-24">
       <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-20 text-center sm:px-16 shadow-2xl">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
         <div class="relative z-10">
-            <h2 class="font-bold text-3xl md:text-5xl mb-6 text-background tracking-tight">Need expert tech solutions?</h2>
+            <h2 class="font-heading font-bold text-3xl md:text-5xl mb-6 text-background tracking-tight">Need expert tech solutions?</h2>
             <p class="text-lg text-background/80 mb-10 max-w-xl mx-auto">
                 Turn these insights into action. Let's build your next big project together.
             </p>
@@ -234,5 +238,5 @@ const primaryCategory = post.data.category;
             </a>
         </div>
       </div>
-  </section>
+ </section>
 </Layout>

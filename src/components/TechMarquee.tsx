@@ -1,8 +1,10 @@
-import MarqueeComponent from "react-fast-marquee";
+import React from "react";
+import FastMarquee from "react-fast-marquee";
 import { cn } from "@/lib/utils";
 
-// Handle CJS/ESM interop for react-fast-marquee
-const Marquee = (MarqueeComponent as any).default || MarqueeComponent;
+// FIX: Handle CommonJS/ESM interop safely.
+// If FastMarquee is an object with a 'default' property, use that. Otherwise use it directly.
+const Marquee = (FastMarquee as any).default || FastMarquee;
 
 interface TechMarqueeProps {
     items: string[];
@@ -13,19 +15,19 @@ interface TechMarqueeProps {
 
 export default function TechMarquee({ items, direction = "left", className, speed = 40 }: TechMarqueeProps) {
     return (
-        <div className={cn("relative w-full", className)}>
+        <div className={cn("relative w-full select-none pointer-events-none", className)}>
             <Marquee
                 direction={direction}
                 speed={speed}
                 autoFill={true}
-                pauseOnHover={true}
+                pauseOnHover={false}
                 gradient={false}
-                className="py-4"
+                className="py-4 overflow-hidden"
             >
                 {items.map((name, i) => (
                     <span
                         key={i}
-                        className="mx-8 text-4xl md:text-6xl font-bold text-foreground/10 hover:text-foreground/30 transition-colors cursor-default"
+                        className="mx-8 text-4xl md:text-6xl font-bold font-heading text-muted-foreground/20 whitespace-nowrap"
                     >
                         {name}
                     </span>

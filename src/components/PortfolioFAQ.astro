@@ -14,16 +14,22 @@ const { faqs } = Astro.props;
 ---
 
 <div class="w-full space-y-4">
-  {faqs.map((faq, index) => (
-    <div class="border-b border-border/50 last:border-0">
+  {faqs.map((faq) => (
+    <div class="border-b border-border/40 last:border-0">
       <details class="group">
-        <summary class="flex flex-1 items-center justify-between py-6 font-medium transition-all cursor-pointer list-none text-lg text-left text-foreground hover:text-primary">
-          {faq.question}
+        <summary class="flex flex-1 items-center justify-between py-6 font-medium transition-colors cursor-pointer list-none text-lg text-left text-foreground hover:text-primary marker:hidden [&::-webkit-details-marker]:hidden select-none">
+          <span class="font-heading font-semibold">
+            {faq.question}
+          </span>
           <div class="shrink-0 transition-transform duration-300 group-open:rotate-180">
-             <ChevronDown className="h-5 w-5 text-muted-foreground" />
+             <ChevronDown className="h-5 w-5 text-muted-foreground/70 group-hover:text-primary transition-colors" />
           </div>
         </summary>
-        <div class="overflow-hidden text-muted-foreground leading-relaxed text-base pb-6 animate-in slide-in-from-top-1 fade-in duration-300">
+        
+        {/* NOTE: Native <details> elements snap close instantly. 
+           The animate-in class only smooths the OPENING action.
+        */}
+        <div class="overflow-hidden text-muted-foreground leading-relaxed text-base pb-6 animate-in slide-in-from-top-2 fade-in duration-300">
           <p class="max-w-3xl">
              {faq.answer}
           </p>
@@ -32,12 +38,3 @@ const { faqs } = Astro.props;
     </div>
   ))}
 </div>
-
-<style>
-  details > summary {
-    list-style: none;
-  }
-  details > summary::-webkit-details-marker {
-    display: none;
-  }
-</style>

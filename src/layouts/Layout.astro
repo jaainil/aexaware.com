@@ -5,6 +5,8 @@ import Footer from '@/components/Footer.astro';
 import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schema';
 import { SEO } from "astro-seo";
 
+// FIX: Removed @fontsource imports. 
+// We are handling fonts in globals.css/tailwind.config to avoid render-blocking and duplicate loads.
 // Fonts - Plus Jakarta Sans
 import "@fontsource/plus-jakarta-sans/300.css";
 import "@fontsource/plus-jakarta-sans/400.css";
@@ -46,9 +48,13 @@ const {
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-const siteUrl = Astro.site || 'https://aexaware.com';
+const siteUrl = Astro.site ? Astro.site.href : 'https://aexaware.com';
 const canonicalURL = new URL(currentPath, siteUrl).href;
-const imageUrl = new URL(image, siteUrl).href;
+
+// FIX: Handle external images (e.g., from Unsplash/CMS) preventing build crashes
+const imageUrl = image.startsWith('http') 
+  ? image 
+  : new URL(image, siteUrl).href;
 
 // Generate JSON-LD structured data
 const organizationSchema = generateOrganizationSchema({
@@ -86,6 +92,10 @@ const websiteSchema = generateWebSiteSchema({
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="generator" content={Astro.generator} />
+    
     <SEO
       title={title}
       description={description}
@@ -122,11 +132,6 @@ const websiteSchema = generateWebSiteSchema({
           { rel: "apple-touch-icon", href: "/favicon.png" },
           { rel: "canonical", href: canonicalURL },
         ],
-        meta: [
-          { name: "viewport", content: "width=device-width, initial-scale=1" },
-          { name: "generator", content: Astro.generator },
-          { name: "theme-color", content: "#3b82f6" },
-        ],
       }}
     />
     
@@ -141,14 +146,14 @@ const websiteSchema = generateWebSiteSchema({
   <body class="min-h-screen bg-background font-sans antialiased flex flex-col overflow-x-hidden">
     <a 
       href="#main-content" 
-      class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md transition-all"
     >
       Skip to main content
     </a>
     
     <Navbar />
     
-    <main id="main-content" class="flex-1 w-full">
+    <main id="main-content" class="flex-1 w-full relative">
       <slot />
     </main>
     

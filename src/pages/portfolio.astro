@@ -5,47 +5,41 @@ import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import { Image } from 'astro:assets';
 import PortfolioFAQ from "@/components/PortfolioFAQ.astro";
-import { ArrowRight, ExternalLink, Sparkles } from "lucide-astro";
+import { ArrowRight, Sparkles } from "lucide-astro";
 
+// Ensure content collection exists and is sorted by date
 const projects = (await getCollection('portfolio')).sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
 const faqs = [
   {
     question: "What web development services does your team provide?",
-    answer:
-      "We provide complete web development solutions including custom website design, front-end and back-end development, WordPress sites, and eCommerce platforms. Our websites are secure, responsive, fast-loading, and built to support your business goals with scalable performance and clean user experience.",
+    answer: "We provide complete web development solutions including custom website design, front-end and back-end development, WordPress sites, and eCommerce platforms. Our websites are secure, responsive, fast-loading, and built to support your business goals with scalable performance and clean user experience.",
   },
   {
     question: "Do you build Android and iOS mobile applications?",
-    answer:
-      "Yes, we specialize in developing high-quality mobile applications for both Android and iOS platforms. We use modern cross-platform technologies like React Native and Flutter to ensure a seamless user experience and efficient development process.",
+    answer: "Yes, we specialize in developing high-quality mobile applications for both Android and iOS platforms. We use modern cross-platform technologies like React Native and Flutter to ensure a seamless user experience and efficient development process.",
   },
   {
     question: "Can you redesign or improve existing UX/UI designs?",
-    answer:
-      "Absolutely. We can audit your current design, identify pain points, and create a refreshed, user-centric UI/UX that improves engagement and conversion rates.",
+    answer: "Absolutely. We can audit your current design, identify pain points, and create a refreshed, user-centric UI/UX that improves engagement and conversion rates.",
   },
   {
     question: "What technologies do you use in software development?",
-    answer:
-      "We use a wide range of modern technologies including React, Next.js, Node.js, Python, TypeScript, and cloud services like AWS and Azure, selecting the best stack for each specific project.",
+    answer: "We use a wide range of modern technologies including React, Next.js, Node.js, Python, TypeScript, and cloud services like AWS and Azure, selecting the best stack for each specific project.",
   },
   {
     question: "Do you offer cloud setup and DevOps support?",
-    answer:
-      "Yes, we provide comprehensive cloud infrastructure setup, migration services, and ongoing DevOps support to ensure your applications are scalable, secure, and reliable.",
+    answer: "Yes, we provide comprehensive cloud infrastructure setup, migration services, and ongoing DevOps support to ensure your applications are scalable, secure, and reliable.",
   },
   {
     question: "How do you ensure security and scalability?",
-    answer:
-      "We follow industry best practices for security, including regular audits and secure coding standards. Our architectures are designed to be scalable from day one, utilizing cloud-native solutions that grow with your business.",
+    answer: "We follow industry best practices for security, including regular audits and secure coding standards. Our architectures are designed to be scalable from day one, utilizing cloud-native solutions that grow with your business.",
   },
   {
     question: "Do you provide maintenance and support after launch?",
-    answer:
-      "Yes, we offer comprehensive post-launch support and maintenance packages. We ensure your application stays updated, secure, and performs optimally as your user base grows."
+    answer: "Yes, we offer comprehensive post-launch support and maintenance packages. We ensure your application stays updated, secure, and performs optimally as your user base grows."
   },
 ];
 ---
@@ -56,9 +50,11 @@ const faqs = [
 >
   
   {/* Hero Section */}
-  <section class="relative w-full min-h-[60vh] flex flex-col justify-center section-padding pt-32 lg:pt-48 overflow-hidden border-b border-border/40">
-    {/* Modern Grid Background */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+  {/* FIX: Use min-h-[60dvh] for mobile stability */}
+  <section class="relative w-full min-h-[60dvh] flex flex-col justify-center section-padding pt-32 lg:pt-48 overflow-hidden border-b border-border/40">
+    
+    {/* FIX: Semantic Grid Background */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
     <div class="container-normal relative z-10">
       <div class="max-w-4xl mx-auto text-center">
@@ -67,7 +63,7 @@ const faqs = [
           <span class="text-sm font-semibold text-primary tracking-wide uppercase">Our Portfolio</span>
         </div>
 
-        <h1 class="font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance">
+        <h1 class="font-heading font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance">
           Selected projects & <br />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
             Success Stories.
@@ -95,7 +91,9 @@ const faqs = [
                 src={project.data.image}
                 alt={project.data.title}
                 width={800}
-                height={600}
+                height={500}
+                format="webp"
+                quality={80}
                 class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
@@ -111,7 +109,7 @@ const faqs = [
                 </span>
               </div>
 
-              <h3 class="mb-4 text-3xl font-bold text-foreground group-hover:text-primary transition-colors">
+              <h3 class="font-heading mb-4 text-3xl font-bold text-foreground group-hover:text-primary transition-colors">
                 {project.data.title}
               </h3>
               
@@ -152,7 +150,8 @@ const faqs = [
           <span class="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
             FAQ
           </span>
-          <h2 class="font-serif text-4xl font-medium text-foreground mb-6">
+          {/* FIX: Use font-heading for the title */}
+          <h2 class="font-heading text-4xl font-bold text-foreground mb-6">
             Common Questions
           </h2>
           <p class="text-lg text-muted-foreground mb-8">
@@ -171,8 +170,8 @@ const faqs = [
   {/* CTA Section */}
   <section class="section-padding bg-background relative overflow-hidden">
     
-    {/* Background Grid */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+    {/* FIX: Semantic Grid Background */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
     <div class="container-normal relative z-10">
       <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
@@ -181,9 +180,9 @@ const faqs = [
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
 
         <div class="relative z-10 mx-auto max-w-3xl">
-          <h2 class="font-bold text-4xl font-serif text-background md:text-6xl tracking-tight mb-8">
+          <h2 class="font-heading font-bold text-4xl text-background md:text-6xl tracking-tight mb-8">
             Let’s Build Something <br />
-            <span class="text-primary italic">Extraordinary.</span>
+            <span class="text-primary italic font-serif">Extraordinary.</span>
           </h2>
           <p class="text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed">
             Ready to transform your digital presence? Book a free consultation and let's map out your success.

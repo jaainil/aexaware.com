@@ -1,7 +1,6 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
 import { ArrowUpRight, Code, Smartphone, Cloud, Brain, ArrowRight } from "lucide-astro";
-import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
 
 const services = [
@@ -44,16 +43,18 @@ const services = [
 ];
 ---
 
-<section class="py-32 bg-background relative overflow-hidden">
+<section class="section-padding bg-background relative overflow-hidden">
   
-  {/* Subtle grid background */}
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+  {/* Semantic Grid Background 
+      Using variable transparency ensures this looks good in both Light and Dark modes automatically.
+  */}
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-  <div class="container mx-auto px-6 lg:px-8 relative z-10">
+  <div class="container-normal relative z-10">
     
     <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
       <div class="max-w-2xl">
-        <h2 class="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground mb-4">
+        <h2 class="font-heading text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground mb-4">
           Services Beyond <br/>
           <span class="text-muted-foreground">Expectation.</span>
         </h2>
@@ -70,7 +71,7 @@ const services = [
       </a>
     </div>
 
-    {/* Bento Grid */}
+    {/* Bento Grid layout */}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
       {services.map((service) => (
         <div class={cn(
@@ -80,7 +81,7 @@ const services = [
           
           {/* Hover Gradient */}
           <div class={cn(
-            "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300",
+            "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out",
             service.gradient
           )} />
 
@@ -89,7 +90,7 @@ const services = [
               <service.icon className="h-7 w-7" strokeWidth={1.5} />
             </div>
             
-            <h3 class="text-2xl md:text-3xl font-bold text-foreground mb-3 tracking-tight">
+            <h3 class="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3 tracking-tight">
               {service.title}
             </h3>
             <p class="text-muted-foreground leading-relaxed text-base md:text-lg">
@@ -98,7 +99,11 @@ const services = [
           </div>
 
           <div class="relative z-10 pt-8 flex justify-end">
-             <a href={service.href} class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-foreground text-background opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+             <a 
+               href={service.href} 
+               aria-label={`Learn more about ${service.title}`}
+               class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-foreground text-background opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+             >
                <ArrowUpRight className="h-5 w-5" />
              </a>
           </div>

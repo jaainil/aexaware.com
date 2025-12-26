@@ -1,56 +1,54 @@
 ---
 import { ArrowLeft, ArrowRight, Quote } from "lucide-astro";
-import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
-    quote: "Aexaware built our entire e-commerce platform from scratch. Within 3 months of launch, we saw a 45% increase in online sales. The platform handles 5,000+ daily visitors smoothly.",
+    quote: "Aexaware built our entire e-commerce platform from scratch. Within 3 months of launch, we saw a 45% increase in online sales.",
     author: "Pavan D.",
     role: "Founder, Zeck Switches",
   },
   {
-    quote: "They took charge of our complete software ecosystem — from website to infrastructure. The result was a 60% reduction in deployment time and zero downtime since launch.",
+    quote: "They took charge of our complete software ecosystem. The result was a 60% reduction in deployment time and zero downtime.",
     author: "Rajan R.",
     role: "CTO, Qreius.com",
   },
   {
-    quote: "We needed an e-commerce solution that could scale with our agricultural business. Aexaware delivered a platform that increased our customer reach by 300% in rural markets.",
+    quote: "We needed an e-commerce solution that could scale. Aexaware delivered a platform that increased our customer reach by 300%.",
     author: "Arvind S.",
-    role: "Director, Bharat Krushi Biofertilizer",
+    role: "Director, Bharat Krushi",
   },
   {
-    quote: "The team built a custom operations dashboard that cut our manual reporting time by 80%. Their attention to detail and commitment to deadlines was impressive.",
+    quote: "The team built a custom operations dashboard that cut our manual reporting time by 80%. Their attention to detail was impressive.",
     author: "Meera K.",
-    role: "Operations Head, TechInnovate Solutions",
+    role: "Operations Head, TechInnovate",
   },
 ];
 ---
 
 <section class="bg-foreground text-background section-padding overflow-hidden" aria-labelledby="testimonials-heading">
-  <div class="container mx-auto px-6 lg:px-8">
+  <div class="container-normal">
     <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
       <div>
          <span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4 block">
           Client Success Stories
         </span>
-        <h2 id="testimonials-heading" class="font-serif text-4xl md:text-6xl text-background">
-          Trusted by <span class="italic text-muted-foreground">Visionaries.</span>
+        <h2 id="testimonials-heading" class="font-heading text-4xl md:text-6xl text-background font-bold">
+          Trusted by <span class="italic text-muted-foreground font-serif">Visionaries.</span>
         </h2>
       </div>
       
-      <!-- Navigation Buttons -->
       <div class="flex gap-4">
         <button
           id="prev-btn"
-          class="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300"
+          class="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-300 active:scale-95"
           aria-label="Previous slide"
         >
           <ArrowLeft className="h-5 w-5" />
         </button>
         <button
           id="next-btn"
-          class="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300"
+          class="h-12 w-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-300 active:scale-95"
           aria-label="Next slide"
         >
           <ArrowRight className="h-5 w-5" />
@@ -59,7 +57,6 @@ const testimonials = [
     </div>
 
     <div class="mx-auto relative group">
-      <!-- Carousel Container -->
       <div 
         class="flex overflow-x-auto snap-x snap-mandatory gap-8 pb-12 scrollbar-hide scroll-smooth"
         id="testimonials-carousel"
@@ -67,14 +64,15 @@ const testimonials = [
         aria-label="Customer testimonials carousel"
       >
         {testimonials.map((testimonial, i) => (
-          <div class="snap-start shrink-0 w-full md:w-[600px]">
-            <div class="h-full flex flex-col justify-between rounded-[2rem] bg-white/5 border border-white/10 p-10 hover:border-primary/30 transition-colors duration-500 relative">
+          /* FIX: Changed w-full to w-[85vw] on mobile to show a 'peek' of the next card */
+          <div class="snap-start shrink-0 w-[85vw] md:w-[600px]">
+            <div class="h-full flex flex-col justify-between rounded-[2rem] bg-white/5 border border-white/10 p-8 md:p-10 hover:border-primary/30 transition-colors duration-500 relative group/card">
               
-              <Quote className="absolute top-10 right-10 w-12 h-12 text-primary/10" />
+              <Quote className="absolute top-10 right-10 w-12 h-12 text-primary/10 group-hover/card:text-primary/20 transition-colors" />
 
               <div>
                 <div class="flex gap-1 mb-8">
-                   {[1, 2, 3, 4, 5].map((star) => (
+                   {[1, 2, 3, 4, 5].map(() => (
                     <svg
                       class="size-5 fill-primary text-primary"
                       viewBox="0 0 20 20"
@@ -90,7 +88,7 @@ const testimonials = [
               </div>
               
               <div class="mt-10 pt-8 border-t border-white/10 flex items-center gap-4">
-                <div class="h-12 w-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-lg font-bold text-white">
+                <div class="h-12 w-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-lg font-bold text-white shadow-lg shadow-primary/20">
                   {testimonial.author.charAt(0)}
                 </div>
                 <cite class="not-italic">
@@ -121,23 +119,38 @@ const testimonials = [
 </style>
 
 <script>
-  const carousel = document.getElementById('testimonials-carousel');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
+  // FIX: Encapsulate logic in a function to support Astro View Transitions
+  function initCarousel() {
+    const carousel = document.getElementById('testimonials-carousel');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
 
-  if (carousel && prevBtn && nextBtn) {
-    const scrollAmount = () => {
-      // Scroll by one item width + gap
-      const item = carousel.firstElementChild as HTMLElement;
-      return item ? item.offsetWidth + 32 : 600; 
-    };
+    // Only run if elements exist on the current page
+    if (carousel && prevBtn && nextBtn) {
+      const getScrollAmount = () => {
+        // Dynamically calculate width on click in case of window resize
+        // Cast to HTMLElement to satisfy TypeScript strictness if needed
+        const item = carousel.firstElementChild as HTMLElement;
+        // 32 is the gap-8 (2rem) defined in the flex container
+        return item ? item.offsetWidth + 32 : 300; 
+      };
 
-    prevBtn.addEventListener('click', () => {
-      carousel.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
-    });
+      // Remove old listeners to prevent duplication (though astro:page-load handles cleanup mostly)
+      // Ideally, simple addEventListener is fine here as DOM is fresh.
+      
+      prevBtn.onclick = () => {
+        carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      };
 
-    nextBtn.addEventListener('click', () => {
-      carousel.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
-    });
+      nextBtn.onclick = () => {
+        carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      };
+    }
   }
+
+  // Run on initial load
+  initCarousel();
+  
+  // Run on subsequent navigations (if View Transitions are enabled)
+  document.addEventListener('astro:page-load', initCarousel);
 </script>

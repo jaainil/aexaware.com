@@ -1,16 +1,18 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Home, Search, ArrowLeft } from "lucide-astro";
+import { Home, Search } from "lucide-astro";
 ---
 
 <Layout 
   title="Page Not Found – Aexaware Infotech" 
   description="The page you are looking for does not exist."
 >
-  <div class="relative min-h-[100svh] w-full flex flex-col items-center justify-center py-20 overflow-hidden">
+  {/* FIX: Use min-h-[100dvh] for mobile viewport stability */}
+  <div class="relative min-h-[100dvh] w-full flex flex-col items-center justify-center py-20 overflow-hidden">
     
     {/* Modern Grid Background */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
+    {/* FIX: Semantic Grid Background */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
     <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent -z-10" />
     
     <div class="container-normal relative z-10 text-center">
@@ -18,7 +20,8 @@ import { Home, Search, ArrowLeft } from "lucide-astro";
          <div class="inline-block px-4 py-1.5 rounded-full bg-destructive/10 text-destructive text-sm font-bold uppercase tracking-wider border border-destructive/20 mb-4">
             Error 404
         </div>
-        <h1 class="font-serif text-8xl md:text-9xl font-bold text-foreground tracking-tighter leading-none select-none">
+        {/* FIX: Use font-heading for brand consistency */}
+        <h1 class="font-heading text-8xl md:text-9xl font-bold text-foreground tracking-tighter leading-none select-none">
           Lost?
         </h1>
       </div>

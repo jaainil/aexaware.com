@@ -78,7 +78,6 @@ import { cn } from "@/lib/utils";
     </div>
 
     <div class="space-y-2 flex justify-center md:justify-start pt-4">
-      <!-- Turnstile removed -->
         <button
         type="submit"
         class={cn(buttonVariants({ size: "lg" }), "w-full rounded-full text-base h-12 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300")}
@@ -93,84 +92,3 @@ import { cn } from "@/lib/utils";
 <div id="success-message" class="hidden flex flex-col items-center justify-center py-12 text-center space-y-6">
   <div class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center border border-green-500/20">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-green-500"><path d="m5 12 7 7 13-13"/><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/></svg>
-  </div>
-  <div class="space-y-2">
-    <h3 class="text-2xl font-bold">Message Sent!</h3>
-    <p class="text-muted-foreground max-w-md mx-auto">
-      Thanks for reaching out. We'll get back to you shortly.
-    </p>
-  </div>
-  <button id="reset-btn" class={cn(buttonVariants({ variant: "outline" }), "rounded-full")}>
-    Send Another Message
-  </button>
-</div>
-
-<script>
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
-  const formContainer = document.getElementById('form-container');
-  const successMessage = document.getElementById('success-message');
-  const resetBtn = document.getElementById('reset-btn');
-  const originalBtnText = submitBtn?.innerText ?? 'Send Message';
-
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    if (!submitBtn) return;
-
-    const formData = new FormData(form);
-
-
-    submitBtn.disabled = true;
-    submitBtn.innerText = "Sending...";
-
-    const data = Object.fromEntries(formData.entries());
-    
-    console.log('Sending contact form data:', data);
-
-    try {
-      const response = await fetch("https://formspree.io/f/xpwvdjyq", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        form.reset();
-        
-        formContainer?.classList.add('hidden');
-        successMessage?.classList.remove('hidden');
-      } else {
-        const errorText = await response.text();
-        console.error('Webhook error response:', errorText);
-        let errorMessage = 'Failed to send message';
-        try {
-            const errorJson = JSON.parse(errorText);
-            if (errorJson.message) errorMessage = errorJson.message;
-        } catch {
-            // ignore JSON parse error
-        }
-        throw new Error(errorMessage);
-      }
-    } catch (error) {
-      console.error('Error sending message:', error);
-      // Show error message inline instead of alert
-      const errorMsg = error instanceof Error ? error.message : "Something went wrong";
-      const errorEl = document.createElement('div');
-      errorEl.className = 'fixed bottom-4 right-4 max-w-sm bg-destructive text-destructive-foreground px-4 py-3 rounded-lg shadow-lg z-50 animate-in slide-in-from-bottom-5';
-      errorEl.innerHTML = `<p class="font-medium">Error</p><p class="text-sm opacity-90">${errorMsg}. Please try again later.</p>`;
-      document.body.appendChild(errorEl);
-      setTimeout(() => errorEl.remove(), 5000);
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerText = originalBtnText;
-    }
-  });
-
-  resetBtn?.addEventListener('click', () => {
-    successMessage?.classList.add('hidden');
-    formContainer?.classList.remove('hidden');
-  });
-</script>

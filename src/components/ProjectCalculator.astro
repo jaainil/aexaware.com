@@ -34,12 +34,12 @@ const timelines = [
             </div>
 
             {['type', 'budget', 'timeline', 'details'].map((s, i) => (
-                <div class="step-indicator relative z-10 w-12 h-12 rounded-full flex items-center justify-center border-4 transition-all duration-500 bg-background border-secondary text-muted-foreground font-semibold shadow-lg" data-step={s} data-index={i}>
+                <div class="step-indicator relative z-10 w-12 h-12 rounded-full flex items-center justify-center border-4 transition-all duration-500 bg-background border-secondary text-muted-foreground font-semibold shadow-lg select-none" data-step={s} data-index={i}>
                     {i + 1}
                 </div>
             ))}
         </div>
-        <div class="flex justify-between mt-4 text-xs font-bold uppercase tracking-widest text-muted-foreground px-1">
+        <div class="flex justify-between mt-4 text-xs font-bold uppercase tracking-widest text-muted-foreground px-1 select-none">
             <span>Type</span>
             <span>Budget</span>
             <span>Timeline</span>
@@ -51,12 +51,11 @@ const timelines = [
          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
          
         <div class="flex flex-col space-y-2 p-8 md:p-12 pb-2 text-center relative z-10">
-            <h3 id="step-title" class="font-serif text-3xl md:text-4xl font-medium leading-none tracking-tight text-foreground">What are you building?</h3>
+            <h3 id="step-title" class="font-heading text-3xl md:text-4xl font-medium leading-none tracking-tight text-foreground">What are you building?</h3>
             <p id="step-desc" class="text-lg text-muted-foreground">Select the category that best fits your project.</p>
         </div>
 
         <div class="p-8 md:p-12 relative z-10 min-h-[400px]">
-            <!-- Step 1: Type -->
             <div id="step-type" class="step-content">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {projectTypes.map((item) => (
@@ -68,7 +67,7 @@ const timelines = [
                                 <item.icon class="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
                             <div>
-                                <h3 class="font-bold text-xl mb-1">{item.label}</h3>
+                                <h3 class="font-bold font-heading text-xl mb-1">{item.label}</h3>
                                 <p class="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors">{item.desc}</p>
                             </div>
                         </button>
@@ -76,7 +75,6 @@ const timelines = [
                 </div>
             </div>
 
-            <!-- Step 2: Budget -->
             <div id="step-budget" class="step-content hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {budgetRanges.map((item) => (
@@ -88,7 +86,7 @@ const timelines = [
                                 <DollarSign class="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
                             <div>
-                                <h3 class="font-bold text-2xl mb-1">{item.label}</h3>
+                                <h3 class="font-bold font-heading text-2xl mb-1">{item.label}</h3>
                                 <p class="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors">{item.desc}</p>
                             </div>
                         </button>
@@ -96,7 +94,6 @@ const timelines = [
                 </div>
             </div>
 
-            <!-- Step 3: Timeline -->
             <div id="step-timeline" class="step-content hidden">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {timelines.map((item) => (
@@ -108,7 +105,7 @@ const timelines = [
                                 <Calendar class="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors icon" />
                             </div>
                             <div>
-                                <h3 class="font-bold text-xl mb-1">{item.label}</h3>
+                                <h3 class="font-bold font-heading text-xl mb-1">{item.label}</h3>
                                 <p class="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors">{item.desc}</p>
                             </div>
                         </button>
@@ -116,7 +113,6 @@ const timelines = [
                 </div>
             </div>
 
-            <!-- Step 4: Details -->
             <div id="step-details" class="step-content hidden">
                 <form id="project-form" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -170,7 +166,6 @@ const timelines = [
                     </div>
 
                     <div class="flex flex-col md:flex-row justify-end pt-4 items-center gap-4">
-                        <!-- Turnstile removed -->
                         <button type="submit" id="submit-btn" class={cn(buttonVariants({ size: "lg" }), "w-full md:w-auto rounded-full shadow-lg shadow-primary/20")}>
                             Get My Estimate
                             <Send class="ml-2 h-4 w-4" />
@@ -179,14 +174,13 @@ const timelines = [
                 </form>
             </div>
 
-            <!-- Step 5: Success -->
             <div id="step-success" class="step-content hidden">
                 <div class="flex flex-col items-center justify-center py-16 text-center space-y-8 animate-in zoom-in-95 duration-500">
                     <div class="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center border border-green-500/20 shadow-xl shadow-green-500/10">
                         <Sparkles class="w-12 h-12 text-green-500" />
                     </div>
                     <div class="space-y-4">
-                        <h3 class="text-4xl font-serif font-medium">Thank You!</h3>
+                        <h3 class="text-4xl font-heading font-medium">Thank You!</h3>
                         <p class="text-muted-foreground text-lg max-w-md mx-auto leading-relaxed">
                             We've received your project details. One of our tech experts will analyze your requirements and send you a preliminary estimate within 24 hours.
                         </p>
@@ -210,220 +204,260 @@ const timelines = [
     </div>
 </div>
 
-
-
 <script>
-    // State
-    let currentStep = 0;
-    const steps = ['type', 'budget', 'timeline', 'details', 'success'];
-    const data: {
-        type: string;
-        budget: string;
-        timeline: string;
-        name: string;
-        email: string;
-        company: string;
-        description: string;
-        summary?: string;
-    } = {
-        type: '',
-        budget: '',
-        timeline: '',
-        name: '',
-        email: '',
-        company: '',
-        description: ''
-    };
+    function initCalculator() {
+        // State
+        let currentStep = 0;
+        const steps = ['type', 'budget', 'timeline', 'details', 'success'];
+        const data: {
+            type: string;
+            budget: string;
+            timeline: string;
+            name: string;
+            email: string;
+            company: string;
+            description: string;
+            summary?: string;
+        } = {
+            type: '',
+            budget: '',
+            timeline: '',
+            name: '',
+            email: '',
+            company: '',
+            description: ''
+        };
 
-    // DOM Elements
-    const progressBar = document.getElementById('progress-bar') as HTMLElement | null;
-    const stepIndicators = document.querySelectorAll('.step-indicator');
-    const stepContents = document.querySelectorAll('.step-content');
-    const stepTitle = document.getElementById('step-title');
-    const stepDesc = document.getElementById('step-desc');
-    const backBtn = document.getElementById('back-btn');
-    const stepCounter = document.getElementById('step-counter');
-    const footerNav = document.getElementById('footer-nav');
-    const summaryType = document.getElementById('summary-type');
-    const summaryBudget = document.getElementById('summary-budget');
-    const summaryTimeline = document.getElementById('summary-timeline');
-    const form = document.getElementById('project-form') as HTMLFormElement | null;
-    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+        // DOM Elements
+        const progressBar = document.getElementById('progress-bar') as HTMLElement | null;
+        const stepIndicators = document.querySelectorAll('.step-indicator');
+        const stepContents = document.querySelectorAll('.step-content');
+        const stepTitle = document.getElementById('step-title');
+        const stepDesc = document.getElementById('step-desc');
+        const backBtn = document.getElementById('back-btn');
+        const stepCounter = document.getElementById('step-counter');
+        const footerNav = document.getElementById('footer-nav');
+        const summaryType = document.getElementById('summary-type');
+        const summaryBudget = document.getElementById('summary-budget');
+        const summaryTimeline = document.getElementById('summary-timeline');
+        const form = document.getElementById('project-form') as HTMLFormElement | null;
+        const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
 
-    // Content Data
-    type StepName = 'type' | 'budget' | 'timeline' | 'details' | 'success';
-    const stepInfo: Record<StepName, { title: string; desc: string }> = {
-        type: { title: "What are you building?", desc: "Select the category that best fits your project." },
-        budget: { title: "What's your estimated budget?", desc: "This helps us recommend the right tech stack." },
-        timeline: { title: "When do you need this?", desc: "We'll allocate resources accordingly." },
-        details: { title: "Where should we send the estimate?", desc: "We'll get back to you within 24 hours." },
-        success: { title: "Message Received!", desc: "Our team will review your requirements and contact you shortly." }
-    };
+        // Ensure we're on the calculator page
+        if (!stepTitle) return;
 
-    // Functions
-    function updateUI() {
-        const stepName = steps[currentStep] as StepName | undefined;
-        if (!stepName) return;
-        // Update Progress Bar
-        if (progressBar) {
-            progressBar.style.width = `${(currentStep / 3) * 100}%`;
-            if (currentStep === 4) progressBar.style.width = '100%';
-        }
+        // Content Data
+        type StepName = 'type' | 'budget' | 'timeline' | 'details' | 'success';
+        const stepInfo: Record<StepName, { title: string; desc: string }> = {
+            type: { title: "What are you building?", desc: "Select the category that best fits your project." },
+            budget: { title: "What's your estimated budget?", desc: "This helps us recommend the right tech stack." },
+            timeline: { title: "When do you need this?", desc: "We'll allocate resources accordingly." },
+            details: { title: "Where should we send the estimate?", desc: "We'll get back to you within 24 hours." },
+            success: { title: "Message Received!", desc: "Our team will review your requirements and contact you shortly." }
+        };
 
-        // Update Indicators
-        stepIndicators.forEach((el, i) => {
-            if (i <= currentStep) {
-                el.classList.add('border-primary', 'text-primary', 'font-bold');
-                el.classList.remove('border-secondary', 'text-muted-foreground');
-            } else {
-                el.classList.remove('border-primary', 'text-primary', 'font-bold');
-                el.classList.add('border-secondary', 'text-muted-foreground');
-            }
-        });
-
-        // Show/Hide Content
-        stepContents.forEach(el => el.classList.add('hidden'));
-        document.getElementById(`step-${stepName}`)?.classList.remove('hidden');
-
-        // Update Title & Desc
-        if (stepTitle) stepTitle.textContent = stepInfo[stepName].title;
-        if (stepDesc) stepDesc.textContent = stepInfo[stepName].desc;
-
-        // Update Footer
-        if (backBtn) {
-            if (currentStep === 0 || currentStep === 4) backBtn.classList.add('hidden');
-            else backBtn.classList.remove('hidden');
-        }
-
-        if (stepCounter) {
-            if (currentStep === 4) stepCounter.classList.add('hidden');
-            else {
-                stepCounter.classList.remove('hidden');
-                stepCounter.textContent = `Step ${currentStep + 1} of 4`;
-            }
-        }
-
-        if (footerNav && currentStep === 4) {
-            footerNav.classList.add('hidden');
-        }
-
-        // Update Summary in Details step
-        if (stepName === 'details') {
-            if (summaryType) summaryType.textContent = data.type;
-            if (summaryBudget) summaryBudget.textContent = data.budget;
-            if (summaryTimeline) summaryTimeline.textContent = data.timeline;
-        }
-
-        // Highlight selected options
-        document.querySelectorAll('.type-option, .budget-option, .timeline-option').forEach(btn => {
-            const val = btn.getAttribute('data-value');
-            const type = btn.classList.contains('type-option') ? 'type' : 
-                         btn.classList.contains('budget-option') ? 'budget' : 'timeline';
+        // Functions
+        function updateUI() {
+            const stepName = steps[currentStep] as StepName | undefined;
+            if (!stepName) return;
             
-            if (data[type] === val) {
-                btn.classList.add('border-primary', 'bg-accent/50');
-                btn.classList.remove('border-border');
-                btn.querySelector('.icon-container')?.classList.add('bg-primary/10');
-                btn.querySelector('.icon')?.classList.add('text-primary');
-            } else {
-                btn.classList.remove('border-primary', 'bg-accent/50');
-                btn.classList.add('border-border');
-                btn.querySelector('.icon-container')?.classList.remove('bg-primary/10');
-                btn.querySelector('.icon')?.classList.remove('text-primary');
+            // Update Progress Bar
+            if (progressBar) {
+                progressBar.style.width = `${(currentStep / 3) * 100}%`;
+                if (currentStep === 4) progressBar.style.width = '100%';
             }
-        });
-    }
 
-    function nextStep() {
-        if (currentStep < steps.length - 1) {
-            currentStep++;
-            updateUI();
-            document.getElementById('project-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }
-
-    function prevStep() {
-        if (currentStep > 0) {
-            currentStep--;
-            updateUI();
-        }
-    }
-
-    // Event Listeners
-    document.querySelectorAll('.type-option').forEach(btn => {
-        btn.addEventListener('click', () => {
-            data.type = btn.getAttribute('data-value') || '';
-            nextStep();
-        });
-    });
-
-    document.querySelectorAll('.budget-option').forEach(btn => {
-        btn.addEventListener('click', () => {
-            data.budget = btn.getAttribute('data-value') || '';
-            nextStep();
-        });
-    });
-
-    document.querySelectorAll('.timeline-option').forEach(btn => {
-        btn.addEventListener('click', () => {
-            data.timeline = btn.getAttribute('data-value') || '';
-            nextStep();
-        });
-    });
-
-    backBtn?.addEventListener('click', prevStep);
-
-    form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (!submitBtn) return;
-
-        // Collect form data
-        const formData = new FormData(form as HTMLFormElement);
-
-
-        data.name = formData.get('name') as string;
-        data.email = formData.get('email') as string;
-        data.company = formData.get('company') as string;
-        data.description = formData.get('description') as string;
-        // Add summary
-        data.summary = `Looking for a ${data.type} with a budget of ${data.budget}, needed ${data.timeline}.`;
-
-        // Loading state
-        const originalBtnText = submitBtn.innerHTML;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending...';
-
-        console.log('Sending project data:', data);
-
-        try {
-            // Try sending to the webhook directly first
-            // If CORS fails, we might need a proxy, but let's try direct first as requested
-            const response = await fetch("https://formspree.io/f/mblnozpl", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(data),
+            // Update Indicators
+            stepIndicators.forEach((el, i) => {
+                if (i <= currentStep) {
+                    el.classList.add('border-primary', 'text-primary', 'font-bold');
+                    el.classList.remove('border-secondary', 'text-muted-foreground');
+                } else {
+                    el.classList.remove('border-primary', 'text-primary', 'font-bold');
+                    el.classList.add('border-secondary', 'text-muted-foreground');
+                }
             });
 
-            if (response.ok) {
-                currentStep = 4; // Success step
-                updateUI();
-            } else {
-                const errorText = await response.text();
-                console.error('Webhook error response:', errorText);
-                throw new Error('Failed to submit project details');
-            }
-        } catch (error) {
-            console.error('Error submitting project:', error);
-            alert("Something went wrong. Please try again later.");
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
-        }
-    });
+            // Show/Hide Content
+            stepContents.forEach(el => el.classList.add('hidden'));
+            document.getElementById(`step-${stepName}`)?.classList.remove('hidden');
 
-    // Initialize
-    updateUI();
+            // Update Title & Desc
+            if (stepTitle) stepTitle.textContent = stepInfo[stepName].title;
+            if (stepDesc) stepDesc.textContent = stepInfo[stepName].desc;
+
+            // Update Footer
+            if (backBtn) {
+                if (currentStep === 0 || currentStep === 4) backBtn.classList.add('hidden');
+                else backBtn.classList.remove('hidden');
+            }
+
+            if (stepCounter) {
+                if (currentStep === 4) stepCounter.classList.add('hidden');
+                else {
+                    stepCounter.classList.remove('hidden');
+                    stepCounter.textContent = `Step ${currentStep + 1} of 4`;
+                }
+            }
+
+            if (footerNav && currentStep === 4) {
+                footerNav.classList.add('hidden');
+            }
+
+            // Update Summary in Details step
+            if (stepName === 'details') {
+                if (summaryType) summaryType.textContent = data.type;
+                if (summaryBudget) summaryBudget.textContent = data.budget;
+                if (summaryTimeline) summaryTimeline.textContent = data.timeline;
+            }
+
+            // Highlight selected options
+            document.querySelectorAll('.type-option, .budget-option, .timeline-option').forEach(btn => {
+                const val = btn.getAttribute('data-value');
+                const type = btn.classList.contains('type-option') ? 'type' : 
+                             btn.classList.contains('budget-option') ? 'budget' : 'timeline';
+                
+                if (data[type] === val) {
+                    btn.classList.add('border-primary', 'bg-accent/50');
+                    btn.classList.remove('border-border');
+                    btn.querySelector('.icon-container')?.classList.add('bg-primary/10');
+                    btn.querySelector('.icon')?.classList.add('text-primary');
+                } else {
+                    btn.classList.remove('border-primary', 'bg-accent/50');
+                    btn.classList.add('border-border');
+                    btn.querySelector('.icon-container')?.classList.remove('bg-primary/10');
+                    btn.querySelector('.icon')?.classList.remove('text-primary');
+                }
+            });
+        }
+
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateUI();
+                document.getElementById('project-calculator')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                updateUI();
+            }
+        }
+
+        // Event Listeners - using cloneNode to wipe old listeners on navigation re-init
+        
+        // 1. Type Options
+        const typeOptions = document.querySelectorAll('.type-option');
+        typeOptions.forEach(btn => {
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode?.replaceChild(newBtn, btn);
+            (newBtn as HTMLElement).addEventListener('click', () => {
+                data.type = (newBtn as HTMLElement).getAttribute('data-value') || '';
+                nextStep();
+            });
+        });
+
+        // 2. Budget Options
+        const budgetOptions = document.querySelectorAll('.budget-option');
+        budgetOptions.forEach(btn => {
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode?.replaceChild(newBtn, btn);
+            (newBtn as HTMLElement).addEventListener('click', () => {
+                data.budget = (newBtn as HTMLElement).getAttribute('data-value') || '';
+                nextStep();
+            });
+        });
+
+        // 3. Timeline Options
+        const timelineOptions = document.querySelectorAll('.timeline-option');
+        timelineOptions.forEach(btn => {
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode?.replaceChild(newBtn, btn);
+            (newBtn as HTMLElement).addEventListener('click', () => {
+                data.timeline = (newBtn as HTMLElement).getAttribute('data-value') || '';
+                nextStep();
+            });
+        });
+
+        // 4. Back Button
+        if (backBtn) {
+            const newBackBtn = backBtn.cloneNode(true);
+            backBtn.parentNode?.replaceChild(newBackBtn, backBtn);
+            (newBackBtn as HTMLElement).addEventListener('click', prevStep);
+        }
+
+        // 5. Form Submit
+        if (form && submitBtn) {
+            const newForm = form.cloneNode(true) as HTMLFormElement;
+            form.parentNode?.replaceChild(newForm, form);
+
+            // Re-acquire reference to the button inside the cloned form
+            const newSubmitBtn = newForm.querySelector('#submit-btn') as HTMLButtonElement;
+
+            newForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (!newSubmitBtn) return;
+
+                // Collect form data
+                const formData = new FormData(newForm);
+
+                data.name = formData.get('name') as string;
+                data.email = formData.get('email') as string;
+                data.company = formData.get('company') as string;
+                data.description = formData.get('description') as string;
+                // Add summary
+                data.summary = `Looking for a ${data.type} with a budget of ${data.budget}, needed ${data.timeline}.`;
+
+                // Loading state
+                const originalBtnText = newSubmitBtn.innerHTML;
+                newSubmitBtn.disabled = true;
+                newSubmitBtn.innerHTML = 'Sending...';
+
+                try {
+                    const response = await fetch("https://formspree.io/f/mblnozpl", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                    if (response.ok) {
+                        currentStep = 4; // Success step
+                        updateUI();
+                    } else {
+                        const errorText = await response.text();
+                        console.error('Webhook error response:', errorText);
+                        throw new Error('Failed to submit project details');
+                    }
+                } catch (error) {
+                    console.error('Error submitting project:', error);
+                    // Custom Error Toast
+                    const errorEl = document.createElement('div');
+                    errorEl.className = 'fixed bottom-4 right-4 max-w-sm bg-destructive text-destructive-foreground px-6 py-4 rounded-xl shadow-2xl z-[100] animate-in slide-in-from-bottom-5 border border-white/10';
+                    errorEl.innerHTML = `
+                        <div class="font-bold mb-1">Error</div>
+                        <div class="text-sm opacity-90">Something went wrong. Please try again later.</div>
+                    `;
+                    document.body.appendChild(errorEl);
+                    setTimeout(() => errorEl.remove(), 5000);
+                } finally {
+                    newSubmitBtn.disabled = false;
+                    newSubmitBtn.innerHTML = originalBtnText;
+                }
+            });
+        }
+
+        // Initialize UI
+        updateUI();
+    }
+
+    // Run on initial load
+    initCalculator();
+
+    // Re-run on navigation (Astro View Transitions)
+    document.addEventListener('astro:page-load', initCalculator);
 </script>

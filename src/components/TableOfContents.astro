@@ -12,7 +12,8 @@ const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
 ---
 
 <nav class="toc-container text-sm">
-  <h3 class="font-bold text-foreground mb-6 uppercase tracking-widest text-xs">On this page</h3>
+  {/* FIX: Use font-heading for the title */}
+  <h3 class="font-heading font-bold text-foreground mb-6 uppercase tracking-widest text-xs">On this page</h3>
   <ul class="space-y-1 relative">
     {/* Track Line */}
     <div class="absolute left-0 top-2 bottom-2 w-0.5 bg-border rounded-full" />
@@ -33,58 +34,46 @@ const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
 </nav>
 
 <script>
-  // Robust Active State Highlighting
-  const tocLinks = document.querySelectorAll('.toc-container a');
-  const headings = document.querySelectorAll('h2, h3');
-  
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
-    // 1. Update state of intersecting headings
-    entries.forEach((entry) => {
-      const id = entry.target.getAttribute('id');
-      if (!id) return;
-      
-      const link = document.querySelector(`.toc-container a[href="#${id}"]`);
-      if (link) {
+  function initTOC() {
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    const headings = document.querySelectorAll('article h2, article h3'); // Scope to article to avoid sidebar/footer collisions
+    
+    if (headings.length === 0) return;
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          link.classList.add('is-visible');
-        } else {
-          link.classList.remove('is-visible');
+          const id = entry.target.getAttribute('id');
+          if (!id) return;
+
+          // Remove active class from all links
+          tocLinks.forEach(link => {
+            link.classList.remove('text-primary', 'font-bold', 'border-primary');
+            link.classList.add('text-muted-foreground', 'border-transparent');
+          });
+
+          // Add active class to current link
+          const activeLink = document.querySelector(`.toc-container a[href="#${id}"]`);
+          if (activeLink) {
+            activeLink.classList.add('text-primary', 'font-bold', 'border-primary');
+            activeLink.classList.remove('text-muted-foreground', 'border-transparent');
+          }
         }
-      }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, {
+      rootMargin: '-10% 0px -80% 0px' // Adjust margin to trigger "active" near the top of the viewport
     });
 
-    // 2. Find the *first* visible link in the TOC and make it active
-    const links = Array.from(tocLinks);
-    let activeLink: Element | null = null;
-
-    // Find first visible link
-    for (const link of links) {
-        if (link.classList.contains('is-visible')) {
-            activeLink = link;
-            break;
-        }
-    }
-
-    // If no link is visible, maybe keep the last one active or check scroll position?
-    // For now, simpler is better.
-
-    // Update classes
-    links.forEach(link => {
-       if (link === activeLink) {
-           link.classList.add('text-primary', 'font-bold', 'border-primary');
-           link.classList.remove('text-muted-foreground', 'border-transparent');
-       } else {
-           link.classList.remove('text-primary', 'font-bold', 'border-primary');
-           link.classList.add('text-muted-foreground', 'border-transparent');
-       }
+    headings.forEach((heading) => {
+      observer.observe(heading);
     });
-  };
+  }
 
-  const observer = new IntersectionObserver(observerCallback, {
-    rootMargin: '-100px 0px -66% 0px' 
-  });
+  // Run on load
+  initTOC();
 
-  headings.forEach((heading) => {
-    observer.observe(heading);
-  });
+  // Re-run on navigation (Astro View Transitions)
+  document.addEventListener('astro:page-load', initTOC);
 </script>

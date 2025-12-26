@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
+// Integrations
 import mermaid from 'astro-mermaid';
 import lighthouse from 'astro-lighthouse';
 import robotsTxt from 'astro-robots-txt';
@@ -11,45 +12,57 @@ import umami from "@yeskunall/astro-umami";
 import llmsTxtIntegration from "astro-llms-txt-generator";
 import compressor from "astro-compressor";
 import writenex from "@writenex/astro";
-import readingTime from "astro-reading-time";
+
+// Reading time integration (must come before mdx)
+import readingTime from 'astro-reading-time';
 
 // https://astro.build/config
 export default defineConfig({
     site: 'https://aexaware.com',
-    prefetch: true,
+
+    // FIX: Updated from boolean to object for Astro 4/5+
+    prefetch: {
+        prefetchAll: true,
+        defaultStrategy: 'viewport',
+    },
+
     integrations: [
-        lighthouse(),
-        llmsTxtIntegration(),
-        umami({ id: "7401816d-713e-4916-960b-d314f2b36d3d" }),
-        writenex({ allowProduction: false }),
-        readingTime(),
         react(),
         tailwind({
             applyBaseStyles: false,
         }),
+        // Reading time must come before mdx
+        readingTime(),
+        mdx({
+            optimize: true,
+        }),
+
+        // Content & Generators
+        writenex({ allowProduction: false }),
+        llmsTxtIntegration(),
         mermaid({
             theme: 'default',
             autoTheme: true,
             mermaidConfig: {
                 startOnLoad: false,
-                logLevel: 'error',
-                securityLevel: 'strict',
-                flowchart: {
-                    curve: 'basis',
-                    padding: 20
-                },
+                flowchart: { curve: 'basis', padding: 20 },
                 themeVariables: {
-                    fontFamily: 'ui-sans-serif, system-ui, sans-serif',
+                    fontFamily: 'Plus Jakarta Sans, ui-sans-serif, system-ui, sans-serif',
                 }
             }
         }),
-        mdx({
-            optimize: true,
-        }),
+
+        // Analytics & SEO
+        // Note: Ensure Lighthouse only runs in the environments you want (e.g. not every local dev save)
+        lighthouse(),
+        umami({ id: "7401816d-713e-4916-960b-d314f2b36d3d" }),
+
         sitemap({
             changefreq: 'weekly',
             priority: 0.7,
-            lastmod: new Date(),
+            // FIX: Removed 'lastmod: new Date()' to prevent false SEO updates. 
+            // Let the integration detect file modification times if possible, 
+            // or manage this manually per page.
         }),
         robotsTxt({
             sitemap: true,
@@ -57,20 +70,40 @@ export default defineConfig({
                 {
                     userAgent: '*',
                     allow: '/',
-                    disallow: ['/api/'],
-                    crawlDelay: 0.5,
+                    disallow: ['/api/', '/admin/'], // Added /admin/ as a safety default
+                    // Note: Googlebot ignores crawlDelay, but useful for other bots
+                    crawlDelay: 2,
                 },
             ],
         }),
 
-        compressor(),
+        // Optimization (Always keep last)
+        compressor({
+            gzip: true,
+            brotli: true,
+        }),
     ],
+
     output: 'static',
+
     image: {
+        // FIX: 'domains' is deprecated in favor of strict remotePatterns in newer Astro versions, 
+        // but if on older versions, this is fine. Ideally, migrate to:
+        // remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }]
         domains: ['images.unsplash.com', 'i.pravatar.cc'],
     },
+
     server: {
-        host: true,
-        allowedHosts: true,
+        host: true, // Listens on all addresses (0.0.0.0)
+        // FIX: Explicitly allow only your production domain and localhost to prevent Host Header attacks
+        allowedHosts: ['aexaware.com', 'localhost', '.aexaware.com'],
     },
+
+    // Developer Experience
+    vite: {
+        build: {
+            // beneficial for large react/mermaid chunks
+            chunkSizeWarningLimit: 1000,
+        }
+    }
 });

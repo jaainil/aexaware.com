@@ -1,6 +1,6 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
-import { ArrowUpRight, CheckCircle2, ShieldCheck, Zap, Users, Gauge } from "lucide-astro";
+import { ArrowUpRight, ShieldCheck, Zap, Users, Gauge } from "lucide-astro";
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
 
@@ -12,28 +12,26 @@ const items = [
 ];
 ---
 
-<section class="py-32 bg-background overflow-hidden relative">
-  <div class="container mx-auto px-6 lg:px-8">
+<section class="section-padding bg-background overflow-hidden relative">
+  <div class="container-normal">
     <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
       
-      {/* Right Content - Moved to left for better flow in this context or kept right? Let's keep visually interesting. 
-          Actually, standard pattern text-left image-right is good, but let's stick to the file structure.
-          The file had images on left. Let's keep images on left but modernize.
-      */}
+      {/* Left Image Visual */}
       <div class="relative order-2 lg:order-1">
-        <div class="relative h-[600px] w-full rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl">
+        <div class="relative h-[600px] w-full rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl group">
            <Image
             src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1000&auto=format&fit=crop"
             alt="IT Professional"
             width={800}
             height={1000}
-            class="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+            format="webp"
+            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           
           {/* Overlay Card */}
-          <div class="absolute bottom-8 left-8 right-8 bg-background/80 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-lg">
+          <div class="absolute bottom-8 left-8 right-8 bg-background/80 backdrop-blur-md p-6 rounded-2xl border border-border/50 shadow-lg">
              <div class="flex items-center gap-4">
-               <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground">
+               <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground shrink-0">
                  <ShieldCheck className="w-6 h-6" />
                </div>
                <div>
@@ -48,9 +46,9 @@ const items = [
         <div class="absolute -top-12 -left-12 h-64 w-64 bg-primary/20 rounded-full blur-[80px] -z-10" />
       </div>
 
-      <!-- Right Content -->
+      {/* Right Content */}
       <div class="order-1 lg:order-2">
-        <h2 class="text-4xl md:text-6xl font-bold leading-[1.1] mb-8 text-foreground tracking-tight">
+        <h2 class="font-heading text-4xl md:text-6xl font-bold leading-[1.1] mb-8 text-foreground tracking-tight">
           Smart Solutions. <br />
           <span class="text-primary">Secure Scale.</span>
         </h2>
@@ -59,16 +57,17 @@ const items = [
           Robust, scalable, and ready for anything.
         </p>
 
-        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-6 mb-12">
+        {/* Semantic List */}
+        <ul class="grid sm:grid-cols-2 gap-x-8 gap-y-6 mb-12">
           {items.map((item) => (
-            <div class="flex items-start gap-4 p-4 rounded-xl hover:bg-secondary/30 transition-colors duration-300">
+            <li class="flex items-start gap-4 p-4 rounded-xl hover:bg-secondary/30 transition-colors duration-300">
               <div class="mt-1">
                 <item.icon className="h-6 w-6 text-primary" strokeWidth={2} />
               </div>
               <span class="font-medium text-lg text-foreground">{item.text}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <a 
           href="/contact" 
