@@ -148,10 +148,7 @@ const isActive = (linkPath: string) => {
         <nav class="flex-1 flex flex-col px-6 py-12 space-y-4">
           {navLinks.map((link, idx) => (
             // FIX: Use inline style for delay because Tailwind can't interpolate 'delay-{val}'
-            <div 
-                class="animate-in slide-in-from-bottom-4 fade-in duration-500 fill-mode-both"
-                style={{ animationDelay: `${idx * 100}ms` }}
-            >
+            <div>
              {link.dropdown ? (
               <details class="group">
                 <summary class="list-none flex items-center justify-between text-3xl font-bold text-foreground py-3 cursor-pointer select-none transition-colors hover:text-primary marker:hidden [&::-webkit-details-marker]:hidden">
