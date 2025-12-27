@@ -144,18 +144,18 @@ const isActive = (linkPath: string) => {
     {/* FIX: Mobile Menu moved INSIDE navbar-inner so it respects the capsule width */}
     <div
       id="mobile-menu"
-      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-[2rem] p-6 invisible opacity-0 origin-top scale-95 transition-all duration-300 max-h-[85vh] overflow-y-auto no-scrollbar"
+      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-[2rem] p-6 invisible opacity-0 origin-top scale-95 transition-transform duration-300 max-h-[85vh] overflow-y-auto no-scrollbar"
     >
        <div class="flex flex-col space-y-2">
           {navLinks.map((link, idx) => (
-            <div class="mobile-nav-item transform translate-y-2 opacity-0 transition-all duration-500" style={`transition-delay: ${idx * 30}ms`}>
+            <div class="mobile-nav-item">
               {link.dropdown ? (
                 <details class="group/details">
                   <summary class="list-none flex items-center justify-between text-xl font-bold text-foreground py-3 cursor-pointer select-none transition-colors hover:text-primary">
                     {link.name}
                     <ChevronDown class="h-5 w-5 text-muted-foreground transition-transform duration-300 group-open/details:-rotate-180" />
                   </summary>
-                  <div class="pl-2 pt-2 pb-2 space-y-2 border-l-2 border-primary/10 ml-2 animate-in slide-in-from-top-2 duration-200">
+                  <div class="pl-2 pt-2 pb-2 space-y-2 border-l-2 border-primary/10 ml-2">
                     {link.dropdown.map((item) => (
                       <a href={item.path} class="flex items-center gap-3 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors">
                         <span class="font-medium text-base">{item.name}</span>
@@ -177,7 +177,7 @@ const isActive = (linkPath: string) => {
             </div>
           ))}
           
-          <div class="pt-6 mt-2 border-t border-border/10 mobile-nav-item transform translate-y-2 opacity-0 transition-all duration-500 delay-300">
+          <div class="pt-6 mt-2 border-t border-border/10 mobile-nav-item">
               <a href="/contact" class={buttonVariants({ size: 'lg', className: "w-full rounded-xl text-lg h-12 shadow-md" })}>
                   Book Strategy Call <ArrowUpRight className="ml-2 h-5 w-5" />
               </a>
@@ -253,11 +253,6 @@ const isActive = (linkPath: string) => {
             closeIcon?.classList.remove('opacity-0', '-rotate-90', 'scale-0');
             closeIcon?.classList.add('opacity-100', 'rotate-0', 'scale-100');
             
-            // Staggered Text Animation
-            mobileItems.forEach((item) => {
-                item.classList.remove('translate-y-2', 'opacity-0');
-            });
-
             // Ensure background is solid when menu is open, even at top of page
             if (window.scrollY < 20) {
                navbarInner?.classList.add('bg-background');
@@ -272,11 +267,6 @@ const isActive = (linkPath: string) => {
             // Icon Animation
             menuIcon?.classList.remove('opacity-0', 'rotate-90', 'scale-0');
             closeIcon?.classList.add('opacity-0', '-rotate-90', 'scale-0');
-            
-            // Reset Stagger
-            mobileItems.forEach((item) => {
-                item.classList.add('translate-y-2', 'opacity-0');
-            });
             
              // Revert background if at top
             if (window.scrollY < 20) {
