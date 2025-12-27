@@ -6,6 +6,10 @@
 
 @layer base {
   :root {
+    /* Navbar Height Contract */
+    --navbar-height: 96px;
+    /* mobile + safe area */
+
     /* Base Colors - Values adjusted to pure numbers for <alpha-value> compatibility */
     --background: 0 0% 100%;
     --foreground: 222 47% 11%;
@@ -50,6 +54,12 @@
     --rating: 45 93% 47%;
 
     --radius: 0.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --navbar-height: 112px;
+    }
   }
 
   .dark {
@@ -98,7 +108,7 @@
 
   html {
     @apply scroll-smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: var(--navbar-height);
   }
 
   body {

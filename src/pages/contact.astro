@@ -31,7 +31,7 @@ const socialLinks = [
   <div class="fixed inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
 
   {/* FIX: Use min-h-[100dvh] for mobile stability */}
-  <section class="relative w-full min-h-[100dvh] flex flex-col justify-center section-padding lg:pt-48 overflow-hidden">
+  <section class="relative w-full min-h-[100dvh] flex flex-col justify-start lg:justify-center section-padding pt-[var(--navbar-height)] overflow-hidden">
     <div class="container-normal">
       <div class="grid gap-16 lg:grid-cols-2 lg:gap-24 items-start">
         
@@ -42,7 +42,7 @@ const socialLinks = [
             <span class="text-sm font-semibold text-primary tracking-wide uppercase">Contact Us</span>
           </div>
 
-          <h1 class="font-heading font-medium leading-[0.9] text-foreground text-5xl md:text-7xl mb-8">
+          <h1 class="font-heading font-bold leading-[0.9] text-foreground text-5xl md:text-7xl mb-8">
             Let’s start a <br />
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">conversation.</span>
           </h1>
