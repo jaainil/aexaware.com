@@ -4,8 +4,7 @@ import { Briefcase, ArrowRight, Sparkles } from "lucide-astro";
 import { cn } from "@/lib/utils";
 import TrustedBy from "@/components/astro/TrustedBy.astro";
 
-// FIX: Use the React component for client-side animation, not the static Astro package
-import { TypewriterEffect } from "@/components/react/TypewriterEffect";
+import Typewriter from "astro-typewriter";
 
 const words = [
   "Digital Futures",
@@ -35,13 +34,13 @@ const words = [
       {/* Main Headline */}
       <h1 class="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] mb-8 select-none text-balance">
         <span class="block text-foreground">We Build</span>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient block h-[1.1em]">
-          {/* FIX: Hydrate the React component. 'client:visible' ensures it starts when user sees it. */}
-          <TypewriterEffect 
-            client:visible 
-            words={words} 
-            typingSpeed={80}
-            deletingSpeed={50}
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient block h-[1.3em] pb-2">
+          <Typewriter 
+            messages={words} 
+            writeSpeed={80}
+            deleteSpeed={50}
+            waitWritten={2000}
+            waitDeleted={500}
           />
         </span>
       </h1>
@@ -77,7 +76,7 @@ const words = [
       </div>
 
       {/* Trusted By */}
-      <div class="w-full pt-20 lg:pt-32 opacity-80 mix-blend-screen">
+      <div class="w-full pt-10 lg:pt-20 opacity-80 mix-blend-screen">
         <TrustedBy minimal={true} />
       </div>
     </div>

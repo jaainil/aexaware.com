@@ -144,7 +144,7 @@ const isActive = (linkPath: string) => {
     {/* FIX: Mobile Menu moved INSIDE navbar-inner so it respects the capsule width */}
     <div
       id="mobile-menu"
-      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-[2rem] p-6 invisible opacity-0 origin-top scale-95 transition-transform duration-300 max-h-[85vh] overflow-y-auto no-scrollbar"
+      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-[2rem] p-6 invisible opacity-0 max-h-[85vh] overflow-y-auto no-scrollbar"
     >
        <div class="flex flex-col space-y-2">
           {navLinks.map((link, idx) => (
@@ -245,8 +245,8 @@ const isActive = (linkPath: string) => {
         
         if (isHidden) {
             // OPEN
-            mobileMenu?.classList.remove('invisible', 'opacity-0', 'scale-95');
-            mobileMenu?.classList.add('opacity-100', 'scale-100');
+            mobileMenu?.classList.remove('invisible', 'opacity-0');
+            mobileMenu?.classList.add('opacity-100');
             
             // Icon Animation - Hide hamburger, show X
             menuIcon?.classList.remove('opacity-100', 'rotate-0', 'scale-100');
@@ -262,8 +262,8 @@ const isActive = (linkPath: string) => {
             
         } else {
             // CLOSE
-            mobileMenu?.classList.add('invisible', 'opacity-0', 'scale-95');
-            mobileMenu?.classList.remove('opacity-100', 'scale-100');
+            mobileMenu?.classList.add('invisible', 'opacity-0');
+            mobileMenu?.classList.remove('opacity-100');
 
             // Icon Animation - Show hamburger, hide X
             menuIcon?.classList.remove('opacity-0', 'rotate-90', 'scale-0');
