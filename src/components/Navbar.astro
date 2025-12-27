@@ -248,7 +248,8 @@ const isActive = (linkPath: string) => {
             mobileMenu?.classList.remove('invisible', 'opacity-0', 'scale-95');
             mobileMenu?.classList.add('opacity-100', 'scale-100');
             
-            // Icon Animation
+            // Icon Animation - Hide hamburger, show X
+            menuIcon?.classList.remove('opacity-100', 'rotate-0', 'scale-100');
             menuIcon?.classList.add('opacity-0', 'rotate-90', 'scale-0');
             closeIcon?.classList.remove('opacity-0', '-rotate-90', 'scale-0');
             closeIcon?.classList.add('opacity-100', 'rotate-0', 'scale-100');
@@ -264,8 +265,10 @@ const isActive = (linkPath: string) => {
             mobileMenu?.classList.add('invisible', 'opacity-0', 'scale-95');
             mobileMenu?.classList.remove('opacity-100', 'scale-100');
 
-            // Icon Animation
+            // Icon Animation - Show hamburger, hide X
             menuIcon?.classList.remove('opacity-0', 'rotate-90', 'scale-0');
+            menuIcon?.classList.add('opacity-100', 'rotate-0', 'scale-100');
+            closeIcon?.classList.remove('opacity-100', 'rotate-0', 'scale-100');
             closeIcon?.classList.add('opacity-0', '-rotate-90', 'scale-0');
             
              // Revert background if at top

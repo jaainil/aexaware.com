@@ -90,7 +90,7 @@ export default defineConfig({
         // FIX: 'domains' is deprecated in favor of strict remotePatterns in newer Astro versions, 
         // but if on older versions, this is fine. Ideally, migrate to:
         // remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }]
-        domains: ['images.unsplash.com', 'i.pravatar.cc'],
+        domains: [],
     },
 
     server: {

@@ -1,6 +1,8 @@
+
 ---
 import Layout from '@/layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import teamCollaborationImg from "@/assets/team-collaboration.jpg";
 import {
   ArrowRight,
   Target,
@@ -121,7 +123,7 @@ const capabilities = [
           <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-[2.5rem] blur-2xl opacity-50 -z-10 group-hover:opacity-70 transition-opacity duration-700" />
           <div class="aspect-square rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl relative">
             <Image
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+              src={teamCollaborationImg}
               alt="Team collaboration"
               width={800}
               height={800}
