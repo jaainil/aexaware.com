@@ -52,7 +52,7 @@ const services = [
 
   <div class="container-normal relative z-10">
     
-    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
       <div class="max-w-2xl">
         <h2 class="font-heading text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground mb-4">
           Services Beyond <br/>
@@ -65,7 +65,7 @@ const services = [
       
       <a 
         href="/services" 
-        class={cn(buttonVariants({ variant: "ghost" }), "group text-lg font-medium px-0 hover:bg-transparent hover:text-primary")}
+        class={cn(buttonVariants({ variant: "outline", size: "lg" }), "group text-base font-semibold rounded-full px-6")}
       >
         Explore All Services <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
       </a>
