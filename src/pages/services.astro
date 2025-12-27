@@ -14,6 +14,7 @@ import {
   Layers,
   Sparkles,
 } from "lucide-astro";
+import { Schema } from 'astro-seo-schema';
 
 const services = [
   {
@@ -84,32 +85,7 @@ const techStack = [
   "AWS", "Docker", "Flutter", "Tailwind CSS", "Figma", "GraphQL",
 ];
 
-const serviceSchema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": "Digital Transformation Services",
-  "provider": {
-    "@type": "Organization",
-    "name": "Aexaware Infotech",
-    "url": "https://aexaware.com"
-  },
-  "areaServed": {
-    "@type": "Place",
-    "name": "Global"
-  },
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "IT Services",
-    "itemListElement": services.map((service) => ({
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": service.title,
-        "description": service.desc
-      }
-    }))
-  }
-});
+// No schema generation variable needed
 ---
 
 <Layout 
@@ -117,7 +93,34 @@ const serviceSchema = JSON.stringify({
   description="Explore our comprehensive range of digital services including web development, mobile apps, AI/ML integration, and cloud solutions."
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={serviceSchema} />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        serviceType: "Digital Transformation Services",
+        provider: {
+          "@type": "Organization",
+          name: "Aexaware Infotech",
+          url: "https://aexaware.com"
+        },
+        areaServed: {
+          "@type": "Place",
+          name: "Global"
+        },
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "IT Services",
+          itemListElement: services.map((service) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: service.title,
+              description: service.desc
+            }
+          }))
+        }
+      }}
+    />
   </Fragment>
 
   {/* Hero Section */}

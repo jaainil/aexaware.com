@@ -1,6 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { generateBreadcrumbSchema } from '@/lib/schema';
+import { Schema } from 'astro-seo-schema';
 import { ArrowRight, Sparkles } from "lucide-astro";
 import TechMarquee from '@/components/TechMarquee';
 import { buttonVariants } from '@/components/ui/button-variants';
@@ -48,41 +48,6 @@ const {
 
 // Generate breadcrumb schema
 const siteUrl = Astro.site || 'https://aexaware.com';
-const breadcrumbSchema = generateBreadcrumbSchema({
-  itemListElement: [
-    {
-      position: 1,
-      name: "Home",
-      item: siteUrl.toString(),
-    },
-    {
-      position: 2,
-      name: "Services",
-      item: new URL('/services', siteUrl).href,
-    },
-    {
-      position: 3,
-      name: title,
-    },
-  ],
-});
-
-// Generate Service schema
-const serviceSchema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "serviceType": title,
-  "provider": {
-    "@type": "Organization",
-    "name": "Aexaware Infotech",
-    "url": siteUrl.toString(),
-  },
-  "areaServed": {
-    "@type": "Country",
-    "name": "India"
-  },
-  "description": description,
-});
 ---
 
 <Layout 
@@ -90,8 +55,48 @@ const serviceSchema = JSON.stringify({
   description={description}
 >
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={serviceSchema} />
-    <script type="application/ld+json" set:html={breadcrumbSchema} />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "Service",
+        serviceType: title,
+        provider: {
+          "@type": "Organization",
+          name: "Aexaware Infotech",
+          url: siteUrl.toString(),
+        },
+        areaServed: {
+          "@type": "Country",
+          name: "India"
+        },
+        description: description,
+      }}
+    />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteUrl.toString(),
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Services",
+            item: new URL('/services', siteUrl).href,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: title,
+          },
+        ]
+      }}
+    />
   </Fragment>
   
   {/* Hero Section */}

@@ -36,6 +36,7 @@
         "astro-reading-time": "^0.1.15",
         "astro-robots-txt": "^1.0.0",
         "astro-seo": "^0.8.4",
+        "astro-seo-schema": "^5.1.0",
         "astro-typewriter": "^1.1.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
@@ -49,6 +50,7 @@
         "react-fast-marquee": "^1.6.5",
         "remark-frontmatter": "^5.0.0",
         "remark-mdx-frontmatter": "^5.2.0",
+        "schema-dts": "^1.1.5",
         "sharp": "^0.34.5",
         "tailwind-merge": "^2.6.0",
         "tailwindcss-animate": "^1.0.7",
@@ -946,6 +948,8 @@
     "astro-robots-txt": ["astro-robots-txt@1.0.0", "", { "dependencies": { "valid-filename": "^4.0.0", "zod": "^3.22.2" } }, "sha512-6JQSLid4gMhoWjOm85UHLkgrw0+hHIjnJVIUqxjU2D6feKlVyYukMNYjH44ZDZBK1P8hNxd33PgWlHzCASvedA=="],
 
     "astro-seo": ["astro-seo@0.8.4", "", { "dependencies": { "@astrojs/check": "^0.5.4" } }, "sha512-Ou1vzQSXAxa0K8rtNtXNvSpYqOGEgMhh0immMxJeXmbVZac3UKCNWAoXWyOQDFYsZvBugCRSg0N1phBqPMVgCw=="],
+
+    "astro-seo-schema": ["astro-seo-schema@5.1.0", "", { "peerDependencies": { "astro": "^5.0.0", "schema-dts": "^1.1.0" } }, "sha512-6qN6H7KlzSXNQ9Q+5eUMCYsHuzz+SRDEqQLjRlNaFG+0XE4UdOBSTVorRWHjd5I1LaTc5Btgz26V6RmWEXFfrA=="],
 
     "astro-typewriter": ["astro-typewriter@1.1.0", "", { "peerDependencies": { "astro": "^5.0.0" } }, "sha512-F4hUEMu0cEEvuJ3t3NioG+iCdRrOT8gXcdbCRooIEJf/cZf8Y92tWPGd0xanestpeWv7JjUY1/1+m5DV5IGg2Q=="],
 
@@ -2040,6 +2044,8 @@
     "saxes": ["saxes@6.0.0", "", { "dependencies": { "xmlchars": "^2.2.0" } }, "sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA=="],
 
     "scheduler": ["scheduler@0.23.2", "", { "dependencies": { "loose-envify": "^1.1.0" } }, "sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ=="],
+
+    "schema-dts": ["schema-dts@1.1.5", "", {}, "sha512-RJr9EaCmsLzBX2NDiO5Z3ux2BVosNZN5jo0gWgsyKvxKIUL5R3swNvoorulAeL9kLB0iTSX7V6aokhla2m7xbg=="],
 
     "section-matter": ["section-matter@1.0.0", "", { "dependencies": { "extend-shallow": "^2.0.1", "kind-of": "^6.0.0" } }, "sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA=="],
 

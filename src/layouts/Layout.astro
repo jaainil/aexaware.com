@@ -2,7 +2,7 @@
 import '@/styles/global.css';
 import Navbar from '@/components/Navbar.astro';
 import Footer from '@/components/Footer.astro';
-import { generateOrganizationSchema, generateWebSiteSchema } from '@/lib/schema';
+import { Schema } from 'astro-seo-schema';
 import { SEO } from "astro-seo";
 
 // FIX: Removed @fontsource imports. 
@@ -55,37 +55,6 @@ const canonicalURL = new URL(currentPath, siteUrl).href;
 const imageUrl = image.startsWith('http') 
   ? image 
   : new URL(image, siteUrl).href;
-
-// Generate JSON-LD structured data
-const organizationSchema = generateOrganizationSchema({
-  name: "Aexaware Infotech",
-  url: siteUrl.toString(),
-  logo: new URL('/og-image.png', siteUrl).href,
-  description: "Full-service digital agency specializing in web development, mobile apps, AI/ML integration, and cloud solutions",
-  sameAs: [
-    "https://www.linkedin.com/company/aexaware",
-    "https://twitter.com/aexaware",
-    "https://github.com/aexaware"
-  ],
-  contactPoint: {
-    telephone: "+91-8140734392",
-    contactType: "Customer Service",
-    email: "contact@aexaware.com"
-  },
-  address: {
-    streetAddress: "Anand",
-    addressLocality: "Vadodara",
-    addressRegion: "Gujarat",
-    postalCode: "388001",
-    addressCountry: "IN"
-  }
-});
-
-const websiteSchema = generateWebSiteSchema({
-  name: "Aexaware Infotech",
-  url: siteUrl.toString(),
-  description: "Building Digital Excellence - Web, Mobile, AI/ML Solutions"
-});
 ---
 
 <!doctype html>
@@ -138,8 +107,44 @@ const websiteSchema = generateWebSiteSchema({
     {import.meta.env.PROD && <link rel="sitemap" href="/sitemap-index.xml" />}
     <link rel="alternate" type="application/rss+xml" title="Aexaware Infotech Blog" href="/rss.xml" />
     
-    <script type="application/ld+json" set:html={organizationSchema} />
-    <script type="application/ld+json" set:html={websiteSchema} />
+    <Schema
+      item={{
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: "Aexaware Infotech",
+        url: siteUrl.toString(),
+        logo: new URL('/og-image.png', siteUrl).href,
+        description: "Full-service digital agency specializing in web development, mobile apps, AI/ML integration, and cloud solutions",
+        sameAs: [
+          "https://www.linkedin.com/company/aexaware",
+          "https://twitter.com/aexaware",
+          "https://github.com/aexaware"
+        ],
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: "+91-8140734392",
+          contactType: "Customer Service",
+          email: "contact@aexaware.com"
+        },
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: "Anand",
+          addressLocality: "Vadodara",
+          addressRegion: "Gujarat",
+          postalCode: "388001",
+          addressCountry: "IN"
+        }
+      }}
+    />
+    <Schema
+      item={{
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: "Aexaware Infotech",
+        url: siteUrl.toString(),
+        description: "Building Digital Excellence - Web, Mobile, AI/ML Solutions"
+      }}
+    />
     <slot name="head" />
   </head>
  
