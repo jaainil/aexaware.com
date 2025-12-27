@@ -1,6 +1,19 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
-import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-astro";
+import { 
+  Menu, 
+  X, 
+  ArrowUpRight, 
+  ChevronDown, 
+  Code2, 
+  Smartphone, 
+  Palette, 
+  Globe, 
+  ShoppingCart, 
+  Cloud, 
+  BrainCircuit, 
+  Layers 
+} from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
@@ -11,19 +24,18 @@ const navLinks = [
     name: "Services",
     path: "/services",
     dropdown: [
-      { name: "All Services", path: "/services" },
-      { name: "Web Development", path: "/services/web-development" },
-      { name: "Mobile App Development", path: "/services/mobile-development" },
-      { name: "UI/UX Design", path: "/services/ui-ux-design" },
-      { name: "Software Solutions", path: "/services/software-solutions" },
-      { name: "E-Commerce", path: "/services/ecommerce" },
-      { name: "Cloud & DevOps", path: "/services/cloud-devops" },
-      { name: "AI/ML Integration", path: "/services/ai-ml-integration" },
+      { name: "Web Development", path: "/services/web-development", icon: Globe },
+      { name: "Mobile App Development", path: "/services/mobile-development", icon: Smartphone },
+      { name: "UI/UX Design", path: "/services/ui-ux-design", icon: Palette },
+      { name: "Software Solutions", path: "/services/software-solutions", icon: Code2 },
+      { name: "E-Commerce", path: "/services/ecommerce", icon: ShoppingCart },
+      { name: "Cloud & DevOps", path: "/services/cloud-devops", icon: Cloud },
+      { name: "AI/ML Integration", path: "/services/ai-ml-integration", icon: BrainCircuit },
+      { name: "All Services", path: "/services", icon: Layers },
     ],
   },
   { name: "Case Studies", path: "/portfolio" },
   { name: "About", path: "/about" },
-  { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
 ];
 
@@ -33,60 +45,56 @@ const isActive = (linkPath: string) => {
 };
 ---
 
-<nav
-  id="navbar"
-  role="navigation"
-  aria-label="Main navigation"
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 lg:py-6 pt-[env(safe-area-inset-top)]"
->
-  <div class="container-normal">
-    <div 
-      class="flex items-center justify-between h-14 lg:h-16 rounded-full px-4 lg:px-6 transition-all duration-300 border border-transparent"
-      id="navbar-inner"
-    >
+<header class="fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-6 transition-all duration-300" id="main-header">
+  <nav
+    id="navbar-inner"
+    role="navigation"
+    aria-label="Main navigation"
+    class="relative mx-auto w-full max-w-7xl transition-all duration-500 ease-in-out border border-transparent bg-transparent"
+  >
+    <div class="flex items-center justify-between px-4 py-2 lg:px-6 lg:py-3 relative z-50">
+      
       {/* Logo */}
-      <a href="/" class="flex items-center space-x-3 group shrink-0" aria-label="Aexaware Infotech Home">
+      <a href="/" class="flex items-center gap-2 group shrink-0" aria-label="Aexaware Infotech Home">
         <img
           src={Logo.src}
           alt="Aexaware Infotech Logo"
-          width="120"
-          height="32"
-          class="h-8 w-auto transition-transform duration-300 group-hover:scale-105"
+          width="100"
+          height="24"
+          class="h-6 w-auto transition-transform duration-300 group-hover:scale-105"
         />
       </a>
 
-      {/* Desktop Navigation - Centered */}
+      {/* Desktop Navigation */}
       <div class="hidden lg:flex items-center justify-center flex-1 px-8">
-        <ul class="flex items-center space-x-1" role="list">
+        <ul class="flex items-center gap-1" role="list">
           {navLinks.map((link) => (
             <li class="relative group">
               {link.dropdown ? (
                 <div class="dropdown-container relative">
                   <button
-                    class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none hover:bg-white/10 focus-visible:bg-white/10 ${
+                    class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none hover:bg-white/10 ${
                       isActive(link.path) ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-foreground"
                     }`}
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                    aria-label={`${link.name} menu`}
                   >
                     {link.name}
                     <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-rotate-180" />
                   </button>
                   
-                  {/* Dropdown Menu */}
-                  <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out min-w-[600px] perspective-[1000px]">
-                    <div class="bg-background/80 backdrop-blur-2xl border border-white/20 rounded-[2rem] shadow-2xl p-6 grid grid-cols-2 gap-4 origin-top rotate-x-[-10deg] opacity-0 translate-y-4 group-hover:rotate-x-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
+                  {/* Desktop Dropdown */}
+                  <div class="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out min-w-[600px] perspective-[1000px]">
+                    <div class="bg-background/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-2xl p-6 grid grid-cols-2 gap-4 origin-top rotate-x-[-10deg] opacity-0 translate-y-4 group-hover:rotate-x-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ring-1 ring-black/5">
                       {link.dropdown.map((item) => (
                         <a
                           href={item.path}
-                          aria-label={item.name}
-                          class="block select-none space-y-1 rounded-xl p-3 leading-none no-underline outline-none transition-all hover:bg-primary/10 hover:text-primary focus:bg-primary/10 group/item"
+                          class="group/item flex items-start gap-3 rounded-xl p-3 no-underline outline-none transition-all hover:bg-primary/5 hover:text-primary focus:bg-primary/5"
                         >
-                          <div class="text-sm font-bold leading-none flex items-center gap-2">
-                              {item.name}
-                              <ArrowUpRight class="w-3 h-3 opacity-0 -translate-x-2 transition-all duration-300 group-hover/item:opacity-100 group-hover/item:translate-x-0" />
+                          <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/50 text-muted-foreground group-hover/item:bg-primary/10 group-hover/item:text-primary transition-colors">
+                             {item.icon && <item.icon className="h-4 w-4" />}
+                          </div>
+                          <div>
+                            <div class="text-sm font-semibold leading-none mb-1 group-hover/item:text-primary transition-colors">{item.name}</div>
+                            <p class="text-xs text-muted-foreground line-clamp-1 opacity-70">Explore our {item.name.toLowerCase()} solutions.</p>
                           </div>
                         </a>
                       ))}
@@ -113,164 +121,177 @@ const isActive = (linkPath: string) => {
       <div class="hidden lg:flex items-center shrink-0">
         <a
           href="/contact"
-          class={buttonVariants({ className: "rounded-full px-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-shadow duration-300" })}
+          class={buttonVariants({ size: "sm", className: "rounded-full px-5 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow duration-300" })}
         >
-          Book Strategy Call <ArrowUpRight className="ml-2 h-4 w-4" />
+          Strategy Call <ArrowUpRight className="ml-2 h-3.5 w-3.5" />
         </a>
       </div>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Toggle */}
       <button
         id="mobile-menu-toggle"
-        class="lg:hidden p-2 text-foreground hover:text-primary transition-colors bg-secondary/50 rounded-full backdrop-blur-sm z-[101] relative"
+        class="lg:hidden p-2 text-foreground hover:text-primary transition-colors rounded-full z-[60] relative"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <Menu id="menu-icon" class="h-6 w-6 transition-all duration-300" />
-        <X id="close-icon" class="h-6 w-6 hidden transition-all duration-300" />
+        <div class="relative w-6 h-6 flex items-center justify-center overflow-hidden">
+             <Menu id="menu-icon" class="absolute w-6 h-6 transition-all duration-300 transform opacity-100 rotate-0 scale-100" />
+             <X id="close-icon" class="absolute w-6 h-6 transition-all duration-300 transform opacity-0 -rotate-90 scale-0" />
+        </div>
       </button>
     </div>
 
-    {/* Mobile Menu Drawer */}
+    {/* FIX: Mobile Menu moved INSIDE navbar-inner so it respects the capsule width */}
     <div
       id="mobile-menu"
-      class="lg:hidden fixed inset-0 z-[100] bg-background/98 backdrop-blur-3xl hidden overflow-hidden"
+      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-white/10 shadow-2xl rounded-[2rem] p-6 invisible opacity-0 origin-top scale-95 transition-all duration-300 max-h-[85vh] overflow-y-auto no-scrollbar"
     >
-      <div class="flex flex-col h-full overflow-y-auto">
-        <div class="px-6 py-6 flex items-center justify-between border-b border-white/5">
-             <a href="/" class="block">
-                <img src={Logo.src} alt="Logo" class="h-8 w-auto" />
-             </a>
-             {/* Close button is handled by the toggle above, but we keep spacing here */}
-             <div class="w-10"></div>
-        </div>
-
-        <nav class="flex-1 flex flex-col px-6 py-12 space-y-4">
+       <div class="flex flex-col space-y-2">
           {navLinks.map((link, idx) => (
-            // FIX: Use inline style for delay because Tailwind can't interpolate 'delay-{val}'
-            <div>
-             {link.dropdown ? (
-              <details class="group">
-                <summary class="list-none flex items-center justify-between text-3xl font-bold text-foreground py-3 cursor-pointer select-none transition-colors hover:text-primary marker:hidden [&::-webkit-details-marker]:hidden">
+            <div class="mobile-nav-item transform translate-y-2 opacity-0 transition-all duration-500" style={`transition-delay: ${idx * 30}ms`}>
+              {link.dropdown ? (
+                <details class="group/details">
+                  <summary class="list-none flex items-center justify-between text-xl font-bold text-foreground py-3 cursor-pointer select-none transition-colors hover:text-primary">
+                    {link.name}
+                    <ChevronDown class="h-5 w-5 text-muted-foreground transition-transform duration-300 group-open/details:-rotate-180" />
+                  </summary>
+                  <div class="pl-2 pt-2 pb-2 space-y-2 border-l-2 border-primary/10 ml-2 animate-in slide-in-from-top-2 duration-200">
+                    {link.dropdown.map((item) => (
+                      <a href={item.path} class="flex items-center gap-3 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors">
+                        <span class="font-medium text-base">{item.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </details>
+              ) : (
+                <a
+                  href={link.path}
+                  class:list={[
+                    "block text-xl font-bold py-3 transition-colors hover:text-primary",
+                    isActive(link.path) ? "text-primary" : "text-foreground"
+                  ]}
+                >
                   {link.name}
-                  <ChevronDown class="h-6 w-6 text-muted-foreground transition-transform duration-300 group-open:-rotate-180" />
-                </summary>
-                <div class="pl-4 pt-2 pb-4 space-y-3 border-l-2 border-primary/10 ml-2 animate-accordion-down">
-                  {link.dropdown.slice(0, 6).map((item) => (
-                    <a
-                      href={item.path}
-                      class:list={[
-                        "block text-lg font-medium transition-colors hover:text-primary",
-                        isActive(item.path) ? "text-primary" : "text-muted-foreground"
-                      ]}
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                  <a href="/services" class="block text-sm font-bold text-primary uppercase tracking-widest pt-2">View All Services →</a>
-                </div>
-              </details>
-            ) : (
-              <a
-                href={link.path}
-                class:list={[
-                  "block text-3xl font-bold transition-colors hover:text-primary py-3",
-                  isActive(link.path) ? "text-primary" : "text-foreground"
-                ]}
-              >
-                {link.name}
-              </a>
-            )}
+                </a>
+              )}
             </div>
           ))}
-        </nav>
-        
-        <div class="p-6 mt-auto border-t border-white/5 bg-secondary/5">
-            <a href="/contact" class={buttonVariants({ size: 'lg', className: "w-full rounded-full text-lg h-14 shadow-xl" })}>
-                Start Your Project
-            </a>
-             <div class="flex items-center justify-center gap-8 pt-6 pb-2 text-muted-foreground">
-                <a href="#" class="hover:text-primary transition-colors"><span class="sr-only">LinkedIn</span>LinkedIn</a>
-                <a href="#" class="hover:text-primary transition-colors"><span class="sr-only">Twitter</span>Twitter</a>
-                <a href="#" class="hover:text-primary transition-colors"><span class="sr-only">Instagram</span>Instagram</a>
-             </div>
-        </div>
-      </div>
+          
+          <div class="pt-6 mt-2 border-t border-border/10 mobile-nav-item transform translate-y-2 opacity-0 transition-all duration-500 delay-300">
+              <a href="/contact" class={buttonVariants({ size: 'lg', className: "w-full rounded-xl text-lg h-12 shadow-md" })}>
+                  Book Strategy Call <ArrowUpRight className="ml-2 h-5 w-5" />
+              </a>
+           </div>
+       </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
 <script>
-  // Robust selector logic
-  const navbar = document.getElementById('navbar');
-  const navbarInner = document.getElementById('navbar-inner');
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
+  function initNavbar() {
+    const header = document.getElementById('main-header');
+    const navbarInner = document.getElementById('navbar-inner');
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const mobileItems = document.querySelectorAll('.mobile-nav-item');
 
-  // FIX: Scroll Performance Optimization (Throttling with rAF)
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-
-  function updateNavbar() {
-    if (lastScrollY > 20) {
-      navbar?.classList.remove('py-4', 'lg:py-6');
-      navbar?.classList.add('py-2', 'lg:py-4');
+    // SCROLL CAPSULE LOGIC
+    function handleScroll() {
+      const scrollY = window.scrollY;
       
-      navbarInner?.classList.add('bg-background/80', 'backdrop-blur-xl', 'border-white/10', 'shadow-lg');
-      navbarInner?.classList.remove('border-transparent');
-    } else {
-      navbar?.classList.add('py-4', 'lg:py-6');
-      navbar?.classList.remove('py-2', 'lg:py-4');
-
-      navbarInner?.classList.remove('bg-background/80', 'backdrop-blur-xl', 'border-white/10', 'shadow-lg');
-      navbarInner?.classList.add('border-transparent');
-    }
-    ticking = false;
-  }
-
-  function onScroll() {
-    lastScrollY = window.scrollY;
-    if (!ticking) {
-      window.requestAnimationFrame(updateNavbar);
-      ticking = true;
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  // Mobile Menu Logic
-  function toggleMenu() {
-      if (!mobileMenu || !menuIcon || !closeIcon) return;
-      
-      const isHidden = mobileMenu.classList.contains('hidden');
-      
-      if (isHidden) {
-          // Open
-          mobileMenu.classList.remove('hidden');
-          menuIcon.classList.add('hidden');
-          closeIcon.classList.remove('hidden');
-          document.body.style.overflow = 'hidden';
-          mobileMenuToggle?.setAttribute('aria-expanded', 'true');
+      if (scrollY > 20) {
+        // Scrolled State: Capsule
+        navbarInner?.classList.add(
+            'bg-background/70', 
+            'backdrop-blur-xl', 
+            'shadow-xl', 
+            'border-white/10', 
+            'rounded-[2rem]', 
+            'max-w-[95%]', 
+            'lg:max-w-5xl' 
+        );
+        navbarInner?.classList.remove('bg-transparent', 'border-transparent', 'w-full');
+        
+        // Remove padding from outer header to tighten fit
+        header?.classList.remove('py-4', 'px-4');
+        header?.classList.add('py-2', 'px-2');
+        
       } else {
-          // Close
-          mobileMenu.classList.add('hidden');
-          menuIcon.classList.remove('hidden');
-          closeIcon.classList.add('hidden');
-          document.body.style.overflow = '';
-          mobileMenuToggle?.setAttribute('aria-expanded', 'false');
+        // Top State: Transparent & Full Width
+        navbarInner?.classList.remove(
+            'bg-background/70', 
+            'backdrop-blur-xl', 
+            'shadow-xl', 
+            'border-white/10', 
+            'rounded-[2rem]', 
+            'max-w-[95%]', 
+            'lg:max-w-5xl'
+        );
+        navbarInner?.classList.add('bg-transparent', 'border-transparent', 'w-full');
+        
+        // Restore padding
+        header?.classList.add('py-4', 'px-4');
+        header?.classList.remove('py-2', 'px-2');
       }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // MOBILE MENU LOGIC
+    function toggleMenu() {
+        const isHidden = mobileMenu?.classList.contains('invisible');
+        
+        if (isHidden) {
+            // OPEN
+            mobileMenu?.classList.remove('invisible', 'opacity-0', 'scale-95');
+            mobileMenu?.classList.add('opacity-100', 'scale-100');
+            
+            // Icon Animation
+            menuIcon?.classList.add('opacity-0', 'rotate-90', 'scale-0');
+            closeIcon?.classList.remove('opacity-0', '-rotate-90', 'scale-0');
+            closeIcon?.classList.add('opacity-100', 'rotate-0', 'scale-100');
+            
+            // Staggered Text Animation
+            mobileItems.forEach((item) => {
+                item.classList.remove('translate-y-2', 'opacity-0');
+            });
+
+            // Ensure background is solid when menu is open, even at top of page
+            if (window.scrollY < 20) {
+               navbarInner?.classList.add('bg-background');
+               navbarInner?.classList.remove('bg-transparent');
+            }
+            
+        } else {
+            // CLOSE
+            mobileMenu?.classList.add('invisible', 'opacity-0', 'scale-95');
+            mobileMenu?.classList.remove('opacity-100', 'scale-100');
+
+            // Icon Animation
+            menuIcon?.classList.remove('opacity-0', 'rotate-90', 'scale-0');
+            closeIcon?.classList.add('opacity-0', '-rotate-90', 'scale-0');
+            
+            // Reset Stagger
+            mobileItems.forEach((item) => {
+                item.classList.add('translate-y-2', 'opacity-0');
+            });
+            
+             // Revert background if at top
+            if (window.scrollY < 20) {
+               navbarInner?.classList.remove('bg-background');
+               navbarInner?.classList.add('bg-transparent');
+            }
+        }
+    }
+
+    mobileMenuToggle?.addEventListener('click', toggleMenu);
+    
+    // Initial check
+    handleScroll();
   }
 
-  mobileMenuToggle?.addEventListener('click', toggleMenu);
-  
-  // Close menu on link click (UX improvement)
-  const mobileLinks = mobileMenu?.querySelectorAll('a:not([href^="#"])');
-  mobileLinks?.forEach(link => {
-    link.addEventListener('click', () => {
-        if (!mobileMenu?.classList.contains('hidden')) toggleMenu();
-    });
-  });
-
+  initNavbar();
+  document.addEventListener('astro:after-swap', initNavbar);
 </script>
