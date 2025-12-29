@@ -1,0 +1,219 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Shield, Lock, Eye, Database, Globe, Mail, Calendar, Sparkles } from 'lucide-astro';
+
+const lastUpdated = "December 30, 2024";
+---
+
+<Layout 
+  title="Privacy Policy – Aexaware Infotech" 
+  description="Learn how Aexaware Infotech collects, uses, and protects your personal information."
+>
+  <!-- Hero Section -->
+  <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent -z-10" />
+    
+    <div class="container-normal relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span class="text-sm font-semibold text-primary tracking-wide uppercase">Legal</span>
+        </div>
+        
+        <h1 class="font-heading font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance">
+          Privacy <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-serif">Policy.</span>
+        </h1>
+        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty">
+          Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.
+        </p>
+        <div class="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <Calendar className="w-4 h-4" />
+          <span>Last updated: {lastUpdated}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Section -->
+  <section class="section-padding bg-background">
+    <div class="container-normal">
+      
+      <!-- Introduction -->
+      <div class="p-8 rounded-section bg-secondary/30 border border-border/50 mb-12">
+        <div class="flex items-start gap-4">
+          <div class="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
+            <Shield className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">Our Commitment to Privacy</h2>
+            <p class="text-muted-foreground mb-0">
+              At Aexaware Infotech, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines our practices concerning the collection, use, and disclosure of your data.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid gap-12 lg:grid-cols-2">
+        <!-- Section 1 -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-blue-500/10 text-blue-500">
+              <Database className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">1. Information We Collect</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>We collect information that you provide directly to us, including:</p>
+            
+            <div class="space-y-4">
+              <div class="p-4 rounded-card bg-secondary/30 border border-border/50">
+                <h4 class="font-semibold text-foreground mb-2">Personal Information</h4>
+                <ul class="text-sm space-y-1 mb-0 list-disc pl-4">
+                  <li>Name and contact details</li>
+                  <li>Email address</li>
+                  <li>Phone number</li>
+                  <li>Company information</li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-card bg-secondary/30 border border-border/50">
+                <h4 class="font-semibold text-foreground mb-2">Technical Information</h4>
+                <ul class="text-sm space-y-1 mb-0 list-disc pl-4">
+                  <li>IP address</li>
+                  <li>Browser type and version</li>
+                  <li>Device information</li>
+                  <li>Usage data</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-purple-500/10 text-purple-500">
+              <Eye className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">2. How We Use Your Information</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>We use the information we collect for the following purposes:</p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Service Delivery:</strong> To provide, maintain, and improve our services</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Communication:</strong> To respond to your inquiries and send you updates</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Analytics:</strong> To analyze usage patterns and improve user experience</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Marketing:</strong> To send promotional content (with your consent)</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Legal Compliance:</strong> To comply with applicable laws and regulations</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-green-500/10 text-green-500">
+              <Lock className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">3. Data Security</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>
+              We implement appropriate technical and organizational measures to protect your personal information:
+            </p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Encryption of data in transit and at rest</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Regular security assessments and audits</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Access controls and authentication mechanisms</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Employee training on data protection practices</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+              <Globe className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">4. Third-Party Services</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>
+              We may use third-party services that collect, monitor, and analyze data to improve our services. These third parties have their own privacy policies addressing how they use such information.
+            </p>
+            <p>
+              Our website may contain links to external sites. We are not responsible for the privacy practices of these external sites.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-500">
+              <Database className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">5. Cookies and Tracking</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>
+              We use cookies and similar tracking technologies to track activity on our website and hold certain information.
+            </p>
+            <p>
+              You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our website.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-rose-500/10 text-rose-500">
+              <Shield className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">6. Your Rights</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>You have the following rights regarding your personal data:</p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Access:</strong> Request access to your personal data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Correction:</strong> Request correction of inaccurate data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Deletion:</strong> Request deletion of your personal data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Objection:</strong> Object to processing of your personal data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Portability:</strong> Request transfer of your data</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Section -->
+      <div class="mt-12 p-8 rounded-section bg-gradient-to-br from-primary/5 to-accent/5 border border-primary/20">
+        <div class="flex items-start gap-4">
+          <div class="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
+            <Mail className="w-6 h-6" />
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">Contact Us</h2>
+            <p class="text-muted-foreground mb-4">
+              If you have any questions about this Privacy Policy or our data practices, please contact us:
+            </p>
+            <div class="flex flex-wrap gap-6 text-sm">
+              <p class="mb-0"><strong class="text-foreground">Email:</strong> <a href="mailto:contact@aexaware.com" class="text-primary hover:underline">contact@aexaware.com</a></p>
+              <p class="mb-0"><strong class="text-foreground">Phone:</strong> <a href="tel:+918140734392" class="text-primary hover:underline">+91 8140734392</a></p>
+              <p class="mb-0"><strong class="text-foreground">Address:</strong> Vadodara, Gujarat, India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>
