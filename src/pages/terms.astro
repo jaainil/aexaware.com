@@ -1,12 +1,12 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { FileText, Scale, AlertTriangle, Ban, CreditCard, RefreshCw, Mail, Calendar, Sparkles } from 'lucide-astro';
+import { FileText, Scale, AlertTriangle, Ban, CreditCard, RefreshCw, Mail, Calendar, Sparkles, Globe, Users, Shield, Briefcase, Link, Server, Gavel, Code2 } from 'lucide-astro';
 
-const lastUpdated = "December 30, 2024";
+const lastUpdated = "December 30, 2025";
 ---
 
 <Layout 
-  title="Terms and Conditions – Aexaware Infotech" 
+  title="Terms & Conditions – Aexaware Infotech" 
   description="Read the terms and conditions governing the use of Aexaware Infotech's services and website."
 >
   <!-- Hero Section -->
@@ -26,11 +26,11 @@ const lastUpdated = "December 30, 2024";
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-serif">Conditions.</span>
         </h1>
         <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty">
-          Please read these terms and conditions carefully before using our services.
+          By accessing or using this website, you agree to be bound by these Terms & Conditions. If you do not agree, please do not use our website or services.
         </p>
         <div class="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground">
           <Calendar className="w-4 h-4" />
-          <span>Last updated: {lastUpdated}</span>
+          <span>Effective Date: {lastUpdated}</span>
         </div>
       </div>
     </div>
@@ -40,179 +40,325 @@ const lastUpdated = "December 30, 2024";
   <section class="section-padding bg-background">
     <div class="container-normal">
       
-      <!-- Introduction -->
+      <!-- Introduction - About Us -->
       <div class="p-8 rounded-section bg-secondary/30 border border-border/50 mb-12">
         <div class="flex items-start gap-4">
           <div class="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
-            <Scale className="w-6 h-6" />
+            <Users className="w-6 h-6" />
           </div>
           <div>
-            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">Agreement to Terms</h2>
+            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">1. About Us</h2>
+            <p class="text-muted-foreground mb-4">
+              Aexaware ("we", "our", or "us") is an IT and software development agency based in Vadodara, Gujarat, India, serving clients globally.
+            </p>
             <p class="text-muted-foreground mb-0">
-              By accessing and using the services provided by Aexaware Infotech ("Company", "we", "us", or "our"), you agree to be bound by these Terms and Conditions. If you disagree with any part of these terms, you may not access our services.
+              We provide web, mobile, cloud, AI, and digital solutions, and showcase our work, services, and blogs through this website.
             </p>
           </div>
         </div>
       </div>
 
       <div class="grid gap-8 lg:grid-cols-2">
-        <!-- Section 1 -->
+        <!-- Section 2 - Purpose of the Website -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-blue-500/10 text-blue-500">
-              <FileText className="w-5 h-5" />
+              <Globe className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">1. Services</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">2. Purpose of the Website</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>The website is intended to:</p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Provide information about our services</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Showcase our portfolio and past projects</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Publish blogs and technical content</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Allow users to contact us for inquiries or collaborations</span></li>
+            </ul>
+            <p class="text-sm italic">The content on this website is for general informational purposes only.</p>
+          </div>
+        </div>
+
+        <!-- Section 3 - Services -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-purple-500/10 text-purple-500">
+              <Briefcase className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">3. Services</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>Aexaware offers services including but not limited to:</p>
+            <ul class="space-y-2 list-none pl-0 text-sm">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Web Development</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Mobile App Development</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>UI/UX Design</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Custom Software Solutions</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>E-Commerce Development</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Cloud & DevOps Services</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>AI & Machine Learning Integration</span></li>
+            </ul>
+            <p class="text-sm italic">Service details, scope, timelines, and deliverables are defined case-by-case and may be governed by separate written agreements.</p>
+          </div>
+        </div>
+
+        <!-- Section 4 - Geographic Scope -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-green-500/10 text-green-500">
+              <Globe className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">4. Geographic Scope</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
             <p>
-              Aexaware Infotech provides web development, mobile application development, UI/UX design, AI/ML integration, and related digital services.
+              While we are based in India, our services are offered to clients globally.
             </p>
-            <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>All projects are governed by individual project agreements</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Service scope and timelines defined in project documents</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>We reserve the right to refuse service at any time</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Services may be modified with reasonable notice</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Section 2 -->
-        <div class="p-8 rounded-card-lg bg-card border border-border/50">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-purple-500/10 text-purple-500">
-              <CreditCard className="w-5 h-5" />
+            <div class="p-4 rounded-card bg-primary/5 border border-primary/20">
+              <p class="text-sm mb-0">
+                🌍 <strong class="text-foreground">Global Reach:</strong> We serve clients across all continents and time zones.
+              </p>
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">2. Payment Terms</h2>
-          </div>
-          
-          <div class="space-y-4 text-muted-foreground">
-            <p>Payment terms for our services are as follows:</p>
-            <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Invoicing:</strong> Per agreed milestone schedule</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Payment Due:</strong> Within 15 days of invoice</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Late Payments:</strong> 1.5% interest per month</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Currency:</strong> INR unless otherwise agreed</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Taxes:</strong> Exclusive of applicable GST</span></li>
-            </ul>
           </div>
         </div>
 
-        <!-- Section 3 -->
-        <div class="p-8 rounded-card-lg bg-card border border-border/50">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-green-500/10 text-green-500">
-              <Scale className="w-5 h-5" />
-            </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">3. Intellectual Property</h2>
-          </div>
-          
-          <div class="space-y-4 text-muted-foreground">
-            <p>Intellectual property rights are handled as follows:</p>
-            <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Clients receive ownership upon full payment</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>We retain rights to pre-existing code and tools</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Portfolio showcase rights unless otherwise agreed</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Third-party components subject to their licenses</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Section 4 -->
+        <!-- Section 5 - User Responsibilities -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-amber-500/10 text-amber-500">
-              <RefreshCw className="w-5 h-5" />
+              <Users className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">4. Project Changes & Revisions</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">5. User Responsibilities</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
-            <p>We understand that project requirements may evolve:</p>
+            <p>By using this website, you agree to:</p>
             <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Minor revisions within scope are included</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Significant changes may require additional costs</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Timeline adjustments communicated for scope changes</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>All changes must be documented and approved</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Provide accurate and truthful information when submitting forms</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Use the website only for lawful purposes</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Not misuse, disrupt, or attempt unauthorized access to the website or its systems</span></li>
             </ul>
+            <p class="text-sm italic">We reserve the right to take appropriate action if misuse is detected.</p>
           </div>
         </div>
 
-        <!-- Section 5 -->
+        <!-- Section 6 - Right to Refuse or Terminate Service -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-rose-500/10 text-rose-500">
               <Ban className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">5. Termination</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">6. Right to Refuse or Terminate Service</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
-            <p>Either party may terminate under the following conditions:</p>
+            <p>Aexaware reserves the right to:</p>
             <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>30 days written notice for ongoing projects</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Payment required for all completed work</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Immediate termination for material breach</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Deliverables provided upon payment settlement</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Refuse service requests</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Decline projects</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Terminate communication or engagement</span></li>
             </ul>
+            <p class="text-sm">This may occur if collaboration is deemed unfeasible, inappropriate, or if mutual understanding cannot be achieved.</p>
           </div>
         </div>
 
-        <!-- Section 6 -->
-        <div class="p-8 rounded-card-lg bg-card border border-border/50">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-orange-500/10 text-orange-500">
-              <AlertTriangle className="w-5 h-5" />
-            </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">6. Limitation of Liability</h2>
-          </div>
-          
-          <div class="space-y-4 text-muted-foreground">
-            <p>To the maximum extent permitted by applicable law:</p>
-            <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Not liable for indirect or consequential damages</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Total liability limited to amount paid for services</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Not responsible for delays beyond our control</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Clients responsible for their data backups</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Section 7 -->
+        <!-- Section 7 - Payments & Pricing -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-500">
-              <Scale className="w-5 h-5" />
+              <CreditCard className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">7. Governing Law</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">7. Payments & Pricing</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>We do not accept payments directly through the website. Pricing is quotation-based and may be negotiated per project.</p>
+            <div class="p-4 rounded-card bg-secondary/30 border border-border/50">
+              <h4 class="font-semibold text-foreground mb-3">Typical Payment Structure:</h4>
+              <ul class="text-sm space-y-2 mb-0 list-none pl-0">
+                <li class="flex items-center gap-2"><span class="text-primary font-bold">30%</span> Upfront (project kickoff)</li>
+                <li class="flex items-center gap-2"><span class="text-primary font-bold">40%</span> During development</li>
+                <li class="flex items-center gap-2"><span class="text-primary font-bold">20%</span> Before launch</li>
+                <li class="flex items-center gap-2"><span class="text-primary font-bold">10%</span> After 30 days of post-launch support</li>
+              </ul>
+            </div>
+            <p class="text-sm italic">Exact payment terms are defined in project proposals or agreements.</p>
+          </div>
+        </div>
+
+        <!-- Section 8 - Refund Policy -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-red-500/10 text-red-500">
+              <RefreshCw className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">8. Refund Policy</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <div class="p-4 rounded-card bg-amber-500/5 border border-amber-500/20">
+              <p class="font-semibold text-foreground mb-2">⚠️ Non-Refundable Payments</p>
+              <p class="text-sm mb-0">
+                All payments made to Aexaware are non-refundable, unless explicitly stated otherwise in a written agreement.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 9 - Intellectual Property -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-500">
+              <Code2 className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">9. Intellectual Property</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <div class="space-y-3">
+              <div class="p-3 rounded-card bg-secondary/30 border border-border/50">
+                <h4 class="font-semibold text-foreground mb-1 text-sm">Website Content</h4>
+                <p class="text-sm mb-0">All content — including text, graphics, logos, designs, code, and blog posts — is the intellectual property of Aexaware and may not be copied, reproduced, or reused without written permission.</p>
+              </div>
+              <div class="p-3 rounded-card bg-secondary/30 border border-border/50">
+                <h4 class="font-semibold text-foreground mb-1 text-sm">Client Work</h4>
+                <p class="text-sm mb-0">Ownership of project deliverables is transferred to the client only after full payment. Terms may vary depending on the specific project agreement.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 10 - Acceptable Use -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-orange-500/10 text-orange-500">
+              <Shield className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">10. Acceptable Use</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>Users must not:</p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-red-500">✕</span><span>Attempt to hack, scrape, or damage the website</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500">✕</span><span>Upload malicious code or spam contact forms</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-500">✕</span><span>Engage in any activity that disrupts site functionality</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 11 - Third-Party Links -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-teal-500/10 text-teal-500">
+              <Link className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">11. Third-Party Links</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
             <p>
-              These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions.
+              This website may contain links to third-party websites (e.g., client sites, GitHub, social platforms).
             </p>
-            <p>
-              Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts in Vadodara, Gujarat, India.
+            <p class="text-sm italic">
+              We are not responsible for the content, policies, or practices of third-party websites.
             </p>
           </div>
         </div>
 
-        <!-- Section 8 -->
+        <!-- Section 12 - Disclaimer of Warranties -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-500">
-              <RefreshCw className="w-5 h-5" />
+            <div class="p-2 rounded-lg bg-yellow-500/10 text-yellow-500">
+              <AlertTriangle className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">8. Changes to Terms</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">12. Disclaimer of Warranties</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>The website and its content are provided <strong class="text-foreground">"as is"</strong> and <strong class="text-foreground">"as available"</strong>.</p>
+            <p>We make no warranties regarding:</p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Accuracy or completeness of content</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Uninterrupted or error-free operation</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Suitability of information for specific purposes</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 13 - Limitation of Liability -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-pink-500/10 text-pink-500">
+              <Scale className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">13. Limitation of Liability</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>To the maximum extent permitted by law, Aexaware shall not be liable for:</p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Any direct or indirect damages</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Loss of data, profits, or business opportunities</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Issues arising from reliance on website content</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Temporary unavailability or technical issues</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 14 - Suspension & Termination -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-gray-500/10 text-gray-500">
+              <Server className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">14. Suspension & Termination</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
             <p>
-              We reserve the right to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect.
+              We reserve the right to suspend or block access to the website without prior notice if these Terms are violated.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 15 - Governing Law & Jurisdiction -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-violet-500/10 text-violet-500">
+              <Gavel className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">15. Governing Law & Jurisdiction</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>
+              These Terms & Conditions are governed by the laws of India.
             </p>
             <p>
-              What constitutes a material change will be determined at our sole discretion.
+              Any disputes shall be subject to the jurisdiction of courts in Gujarat, India.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 16 - Changes to These Terms -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+              <RefreshCw className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">16. Changes to These Terms</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>
+              We may update these Terms & Conditions at any time.
+            </p>
+            <p>
+              Updates will be posted on this page, and continued use of the website constitutes acceptance of the revised terms.
             </p>
           </div>
         </div>
@@ -225,14 +371,14 @@ const lastUpdated = "December 30, 2024";
             <Mail className="w-6 h-6" />
           </div>
           <div>
-            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">Questions About These Terms?</h2>
+            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">17. Contact Information</h2>
             <p class="text-muted-foreground mb-4">
-              If you have any questions about these Terms and Conditions, please contact us:
+              If you have questions about these Terms & Conditions, you can contact us at:
             </p>
             <div class="flex flex-wrap gap-6 text-sm">
-              <p class="mb-0"><strong class="text-foreground">Email:</strong> <a href="mailto:contact@aexaware.com" class="text-primary hover:underline">contact@aexaware.com</a></p>
-              <p class="mb-0"><strong class="text-foreground">Phone:</strong> <a href="tel:+918140734392" class="text-primary hover:underline">+91 8140734392</a></p>
-              <p class="mb-0"><strong class="text-foreground">Address:</strong> Vadodara, Gujarat, India</p>
+              <p class="mb-0"><strong class="text-foreground">📧 Email:</strong> <a href="mailto:contact@aexaware.com" class="text-primary hover:underline">contact@aexaware.com</a></p>
+              <p class="mb-0"><strong class="text-foreground">📞 Phone:</strong> <a href="tel:+918140734392" class="text-primary hover:underline">+91 8140734392</a></p>
+              <p class="mb-0"><strong class="text-foreground">📍 Address:</strong> Vadodara, Gujarat, India</p>
             </div>
           </div>
         </div>

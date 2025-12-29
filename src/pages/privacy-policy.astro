@@ -1,13 +1,13 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Shield, Lock, Eye, Database, Globe, Mail, Calendar, Sparkles } from 'lucide-astro';
+import { Shield, Lock, Eye, Database, Globe, Mail, Calendar, Sparkles, Server, Cookie, Scale, RefreshCw, Users, BarChart3, Share2 } from 'lucide-astro';
 
-const lastUpdated = "December 30, 2024";
+const lastUpdated = "December 30, 2025";
 ---
 
 <Layout 
   title="Privacy Policy – Aexaware Infotech" 
-  description="Learn how Aexaware Infotech collects, uses, and protects your personal information."
+  description="Learn how Aexaware Infotech collects, uses, and protects your personal information. GDPR compliant privacy practices."
 >
   <!-- Hero Section -->
   <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
@@ -26,11 +26,11 @@ const lastUpdated = "December 30, 2024";
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-serif">Policy.</span>
         </h1>
         <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty">
-          Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.
+          We are committed to protecting your privacy and ensuring your personal data is handled responsibly and in compliance with GDPR.
         </p>
         <div class="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground">
           <Calendar className="w-4 h-4" />
-          <span>Last updated: {lastUpdated}</span>
+          <span>Effective Date: {lastUpdated}</span>
         </div>
       </div>
     </div>
@@ -40,156 +40,244 @@ const lastUpdated = "December 30, 2024";
   <section class="section-padding bg-background">
     <div class="container-normal">
       
-      <!-- Introduction -->
+      <!-- Introduction - Who We Are -->
       <div class="p-8 rounded-section bg-secondary/30 border border-border/50 mb-12">
         <div class="flex items-start gap-4">
           <div class="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
-            <Shield className="w-6 h-6" />
+            <Users className="w-6 h-6" />
           </div>
           <div>
-            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">Our Commitment to Privacy</h2>
+            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">1. Who We Are</h2>
+            <p class="text-muted-foreground mb-4">
+              Aexaware ("we", "our", or "us") is an IT agency based in Vadodara, India. We provide services including web development, app development, and digital solutions for clients worldwide.
+            </p>
             <p class="text-muted-foreground mb-0">
-              At Aexaware Infotech, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines our practices concerning the collection, use, and disclosure of your data.
+              We are committed to protecting your privacy and ensuring your personal data is handled responsibly and in compliance with the General Data Protection Regulation (GDPR).
             </p>
           </div>
         </div>
       </div>
 
-      <div class="grid gap-12 lg:grid-cols-2">
-        <!-- Section 1 -->
+      <div class="grid gap-8 lg:grid-cols-2">
+        <!-- Section 2 - What Data We Collect -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-blue-500/10 text-blue-500">
               <Database className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">1. Information We Collect</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">2. What Data We Collect</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
-            <p>We collect information that you provide directly to us, including:</p>
+            <p>We keep data collection to a minimum. The only personal information we collect is submitted by users voluntarily through the contact form and newsletter signup.</p>
             
-            <div class="space-y-4">
-              <div class="p-4 rounded-card bg-secondary/30 border border-border/50">
-                <h4 class="font-semibold text-foreground mb-2">Personal Information</h4>
-                <ul class="text-sm space-y-1 mb-0 list-disc pl-4">
-                  <li>Name and contact details</li>
-                  <li>Email address</li>
-                  <li>Phone number</li>
-                  <li>Company information</li>
-                </ul>
-              </div>
-              <div class="p-4 rounded-card bg-secondary/30 border border-border/50">
-                <h4 class="font-semibold text-foreground mb-2">Technical Information</h4>
-                <ul class="text-sm space-y-1 mb-0 list-disc pl-4">
-                  <li>IP address</li>
-                  <li>Browser type and version</li>
-                  <li>Device information</li>
-                  <li>Usage data</li>
-                </ul>
-              </div>
+            <div class="p-4 rounded-card bg-secondary/30 border border-border/50">
+              <h4 class="font-semibold text-foreground mb-3">Information You Provide:</h4>
+              <ul class="text-sm space-y-2 mb-0 list-none pl-0">
+                <li class="flex items-center gap-2"><span class="text-primary">•</span>Name</li>
+                <li class="flex items-center gap-2"><span class="text-primary">•</span>Email Address</li>
+                <li class="flex items-center gap-2"><span class="text-primary">•</span>Phone Number (optional)</li>
+                <li class="flex items-center gap-2"><span class="text-primary">•</span>Message Subject & Content</li>
+                <li class="flex items-center gap-2"><span class="text-primary">•</span>Newsletter sign-up (email only)</li>
+              </ul>
             </div>
+            <p class="text-sm italic">We do not collect or process sensitive personal data.</p>
           </div>
         </div>
 
-        <!-- Section 2 -->
+        <!-- Section 3 - How We Use Your Data -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-purple-500/10 text-purple-500">
               <Eye className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">2. How We Use Your Information</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">3. How We Use Your Data</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
-            <p>We use the information we collect for the following purposes:</p>
+            <p>We process your data only for the following purposes:</p>
             <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Service Delivery:</strong> To provide, maintain, and improve our services</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Communication:</strong> To respond to your inquiries and send you updates</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Analytics:</strong> To analyze usage patterns and improve user experience</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Marketing:</strong> To send promotional content (with your consent)</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Legal Compliance:</strong> To comply with applicable laws and regulations</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Responding to your inquiries</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Providing customer support</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Sending newsletters or updates (if you've opted in)</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Improving website performance (via analytics)</span></li>
             </ul>
           </div>
         </div>
 
-        <!-- Section 3 -->
+        <!-- Section 4 - Analytics & Tracking -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-green-500/10 text-green-500">
-              <Lock className="w-5 h-5" />
+              <BarChart3 className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">3. Data Security</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">4. Analytics & Tracking</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
             <p>
-              We implement appropriate technical and organizational measures to protect your personal information:
+              We use <strong class="text-foreground">Umami Analytics</strong>, a privacy-focused analytics platform.
             </p>
+            <div class="p-4 rounded-card bg-green-500/5 border border-green-500/20">
+              <p class="text-sm mb-0">
+                ✓ Umami does not use cookies<br/>
+                ✓ Does not collect personally identifiable information<br/>
+                ✓ Privacy-friendly and GDPR compliant
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5 - Data Sharing & Third Parties -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-500">
+              <Share2 className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">5. Data Sharing & Third Parties</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>We do not share your personal data with any third parties for marketing or advertising.</p>
+            <p>However, we use the following infrastructure providers:</p>
+            <ul class="space-y-2 list-none pl-0 text-sm">
+              <li class="flex items-start gap-2"><span class="text-primary font-bold">Cloudflare</span> – Reverse proxy for protection and performance</li>
+              <li class="flex items-start gap-2"><span class="text-primary font-bold">Self-hosted VPS</span> – Website and email on our own servers</li>
+              <li class="flex items-start gap-2"><span class="text-primary font-bold">Listmonk</span> – Self-hosted mailing list platform (by Zerodha)</li>
+            </ul>
+            <p class="text-sm italic">These providers are chosen for their strong privacy and security practices.</p>
+          </div>
+        </div>
+
+        <!-- Section 6 - Legal Basis (GDPR) -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-500">
+              <Scale className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">6. Legal Basis for Processing (GDPR)</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>Under GDPR, we rely on the following legal bases for processing your personal data:</p>
             <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Encryption of data in transit and at rest</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Regular security assessments and audits</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Access controls and authentication mechanisms</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Employee training on data protection practices</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Consent</strong> – When you voluntarily contact us or sign up for our newsletter</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Legitimate Interest</strong> – For improving website performance and protecting against abuse</span></li>
             </ul>
           </div>
         </div>
 
-        <!-- Section 4 -->
-        <div class="p-8 rounded-card-lg bg-card border border-border/50">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-500">
-              <Globe className="w-5 h-5" />
-            </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">4. Third-Party Services</h2>
-          </div>
-          
-          <div class="space-y-4 text-muted-foreground">
-            <p>
-              We may use third-party services that collect, monitor, and analyze data to improve our services. These third parties have their own privacy policies addressing how they use such information.
-            </p>
-            <p>
-              Our website may contain links to external sites. We are not responsible for the privacy practices of these external sites.
-            </p>
-          </div>
-        </div>
-
-        <!-- Section 5 -->
-        <div class="p-8 rounded-card-lg bg-card border border-border/50">
-          <div class="flex items-center gap-3 mb-6">
-            <div class="p-2 rounded-lg bg-cyan-500/10 text-cyan-500">
-              <Database className="w-5 h-5" />
-            </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">5. Cookies and Tracking</h2>
-          </div>
-          
-          <div class="space-y-4 text-muted-foreground">
-            <p>
-              We use cookies and similar tracking technologies to track activity on our website and hold certain information.
-            </p>
-            <p>
-              You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our website.
-            </p>
-          </div>
-        </div>
-
-        <!-- Section 6 -->
+        <!-- Section 7 - User Rights Under GDPR -->
         <div class="p-8 rounded-card-lg bg-card border border-border/50">
           <div class="flex items-center gap-3 mb-6">
             <div class="p-2 rounded-lg bg-rose-500/10 text-rose-500">
               <Shield className="w-5 h-5" />
             </div>
-            <h2 class="text-xl font-heading font-bold text-foreground m-0">6. Your Rights</h2>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">7. User Rights Under GDPR</h2>
           </div>
           
           <div class="space-y-4 text-muted-foreground">
-            <p>You have the following rights regarding your personal data:</p>
+            <p>If you are located in the European Economic Area (EEA), you have the following rights:</p>
             <ul class="space-y-2 list-none pl-0">
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Access:</strong> Request access to your personal data</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Correction:</strong> Request correction of inaccurate data</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Deletion:</strong> Request deletion of your personal data</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Objection:</strong> Object to processing of your personal data</span></li>
-              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Portability:</strong> Request transfer of your data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Access</strong> – Request a copy of your personal data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Correction</strong> – Request correction of inaccurate data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Deletion</strong> – Request deletion of your personal data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Objection</strong> – Object to processing of your data</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Withdraw Consent</strong> – Unsubscribe at any time</span></li>
             </ul>
+            <p class="text-sm">To exercise any of these rights, email us at <a href="mailto:contact@aexaware.com" class="text-primary hover:underline">contact@aexaware.com</a></p>
+          </div>
+        </div>
+
+        <!-- Section 8 - Security Measures -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-indigo-500/10 text-indigo-500">
+              <Lock className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">8. Security Measures</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>We take your privacy seriously and implement the following measures:</p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>HTTPS encryption (SSL) across the entire site</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Reverse proxy and DDoS protection via Cloudflare</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span>Hosting on secure self-managed VPS</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Section 9 - Data Retention -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-orange-500/10 text-orange-500">
+              <Server className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">9. Data Retention</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>We only retain personal data as long as necessary for the purposes described above.</p>
+            <ul class="space-y-2 list-none pl-0">
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Contact form submissions:</strong> Retained until your inquiry is resolved</span></li>
+              <li class="flex items-start gap-2"><span class="text-primary">•</span><span><strong class="text-foreground">Newsletter subscriptions:</strong> Retained until you unsubscribe</span></li>
+            </ul>
+            <p class="text-sm italic">We do not store unnecessary or unused personal data.</p>
+          </div>
+        </div>
+
+        <!-- Section 10 - Cookies -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-yellow-500/10 text-yellow-500">
+              <Cookie className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">10. Cookies</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <div class="p-4 rounded-card bg-green-500/5 border border-green-500/20">
+              <p class="font-semibold text-foreground mb-2">🍪 Cookie-Free Website</p>
+              <p class="text-sm mb-0">
+                We do not use cookies or tracking scripts for marketing or behavioral profiling. Umami Analytics is cookieless and privacy-friendly.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 11 - International Transfers -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-teal-500/10 text-teal-500">
+              <Globe className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">11. International Transfers</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>
+              Our servers are hosted in a secure environment under our direct control. We do not transfer personal data outside of the jurisdictions in which we operate without ensuring appropriate safeguards are in place.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 12 - Updates to This Policy -->
+        <div class="p-8 rounded-card-lg bg-card border border-border/50">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-2 rounded-lg bg-pink-500/10 text-pink-500">
+              <RefreshCw className="w-5 h-5" />
+            </div>
+            <h2 class="text-xl font-heading font-bold text-foreground m-0">12. Updates to This Policy</h2>
+          </div>
+          
+          <div class="space-y-4 text-muted-foreground">
+            <p>
+              We may update this Privacy Policy from time to time. If you are subscribed to our newsletter, we will notify you via email when significant changes occur.
+            </p>
+            <p>
+              The latest version will always be available on our website.
+            </p>
           </div>
         </div>
       </div>
@@ -201,14 +289,14 @@ const lastUpdated = "December 30, 2024";
             <Mail className="w-6 h-6" />
           </div>
           <div>
-            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">Contact Us</h2>
+            <h2 class="text-xl font-bold text-foreground mt-0 mb-2">13. Contact Us</h2>
             <p class="text-muted-foreground mb-4">
-              If you have any questions about this Privacy Policy or our data practices, please contact us:
+              If you have any questions about this Privacy Policy or how we handle your data, feel free to contact us:
             </p>
             <div class="flex flex-wrap gap-6 text-sm">
-              <p class="mb-0"><strong class="text-foreground">Email:</strong> <a href="mailto:contact@aexaware.com" class="text-primary hover:underline">contact@aexaware.com</a></p>
-              <p class="mb-0"><strong class="text-foreground">Phone:</strong> <a href="tel:+918140734392" class="text-primary hover:underline">+91 8140734392</a></p>
-              <p class="mb-0"><strong class="text-foreground">Address:</strong> Vadodara, Gujarat, India</p>
+              <p class="mb-0"><strong class="text-foreground">📧 Email:</strong> <a href="mailto:contact@aexaware.com" class="text-primary hover:underline">contact@aexaware.com</a></p>
+              <p class="mb-0"><strong class="text-foreground">📞 Phone:</strong> <a href="tel:+918140734392" class="text-primary hover:underline">+91 8140734392</a></p>
+              <p class="mb-0"><strong class="text-foreground">📍 Address:</strong> Vadodara, Gujarat, India</p>
             </div>
           </div>
         </div>

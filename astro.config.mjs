@@ -78,9 +78,26 @@ export default defineConfig({
                 {
                     userAgent: '*',
                     allow: '/',
-                    disallow: ['/api/', '/admin/'], // Added /admin/ as a safety default
+                    disallow: [
+                        '/api/',
+                        '/admin/',
+                        '/tags/',      // Low-value tag aggregation pages
+                        '/category/',  // Low-value category pages
+                    ],
                     // Note: Googlebot ignores crawlDelay, but useful for other bots
                     crawlDelay: 2,
+                },
+                // Specific rule for Googlebot to clean params
+                {
+                    userAgent: 'Googlebot',
+                    allow: '/',
+                    disallow: [
+                        '/api/',
+                        '/admin/',
+                        '/tags/',
+                        '/category/',
+                        '/*?*',  // Disallow all query parameter URLs
+                    ],
                 },
             ],
         }),
