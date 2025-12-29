@@ -68,15 +68,15 @@ const isActive = (linkPath: string) => {
       </a>
 
       {/* Desktop Navigation */}
-      <div class="hidden lg:flex items-center justify-center flex-1 px-8">
+      <div class="hidden lg:flex items-center justify-center flex-1 px-2">
         <ul class="flex items-center gap-1" role="list">
           {navLinks.map((link) => (
             <li class="relative group">
               {link.dropdown ? (
                 <div class="dropdown-container relative">
                   <button
-                    class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none hover:bg-white/10 ${
-                      isActive(link.path) ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-foreground"
+                    class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none hover:bg-accent hover:text-accent-foreground ${
+                      isActive(link.path) ? "text-primary bg-primary/10" : "text-muted-foreground"
                     }`}
                   >
                     {link.name}
@@ -107,8 +107,8 @@ const isActive = (linkPath: string) => {
                 <a
                   href={link.path}
                   class:list={[
-                    "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:bg-white/10",
-                    isActive(link.path) ? "text-primary font-bold bg-primary/10" : "text-muted-foreground hover:text-foreground"
+                    "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:bg-accent hover:text-accent-foreground",
+                    isActive(link.path) ? "text-primary font-bold bg-primary/10" : "text-muted-foreground"
                   ]}
                 >
                   {link.name}
@@ -212,8 +212,8 @@ const isActive = (linkPath: string) => {
             'shadow-xl', 
             'border-white/10', 
             'rounded-full', 
-            'max-w-[95%]', 
-            'lg:max-w-5xl' 
+            'max-w-[98%]', 
+            'lg:max-w-6xl' 
         );
         navbarInner?.classList.remove('bg-transparent', 'border-transparent', 'w-full');
         
@@ -229,8 +229,8 @@ const isActive = (linkPath: string) => {
             'shadow-xl', 
             'border-white/10', 
             'rounded-full', 
-            'max-w-[95%]', 
-            'lg:max-w-5xl'
+            'max-w-[98%]', 
+            'lg:max-w-6xl'
         );
         navbarInner?.classList.add('bg-transparent', 'border-transparent', 'w-full');
         
