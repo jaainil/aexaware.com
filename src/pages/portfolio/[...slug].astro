@@ -24,40 +24,45 @@ const { Content } = await post.render();
   {/* FIX: Semantic Grid Background */}
   <div class="fixed inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
 
-  <div class="relative pt-[var(--navbar-height)] pb-20 lg:pb-32 overflow-hidden">
-    
-    <div class="container-normal">
-      {/* Back Link */}
-      <a 
-        href="/portfolio" 
-        class="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors mb-16 group"
-      >
-        <div class="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all">
-           <ArrowLeft class="size-4" />
-        </div>
-        Back to Portfolio
-      </a>
+  <div class="relative overflow-hidden">
+    {/* Hero Section */}
+    <section class="relative pt-[var(--navbar-height)] pb-16 lg:pb-20">
 
-      {/* Header Section */}
-      <div class="grid lg:grid-cols-12 gap-12 items-start mb-20 pb-0">
-        <div class="lg:col-span-12 md:text-center flex flex-col items-center">
+      
+      <div class="container-normal">
+        {/* Back Link */}
+        <a 
+          href="/portfolio" 
+          class="inline-flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-12 group"
+        >
+          <div class="w-10 h-10 rounded-full border border-border/80 bg-background flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
+             <ArrowLeft class="size-4" />
+          </div>
+          <span class="group-hover:translate-x-0.5 transition-transform">Back to Portfolio</span>
+        </a>
+
+        {/* Header Section */}
+        <div class="text-center mb-16">
            {post.data.client && (
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-6">
-              <Sparkles className="w-3 h-3 text-primary" />
-              <span class="text-xs font-bold text-primary tracking-widest uppercase">Client: {post.data.client}</span>
+            <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-6 shadow-sm">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span class="text-sm font-bold text-primary tracking-wide uppercase">Client: {post.data.client}</span>
             </div>
           )}
           
-          {/* FIX: Use font-heading for the main title */}
-          <h1 class="font-heading font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8 text-balance">
+          {/* Title - full width like parent container */}
+          <h1 class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[1.1] text-foreground mb-6 text-balance">
             {post.data.title}
           </h1>
           
-          <p class="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl text-pretty">
+          <p class="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
             {post.data.description}
           </p>
         </div>
       </div>
+    </section>
+
+    <div class="container-normal pb-20 lg:pb-32">
  
        {/* Cinematic Hero Image */}
        <div class="aspect-video relative rounded-section overflow-hidden shadow-2xl border border-border/50 mb-24 group">

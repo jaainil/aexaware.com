@@ -114,41 +114,43 @@ const primaryCategory = post.data.category;
   {/* FIX: Semantic Grid Background */}
   <div class="fixed inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
 
-  <article class="pt-[var(--navbar-height)] pb-16 lg:pb-24 relative">
-    <div class="container-normal">
+  <article class="relative">
+    {/* Hero Section */}
+    <section class="relative pt-[var(--navbar-height)] pb-16 lg:pb-20 overflow-hidden">
+
       
-      {/* Article Header */}
-      <div class="max-w-5xl mx-auto text-center mb-16">
-         
-         {/* Breadcrumbs */}
-         <div class="flex items-center justify-center gap-2 mb-8 text-sm text-muted-foreground">
-             <a href="/" class="hover:text-primary transition-colors">Home</a>
-             <ChevronRight class="size-3 text-muted-foreground/50" />
-             <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
-             {primaryCategory && (
-                <>
-                  <ChevronRight class="size-3 text-muted-foreground/50" />
-                  <a href={`/blog/category/${slugify(primaryCategory)}`} class="font-medium text-foreground hover:text-primary transition-colors">
-                    {primaryCategory}
-                  </a>
-                </>
-             )}
-         </div>
+      <div class="container-normal">
+        <div class="text-center">
+           
+           {/* Breadcrumbs */}
+           <nav class="flex items-center justify-center gap-2 mb-10 text-sm text-muted-foreground" aria-label="Breadcrumb">
+               <a href="/" class="hover:text-foreground transition-colors">Home</a>
+               <ChevronRight class="size-3 text-muted-foreground/40" />
+               <a href="/blog" class="hover:text-foreground transition-colors">Blog</a>
+               {primaryCategory && (
+                  <>
+                    <ChevronRight class="size-3 text-muted-foreground/40" />
+                    <a href={`/blog/category/${slugify(primaryCategory)}`} class="font-medium text-foreground hover:text-primary transition-colors">
+                      {primaryCategory}
+                    </a>
+                  </>
+               )}
+           </nav>
 
-         {/* Category Badge */}
-         {primaryCategory && (
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-6">
-                <Sparkles className="w-3 h-3 text-primary" />
-                <span class="text-xs font-bold text-primary tracking-widest uppercase">{primaryCategory}</span>
-            </div>
-         )}
-         
-         {/* FIX: Use font-heading for main title */}
-         <h1 class="font-heading font-bold text-4xl sm:text-5xl lg:text-7xl tracking-tighter leading-[0.9] text-foreground mb-8 text-balance">
-            {post.data.title}
-         </h1>
+           {/* Category Badge */}
+           {primaryCategory && (
+              <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8 shadow-sm">
+                  <Sparkles className="w-4 h-4 text-primary" />
+                  <span class="text-sm font-bold text-primary tracking-wide uppercase">{primaryCategory}</span>
+              </div>
+           )}
+           
+           {/* Title - full width like parent container */}
+           <h1 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tighter leading-[1.1] text-foreground mb-8">
+              {post.data.title}
+           </h1>
 
-         <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 text-muted-foreground text-sm">
+           <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 text-muted-foreground text-sm">
              <div class="flex items-center gap-2">
                  <div class="size-8 rounded-full bg-muted flex items-center justify-center border border-border">
                      <User className="size-4" />
@@ -163,8 +165,12 @@ const primaryCategory = post.data.category;
                  <Clock className="size-4" />
                  {remarkPluginFrontmatter.minutesRead}
              </div>
-         </div>
+           </div>
+        </div>
       </div>
+    </section>
+
+    <div class="container-normal pb-16 lg:pb-24">
 
       {/* Cinematic Image */}
       {post.data.image && (
