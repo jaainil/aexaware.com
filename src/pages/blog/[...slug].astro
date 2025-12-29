@@ -191,13 +191,15 @@ const primaryCategory = post.data.category;
           {/* FIX: Removed prose-slate and customized colors directly to match theme variables */}
           <div class="prose prose-lg md:prose-xl dark:prose-invert max-w-none 
               prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
-              prose-h1:text-4xl prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 
-              prose-p:text-muted-foreground prose-p:leading-relaxed 
-              prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline 
+              prose-h1:text-4xl prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+              prose-p:text-muted-foreground prose-p:leading-relaxed
+              prose-ul:font-sans prose-ol:font-sans prose-li:font-sans prose-li:text-base prose-li:leading-relaxed
+              prose-pre:bg-muted prose-pre:text-foreground prose-pre:border prose-pre:border-border/50 prose-pre:rounded-2xl prose-pre:p-5 prose-pre:shadow-md
+              prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
               prose-img:rounded-[2rem] prose-img:shadow-xl prose-img:border prose-img:border-border/50
               prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic
               prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-              prose-li:text-muted-foreground prose-li:marker:text-primary">
+              prose-li:text-muted-foreground prose-li:marker:text-muted-foreground">
             <Content />
           </div>
 
