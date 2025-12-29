@@ -11,6 +11,7 @@ import robotsTxt from 'astro-robots-txt';
 import umami from "@yeskunall/astro-umami";
 import llmsTxtIntegration from "astro-llms-txt-generator";
 import compressor from "astro-compressor";
+import compress from "@playform/compress";
 import writenex from "@writenex/astro";
 import fuse from 'astro-fuse';
 
@@ -85,6 +86,7 @@ export default defineConfig({
         }),
 
         // Optimization (Always keep last)
+        compress(),
         compressor({
             gzip: true,
             brotli: true,
