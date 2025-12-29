@@ -139,10 +139,13 @@ const primaryCategory = post.data.category;
 
            {/* Category Badge */}
            {primaryCategory && (
-              <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8 shadow-sm">
-                  <Sparkles className="w-4 h-4 text-primary" />
+              <a 
+                href={`/blog/category/${slugify(primaryCategory)}`}
+                class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8 shadow-sm hover:bg-primary/10 transition-colors group"
+              >
+                  <Sparkles className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
                   <span class="text-sm font-bold text-primary tracking-wide uppercase">{primaryCategory}</span>
-              </div>
+              </a>
            )}
            
            {/* Title - full width like parent container */}
@@ -204,6 +207,8 @@ const primaryCategory = post.data.category;
               prose-img:rounded-card-lg prose-img:shadow-xl prose-img:border prose-img:border-border/50
               prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic
               prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+              prose-pre:bg-[var(--shiki-dark-bg)] prose-pre:!bg-opacity-100 prose-pre:border prose-pre:border-border/50
+              [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-inherit
               prose-li:text-muted-foreground prose-li:marker:text-muted-foreground">
             <Content />
           </div>
