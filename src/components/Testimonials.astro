@@ -64,14 +64,14 @@ const testimonials = [
         aria-label="Customer testimonials carousel"
       >
         {testimonials.map((testimonial, i) => (
-          /* FIX: Changed w-full to w-[85vw] on mobile to show a 'peek' of the next card */
-          <div class="snap-start shrink-0 w-[85vw] md:w-[600px]">
-            <div class="h-full flex flex-col justify-between rounded-card-lg bg-white/5 border border-white/10 p-8 md:p-10 hover:border-primary/30 transition-colors duration-500 relative group/card">
+          /* FIX: Reverted to w-full for centering, kept smaller fonts/padding */
+          <div class="snap-start shrink-0 w-full md:w-[600px]">
+            <div class="h-full flex flex-col justify-between rounded-card-lg bg-white/5 border border-white/10 p-6 md:p-10 hover:border-primary/30 transition-colors duration-500 relative group/card">
               
               <Quote className="absolute top-10 right-10 w-12 h-12 text-primary/10 group-hover/card:text-primary/20 transition-colors" />
 
               <div>
-                <div class="flex gap-1 mb-8">
+                <div class="flex gap-1 mb-6 md:mb-8">
                    {[1, 2, 3, 4, 5].map(() => (
                     <svg
                       class="size-5 fill-primary text-primary"
@@ -82,12 +82,12 @@ const testimonials = [
                     </svg>
                   ))}
                 </div>
-                <blockquote class="text-2xl md:text-3xl font-serif leading-tight text-background/90">
+                <blockquote class="text-xl md:text-3xl font-serif leading-tight text-background/90">
                   "{testimonial.quote}"
                 </blockquote>
               </div>
               
-              <div class="mt-10 pt-8 border-t border-white/10 flex items-center gap-4">
+              <div class="mt-8 md:mt-10 pt-6 md:pt-8 border-t border-white/10 flex items-center gap-4">
                 <div class="h-12 w-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-lg font-bold text-white shadow-lg shadow-primary/20">
                   {testimonial.author.charAt(0)}
                 </div>
