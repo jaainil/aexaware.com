@@ -7,9 +7,9 @@ const blogCollection = defineCollection({
         author: z.string(),
         date: z.string().or(z.date()).transform((val) => new Date(val)),
         image: image().optional(),
-        imageAlt: z.string().optional(),
         tags: z.array(z.string()).optional(),
         category: z.string().optional(),
+        featured: z.boolean().default(false),
     }),
 });
 
@@ -24,9 +24,7 @@ const portfolioCollection = defineCollection({
         duration: z.string().optional(),
         year: z.string().or(z.number()).transform((val) => String(val)).optional(),
         website: z.string().url().optional(),
-        featured: z.boolean().default(false),
         image: image(),
-        imageAlt: z.string().optional(),
     }),
 });
 

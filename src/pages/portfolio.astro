@@ -80,13 +80,13 @@ const faqs = [
   {/* Projects Grid */}
   <section class="section-padding bg-background relative">
     <div class="container-normal">
-      <div class="grid gap-12 md:grid-cols-2">
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <a
             href={`/portfolio/${project.slug}`}
-            class="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-card border border-border/50 transition-all duration-500 hover:shadow-2xl hover:border-primary/50 hover:-translate-y-2"
+            class="group flex flex-col"
           >
-            <div class="aspect-[16/10] overflow-hidden bg-muted relative">
+            <div class="aspect-[16/10] overflow-hidden rounded-[2rem] bg-muted mb-6 relative border border-border/50">
               <Image
                 src={project.data.image}
                 alt={project.data.title}
@@ -96,45 +96,41 @@ const faqs = [
                 quality={80}
                 class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
+              <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </div>
             
-            <div class="flex flex-1 flex-col p-10 relative">
-               <div class="mb-6">
-                <span class="text-xs font-bold uppercase tracking-widest text-primary border border-primary/20 px-3 py-1 rounded-full bg-primary/5">
+            <div class="flex flex-1 flex-col">
+              <div class="mb-4 flex items-center gap-4 text-xs font-medium text-muted-foreground">
+                <span class="text-primary font-bold uppercase tracking-wider">
                   {project.data.category}
                 </span>
+                <span class="size-1 rounded-full bg-border" />
+                <span class="tabular-nums">{project.data.year}</span>
               </div>
-
-              <h3 class="font-heading mb-4 text-3xl font-bold text-foreground group-hover:text-primary transition-colors">
+              
+              <h3 class="font-heading text-2xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
                 {project.data.title}
               </h3>
               
-              <p class="mb-8 text-muted-foreground leading-relaxed line-clamp-2 text-lg">
+              <p class="mb-6 text-muted-foreground leading-relaxed line-clamp-2 text-base">
                 {project.data.description}
               </p>
-
-              <div class="mt-auto flex items-center justify-between pt-8 border-t border-border/40">
-                <div class="flex flex-wrap items-center gap-3">
-                  <span class="text-sm font-medium text-muted-foreground tabular-nums">
-                    {project.data.year}
+              
+              <div class="mt-auto flex flex-wrap items-center gap-2">
+                {project.data.technologies.slice(0, 3).map((tag) => (
+                  <span class="px-2.5 py-1 rounded-full bg-secondary/50 text-xs font-medium text-muted-foreground">
+                    {tag}
                   </span>
-                  <span class="text-muted-foreground/50">•</span>
-                  {project.data.technologies.slice(0, 3).map((tag) => (
-                    <span class="text-xs font-medium text-muted-foreground">
-                      #{tag}
-                    </span>
-                  ))}
-                  {project.data.technologies.length > 3 && (
-                    <span class="text-xs font-medium text-muted-foreground">
-                      +{project.data.technologies.length - 3} more
-                    </span>
-                  )}
-                </div>
-                
-                <div class="h-10 w-10 rounded-full border border-border flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all">
-                   <ArrowRight className="w-4 h-4" />
-                </div>
+                ))}
+                {project.data.technologies.length > 3 && (
+                  <span class="text-xs font-medium text-muted-foreground">
+                    +{project.data.technologies.length - 3}
+                  </span>
+                )}
+              </div>
+              
+              <div class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                View Project <ArrowRight className="size-4" />
               </div>
             </div>
           </a>

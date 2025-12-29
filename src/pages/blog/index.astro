@@ -10,9 +10,10 @@ const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
-// Featured Post is the first one
-const featuredPost = allPosts[0];
-const remainingPosts = allPosts.slice(1);
+// Featured Post: Find the first post with featured: true, or fall back to the most recent post
+const featuredPost = allPosts.find(post => post.data.featured) || allPosts[0];
+// Remaining posts exclude the featured post
+const remainingPosts = allPosts.filter(post => post !== featuredPost);
 
 // Helper to format date
 const formatDate = (date: Date) => {
