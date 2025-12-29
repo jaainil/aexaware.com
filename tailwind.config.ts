@@ -23,9 +23,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
-        heading: ["Playfair Display", ...defaultTheme.fontFamily.serif],
-        serif: ["Playfair Display", ...defaultTheme.fontFamily.serif],
+        sans: ["Plus Jakarta Sans Variable", ...defaultTheme.fontFamily.sans],
+        heading: ["Space Grotesk Variable", ...defaultTheme.fontFamily.sans],
+        serif: ["Space Grotesk Variable", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         // FIX: Added / <alpha-value> to allow classes like bg-primary/50

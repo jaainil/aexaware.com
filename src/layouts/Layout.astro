@@ -9,20 +9,10 @@ import { SEO } from "astro-seo";
 // FIX: Removed @fontsource imports. 
 // We are handling fonts in globals.css/tailwind.config to avoid render-blocking and duplicate loads.
 // Fonts - Plus Jakarta Sans
-import "@fontsource/plus-jakarta-sans/300.css";
-import "@fontsource/plus-jakarta-sans/400.css";
-import "@fontsource/plus-jakarta-sans/400-italic.css";
-import "@fontsource/plus-jakarta-sans/500.css";
-import "@fontsource/plus-jakarta-sans/600.css";
-import "@fontsource/plus-jakarta-sans/700.css";
-import "@fontsource/plus-jakarta-sans/800.css";
+import "@fontsource-variable/plus-jakarta-sans";
 
-// Fonts - Playfair Display (Display/Accent only)
-import "@fontsource/playfair-display/400.css";
-import "@fontsource/playfair-display/400-italic.css";
-import "@fontsource/playfair-display/500.css";
-import "@fontsource/playfair-display/600.css";
-import "@fontsource/playfair-display/700.css";
+// Fonts - Space Grotesk (Headings/Display)
+import "@fontsource-variable/space-grotesk";
 
 interface Props {
   title: string;

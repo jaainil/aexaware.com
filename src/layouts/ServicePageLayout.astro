@@ -2,10 +2,27 @@
 import Layout from '@/layouts/Layout.astro';
 import { Schema } from 'astro-seo-schema';
 import { ArrowRight, Sparkles } from "lucide-astro";
-import TechMarquee from '@/components/TechMarquee';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import CTA from '@/components/astro/CTA.astro';
+import { 
+  Code2, 
+  Braces, 
+  FileCode, 
+  Server, 
+  Database, 
+  Cloud, 
+  Container, 
+  Smartphone, 
+  Palette, 
+  Layers, 
+  GitBranch, 
+  Terminal, 
+  Globe, 
+  Cpu, 
+  Wrench,
+  Cog
+} from "lucide-astro";
 
 interface ServiceItem {
   id: string;
@@ -46,6 +63,70 @@ const {
   ctaTitle = "Ready to transform your business?",
   ctaDescription = "Let's build something extraordinary together.",
 } = Astro.props;
+
+// Icon mapping for common technologies
+const techIconMap: Record<string, any> = {
+  // Languages & Frameworks
+  "React": Braces,
+  "Next.js": Layers,
+  "TypeScript": FileCode,
+  "JavaScript": Code2,
+  "Node.js": Server,
+  "Python": Terminal,
+  "Vue.js": Braces,
+  "Angular": Braces,
+  "Svelte": Braces,
+  "Astro": Globe,
+  
+  // Mobile
+  "React Native": Smartphone,
+  "Flutter": Smartphone,
+  "Swift": Smartphone,
+  "Kotlin": Smartphone,
+  "iOS": Smartphone,
+  "Android": Smartphone,
+  
+  // Databases
+  "PostgreSQL": Database,
+  "MongoDB": Database,
+  "MySQL": Database,
+  "Redis": Database,
+  "Firebase": Database,
+  "Supabase": Database,
+  
+  // Cloud & DevOps
+  "AWS": Cloud,
+  "Azure": Cloud,
+  "GCP": Cloud,
+  "Docker": Container,
+  "Kubernetes": Container,
+  "Vercel": Cloud,
+  "Netlify": Cloud,
+  
+  // Design
+  "Figma": Palette,
+  "Adobe XD": Palette,
+  "Sketch": Palette,
+  
+  // Other
+  "GraphQL": GitBranch,
+  "REST API": GitBranch,
+  "Tailwind CSS": Palette,
+  "TensorFlow": Cpu,
+  "PyTorch": Cpu,
+  "OpenAI": Cpu,
+  "Shopify": Globe,
+  "WooCommerce": Globe,
+  "Stripe": Globe,
+  "Jenkins": Cog,
+  "GitHub Actions": GitBranch,
+  "CI/CD": Cog,
+  "Terraform": Wrench,
+  "Ansible": Wrench,
+};
+
+// Get icon for a tech, with fallback
+const getTechIcon = (tech: string) => techIconMap[tech] || Code2;
 
 // Generate breadcrumb schema
 const siteUrl = Astro.site || 'https://aexaware.com';
@@ -193,23 +274,38 @@ const siteUrl = Astro.site || 'https://aexaware.com';
     </div>
   </section>
 
-  {/* Technical Toolbox - Marquee */}
-  <section class="section-padding border-y border-border/40 bg-secondary/10 overflow-hidden relative">
-     <div class="container-normal text-center mb-12">
-      <span class="text-sm font-semibold text-muted-foreground uppercase tracking-widest block mb-4">
-        Powered By Modern Tech
-      </span>
-      <h2 class="font-heading text-3xl md:text-4xl font-bold text-foreground">
-        Our Technical Toolbox
-      </h2>
-    </div>
+  {/* Technical Toolbox */}
+  <section class="section-padding border-y border-border/40 bg-gradient-to-b from-secondary/5 to-background relative overflow-hidden">
+    {/* Decorative background elements */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.02)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.02)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+    
+    <div class="container-normal relative z-10">
+      <div class="text-center mb-16">
+        <span class="text-sm font-semibold text-muted-foreground uppercase tracking-widest block mb-4">
+          Powered By Modern Tech
+        </span>
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-foreground">
+          Our Technical Toolbox
+        </h2>
+      </div>
 
-    {/* Marquee Container */}
-    {/* FIX: Replaced div overlays with [mask-image] for perfect fading on non-white backgrounds */}
-    <div class="relative flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-       <div class="[&_span]:text-foreground/40 [&_span]:hover:text-foreground/80 transition-colors">
-         <TechMarquee items={techStack} client:visible />
-       </div>
+      {/* Tech Stack Grid */}
+      <div class="flex flex-wrap justify-center gap-4 md:gap-5 max-w-5xl mx-auto">
+        {techStack.map((tech) => {
+          const IconComponent = getTechIcon(tech);
+          return (
+            <div class="group flex items-center gap-3 px-5 py-3 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default">
+              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
+                <IconComponent className="h-4 w-4" aria-hidden="true" />
+              </div>
+              <span class="font-medium text-base text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
+                {tech}
+              </span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   </section>
 
