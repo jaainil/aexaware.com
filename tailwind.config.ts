@@ -86,6 +86,10 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        // Design system tokens for consistent roundness
+        'card': '1.5rem',      // 24px - Standard cards, images, containers
+        'card-lg': '2rem',     // 32px - Large cards, hero images  
+        'section': '2.5rem',   // 40px - CTA sections, major containers
       },
       typography: ({ theme }: { theme: (path: string) => any }) => ({
         DEFAULT: {

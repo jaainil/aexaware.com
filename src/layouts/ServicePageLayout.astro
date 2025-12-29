@@ -164,7 +164,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
-          <div class="group relative bg-card/50 backdrop-blur-sm p-10 rounded-[2rem] border border-border/50 hover:border-primary/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+          <div class="group relative bg-card/50 backdrop-blur-sm p-10 rounded-card-lg border border-border/50 hover:border-primary/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
             
             {/* Hover Gradient Background */}
             <div class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -219,7 +219,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
     <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
     <div class="container-normal relative z-10">
-      <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
+      <div class="relative overflow-hidden rounded-section bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
         
         {/* Glow Effects */}
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />

@@ -42,7 +42,7 @@ const nextPost = scoredPosts[0]?.post ?? fallbackPost;
     </div>
     
     <a href={`/blog/${nextPost.slug}`} class="group block">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center bg-secondary/5 rounded-[2.5rem] p-6 md:p-8 border border-border/50 hover:border-primary/30 transition-all duration-500">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center bg-secondary/5 rounded-section p-6 md:p-8 border border-border/50 hover:border-primary/30 transition-all duration-500">
         
         {/* Content */}
          <div class="space-y-6 order-2 md:order-1">
@@ -60,7 +60,7 @@ const nextPost = scoredPosts[0]?.post ?? fallbackPost;
 
         {/* Image */}
         {nextPost.data.image && (
-          <div class="aspect-[16/10] rounded-[2rem] overflow-hidden bg-muted order-1 md:order-2 relative shadow-lg border border-border/50">
+          <div class="aspect-[16/10] rounded-card-lg overflow-hidden bg-muted order-1 md:order-2 relative shadow-lg border border-border/50">
             <Image
               src={nextPost.data.image}
               alt={nextPost.data.title}

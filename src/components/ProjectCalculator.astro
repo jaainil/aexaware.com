@@ -47,7 +47,7 @@ const timelines = [
         </div>
     </div>
 
-    <div class="rounded-[2.5rem] border border-border/50 shadow-2xl backdrop-blur-xl bg-card/90 text-card-foreground overflow-hidden relative">
+    <div class="rounded-section border border-border/50 shadow-2xl backdrop-blur-xl bg-card/90 text-card-foreground overflow-hidden relative">
          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent pointer-events-none" />
          
         <div class="flex flex-col space-y-2 p-8 md:p-12 pb-2 text-center relative z-10">
@@ -60,7 +60,7 @@ const timelines = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {projectTypes.map((item) => (
                         <button
-                            class="type-option flex flex-col items-center justify-center p-8 rounded-3xl border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-6 group"
+                            class="type-option flex flex-col items-center justify-center p-8 rounded-card border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-6 group"
                             data-value={item.label}
                         >
                             <div class="p-4 rounded-2xl bg-secondary/5 border border-border group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
@@ -79,7 +79,7 @@ const timelines = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {budgetRanges.map((item) => (
                         <button
-                            class="budget-option flex flex-col items-center justify-center p-8 rounded-3xl border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
+                            class="budget-option flex flex-col items-center justify-center p-8 rounded-card border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
                             data-value={item.label}
                         >
                             <div class="p-4 rounded-full bg-secondary/5 border border-border group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">
@@ -98,7 +98,7 @@ const timelines = [
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {timelines.map((item) => (
                         <button
-                            class="timeline-option flex flex-col items-center justify-center p-8 rounded-3xl border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
+                            class="timeline-option flex flex-col items-center justify-center p-8 rounded-card border border-border bg-secondary/30 transition-all duration-300 hover:border-primary/50 hover:bg-primary/5 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 text-center gap-4 group"
                             data-value={item.label}
                         >
                              <div class="p-4 rounded-2xl bg-secondary/5 border border-border group-hover:bg-primary/20 group-hover:border-primary/30 transition-colors duration-300 icon-container">

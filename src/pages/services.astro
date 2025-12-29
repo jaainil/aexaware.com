@@ -175,7 +175,7 @@ const techStack = [
         {services.map((service) => (
           <a
             href={service.path}
-            class="group relative bg-secondary/5 p-8 rounded-[2rem] border border-white/10 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden"
+            class="group relative bg-secondary/5 p-8 rounded-card-lg border border-white/10 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden"
           >
              <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
@@ -236,24 +236,24 @@ const techStack = [
         </div>
         
         <div class="relative">
-          <div class="aspect-square lg:aspect-[4/3] rounded-[2.5rem] overflow-hidden bg-background border border-border/50 shadow-2xl relative">
+          <div class="aspect-square lg:aspect-[4/3] rounded-section overflow-hidden bg-background border border-border/50 shadow-2xl relative">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
             
             {/* Abstract Visual Grid */}
             <div class="grid grid-cols-2 gap-6 p-12 h-full content-center">
-              <div class="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
+              <div class="bg-card/50 backdrop-blur-sm rounded-card-lg p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
                 <Globe className="h-12 w-12 text-primary mb-4" aria-hidden="true" />
                 <span class="font-bold text-lg font-heading">Global Reach</span>
               </div>
-              <div class="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg mt-12">
+              <div class="bg-card/50 backdrop-blur-sm rounded-card-lg p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg mt-12">
                 <ShieldCheck className="h-12 w-12 text-primary mb-4" aria-hidden="true" />
                 <span class="font-bold text-lg font-heading">Secure</span>
               </div>
-              <div class="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg -mt-12">
+              <div class="bg-card/50 backdrop-blur-sm rounded-card-lg p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg -mt-12">
                 <Zap className="h-12 w-12 text-primary mb-4" aria-hidden="true" />
                 <span class="font-bold text-lg font-heading">Fast</span>
               </div>
-              <div class="bg-card/50 backdrop-blur-sm rounded-[2rem] p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
+              <div class="bg-card/50 backdrop-blur-sm rounded-card-lg p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
                 <Layers className="h-12 w-12 text-primary mb-4" aria-hidden="true" />
                 <span class="font-bold text-lg font-heading">Scalable</span>
               </div>

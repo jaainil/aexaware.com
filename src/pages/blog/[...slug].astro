@@ -169,7 +169,7 @@ const primaryCategory = post.data.category;
       {/* Cinematic Image */}
       {post.data.image && (
         <div class="max-w-[1400px] mx-auto mb-20">
-             <div class="aspect-video relative rounded-[2.5rem] overflow-hidden shadow-2xl border border-border/50">
+             <div class="aspect-video relative rounded-section overflow-hidden shadow-2xl border border-border/50">
                 <Image
                     src={post.data.image}
                     alt={post.data.title}
@@ -195,7 +195,7 @@ const primaryCategory = post.data.category;
               prose-p:text-muted-foreground prose-p:leading-relaxed
               prose-ul:font-sans prose-ol:font-sans prose-li:font-sans prose-li:text-base prose-li:leading-relaxed
               prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-              prose-img:rounded-[2rem] prose-img:shadow-xl prose-img:border prose-img:border-border/50
+              prose-img:rounded-card-lg prose-img:shadow-xl prose-img:border prose-img:border-border/50
               prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic
               prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
               prose-li:text-muted-foreground prose-li:marker:text-muted-foreground">
@@ -238,7 +238,7 @@ const primaryCategory = post.data.category;
 
    {/* CTA */}
   <section class="mt-32 max-w-5xl mx-auto px-4 lg:px-8 mb-24">
-      <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-20 text-center sm:px-16 shadow-2xl">
+      <div class="relative overflow-hidden rounded-section bg-foreground px-6 py-20 text-center sm:px-16 shadow-2xl">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
         <div class="relative z-10">
             <h2 class="font-heading font-bold text-3xl md:text-5xl mb-6 text-background tracking-tight">Need expert tech solutions?</h2>

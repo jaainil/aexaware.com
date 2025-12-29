@@ -63,8 +63,8 @@ const formatDate = (date: Date) => {
       {featuredPost && (
         <div class="mb-24">
             <span class="text-sm font-bold uppercase tracking-widest text-primary mb-8 block">Featured Story</span>
-             <a href={`/blog/${featuredPost.slug}`} class="group grid lg:grid-cols-2 gap-12 items-center bg-secondary/5 rounded-[2.5rem] border border-border/50 p-6 lg:p-12 hover:border-primary/50 transition-colors duration-500">
-                <div class="aspect-[16/10] overflow-hidden rounded-3xl relative shadow-2xl">
+             <a href={`/blog/${featuredPost.slug}`} class="group grid lg:grid-cols-2 gap-12 items-center bg-secondary/5 rounded-section border border-border/50 p-6 lg:p-12 hover:border-primary/50 transition-colors duration-500">
+                <div class="aspect-[16/10] overflow-hidden rounded-card relative shadow-2xl">
                     <Image
                         src={featuredPost.data.image}
                         alt={featuredPost.data.title}
@@ -117,7 +117,7 @@ const formatDate = (date: Date) => {
              href={`/blog/${post.slug}`}
              class="group flex flex-col"
           >
-            <div class="aspect-[16/10] overflow-hidden rounded-[2rem] bg-muted mb-6 relative border border-border/50">
+            <div class="aspect-[16/10] overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
               {post.data.image && (
                 <Image
                   src={post.data.image}

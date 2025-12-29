@@ -120,8 +120,8 @@ const capabilities = [
         
         {/* Visual */}
         <div class="relative group">
-          <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-[2.5rem] blur-2xl opacity-50 -z-10 group-hover:opacity-70 transition-opacity duration-700" />
-          <div class="aspect-square rounded-[2.5rem] overflow-hidden border border-border/50 shadow-2xl relative">
+          <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-section blur-2xl opacity-50 -z-10 group-hover:opacity-70 transition-opacity duration-700" />
+          <div class="aspect-square rounded-section overflow-hidden border border-border/50 shadow-2xl relative">
             <Image
               src={teamCollaborationImg}
               alt="Team collaboration"
@@ -134,7 +134,7 @@ const capabilities = [
           </div>
           
           {/* Floating Stats Card */}
-          <div class="absolute -bottom-8 -right-8 bg-card/80 backdrop-blur-md p-8 rounded-[2rem] border border-border/50 shadow-xl hidden md:block max-w-xs">
+          <div class="absolute -bottom-8 -right-8 bg-card/80 backdrop-blur-md p-8 rounded-card-lg border border-border/50 shadow-xl hidden md:block max-w-xs">
             <div class="flex items-center gap-4 mb-2">
                 <div class="p-2 bg-primary/10 rounded-full text-primary">
                     <CheckCircle2 class="w-6 h-6" />
@@ -206,7 +206,7 @@ const capabilities = [
       <div class="grid gap-8 md:grid-cols-3">
         {values.map((item) => (
           <div
-            class="group p-10 rounded-[2.5rem] bg-background border border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
+            class="group p-10 rounded-section bg-background border border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden"
           >
              {/* Hover Gradient Background */}
             <div class={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -256,7 +256,7 @@ const capabilities = [
         <div class="grid gap-6">
           {process.map((phase) => (
             <div
-              class="flex gap-6 items-start p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 hover:border-primary/50 group"
+              class="flex gap-6 items-start p-8 rounded-card bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 hover:border-primary/50 group"
             >
               <span class="text-5xl font-bold opacity-20 text-white group-hover:text-primary group-hover:opacity-100 transition-all font-serif">
                 {phase.step}
@@ -281,7 +281,7 @@ const capabilities = [
     <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
 
     <div class="container-normal relative z-10">
-      <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
+      <div class="relative overflow-hidden rounded-section bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
         
         {/* Glow Effects */}
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
