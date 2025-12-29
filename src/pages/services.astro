@@ -15,6 +15,7 @@ import {
   Sparkles,
 } from "lucide-astro";
 import { Schema } from 'astro-seo-schema';
+import CTA from '@/components/astro/CTA.astro';
 
 const services = [
   {
@@ -281,30 +282,13 @@ const techStack = [
     </div>
   </section>
 
-  {/* CTA Section */}
-  <section class="section-padding relative overflow-hidden bg-primary">
-     <div class="absolute inset-0 bg-primary z-0" />
-     {/* Semantic grid for the CTA background - Using white/opacity for contrast against primary */}
-     <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-20" />
-
-    <div class="container-normal text-center relative z-10">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="font-heading text-5xl md:text-7xl font-bold text-primary-foreground mb-8 tracking-tight">
-          Ready to scale?
-        </h2>
-        <p class="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed max-w-2xl mx-auto">
-          Let's build something amazing together. Contact us today for a
-          free consultation and quote.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-6 justify-center">
-          <a href="/contact" aria-label="Get a free quote" class="inline-flex items-center justify-center rounded-full px-10 h-16 text-lg font-bold bg-background text-foreground hover:bg-white/90 transition-colors shadow-2xl hover:scale-105 duration-300">
-            Get a Free Quote
-          </a>
-          <a href="tel:+918140734392" class="inline-flex items-center justify-center rounded-full px-10 h-16 text-lg font-bold border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground hover:bg-primary-foreground/10 transition-colors backdrop-blur-sm">
-            Call Us Now
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CTA 
+    variant="primary"
+    title="Ready to scale?"
+    titleHighlight=""
+    description="Let's build something amazing together. Contact us today for a free consultation and quote."
+    buttonText="Get a Free Quote"
+    secondaryButtonText="Call Us Now"
+    secondaryButtonHref="tel:+918140734392"
+  />
 </Layout>

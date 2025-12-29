@@ -1,0 +1,148 @@
+---
+import { buttonVariants } from '@/components/ui/button-variants';
+import { cn } from '@/lib/utils';
+
+interface Props {
+  /**
+   * Main title text (first line)
+   * @default "Let's Build Something"
+   */
+  title?: string;
+  
+  /**
+   * Highlighted/italic text (second line)
+   * @default "Extraordinary."
+   */
+  titleHighlight?: string;
+  
+  /**
+   * Subtitle/description text
+   * @default "Ready to transform your digital presence? Book a free consultation and let's map out your success."
+   */
+  description?: string;
+  
+  /**
+   * Primary CTA button text
+   * @default "Get Free Consultation"
+   */
+  buttonText?: string;
+  
+  /**
+   * Primary CTA button link
+   * @default "/contact"
+   */
+  buttonHref?: string;
+  
+  /**
+   * Secondary button text (optional)
+   */
+  secondaryButtonText?: string;
+  
+  /**
+   * Secondary button link
+   * @default "tel:+918140734392"
+   */
+  secondaryButtonHref?: string;
+  
+  /**
+   * Visual variant
+   * - 'dark': Dark foreground card with glow effect (default)
+   * - 'primary': Primary brand color background
+   */
+  variant?: 'dark' | 'primary';
+  
+  /**
+   * Additional CSS classes for the outer section
+   */
+  class?: string;
+}
+
+const {
+  title = "Let's Build Something",
+  titleHighlight = "Extraordinary.",
+  description = "Ready to transform your digital presence? Book a free consultation and let's map out your success.",
+  buttonText = "Get Free Consultation",
+  buttonHref = "/contact",
+  secondaryButtonText,
+  secondaryButtonHref = "tel:+918140734392",
+  variant = 'dark',
+  class: className,
+} = Astro.props;
+---
+
+{variant === 'dark' && (
+  <section class={cn("section-padding bg-background relative overflow-hidden", className)}>
+    {/* Background Grid */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+
+    <div class="container-normal relative z-10">
+      <div class="relative overflow-hidden rounded-section bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
+        
+        {/* Glow Effects */}
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
+
+        <div class="relative z-10 mx-auto max-w-3xl">
+          <h2 class="font-heading font-bold text-4xl text-background md:text-6xl tracking-tight mb-8">
+            {title} {titleHighlight && <br />}
+            {titleHighlight && <span class="text-white italic font-serif">{titleHighlight}</span>}
+          </h2>
+          <p class="text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed">
+            {description}
+          </p>
+          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a 
+              href={buttonHref} 
+              class={cn(buttonVariants({ size: "lg" }), "h-16 rounded-full px-10 text-xl font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
+            >
+              {buttonText}
+            </a>
+            {secondaryButtonText && (
+              <a 
+                href={secondaryButtonHref} 
+                class="inline-flex items-center justify-center rounded-full px-10 h-16 text-lg font-bold border border-white/20 text-background hover:bg-white/10 transition-colors backdrop-blur-sm"
+              >
+                {secondaryButtonText}
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{variant === 'primary' && (
+  <section class={cn("section-padding relative overflow-hidden bg-primary", className)}>
+    <div class="absolute inset-0 bg-primary z-0" />
+    {/* Semantic grid for the CTA background - Using white/opacity for contrast against primary */}
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-20" />
+
+    <div class="container-normal text-center relative z-10">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-heading text-5xl md:text-7xl font-bold text-primary-foreground mb-8 tracking-tight">
+          {title}{titleHighlight && ` ${titleHighlight}`}
+        </h2>
+        <p class="text-xl md:text-2xl text-primary-foreground/80 mb-12 leading-relaxed max-w-2xl mx-auto">
+          {description}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <a 
+            href={buttonHref} 
+            aria-label={buttonText}
+            class="inline-flex items-center justify-center rounded-full px-10 h-16 text-lg font-bold bg-background text-foreground hover:bg-white/90 transition-colors shadow-2xl hover:scale-105 duration-300"
+          >
+            {buttonText}
+          </a>
+          {secondaryButtonText && (
+            <a 
+              href={secondaryButtonHref} 
+              class="inline-flex items-center justify-center rounded-full px-10 h-16 text-lg font-bold border border-primary-foreground/20 bg-primary-foreground/5 text-primary-foreground hover:bg-primary-foreground/10 transition-colors backdrop-blur-sm"
+            >
+              {secondaryButtonText}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+)}

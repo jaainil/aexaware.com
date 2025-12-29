@@ -15,6 +15,7 @@ import {
   Layers 
 } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
+import SearchDialog from "@/components/react/SearchDialog";
 
 const pathname = new URL(Astro.request.url).pathname;
 
@@ -34,7 +35,7 @@ const navLinks = [
       { name: "All Services", path: "/services", icon: Layers },
     ],
   },
-  { name: "Case Studies", path: "/portfolio" },
+  { name: "Portfolio", path: "/portfolio" },
   { name: "Blog", path: "/blog" },
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
@@ -118,8 +119,9 @@ const isActive = (linkPath: string) => {
         </ul>
       </div>
 
-      {/* CTA Button */}
-      <div class="hidden lg:flex items-center shrink-0">
+      {/* Search + CTA Button */}
+      <div class="hidden lg:flex items-center gap-2 shrink-0">
+        <SearchDialog client:load />
         <a
           href="/contact"
           class={buttonVariants({ size: "sm", className: "rounded-full px-5 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow duration-300" })}

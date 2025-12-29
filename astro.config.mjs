@@ -12,6 +12,7 @@ import umami from "@yeskunall/astro-umami";
 import llmsTxtIntegration from "astro-llms-txt-generator";
 import compressor from "astro-compressor";
 import writenex from "@writenex/astro";
+import fuse from 'astro-fuse';
 
 // Reading time integration (must come before mdx)
 import readingTime from 'astro-reading-time';
@@ -50,6 +51,12 @@ export default defineConfig({
                     fontFamily: 'Plus Jakarta Sans, ui-sans-serif, system-ui, sans-serif',
                 }
             }
+        }),
+
+        // Search - Fuse.js index generation
+        fuse(['frontmatter.title', 'frontmatter.description', 'content'], {
+            basedOn: 'source',
+            filter: (path) => path.startsWith('/src/content/blog/') || path.startsWith('/src/content/portfolio/'),
         }),
 
         // Analytics & SEO

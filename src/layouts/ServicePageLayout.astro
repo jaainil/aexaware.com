@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles } from "lucide-astro";
 import TechMarquee from '@/components/TechMarquee';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
+import CTA from '@/components/astro/CTA.astro';
 
 interface ServiceItem {
   id: string;
@@ -212,36 +213,8 @@ const siteUrl = Astro.site || 'https://aexaware.com';
     </div>
   </section>
 
-  {/* CTA Section */}
-  <section class="section-padding bg-background relative overflow-hidden">
-    
-    {/* Background Grid */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-
-    <div class="container-normal relative z-10">
-      <div class="relative overflow-hidden rounded-section bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
-        
-        {/* Glow Effects */}
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
-
-        <div class="relative z-10 mx-auto max-w-3xl">
-          <h2 class="font-heading font-bold text-4xl text-background md:text-6xl tracking-tight mb-8">
-            Let’s Build Something <br />
-            <span class="text-white italic font-serif">Extraordinary.</span>
-          </h2>
-          <p class="text-xl text-background/80 mb-10 max-w-xl mx-auto leading-relaxed">
-            {ctaDescription}
-          </p>
-          <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a 
-              href="/contact" 
-              class={cn(buttonVariants({ size: "lg" }), "h-16 rounded-full px-10 text-xl font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
-            >
-              Start Project
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CTA 
+    buttonText="Start Project"
+    description={ctaDescription}
+  />
 </Layout>
