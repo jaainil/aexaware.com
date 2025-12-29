@@ -1,102 +1,99 @@
 ---
-const technologies = [
+const row1 = [
   { name: "React", icon: "https://cdn.simpleicons.org/react/61DAFB" },
   { name: "Astro", icon: "https://cdn.simpleicons.org/astro/BC52EE" },
-  { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
-  { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB" },
+  { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/000000" },
   { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
   { name: "Tailwind CSS", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
-  { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/000000" },
-  { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED" },
+  { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
+];
+
+const row2 = [
+  { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
+  { name: "Python", icon: "https://cdn.simpleicons.org/python/3776AB" },
   { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/4169E1" },
-  { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248" },
+  { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED" },
   { name: "Redis", icon: "https://cdn.simpleicons.org/redis/FF4438" },
   { name: "GraphQL", icon: "https://cdn.simpleicons.org/graphql/E10098" },
-  { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
+  { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248" },
 ];
 ---
 
-<section class="py-10 border-y border-border/40 bg-background/50 backdrop-blur-sm overflow-hidden">
-  <div class="container mx-auto px-6 lg:px-8 mb-8 text-center">
+<section class="py-20 border-y border-border/40 bg-background/50 backdrop-blur-sm overflow-hidden relative">
+   {/* Radial Gradient Background */}
+   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-50 pointer-events-none" />
+
+  <div class="container mx-auto px-6 lg:px-8 mb-12 text-center relative z-10">
     <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest">Powered by Modern Tech Stack</p>
   </div>
   
-  {/* FIX: Added a mask-image to fade edges smoothly.
-      This creates a professional "infinite" look without hard cuts at the screen edge.
-  */}
-  <div 
-    class="relative flex overflow-hidden group [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"
-  >
-    {/* FIX: Single Track Architecture.
-        Instead of two opposing animations, we use one track that holds 2 sets of items.
-        We translate it by -50% (exactly half) to create a seamless loop.
-    */}
-    <div class="flex animate-marquee gap-16 px-8 min-w-full">
-      {/* First Set */}
-      {technologies.map((tech) => (
-        <div class="flex items-center justify-center gap-2 group/icon shrink-0 transition-all duration-300 hover:scale-110 opacity-60 hover:opacity-100 grayscale hover:grayscale-0">
-          <img 
-            src={tech.icon} 
-            alt={tech.name}
-            width="32"
-            height="32" 
-            /* FIX: Removed dark:invert. 
-               Instead, we use dark:brightness-200 to make logos pop on dark backgrounds 
-               without changing their actual brand color (Hue).
-            */
-            class="h-8 w-auto max-w-[none] dark:brightness-[1.5] transition-all duration-300"
-            loading="eager"
-          />
-          <span class="text-sm font-semibold hidden lg:block opacity-0 -translate-x-2 group-hover/icon:opacity-100 group-hover/icon:translate-x-0 transition-all duration-300">
-            {tech.name}
-          </span>
-        </div>
-      ))}
+  <div class="flex flex-col gap-10 relative z-10">
+    {/* Row 1: Left Scroll */}
+    <div class="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4">
+      <div class="flex animate-marquee gap-6 min-w-full items-center">
+        {[...row1, ...row1, ...row1, ...row1].map((tech) => (
+          <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/30 border border-border/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-secondary/50 hover:scale-105 cursor-default grayscale hover:grayscale-0 group/item shrink-0">
+            <img 
+              src={tech.icon} 
+              alt={tech.name}
+              width="24"
+              height="24" 
+              class="h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0"
+              loading="eager"
+            />
+            <span class="text-sm font-semibold text-muted-foreground group-hover/item:text-foreground transition-colors whitespace-nowrap pt-0.5">
+              {tech.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
 
-      {/* Duplicate Set (for seamless looping) - aria-hidden to prevent screen reader duplication */}
-      {technologies.map((tech) => (
-        <div class="flex items-center justify-center gap-2 group/icon shrink-0 transition-all duration-300 hover:scale-110 opacity-60 hover:opacity-100 grayscale hover:grayscale-0" aria-hidden="true">
-          <img 
-            src={tech.icon} 
-            alt=""
-            width="32"
-            height="32" 
-            class="h-8 w-auto max-w-[none] dark:brightness-[1.5] transition-all duration-300"
-            loading="eager"
-          />
-          <span class="text-sm font-semibold hidden lg:block opacity-0 -translate-x-2 group-hover/icon:opacity-100 group-hover/icon:translate-x-0 transition-all duration-300">
-            {tech.name}
-          </span>
-        </div>
-      ))}
+    {/* Row 2: Right Scroll */}
+    <div class="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4">
+      <div class="flex animate-marquee-reverse gap-6 min-w-full items-center">
+        {[...row2, ...row2, ...row2, ...row2].map((tech) => (
+          <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/30 border border-border/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-secondary/50 hover:scale-105 cursor-default grayscale hover:grayscale-0 group/item shrink-0">
+            <img 
+              src={tech.icon} 
+              alt={tech.name}
+              width="24"
+              height="24" 
+              class="h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0"
+              loading="eager"
+            />
+            <span class="text-sm font-semibold text-muted-foreground group-hover/item:text-foreground transition-colors whitespace-nowrap pt-0.5">
+              {tech.name}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>
 
 <style>
   .animate-marquee {
-    animation: marquee 40s linear infinite;
-    /* Ensure the width fits content so the loop calculation is correct */
-    width: max-content; 
+    animation: marquee 50s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee-display 50s linear infinite reverse;
   }
 
   @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } /* Move exactly half the width (one full set) */
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-display {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
   /* Pause on hover */
-  .group:hover .animate-marquee {
+  .animate-marquee:hover,
+  .animate-marquee-reverse:hover {
     animation-play-state: paused;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .animate-marquee {
-      animation: none;
-      /* If animation is off, centering the items looks better than cutting them off */
-      transform: translateX(0); 
-      justify-content: center;
-      flex-wrap: wrap; 
-    }
   }
 </style>
