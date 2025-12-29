@@ -24,7 +24,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
-        heading: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
+        heading: ["Playfair Display", ...defaultTheme.fontFamily.serif],
         serif: ["Playfair Display", ...defaultTheme.fontFamily.serif],
       },
       colors: {
