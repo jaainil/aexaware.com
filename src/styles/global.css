@@ -20,7 +20,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 221 83% 53%;
+    /* Darkened to ~Blue-700 for 4.5:1 contrast against white */
+    --primary: 221 83% 40%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -32,20 +33,23 @@
     --accent: 210 40% 96.1%;
     --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 84% 60%;
+    /* Darkened to ~Red-600 */
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 53%;
+    --ring: 221 83% 40%;
 
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
 
     --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
+    /* Warning text should be dark on amber background */
+    --warning-foreground: 222 47% 11%;
 
-    --info: 199 89% 48%;
+    /* Darkened Info to pass with white text */
+    --info: 199 89% 38%;
     --info-foreground: 0 0% 100%;
 
     --surface: 0 0% 98%;

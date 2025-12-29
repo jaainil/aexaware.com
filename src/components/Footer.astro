@@ -44,7 +44,7 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
     {/* Pre-Footer CTAs */}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 pb-16 border-b border-border/40">
       {/* Start Project Card */}
-      <div class="relative overflow-hidden group bg-secondary/30 rounded-section p-8 md:p-12 border border-border/50 transition-colors hover:bg-secondary/50">
+      <div class="relative overflow-hidden group bg-secondary/30 rounded-card-lg p-8 md:p-12 border border-border/50 transition-colors hover:bg-secondary/50">
         <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         <div class="relative z-10 flex flex-col items-start gap-6">
             <h3 class="font-heading font-bold text-3xl md:text-4xl text-foreground leading-tight">
@@ -60,7 +60,7 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
       </div>
 
       {/* Portfolio Card */}
-      <div class="relative overflow-hidden group bg-secondary/30 rounded-section p-8 md:p-12 border border-border/50 transition-colors hover:bg-secondary/50">
+      <div class="relative overflow-hidden group bg-secondary/30 rounded-card-lg p-8 md:p-12 border border-border/50 transition-colors hover:bg-secondary/50">
          <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         <div class="relative z-10 flex flex-col items-start gap-6">
             <h3 class="font-heading font-bold text-3xl md:text-4xl text-foreground leading-tight">
@@ -161,11 +161,11 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
                 name="email"
                 placeholder="Enter your email"
                 required
-                class="w-full h-10 px-4 rounded-xl bg-background border border-border/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground/50"
+                class="w-full h-10 px-4 rounded-full bg-background border border-border/50 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
               />
               <button
                 type="submit"
-                class={buttonVariants({ className: "w-full rounded-xl h-10 text-sm font-semibold" })}
+                class={buttonVariants({ className: "w-full rounded-full h-10 text-sm font-semibold" })}
               >
                 Subscribe
               </button>

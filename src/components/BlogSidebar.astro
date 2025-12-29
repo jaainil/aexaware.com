@@ -22,7 +22,7 @@ const { headings, url, title } = Astro.props;
   </div>
 
   {/* Engagement Actions (Summary & Share) - Glass Card */}
-  <div class="rounded-card-lg bg-card/30 backdrop-blur-md p-6 border border-border/50 shadow-sm">
+  <div class="relative z-20 rounded-card-lg bg-card/30 backdrop-blur-md p-6 border border-border/50 shadow-sm">
       <h3 class="font-heading font-bold text-lg mb-4 flex items-center gap-2 text-foreground/80">
           <Sparkles class="size-4 text-primary" />
           AI & Share
@@ -46,7 +46,7 @@ const { headings, url, title } = Astro.props;
         </p>
         <a 
           href="/contact" 
-          class={buttonVariants({ className: "w-full rounded-xl h-12 text-base font-semibold shadow-md group-hover:shadow-primary/25 transition-all" })}
+          class={buttonVariants({ className: "w-full rounded-full h-12 text-base font-semibold shadow-md group-hover:shadow-primary/25 transition-all" })}
         >
           Start Project <ArrowUpRight className="ml-2 h-4 w-4" />
         </a>

@@ -193,7 +193,7 @@ export default function SearchDialog() {
                                     onSelect={() => handleSelect(getPathname(item.fileUrl).path)}
                                     className="cursor-pointer"
                                 >
-                                    <div className="mr-3 p-1.5 rounded-lg bg-blue-500/10 text-blue-500">
+                                    <div className="mr-3 p-1.5 rounded-lg bg-blue-500/10 text-blue-700">
                                         <FileText className="size-4" />
                                     </div>
                                     <div className="flex-1 min-w-0">
@@ -217,7 +217,7 @@ export default function SearchDialog() {
                                     onSelect={() => handleSelect(getPathname(item.fileUrl).path)}
                                     className="cursor-pointer"
                                 >
-                                    <div className="mr-3 p-1.5 rounded-lg bg-purple-500/10 text-purple-500">
+                                    <div className="mr-3 p-1.5 rounded-lg bg-purple-500/10 text-purple-700">
                                         <Briefcase className="size-4" />
                                     </div>
                                     <div className="flex-1 min-w-0">

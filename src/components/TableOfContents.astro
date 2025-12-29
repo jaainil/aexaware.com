@@ -8,7 +8,7 @@ interface Props {
 const { headings } = Astro.props;
 
 // Filter out h1 (title) and distinct headings
-const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
+const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 4);
 ---
 
 <nav class="toc-container text-sm">
@@ -23,7 +23,7 @@ const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
         <a
           href={`#${heading.slug}`}
           class={`block py-1.5 transition-all duration-300 border-l-2 leading-relaxed hover:text-primary ${
-            heading.depth === 3 ? "pl-8 text-xs" : "pl-6"
+            heading.depth === 1 ? "pl-4 font-medium" : heading.depth === 3 ? "pl-8 text-xs" : heading.depth === 4 ? "pl-10 text-xs" : "pl-6"
           } text-muted-foreground border-transparent hover:border-primary/30`}
         >
           {heading.text}
@@ -36,7 +36,7 @@ const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
 <script>
   function initTOC() {
     const tocLinks = document.querySelectorAll('.toc-container a');
-    const headings = document.querySelectorAll('article h2, article h3'); // Scope to article to avoid sidebar/footer collisions
+    const headings = document.querySelectorAll('article h1, article h2, article h3, article h4'); // Scope to article to avoid sidebar/footer collisions
     
     if (headings.length === 0) return;
 
@@ -76,4 +76,4 @@ const toc = headings.filter((h) => h.depth > 1 && h.depth <= 3);
 
   // Re-run on navigation (Astro View Transitions)
   document.addEventListener('astro:page-load', initTOC);
-</script>
+</script> 
