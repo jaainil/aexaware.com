@@ -3,48 +3,16 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { ArrowUpRight, ArrowRight, Sparkles } from "lucide-astro";
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
+import { getCollection } from "astro:content";
 
-// Import portfolio screenshots
-import qreiusImg from "@/content/portfolio/qreius/screenshot-2025-12-27-at-15-15-49-seed-to-scale-mo-mjo4877t.png";
-import bharatKrushiImg from "@/content/portfolio/bharat-krushi/screenshot-2025-12-27-at-15-12-04-bharat-krushi-bi-mjo43ktg.png";
-import shravonixImg from "@/content/portfolio/shravonix-website-and-cms-implementation/screenshot-2025-12-27-at-15-00-06-shravonix-signal-mjo3nu1f.png";
-import jkFertilizersImg from "@/content/portfolio/jk-fertilizers/screenshot-2025-12-27-at-15-09-14-home-j-k-fertili-mjo3zk7y.png";
-
-const projects = [
-  {
-    title: "Qreius",
-    category: "Modern Web Platform",
-    image: qreiusImg,
-    href: "/portfolio/qreius",
-    technologies: ["React", "Tailwind", "Cloudflare"],
-    featured: true,
-  },
-  {
-    title: "Bharat Krushi",
-    category: "E-Commerce Platform",
-    image: bharatKrushiImg,
-    href: "/portfolio/bharat-krushi",
-    technologies: ["React", "Node.js", "MongoDB"],
-    featured: false,
-  },
-  {
-    title: "Shravonix",
-    category: "Website & CMS",
-    image: shravonixImg,
-    href: "/portfolio/shravonix-website-and-cms-implementation",
-    technologies: ["Next.js", "Sanity", "Vercel"],
-    featured: false,
-  },
-  {
-    title: "JK Fertilizers",
-    category: "Corporate Website",
-    image: jkFertilizersImg,
-    href: "/portfolio/jk-fertilizers",
-    technologies: ["React", "Tailwind", "AWS"],
-    featured: false,
-  },
-];
+// Auto-fetch latest 5 portfolio entries, sorted by date (newest first)
+// Layout: 1 featured (spans 2 cols) + 4 regular = balanced 2-column grid
+const allProjects = await getCollection("portfolio");
+const projects = allProjects
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 5);
 ---
+
 
 <section class="section-padding bg-background relative overflow-hidden" aria-labelledby="featured-works-heading">
   
@@ -81,7 +49,7 @@ const projects = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project, i) => (
         <a 
-          href={project.href}
+          href={`/portfolio/${project.id}`}
           class={cn(
             "group relative overflow-hidden rounded-card-lg border border-border/40 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:border-primary/50 hover:shadow-2xl block",
             i === 0 ? "md:col-span-2 aspect-[16/9]" : "aspect-[4/3]"
@@ -89,8 +57,8 @@ const projects = [
         >
           {/* Project Image */}
           <Image
-            src={project.image}
-            alt={`${project.title} - ${project.category}`}
+            src={project.data.image}
+            alt={`${project.data.title} - ${project.data.category}`}
             widths={[400, 800, 1200]}
             sizes={i === 0 ? "(max-width: 768px) 100vw, 1200px" : "(max-width: 768px) 100vw, 600px"}
             format="webp"
@@ -104,7 +72,7 @@ const projects = [
           {/* Content Overlay */}
           <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <div class="flex flex-wrap gap-2 mb-4">
-              {project.technologies.map((tech) => (
+              {project.data.technologies.slice(0, 3).map((tech) => (
                 <span class="px-2.5 py-1 text-xs font-semibold bg-secondary/90 backdrop-blur-sm rounded-full text-foreground border border-border/50">
                   {tech}
                 </span>
@@ -113,9 +81,9 @@ const projects = [
             
             <div class="flex items-end justify-between gap-4">
               <div>
-                <p class="text-sm text-primary font-medium mb-1">{project.category}</p>
+                <p class="text-sm text-primary font-medium mb-1">{project.data.category}</p>
                 <h3 class="font-heading text-2xl md:text-3xl font-bold text-foreground tracking-tight">
-                  {project.title}
+                  {project.data.title}
                 </h3>
               </div>
               
