@@ -10,54 +10,40 @@
     --navbar-height: 96px;
     /* mobile + safe area */
 
-    /* Base Colors - Values adjusted to pure numbers for <alpha-value> compatibility */
+    /* Maia Style Variables (HSL Converted) */
     --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-
+    --foreground: 224 72% 4%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
+    --card-foreground: 224 72% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 224 72% 4%;
+    --primary: 225 84% 49%;
+    --primary-foreground: 214 96% 97%;
+    --secondary: 240 4% 96%;
+    --secondary-foreground: 240 6% 10%;
+    --muted: 220 15% 96%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 220 15% 96%;
+    --accent-foreground: 224 72% 4%;
+    --destructive: 352 100% 40%;
+    --destructive-foreground: 352 100% 40%;
+    --border: 220 14% 91%;
+    --input: 220 14% 91%;
+    --ring: 218 12% 64%;
 
-    /* Darkened to ~Blue-700 for 4.5:1 contrast against white */
-    --primary: 221 83% 40%;
-    --primary-foreground: 210 40% 98%;
+    --radius: 0.875rem;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222 47% 11%;
-
-    /* Darkened to ~Red-600 */
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 40%;
-
+    /* Custom Colors */
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
-
     --warning: 38 92% 50%;
-    /* Warning text should be dark on amber background */
     --warning-foreground: 222 47% 11%;
-
-    /* Darkened Info to pass with white text */
     --info: 199 89% 38%;
     --info-foreground: 0 0% 100%;
-
     --surface: 0 0% 98%;
     --surface-hover: 0 0% 96%;
     --overlay: 222 47% 11%;
     --rating: 45 93% 47%;
-
-    --radius: 0.5rem;
   }
 
   @media (min-width: 1024px) {
@@ -67,41 +53,38 @@
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    --background: 224 72% 4%;
+    --foreground: 210 24% 98%;
+    --card: 221 42% 11%;
+    --card-foreground: 210 24% 98%;
+    --popover: 221 42% 11%;
+    --popover-foreground: 210 24% 98%;
+    --primary: 227 70% 40%;
+    --primary-foreground: 214 96% 97%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 240 0% 98%;
+    --muted: 215 31% 17%;
+    --muted-foreground: 218 12% 64%;
+    --accent: 215 31% 17%;
+    --accent-foreground: 210 24% 98%;
+    --destructive: 359 100% 70%;
+    --destructive-foreground: 210 24% 98%;
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    /* Approximations for translucent white on dark */
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+    --ring: 220 10% 46%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47.4% 11.2%;
-
-    --secondary: 217 32% 17%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 32% 17%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 217 32% 17%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 32% 17%;
-    --input: 217 32% 17%;
-    --ring: 224 76% 48%;
-
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+    --info: 199 89% 60%;
+    --info-foreground: 222 47% 11%;
     --surface: 222 47% 15%;
     --surface-hover: 222 47% 18%;
     --overlay: 210 40% 98%;
     --rating: 45 93% 58%;
-
-    --info: 199 89% 60%;
-    --info-foreground: 222 47% 11%;
   }
 }
 
@@ -116,7 +99,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
+    @apply bg-background text-foreground font-sans antialiased selection:bg-muted selection:text-primary;
     /* Optional: Improves font rendering on OS X */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
