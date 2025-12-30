@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { Schema } from 'astro-seo-schema';
 import ContactForm from '@/components/ContactForm.astro';
 import {
   Mail,
@@ -26,6 +27,28 @@ const socialLinks = [
   title="Contact Aexaware Infotech – Let’s Build Together" 
   description="Get in touch with Aexaware Infotech for custom web, mobile & AI solutions."
 >
+  <Fragment slot="head">
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "mainEntity": {
+          "@type": "ProfessionalService",
+          "name": "Aexaware Infotech",
+          "telephone": "+918140734392",
+          "email": "info@aexaware.com",
+          "url": "https://aexaware.com",
+          "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-8140734392",
+              "contactType": "customer service",
+              "areaServed": "IN",
+              "availableLanguage": "en"
+          }
+        }
+      }}
+    />
+  </Fragment>
   
   {/* Modern Grid Background - Fixed to cover the whole page */}
   {/* FIX: Semantic Grid Background */}

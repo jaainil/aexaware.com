@@ -1,6 +1,7 @@
 
 ---
 import Layout from '@/layouts/Layout.astro';
+import { Schema } from 'astro-seo-schema';
 import { Image } from 'astro:assets';
 import teamCollaborationImg from "@/assets/team-collaboration.jpg";
 import {
@@ -78,6 +79,32 @@ const capabilities = [
   title="About Aexaware Infotech – Trusted Innovation Partner" 
   description="Learn how Aexaware Infotech grew from Vadodara to a global digital agency delivering web, AI and app solutions."
 >
+  <Fragment slot="head">
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "mainEntity": {
+          "@type": "ProfessionalService",
+          "name": "Aexaware Infotech",
+          "description": "A full-service digital agency specializing in web development, mobile apps, AI/ML integration, and cloud solutions.",
+          "url": "https://aexaware.com",
+          "logo": "https://aexaware.com/og-image.png",
+          "foundingDate": "2024",
+          "address": {
+             "@type": "PostalAddress",
+             "addressLocality": "Vadodara",
+             "addressRegion": "Gujarat",
+             "addressCountry": "IN"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/company/aexaware",
+            "https://twitter.com/aexaware"
+          ]
+        }
+      }}
+    />
+  </Fragment>
   
   {/* Hero Section */}
   {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}

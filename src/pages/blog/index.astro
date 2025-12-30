@@ -11,8 +11,8 @@ const allPosts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
-// Featured Post: Find the first post with featured: true, or fall back to the most recent post
-const featuredPost = allPosts.find(post => post.data.featured) || allPosts[0];
+// Featured Post: Simply use the most recent (newest) post
+const featuredPost = allPosts[0];
 // Remaining posts exclude the featured post
 const remainingPosts = allPosts.filter(post => post !== featuredPost);
 
@@ -63,19 +63,21 @@ const formatDate = (date: Date) => {
       {/* Featured Post */}
       {featuredPost && (
         <div class="mb-24">
-            <span class="text-sm font-bold uppercase tracking-widest text-primary mb-8 block">Featured Story</span>
+            <span class="text-sm font-bold uppercase tracking-widest text-primary mb-8 block">Latest Insights</span>
              <a href={`/blog/${featuredPost.slug}`} class="group grid lg:grid-cols-2 gap-12 items-center bg-secondary/5 rounded-section border border-border/50 p-6 lg:p-12 hover:border-primary/50 transition-colors duration-500">
                 <div class="aspect-[16/10] overflow-hidden rounded-card relative shadow-2xl">
-                    <Image
-                        src={featuredPost.data.image}
-                        alt={featuredPost.data.title}
-                        class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        width={1200}
-                        height={750}
-                        format="webp"
-                        quality={80}
-                        loading="eager"
-                    />
+                    {featuredPost.data.image && (
+                        <Image
+                            src={featuredPost.data.image}
+                            alt={featuredPost.data.title}
+                            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            width={1200}
+                            height={750}
+                            format="webp"
+                            quality={80}
+                            loading="eager"
+                        />
+                    )}
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
                 </div>
                 <div>

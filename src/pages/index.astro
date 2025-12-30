@@ -1,5 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { Schema } from 'astro-seo-schema';
 import Hero from '@/components/astro/Hero.astro';
 import TechStackMarquee from '@/components/astro/TechStackMarquee.astro';
 import ServicesGrid from '@/components/astro/ServicesGrid.astro';
@@ -15,6 +16,51 @@ import CTA from '@/components/astro/CTA.astro';
   title="Aexaware Infotech – Custom Web, Mobile & AI Solutions from Vadodara, Gujarat" 
   description="Aexaware Infotech builds scalable web, mobile, AI, and DevOps solutions for startups and enterprises – Made in Vadodara, Serving Globally."
 >
+  <Fragment slot="head">
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Aexaware Infotech",
+        "image": "https://aexaware.com/og-image.png",
+        "@id": "https://aexaware.com",
+        "url": "https://aexaware.com",
+        "telephone": "+918140734392",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Office no 13, 3rd Floor Aarya’s landmark, Canal Ring Road, Sevasi",
+          "addressLocality": "Vadodara",
+          "addressRegion": "Gujarat",
+          "postalCode": "391101",
+          "addressCountry": "IN"
+        },
+        "priceRange": "$$",
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 22.316837,
+          "longitude": 73.136081
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/aexaware",
+          "https://twitter.com/aexaware",
+          "https://github.com/aexaware",
+          "https://www.instagram.com/aexaware/"
+        ]
+      }}
+    />
+  </Fragment>
   <Hero />
   <TechStackMarquee />
   <ServicesGrid />
