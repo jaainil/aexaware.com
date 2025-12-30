@@ -2,6 +2,7 @@
 import { buttonVariants } from "@/components/ui/button-variants";
 import { ArrowUpRight, Code, Smartphone, Cloud, Brain, ArrowRight } from "lucide-astro";
 import { cn } from "@/lib/utils";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 const services = [
   {
@@ -48,7 +49,7 @@ const services = [
   {/* Semantic Grid Background 
       Using variable transparency ensures this looks good in both Light and Dark modes automatically.
   */}
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+  <BackgroundGrid density="md" mask="bottom" />
 
   <div class="container-normal relative z-10">
     

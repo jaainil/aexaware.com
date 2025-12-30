@@ -3,6 +3,7 @@ import { buttonVariants } from "@/components/ui/button-variants";
 import { Briefcase, ArrowRight, Sparkles } from "lucide-astro";
 import { cn } from "@/lib/utils";
 import TrustedBy from "@/components/astro/TrustedBy.astro";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 import Typewriter from "astro-typewriter";
 
@@ -17,7 +18,7 @@ const words = [
 <section class="relative w-full bg-background min-h-[100dvh] flex flex-col justify-center items-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-white/5">
   
   {/* Modern Grid Background */}
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+  <BackgroundGrid density="md" mask="edges" />
 
   {/* Ambient Glows */}
   <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-[500px] w-[1000px] rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />

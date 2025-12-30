@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
 } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 const currentYear = new Date().getFullYear();
 
@@ -37,7 +38,7 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
 <footer class="relative border-t border-border/40 bg-background pt-24 pb-12 overflow-hidden">
   
   {/* Modern Grid Background - Optimized opacity */}
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
+  <BackgroundGrid density="sm" mask="top" class="-z-10" />
 
   <div class="container-normal relative z-10">
     

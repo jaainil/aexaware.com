@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { ArrowRight, Calendar, Sparkles, ChevronRight } from 'lucide-astro';
 import { Image } from 'astro:assets';
+import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
 
 export async function getStaticPaths() {
   // Helper to slugify tags
@@ -56,7 +57,7 @@ const formatDate = (date: Date) => {
   <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
     
     {/* FIX: Semantic Grid Background */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    <BackgroundGrid density="sm" mask="top" />
 
     <div class="container-normal relative z-10">
       <div class="max-w-4xl mx-auto text-center">

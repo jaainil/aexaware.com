@@ -5,6 +5,7 @@ import { Image } from 'astro:assets';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import { ArrowLeft, ExternalLink, Calendar, Clock, Layers, Sparkles } from 'lucide-astro';
+import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('portfolio');
@@ -22,7 +23,7 @@ const { Content } = await post.render();
   
   {/* Modern Grid Background - Fixed to stay behind content */}
   {/* FIX: Semantic Grid Background */}
-  <div class="fixed inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
+  <BackgroundGrid density="sm" fixed mask="top" class="-z-10" />
 
   <div class="relative overflow-hidden">
     {/* Hero Section */}

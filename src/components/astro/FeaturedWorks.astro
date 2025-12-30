@@ -4,6 +4,7 @@ import { ArrowUpRight, ArrowRight, Sparkles } from "lucide-astro";
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
 import { getCollection } from "astro:content";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 // Auto-fetch latest 5 portfolio entries, sorted by date (newest first)
 // Layout: 1 featured (spans 2 cols) + 4 regular = balanced 2-column grid
@@ -17,7 +18,7 @@ const projects = allProjects
 <section class="section-padding bg-background relative overflow-hidden" aria-labelledby="featured-works-heading">
   
   {/* Subtle grid background */}
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.02)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.02)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+  <BackgroundGrid density="md" mask="top" />
 
   <div class="container-normal relative z-10">
     

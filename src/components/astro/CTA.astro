@@ -1,6 +1,7 @@
 ---
 import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
+import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
 
 interface Props {
   /**
@@ -73,7 +74,7 @@ const {
 {variant === 'dark' && (
   <section class={cn("section-padding bg-background relative overflow-hidden", className)}>
     {/* Background Grid */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.04)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.04)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+    <BackgroundGrid density="lg" opacity={0.04} />
 
     <div class="container-normal relative z-10">
       <div class="relative overflow-hidden rounded-section bg-foreground px-6 py-24 text-center sm:px-16 shadow-2xl">
@@ -115,7 +116,7 @@ const {
   <section class={cn("section-padding relative overflow-hidden bg-primary", className)}>
     <div class="absolute inset-0 bg-primary z-0" />
     {/* Semantic grid for the CTA background - Using white/opacity for contrast against primary */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none opacity-20" />
+    <BackgroundGrid density="lg" variant="light" mask="center" opacity={0.1} class="opacity-20" />
 
     <div class="container-normal text-center relative z-10">
       <div class="max-w-4xl mx-auto">

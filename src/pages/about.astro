@@ -18,6 +18,7 @@ import {
 import { buttonVariants } from '@/components/ui/button-variants';
 import { cn } from '@/lib/utils';
 import CTA from '@/components/astro/CTA.astro';
+import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
 
 const values = [
   {
@@ -83,7 +84,7 @@ const capabilities = [
   <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
     
     {/* FIX: Semantic Grid Background */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    <BackgroundGrid density="sm" mask="top" />
 
     <div class="container-normal relative z-10">
       <div class="max-w-4xl mx-auto text-center">
@@ -232,7 +233,7 @@ const capabilities = [
   {/* Our Process */}
   <section class="section-padding bg-foreground text-background overflow-hidden relative">
      {/* Background Grid - Semantic Inverse */}
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--background)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--background)/0.1)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none opacity-20" />
+    <BackgroundGrid density="lg" variant="light" opacity={0.1} class="opacity-20" />
 
     <div class="container-normal relative z-10">
       <div class="grid lg:grid-cols-2 gap-20 items-center">

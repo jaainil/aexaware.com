@@ -1,6 +1,7 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { FileText, Scale, AlertTriangle, Ban, CreditCard, RefreshCw, Mail, Calendar, Sparkles, Globe, Users, Shield, Briefcase, Link, Server, Gavel, Code2 } from 'lucide-astro';
+import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
 
 const lastUpdated = "December 30, 2025";
 ---
@@ -11,7 +12,7 @@ const lastUpdated = "December 30, 2025";
 >
   <!-- Hero Section -->
   <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+    <BackgroundGrid density="sm" mask="top" />
     <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent -z-10" />
     
     <div class="container-normal relative z-10">

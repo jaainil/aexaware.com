@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Sparkles
 } from "lucide-astro";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 const socialLinks = [
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/107112329/" },
@@ -28,7 +29,7 @@ const socialLinks = [
   
   {/* Modern Grid Background - Fixed to cover the whole page */}
   {/* FIX: Semantic Grid Background */}
-  <div class="fixed inset-0 bg-[linear-gradient(to_right,hsl(var(--foreground)/0.03)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--foreground)/0.03)_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none -z-10" />
+  <BackgroundGrid density="sm" fixed mask="top" class="-z-10" />
 
   {/* FIX: Use min-h-[100dvh] for mobile stability */}
   <section class="relative w-full min-h-[100dvh] flex flex-col justify-start lg:justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden">
