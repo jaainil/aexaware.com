@@ -23,8 +23,8 @@ const words = [
   {/* Ambient Glows */}
   <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-[500px] w-[1000px] rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
   
-  <div class="container relative z-10 px-6 mx-auto">
-    <div class="max-w-6xl mx-auto text-center flex flex-col items-center">
+  <div class="container-normal relative z-10">
+    <div class="mx-auto text-center flex flex-col items-center">
       
       {/* Badge */}
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8">
@@ -58,7 +58,7 @@ const words = [
           href="/contact" 
           class={cn(
             buttonVariants({ size: "lg" }), 
-            "h-14 px-8 text-lg font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-all w-full sm:w-auto"
+            "h-14 rounded-full px-8 text-lg font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-all w-full sm:w-auto"
           )}
         >
           Start Project
@@ -68,7 +68,7 @@ const words = [
           href="/portfolio" 
           class={cn(
             buttonVariants({ size: "lg", variant: "outline" }), 
-            "h-16 rounded-full px-10 text-xl font-bold tracking-wide bg-transparent border-2 hover:bg-foreground hover:text-background w-full sm:w-auto transition-all"
+            "h-14 rounded-full px-10 text-lg font-bold tracking-wide bg-transparent border-2 hover:bg-foreground hover:text-background w-full sm:w-auto transition-all"
           )}
         >
           Our Work
