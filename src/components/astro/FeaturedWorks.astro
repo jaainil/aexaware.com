@@ -50,46 +50,54 @@ const projects = allProjects
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project, i) => (
         <a 
-          href={`/portfolio/${project.id}`}
+          href={`/portfolio/${project.slug}`}
           class={cn(
-            "group relative overflow-hidden rounded-card-lg border border-border/40 bg-card/30 backdrop-blur-sm transition-all duration-500 hover:border-primary/50 hover:shadow-2xl block",
-            i === 0 ? "md:col-span-2 aspect-[16/9]" : "aspect-[4/3]"
+            "group relative overflow-hidden rounded-card-lg border border-border/40 bg-card transition-all duration-500 hover:border-primary/50 hover:shadow-2xl block",
+            i === 0 ? "md:col-span-2" : ""
           )}
         >
-          {/* Project Image */}
-          <Image
-            src={project.data.image}
-            alt={`${project.data.title} - ${project.data.category}`}
-            widths={[400, 800, 1200]}
-            sizes={i === 0 ? "(max-width: 768px) 100vw, 1200px" : "(max-width: 768px) 100vw, 600px"}
-            format="webp"
-            quality={85}
-            class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-          />
-          
-          {/* Gradient Overlay - Strong contrast for text readability */}
-          <div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/20 transition-opacity" />
-          
-          {/* Content Overlay */}
-          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-            <div class="flex flex-wrap gap-2 mb-4">
-              {project.data.technologies.slice(0, 3).map((tech) => (
-                <span class="px-2.5 py-1 text-xs font-semibold bg-secondary/90 backdrop-blur-sm rounded-full text-foreground border border-border/50">
-                  {tech}
-                </span>
-              ))}
+          {/* Mobile: Stacked layout, Desktop: Image with overlay */}
+          <div class="flex flex-col md:block">
+            {/* Project Image */}
+            <div class={cn(
+              "relative overflow-hidden",
+              i === 0 ? "aspect-[16/10] md:aspect-[16/9]" : "aspect-[16/10] md:aspect-[4/3]"
+            )}>
+              <Image
+                src={project.data.image}
+                alt={`${project.data.title} - ${project.data.category}`}
+                widths={[400, 800, 1200]}
+                sizes={i === 0 ? "(max-width: 768px) 100vw, 1200px" : "(max-width: 768px) 100vw, 600px"}
+                format="webp"
+                quality={85}
+                class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              />
+              
+              {/* Gradient Overlay - Stronger on mobile for better text readability */}
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-transparent md:from-background md:via-background/70 md:to-background/10" />
             </div>
             
-            <div class="flex items-end justify-between gap-4">
-              <div>
-                <p class="text-sm text-primary font-medium mb-1">{project.data.category}</p>
-                <h3 class="font-heading text-2xl md:text-3xl font-bold text-foreground tracking-tight">
-                  {project.data.title}
-                </h3>
+            {/* Content - Positioned at bottom on both mobile and desktop */}
+            <div class="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+              <div class="flex flex-wrap gap-1.5 md:gap-2 mb-3 md:mb-4">
+                {project.data.technologies.slice(0, 3).map((tech) => (
+                  <span class="px-2 py-0.5 md:px-2.5 md:py-1 text-[10px] md:text-xs font-semibold bg-secondary/95 backdrop-blur-sm rounded-full text-foreground border border-border/50">
+                    {tech}
+                  </span>
+                ))}
               </div>
               
-              <div class="h-12 w-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 shrink-0 shadow-lg">
-                <ArrowUpRight className="h-5 w-5" />
+              <div class="flex items-end justify-between gap-3 md:gap-4">
+                <div class="min-w-0 flex-1">
+                  <p class="text-xs md:text-sm text-primary font-medium mb-0.5 md:mb-1">{project.data.category}</p>
+                  <h3 class="font-heading text-lg md:text-2xl lg:text-3xl font-bold text-foreground tracking-tight line-clamp-2">
+                    {project.data.title}
+                  </h3>
+                </div>
+                
+                <div class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300 shrink-0 shadow-lg">
+                  <ArrowUpRight className="h-4 w-4 md:h-5 md:w-5" />
+                </div>
               </div>
             </div>
           </div>
