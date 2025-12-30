@@ -11,6 +11,7 @@ import { Schema } from 'astro-seo-schema';
 import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button-variants';
 import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
+import CTA from '@/components/astro/CTA.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -115,13 +116,12 @@ const primaryCategory = post.data.category;
   {/* FIX: Semantic Grid Background */}
   <BackgroundGrid density="sm" fixed mask="top" class="-z-10" />
 
-  <article class="relative">
     {/* Hero Section */}
     <section class="relative pt-[var(--navbar-height)] pb-16 lg:pb-20 overflow-hidden">
 
       
       <div class="container-normal">
-        <div class="text-center">
+        <div class="text-center max-w-4xl mx-auto">
            
            {/* Breadcrumbs */}
            <nav class="flex items-center justify-center gap-2 mb-10 text-sm text-muted-foreground" aria-label="Breadcrumb">
@@ -248,22 +248,12 @@ const primaryCategory = post.data.category;
     </div>
  </article>
 
-   {/* CTA */}
-  <section class="mt-32 max-w-5xl mx-auto px-4 lg:px-8 mb-24">
-      <div class="relative overflow-hidden rounded-section bg-foreground px-6 py-20 text-center sm:px-16 shadow-2xl">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-3xl bg-primary/20 blur-[120px] rounded-full pointer-events-none" />
-        <div class="relative z-10">
-            <h2 class="font-heading font-bold text-3xl md:text-5xl mb-6 text-background tracking-tight">Need expert tech solutions?</h2>
-            <p class="text-lg text-background/80 mb-10 max-w-xl mx-auto">
-                Turn these insights into action. Let's build your next big project together.
-            </p>
-            <a 
-            href="/contact" 
-            class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-10 text-lg font-bold bg-background text-foreground hover:bg-background/90 hover:scale-105 transition-all shadow-xl")}
-            >
-            Get Expert Help
-            </a>
-        </div>
-      </div>
- </section>
+  {/* Standardized CTA */}
+  <CTA 
+    title="Need expert tech solutions?"
+    titleHighlight=""
+    description="Turn these insights into action. Let's build your next big project together."
+    buttonText="Get Expert Help"
+    class="mb-24"
+  />
 </Layout>
