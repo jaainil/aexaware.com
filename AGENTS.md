@@ -7,22 +7,17 @@ Guidelines for agentic coding assistants working in the Aexaware Infotech reposi
 ## Build & Development Commands
 
 ```bash
-npm run dev      # Start dev server at http://localhost:4321
-npm run build    # Build static site to /dist
-npm run preview  # Preview production build locally
-npm start        # Serve dist at localhost:4321
-
-# Add to package.json if needed:
-# npm run lint     # Run ESLint
-# npm run typecheck # Run tsc --noEmit
-# npm test -- <pattern>  # Run single test (when framework added)
+bun run dev        # Start dev server at http://localhost:4321
+bun run build      # Build static site to /dist
+bun run preview    # Preview production build locally
+bun start          # Serve dist at localhost:4321
 ```
 
 ---
 
 ## Project Architecture
 
-- **Framework**: Astro 5.16 with React 18 (Islands Architecture)
+- **Framework**: Astro 5.16 with React 19 (Islands Architecture)
 - **Styling**: Tailwind CSS with HSL color variables
 - **Output**: Static Site Generation (SSG)
 - **Content**: Blog and portfolio via `src/content/config.ts` with Zod schemas
@@ -62,18 +57,16 @@ Component.displayName = "Component"
 
 - Always use `cn()` from `@/lib/utils` for className merging
 - Prefer Tailwind utilities over custom CSS
-- Use `text-balance` for multi-line text, `text-pretty` for paragraphs
 - Mobile-first responsive: `md:` `lg:` breakpoints
-- Custom utilities: `section-padding`, `glass-panel`
-- Containers: `container` (max-w-7xl), `container-normal` (max-w-7xl), `container-wide` (max-w-1440px)
-- Roundness: `rounded-card` (1.5rem), `rounded-card-lg` (2rem), `rounded-section` (2.5rem)
-- Colors: HSL variables - `bg-background`, `bg-primary`, `text-muted-foreground`, `bg-card`
+- Containers: `container` (max-w-7xl), `container-wide` (max-w-1440px)
+- Roundness: `rounded-card` (1.5rem), `rounded-section` (2.5rem)
+- Colors: HSL variables - `bg-background`, `bg-primary`, `text-muted-foreground`
 
 ---
 
 ## TypeScript Standards
 
-- Strict mode enabled with `noUncheckedIndexedAccess` and `exactOptionalPropertyTypes`
+- Strict mode enabled
 - Always type component props explicitly with interfaces
 - Use `z.object()` for content collection schemas
 - Use `React.HTMLAttributes<HTMLElement>` for extending native element props
@@ -97,22 +90,20 @@ Use `@/` alias for all src/ imports.
 
 ## Naming Conventions
 
-- **Files**: PascalCase for components (Hero.astro, Card.tsx)
+- **Files**: PascalCase (Hero.astro, Card.tsx)
 - **Components**: PascalCase (Hero, SearchDialog)
 - **Functions/Variables**: camelCase (formatDate, isActive)
 - **Constants**: UPPER_SNAKE_CASE for true constants
-- **CSS Classes**: Tailwind utilities or kebab-case custom classes
 
 ---
 
 ## Code Quality
 
-- **ESLint**: TypeScript + React Hooks rules configured
+- **ESLint**: Configured with TypeScript + React Hooks rules
 - **No semicolons**: Modern React patterns
 - **Error handling**: Use `.catch(console.error)` for async operations
 - **Accessibility**: Include `aria-label` for interactive elements without text
 - **Comments**: JSDoc for props, inline comments only when necessary
-- **Package interop**: Handle packages like `react-fast-marquee` with type assertions
 
 ---
 
@@ -129,25 +120,17 @@ src/
 └── content/        # Content collections (blog/, portfolio/)
 ```
 
-**New placement**: Astro components → `src/components/astro/`
+Astro components → `src/components/astro/`
 
 ---
 
-## Content Collections
+## SEO & Analytics
 
-Refer to `src/content/config.ts` for Zod schemas. Blog posts use MDX with frontmatter, portfolio items use markdown.
-
----
-
-## SEO & Analytics Integrations
-
-- **Reading time**: `astro-reading-time` calculates automatically
-- **Search**: `astro-fuse` generates search index for blog/portfolio
-- **Diagrams**: `astro-mermaid` for flowcharts and diagrams
-- **Analytics**: `@yeskunall/astro-umami` for visitor tracking
-- **Lighthouse**: Performance audit integration
-- **Sitemap**: Auto-generated with weekly changefreq
-- **Robots.txt**: Blocks low-value tag/category pages from indexing
+- Use `astro-seo` `<SEO />` component for meta tags, Open Graph, Twitter cards
+- Use `astro-seo-schema` `<Schema />` for JSON-LD structured data
+- Include canonical URLs via `canonical` prop (defaults to `Astro.url.href`)
+- Images require descriptive `alt` text
+- Open Graph requires: `title`, `type`, `image`, `url`
 
 ---
 
@@ -157,31 +140,3 @@ Refer to `src/content/config.ts` for Zod schemas. Blog posts use MDX with frontm
 - Source images in `src/assets/` (processed) or `public/` (static)
 - Specify width/height for layout
 - Use `format="webp"` for better compression
-
----
-
-## SEO Best Practices
-
-- All pages extend Layout.astro with proper title/description props
-- Use `astro-seo` `<SEO />` component in `<head>` for meta tags, Open Graph, Twitter cards
-- Use `astro-seo-schema` `<Schema />` component for JSON-LD structured data (powered by `schema-dts`)
-- Include canonical URLs via `canonical` prop on SEO component (defaults to `Astro.url.href`)
-- Images should have descriptive alt text (required for `openGraph.basic.image` and `twitter.image`)
-- Use proper heading hierarchy (h1 → h2 → h3)
-- For Open Graph, if defined, must include all 4 basic props: `title`, `type`, `image`, `url`
-
-### Schema Example
-```astro
----
-import { Schema } from 'astro-seo-schema';
----
-
-<Schema
-  item={{
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Aexaware Infotech',
-    url: 'https://aexaware.com'
-  }}
-/>
-```

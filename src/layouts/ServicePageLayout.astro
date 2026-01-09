@@ -192,7 +192,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
     <div class="container-normal relative z-10">
       <div class="max-w-5xl mx-auto text-center">
         
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8">
           <Sparkles className="w-4 h-4 text-primary" />
           <span class="text-sm font-semibold text-primary tracking-wide uppercase">{heroBadge}</span>
         </div>
@@ -247,14 +247,14 @@ const siteUrl = Astro.site || 'https://aexaware.com';
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
-          <div class="group relative bg-card/50 backdrop-blur-sm p-10 rounded-card-lg border border-border/50 hover:border-primary/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
+          <div class="group relative bg-card/50 backdrop-blur-xs p-10 rounded-card-lg border border-border/50 hover:border-primary/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
             
             {/* Hover Gradient Background */}
             <div class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
             <div class="relative z-10">
               <div class="flex justify-between items-start mb-8">
-                <div class={`h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500`}>
+                <div class={`h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-500`}>
                   <service.icon className={cn("h-7 w-7", service.iconColor)} strokeWidth={1.5} />
                 </div>
                 <span class="text-6xl font-bold font-heading text-muted-foreground/5 group-hover:text-foreground/5 transition-colors select-none">
@@ -296,7 +296,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
         {techStack.map((tech) => {
           const IconComponent = getTechIcon(tech);
           return (
-            <div class="group flex items-center gap-3 px-5 py-3 rounded-full bg-card/80 backdrop-blur-sm border border-border/50 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default">
+            <div class="group flex items-center gap-3 px-5 py-3 rounded-full bg-card/80 backdrop-blur-xs border border-border/50 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default">
               <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
                 <IconComponent className="h-4 w-4" aria-hidden="true" />
               </div>

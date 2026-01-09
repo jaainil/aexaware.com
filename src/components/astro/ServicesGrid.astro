@@ -73,10 +73,10 @@ const services = [
     </div>
 
     {/* Bento Grid layout */}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(250px,auto)]">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {services.map((service) => (
         <div class={cn(
-          "group relative overflow-hidden rounded-card-lg border border-border/40 bg-card/50 backdrop-blur-sm p-8 flex flex-col justify-between transition-all duration-300 hover:border-primary/50 hover:shadow-2xl",
+          "row-span-1 group relative overflow-hidden rounded-card-lg border border-border/40 bg-card/50 backdrop-blur-xs p-8 flex flex-col justify-between transition-all duration-300 hover:border-primary/50 hover:shadow-2xl",
           service.class
         )}>
           
@@ -87,7 +87,7 @@ const services = [
           )} />
 
           <div class="relative z-10">
-            <div class="h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center text-foreground mb-6 shadow-sm group-hover:scale-110 transition-transform duration-500">
+            <div class="h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center text-foreground mb-6 shadow-xs group-hover:scale-110 transition-transform duration-500">
               <service.icon className="h-7 w-7" strokeWidth={1.5} />
             </div>
             

@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
@@ -30,9 +30,6 @@ export default defineConfig({
 
     integrations: [
         react(),
-        tailwind({
-            applyBaseStyles: false,
-        }),
         // Reading time must come before mdx
         readingTime(),
         mdx({
@@ -127,6 +124,7 @@ export default defineConfig({
 
     // Developer Experience
     vite: {
+        plugins: [tailwindcss()],
         build: {
             // beneficial for large react/mermaid chunks
             chunkSizeWarningLimit: 1000,

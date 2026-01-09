@@ -17,7 +17,7 @@ const { vertical = false } = Astro.props;
   {/* Summarize Dropdown */}
   <div class="flex-1 relative dropdown-container w-full">
     <button 
-      class={cn(buttonVariants({ variant: "outline" }), "w-full justify-between dropdown-trigger rounded-full bg-background/50 backdrop-blur-sm border-border hover:bg-primary/5 hover:border-primary/30 transition-all")}
+      class={cn(buttonVariants({ variant: "outline" }), "w-full justify-between dropdown-trigger rounded-full bg-background/50 backdrop-blur-xs border-border hover:bg-primary/5 hover:border-primary/30 transition-all")}
       aria-haspopup="true"
       aria-expanded="false"
     >
@@ -38,7 +38,7 @@ const { vertical = false } = Astro.props;
         { name: 'Mistral', color: 'text-purple-600 hover:bg-purple-500/10' },
       ].map((model) => (
         <button
-          class={cn("flex items-center w-full px-3 py-2.5 text-sm rounded-full cursor-pointer outline-none select-none transition-colors font-medium text-left", model.color)}
+          class={cn("flex items-center w-full px-3 py-2.5 text-sm rounded-full cursor-pointer outline-hidden select-none transition-colors font-medium text-left", model.color)}
           data-action="summarize"
           data-model={model.name}
         >
@@ -52,7 +52,7 @@ const { vertical = false } = Astro.props;
   {/* Share Dropdown */}
   <div class="flex-1 relative dropdown-container w-full">
     <button
-      class={cn(buttonVariants({ variant: "outline" }), "w-full justify-between dropdown-trigger rounded-full bg-background/50 backdrop-blur-sm border-border hover:bg-primary/5 hover:border-primary/30 transition-all")}
+      class={cn(buttonVariants({ variant: "outline" }), "w-full justify-between dropdown-trigger rounded-full bg-background/50 backdrop-blur-xs border-border hover:bg-primary/5 hover:border-primary/30 transition-all")}
       aria-haspopup="true"
       aria-expanded="false"
     >
@@ -70,7 +70,7 @@ const { vertical = false } = Astro.props;
         { name: 'LinkedIn', color: 'text-blue-700 hover:bg-blue-700/10', action: 'linkedin' },
       ].map((link) => (
         <button
-          class={cn("flex items-center w-full px-3 py-2.5 text-sm rounded-full cursor-pointer outline-none select-none transition-colors font-medium text-left", link.color)}
+          class={cn("flex items-center w-full px-3 py-2.5 text-sm rounded-full cursor-pointer outline-hidden select-none transition-colors font-medium text-left", link.color)}
           data-action="share"
           data-platform={link.action}
         >
@@ -80,7 +80,7 @@ const { vertical = false } = Astro.props;
       ))}
       <div class="h-px bg-border my-1 mx-2" />
       <button
-        class="flex items-center w-full px-3 py-2.5 text-sm rounded-full cursor-pointer outline-none select-none hover:bg-accent hover:text-accent-foreground font-medium transition-colors text-left"
+        class="flex items-center w-full px-3 py-2.5 text-sm rounded-full cursor-pointer outline-hidden select-none hover:bg-accent hover:text-accent-foreground font-medium transition-colors text-left"
         data-action="copy"
       >
         <Copy className="w-4 h-4 mr-2.5 opacity-70" />

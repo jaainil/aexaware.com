@@ -17,12 +17,12 @@ const { headings, url, title } = Astro.props;
 <aside class="space-y-8 sticky top-32 h-fit">
   
   {/* Table of Contents - Glass Card */}
-  <div class="hidden lg:block rounded-card-lg bg-card/30 backdrop-blur-md p-8 border border-border/50 shadow-sm">
+  <div class="hidden lg:block rounded-card-lg bg-card/30 backdrop-blur-md p-8 border border-border/50 shadow-xs">
     <TableOfContents headings={headings} />
   </div>
 
   {/* Engagement Actions (Summary & Share) - Glass Card */}
-  <div class="relative z-20 rounded-card-lg bg-card/30 backdrop-blur-md p-6 border border-border/50 shadow-sm">
+  <div class="relative z-20 rounded-card-lg bg-card/30 backdrop-blur-md p-6 border border-border/50 shadow-xs">
       <h3 class="font-heading font-bold text-lg mb-4 flex items-center gap-2 text-foreground/80">
           <Sparkles class="size-4 text-primary" />
           AI & Share

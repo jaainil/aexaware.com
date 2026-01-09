@@ -33,7 +33,7 @@ export default function IndustriesMarquee({ items, direction = "left", className
                 {items.map((name, i) => (
                     <div
                         key={i}
-                        className="mx-3 px-6 md:px-8 py-3 rounded-full text-sm md:text-base font-medium whitespace-nowrap shadow-sm border border-border/50 bg-background/50 backdrop-blur-md text-foreground/80 hover:text-primary transition-all duration-300 hover:bg-secondary/80 hover:border-primary/20 cursor-default select-none"
+                        className="mx-3 px-6 md:px-8 py-3 rounded-full text-sm md:text-base font-medium whitespace-nowrap shadow-xs border border-border/50 bg-background/50 backdrop-blur-md text-foreground/80 hover:text-primary transition-all duration-300 hover:bg-secondary/80 hover:border-primary/20 cursor-default select-none"
                     >
                         {name}
                     </div>

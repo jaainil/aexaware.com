@@ -115,7 +115,7 @@ const capabilities = [
 
     <div class="container-normal relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-8">
+         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8">
           <Sparkles className="w-4 h-4 text-primary" />
           <span class="text-sm font-semibold text-primary tracking-wide uppercase">Who We Are</span>
         </div>
@@ -204,7 +204,7 @@ const capabilities = [
           <div class="grid grid-cols-2 gap-4">
             {capabilities.map((item) => (
               <div class="flex items-center gap-3 p-3 rounded-xl bg-secondary/30 hover:bg-secondary/50 transition-colors border border-border/50">
-                <div class="p-2 rounded-lg bg-background text-primary shadow-sm">
+                <div class="p-2 rounded-lg bg-background text-primary shadow-xs">
                   <item.icon className="h-4 w-4" />
                 </div>
                 <span class="font-medium text-foreground text-sm">
@@ -241,7 +241,7 @@ const capabilities = [
             <div class={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
             <div class="relative z-10">
-                <div class="mb-8 inline-flex p-4 rounded-2xl bg-secondary text-primary group-hover:scale-110 transition-transform duration-500 shadow-sm border border-border/50">
+                <div class="mb-8 inline-flex p-4 rounded-2xl bg-secondary text-primary group-hover:scale-110 transition-transform duration-500 shadow-xs border border-border/50">
                 <item.icon className="h-8 w-8" />
                 </div>
                 <h3 class="font-heading text-2xl font-bold mb-4 text-foreground">
@@ -285,7 +285,7 @@ const capabilities = [
         <div class="grid gap-6">
           {process.map((phase) => (
             <div
-              class="flex gap-6 items-start p-8 rounded-card bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 hover:border-primary/50 group"
+              class="flex gap-6 items-start p-8 rounded-card bg-white/5 border border-white/10 backdrop-blur-xs hover:bg-white/10 transition-colors duration-300 hover:border-primary/50 group"
             >
               <span class="text-5xl font-bold opacity-20 text-white group-hover:text-primary group-hover:opacity-100 transition-all font-serif">
                 {phase.step}

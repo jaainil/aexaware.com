@@ -78,9 +78,9 @@ const maskStyles = {
 };
 
 // Color based on variant
-const gridColor = variant === "light" 
-  ? `rgba(255,255,255,${opacity})` 
-  : `hsl(var(--foreground)/${opacity})`;
+const gridColor = variant === "light"
+  ? `rgba(255,255,255,${opacity})`
+  : `color-mix(in srgb, var(--color-foreground) ${opacity * 100}%, transparent)`;
 
 const gridSize = gridSizes[density];
 const maskClass = maskStyles[mask];

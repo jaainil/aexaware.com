@@ -75,7 +75,7 @@ const isActive = (linkPath: string) => {
               {link.dropdown ? (
                 <div class="dropdown-container relative">
                   <button
-                    class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none hover:bg-accent hover:text-accent-foreground ${
+                    class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-hidden hover:bg-accent hover:text-accent-foreground ${
                       isActive(link.path) ? "text-primary bg-primary/10" : "text-muted-foreground"
                     }`}
                   >
@@ -89,7 +89,7 @@ const isActive = (linkPath: string) => {
                       {link.dropdown.map((item) => (
                         <a
                           href={item.path}
-                          class="group/item flex items-start gap-3 rounded-xl p-3 no-underline outline-none transition-all hover:bg-primary/5 hover:text-primary focus:bg-primary/5"
+                          class="group/item flex items-start gap-3 rounded-xl p-3 no-underline outline-hidden transition-all hover:bg-primary/5 hover:text-primary focus:bg-primary/5"
                         >
                           <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/50 text-muted-foreground group-hover/item:bg-primary/10 group-hover/item:text-primary transition-colors">
                              {item.icon && <item.icon className="h-4 w-4" />}

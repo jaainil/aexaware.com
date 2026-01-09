@@ -37,7 +37,7 @@ const { Content } = await post.render();
           href="/portfolio" 
           class="inline-flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-12 group"
         >
-          <div class="w-10 h-10 rounded-full border border-border/80 bg-background flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
+          <div class="w-10 h-10 rounded-full border border-border/80 bg-background flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all shadow-xs">
              <ArrowLeft class="size-4" />
           </div>
           <span class="group-hover:translate-x-0.5 transition-transform">Back to Portfolio</span>
@@ -46,7 +46,7 @@ const { Content } = await post.render();
         {/* Header Section */}
         <div class="text-center mb-16 max-w-4xl mx-auto">
            {post.data.client && (
-            <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm mb-6 shadow-sm">
+            <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-6 shadow-xs">
               <Sparkles className="w-4 h-4 text-primary" />
               <span class="text-sm font-bold text-primary tracking-wide uppercase">Client: {post.data.client}</span>
             </div>
@@ -84,7 +84,7 @@ const { Content } = await post.render();
       <div class="grid lg:grid-cols-12 gap-12">
         {/* Sticky Metadata Sidebar */}
         <div class="lg:col-span-4 order-2 lg:order-1">
-          <div class="sticky top-32 bg-card/30 backdrop-blur-md rounded-card-lg p-8 border border-border/50 shadow-sm h-fit">
+          <div class="sticky top-32 bg-card/30 backdrop-blur-md rounded-card-lg p-8 border border-border/50 shadow-xs h-fit">
             <h3 class="font-heading text-2xl font-bold mb-8 text-foreground">Project Details</h3>
             
             <div class="space-y-8">
