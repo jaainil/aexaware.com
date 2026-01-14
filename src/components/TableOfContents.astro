@@ -5,29 +5,83 @@ interface Props {
   headings: MarkdownHeading[];
 }
 
+interface TocHeading extends MarkdownHeading {
+  subheadings: TocHeading[];
+}
+
 const { headings } = Astro.props;
 
-// Filter out h1 (title) and distinct headings
-const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 4);
+// Build nested table of contents structure
+function buildToc(headings: MarkdownHeading[]): TocHeading[] {
+  const toc: TocHeading[] = [];
+  const parentHeadings = new Map<number, TocHeading>();
+  
+  headings.forEach((h) => {
+    const heading: TocHeading = { ...h, subheadings: [] };
+    parentHeadings.set(heading.depth, heading);
+    
+    // Start from h1 (include page title)
+    if (heading.depth === 1) {
+      toc.push(heading);
+    } else {
+      const parent = parentHeadings.get(heading.depth - 1);
+      if (parent) {
+        parent.subheadings.push(heading);
+      } else {
+        // If no parent found (e.g., h2 without h1), add to top level
+        toc.push(heading);
+      }
+    }
+  });
+  
+  return toc;
+}
+
+const toc = buildToc(headings.filter((h) => h.depth >= 1 && h.depth <= 6));
 ---
 
 <nav class="toc-container text-sm">
-  {/* FIX: Use font-heading for the title */}
   <h3 class="font-heading font-bold text-foreground mb-6 uppercase tracking-widest text-xs">On this page</h3>
   <ul class="space-y-1 relative">
     {/* Track Line */}
-    <div class="absolute left-0 top-2 bottom-2 w-0.5 bg-border rounded-full" />
+    <div class="absolute left-0 top-2 bottom-2 w-0.5 bg-border rounded-full" aria-hidden="true" />
     
     {toc.map((heading) => (
       <li>
         <a
           href={`#${heading.slug}`}
-          class={`block py-1.5 transition-all duration-300 border-l-2 leading-relaxed hover:text-primary ${
-            heading.depth === 1 ? "pl-4 font-medium" : heading.depth === 3 ? "pl-8 text-xs" : heading.depth === 4 ? "pl-10 text-xs" : "pl-6"
-          } text-muted-foreground border-transparent hover:border-primary/30`}
+          class="block py-1.5 pl-4 transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
         >
           {heading.text}
         </a>
+        {heading.subheadings.length > 0 && (
+          <ul class="space-y-1">
+            {heading.subheadings.map((subheading) => (
+              <li>
+                <a
+                  href={`#${subheading.slug}`}
+                  class="block py-1.5 pl-8 text-xs transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
+                >
+                  {subheading.text}
+                </a>
+                {subheading.subheadings.length > 0 && (
+                  <ul class="space-y-1">
+                    {subheading.subheadings.map((h4) => (
+                      <li>
+                        <a
+                          href={`#${h4.slug}`}
+                          class="block py-1.5 pl-10 text-xs transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
+                        >
+                          {h4.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
       </li>
     ))}
   </ul>
@@ -36,7 +90,7 @@ const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 4);
 <script>
   function initTOC() {
     const tocLinks = document.querySelectorAll('.toc-container a');
-    const headings = document.querySelectorAll('article h1, article h2, article h3, article h4'); // Scope to article to avoid sidebar/footer collisions
+    const headings = document.querySelectorAll('article h1, article h2, article h3, article h4, article h5, article h6');
     
     if (headings.length === 0) return;
 
@@ -63,7 +117,7 @@ const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 4);
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: '-10% 0px -80% 0px' // Adjust margin to trigger "active" near the top of the viewport
+      rootMargin: '-10% 0px -80% 0px'
     });
 
     headings.forEach((heading) => {
@@ -76,4 +130,4 @@ const toc = headings.filter((h) => h.depth >= 1 && h.depth <= 4);
 
   // Re-run on navigation (Astro View Transitions)
   document.addEventListener('astro:page-load', initTOC);
-</script> 
+</script>

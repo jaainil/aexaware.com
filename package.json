@@ -31,7 +31,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@writenex/astro": "^0.3.1",
     "@yeskunall/astro-umami": "^0.0.7",
-    "astro": "^5.16.7",
+    "astro": "^5.16.9",
     "astro-compressor": "^1.2.0",
     "astro-fuse": "^1.0.4",
     "astro-lighthouse": "^0.1.3",
@@ -64,11 +64,11 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@mdx-js/react": "^3.1.1",
-    "@playform/compress": "^0.2.0",
+    "@playform/compress": "^0.2.1",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
-    "@types/node": "^25.0.3",
-    "@types/react": "^19.2.7",
+    "@types/node": "^25.0.8",
+    "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
     "autoprefixer": "^10.4.23",
@@ -79,7 +79,7 @@
     "remark-mdx-images": "^3.0.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.52.0",
+    "typescript-eslint": "^8.53.0",
     "vite": "^7.3.1"
   }
 }

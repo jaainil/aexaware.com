@@ -114,6 +114,10 @@ export default defineConfig({
         // but if on older versions, this is fine. Ideally, migrate to:
         // remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }]
         domains: [],
+        // Responsive images configuration (Astro v5.10+)
+        layout: 'constrained', // Images scale to fit container but won't exceed specified dimensions
+        fit: 'cover', // Object-fit for responsive images
+        responsiveStyles: true, // Auto-add global styles for responsive images
     },
 
     server: {

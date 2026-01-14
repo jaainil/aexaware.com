@@ -1,38 +1,40 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import type { APIRoute } from 'astro';
+import type { APIContext } from 'astro';
 
-/**
- * Dynamic RSS feed generation for blog posts
- * Replaces the static RSS file in /public
- */
-export const GET: APIRoute = async ({ site }) => {
-    const blogPosts = await getCollection('blog');
+export async function GET(context: APIContext) {
+    const blog = await getCollection('blog');
 
-    // Sort posts by date, newest first
-    const sortedPosts = blogPosts.sort((a, b) =>
-        b.data.date.getTime() - a.data.date.getTime()
+    // Sort by date descending
+    const sortedPosts = blog.sort((a, b) =>
+        new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
     );
 
     return rss({
+        // Required: Your site's title
         title: 'Aexaware Infotech Blog',
+
+        // Required: Your site's description
         description: 'Insights on web development, AI/ML, cloud solutions, and digital innovation from Aexaware Infotech',
-        site: site || 'https://aexaware.com',
+
+        // Required: Your site's base URL (from astro.config.mjs site property)
+        site: context.site!,
+
+        // Optional: Add stylesheet for better browser viewing
+        // stylesheet: '/rss/styles.xsl',
+
+        // Optional: Custom XML elements
+        customData: `<language>en-us</language>`,
+
+        // Required: Array of RSS feed items
         items: sortedPosts.map((post) => ({
             title: post.data.title,
             description: post.data.description,
-            pubDate: post.data.date,
-            link: `/blog/${post.slug}/`,
-            author: post.data.author,
+            pubDate: new Date(post.data.date),
+            // Compute RSS link from post `id` (recommended in Astro v5)
+            link: `/blog/${post.id}/`,
+            // Categories/tags
             categories: post.data.tags || [],
         })),
-        customData: `<language>en-us</language>
-<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-<image>
-  <url>${site || 'https://aexaware.com'}/og-image.png</url>
-  <title>Aexaware Infotech Blog</title>
-  <link>${site || 'https://aexaware.com'}/blog</link>
-</image>`,
-        stylesheet: false,
     });
-};
+}

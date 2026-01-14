@@ -12,6 +12,7 @@ import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button-variants';
 import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
 import CTA from '@/components/astro/CTA.astro';
+import Prose from '@/components/Prose.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -206,21 +207,9 @@ const primaryCategory = post.data.category;
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 max-w-[1400px] mx-auto">
         {/* Main Content Column */}
         <div class="lg:col-span-8 order-1">
-          {/* FIX: Removed prose-slate and customized colors directly to match theme variables */}
-          <div class="prose prose-lg md:prose-xl dark:prose-invert max-w-none 
-              prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground
-              prose-h1:text-4xl prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-              prose-p:text-muted-foreground prose-p:leading-relaxed
-              prose-ul:font-sans prose-ol:font-sans prose-li:font-sans prose-li:text-base prose-li:leading-relaxed
-              prose-a:text-primary prose-a:font-medium prose-a:no-underline hover:prose-a:underline
-              prose-img:rounded-card-lg prose-img:shadow-xl prose-img:border prose-img:border-border/50
-              prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:bg-secondary/20 prose-blockquote:py-4 prose-blockquote:px-8 prose-blockquote:rounded-r-2xl prose-blockquote:italic
-              prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-              prose-pre:bg-(var(--shiki-dark-bg)) prose-pre:border prose-pre:border-border/50
-              [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-inherit
-              prose-li:text-muted-foreground prose-li:marker:text-muted-foreground">
+          <Prose size="xl" class="[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-inherit">
             <Content />
-          </div>
+          </Prose>
 
           {/* Tags Section */}
           <div class="mt-16 pt-10 border-t border-border/50">

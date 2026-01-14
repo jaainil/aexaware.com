@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { ArrowLeft, ExternalLink, Calendar, Clock, Layers, Sparkles } from 'lucide-astro';
 import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
 import CTA from '@/components/astro/CTA.astro';
+import Prose from '@/components/Prose.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('portfolio');
@@ -143,15 +144,9 @@ const { Content } = await post.render();
 
         {/* Main Content */}
         <div class="lg:col-span-8 order-1 lg:order-2">
-          {/* FIX: Removed 'prose-slate'. We rely on 'prose' + custom config in tailwind.config.ts */}
-          <div class="prose prose-lg md:prose-xl dark:prose-invert max-w-none 
-            prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tight
-            prose-p:text-muted-foreground prose-p:leading-relaxed
-            prose-ul:font-sans prose-ol:font-sans prose-li:font-sans prose-li:text-base prose-li:leading-relaxed prose-li:text-muted-foreground
-            prose-img:rounded-card-lg prose-img:border prose-img:border-border/50 prose-img:shadow-lg
-            prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+          <Prose size="xl">
             <Content />
-          </div>
+          </Prose>
         </div>
       </div>
       
