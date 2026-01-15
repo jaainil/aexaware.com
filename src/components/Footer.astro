@@ -8,6 +8,7 @@ import {
   Mail,
   ArrowRight,
   ArrowUpRight,
+  Calendar,
 } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
 import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
@@ -54,9 +55,14 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
             <p class="text-muted-foreground text-lg max-w-sm">
                 Get a custom quote tailored to your business needs and goals.
             </p>
-            <a href="/start-project" class={buttonVariants({ size: "lg", className: "rounded-full px-8 h-12 text-base shadow-lg shadow-primary/20" })}>
-                Get Started <ArrowUpRight className="ml-2 h-4 w-4" />
-            </a>
+            <div class="flex flex-wrap gap-4">
+              <a href="/start-project" class={buttonVariants({ size: "lg", className: "rounded-full px-8 h-12 text-base shadow-lg shadow-primary/20" })}>
+                  Get Started <ArrowUpRight className="ml-2 h-4 w-4" />
+              </a>
+              <a href="https://cal.com/aexaware-infotech" target="_blank" rel="noopener noreferrer" class={buttonVariants({ variant: "outline", size: "lg", className: "rounded-full px-8 h-12 text-base bg-transparent border-primary/20 hover:bg-primary/5 hover:text-primary hover:border-primary/50" })}>
+                  <Calendar className="mr-2 h-4 w-4" /> Book a Call
+              </a>
+            </div>
         </div>
       </div>
 

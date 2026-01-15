@@ -123,10 +123,12 @@ const isActive = (linkPath: string) => {
       <div class="hidden lg:flex items-center gap-2 shrink-0">
         <SearchDialog client:load />
         <a
-          href="/contact"
+          href="https://cal.com/aexaware-infotech"
+          target="_blank"
+          rel="noopener noreferrer"
           class={buttonVariants({ size: "sm", className: "rounded-full px-5 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow duration-300" })}
         >
-          Strategy Call <ArrowUpRight className="ml-2 h-3.5 w-3.5" />
+          Book a Call <ArrowUpRight className="ml-2 h-3.5 w-3.5" />
         </a>
       </div>
 
@@ -181,8 +183,8 @@ const isActive = (linkPath: string) => {
           ))}
           
           <div class="pt-6 mt-2 border-t border-border/10 mobile-nav-item">
-              <a href="/contact" class={buttonVariants({ size: 'lg', className: "w-full rounded-full text-lg h-14 shadow-md" })}>
-                  Book Strategy Call <ArrowUpRight className="ml-2 h-5 w-5" />
+              <a href="https://cal.com/aexaware-infotech" target="_blank" rel="noopener noreferrer" class={buttonVariants({ size: 'lg', className: "w-full rounded-full text-lg h-14 shadow-md" })}>
+                  Book a Call <ArrowUpRight className="ml-2 h-5 w-5" />
               </a>
            </div>
        </div>

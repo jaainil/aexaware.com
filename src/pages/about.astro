@@ -1,4 +1,3 @@
-
 ---
 import Layout from '@/layouts/Layout.astro';
 import { Schema } from 'astro-seo-schema';
@@ -107,10 +106,8 @@ const capabilities = [
   </Fragment>
   
   {/* Hero Section */}
-  {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}
   <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
     
-    {/* FIX: Semantic Grid Background */}
     <BackgroundGrid density="sm" mask="top" />
 
     <div class="container-normal relative z-10">
@@ -148,22 +145,27 @@ const capabilities = [
       <div class="grid gap-16 lg:grid-cols-2 items-center">
         
         {/* Visual */}
+       {/* Visual */}
+       {/* Visual */}
         <div class="relative group">
           <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-section blur-2xl opacity-50 -z-10 group-hover:opacity-70 transition-opacity duration-700" />
-          <div class="aspect-square rounded-section overflow-hidden border border-border/50 shadow-2xl relative">
+          
+          {/* FIX: Removed 'border' and 'border-border/50' to get rid of the white line */}
+          <div class="aspect-video rounded-section overflow-hidden shadow-2xl relative">
             <Image
               src={teamCollaborationImg}
               alt="Team collaboration"
               width={800}
-              height={800}
+              height={450}
               format="webp"
-              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+              class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 block"
             />
-             <div class="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+             {/* Gradient overlay */}
+             <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent pointer-events-none" />
           </div>
           
           {/* Floating Stats Card */}
-          <div class="absolute -bottom-8 -right-8 bg-card/80 backdrop-blur-md p-8 rounded-card-lg border border-border/50 shadow-xl hidden md:block max-w-xs">
+          <div class="absolute -bottom-8 -right-8 bg-card/80 backdrop-blur-md p-8 rounded-card-lg border border-border/50 shadow-xl hidden md:block max-w-xs z-20">
             <div class="flex items-center gap-4 mb-2">
                 <div class="p-2 bg-primary/10 rounded-full text-primary">
                     <CheckCircle2 class="w-6 h-6" />
@@ -268,7 +270,6 @@ const capabilities = [
           <span class="inline-block px-4 py-1.5 rounded-full bg-primary/20 text-primary-foreground border border-primary/20 text-sm font-bold mb-6">
               Workflow
           </span>
-          {/* FIX: Added 'text-background' explicitly to override global heading styles */}
           <h2 class="font-heading font-bold text-4xl md:text-6xl mb-8 leading-tight text-background">
             How We Work
           </h2>
@@ -305,6 +306,7 @@ const capabilities = [
 
   <CTA 
     buttonText="Book Free Consultation"
+    buttonHref="https://cal.com/aexaware-infotech"
     secondaryButtonText="Call Us Now"
     secondaryButtonHref="tel:+918140734392"
   />
