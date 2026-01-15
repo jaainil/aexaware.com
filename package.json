@@ -39,7 +39,7 @@
     "astro-mermaid": "^1.2.0",
     "astro-reading-time": "^0.1.17",
     "astro-robots-txt": "^1.0.0",
-    "astro-seo": "^0.8.4",
+    "astro-seo": "^1.1.0",
     "astro-seo-schema": "^5.1.0",
     "astro-typewriter": "^1.1.0",
     "class-variance-authority": "^0.7.1",
