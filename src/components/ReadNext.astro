@@ -5,31 +5,18 @@ import { ArrowRight, Sparkles } from "lucide-astro";
 
 interface Props {
   currentSlug: string;
-  tags?: string[];
 }
 
-const { currentSlug, tags } = Astro.props;
+const { currentSlug } = Astro.props;
 
-// Get all posts
+// Get all posts sorted by date
 const allPosts = await getCollection("blog");
+const sortedPosts = allPosts.sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 
-// detailed relevance scoring
-const scoredPosts = allPosts
-  .filter((post) => post.slug !== currentSlug) // Exclude current post
-  .map((post) => {
-    let score = 0;
-    // Check for tag overlap
-    if (tags && post.data.tags) {
-      const overlap = post.data.tags.filter((tag) => tags.includes(tag)).length;
-      score += overlap;
-    }
-    return { post, score };
-  })
-  .sort((a, b) => b.score - a.score); // Sort by score descending
-
-// Take top 1, fallback to just the most recent one if no tags match
-const fallbackPost = allPosts.find((p) => p.slug !== currentSlug);
-const nextPost = scoredPosts[0]?.post ?? fallbackPost;
+// Get the next most recent post (excluding current)
+const nextPost = sortedPosts.find((post) => post.slug !== currentSlug);
 ---
 
 {

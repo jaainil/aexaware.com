@@ -107,9 +107,6 @@ const formatDate = (date: Date) => {
               </div>
               <div>
                 <div class="flex items-center gap-4 mb-6">
-                  <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                    {featuredPost.data.category || "Tech"}
-                  </span>
                   <div class="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar className="size-4" />
                     {formatDate(featuredPost.data.date)}
@@ -164,10 +161,6 @@ const formatDate = (date: Date) => {
 
               <div class="flex flex-1 flex-col">
                 <div class="mb-4 flex items-center gap-4 text-xs font-medium text-muted-foreground">
-                  <span class="text-primary font-bold uppercase tracking-wider">
-                    {post.data.category || "Tech"}
-                  </span>
-                  <span class="size-1 rounded-full bg-border" />
                   <div class="flex items-center gap-1.5">
                     <Calendar className="size-3.5" />
                     {formatDate(post.data.date)}

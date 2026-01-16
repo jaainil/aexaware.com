@@ -293,7 +293,7 @@ export default function SearchDialog() {
                       {item.frontmatter.title}
                     </p>
                     <p className="text-xs text-muted-foreground truncate">
-                      {item.frontmatter.category || "Blog"}
+                      Blog
                     </p>
                   </div>
                 </CommandItem>

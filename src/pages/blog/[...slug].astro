@@ -1,14 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import {
-  Calendar,
-  User,
-  Clock,
-  ChevronRight,
-  Sparkles,
-  Hash,
-} from "lucide-astro";
+import { Calendar, User, Clock, ChevronRight } from "lucide-astro";
 import { Image } from "astro:assets";
 import BlogEngagement from "@/components/BlogEngagement.astro";
 import Comments from "@/components/Comments.astro";
@@ -43,20 +36,6 @@ const formatDate = (date: Date) => {
 
 // Generate Article JSON-LD
 const siteUrl = Astro.site || "https://aexaware.com";
-
-// Helper to slugify tags
-const slugify = (text: string) => {
-  return text
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
-    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
-};
-
-// Safe tag for breadcrumb
-const primaryCategory = post.data.category;
 ---
 
 <Layout
@@ -67,7 +46,6 @@ const primaryCategory = post.data.category;
   publishedTime={post.data.date.toISOString()}
   modifiedTime={post.data.date.toISOString()}
   author={post.data.author}
-  tags={post.data.tags ?? []}
 >
   <Schema
     slot="head"
@@ -143,35 +121,7 @@ const primaryCategory = post.data.category;
             <a href="/blog" class="hover:text-foreground transition-colors"
               >Blog</a
             >
-            {
-              primaryCategory && (
-                <>
-                  <ChevronRight class="size-3 text-muted-foreground/40" />
-                  <a
-                    href={`/blog/category/${slugify(primaryCategory)}`}
-                    class="font-medium text-foreground hover:text-primary transition-colors"
-                  >
-                    {primaryCategory}
-                  </a>
-                </>
-              )
-            }
           </nav>
-
-          {/* Category Badge */}
-          {
-            primaryCategory && (
-              <a
-                href={`/blog/category/${slugify(primaryCategory)}`}
-                class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8 shadow-xs hover:bg-primary/10 transition-colors group"
-              >
-                <Sparkles className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
-                <span class="text-sm font-bold text-primary tracking-wide uppercase">
-                  {primaryCategory}
-                </span>
-              </a>
-            )
-          }
 
           {/* Title - full width like parent container */}
           <h1
@@ -249,31 +199,7 @@ const primaryCategory = post.data.category;
             <Content />
           </Prose>
 
-          {/* Tags Section */}
-          <div class="mt-16 pt-10 border-t border-border/50">
-            <div class="flex items-center gap-2 mb-6">
-              <Hash class="size-5 text-primary" />
-              <h4
-                class="text-sm font-bold uppercase tracking-wider text-muted-foreground"
-              >
-                Related Topics
-              </h4>
-            </div>
-            <div class="flex flex-wrap gap-3">
-              {
-                post.data.tags?.map((tag) => (
-                  <a
-                    href={`/blog/tags/${slugify(tag)}`}
-                    class="inline-flex items-center px-4 py-2 rounded-xl bg-secondary/50 text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-white transition-all cursor-pointer border border-border/50 hover:border-primary"
-                  >
-                    #{tag}
-                  </a>
-                ))
-              }
-            </div>
-          </div>
-
-          <ReadNext currentSlug={post.slug} tags={post.data.tags ?? []} />
+          <ReadNext currentSlug={post.slug} />
           <Comments />
         </div>
 
