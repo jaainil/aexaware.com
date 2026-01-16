@@ -1,77 +1,95 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import { buttonVariants } from '@/components/ui/button-variants';
-import { cn } from '@/lib/utils';
-import { Image } from 'astro:assets';
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { buttonVariants } from "@/components/ui/button-variants";
+import { cn } from "@/lib/utils";
+import { Image } from "astro:assets";
 import PortfolioFAQ from "@/components/PortfolioFAQ.astro";
 import { ArrowRight, Sparkles } from "lucide-astro";
-import CTA from '@/components/astro/CTA.astro';
-import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
+import CTA from "@/components/astro/CTA.astro";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 // Ensure content collection exists and is sorted by date
-const projects = (await getCollection('portfolio')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+const projects = (await getCollection("portfolio")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
 const faqs = [
   {
     question: "What web development services does your team provide?",
-    answer: "We provide complete web development solutions including custom website design, front-end and back-end development, WordPress sites, and eCommerce platforms. Our websites are secure, responsive, fast-loading, and built to support your business goals with scalable performance and clean user experience.",
+    answer:
+      "We provide complete web development solutions including custom website design, front-end and back-end development, WordPress sites, and eCommerce platforms. Our websites are secure, responsive, fast-loading, and built to support your business goals with scalable performance and clean user experience.",
   },
   {
     question: "Do you build Android and iOS mobile applications?",
-    answer: "Yes, we specialize in developing high-quality mobile applications for both Android and iOS platforms. We use modern cross-platform technologies like React Native and Flutter to ensure a seamless user experience and efficient development process.",
+    answer:
+      "Yes, we specialize in developing high-quality mobile applications for both Android and iOS platforms. We use modern cross-platform technologies like React Native and Flutter to ensure a seamless user experience and efficient development process.",
   },
   {
     question: "Can you redesign or improve existing UX/UI designs?",
-    answer: "Absolutely. We can audit your current design, identify pain points, and create a refreshed, user-centric UI/UX that improves engagement and conversion rates.",
+    answer:
+      "Absolutely. We can audit your current design, identify pain points, and create a refreshed, user-centric UI/UX that improves engagement and conversion rates.",
   },
   {
     question: "What technologies do you use in software development?",
-    answer: "We use a wide range of modern technologies including React, Next.js, Node.js, Python, TypeScript, and cloud services like AWS and Azure, selecting the best stack for each specific project.",
+    answer:
+      "We use a wide range of modern technologies including React, Next.js, Node.js, Python, TypeScript, and cloud services like AWS and Azure, selecting the best stack for each specific project.",
   },
   {
     question: "Do you offer cloud setup and DevOps support?",
-    answer: "Yes, we provide comprehensive cloud infrastructure setup, migration services, and ongoing DevOps support to ensure your applications are scalable, secure, and reliable.",
+    answer:
+      "Yes, we provide comprehensive cloud infrastructure setup, migration services, and ongoing DevOps support to ensure your applications are scalable, secure, and reliable.",
   },
   {
     question: "How do you ensure security and scalability?",
-    answer: "We follow industry best practices for security, including regular audits and secure coding standards. Our architectures are designed to be scalable from day one, utilizing cloud-native solutions that grow with your business.",
+    answer:
+      "We follow industry best practices for security, including regular audits and secure coding standards. Our architectures are designed to be scalable from day one, utilizing cloud-native solutions that grow with your business.",
   },
   {
     question: "Do you provide maintenance and support after launch?",
-    answer: "Yes, we offer comprehensive post-launch support and maintenance packages. We ensure your application stays updated, secure, and performs optimally as your user base grows."
+    answer:
+      "Yes, we offer comprehensive post-launch support and maintenance packages. We ensure your application stays updated, secure, and performs optimally as your user base grows.",
   },
 ];
 ---
 
-<Layout 
-  title="Portfolio – Aexaware Projects" 
+<Layout
+  title="Portfolio – Aexaware Projects"
   description="Explore Aexaware’s recent projects in web, mobile and AI development for global clients."
 >
-  
   {/* Hero Section */}
   {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}
-  <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
-    
+  <section
+    class="relative w-full min-h-dvh flex flex-col justify-center pt-(--navbar-height) pb-16 lg:pb-24 overflow-hidden border-b border-border/40"
+  >
     {/* FIX: Semantic Grid Background */}
     <BackgroundGrid density="sm" mask="top" />
 
     <div class="container-normal relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8"
+        >
           <Sparkles className="w-4 h-4 text-primary" />
-          <span class="text-sm font-semibold text-primary tracking-wide uppercase">Our Portfolio</span>
+          <span
+            class="text-sm font-semibold text-primary tracking-wide uppercase"
+            >Our Portfolio</span
+          >
         </div>
 
-        <h1 class="font-heading font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance">
+        <h1
+          class="font-heading font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance"
+        >
           Selected projects & <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-serif">
+          <span
+            class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent font-serif"
+          >
             Success Stories.
           </span>
         </h1>
-        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty">
+        <p
+          class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty"
+        >
           Explore how we've helped businesses across various industries
           transform their digital presence and achieve their goals.
         </p>
@@ -83,60 +101,60 @@ const faqs = [
   <section class="section-padding bg-background relative">
     <div class="container-normal">
       <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <a
-            href={`/portfolio/${project.slug}`}
-            class="group flex flex-col"
-          >
-            <div class="aspect-[16/10] overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
-              <Image
-                src={project.data.image}
-                alt={project.data.title}
-                width={800}
-                height={500}
-                format="webp"
-                quality={80}
-                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            </div>
-            
-            <div class="flex flex-1 flex-col">
-              <div class="mb-4 flex items-center gap-4 text-xs font-medium text-muted-foreground">
-                <span class="text-primary font-bold uppercase tracking-wider">
-                  {project.data.category}
-                </span>
-                <span class="size-1 rounded-full bg-border" />
-                <span class="tabular-nums">{project.data.year}</span>
+        {
+          projects.map((project) => (
+            <a href={`/portfolio/${project.slug}`} class="group flex flex-col">
+              <div class="aspect-16/10 overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
+                <Image
+                  src={project.data.image}
+                  alt={project.data.title}
+                  width={800}
+                  height={500}
+                  format="webp"
+                  quality={80}
+                  layout="none"
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-linear-to-tr from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
-              
-              <h3 class="font-heading text-2xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
-                {project.data.title}
-              </h3>
-              
-              <p class="mb-6 text-muted-foreground leading-relaxed line-clamp-2 text-base">
-                {project.data.description}
-              </p>
-              
-              <div class="mt-auto flex flex-wrap items-center gap-2">
-                {project.data.technologies.slice(0, 3).map((tag) => (
-                  <span class="px-2.5 py-1 rounded-full bg-secondary/50 text-xs font-medium text-muted-foreground">
-                    {tag}
+
+              <div class="flex flex-1 flex-col">
+                <div class="mb-4 flex items-center gap-4 text-xs font-medium text-muted-foreground">
+                  <span class="text-primary font-bold uppercase tracking-wider">
+                    {project.data.category}
                   </span>
-                ))}
-                {project.data.technologies.length > 3 && (
-                  <span class="text-xs font-medium text-muted-foreground">
-                    +{project.data.technologies.length - 3}
-                  </span>
-                )}
+                  <span class="size-1 rounded-full bg-border" />
+                  <span class="tabular-nums">{project.data.year}</span>
+                </div>
+
+                <h3 class="font-heading text-2xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
+                  {project.data.title}
+                </h3>
+
+                <p class="mb-6 text-muted-foreground leading-relaxed line-clamp-2 text-base">
+                  {project.data.description}
+                </p>
+
+                <div class="mt-auto flex flex-wrap items-center gap-2">
+                  {project.data.technologies.slice(0, 3).map((tag) => (
+                    <span class="px-2.5 py-1 rounded-full bg-secondary/50 text-xs font-medium text-muted-foreground">
+                      {tag}
+                    </span>
+                  ))}
+                  {project.data.technologies.length > 3 && (
+                    <span class="text-xs font-medium text-muted-foreground">
+                      +{project.data.technologies.length - 3}
+                    </span>
+                  )}
+                </div>
+
+                <div class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  View Project <ArrowRight className="size-4" />
+                </div>
               </div>
-              
-              <div class="mt-4 flex items-center gap-2 text-sm font-semibold text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                View Project <ArrowRight className="size-4" />
-              </div>
-            </div>
-          </a>
-        ))}
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -146,7 +164,9 @@ const faqs = [
     <div class="container-normal">
       <div class="grid lg:grid-cols-3 gap-16">
         <div class="lg:col-span-1">
-          <span class="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+          <span
+            class="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block"
+          >
             FAQ
           </span>
           {/* FIX: Use font-heading for the title */}
@@ -157,7 +177,13 @@ const faqs = [
             Got questions? We've got answers. If you don't see what you're
             looking for, feel free to reach out.
           </p>
-          <a href="/contact" class={cn(buttonVariants({ variant: "outline" }), "rounded-full px-8 h-12")}>Contact Support</a>
+          <a
+            href="/contact"
+            class={cn(
+              buttonVariants({ variant: "outline" }),
+              "rounded-full px-8 h-12",
+            )}>Contact Support</a
+          >
         </div>
         <div class="lg:col-span-2">
           <PortfolioFAQ faqs={faqs} />

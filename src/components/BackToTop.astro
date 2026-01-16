@@ -4,7 +4,7 @@
  * A floating button that appears when the user scrolls down
  * and smoothly scrolls back to the top when clicked.
  */
-import { ArrowUp } from 'lucide-astro';
+import { ArrowUp } from "lucide-astro";
 ---
 
 <button
@@ -16,31 +16,47 @@ import { ArrowUp } from 'lucide-astro';
 </button>
 
 <script>
-  const backToTopButton = document.getElementById('back-to-top');
-  
+  const backToTopButton = document.getElementById("back-to-top");
+
   if (backToTopButton) {
     // Show/hide button based on scroll position
     const handleScroll = () => {
       if (window.scrollY > 400) {
-        backToTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-4');
-        backToTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
+        backToTopButton.classList.remove(
+          "opacity-0",
+          "invisible",
+          "translate-y-4",
+        );
+        backToTopButton.classList.add(
+          "opacity-100",
+          "visible",
+          "translate-y-0",
+        );
       } else {
-        backToTopButton.classList.add('opacity-0', 'invisible', 'translate-y-4');
-        backToTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
+        backToTopButton.classList.add(
+          "opacity-0",
+          "invisible",
+          "translate-y-4",
+        );
+        backToTopButton.classList.remove(
+          "opacity-100",
+          "visible",
+          "translate-y-0",
+        );
       }
     };
 
     // Scroll to top on click
-    backToTopButton.addEventListener('click', () => {
+    backToTopButton.addEventListener("click", () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     });
 
     // Listen for scroll events
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     // Check initial scroll position
     handleScroll();
   }

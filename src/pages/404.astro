@@ -1,51 +1,71 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+import Layout from "@/layouts/Layout.astro";
 import { Home, Search } from "lucide-astro";
-import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 ---
 
-<Layout 
-  title="Page Not Found – Aexaware Infotech" 
+<Layout
+  title="Page Not Found – Aexaware Infotech"
   description="The page you are looking for does not exist."
 >
-  {/* FIX: Use min-h-[100dvh] for mobile viewport stability */}
-  <div class="relative min-h-[100dvh] w-full flex flex-col items-center justify-center pt-[calc(var(--navbar-height)+2rem)] pb-20 overflow-hidden">
-    
+  {/* Use min-h-dvh for mobile viewport stability */}
+  <div
+    class="relative min-h-dvh w-full flex flex-col items-center justify-center pt-[calc(var(--navbar-height)+2rem)] pb-20 overflow-hidden"
+  >
     {/* Modern Grid Background */}
     {/* FIX: Semantic Grid Background */}
     <BackgroundGrid density="sm" mask="center" />
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent -z-10" />
-    
+    <div
+      class="absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-transparent -z-10"
+    >
+    </div>
+
     <div class="container-normal relative z-10 text-center">
       <div class="space-y-2 mb-8">
-         <div class="inline-block px-4 py-1.5 rounded-full bg-destructive/10 text-destructive text-sm font-bold uppercase tracking-wider border border-destructive/20 mb-4">
-            Error 404
+        <div
+          class="inline-block px-4 py-1.5 rounded-full bg-destructive/10 text-destructive text-sm font-bold uppercase tracking-wider border border-destructive/20 mb-4"
+        >
+          Error 404
         </div>
         {/* FIX: Use font-heading for brand consistency */}
-        <h1 class="font-heading text-8xl md:text-9xl font-bold text-foreground tracking-tighter leading-none select-none">
+        <h1
+          class="font-heading text-8xl md:text-9xl font-bold text-foreground tracking-tighter leading-none select-none"
+        >
           Lost?
         </h1>
       </div>
-      
+
       <div class="max-w-md mx-auto space-y-8">
         <p class="text-xl text-muted-foreground leading-relaxed">
-           The page you are looking for doesn't exist or has been moved. Don't worry, you can easily find your way back.
+          The page you are looking for doesn't exist or has been moved. Don't
+          worry, you can easily find your way back.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="/" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 hover:shadow-primary/40 w-full sm:w-auto hover:-translate-y-0.5 duration-300">
+        <div
+          class="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <a
+            href="/"
+            class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 hover:shadow-primary/40 w-full sm:w-auto hover:-translate-y-0.5 duration-300"
+          >
             <Home className="mr-2 w-4 h-4" />
             Back to Home
           </a>
-          <a href="/services" class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium border border-white/10 bg-secondary/50 hover:bg-secondary hover:text-foreground transition-all w-full sm:w-auto hover:-translate-y-0.5 duration-300">
+          <a
+            href="/services"
+            class="inline-flex items-center justify-center h-12 rounded-full px-8 text-base font-medium border border-white/10 bg-secondary/50 hover:bg-secondary hover:text-foreground transition-all w-full sm:w-auto hover:-translate-y-0.5 duration-300"
+          >
             <Search className="mr-2 w-4 h-4" />
             Explore Services
           </a>
         </div>
       </div>
-      
-       {/* Decorative Elements */}
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
+
+      {/* Decorative Elements */}
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none"
+      >
+      </div>
     </div>
   </div>
 </Layout>

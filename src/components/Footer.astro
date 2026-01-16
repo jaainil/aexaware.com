@@ -16,9 +16,17 @@ import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 const currentYear = new Date().getFullYear();
 
 const socialLinks = [
-  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/107112329/" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/107112329/",
+  },
   { icon: Twitter, label: "X (Twitter)", href: "https://x.com/aexaware" },
-  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/aexaware/" },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/aexaware/",
+  },
   { icon: GitBranch, label: "Codeberg", href: "https://codeberg.org/Aexaware" },
   { icon: Mail, label: "Email", href: "mailto:info@aexaware.com" },
 ];
@@ -36,49 +44,90 @@ const services = [
 const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
 ---
 
-<footer class="relative border-t border-border/40 bg-background pt-24 pb-12 overflow-hidden">
-  
+<footer
+  class="relative border-t border-border/40 bg-background pt-24 pb-12 overflow-hidden"
+>
   {/* Modern Grid Background - Optimized opacity */}
   <BackgroundGrid density="sm" mask="top" class="-z-10" />
 
   <div class="container-normal relative z-10">
-    
     {/* Pre-Footer CTAs */}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 pb-16 border-b border-border/40">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 pb-16 border-b border-border/40"
+    >
       {/* Start Project Card */}
-      <div class="relative overflow-hidden group bg-secondary/30 rounded-card-lg p-8 md:p-12 border border-border/50 transition-colors hover:bg-secondary/50">
-        <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div
+        class="relative overflow-hidden group bg-secondary/30 rounded-card-lg p-8 md:p-12 border border-border/50 transition-colors hover:bg-secondary/50"
+      >
+        <div
+          class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        >
+        </div>
         <div class="relative z-10 flex flex-col items-start gap-6">
-            <h3 class="font-heading font-bold text-3xl md:text-4xl text-foreground leading-tight">
-                Start your project <br /> with confidence.
-            </h3>
-            <p class="text-muted-foreground text-lg max-w-sm">
-                Get a custom quote tailored to your business needs and goals.
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <a href="/start-project" class={buttonVariants({ size: "lg", className: "rounded-full px-8 h-12 text-base shadow-lg shadow-primary/20" })}>
-                  Get Started <ArrowUpRight className="ml-2 h-4 w-4" />
-              </a>
-              <a href="https://cal.com/aexaware-infotech" target="_blank" rel="noopener noreferrer" class={buttonVariants({ variant: "outline", size: "lg", className: "rounded-full px-8 h-12 text-base bg-transparent border-primary/20 hover:bg-primary/5 hover:text-primary hover:border-primary/50" })}>
-                  <Calendar className="mr-2 h-4 w-4" /> Book a Call
-              </a>
-            </div>
+          <h3
+            class="font-heading font-bold text-3xl md:text-4xl text-foreground leading-tight"
+          >
+            Start your project <br /> with confidence.
+          </h3>
+          <p class="text-muted-foreground text-lg max-w-sm">
+            Get a custom quote tailored to your business needs and goals.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="/start-project"
+              class={buttonVariants({
+                size: "lg",
+                className:
+                  "rounded-full px-8 h-12 text-base shadow-lg shadow-primary/20",
+              })}
+            >
+              Get Started <ArrowUpRight className="ml-2 h-4 w-4" />
+            </a>
+            <a
+              href="https://cal.com/aexaware-infotech"
+              target="_blank"
+              rel="noopener noreferrer"
+              class={buttonVariants({
+                variant: "outline",
+                size: "lg",
+                className:
+                  "rounded-full px-8 h-12 text-base bg-transparent border-primary/20 hover:bg-primary/5 hover:text-primary hover:border-primary/50",
+              })}
+            >
+              <Calendar className="mr-2 h-4 w-4" /> Book a Call
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Portfolio Card */}
-      <div class="relative overflow-hidden group bg-secondary/30 rounded-card-lg p-8 md:p-12 border border-border/50 transition-colors hover:bg-secondary/50">
-         <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div
+        class="relative overflow-hidden group bg-secondary/30 rounded-card-lg p-8 md:p-12 border border-border/50 transition-colors hover:bg-secondary/50"
+      >
+        <div
+          class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        >
+        </div>
         <div class="relative z-10 flex flex-col items-start gap-6">
-            <h3 class="font-heading font-bold text-3xl md:text-4xl text-foreground leading-tight">
-                Explore our <br /> success stories.
-            </h3>
-            <p class="text-muted-foreground text-lg max-w-sm">
-                See how we've transformed other businesses with our tech.
-            </p>
-             <a href="/portfolio" class={buttonVariants({ variant: "outline", size: "lg", className: "rounded-full px-8 h-12 text-base bg-transparent border-primary/20 hover:bg-primary/5 hover:text-primary hover:border-primary/50" })}>
-                View Portfolio <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+          <h3
+            class="font-heading font-bold text-3xl md:text-4xl text-foreground leading-tight"
+          >
+            Explore our <br /> success stories.
+          </h3>
+          <p class="text-muted-foreground text-lg max-w-sm">
+            See how we've transformed other businesses with our tech.
+          </p>
+          <a
+            href="/portfolio"
+            class={buttonVariants({
+              variant: "outline",
+              size: "lg",
+              className:
+                "rounded-full px-8 h-12 text-base bg-transparent border-primary/20 hover:bg-primary/5 hover:text-primary hover:border-primary/50",
+            })}
+          >
+            View Portfolio <ArrowRight className="ml-2 h-4 w-4" />
+          </a>
         </div>
       </div>
     </div>
@@ -100,71 +149,89 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
           Built for growth.
         </p>
         <div class="flex gap-4">
-          {socialLinks.map(({ icon: Icon, label, href }) => (
-            <a
-              href={href}
-              aria-label={label}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex size-10 items-center justify-center rounded-full bg-secondary/50 text-muted-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 border border-transparent hover:border-primary/20"
-            >
-              <Icon size={18} />
-            </a>
-          ))}
+          {
+            socialLinks.map(({ icon: Icon, label, href }) => (
+              <a
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex size-10 items-center justify-center rounded-full bg-secondary/50 text-muted-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-110 border border-transparent hover:border-primary/20"
+              >
+                <Icon size={18} />
+              </a>
+            ))
+          }
         </div>
       </div>
 
       {/* Services */}
       <div class="lg:col-span-3">
-        <h4 class="font-heading font-bold text-foreground mb-8 text-lg">Services</h4>
+        <h4 class="font-heading font-bold text-foreground mb-8 text-lg">
+          Services
+        </h4>
         <ul class="space-y-4">
-          {services.map((item) => (
-            <li>
-              <a
-                href={item.path}
-                class="group flex items-center text-muted-foreground hover:text-primary transition-colors text-base"
-              >
-                <span class="w-1.5 h-1.5 rounded-full bg-primary/50 mr-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span class="transition-transform group-hover:translate-x-1">
-                  {item.name}
-                </span>
-              </a>
-            </li>
-          ))}
+          {
+            services.map((item) => (
+              <li>
+                <a
+                  href={item.path}
+                  class="group flex items-center text-muted-foreground hover:text-primary transition-colors text-base"
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary/50 mr-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span class="transition-transform group-hover:translate-x-1">
+                    {item.name}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       {/* Company */}
       <div class="lg:col-span-2">
-        <h4 class="font-heading font-bold text-foreground mb-8 text-lg">Company</h4>
+        <h4 class="font-heading font-bold text-foreground mb-8 text-lg">
+          Company
+        </h4>
         <ul class="space-y-4">
-          {companyLinks.map((item) => (
-            <li>
-              <a
-                href={`/${item.toLowerCase().replace(" ", "")}`}
-                class="group flex items-center text-muted-foreground hover:text-primary transition-colors text-base"
-              >
-                 <span class="w-1.5 h-1.5 rounded-full bg-primary/50 mr-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span class="transition-transform group-hover:translate-x-1">
-                  {item}
-                </span>
-              </a>
-            </li>
-          ))}
+          {
+            companyLinks.map((item) => (
+              <li>
+                <a
+                  href={`/${item.toLowerCase().replace(" ", "")}`}
+                  class="group flex items-center text-muted-foreground hover:text-primary transition-colors text-base"
+                >
+                  <span class="w-1.5 h-1.5 rounded-full bg-primary/50 mr-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span class="transition-transform group-hover:translate-x-1">
+                    {item}
+                  </span>
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </div>
 
       {/* Newsletter */}
       <div class="lg:col-span-3 space-y-8">
         <div>
-          <h4 class="font-heading font-bold text-foreground mb-8 text-lg">Stay Updated</h4>
-          <div class="rounded-card bg-secondary/30 p-6 border border-border/50 backdrop-blur-xs">
+          <h4 class="font-heading font-bold text-foreground mb-8 text-lg">
+            Stay Updated
+          </h4>
+          <div
+            class="rounded-card bg-secondary/30 p-6 border border-border/50 backdrop-blur-xs"
+          >
             <p class="text-sm text-muted-foreground mb-4 leading-relaxed">
               Get the latest tech trends and insights delivered to your inbox.
             </p>
-            <form class="flex flex-col gap-3" action="/api/newsletter" method="POST">
-              <input 
-                type="email" 
+            <form
+              class="flex flex-col gap-3"
+              action="/api/newsletter"
+              method="POST"
+            >
+              <input
+                type="email"
                 name="email"
                 placeholder="Enter your email"
                 required
@@ -172,7 +239,9 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
               />
               <button
                 type="submit"
-                class={buttonVariants({ className: "w-full rounded-full h-10 text-sm font-semibold" })}
+                class={buttonVariants({
+                  className: "w-full rounded-full h-10 text-sm font-semibold",
+                })}
               >
                 Subscribe
               </button>
@@ -182,9 +251,11 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
       </div>
     </div>
 
-
     {/* Large Line Art Logo */}
-    <div class="w-full mb-12 select-none pointer-events-none opacity-50" aria-hidden="true">
+    <div
+      class="w-full mb-12 select-none pointer-events-none opacity-50"
+      aria-hidden="true"
+    >
       <svg
         viewBox="0 0 643 99"
         fill="none"
@@ -192,34 +263,63 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
         class="w-full h-auto text-primary"
       >
         <g stroke="currentColor" stroke-width="1.5" fill="none">
-            {/* A shape */}
-            <path d="M60.0701 87.09C60.0701 91.01 56.7701 94.31 52.8501 94.31C48.9301 94.31 45.6101 91.01 45.6101 87.09C45.6101 83.17 48.9101 79.85 52.8501 79.85C56.7901 79.85 60.0701 83.04 60.0701 87.09Z" />
-            <path d="M105.33 94.31H81.24L52.85 43.61L24.59 94.31H0.5L52.85 0.5L105.33 94.31Z" />
-            {/* E shape */}
-            <path d="M106.97 74.69C100.87 58.16 111.17 38.82 129.96 31.89C148.75 24.96 169.23 33.22 175.5 50.22L176.82 53.79L129.76 67.23L155.24 52.43C151.97 47.96 144.27 44.31 136.19 47.3C126.8 50.77 121.55 59.99 124.67 68.44C127.26 75.46 136.71 80.21 146.94 76.44C154.08 73.81 157.4 68.53 158.4 64.65L177.26 61.21C176.65 74.95 166.25 87.03 152.69 92.03C133.54 99.09 113.12 91.35 106.98 74.7L106.97 74.69Z" />
-            <path d="M571.77 74.69C565.67 58.16 575.97 38.82 594.76 31.89C613.43 25 634.03 33.22 640.3 50.22L641.62 53.79L594.56 67.23L620.04 52.43C616.77 47.96 609.07 44.31 600.99 47.3C591.6 50.77 586.35 59.99 589.47 68.44C592.06 75.46 601.51 80.21 611.74 76.44C618.88 73.81 622.2 68.53 623.2 64.65L642.06 61.21C641.45 74.95 631.05 87.03 617.49 92.03C598.34 99.09 577.92 91.35 571.78 74.7L571.77 74.69Z" />
-            {/* X shape */}
-            <path d="M170.62 30.29H194.83L209.53 46.89L224.23 30.29H248.31L221.44 62.49L248.31 94.56H224.23L209.53 77.96L194.83 94.56H170.62L197.62 62.49L170.62 30.29Z" />
-            {/* A shape 2 */}
-            <path d="M285.85 29.91C296.88 29.91 305.24 35.36 308.92 38.15V29.91H323.5V94.18H308.92V85.69C305.12 88.6 296.62 94.18 285.6 94.18C265.06 94.18 249.35 79.48 249.35 62.36C249.35 44.36 265.7 29.91 285.86 29.91H285.85ZM285.85 77.7C295.48 77.7 304.23 71.11 304.23 62.11C304.23 53.11 295.48 46.39 285.85 46.39C276.22 46.39 267.85 53.49 267.85 62.24C267.85 70.99 276.09 77.7 285.85 77.7Z" />
-            {/* W shape */}
-            <path d="M331.49 30.04H350.76L363.18 64.14L378.52 37.9L393.73 64.14L406.15 30.04H425.54L399.93 98.62L378.38 63.38L357.08 98.62L331.47 30.04H331.49Z" />
-            {/* A shape 3 */}
-            <path d="M464.73 29.91C475.76 29.91 484.12 35.36 487.8 38.15V29.91H502.38V94.18H487.8V85.69C484 88.6 475.5 94.18 464.48 94.18C443.94 94.18 428.23 79.48 428.23 62.36C428.23 44.36 444.58 29.91 464.74 29.91H464.73ZM464.73 77.7C474.36 77.7 483.11 71.11 483.11 62.11C483.11 53.11 474.36 46.39 464.73 46.39C455.1 46.39 446.73 53.49 446.73 62.24C446.73 70.99 454.97 77.7 464.73 77.7Z" />
-            {/* R shape */}
-            <path d="M517.97 55.64C517.97 41.06 529 30.04 542.69 30.04H565.25V46.52C563.22 46.64 557.39 46.64 555.36 46.64C545.47 46.64 538.25 51.97 538.25 63.12V94.05H518.1C518.1 80.36 517.97 69.33 517.97 55.64Z" />
+          {/* A shape */}
+          <path
+            d="M60.0701 87.09C60.0701 91.01 56.7701 94.31 52.8501 94.31C48.9301 94.31 45.6101 91.01 45.6101 87.09C45.6101 83.17 48.9101 79.85 52.8501 79.85C56.7901 79.85 60.0701 83.04 60.0701 87.09Z"
+          ></path>
+          <path
+            d="M105.33 94.31H81.24L52.85 43.61L24.59 94.31H0.5L52.85 0.5L105.33 94.31Z"
+          ></path>
+          {/* E shape */}
+          <path
+            d="M106.97 74.69C100.87 58.16 111.17 38.82 129.96 31.89C148.75 24.96 169.23 33.22 175.5 50.22L176.82 53.79L129.76 67.23L155.24 52.43C151.97 47.96 144.27 44.31 136.19 47.3C126.8 50.77 121.55 59.99 124.67 68.44C127.26 75.46 136.71 80.21 146.94 76.44C154.08 73.81 157.4 68.53 158.4 64.65L177.26 61.21C176.65 74.95 166.25 87.03 152.69 92.03C133.54 99.09 113.12 91.35 106.98 74.7L106.97 74.69Z"
+          ></path>
+          <path
+            d="M571.77 74.69C565.67 58.16 575.97 38.82 594.76 31.89C613.43 25 634.03 33.22 640.3 50.22L641.62 53.79L594.56 67.23L620.04 52.43C616.77 47.96 609.07 44.31 600.99 47.3C591.6 50.77 586.35 59.99 589.47 68.44C592.06 75.46 601.51 80.21 611.74 76.44C618.88 73.81 622.2 68.53 623.2 64.65L642.06 61.21C641.45 74.95 631.05 87.03 617.49 92.03C598.34 99.09 577.92 91.35 571.78 74.7L571.77 74.69Z"
+          ></path>
+          {/* X shape */}
+          <path
+            d="M170.62 30.29H194.83L209.53 46.89L224.23 30.29H248.31L221.44 62.49L248.31 94.56H224.23L209.53 77.96L194.83 94.56H170.62L197.62 62.49L170.62 30.29Z"
+          ></path>
+          {/* A shape 2 */}
+          <path
+            d="M285.85 29.91C296.88 29.91 305.24 35.36 308.92 38.15V29.91H323.5V94.18H308.92V85.69C305.12 88.6 296.62 94.18 285.6 94.18C265.06 94.18 249.35 79.48 249.35 62.36C249.35 44.36 265.7 29.91 285.86 29.91H285.85ZM285.85 77.7C295.48 77.7 304.23 71.11 304.23 62.11C304.23 53.11 295.48 46.39 285.85 46.39C276.22 46.39 267.85 53.49 267.85 62.24C267.85 70.99 276.09 77.7 285.85 77.7Z"
+          ></path>
+          {/* W shape */}
+          <path
+            d="M331.49 30.04H350.76L363.18 64.14L378.52 37.9L393.73 64.14L406.15 30.04H425.54L399.93 98.62L378.38 63.38L357.08 98.62L331.47 30.04H331.49Z"
+          ></path>
+          {/* A shape 3 */}
+          <path
+            d="M464.73 29.91C475.76 29.91 484.12 35.36 487.8 38.15V29.91H502.38V94.18H487.8V85.69C484 88.6 475.5 94.18 464.48 94.18C443.94 94.18 428.23 79.48 428.23 62.36C428.23 44.36 444.58 29.91 464.74 29.91H464.73ZM464.73 77.7C474.36 77.7 483.11 71.11 483.11 62.11C483.11 53.11 474.36 46.39 464.73 46.39C455.1 46.39 446.73 53.49 446.73 62.24C446.73 70.99 454.97 77.7 464.73 77.7Z"
+          ></path>
+          {/* R shape */}
+          <path
+            d="M517.97 55.64C517.97 41.06 529 30.04 542.69 30.04H565.25V46.52C563.22 46.64 557.39 46.64 555.36 46.64C545.47 46.64 538.25 51.97 538.25 63.12V94.05H518.1C518.1 80.36 517.97 69.33 517.97 55.64Z"
+          ></path>
         </g>
       </svg>
     </div>
 
     {/* Footer Bottom */}
-    <div class="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground">
+    <div
+      class="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-muted-foreground"
+    >
       <p>© {currentYear} Aexaware Infotech. All rights reserved.</p>
       <div class="flex items-center gap-8">
-        <a href="/privacy-policy" class="hover:text-primary transition-colors">Privacy Policy</a>
-        <a href="/terms" class="hover:text-primary transition-colors">Terms of Service</a>
-        <button id="scroll-to-top" class="hover:text-primary transition-colors flex items-center gap-2 group">
-           Scroll to Top <ArrowUpRight class="w-3 h-3 transition-transform group-hover:-translate-y-0.5" />
+        <a href="/privacy-policy" class="hover:text-primary transition-colors"
+          >Privacy Policy</a
+        >
+        <a href="/terms" class="hover:text-primary transition-colors"
+          >Terms of Service</a
+        >
+        <button
+          id="scroll-to-top"
+          class="hover:text-primary transition-colors flex items-center gap-2 group"
+        >
+          Scroll to Top <ArrowUpRight
+            class="w-3 h-3 transition-transform group-hover:-translate-y-0.5"
+          />
         </button>
       </div>
     </div>
@@ -227,10 +327,10 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
 </footer>
 
 <script>
-  const scrollToTopBtn = document.getElementById('scroll-to-top');
+  const scrollToTopBtn = document.getElementById("scroll-to-top");
   if (scrollToTopBtn) {
-    scrollToTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 </script>

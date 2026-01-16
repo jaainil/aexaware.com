@@ -1,16 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '@/layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import { buttonVariants } from '@/components/ui/button-variants';
-import { cn } from '@/lib/utils';
-import { ArrowLeft, ExternalLink, Calendar, Clock, Layers, Sparkles } from 'lucide-astro';
-import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
-import CTA from '@/components/astro/CTA.astro';
-import Prose from '@/components/Prose.astro';
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { buttonVariants } from "@/components/ui/button-variants";
+import { cn } from "@/lib/utils";
+import {
+  ArrowLeft,
+  ExternalLink,
+  Calendar,
+  Clock,
+  Layers,
+  Sparkles,
+} from "lucide-astro";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
+import CTA from "@/components/astro/CTA.astro";
+import Prose from "@/components/Prose.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('portfolio');
+  const posts = await getCollection("portfolio");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -21,44 +28,56 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout title={`${post.data.title} | Case Study`} description={post.data.description}>
-  
+<Layout
+  title={`${post.data.title} | Case Study`}
+  description={post.data.description}
+>
   {/* Modern Grid Background - Fixed to stay behind content */}
   {/* FIX: Semantic Grid Background */}
   <BackgroundGrid density="sm" fixed mask="top" class="-z-10" />
 
   <div class="relative overflow-hidden">
     {/* Hero Section */}
-    <section class="relative pt-[var(--navbar-height)] pb-16 lg:pb-20">
-
-      
+    <section class="relative pt-(--navbar-height) pb-16 lg:pb-20">
       <div class="container-normal">
         {/* Back Link */}
-        <a 
-          href="/portfolio" 
+        <a
+          href="/portfolio"
           class="inline-flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors mb-12 group"
         >
-          <div class="w-10 h-10 rounded-full border border-border/80 bg-background flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all shadow-xs">
-             <ArrowLeft class="size-4" />
+          <div
+            class="w-10 h-10 rounded-full border border-border/80 bg-background flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all shadow-xs"
+          >
+            <ArrowLeft class="size-4" />
           </div>
-          <span class="group-hover:translate-x-0.5 transition-transform">Back to Portfolio</span>
+          <span class="group-hover:translate-x-0.5 transition-transform"
+            >Back to Portfolio</span
+          >
         </a>
 
         {/* Header Section */}
         <div class="text-center mb-16 max-w-4xl mx-auto">
-           {post.data.client && (
-            <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-6 shadow-xs">
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span class="text-sm font-bold text-primary tracking-wide uppercase">Client: {post.data.client}</span>
-            </div>
-          )}
-          
+          {
+            post.data.client && (
+              <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-6 shadow-xs">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span class="text-sm font-bold text-primary tracking-wide uppercase">
+                  Client: {post.data.client}
+                </span>
+              </div>
+            )
+          }
+
           {/* Title - full width like parent container */}
-          <h1 class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[1.1] text-foreground mb-6 text-balance">
+          <h1
+            class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[1.1] text-foreground mb-6 text-balance"
+          >
             {post.data.title}
           </h1>
-          
-          <p class="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty">
+
+          <p
+            class="text-base md:text-lg text-muted-foreground leading-relaxed text-pretty"
+          >
             {post.data.description}
           </p>
         </div>
@@ -66,77 +85,110 @@ const { Content } = await post.render();
     </section>
 
     <div class="container-normal pb-20 lg:pb-32">
- 
-       {/* Cinematic Hero Image */}
-       <div class="aspect-video relative rounded-section overflow-hidden shadow-2xl border border-border/50 mb-24 group">
-          <Image
-            src={post.data.image}
-            alt={post.data.imageAlt || post.data.title}
-            width={1600}
-            height={900}
-            format="webp"
-            quality={90}
-            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            loading="eager"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent opacity-40 pointer-events-none" />
-       </div>
+      {/* Cinematic Hero Image */}
+      <div
+        class="aspect-video relative rounded-section overflow-hidden shadow-2xl border border-border/50 mb-24 group"
+      >
+        <Image
+          src={post.data.image}
+          alt={post.data.imageAlt || post.data.title}
+          width={1600}
+          height={900}
+          format="webp"
+          quality={90}
+          layout="none"
+          class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+          loading="eager"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-background/20 via-transparent to-transparent opacity-40 pointer-events-none"
+        >
+        </div>
+      </div>
 
       <div class="grid lg:grid-cols-12 gap-12">
         {/* Sticky Metadata Sidebar */}
         <div class="lg:col-span-4 order-2 lg:order-1">
-          <div class="sticky top-32 bg-card/30 backdrop-blur-md rounded-card-lg p-8 border border-border/50 shadow-xs h-fit">
-            <h3 class="font-heading text-2xl font-bold mb-8 text-foreground">Project Details</h3>
-            
+          <div
+            class="sticky top-32 bg-card/30 backdrop-blur-md rounded-card-lg p-8 border border-border/50 shadow-xs h-fit"
+          >
+            <h3 class="font-heading text-2xl font-bold mb-8 text-foreground">
+              Project Details
+            </h3>
+
             <div class="space-y-8">
               <div>
                 <div class="flex items-center gap-2 text-muted-foreground mb-2">
                   <Layers class="size-4" />
-                  <span class="text-xs font-bold uppercase tracking-wider">Category</span>
+                  <span class="text-xs font-bold uppercase tracking-wider"
+                    >Category</span
+                  >
                 </div>
-                <p class="font-medium text-foreground text-lg">{post.data.category}</p>
+                <p class="font-medium text-foreground text-lg">
+                  {post.data.category}
+                </p>
               </div>
-              
+
               <div>
                 <div class="flex items-center gap-2 text-muted-foreground mb-2">
                   <Calendar class="size-4" />
-                  <span class="text-xs font-bold uppercase tracking-wider">Year</span>
+                  <span class="text-xs font-bold uppercase tracking-wider"
+                    >Year</span
+                  >
                 </div>
-                <p class="font-medium text-foreground text-lg">{post.data.year}</p>
+                <p class="font-medium text-foreground text-lg">
+                  {post.data.year}
+                </p>
               </div>
-  
+
               <div>
                 <div class="flex items-center gap-2 text-muted-foreground mb-2">
                   <Clock class="size-4" />
-                  <span class="text-xs font-bold uppercase tracking-wider">Duration</span>
-                </div>
-                 <p class="font-medium text-foreground text-lg">{post.data.duration ?? "Ongoing"}</p>
-              </div>
-  
-              {post.data.website && (
-                <div class="pt-4 border-t border-border/50">
-                  <span class="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-3">Live Site</span>
-                  <a 
-                    href={post.data.website} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class={cn(buttonVariants({ variant: "outline", size: "sm" }), "w-full justify-between group")}
+                  <span class="text-xs font-bold uppercase tracking-wider"
+                    >Duration</span
                   >
-                    Visit Website
-                    <ExternalLink class="size-3 text-muted-foreground group-hover:text-foreground transition-colors" />
-                  </a>
                 </div>
-              )}
+                <p class="font-medium text-foreground text-lg">
+                  {post.data.duration ?? "Ongoing"}
+                </p>
+              </div>
+
+              {
+                post.data.website && (
+                  <div class="pt-4 border-t border-border/50">
+                    <span class="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-3">
+                      Live Site
+                    </span>
+                    <a
+                      href={post.data.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={cn(
+                        buttonVariants({ variant: "outline", size: "sm" }),
+                        "w-full justify-between group",
+                      )}
+                    >
+                      Visit Website
+                      <ExternalLink class="size-3 text-muted-foreground group-hover:text-foreground transition-colors" />
+                    </a>
+                  </div>
+                )
+              }
             </div>
-  
+
             <div class="mt-10 pt-8 border-t border-border/50">
-             <span class="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-4">Tech Stack</span>
+              <span
+                class="text-xs font-bold uppercase tracking-wider text-muted-foreground block mb-4"
+                >Tech Stack</span
+              >
               <div class="flex flex-wrap gap-2">
-                {post.data.technologies?.map(tech => (
-                  <span class="bg-muted px-3 py-1.5 rounded-md text-xs font-medium text-foreground border border-border/50">
-                    {tech}
-                  </span>
-                ))}
+                {
+                  post.data.technologies?.map((tech) => (
+                    <span class="bg-muted px-3 py-1.5 rounded-md text-xs font-medium text-foreground border border-border/50">
+                      {tech}
+                    </span>
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -149,14 +201,14 @@ const { Content } = await post.render();
           </Prose>
         </div>
       </div>
-      
-       {/* CTA */}
-      <CTA 
-        title="Inspired by this project?" 
+
+      {/* CTA */}
+      <CTA
+        title="Inspired by this project?"
         titleHighlight=""
         description="Let's discuss how we can build something similar for your business."
         buttonText="Start Your Project"
-        class="mt-32" 
+        class="mt-32"
       />
     </div>
   </div>

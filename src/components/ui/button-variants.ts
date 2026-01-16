@@ -7,7 +7,7 @@ export const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-md",
         hero:
-          "bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-primary-foreground shadow-xl shadow-primary/30 hover:brightness-110",
+          "bg-linear-to-r from-primary via-primary/90 to-primary/80 text-primary-foreground shadow-xl shadow-primary/30 hover:brightness-110",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:

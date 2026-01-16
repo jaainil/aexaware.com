@@ -1,7 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
-import { ArrowRight, Sparkles } from 'lucide-astro';
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { ArrowRight, Sparkles } from "lucide-astro";
 
 interface Props {
   currentSlug: string;
@@ -11,16 +11,16 @@ interface Props {
 const { currentSlug, tags } = Astro.props;
 
 // Get all posts
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 
 // detailed relevance scoring
 const scoredPosts = allPosts
-  .filter(post => post.slug !== currentSlug) // Exclude current post
-  .map(post => {
+  .filter((post) => post.slug !== currentSlug) // Exclude current post
+  .map((post) => {
     let score = 0;
     // Check for tag overlap
     if (tags && post.data.tags) {
-      const overlap = post.data.tags.filter(tag => tags.includes(tag)).length;
+      const overlap = post.data.tags.filter((tag) => tags.includes(tag)).length;
       score += overlap;
     }
     return { post, score };
@@ -28,51 +28,54 @@ const scoredPosts = allPosts
   .sort((a, b) => b.score - a.score); // Sort by score descending
 
 // Take top 1, fallback to just the most recent one if no tags match
-const fallbackPost = allPosts.find(p => p.slug !== currentSlug);
+const fallbackPost = allPosts.find((p) => p.slug !== currentSlug);
 const nextPost = scoredPosts[0]?.post ?? fallbackPost;
 ---
 
-{nextPost && (
-  <div class="border-t border-border mt-16 pt-12 mb-12">
-    <div class="flex items-center gap-2 mb-8">
+{
+  nextPost && (
+    <div class="border-t border-border mt-16 pt-12 mb-12">
+      <div class="flex items-center gap-2 mb-8">
         <Sparkles class="size-4 text-primary" />
         <p class="text-sm font-bold uppercase tracking-widest text-muted-foreground">
-        Up Next
+          Up Next
         </p>
-    </div>
-    
-    <a href={`/blog/${nextPost.slug}`} class="group block">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center bg-secondary/5 rounded-section p-6 md:p-8 border border-border/50 hover:border-primary/30 transition-all duration-500">
-        
-        {/* Content */}
-         <div class="space-y-6 order-2 md:order-1">
-          {/* FIX: Use font-heading for the title */}
-          <h3 class="font-heading text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
-            {nextPost.data.title}
-          </h3>
-          <p class="text-muted-foreground line-clamp-2 text-lg leading-relaxed">
-            {nextPost.data.description}
-          </p>
-          <div class="flex items-center text-primary font-bold text-sm uppercase tracking-wide mt-4">
-            Read Now <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </div>
-        </div>
-
-        {/* Image */}
-        {nextPost.data.image && (
-          <div class="aspect-[16/10] rounded-card-lg overflow-hidden bg-muted order-1 md:order-2 relative shadow-lg border border-border/50">
-            <Image
-              src={nextPost.data.image}
-              alt={nextPost.data.title}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              width={600}
-              height={375}
-              format="webp"
-            />
-             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-          </div>
-        )}
       </div>
-    </a>
-  </div>
-)}
+
+      <a href={`/blog/${nextPost.slug}`} class="group block">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center bg-secondary/5 rounded-section p-6 md:p-8 border border-border/50 hover:border-primary/30 transition-all duration-500">
+          {/* Content */}
+          <div class="space-y-6 order-2 md:order-1">
+            {/* FIX: Use font-heading for the title */}
+            <h3 class="font-heading text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+              {nextPost.data.title}
+            </h3>
+            <p class="text-muted-foreground line-clamp-2 text-lg leading-relaxed">
+              {nextPost.data.description}
+            </p>
+            <div class="flex items-center text-primary font-bold text-sm uppercase tracking-wide mt-4">
+              Read Now{" "}
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </div>
+          </div>
+
+          {/* Image */}
+          {nextPost.data.image && (
+            <div class="aspect-16/10 rounded-card-lg overflow-hidden bg-muted order-1 md:order-2 relative shadow-lg border border-border/50">
+              <Image
+                src={nextPost.data.image}
+                alt={nextPost.data.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                width={600}
+                height={375}
+                format="webp"
+                layout="none"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none" />
+            </div>
+          )}
+        </div>
+      </a>
+    </div>
+  )
+}

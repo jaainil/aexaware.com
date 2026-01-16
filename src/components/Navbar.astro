@@ -1,18 +1,18 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
-import { 
-  Menu, 
-  X, 
-  ArrowUpRight, 
-  ChevronDown, 
-  Code2, 
-  Smartphone, 
-  Palette, 
-  Globe, 
-  ShoppingCart, 
-  Cloud, 
-  BrainCircuit, 
-  Layers 
+import {
+  Menu,
+  X,
+  ArrowUpRight,
+  ChevronDown,
+  Code2,
+  Smartphone,
+  Palette,
+  Globe,
+  ShoppingCart,
+  Cloud,
+  BrainCircuit,
+  Layers,
 } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
 import SearchDialog from "@/components/react/SearchDialog";
@@ -25,13 +25,29 @@ const navLinks = [
     name: "Services",
     path: "/services",
     dropdown: [
-      { name: "Web Development", path: "/services/web-development", icon: Globe },
-      { name: "Mobile App Development", path: "/services/mobile-development", icon: Smartphone },
+      {
+        name: "Web Development",
+        path: "/services/web-development",
+        icon: Globe,
+      },
+      {
+        name: "Mobile App Development",
+        path: "/services/mobile-development",
+        icon: Smartphone,
+      },
       { name: "UI/UX Design", path: "/services/ui-ux-design", icon: Palette },
-      { name: "Software Solutions", path: "/services/software-solutions", icon: Code2 },
+      {
+        name: "Software Solutions",
+        path: "/services/software-solutions",
+        icon: Code2,
+      },
       { name: "E-Commerce", path: "/services/ecommerce", icon: ShoppingCart },
       { name: "Cloud & DevOps", path: "/services/cloud-devops", icon: Cloud },
-      { name: "AI/ML Integration", path: "/services/ai-ml-integration", icon: BrainCircuit },
+      {
+        name: "AI/ML Integration",
+        path: "/services/ai-ml-integration",
+        icon: BrainCircuit,
+      },
       { name: "All Services", path: "/services", icon: Layers },
     ],
   },
@@ -42,22 +58,30 @@ const navLinks = [
 ];
 
 const isActive = (linkPath: string) => {
-  if (linkPath === '/' && pathname !== '/') return false;
+  if (linkPath === "/" && pathname !== "/") return false;
   return pathname.startsWith(linkPath);
 };
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-6 transition-all duration-300" id="main-header">
+<header
+  class="fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-6 transition-all duration-300"
+  id="main-header"
+>
   <nav
     id="navbar-inner"
     role="navigation"
     aria-label="Main navigation"
     class="relative mx-auto w-full max-w-7xl transition-all duration-500 ease-in-out border border-black/10 dark:border-white/10 bg-background/70 backdrop-blur-xl rounded-full"
   >
-    <div class="flex items-center justify-between px-4 py-2 lg:px-6 lg:py-3 relative z-50">
-      
+    <div
+      class="flex items-center justify-between px-4 py-2 lg:px-6 lg:py-3 relative z-50"
+    >
       {/* Logo */}
-      <a href="/" class="flex items-center gap-2 group shrink-0" aria-label="Aexaware Infotech Home">
+      <a
+        href="/"
+        class="flex items-center gap-2 group shrink-0"
+        aria-label="Aexaware Infotech Home"
+      >
         <img
           src={Logo.src}
           alt="Aexaware Infotech Logo"
@@ -70,52 +94,62 @@ const isActive = (linkPath: string) => {
       {/* Desktop Navigation */}
       <div class="hidden lg:flex items-center justify-center flex-1 px-2">
         <ul class="flex items-center gap-1" role="list">
-          {navLinks.map((link) => (
-            <li class="relative group">
-              {link.dropdown ? (
-                <div class="dropdown-container relative">
-                  <button
-                    class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-hidden hover:bg-accent hover:text-accent-foreground ${
-                      isActive(link.path) ? "text-primary bg-primary/10" : "text-muted-foreground"
-                    }`}
-                  >
-                    {link.name}
-                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-rotate-180" />
-                  </button>
-                  
-                  {/* Desktop Dropdown */}
-                  <div class="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out min-w-[600px] perspective-[1000px]">
-                    <div class="bg-background/90 backdrop-blur-2xl border border-black/10 dark:border-white/10 rounded-card-lg shadow-2xl p-6 grid grid-cols-2 gap-4 origin-top rotate-x-[-10deg] opacity-0 translate-y-4 group-hover:rotate-x-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ring-1 ring-black/5">
-                      {link.dropdown.map((item) => (
-                        <a
-                          href={item.path}
-                          class="group/item flex items-start gap-3 rounded-xl p-3 no-underline outline-hidden transition-all hover:bg-primary/5 hover:text-primary focus:bg-primary/5"
-                        >
-                          <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/50 text-muted-foreground group-hover/item:bg-primary/10 group-hover/item:text-primary transition-colors">
-                             {item.icon && <item.icon className="h-4 w-4" />}
-                          </div>
-                          <div>
-                            <div class="text-sm font-semibold leading-none mb-1 group-hover/item:text-primary transition-colors">{item.name}</div>
-                            <p class="text-xs text-muted-foreground line-clamp-1 opacity-70">Explore our {item.name.toLowerCase()} solutions.</p>
-                          </div>
-                        </a>
-                      ))}
+          {
+            navLinks.map((link) => (
+              <li class="relative group">
+                {link.dropdown ? (
+                  <div class="dropdown-container relative">
+                    <button
+                      class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-hidden hover:bg-accent hover:text-accent-foreground ${
+                        isActive(link.path)
+                          ? "text-primary bg-primary/10"
+                          : "text-muted-foreground"
+                      }`}
+                    >
+                      {link.name}
+                      <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-rotate-180" />
+                    </button>
+
+                    {/* Desktop Dropdown */}
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out min-w-[600px] perspective-[1000px]">
+                      <div class="bg-background/90 backdrop-blur-2xl border border-black/10 dark:border-white/10 rounded-card-lg shadow-2xl p-6 grid grid-cols-2 gap-4 origin-top rotate-x-[-10deg] opacity-0 translate-y-4 group-hover:rotate-x-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ring-1 ring-black/5">
+                        {link.dropdown.map((item) => (
+                          <a
+                            href={item.path}
+                            class="group/item flex items-start gap-3 rounded-xl p-3 no-underline outline-hidden transition-all hover:bg-primary/5 hover:text-primary focus:bg-primary/5"
+                          >
+                            <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/50 text-muted-foreground group-hover/item:bg-primary/10 group-hover/item:text-primary transition-colors">
+                              {item.icon && <item.icon className="h-4 w-4" />}
+                            </div>
+                            <div>
+                              <div class="text-sm font-semibold leading-none mb-1 group-hover/item:text-primary transition-colors">
+                                {item.name}
+                              </div>
+                              <p class="text-xs text-muted-foreground line-clamp-1 opacity-70">
+                                Explore our {item.name.toLowerCase()} solutions.
+                              </p>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <a
-                  href={link.path}
-                  class:list={[
-                    "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:bg-accent hover:text-accent-foreground",
-                    isActive(link.path) ? "text-primary font-bold bg-primary/10" : "text-muted-foreground"
-                  ]}
-                >
-                  {link.name}
-                </a>
-              )}
-            </li>
-          ))}
+                ) : (
+                  <a
+                    href={link.path}
+                    class:list={[
+                      "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:bg-accent hover:text-accent-foreground",
+                      isActive(link.path)
+                        ? "text-primary font-bold bg-primary/10"
+                        : "text-muted-foreground",
+                    ]}
+                  >
+                    {link.name}
+                  </a>
+                )}
+              </li>
+            ))
+          }
         </ul>
       </div>
 
@@ -126,7 +160,11 @@ const isActive = (linkPath: string) => {
           href="https://cal.com/aexaware-infotech"
           target="_blank"
           rel="noopener noreferrer"
-          class={buttonVariants({ size: "sm", className: "rounded-full px-5 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow duration-300" })}
+          class={buttonVariants({
+            size: "sm",
+            className:
+              "rounded-full px-5 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow duration-300",
+          })}
         >
           Book a Call <ArrowUpRight className="ml-2 h-3.5 w-3.5" />
         </a>
@@ -139,20 +177,31 @@ const isActive = (linkPath: string) => {
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <div class="relative w-6 h-6 flex items-center justify-center overflow-hidden">
-             <Menu id="menu-icon" class="absolute w-6 h-6 transition-all duration-300 transform opacity-100 rotate-0 scale-100" />
-             <X id="close-icon" class="absolute w-6 h-6 transition-all duration-300 transform opacity-0 -rotate-90 scale-0" />
+        <div
+          class="relative w-6 h-6 flex items-center justify-center overflow-hidden"
+        >
+          <Menu
+            id="menu-icon"
+            class="absolute w-6 h-6 transition-all duration-300 transform opacity-100 rotate-0 scale-100"
+          />
+          <X
+            id="close-icon"
+            class="absolute w-6 h-6 transition-all duration-300 transform opacity-0 -rotate-90 scale-0"
+          />
         </div>
       </button>
     </div>
 
-    {/* FIX: Mobile Menu moved INSIDE navbar-inner so it respects the capsule width */}
+    {
+      /* FIX: Mobile Menu moved INSIDE navbar-inner so it respects the capsule width */
+    }
     <div
       id="mobile-menu"
       class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-black/10 dark:border-white/10 shadow-2xl rounded-card-lg p-6 invisible opacity-0 max-h-[85vh] overflow-y-auto no-scrollbar"
     >
-       <div class="flex flex-col space-y-2">
-          {navLinks.map((link, idx) => (
+      <div class="flex flex-col space-y-2">
+        {
+          navLinks.map((link, idx) => (
             <div class="mobile-nav-item">
               {link.dropdown ? (
                 <details class="group/details">
@@ -162,7 +211,10 @@ const isActive = (linkPath: string) => {
                   </summary>
                   <div class="pl-2 pt-2 pb-2 space-y-2 border-l-2 border-primary/10 ml-2">
                     {link.dropdown.map((item) => (
-                      <a href={item.path} class="flex items-center gap-3 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors">
+                      <a
+                        href={item.path}
+                        class="flex items-center gap-3 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+                      >
                         <span class="font-medium text-base">{item.name}</span>
                       </a>
                     ))}
@@ -173,109 +225,117 @@ const isActive = (linkPath: string) => {
                   href={link.path}
                   class:list={[
                     "block text-xl font-bold py-3 transition-colors hover:text-primary",
-                    isActive(link.path) ? "text-primary" : "text-foreground"
+                    isActive(link.path) ? "text-primary" : "text-foreground",
                   ]}
                 >
                   {link.name}
                 </a>
               )}
             </div>
-          ))}
-          
-          <div class="pt-6 mt-2 border-t border-border/10 mobile-nav-item">
-              <a href="https://cal.com/aexaware-infotech" target="_blank" rel="noopener noreferrer" class={buttonVariants({ size: 'lg', className: "w-full rounded-full text-lg h-14 shadow-md" })}>
-                  Book a Call <ArrowUpRight className="ml-2 h-5 w-5" />
-              </a>
-           </div>
-       </div>
+          ))
+        }
+
+        <div class="pt-6 mt-2 border-t border-border/10 mobile-nav-item">
+          <a
+            href="https://cal.com/aexaware-infotech"
+            target="_blank"
+            rel="noopener noreferrer"
+            class={buttonVariants({
+              size: "lg",
+              className: "w-full rounded-full text-lg h-14 shadow-md",
+            })}
+          >
+            Book a Call <ArrowUpRight className="ml-2 h-5 w-5" />
+          </a>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
 
 <script>
   function initNavbar() {
-    const header = document.getElementById('main-header');
-    const navbarInner = document.getElementById('navbar-inner');
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
-    
+    const header = document.getElementById("main-header");
+    const navbarInner = document.getElementById("navbar-inner");
+    const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+
     // SCROLL CAPSULE LOGIC
     function handleScroll() {
       const scrollY = window.scrollY;
       const isDesktop = window.innerWidth >= 1024;
-      
+
       if (scrollY > 20 && isDesktop) {
         // Shrink on Scroll (Desktop only)
-        navbarInner?.classList.remove('max-w-7xl');
-        navbarInner?.classList.add('max-w-5xl');
-        
+        navbarInner?.classList.remove("max-w-7xl");
+        navbarInner?.classList.add("max-w-5xl");
+
         // Remove shadow, keep border
-        navbarInner?.classList.remove('shadow-lg', 'shadow-xl'); 
-        
+        navbarInner?.classList.remove("shadow-lg", "shadow-xl");
+
         // Remove padding from outer header to tighten fit
-        header?.classList.remove('py-4');
-        header?.classList.add('py-2');
+        header?.classList.remove("py-4");
+        header?.classList.add("py-2");
       } else {
         // Default Large Capsule (or Mobile state)
-        navbarInner?.classList.add('max-w-7xl');
-        navbarInner?.classList.remove('max-w-5xl');
-        
+        navbarInner?.classList.add("max-w-7xl");
+        navbarInner?.classList.remove("max-w-5xl");
+
         // Restore padding
-        header?.classList.add('py-4');
-        header?.classList.remove('py-2');
+        header?.classList.add("py-4");
+        header?.classList.remove("py-2");
       }
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     // MOBILE MENU LOGIC
     function toggleMenu() {
-        const isHidden = mobileMenu?.classList.contains('invisible');
-        
-        if (isHidden) {
-            // OPEN
-            mobileMenu?.classList.remove('invisible', 'opacity-0');
-            mobileMenu?.classList.add('opacity-100');
-            
-            // Icon Animation - Hide hamburger, show X
-            menuIcon?.classList.remove('opacity-100', 'rotate-0', 'scale-100');
-            menuIcon?.classList.add('opacity-0', 'rotate-90', 'scale-0');
-            closeIcon?.classList.remove('opacity-0', '-rotate-90', 'scale-0');
-            closeIcon?.classList.add('opacity-100', 'rotate-0', 'scale-100');
-            
-            // Ensure background is solid when menu is open, even at top of page
-            if (window.scrollY < 20) {
-               navbarInner?.classList.add('bg-background');
-               navbarInner?.classList.remove('bg-transparent');
-            }
-            
-        } else {
-            // CLOSE
-            mobileMenu?.classList.add('invisible', 'opacity-0');
-            mobileMenu?.classList.remove('opacity-100');
+      const isHidden = mobileMenu?.classList.contains("invisible");
 
-            // Icon Animation - Show hamburger, hide X
-            menuIcon?.classList.remove('opacity-0', 'rotate-90', 'scale-0');
-            menuIcon?.classList.add('opacity-100', 'rotate-0', 'scale-100');
-            closeIcon?.classList.remove('opacity-100', 'rotate-0', 'scale-100');
-            closeIcon?.classList.add('opacity-0', '-rotate-90', 'scale-0');
-            
-             // Revert background if at top
-            if (window.scrollY < 20) {
-               navbarInner?.classList.remove('bg-background');
-               navbarInner?.classList.add('bg-transparent');
-            }
+      if (isHidden) {
+        // OPEN
+        mobileMenu?.classList.remove("invisible", "opacity-0");
+        mobileMenu?.classList.add("opacity-100");
+
+        // Icon Animation - Hide hamburger, show X
+        menuIcon?.classList.remove("opacity-100", "rotate-0", "scale-100");
+        menuIcon?.classList.add("opacity-0", "rotate-90", "scale-0");
+        closeIcon?.classList.remove("opacity-0", "-rotate-90", "scale-0");
+        closeIcon?.classList.add("opacity-100", "rotate-0", "scale-100");
+
+        // Ensure background is solid when menu is open, even at top of page
+        if (window.scrollY < 20) {
+          navbarInner?.classList.add("bg-background");
+          navbarInner?.classList.remove("bg-transparent");
         }
+      } else {
+        // CLOSE
+        mobileMenu?.classList.add("invisible", "opacity-0");
+        mobileMenu?.classList.remove("opacity-100");
+
+        // Icon Animation - Show hamburger, hide X
+        menuIcon?.classList.remove("opacity-0", "rotate-90", "scale-0");
+        menuIcon?.classList.add("opacity-100", "rotate-0", "scale-100");
+        closeIcon?.classList.remove("opacity-100", "rotate-0", "scale-100");
+        closeIcon?.classList.add("opacity-0", "-rotate-90", "scale-0");
+
+        // Revert background if at top
+        if (window.scrollY < 20) {
+          navbarInner?.classList.remove("bg-background");
+          navbarInner?.classList.add("bg-transparent");
+        }
+      }
     }
 
-    mobileMenuToggle?.addEventListener('click', toggleMenu);
-    
+    mobileMenuToggle?.addEventListener("click", toggleMenu);
+
     // Initial check
     handleScroll();
   }
 
   initNavbar();
-  document.addEventListener('astro:after-swap', initNavbar);
+  document.addEventListener("astro:after-swap", initNavbar);
 </script>

@@ -4,7 +4,10 @@ const row1 = [
   { name: "Astro", icon: "https://cdn.simpleicons.org/astro/BC52EE" },
   { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/000000" },
   { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
-  { name: "Tailwind CSS", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
+  {
+    name: "Tailwind CSS",
+    icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4",
+  },
   { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
 ];
 
@@ -19,54 +22,71 @@ const row2 = [
 ];
 ---
 
-<section class="py-20 border-y border-border/40 bg-background/50 backdrop-blur-xs overflow-hidden relative">
-   {/* Radial Gradient Background */}
-   <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-50 pointer-events-none" />
+<section
+  class="py-20 border-y border-border/40 bg-background/50 backdrop-blur-xs overflow-hidden relative"
+>
+  {/* Radial Gradient Background */}
+  <div
+    class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent opacity-50 pointer-events-none"
+  >
+  </div>
 
   <div class="container-normal mb-12 text-center relative z-10">
-    <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest">Powered by Modern Tech Stack</p>
+    <p
+      class="text-sm font-medium text-muted-foreground uppercase tracking-widest"
+    >
+      Powered by Modern Tech Stack
+    </p>
   </div>
-  
+
   <div class="flex flex-col gap-10 relative z-10">
     {/* Row 1: Left Scroll */}
-    <div class="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4">
+    <div
+      class="relative flex overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4"
+    >
       <div class="flex animate-marquee gap-6 min-w-full items-center">
-        {[...row1, ...row1, ...row1, ...row1].map((tech) => (
-          <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/30 border border-border/50 backdrop-blur-xs transition-all duration-300 hover:border-primary/30 hover:bg-secondary/50 hover:scale-105 cursor-default grayscale hover:grayscale-0 group/item shrink-0">
-            <img 
-              src={tech.icon} 
-              alt={tech.name}
-              width="24"
-              height="24" 
-              class="h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0"
-              loading="eager"
-            />
-            <span class="text-sm font-semibold text-muted-foreground group-hover/item:text-foreground transition-colors whitespace-nowrap pt-0.5">
-              {tech.name}
-            </span>
-          </div>
-        ))}
+        {
+          [...row1, ...row1, ...row1, ...row1].map((tech) => (
+            <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/30 border border-border/50 backdrop-blur-xs transition-all duration-300 hover:border-primary/30 hover:bg-secondary/50 hover:scale-105 cursor-default grayscale hover:grayscale-0 group/item shrink-0">
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                width="24"
+                height="24"
+                class="h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0"
+                loading="eager"
+              />
+              <span class="text-sm font-semibold text-muted-foreground group-hover/item:text-foreground transition-colors whitespace-nowrap pt-0.5">
+                {tech.name}
+              </span>
+            </div>
+          ))
+        }
       </div>
     </div>
 
     {/* Row 2: Right Scroll */}
-    <div class="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4">
+    <div
+      class="relative flex overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4"
+    >
       <div class="flex animate-marquee-reverse gap-6 min-w-full items-center">
-        {[...row2, ...row2, ...row2, ...row2].map((tech) => (
-          <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/30 border border-border/50 backdrop-blur-xs transition-all duration-300 hover:border-primary/30 hover:bg-secondary/50 hover:scale-105 cursor-default grayscale hover:grayscale-0 group/item shrink-0">
-            <img 
-              src={tech.icon} 
-              alt={tech.name}
-              width="24"
-              height="24" 
-              class="h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0"
-              loading="eager"
-            />
-            <span class="text-sm font-semibold text-muted-foreground group-hover/item:text-foreground transition-colors whitespace-nowrap pt-0.5">
-              {tech.name}
-            </span>
-          </div>
-        ))}
+        {
+          [...row2, ...row2, ...row2, ...row2].map((tech) => (
+            <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-secondary/30 border border-border/50 backdrop-blur-xs transition-all duration-300 hover:border-primary/30 hover:bg-secondary/50 hover:scale-105 cursor-default grayscale hover:grayscale-0 group/item shrink-0">
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                width="24"
+                height="24"
+                class="h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0"
+                loading="eager"
+              />
+              <span class="text-sm font-semibold text-muted-foreground group-hover/item:text-foreground transition-colors whitespace-nowrap pt-0.5">
+                {tech.name}
+              </span>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>
@@ -82,13 +102,21 @@ const row2 = [
   }
 
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   @keyframes marquee-display {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 
   /* Pause on hover */

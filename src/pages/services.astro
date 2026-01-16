@@ -1,5 +1,5 @@
 ---
-import Layout from '@/layouts/Layout.astro';
+import Layout from "@/layouts/Layout.astro";
 import {
   ArrowRight,
   Code2,
@@ -14,9 +14,9 @@ import {
   Layers,
   Sparkles,
 } from "lucide-astro";
-import { Schema } from 'astro-seo-schema';
-import CTA from '@/components/astro/CTA.astro';
-import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
+import { Schema } from "astro-seo-schema";
+import CTA from "@/components/astro/CTA.astro";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 const services = [
   {
@@ -83,15 +83,25 @@ const solutions = [
 ];
 
 const techStack = [
-  "React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL",
-  "AWS", "Docker", "Flutter", "Tailwind CSS", "Figma", "GraphQL",
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Python",
+  "PostgreSQL",
+  "AWS",
+  "Docker",
+  "Flutter",
+  "Tailwind CSS",
+  "Figma",
+  "GraphQL",
 ];
 
 // No schema generation variable needed
 ---
 
-<Layout 
-  title="Services – Aexaware Infotech" 
+<Layout
+  title="Services – Aexaware Infotech"
   description="Explore our comprehensive range of digital services including web development, mobile apps, AI/ML integration, and cloud solutions."
 >
   <Fragment slot="head">
@@ -103,11 +113,11 @@ const techStack = [
         provider: {
           "@type": "Organization",
           name: "Aexaware Infotech",
-          url: "https://aexaware.com"
+          url: "https://aexaware.com",
         },
         areaServed: {
           "@type": "Place",
-          name: "Global"
+          name: "Global",
         },
         hasOfferCatalog: {
           "@type": "OfferCatalog",
@@ -117,42 +127,65 @@ const techStack = [
             itemOffered: {
               "@type": "Service",
               name: service.title,
-              description: service.desc
-            }
-          }))
-        }
+              description: service.desc,
+            },
+          })),
+        },
       }}
     />
   </Fragment>
 
   {/* Hero Section */}
   {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}
-  <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
-    
+  <section
+    class="relative w-full min-h-dvh flex flex-col justify-center pt-(--navbar-height) pb-16 lg:pb-24 overflow-hidden border-b border-border/40"
+  >
     {/* FIX: Semantic Grid Background */}
     <BackgroundGrid density="sm" mask="top" />
-    <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent -z-10" />
-    
+    <div
+      class="absolute inset-0 bg-linear-to-b from-primary/5 via-transparent to-transparent -z-10"
+    >
+    </div>
+
     <div class="container-normal relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8"
+        >
           <Sparkles className="w-4 h-4 text-primary" />
-          <span class="text-sm font-semibold text-primary tracking-wide uppercase">Our Expertise</span>
+          <span
+            class="text-sm font-semibold text-primary tracking-wide uppercase"
+            >Our Expertise</span
+          >
         </div>
 
-        <h1 class="font-heading font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance">
-          Digital solutions that <br/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-serif">drive growth.</span>
+        <h1
+          class="font-heading font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance"
+        >
+          Digital solutions that <br />
+          <span
+            class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent font-serif"
+            >drive growth.</span
+          >
         </h1>
-        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty">
+        <p
+          class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty"
+        >
           We provide custom web development, mobile-app development, UI/UX
           design, cloud and DevOps support, and AI/ML integration.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/contact" aria-label="Start a project with us" class="inline-flex items-center justify-center h-14 rounded-full px-8 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 hover:shadow-primary/40">
+          <a
+            href="/contact"
+            aria-label="Start a project with us"
+            class="inline-flex items-center justify-center h-14 rounded-full px-8 text-lg font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20 hover:shadow-primary/40"
+          >
             Start a Project <ArrowRight className="ml-2 h-5 w-5" />
           </a>
-          <a href="#capabilities" class="inline-flex items-center justify-center h-14 rounded-full px-8 text-lg font-medium border border-border bg-background/50 hover:bg-secondary/50 backdrop-blur-xs transition-all hover:border-primary/20">
+          <a
+            href="#capabilities"
+            class="inline-flex items-center justify-center h-14 rounded-full px-8 text-lg font-medium border border-border bg-background/50 hover:bg-secondary/50 backdrop-blur-xs transition-all hover:border-primary/20"
+          >
             Explore Services
           </a>
         </div>
@@ -164,44 +197,48 @@ const techStack = [
   <section id="capabilities" class="section-padding bg-background relative">
     <div class="container-normal">
       <div class="text-center max-w-3xl mx-auto mb-20">
-        <h2 class="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
+        <h2
+          class="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6"
+        >
           Core Capabilities
         </h2>
         <p class="text-xl text-muted-foreground leading-relaxed">
-          We offer a comprehensive suite of digital services designed to
-          meet the evolving needs of modern businesses.
+          We offer a comprehensive suite of digital services designed to meet
+          the evolving needs of modern businesses.
         </p>
       </div>
 
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <a
-            href={service.path}
-            class="group relative bg-secondary/5 p-8 rounded-card-lg border border-white/10 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden"
-          >
-             <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        {
+          services.map((service) => (
+            <a
+              href={service.path}
+              class="group relative bg-secondary/5 p-8 rounded-card-lg border border-white/10 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden"
+            >
+              <div class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-            <div class="mb-8 inline-flex p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
-              <service.icon className="h-8 w-8" aria-hidden="true" />
-            </div>
-            
-            <h3 class="font-heading text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
-              {service.title}
-            </h3>
-            
-            <p class="text-muted-foreground leading-relaxed mb-8 text-base">
-              {service.desc}
-            </p>
-            
-            <div class="flex flex-wrap gap-2 mt-auto">
-              {service.tags.map((tag) => (
-                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </a>
-        ))}
+              <div class="mb-8 inline-flex p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
+                <service.icon className="h-8 w-8" aria-hidden="true" />
+              </div>
+
+              <h3 class="font-heading text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
+
+              <p class="text-muted-foreground leading-relaxed mb-8 text-base">
+                {service.desc}
+              </p>
+
+              <div class="flex flex-wrap gap-2 mt-auto">
+                {service.tags.map((tag) => (
+                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -211,53 +248,93 @@ const techStack = [
     <div class="container-normal">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div class="space-y-10">
-          <h2 class="font-heading text-4xl md:text-5xl font-bold text-foreground leading-tight">
-            Solutions tailored to <br /> <span class="text-primary font-serif">your industry.</span>
+          <h2
+            class="font-heading text-4xl md:text-5xl font-bold text-foreground leading-tight"
+          >
+            Solutions tailored to <br />
+            <span class="text-primary font-serif">your industry.</span>
           </h2>
           <p class="text-xl text-muted-foreground leading-relaxed">
-            We understand that every industry has unique challenges. Our
-            team has deep expertise in delivering specialized solutions for
-            various sectors.
+            We understand that every industry has unique challenges. Our team
+            has deep expertise in delivering specialized solutions for various
+            sectors.
           </p>
 
           <div class="space-y-8">
-            {solutions.map((item) => (
-              <div class="flex gap-6 group">
-                <div class="mt-1 p-2 rounded-full bg-primary/10 text-primary h-fit group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
-                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
+            {
+              solutions.map((item) => (
+                <div class="flex gap-6 group">
+                  <div class="mt-1 p-2 rounded-full bg-primary/10 text-primary h-fit group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                    <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 class="font-heading font-bold text-foreground text-xl mb-2 group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p class="text-muted-foreground text-lg">{item.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 class="font-heading font-bold text-foreground text-xl mb-2 group-hover:text-primary transition-colors">
-                    {item.title}
-                  </h3>
-                  <p class="text-muted-foreground text-lg">{item.desc}</p>
-                </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
         </div>
-        
+
         <div class="relative">
-          <div class="aspect-auto lg:aspect-[4/3] rounded-section overflow-hidden bg-background border border-border/50 shadow-2xl relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
-            
+          <div
+            class="aspect-auto lg:aspect-[4/3] rounded-section overflow-hidden bg-background border border-border/50 shadow-2xl relative"
+          >
+            <div
+              class="absolute inset-0 bg-linear-to-br from-primary/5 to-accent/5"
+            >
+            </div>
+
             {/* Abstract Visual Grid */}
-            <div class="grid grid-cols-2 gap-3 lg:gap-6 p-4 lg:p-12 h-full content-center">
-              <div class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
-                <Globe className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4" aria-hidden="true" />
-                <span class="font-bold text-sm lg:text-lg font-heading">Global Reach</span>
+            <div
+              class="grid grid-cols-2 gap-3 lg:gap-6 p-4 lg:p-12 h-full content-center"
+            >
+              <div
+                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg"
+              >
+                <Globe
+                  className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4"
+                  aria-hidden="true"
+                />
+                <span class="font-bold text-sm lg:text-lg font-heading"
+                  >Global Reach</span
+                >
               </div>
-              <div class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
-                <ShieldCheck className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4" aria-hidden="true" />
-                <span class="font-bold text-sm lg:text-lg font-heading">Secure</span>
+              <div
+                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg"
+              >
+                <ShieldCheck
+                  className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4"
+                  aria-hidden="true"
+                />
+                <span class="font-bold text-sm lg:text-lg font-heading"
+                  >Secure</span
+                >
               </div>
-              <div class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
-                <Zap className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4" aria-hidden="true" />
-                <span class="font-bold text-sm lg:text-lg font-heading">Fast</span>
+              <div
+                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg"
+              >
+                <Zap
+                  className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4"
+                  aria-hidden="true"
+                />
+                <span class="font-bold text-sm lg:text-lg font-heading"
+                  >Fast</span
+                >
               </div>
-              <div class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg">
-                <Layers className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4" aria-hidden="true" />
-                <span class="font-bold text-sm lg:text-lg font-heading">Scalable</span>
+              <div
+                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg"
+              >
+                <Layers
+                  className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4"
+                  aria-hidden="true"
+                />
+                <span class="font-bold text-sm lg:text-lg font-heading"
+                  >Scalable</span
+                >
               </div>
             </div>
           </div>
@@ -269,21 +346,29 @@ const techStack = [
   {/* Technology Stack */}
   <section class="section-padding bg-background border-t border-border/40">
     <div class="container-normal text-center">
-      <h2 class="font-heading text-3xl md:text-4xl font-bold mb-16 text-foreground">
+      <h2
+        class="font-heading text-3xl md:text-4xl font-bold mb-16 text-foreground"
+      >
         Powered by modern technology.
       </h2>
 
-      <div class="flex flex-wrap justify-center gap-4 md:gap-6 opacity-90 max-w-5xl mx-auto">
-        {techStack.map((tech) => (
-          <div class="flex items-center justify-center px-6 py-3 rounded-full bg-secondary/30 border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 cursor-default">
-            <span class="font-medium text-lg text-muted-foreground hover:text-foreground">{tech}</span>
-          </div>
-        ))}
+      <div
+        class="flex flex-wrap justify-center gap-4 md:gap-6 opacity-90 max-w-5xl mx-auto"
+      >
+        {
+          techStack.map((tech) => (
+            <div class="flex items-center justify-center px-6 py-3 rounded-full bg-secondary/30 border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300 cursor-default">
+              <span class="font-medium text-lg text-muted-foreground hover:text-foreground">
+                {tech}
+              </span>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <CTA 
+  <CTA
     variant="primary"
     title="Ready to scale?"
     titleHighlight=""

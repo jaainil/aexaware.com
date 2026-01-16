@@ -184,7 +184,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
   
   {/* Hero Section */}
   {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}
-  <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-32 pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
+  <section class="relative w-full min-h-dvh flex flex-col justify-center pt-32 pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
     
     {/* FIX: Semantic Grid Background */}
     <BackgroundGrid density="sm" mask="top" />
@@ -199,7 +199,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
 
         <h1 class="font-heading font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8">
           {heroTitle} <br class="hidden md:block" />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+          <span class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
             {heroSubtitle}
           </span>
         </h1>
@@ -250,7 +250,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
           <div class="group relative bg-card/50 backdrop-blur-xs p-10 rounded-card-lg border border-border/50 hover:border-primary/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
             
             {/* Hover Gradient Background */}
-            <div class={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+            <div class={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
             <div class="relative z-10">
               <div class="flex justify-between items-start mb-8">
@@ -276,7 +276,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
   </section>
 
   {/* Technical Toolbox */}
-  <section class="section-padding border-y border-border/40 bg-gradient-to-b from-secondary/5 to-background relative overflow-hidden">
+  <section class="section-padding border-y border-border/40 bg-linear-to-b from-secondary/5 to-background relative overflow-hidden">
     {/* Decorative background elements */}
     <BackgroundGrid density="lg" opacity={0.02} />
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />

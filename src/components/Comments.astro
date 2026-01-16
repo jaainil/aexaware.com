@@ -3,42 +3,46 @@ import { MessageSquare } from "lucide-astro";
 ---
 
 <div class="w-full mt-16 pt-0">
-  <div class="rounded-card-lg bg-secondary/20 p-8 border border-border backdrop-blur-xs">
-      <div class="flex items-center gap-2 mb-8 border-b border-border pb-4">
-          <MessageSquare class="size-5 text-primary" />
-          {/* FIX: Updated font to match design system */}
-          <h3 class="text-xl font-medium font-heading">Join the Conversation</h3>
-      </div>
-      
-      {/* Specific container for injection to avoid layout shifts or selector errors */}
-      <div id="giscus-container" class="w-full min-h-[150px]"></div>
+  <div
+    class="rounded-card-lg bg-secondary/20 p-8 border border-border backdrop-blur-xs"
+  >
+    <div class="flex items-center gap-2 mb-8 border-b border-border pb-4">
+      <MessageSquare class="size-5 text-primary" />
+      {/* FIX: Updated font to match design system */}
+      <h3 class="text-xl font-medium font-heading">Join the Conversation</h3>
+    </div>
+
+    {
+      /* Specific container for injection to avoid layout shifts or selector errors */
+    }
+    <div id="giscus-container" class="w-full min-h-[150px]"></div>
   </div>
 </div>
 
 <script>
   function loadGiscus() {
-    const container = document.getElementById('giscus-container');
-    
+    const container = document.getElementById("giscus-container");
+
     // Safety check: prevent double injection or errors if component isn't present
     if (!container || container.querySelector('script[src*="giscus"]')) return;
 
-    const script = document.createElement('script');
-    script.src = 'https://giscus.app/client.js';
-    script.setAttribute('data-repo', 'jaainil/aexaware.com');
-    script.setAttribute('data-repo-id', 'R_kgDOQX9g0A');
-    script.setAttribute('data-category', 'General');
-    script.setAttribute('data-category-id', 'DIC_kwDOQX9g0M4CzGnU');
-    script.setAttribute('data-mapping', 'pathname');
-    script.setAttribute('data-strict', '0');
-    script.setAttribute('data-reactions-enabled', '1');
-    script.setAttribute('data-emit-metadata', '1');
-    script.setAttribute('data-input-position', 'top');
-    // Note: 'transparent_dark' looks great on glass panels. 
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.setAttribute("data-repo", "jaainil/aexaware.com");
+    script.setAttribute("data-repo-id", "R_kgDOQX9g0A");
+    script.setAttribute("data-category", "General");
+    script.setAttribute("data-category-id", "DIC_kwDOQX9g0M4CzGnU");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-strict", "0");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-emit-metadata", "1");
+    script.setAttribute("data-input-position", "top");
+    // Note: 'transparent_dark' looks great on glass panels.
     // If you need Light Mode support later, change this to 'preferred_color_scheme'
-    script.setAttribute('data-theme', 'transparent_dark'); 
-    script.setAttribute('data-lang', 'en');
-    script.setAttribute('data-loading', 'lazy');
-    script.crossOrigin = 'anonymous';
+    script.setAttribute("data-theme", "transparent_dark");
+    script.setAttribute("data-lang", "en");
+    script.setAttribute("data-loading", "lazy");
+    script.crossOrigin = "anonymous";
     script.async = true;
 
     container.appendChild(script);
@@ -48,5 +52,5 @@ import { MessageSquare } from "lucide-astro";
   loadGiscus();
 
   // Re-run on navigation (Astro View Transitions)
-  document.addEventListener('astro:page-load', loadGiscus);
+  document.addEventListener("astro:page-load", loadGiscus);
 </script>

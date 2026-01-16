@@ -1,6 +1,13 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
-import { ArrowUpRight, Code, Smartphone, Cloud, Brain, ArrowRight } from "lucide-astro";
+import {
+  ArrowUpRight,
+  Code,
+  Smartphone,
+  Cloud,
+  Brain,
+  ArrowRight,
+} from "lucide-astro";
 import { cn } from "@/lib/utils";
 import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
@@ -8,20 +15,22 @@ const services = [
   {
     id: "web",
     title: "Custom Web Platforms",
-    description: "Architecting secure, scalable web solutions that handle millions of requests.",
+    description:
+      "Architecting secure, scalable web solutions that handle millions of requests.",
     icon: Code,
     href: "/services/web-development",
     class: "md:col-span-2 md:row-span-2", // Large square
-    gradient: "from-primary/20 via-primary/5 to-transparent"
+    gradient: "from-primary/20 via-primary/5 to-transparent",
   },
   {
     id: "ai",
     title: "AI & ML Integration",
-    description: "Intelligent automation and predictive analytics to drive business growth.",
+    description:
+      "Intelligent automation and predictive analytics to drive business growth.",
     icon: Brain,
     href: "/services/ai-ml-integration",
     class: "md:col-span-1 md:row-span-2", // Tall vertical
-    gradient: "from-accent/20 via-accent/5 to-transparent"
+    gradient: "from-accent/20 via-accent/5 to-transparent",
   },
   {
     id: "mobile",
@@ -30,7 +39,7 @@ const services = [
     icon: Smartphone,
     href: "/services/mobile-development",
     class: "md:col-span-1 md:row-span-1",
-    gradient: "from-primary/10 via-transparent to-transparent"
+    gradient: "from-primary/10 via-transparent to-transparent",
   },
   {
     id: "cloud",
@@ -39,77 +48,95 @@ const services = [
     icon: Cloud,
     href: "/services/cloud-devops",
     class: "md:col-span-2 md:row-span-1", // Wide horizontal
-    gradient: "from-secondary/30 via-transparent to-transparent"
-  }
+    gradient: "from-secondary/30 via-transparent to-transparent",
+  },
 ];
 ---
 
 <section class="section-padding bg-background relative overflow-hidden">
-  
-  {/* Semantic Grid Background 
+  {
+    /* Semantic Grid Background 
       Using variable transparency ensures this looks good in both Light and Dark modes automatically.
-  */}
+  */
+  }
   <BackgroundGrid density="md" mask="bottom" />
 
   <div class="container-normal relative z-10">
-    
-    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+    <div
+      class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8"
+    >
       <div class="max-w-2xl">
-        <h2 class="font-heading text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground mb-4">
-          Services Beyond <br/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-serif">Expectation.</span>
+        <h2
+          class="font-heading text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground mb-4"
+        >
+          Services Beyond <br />
+          <span
+            class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent font-serif"
+            >Expectation.</span
+          >
         </h2>
         <p class="text-xl text-muted-foreground max-w-lg">
-           We don't just write code. We engineer digital dominance for your brand.
+          We don't just write code. We engineer digital dominance for your
+          brand.
         </p>
       </div>
-      
-      <a 
-        href="/services" 
-        class={cn(buttonVariants({ variant: "outline", size: "lg" }), "group text-base font-semibold rounded-full px-6")}
+
+      <a
+        href="/services"
+        class={cn(
+          buttonVariants({ variant: "outline", size: "lg" }),
+          "group text-base font-semibold rounded-full px-6",
+        )}
       >
-        Explore All Services <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+        Explore All Services <ArrowRight
+          className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1"
+        />
       </a>
     </div>
 
     {/* Bento Grid layout */}
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {services.map((service) => (
-        <div class={cn(
-          "row-span-1 group relative overflow-hidden rounded-card-lg border border-border/40 bg-card/50 backdrop-blur-xs p-8 flex flex-col justify-between transition-all duration-300 hover:border-primary/50 hover:shadow-2xl",
-          service.class
-        )}>
-          
-          {/* Hover Gradient */}
-          <div class={cn(
-            "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out",
-            service.gradient
-          )} />
+      {
+        services.map((service) => (
+          <div
+            class={cn(
+              "row-span-1 group relative overflow-hidden rounded-card-lg border border-border/40 bg-card/50 backdrop-blur-xs p-8 flex flex-col justify-between transition-all duration-300 hover:border-primary/50 hover:shadow-2xl",
+              service.class,
+            )}
+          >
+            {/* Hover Gradient */}
+            <div
+              class={cn(
+                "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out",
+                service.gradient,
+              )}
+            />
 
-          <div class="relative z-10">
-            <div class="h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center text-foreground mb-6 shadow-xs group-hover:scale-110 transition-transform duration-500">
-              <service.icon className="h-7 w-7" strokeWidth={1.5} />
+            <div class="relative z-10">
+              <div class="h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center text-foreground mb-6 shadow-xs group-hover:scale-110 transition-transform duration-500">
+                <service.icon className="h-7 w-7" strokeWidth={1.5} />
+              </div>
+
+              <h3 class="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3 tracking-tight">
+                {service.title}
+              </h3>
+              <p class="text-muted-foreground leading-relaxed text-base md:text-lg">
+                {service.description}
+              </p>
             </div>
-            
-            <h3 class="font-heading text-2xl md:text-3xl font-bold text-foreground mb-3 tracking-tight">
-              {service.title}
-            </h3>
-            <p class="text-muted-foreground leading-relaxed text-base md:text-lg">
-              {service.description}
-            </p>
-          </div>
 
-          <div class="relative z-10 pt-8 flex justify-end">
-             <a 
-               href={service.href} 
-               aria-label={`Learn more about ${service.title}`}
-               class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-foreground text-background opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
-             >
-               <ArrowUpRight className="h-5 w-5" />
-             </a>
+            <div class="relative z-10 pt-8 flex justify-end">
+              <a
+                href={service.href}
+                aria-label={`Learn more about ${service.title}`}
+                class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-foreground text-background opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300"
+              >
+                <ArrowUpRight className="h-5 w-5" />
+              </a>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

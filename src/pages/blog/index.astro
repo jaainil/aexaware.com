@@ -1,56 +1,75 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import { ArrowRight, Calendar, User, Sparkles, ChevronRight } from 'lucide-astro';
-import { Image } from 'astro:assets';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button-variants';
-import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import {
+  ArrowRight,
+  Calendar,
+  User,
+  Sparkles,
+  ChevronRight,
+} from "lucide-astro";
+import { Image } from "astro:assets";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button-variants";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
-const allPosts = (await getCollection('blog')).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
 );
 
 // Featured Post: Simply use the most recent (newest) post
 const featuredPost = allPosts[0];
 // Remaining posts exclude the featured post
-const remainingPosts = allPosts.filter(post => post !== featuredPost);
+const remainingPosts = allPosts.filter((post) => post !== featuredPost);
 
 // Helper to format date
 const formatDate = (date: Date) => {
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 };
 ---
 
-<Layout 
-  title="Aexaware Tech Blog – Web, Mobile & AI Insights" 
+<Layout
+  title="Aexaware Tech Blog – Web, Mobile & AI Insights"
   description="Read Aexaware’s blogs on web development, AI, DevOps and digital innovation."
 >
-  
   {/* Hero Section */}
   {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}
-  <section class="relative w-full min-h-[100dvh] flex flex-col justify-center pt-[var(--navbar-height)] pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
-    
+  <section
+    class="relative w-full min-h-dvh flex flex-col justify-center pt-(--navbar-height) pb-16 lg:pb-24 overflow-hidden border-b border-border/40"
+  >
     {/* FIX: Semantic Grid Background */}
     <BackgroundGrid density="sm" mask="top" />
 
     <div class="container-normal relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8"
+        >
           <Sparkles className="w-4 h-4 text-primary" />
-          <span class="text-sm font-semibold text-primary tracking-wide uppercase">The Aexaware Blog</span>
+          <span
+            class="text-sm font-semibold text-primary tracking-wide uppercase"
+            >The Aexaware Blog</span
+          >
         </div>
 
-        <h1 class="font-heading font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance">
-          Insights, Updates & <br/>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-serif">Expert Opinions.</span>
+        <h1
+          class="font-heading font-bold text-4xl sm:text-6xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] text-foreground mb-8 text-balance"
+        >
+          Insights, Updates & <br />
+          <span
+            class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent font-serif"
+            >Expert Opinions.</span
+          >
         </h1>
-        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty">
-           Stay ahead of the curve with our latest thoughts on technology, design, and digital strategy.
+        <p
+          class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty"
+        >
+          Stay ahead of the curve with our latest thoughts on technology,
+          design, and digital strategy.
         </p>
       </div>
     </div>
@@ -59,108 +78,117 @@ const formatDate = (date: Date) => {
   {/* Blog Content */}
   <section class="section-padding bg-background relative">
     <div class="container-normal">
-      
       {/* Featured Post */}
-      {featuredPost && (
-        <div class="mb-24">
-            <span class="text-sm font-bold uppercase tracking-widest text-primary mb-8 block">Latest Insights</span>
-             <a href={`/blog/${featuredPost.slug}`} class="group grid lg:grid-cols-2 gap-12 items-center bg-secondary/5 rounded-section border border-border/50 p-6 lg:p-12 hover:border-primary/50 transition-colors duration-500">
-                <div class="aspect-[16/10] overflow-hidden rounded-card relative shadow-2xl">
-                    {featuredPost.data.image && (
-                        <Image
-                            src={featuredPost.data.image}
-                            alt={featuredPost.data.title}
-                            class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                            width={1200}
-                            height={750}
-                            format="webp"
-                            quality={80}
-                            loading="eager"
-                        />
-                    )}
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+      {
+        featuredPost && (
+          <div class="mb-24">
+            <span class="text-sm font-bold uppercase tracking-widest text-primary mb-8 block">
+              Latest Insights
+            </span>
+            <a
+              href={`/blog/${featuredPost.slug}`}
+              class="group grid lg:grid-cols-2 gap-12 items-center bg-secondary/5 rounded-section border border-border/50 p-6 lg:p-12 hover:border-primary/50 transition-colors duration-500"
+            >
+              <div class="aspect-16/10 overflow-hidden rounded-card relative shadow-2xl">
+                {featuredPost.data.image && (
+                  <Image
+                    src={featuredPost.data.image}
+                    alt={featuredPost.data.title}
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    width={1200}
+                    height={750}
+                    format="webp"
+                    quality={80}
+                    loading="eager"
+                    layout="none"
+                  />
+                )}
+                <div class="absolute inset-0 bg-linear-to-t from-black/40 to-transparent pointer-events-none" />
+              </div>
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+                    {featuredPost.data.category || "Tech"}
+                  </span>
+                  <div class="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Calendar className="size-4" />
+                    {formatDate(featuredPost.data.date)}
+                  </div>
                 </div>
-                <div>
-                      <div class="flex items-center gap-4 mb-6">
-                        <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
-                            {featuredPost.data.category || 'Tech'}
-                        </span>
-                        <div class="flex items-center gap-2 text-sm text-muted-foreground">
-                            <Calendar className="size-4" />
-                            {formatDate(featuredPost.data.date)}
-                        </div>
-                    </div>
-                    <h2 class="font-heading text-3xl lg:text-5xl font-bold mb-6 text-foreground leading-tight group-hover:text-primary transition-colors">
-                        {featuredPost.data.title}
-                    </h2>
-                    <p class="text-lg text-muted-foreground mb-8 line-clamp-3 leading-relaxed">
-                        {featuredPost.data.description}
+                <h2 class="font-heading text-3xl lg:text-5xl font-bold mb-6 text-foreground leading-tight group-hover:text-primary transition-colors">
+                  {featuredPost.data.title}
+                </h2>
+                <p class="text-lg text-muted-foreground mb-8 line-clamp-3 leading-relaxed">
+                  {featuredPost.data.description}
+                </p>
+                <div class="flex items-center gap-3">
+                  <div class="size-10 rounded-full bg-muted flex items-center justify-center border border-border">
+                    <User className="size-5 text-muted-foreground" />
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-foreground">
+                      {featuredPost.data.author}
                     </p>
-                    <div class="flex items-center gap-3">
-                          <div class="size-10 rounded-full bg-muted flex items-center justify-center border border-border">
-                            <User className="size-5 text-muted-foreground" />
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium text-foreground">{featuredPost.data.author}</p>
-                            <p class="text-xs text-muted-foreground">Author</p>
-                        </div>
-                        <div class="ml-auto inline-flex items-center gap-2 text-sm font-bold text-primary">
-                            Read Article <ArrowRight class="size-4" />
-                        </div>
-                    </div>
+                    <p class="text-xs text-muted-foreground">Author</p>
+                  </div>
+                  <div class="ml-auto inline-flex items-center gap-2 text-sm font-bold text-primary">
+                    Read Article <ArrowRight class="size-4" />
+                  </div>
                 </div>
-             </a>
-        </div>
-      )}
+              </div>
+            </a>
+          </div>
+        )
+      }
 
       {/* Remaining Posts Grid */}
       <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-        {remainingPosts.map((post) => (
-          <a
-             href={`/blog/${post.slug}`}
-             class="group flex flex-col"
-          >
-            <div class="aspect-[16/10] overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
-              {post.data.image && (
-                <Image
-                  src={post.data.image}
-                  alt={post.data.title}
-                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  width={800}
-                  height={500}
-                  format="webp"
-                  quality={80}
-                />
-              )}
-               <div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            </div>
-            
-            <div class="flex flex-1 flex-col">
-              <div class="mb-4 flex items-center gap-4 text-xs font-medium text-muted-foreground">
-                 <span class="text-primary font-bold uppercase tracking-wider">
-                  {post.data.category || 'Tech'}
-                </span>
-                <span class="size-1 rounded-full bg-border" />
-                <div class="flex items-center gap-1.5">
-                  <Calendar className="size-3.5" />
-                  {formatDate(post.data.date)}
+        {
+          remainingPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="group flex flex-col">
+              <div class="aspect-[16/10] overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
+                {post.data.image && (
+                  <Image
+                    src={post.data.image}
+                    alt={post.data.title}
+                    class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    width={800}
+                    height={500}
+                    format="webp"
+                    quality={80}
+                    layout="none"
+                  />
+                )}
+                <div class="absolute inset-0 bg-linear-to-tr from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              </div>
+
+              <div class="flex flex-1 flex-col">
+                <div class="mb-4 flex items-center gap-4 text-xs font-medium text-muted-foreground">
+                  <span class="text-primary font-bold uppercase tracking-wider">
+                    {post.data.category || "Tech"}
+                  </span>
+                  <span class="size-1 rounded-full bg-border" />
+                  <div class="flex items-center gap-1.5">
+                    <Calendar className="size-3.5" />
+                    {formatDate(post.data.date)}
+                  </div>
+                </div>
+
+                <h3 class="font-heading text-2xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
+                  {post.data.title}
+                </h3>
+
+                <p class="mb-6 text-muted-foreground leading-relaxed line-clamp-2 text-base">
+                  {post.data.description}
+                </p>
+
+                <div class="mt-auto flex items-center gap-2 text-sm font-semibold text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  Read More <ChevronRight className="size-4" />
                 </div>
               </div>
-              
-              <h3 class="font-heading text-2xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
-                  {post.data.title}
-              </h3>
-              
-              <p class="mb-6 text-muted-foreground leading-relaxed line-clamp-2 text-base">
-                {post.data.description}
-              </p>
-              
-              <div class="mt-auto flex items-center gap-2 text-sm font-semibold text-primary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                  Read More <ChevronRight className="size-4" />
-              </div>
-            </div>
-          </a>
-        ))}
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -168,20 +196,32 @@ const formatDate = (date: Date) => {
   {/* Newsletter / CTA */}
   <section class="section-padding border-t border-border/40 bg-secondary/5">
     <div class="container-normal text-center max-w-2xl">
-        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-4 text-foreground">Stay Updated</h2>
-        <p class="text-muted-foreground mb-8">Get the latest insights delivered directly to your inbox. No spam, just value.</p>
-        
-        <form class="flex gap-2 max-w-sm mx-auto" onsubmit="event.preventDefault();">
-            <input 
-                type="email" 
-                placeholder="Enter your email" 
-                class="flex h-14 w-full rounded-full border border-input bg-background px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            />
-            <button type="submit" class={cn(buttonVariants(), "rounded-full h-14 px-6")}>
-                Subscribe
-            </button>
-        </form>
+      <h2
+        class="font-heading text-3xl md:text-4xl font-bold mb-4 text-foreground"
+      >
+        Stay Updated
+      </h2>
+      <p class="text-muted-foreground mb-8">
+        Get the latest insights delivered directly to your inbox. No spam, just
+        value.
+      </p>
+
+      <form
+        class="flex gap-2 max-w-sm mx-auto"
+        onsubmit="event.preventDefault();"
+      >
+        <input
+          type="email"
+          placeholder="Enter your email"
+          class="flex h-14 w-full rounded-full border border-input bg-background px-4 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        />
+        <button
+          type="submit"
+          class={cn(buttonVariants(), "rounded-full h-14 px-6")}
+        >
+          Subscribe
+        </button>
+      </form>
     </div>
   </section>
-
 </Layout>

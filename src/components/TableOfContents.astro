@@ -1,5 +1,5 @@
 ---
-import type { MarkdownHeading } from 'astro';
+import type { MarkdownHeading } from "astro";
 
 interface Props {
   headings: MarkdownHeading[];
@@ -15,11 +15,11 @@ const { headings } = Astro.props;
 function buildToc(headings: MarkdownHeading[]): TocHeading[] {
   const toc: TocHeading[] = [];
   const parentHeadings = new Map<number, TocHeading>();
-  
+
   headings.forEach((h) => {
     const heading: TocHeading = { ...h, subheadings: [] };
     parentHeadings.set(heading.depth, heading);
-    
+
     // Start from h1 (include page title)
     if (heading.depth === 1) {
       toc.push(heading);
@@ -33,7 +33,7 @@ function buildToc(headings: MarkdownHeading[]): TocHeading[] {
       }
     }
   });
-  
+
   return toc;
 }
 
@@ -41,83 +41,108 @@ const toc = buildToc(headings.filter((h) => h.depth >= 1 && h.depth <= 6));
 ---
 
 <nav class="toc-container text-sm">
-  <h3 class="font-heading font-bold text-foreground mb-6 uppercase tracking-widest text-xs">On this page</h3>
+  <h3
+    class="font-heading font-bold text-foreground mb-6 uppercase tracking-widest text-xs"
+  >
+    On this page
+  </h3>
   <ul class="space-y-1 relative">
     {/* Track Line */}
-    <div class="absolute left-0 top-2 bottom-2 w-0.5 bg-border rounded-full" aria-hidden="true" />
-    
-    {toc.map((heading) => (
-      <li>
-        <a
-          href={`#${heading.slug}`}
-          class="block py-1.5 pl-4 transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
-        >
-          {heading.text}
-        </a>
-        {heading.subheadings.length > 0 && (
-          <ul class="space-y-1">
-            {heading.subheadings.map((subheading) => (
-              <li>
-                <a
-                  href={`#${subheading.slug}`}
-                  class="block py-1.5 pl-8 text-xs transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
-                >
-                  {subheading.text}
-                </a>
-                {subheading.subheadings.length > 0 && (
-                  <ul class="space-y-1">
-                    {subheading.subheadings.map((h4) => (
-                      <li>
-                        <a
-                          href={`#${h4.slug}`}
-                          class="block py-1.5 pl-10 text-xs transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
-                        >
-                          {h4.text}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-      </li>
-    ))}
+    <div
+      class="absolute left-0 top-2 bottom-2 w-0.5 bg-border rounded-full"
+      aria-hidden="true"
+    >
+    </div>
+
+    {
+      toc.map((heading) => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            class="block py-1.5 pl-4 transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
+          >
+            {heading.text}
+          </a>
+          {heading.subheadings.length > 0 && (
+            <ul class="space-y-1">
+              {heading.subheadings.map((subheading) => (
+                <li>
+                  <a
+                    href={`#${subheading.slug}`}
+                    class="block py-1.5 pl-8 text-xs transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
+                  >
+                    {subheading.text}
+                  </a>
+                  {subheading.subheadings.length > 0 && (
+                    <ul class="space-y-1">
+                      {subheading.subheadings.map((h4) => (
+                        <li>
+                          <a
+                            href={`#${h4.slug}`}
+                            class="block py-1.5 pl-10 text-xs transition-all duration-300 border-l-2 leading-relaxed hover:text-primary text-muted-foreground border-transparent hover:border-primary/30"
+                          >
+                            {h4.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))
+    }
   </ul>
 </nav>
 
 <script>
   function initTOC() {
-    const tocLinks = document.querySelectorAll('.toc-container a');
-    const headings = document.querySelectorAll('article h1, article h2, article h3, article h4, article h5, article h6');
-    
+    const tocLinks = document.querySelectorAll(".toc-container a");
+    const headings = document.querySelectorAll(
+      "article h1, article h2, article h3, article h4, article h5, article h6",
+    );
+
     if (headings.length === 0) return;
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
+          const id = entry.target.getAttribute("id");
           if (!id) return;
 
           // Remove active class from all links
-          tocLinks.forEach(link => {
-            link.classList.remove('text-primary', 'font-bold', 'border-primary');
-            link.classList.add('text-muted-foreground', 'border-transparent');
+          tocLinks.forEach((link) => {
+            link.classList.remove(
+              "text-primary",
+              "font-bold",
+              "border-primary",
+            );
+            link.classList.add("text-muted-foreground", "border-transparent");
           });
 
           // Add active class to current link
-          const activeLink = document.querySelector(`.toc-container a[href="#${id}"]`);
+          const activeLink = document.querySelector(
+            `.toc-container a[href="#${id}"]`,
+          );
           if (activeLink) {
-            activeLink.classList.add('text-primary', 'font-bold', 'border-primary');
-            activeLink.classList.remove('text-muted-foreground', 'border-transparent');
+            activeLink.classList.add(
+              "text-primary",
+              "font-bold",
+              "border-primary",
+            );
+            activeLink.classList.remove(
+              "text-muted-foreground",
+              "border-transparent",
+            );
           }
         }
       });
     };
 
     const observer = new IntersectionObserver(observerCallback, {
-      rootMargin: '-10% 0px -80% 0px'
+      rootMargin: "-10% 0px -80% 0px",
     });
 
     headings.forEach((heading) => {
@@ -129,5 +154,5 @@ const toc = buildToc(headings.filter((h) => h.depth >= 1 && h.depth <= 6));
   initTOC();
 
   // Re-run on navigation (Astro View Transitions)
-  document.addEventListener('astro:page-load', initTOC);
+  document.addEventListener("astro:page-load", initTOC);
 </script>

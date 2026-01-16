@@ -1,21 +1,28 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '@/layouts/Layout.astro';
-import { Calendar, User, Clock, ChevronRight, Sparkles, Hash } from 'lucide-astro';
-import { Image } from 'astro:assets';
-import BlogEngagement from '@/components/BlogEngagement.astro';
-import Comments from '@/components/Comments.astro';
-import BlogSidebar from '@/components/BlogSidebar.astro';
-import ReadNext from '@/components/ReadNext.astro';
-import { Schema } from 'astro-seo-schema';
-import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/ui/button-variants';
-import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
-import CTA from '@/components/astro/CTA.astro';
-import Prose from '@/components/Prose.astro';
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import {
+  Calendar,
+  User,
+  Clock,
+  ChevronRight,
+  Sparkles,
+  Hash,
+} from "lucide-astro";
+import { Image } from "astro:assets";
+import BlogEngagement from "@/components/BlogEngagement.astro";
+import Comments from "@/components/Comments.astro";
+import BlogSidebar from "@/components/BlogSidebar.astro";
+import ReadNext from "@/components/ReadNext.astro";
+import { Schema } from "astro-seo-schema";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button-variants";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
+import CTA from "@/components/astro/CTA.astro";
+import Prose from "@/components/Prose.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -27,15 +34,15 @@ const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
 // Helper to format date
 const formatDate = (date: Date) => {
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 };
 
 // Generate Article JSON-LD
-const siteUrl = Astro.site || 'https://aexaware.com';
+const siteUrl = Astro.site || "https://aexaware.com";
 
 // Helper to slugify tags
 const slugify = (text: string) => {
@@ -43,17 +50,17 @@ const slugify = (text: string) => {
     .toString()
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, '-')      // Replace spaces with -
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-    .replace(/\-\-+/g, '-');  // Replace multiple - with single -
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
 };
 
 // Safe tag for breadcrumb
 const primaryCategory = post.data.category;
 ---
 
-<Layout 
-  title={post.data.title} 
+<Layout
+  title={post.data.title}
   description={post.data.description}
   image={post.data.image?.src ?? "/og-image.png"}
   type="article"
@@ -69,7 +76,9 @@ const primaryCategory = post.data.category;
       "@type": "Article",
       headline: post.data.title,
       description: post.data.description,
-      image: post.data.image ? new URL(post.data.image.src, siteUrl).href : new URL('/og-image.png', siteUrl).href,
+      image: post.data.image
+        ? new URL(post.data.image.src, siteUrl).href
+        : new URL("/og-image.png", siteUrl).href,
       datePublished: post.data.date.toISOString(),
       dateModified: post.data.date.toISOString(),
       author: {
@@ -81,9 +90,9 @@ const primaryCategory = post.data.category;
         name: "Aexaware Infotech",
         logo: {
           "@type": "ImageObject",
-          url: new URL('/og-image.png', siteUrl).href
-        }
-      }
+          url: new URL("/og-image.png", siteUrl).href,
+        },
+      },
     }}
   />
   <Schema
@@ -102,151 +111,186 @@ const primaryCategory = post.data.category;
           "@type": "ListItem",
           position: 2,
           name: "Blog",
-          item: new URL('/blog', siteUrl).href,
+          item: new URL("/blog", siteUrl).href,
         },
         {
           "@type": "ListItem",
           position: 3,
           name: post.data.title,
         },
-      ]
+      ],
     }}
   />
-  
+
   {/* Modern Grid Background - Fixed to stay behind content */}
   {/* FIX: Semantic Grid Background */}
   <BackgroundGrid density="sm" fixed mask="top" class="-z-10" />
 
   <article>
     {/* Hero Section */}
-    <section class="relative pt-[var(--navbar-height)] pb-16 lg:pb-20 overflow-hidden">
-
-      
+    <section
+      class="relative pt-(--navbar-height) pb-16 lg:pb-20 overflow-hidden"
+    >
       <div class="container-normal">
         <div class="text-center max-w-4xl mx-auto">
-           
-           {/* Breadcrumbs */}
-           <nav class="flex items-center justify-center gap-2 mb-10 text-sm text-muted-foreground" aria-label="Breadcrumb">
-               <a href="/" class="hover:text-foreground transition-colors">Home</a>
-               <ChevronRight class="size-3 text-muted-foreground/40" />
-               <a href="/blog" class="hover:text-foreground transition-colors">Blog</a>
-               {primaryCategory && (
-                  <>
-                    <ChevronRight class="size-3 text-muted-foreground/40" />
-                    <a href={`/blog/category/${slugify(primaryCategory)}`} class="font-medium text-foreground hover:text-primary transition-colors">
-                      {primaryCategory}
-                    </a>
-                  </>
-               )}
-           </nav>
+          {/* Breadcrumbs */}
+          <nav
+            class="flex items-center justify-center gap-2 mb-10 text-sm text-muted-foreground"
+            aria-label="Breadcrumb"
+          >
+            <a href="/" class="hover:text-foreground transition-colors">Home</a>
+            <ChevronRight class="size-3 text-muted-foreground/40" />
+            <a href="/blog" class="hover:text-foreground transition-colors"
+              >Blog</a
+            >
+            {
+              primaryCategory && (
+                <>
+                  <ChevronRight class="size-3 text-muted-foreground/40" />
+                  <a
+                    href={`/blog/category/${slugify(primaryCategory)}`}
+                    class="font-medium text-foreground hover:text-primary transition-colors"
+                  >
+                    {primaryCategory}
+                  </a>
+                </>
+              )
+            }
+          </nav>
 
-           {/* Category Badge */}
-           {primaryCategory && (
-              <a 
+          {/* Category Badge */}
+          {
+            primaryCategory && (
+              <a
                 href={`/blog/category/${slugify(primaryCategory)}`}
                 class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8 shadow-xs hover:bg-primary/10 transition-colors group"
               >
-                  <Sparkles className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
-                  <span class="text-sm font-bold text-primary tracking-wide uppercase">{primaryCategory}</span>
+                <Sparkles className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
+                <span class="text-sm font-bold text-primary tracking-wide uppercase">
+                  {primaryCategory}
+                </span>
               </a>
-           )}
-           
-           {/* Title - full width like parent container */}
-           <h1 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tighter leading-[1.1] text-foreground mb-8">
-              {post.data.title}
-           </h1>
+            )
+          }
 
-           {/* Description */}
-           {post.data.description && (
-             <p class="text-xl text-muted-foreground mt-4 mb-8 max-w-2xl mx-auto leading-relaxed">
-               {post.data.description}
-             </p>
-           )}
+          {/* Title - full width like parent container */}
+          <h1
+            class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl tracking-tighter leading-[1.1] text-foreground mb-8"
+          >
+            {post.data.title}
+          </h1>
 
-           <div class="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 text-muted-foreground text-sm">
-             <div class="flex items-center gap-2">
-                 <div class="size-8 rounded-full bg-muted flex items-center justify-center border border-border">
-                     <User className="size-4" />
-                 </div>
-                 <span class="font-medium text-foreground">{post.data.author}</span>
-             </div>
-             <div class="flex items-center gap-2">
-                 <Calendar className="size-4" />
-                 {formatDate(post.data.date)}
-             </div>
-             <div class="flex items-center gap-2">
-                 <Clock className="size-4" />
-                 {remarkPluginFrontmatter.minutesRead}
-             </div>
-           </div>
+          {/* Description */}
+          {
+            post.data.description && (
+              <p class="text-xl text-muted-foreground mt-4 mb-8 max-w-2xl mx-auto leading-relaxed">
+                {post.data.description}
+              </p>
+            )
+          }
+
+          <div
+            class="flex flex-wrap items-center justify-center gap-y-4 gap-x-8 text-muted-foreground text-sm"
+          >
+            <div class="flex items-center gap-2">
+              <div
+                class="size-8 rounded-full bg-muted flex items-center justify-center border border-border"
+              >
+                <User className="size-4" />
+              </div>
+              <span class="font-medium text-foreground">{post.data.author}</span
+              >
+            </div>
+            <div class="flex items-center gap-2">
+              <Calendar className="size-4" />
+              {formatDate(post.data.date)}
+            </div>
+            <div class="flex items-center gap-2">
+              <Clock className="size-4" />
+              {remarkPluginFrontmatter.minutesRead}
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <div class="container-normal pb-16 lg:pb-24">
-
       {/* Cinematic Image */}
-      {post.data.image && (
-        <div class="max-w-[1400px] mx-auto mb-20">
-             <div class="aspect-video relative rounded-section overflow-hidden shadow-2xl border border-border/50">
-                <Image
-                    src={post.data.image}
-                    alt={post.data.title}
-                    class="w-full h-full object-cover"
-                    width={1400}
-                    height={800}
-                    format="webp"
-                    quality={90}
-                    loading="eager"
-                />
-                 <div class="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent opacity-40 pointer-events-none" />
-             </div>
-        </div>
-      )}
+      {
+        post.data.image && (
+          <div class="max-w-[1400px] mx-auto mb-20">
+            <div class="aspect-video relative rounded-section overflow-hidden shadow-2xl border border-border/50">
+              <Image
+                src={post.data.image}
+                alt={post.data.title}
+                class="w-full h-full object-cover"
+                width={1400}
+                height={800}
+                format="webp"
+                quality={90}
+                loading="eager"
+                layout="none"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-background/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+            </div>
+          </div>
+        )
+      }
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 max-w-[1400px] mx-auto">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 gap-16 max-w-[1400px] mx-auto"
+      >
         {/* Main Content Column */}
         <div class="lg:col-span-8 order-1">
-          <Prose size="xl" class="[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-inherit">
+          <Prose
+            size="xl"
+            class="[&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-inherit"
+          >
             <Content />
           </Prose>
 
           {/* Tags Section */}
           <div class="mt-16 pt-10 border-t border-border/50">
-             <div class="flex items-center gap-2 mb-6">
-                <Hash class="size-5 text-primary" />
-                <h4 class="text-sm font-bold uppercase tracking-wider text-muted-foreground">Related Topics</h4>
-             </div>
+            <div class="flex items-center gap-2 mb-6">
+              <Hash class="size-5 text-primary" />
+              <h4
+                class="text-sm font-bold uppercase tracking-wider text-muted-foreground"
+              >
+                Related Topics
+              </h4>
+            </div>
             <div class="flex flex-wrap gap-3">
-              {post.data.tags?.map((tag) => (
-                <a
-                  href={`/blog/tags/${slugify(tag)}`}
-                  class="inline-flex items-center px-4 py-2 rounded-xl bg-secondary/50 text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-white transition-all cursor-pointer border border-border/50 hover:border-primary"
-                >
-                  #{tag}
-                </a>
-              ))}
+              {
+                post.data.tags?.map((tag) => (
+                  <a
+                    href={`/blog/tags/${slugify(tag)}`}
+                    class="inline-flex items-center px-4 py-2 rounded-xl bg-secondary/50 text-secondary-foreground text-sm font-medium hover:bg-primary hover:text-white transition-all cursor-pointer border border-border/50 hover:border-primary"
+                  >
+                    #{tag}
+                  </a>
+                ))
+              }
             </div>
           </div>
-          
+
           <ReadNext currentSlug={post.slug} tags={post.data.tags ?? []} />
           <Comments />
         </div>
 
         {/* Sidebar Column */}
         <div class="hidden lg:block lg:col-span-4 order-2">
-            <BlogSidebar 
-                headings={headings} 
-                url={Astro.url.href}
-                title={post.data.title}
-            />
+          <BlogSidebar
+            headings={headings}
+            url={Astro.url.href}
+            title={post.data.title}
+          />
         </div>
       </div>
     </div>
- </article>
+  </article>
 
   {/* Standardized CTA */}
-  <CTA 
+  <CTA
     title="Need expert tech solutions?"
     titleHighlight=""
     description="Turn these insights into action. Let's build your next big project together."

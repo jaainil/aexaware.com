@@ -6,7 +6,11 @@ import { cn } from "@/lib/utils";
 <div id="form-container" class="relative">
   <form class="space-y-6" id="contact-form">
     <div class="space-y-2">
-      <label for="name" class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Name</label>
+      <label
+        for="name"
+        class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >Name</label
+      >
       <input
         id="name"
         name="name"
@@ -20,7 +24,11 @@ import { cn } from "@/lib/utils";
 
     <div class="grid gap-6 md:grid-cols-2">
       <div class="space-y-2">
-        <label for="email" class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email Address</label>
+        <label
+          for="email"
+          class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >Email Address</label
+        >
         <input
           id="email"
           name="email"
@@ -33,7 +41,11 @@ import { cn } from "@/lib/utils";
         />
       </div>
       <div class="space-y-2">
-        <label for="phone" class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Phone Number (optional)</label>
+        <label
+          for="phone"
+          class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >Phone Number (optional)</label
+        >
         <input
           id="phone"
           name="phone"
@@ -46,7 +58,11 @@ import { cn } from "@/lib/utils";
     </div>
 
     <div class="space-y-2">
-      <label for="subject" class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Subject</label>
+      <label
+        for="subject"
+        class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >Subject</label
+      >
       <div class="relative">
         <select
           id="subject"
@@ -58,14 +74,32 @@ import { cn } from "@/lib/utils";
           <option value="career">Join the Team</option>
           <option value="general">General Inquiry</option>
         </select>
-        <div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-50">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"><path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        <div
+          class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none opacity-50"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            ><path
+              d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"></path></svg
+          >
         </div>
       </div>
     </div>
 
     <div class="space-y-2">
-      <label for="message" class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">How can we help you?</label>
+      <label
+        for="message"
+        class="text-sm font-medium text-foreground/80 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        >How can we help you?</label
+      >
       <textarea
         id="message"
         name="message"
@@ -78,17 +112,41 @@ import { cn } from "@/lib/utils";
     </div>
 
     <div class="space-y-2 flex justify-center md:justify-start pt-4">
-        <button
+      <button
         type="submit"
-        class={cn(buttonVariants({ size: "lg" }), "w-full rounded-full text-base h-12 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300")}
+        class={cn(
+          buttonVariants({ size: "lg" }),
+          "w-full rounded-full text-base h-12 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300",
+        )}
         id="submit-btn"
-        >
+      >
         Send Message
-        </button>
+      </button>
     </div>
   </form>
 </div>
 
-<div id="success-message" class="hidden flex flex-col items-center justify-center py-12 text-center space-y-6">
-  <div class="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center border border-success/20">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-10 h-10 text-success"><path d="m5 12 7 7 13-13"/><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/></svg>
+<div
+  id="success-message"
+  class="hidden flex-col items-center justify-center py-12 text-center space-y-6"
+>
+  <div
+    class="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center border border-success/20"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="w-10 h-10 text-success"
+      ><path d="m5 12 7 7 13-13"></path><path
+        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
+      ></path></svg
+    >
+  </div>
+</div>

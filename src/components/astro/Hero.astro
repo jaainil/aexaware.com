@@ -7,37 +7,44 @@ import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 import Typewriter from "astro-typewriter";
 
-const words = [
-  "Digital Futures",
-  "Killer Apps",
-  "E-Commerce",
-  "AI Systems"
-];
+const words = ["Digital Futures", "Killer Apps", "E-Commerce", "AI Systems"];
 ---
 
-<section class="relative w-full bg-background min-h-[100dvh] flex flex-col justify-center items-center pt-32 pb-16 lg:pb-24 overflow-hidden border-b border-white/5">
-  
+<section
+  class="relative w-full bg-background min-h-dvh flex flex-col justify-center items-center pt-32 pb-16 lg:pb-24 overflow-hidden border-b border-white/5"
+>
   {/* Modern Grid Background */}
   <BackgroundGrid density="md" mask="edges" />
 
   {/* Ambient Glows */}
-  <div class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-[500px] w-[1000px] rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
-  
+  <div
+    class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-[500px] w-[1000px] rounded-full bg-primary/10 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
   <div class="container-normal relative z-10">
     <div class="mx-auto text-center flex flex-col items-center">
-      
       {/* Badge */}
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8"
+      >
         <Sparkles className="w-4 h-4 text-primary" />
-        <span class="text-sm font-semibold text-primary tracking-wide uppercase">Top Rated Digital Agency</span>
+        <span class="text-sm font-semibold text-primary tracking-wide uppercase"
+          >Top Rated Digital Agency</span
+        >
       </div>
 
       {/* Main Headline */}
-      <h1 class="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] mb-8 select-none text-balance">
+      <h1
+        class="font-heading font-bold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-none lg:leading-[0.9] mb-8 select-none text-balance"
+      >
         <span class="block text-foreground">We Build</span>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient block h-[1.3em] pb-2">
-          <Typewriter 
-            messages={words} 
+        <span
+          class="text-transparent bg-clip-text bg-linear-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient block h-[1.3em] pb-2"
+        >
+          <Typewriter
+            messages={words}
             writeSpeed={80}
             deleteSpeed={50}
             waitWritten={2000}
@@ -47,28 +54,34 @@ const words = [
       </h1>
 
       {/* Subheadline */}
-      <p class="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed font-medium px-4 mb-10 text-pretty">
-        We architect high-performance digital solutions for ambitious brands. 
-        <span class="text-foreground font-semibold">Fast. Scalable. Beautiful.</span>
+      <p
+        class="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground leading-relaxed font-medium px-4 mb-10 text-pretty"
+      >
+        We architect high-performance digital solutions for ambitious brands.
+        <span class="text-foreground font-semibold"
+          >Fast. Scalable. Beautiful.</span
+        >
       </p>
 
       {/* CTA Buttons */}
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-        <a 
-          href="/contact" 
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+      >
+        <a
+          href="/contact"
           class={cn(
-            buttonVariants({ size: "lg" }), 
-            "h-14 rounded-full px-8 text-lg font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-all w-full sm:w-auto"
+            buttonVariants({ size: "lg" }),
+            "h-14 rounded-full px-8 text-lg font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-all w-full sm:w-auto",
           )}
         >
           Start Project
           <Briefcase className="ml-2 h-5 w-5" aria-hidden="true" />
         </a>
-        <a 
-          href="/portfolio" 
+        <a
+          href="/portfolio"
           class={cn(
-            buttonVariants({ size: "lg", variant: "outline" }), 
-            "h-14 rounded-full px-10 text-lg font-bold tracking-wide bg-transparent border-2 hover:bg-foreground hover:text-background w-full sm:w-auto transition-all"
+            buttonVariants({ size: "lg", variant: "outline" }),
+            "h-14 rounded-full px-10 text-lg font-bold tracking-wide bg-transparent border-2 hover:bg-foreground hover:text-background w-full sm:w-auto transition-all",
           )}
         >
           Our Work

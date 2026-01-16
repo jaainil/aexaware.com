@@ -69,18 +69,23 @@ const gridSizes = {
 // Mask gradient presets
 const maskStyles = {
   top: "[mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]",
-  bottom: "[mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_70%,transparent_100%)]",
+  bottom:
+    "[mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_70%,transparent_100%)]",
   left: "[mask-image:radial-gradient(ellipse_50%_60%_at_0%_50%,#000_70%,transparent_100%)]",
-  right: "[mask-image:radial-gradient(ellipse_50%_60%_at_100%_50%,#000_70%,transparent_100%)]",
-  center: "[mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]",
-  edges: "[mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_50%,transparent_100%)]",
+  right:
+    "[mask-image:radial-gradient(ellipse_50%_60%_at_100%_50%,#000_70%,transparent_100%)]",
+  center:
+    "[mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]",
+  edges:
+    "[mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_50%,transparent_100%)]",
   none: "",
 };
 
 // Color based on variant
-const gridColor = variant === "light"
-  ? `rgba(255,255,255,${opacity})`
-  : `color-mix(in srgb, var(--color-foreground) ${opacity * 100}%, transparent)`;
+const gridColor =
+  variant === "light"
+    ? `rgba(255,255,255,${opacity})`
+    : `color-mix(in srgb, var(--color-foreground) ${opacity * 100}%, transparent)`;
 
 const gridSize = gridSizes[density];
 const maskClass = maskStyles[mask];
@@ -91,8 +96,9 @@ const maskClass = maskStyles[mask];
     fixed ? "fixed" : "absolute",
     "inset-0 pointer-events-none",
     maskClass,
-    className
+    className,
   )}
   style={`background-image: linear-gradient(to right, ${gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${gridColor} 1px, transparent 1px); background-size: ${gridSize.replace("_", " ")};`}
   aria-hidden="true"
-/>
+>
+</div>

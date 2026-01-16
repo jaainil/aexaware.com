@@ -9,39 +9,55 @@ import { cn } from "@/lib/utils";
 <section class="section-padding bg-background relative overflow-hidden">
   <div class="container-normal">
     <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-      
       {/* Left Content */}
       <div class="flex-1 text-left">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6"
+        >
           <Globe2 className="w-3 h-3" />
           Global Reach
         </div>
-        
-        <h2 class="font-heading text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-6 leading-[0.9]">
+
+        <h2
+          class="font-heading text-5xl md:text-7xl font-bold tracking-tight text-foreground mb-6 leading-[0.9]"
+        >
           Driving Digital <br />
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent font-serif">Dominance.</span>
+          <span
+            class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent font-serif"
+            >Dominance.</span
+          >
         </h2>
-        
+
         <p class="text-xl text-muted-foreground mb-10 leading-relaxed max-w-xl">
-          We empower ambitious startups and enterprises with innovative web, mobile, and AI solutions that streamline operations and deliver measurable results.
+          We empower ambitious startups and enterprises with innovative web,
+          mobile, and AI solutions that streamline operations and deliver
+          measurable results.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4">
-          <a 
-            href="/contact" 
-            class={cn(buttonVariants({ size: "lg" }), "rounded-full px-8 h-14 text-lg shadow-lg hover:shadow-primary/20 transition-all")}
+          <a
+            href="/contact"
+            class={cn(
+              buttonVariants({ size: "lg" }),
+              "rounded-full px-8 h-14 text-lg shadow-lg hover:shadow-primary/20 transition-all",
+            )}
           >
             Start Your Project <ArrowRight className="ml-2 h-5 w-5" />
           </a>
           <a
-             href="/about"
-             class={cn(buttonVariants({ variant: "ghost", size: "lg" }), "rounded-full px-8 h-14 text-lg hover:bg-secondary/30")}
+            href="/about"
+            class={cn(
+              buttonVariants({ variant: "ghost", size: "lg" }),
+              "rounded-full px-8 h-14 text-lg hover:bg-secondary/30",
+            )}
           >
             About Us
           </a>
         </div>
 
-        <div class="mt-12 grid grid-cols-2 gap-8 border-t border-border/50 pt-8">
+        <div
+          class="mt-12 grid grid-cols-2 gap-8 border-t border-border/50 pt-8"
+        >
           <div>
             <div class="flex items-center gap-2 mb-1">
               <Trophy className="w-5 h-5 text-primary" />
@@ -61,18 +77,24 @@ import { cn } from "@/lib/utils";
 
       {/* Right Visual */}
       <div class="flex-1 w-full max-w-[600px] lg:max-w-none">
-        <div class="relative rounded-section overflow-hidden border border-border/50 shadow-2xl bg-secondary/10 group">
+        <div
+          class="relative rounded-section overflow-hidden border border-border/50 shadow-2xl bg-secondary/10 group"
+        >
           <Image
             src={drivingFutureImg}
             alt="Team Working"
             width={600}
             height={700}
             format="webp"
+            layout="none"
             class="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
           />
-          
+
           {/* Gradient Overlay for better text integration if needed later */}
-          <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 pointer-events-none" />
+          <div
+            class="absolute inset-0 bg-linear-to-t from-background via-transparent to-transparent opacity-60 pointer-events-none"
+          >
+          </div>
         </div>
       </div>
     </div>
