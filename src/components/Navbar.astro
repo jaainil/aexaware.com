@@ -71,7 +71,7 @@ const isActive = (linkPath: string) => {
     id="navbar-inner"
     role="navigation"
     aria-label="Main navigation"
-    class="relative mx-auto w-full max-w-7xl transition-all duration-500 ease-in-out border border-black/10 dark:border-white/10 bg-background/70 backdrop-blur-xl rounded-full"
+    class="relative mx-auto w-full max-w-7xl transition-all duration-500 ease-in-out border border-border bg-background/70 backdrop-blur-xl rounded-full"
   >
     <div
       class="flex items-center justify-between px-4 py-2 lg:px-6 lg:py-3 relative z-50"
@@ -110,9 +110,8 @@ const isActive = (linkPath: string) => {
                       <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-rotate-180" />
                     </button>
 
-                    {/* Desktop Dropdown */}
                     <div class="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out min-w-[600px] perspective-[1000px]">
-                      <div class="bg-background/90 backdrop-blur-2xl border border-black/10 dark:border-white/10 rounded-card-lg shadow-2xl p-6 grid grid-cols-2 gap-4 origin-top rotate-x-[-10deg] opacity-0 translate-y-4 group-hover:rotate-x-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ring-1 ring-black/5">
+                      <div class="bg-background/90 backdrop-blur-2xl border border-border rounded-card-lg shadow-2xl p-6 grid grid-cols-2 gap-4 origin-top rotate-x-[-10deg] opacity-0 translate-y-4 group-hover:rotate-x-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ring-1 ring-black/5">
                         {link.dropdown.map((item) => (
                           <a
                             href={item.path}
@@ -197,7 +196,7 @@ const isActive = (linkPath: string) => {
     }
     <div
       id="mobile-menu"
-      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-black/10 dark:border-white/10 shadow-2xl rounded-card-lg p-6 invisible opacity-0 max-h-[85vh] overflow-y-auto no-scrollbar"
+      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-border shadow-2xl rounded-card-lg p-6 invisible opacity-0 max-h-[85vh] overflow-y-auto no-scrollbar"
     >
       <div class="flex flex-col space-y-2">
         {
