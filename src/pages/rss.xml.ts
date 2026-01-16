@@ -33,8 +33,6 @@ export async function GET(context: APIContext) {
             pubDate: new Date(post.data.date),
             // Compute RSS link from post `id` (recommended in Astro v5)
             link: `/blog/${post.id}/`,
-            // Categories/tags
-            categories: post.data.tags || [],
         })),
     });
 }
