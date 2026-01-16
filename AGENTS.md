@@ -13,6 +13,13 @@ bun run preview    # Preview production build locally
 bun start          # Serve dist at localhost:4321
 ```
 
+## Code Quality Commands
+
+```bash
+bunx eslint .      # Run ESLint on all files
+bunx tsc --noEmit  # Run TypeScript type checking
+```
+
 ---
 
 ## Project Architecture
@@ -29,11 +36,13 @@ bun start          # Serve dist at localhost:4321
 ## Component Guidelines
 
 ### Astro (.astro)
+
 - Import icons from `lucide-astro`
 - Destructure `Astro.props` at top of frontmatter
 - Use `cn()` from `@/lib/utils` for className merging
 
 ### React (.tsx)
+
 - Add `"use client"` directive at top
 - Use `React.forwardRef` with proper typing
 - Use `class-variance-authority` (CVA) for variants
@@ -42,13 +51,13 @@ bun start          # Serve dist at localhost:4321
 
 ```tsx
 const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
-  ({ className, variant = 'default', children, ...props }, ref) => (
+  ({ className, variant = "default", children, ...props }, ref) => (
     <div ref={ref} className={cn("base-classes", className)} {...props}>
       {children}
     </div>
   )
-)
-Component.displayName = "Component"
+);
+Component.displayName = "Component";
 ```
 
 ---
@@ -104,6 +113,12 @@ Use `@/` alias for all src/ imports.
 - **Error handling**: Use `.catch(console.error)` for async operations
 - **Accessibility**: Include `aria-label` for interactive elements without text
 - **Comments**: JSDoc for props, inline comments only when necessary
+
+## Testing
+
+- **No test framework currently configured** (check roadmap for future testing setup)
+- Manual testing required for component changes
+- Test responsive behavior at mobile, tablet, and desktop breakpoints
 
 ---
 
