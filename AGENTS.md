@@ -4,13 +4,20 @@ Guidelines for agentic coding assistants working in the Aexaware Infotech reposi
 
 ---
 
+## Package Manager
+
+This project uses **Bun** as the package manager. All commands should use `bun` or `bunx` instead of `npm` or `pnpm`.
+
+---
+
 ## Build & Development Commands
 
 ```bash
-bun run dev        # Start dev server at http://localhost:4321
-bun run build      # Build static site to /dist
-bun run preview    # Preview production build locally
+bun run dev        # Start dev server at http://localhost:4321 with hot reload
+bun run build      # Build static site to /dist for production
+bun run preview    # Preview production build locally on http://localhost:4321
 bun start          # Serve dist at localhost:4321
+bun run astro      # Direct access to Astro CLI
 ```
 
 ## Code Quality Commands
