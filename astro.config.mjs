@@ -12,7 +12,7 @@ import umami from "@yeskunall/astro-umami";
 import llmsTxtIntegration from "astro-llms-txt-generator";
 import compressor from "astro-compressor";
 import compress from "@playform/compress";
-import writenex from "@writenex/astro";
+import writenex from "@imjp/writenex-astro";
 import fuse from "astro-fuse";
 
 // Reading time integration (must come before mdx)
