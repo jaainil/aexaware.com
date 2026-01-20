@@ -41,84 +41,138 @@ interface SearchableItem {
 
 // Static pages for navigation
 const staticPages = [
-  { title: "Home", path: "/", icon: Home, description: "Return to homepage" },
+  {
+    title: "Home",
+    path: "/",
+    icon: Home,
+    description: "Return to homepage",
+    keywords: "landing, main, root"
+  },
   {
     title: "Services",
     path: "/services",
     icon: Layers,
-    description: "Explore our services",
+    description: "Explore our capabilities",
+    keywords: "offerings, solutions, help, what we do"
   },
   {
     title: "Web Development",
     path: "/services/web-development",
     icon: Globe,
     description: "Custom web solutions",
+    keywords: "react, next.js, node.js, frontend, backend, full stack, pwa, website"
   },
   {
     title: "Mobile Development",
     path: "/services/mobile-development",
     icon: Smartphone,
     description: "iOS & Android apps",
+    keywords: "react native, flutter, ios, android, app, mobile application, cross-platform"
   },
   {
     title: "UI/UX Design",
     path: "/services/ui-ux-design",
     icon: Palette,
     description: "Beautiful interfaces",
+    keywords: "figma, wireframe, prototype, user experience, user interface, brand identity, design system"
   },
   {
     title: "Software Solutions",
     path: "/services/software-solutions",
     icon: Code2,
     description: "Custom software",
+    keywords: "saas, enterprise, legacy modernization, api integration, microservices, architecture"
   },
   {
     title: "E-Commerce",
     path: "/services/ecommerce",
     icon: ShoppingCart,
     description: "Online stores",
+    keywords: "shopify, woocommerce, online store, marketplace, payment gateway, stripe, cart"
   },
   {
     title: "Cloud & DevOps",
     path: "/services/cloud-devops",
     icon: Cloud,
     description: "Cloud infrastructure",
+    keywords: "aws, azure, gcp, docker, kubernetes, ci/cd, infrastructure as code, security"
   },
   {
     title: "AI/ML Integration",
     path: "/services/ai-ml-integration",
     icon: BrainCircuit,
     description: "AI solutions",
+    keywords: "artificial intelligence, machine learning, chatbot, llm, gpt, predictive analytics, vision"
+  },
+  {
+    title: "Digital Marketing",
+    path: "/services/digital-marketing",
+    icon: Rocket,
+    description: "Growth acceleration",
+    keywords: "seo, sem, social media, content marketing, email marketing, analytics, growth",
+  },
+  {
+    title: "White Label",
+    path: "/services/white-label-services",
+    icon: Users,
+    description: "Agency partnerships",
+    keywords: "agency partner, outsource, white label, dedicated team, expansion",
+  },
+  {
+    title: "Extended Team",
+    path: "/services/extended-team",
+    icon: Users,
+    description: "Scale your workforce",
+    keywords: "staff augmentation, dedicated developers, hire remote, offshore, nearshore",
+  },
+  {
+    title: "MVP Development",
+    path: "/services/mvp-development",
+    icon: Rocket,
+    description: "Launch your idea",
+    keywords: "startup, prototype, proof of concept, minimum viable product, launch",
+  },
+  {
+    title: "CMS Development",
+    path: "/services/cms-development",
+    icon: FileText,
+    description: "Manage your content",
+    keywords: "wordpress, content management system, headless cms, strapi, sanity",
   },
   {
     title: "Case Studies",
     path: "/portfolio",
     icon: Briefcase,
     description: "View our work",
+    keywords: "projects, portfolio, work, examples, success stories"
   },
   {
     title: "Blog",
     path: "/blog",
     icon: FileText,
     description: "Read our articles",
+    keywords: "articles, news, insights, tutorial, guide"
   },
   {
     title: "About Us",
     path: "/about",
     icon: Users,
     description: "Learn about us",
+    keywords: "company, team, culture, mission, vision"
   },
   {
     title: "Contact",
     path: "/contact",
     icon: Mail,
     description: "Get in touch",
+    keywords: "email, phone, address, support, help, inquiry"
   },
   {
     title: "Start Project",
     path: "/start-project",
     icon: Rocket,
     description: "Begin your project",
+    keywords: "hire, quote, estimate, proposal"
   },
 ];
 
@@ -126,7 +180,7 @@ export default function SearchDialog() {
   const [open, setOpen] = useState(false);
   const [fuse, setFuse] = useState<Fuse<SearchableItem> | null>(null);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<Fuse.FuseResult<SearchableItem>[]>([]);
+  const [results, setResults] = useState<any[]>([]);
   const [filteredPages, setFilteredPages] = useState(staticPages);
 
   // Load Fuse.js index on mount
@@ -174,7 +228,8 @@ export default function SearchDialog() {
         const filtered = staticPages.filter(
           (page) =>
             page.title.toLowerCase().includes(trimmedQuery) ||
-            page.description.toLowerCase().includes(trimmedQuery)
+            page.description.toLowerCase().includes(trimmedQuery) ||
+            page.keywords?.toLowerCase().includes(trimmedQuery)
         );
         setFilteredPages(filtered);
       } else {
@@ -254,7 +309,7 @@ export default function SearchDialog() {
               {filteredPages.map((page) => (
                 <CommandItem
                   key={page.path}
-                  value={`${page.title} ${page.description}`}
+                  value={`${page.title} ${page.description} ${page.keywords || ""}`}
                   onSelect={() => handleSelect(page.path)}
                   className="cursor-pointer"
                 >
