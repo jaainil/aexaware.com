@@ -1,52 +1,121 @@
 ---
-import ServicePageLayout from '@/layouts/ServicePageLayout.astro';
-import { Smartphone, Layers, Zap } from "lucide-astro";
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import {
+  Smartphone,
+  Apple,
+  Layers,
+  Wrench,
+  Zap,
+  TabletSmartphone,
+} from "lucide-astro";
 
 const services = [
   {
     id: "01",
     icon: Smartphone,
-    title: "Native App Development Services",
-    desc: "We develop fast, secure, and fully optimized mobile applications for iOS and Android using platform-specific languages and native framework.",
-    gradient: "from-blue-500/20 to-indigo-500/20",
-    iconColor: "text-blue-600",
+    title: "Android App Development",
+    desc: "Reach over 70% of mobile users worldwide with custom Android apps. We build high-performance, user-friendly applications for the world's most popular mobile OS.",
+    gradient: "from-green-500/20 to-emerald-500/20",
+    iconColor: "text-green-600",
   },
   {
     id: "02",
+    icon: Apple,
+    title: "iOS App Development",
+    desc: "Create premium iOS experiences for iPhone and iPad. Our Swift and SwiftUI experts deliver apps that meet Apple's high standards for quality and performance.",
+    gradient: "from-gray-500/20 to-slate-500/20",
+    iconColor: "text-gray-700",
+  },
+  {
+    id: "03",
     icon: Layers,
-    title: "Hybrid App Development Services",
-    desc: "Cross-platform apps can be built with a single codebase – resulting in faster development, more cost-efficient, and a consistent experience on all devices.",
+    title: "React Native Development",
+    desc: "Build cross-platform apps with a single codebase. React Native delivers native performance while reducing development time and costs by up to 40%.",
+    gradient: "from-blue-500/20 to-cyan-500/20",
+    iconColor: "text-blue-600",
+  },
+  {
+    id: "04",
+    icon: Zap,
+    title: "Flutter App Development",
+    desc: "Google's UI toolkit for beautiful, natively compiled apps. Flutter enables rapid development with expressive UIs and excellent performance on both platforms.",
+    gradient: "from-sky-500/20 to-blue-500/20",
+    iconColor: "text-sky-600",
+  },
+  {
+    id: "05",
+    icon: TabletSmartphone,
+    title: "Hybrid App Development",
+    desc: "Leverage web technologies like Cordova and Ionic for cost-effective mobile solutions. Ideal for MVPs and apps that need rapid market entry.",
     gradient: "from-purple-500/20 to-pink-500/20",
     iconColor: "text-purple-600",
   },
   {
-    id: "03",
-    icon: Zap,
-    title: "Progressive Web Application (PWA) Development",
-    desc: "We develop small lightweight installable web applications that can work offline and instantly load to provide a native experience in all browsers.",
-    gradient: "from-amber-500/20 to-orange-500/20",
-    iconColor: "text-amber-600",
+    id: "06",
+    icon: Wrench,
+    title: "App Maintenance & Support",
+    desc: "Keep your app running smoothly with ongoing maintenance, performance optimization, security updates, and feature enhancements.",
+    gradient: "from-orange-500/20 to-amber-500/20",
+    iconColor: "text-orange-600",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Cross-Platform Expertise",
+    desc: "We master both native and cross-platform development, recommending the best approach for your specific needs and budget.",
+  },
+  {
+    title: "User-Centered Design",
+    desc: "Our mobile apps are designed with users in mind, following platform guidelines and best practices for intuitive experiences.",
+  },
+  {
+    title: "Performance Optimized",
+    desc: "We build apps that are fast, responsive, and battery-efficient—critical factors for user retention and app store rankings.",
+  },
+  {
+    title: "End-to-End Service",
+    desc: "From concept to launch and beyond, we handle UI/UX design, development, testing, deployment, and ongoing support.",
+  },
+  {
+    title: "App Store Success",
+    desc: "We guide you through app store submission and optimization to maximize visibility and downloads.",
+  },
+  {
+    title: "Agile Development",
+    desc: "Regular sprints, demos, and feedback loops ensure you're always in control and can adapt to changing requirements.",
   },
 ];
 
 const techStack = [
-  "Flutter",
+  "Swift",
+  "Kotlin",
   "React Native",
-  "IOS - Swift",
-  "Android - Kotlin",
+  "Flutter",
+  "iOS",
   "Android",
+  "Firebase",
+  "Supabase",
+  "TypeScript",
+  "REST API",
+  "GraphQL",
 ];
 ---
 
 <ServicePageLayout
   title="Mobile App Development"
-  description="Modern App Solutions. Built for Every Screen."
-  heroBadge="Mobile App Development"
-  heroTitle="Modern App Solutions"
-  heroSubtitle="Built for Every Screen"
-  heroDescription="We develop high-performance mobile applications with immersive features that engage users across every channel. From native to hybrid apps, we ensure a seamless, user-friendly experience on any device."
-  servicesTitle="Our Mobile Application Development Services Include"
-  servicesDescription="We design and develop native, hybrid, and progressive mobile applications that deliver an optimized experience across all platforms and devices."
+  description="Custom mobile application development services for iOS and Android. Native, React Native, and Flutter apps that deliver seamless user experiences."
+  heroBadge="Mobile Development"
+  heroTitle="Mobile Apps That"
+  heroSubtitle="Users Love."
+  heroDescription="We specialize in building innovative mobile solutions that elevate your business. From native iOS and Android apps to cross-platform development with React Native and Flutter, we create high-performance applications that delight users and drive results."
+  introTitle="Our Mobile Development Approach"
+  introText="Mobile is no longer optional—it's where your customers are. Whether you need a consumer-facing app, enterprise mobility solution, or IoT-connected application, our team of mobile experts delivers solutions that combine beautiful design with powerful functionality. We follow a user-centered design process, starting with understanding your users' needs and pain points, then crafting experiences that solve real problems. Our agile development methodology ensures you see progress quickly and can provide feedback throughout the development cycle."
+  servicesTitle="Mobile App Development Services"
+  servicesDescription="We offer comprehensive mobile development services for every platform and use case."
   services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Mobile Apps"
+  whyChooseDescription="With deep expertise across platforms and technologies, we deliver mobile experiences that stand out in crowded app stores."
   techStack={techStack}
 />

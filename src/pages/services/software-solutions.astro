@@ -1,56 +1,121 @@
 ---
-import ServicePageLayout from '@/layouts/ServicePageLayout.astro';
-import { Code2, Server, Building2 } from "lucide-astro";
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import {
+  Lightbulb,
+  Code2,
+  Server,
+  ArrowLeftRight,
+  GitBranch,
+  ShieldCheck,
+} from "lucide-astro";
 
 const services = [
   {
     id: "01",
-    icon: Code2,
-    title: "Custom Software Development",
-    desc: "We develop custom software tailored to your specific business needs, ensuring seamless integration, scalability, and performance.",
-    gradient: "from-green-500/20 to-emerald-500/20",
-    iconColor: "text-green-600",
+    icon: Lightbulb,
+    title: "Strategy & Consulting",
+    desc: "Through workshops and our unique Research, Design & Planning engagement, we help you create a product strategy that solves customer challenges with a unique value proposition.",
+    gradient: "from-yellow-500/20 to-amber-500/20",
+    iconColor: "text-yellow-600",
   },
   {
     id: "02",
-    icon: Server,
-    title: "Large-Scale App Development",
-    desc: "We design and develop scalable, robust software systems that efficiently handle complex business processes with lots of users.",
+    icon: Code2,
+    title: "Platform Development",
+    desc: "End-to-end custom software development from architecture design to deployment. We build scalable, maintainable platforms that grow with your business.",
     gradient: "from-blue-500/20 to-indigo-500/20",
     iconColor: "text-blue-600",
   },
   {
     id: "03",
-    icon: Building2,
-    title: "Enterprise Application Development",
-    desc: "We build robust, secure, customized enterprise applications that enhance workflow processes, foster collaboration, and support the long-term growth of the enterprise.",
-    gradient: "from-orange-500/20 to-amber-500/20",
+    icon: Server,
+    title: "SaaS & Cloud Solutions",
+    desc: "Build cloud-native SaaS products that scale automatically. Multi-tenant architectures, subscription management, and enterprise-grade security.",
+    gradient: "from-purple-500/20 to-pink-500/20",
+    iconColor: "text-purple-600",
+  },
+  {
+    id: "04",
+    icon: ArrowLeftRight,
+    title: "Legacy Modernization",
+    desc: "Transform outdated systems into modern, efficient applications. We migrate legacy code while preserving business logic and improving performance.",
+    gradient: "from-orange-500/20 to-red-500/20",
     iconColor: "text-orange-600",
+  },
+  {
+    id: "05",
+    icon: GitBranch,
+    title: "API & SDK Development",
+    desc: "Create robust APIs and SDKs that enable integrations and extend your platform's capabilities. RESTful, GraphQL, and real-time APIs.",
+    gradient: "from-green-500/20 to-teal-500/20",
+    iconColor: "text-green-600",
+  },
+  {
+    id: "06",
+    icon: ShieldCheck,
+    title: "QA & Testing",
+    desc: "Comprehensive quality assurance including unit testing, integration testing, performance testing, and security audits to ensure reliable software.",
+    gradient: "from-gray-500/20 to-slate-500/20",
+    iconColor: "text-gray-600",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Business-First Approach",
+    desc: "We focus on business outcomes, not just code. Every solution is designed to drive revenue and improve operations.",
+  },
+  {
+    title: "Agile Methodology",
+    desc: "Flexible development process that adapts to changing requirements while maintaining project momentum and quality.",
+  },
+  {
+    title: "Scalable Architecture",
+    desc: "We build software that handles growth—from your first users to millions—without requiring major rewrites.",
+  },
+  {
+    title: "Security by Design",
+    desc: "Security isn't an afterthought. We implement best practices from day one to protect your data and users.",
+  },
+  {
+    title: "Transparent Process",
+    desc: "Regular demos, clear communication, and visibility into progress. You're never in the dark about your project.",
+  },
+  {
+    title: "Long-term Partnership",
+    desc: "We don't just build and leave. Ongoing support, maintenance, and evolution as your business grows.",
   },
 ];
 
 const techStack = [
-  "Bootstrap",
-  "Tailwind CSS",
-  "AngularJS",
-  "ReactJS",
-  "jQuery",
-  "Figma Software",
-  "Adobe XD",
-  "Adobe Photoshop",
-  "Sketch Software",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Python",
+  "TypeScript",
+  "PostgreSQL",
+  "MongoDB",
+  "AWS",
+  "Docker",
+  "Kubernetes",
+  "GraphQL",
 ];
 ---
 
 <ServicePageLayout
-  title="Software Solutions"
-  description="Custom Software. Scalable Solutions. Tailored Software That Solves Complex Challenges."
-  heroBadge="Software Solutions"
-  heroTitle="Custom Software."
-  heroSubtitle="Scalable Solutions."
-  heroDescription="We build robust, scalable, and secure software solutions tailored to your unique business challenges. From enterprise applications to custom tools, we empower your operations with technology."
-  servicesTitle="Our Custom Software Development Services Include"
-  servicesDescription="We provide end-to-end software development services, from initial consultation and design to development, deployment, and ongoing support."
+  title="Custom Software Development"
+  description="Comprehensive custom software development services. From strategy and consulting to platform development, SaaS solutions, and legacy modernization."
+  heroBadge="Custom Software"
+  heroTitle="Software Built"
+  heroSubtitle="For Your Business."
+  heroDescription="No matter what industry you represent, we offer custom software development services to scale up your business and fulfill your needs in these ever-changing trends. From prototypes to enterprise platforms, we build solutions that drive real results."
+  introTitle="Our Development Philosophy"
+  introText="Driving revenue means staying tied to business outcomes. We do this by identifying opportunities to improve your customer experience and monetize your existing data and content. Whether you need a prototype to validate an idea, a software product built quickly, or an existing product that needs help, we're ready to jump in wherever needed. Our flexible Agile methodology makes it possible for never-before-developed products to take shape and adjust to true market needs in real-time."
+  servicesTitle="Custom Software Services"
+  servicesDescription="We provide end-to-end custom software development, from initial strategy to ongoing support."
   services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware"
+  whyChooseDescription="With proven internal processes that ensure project success, we keep you informed and involved at every stage."
   techStack={techStack}
 />

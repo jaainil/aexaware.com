@@ -1,52 +1,112 @@
 ---
-import ServicePageLayout from '@/layouts/ServicePageLayout.astro';
-import { BrainCircuit, Bot, Sparkles } from "lucide-astro";
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Brain, Bot, LineChart, Eye, Cpu, Sparkles } from "lucide-astro";
 
 const services = [
   {
     id: "01",
-    icon: BrainCircuit,
-    title: "Predictive Analytics",
-    desc: "Leverage historical and real-time data to forecast trends, customer behavior, and business outcomes. Make proactive decisions that minimize risk, optimize performance, and uncover new growth opportunities.",
-    gradient: "from-violet-500/20 to-fuchsia-500/20",
-    iconColor: "text-violet-600",
+    icon: Bot,
+    title: "Chatbot & Conversational AI",
+    desc: "Intelligent chatbots and virtual assistants powered by GPT, Claude, and custom LLMs. Automate customer support, sales, and internal processes.",
+    gradient: "from-blue-500/20 to-cyan-500/20",
+    iconColor: "text-blue-600",
   },
   {
     id: "02",
-    icon: Bot,
-    title: "Intelligent Automation",
-    desc: "Automate repetitive processes with AI-driven workflows that learn and improve continuously. Reduce manual workload, increase accuracy, and free your team to focus on strategic, high-value tasks.",
-    gradient: "from-cyan-500/20 to-teal-500/20",
-    iconColor: "text-cyan-600",
+    icon: LineChart,
+    title: "Predictive Analytics",
+    desc: "Machine learning models that forecast trends, predict outcomes, and identify opportunities. Turn your data into actionable insights.",
+    gradient: "from-green-500/20 to-emerald-500/20",
+    iconColor: "text-green-600",
   },
   {
     id: "03",
+    icon: Eye,
+    title: "Computer Vision",
+    desc: "Image recognition, object detection, and visual inspection systems. From quality control to augmented reality applications.",
+    gradient: "from-purple-500/20 to-pink-500/20",
+    iconColor: "text-purple-600",
+  },
+  {
+    id: "04",
     icon: Sparkles,
-    title: "Personalized Experiences",
-    desc: "Deliver customized recommendations, content, and interactions tailored to each user’s unique needs and preferences. Build deeper engagement, strengthen loyalty, and increase conversion across all touchpoints.",
-    gradient: "from-amber-500/20 to-yellow-500/20",
-    iconColor: "text-amber-600",
+    title: "Recommendation Engines",
+    desc: "Personalized recommendations that increase engagement and conversions. Content, products, and user experiences tailored to each individual.",
+    gradient: "from-orange-500/20 to-amber-500/20",
+    iconColor: "text-orange-600",
+  },
+  {
+    id: "05",
+    icon: Brain,
+    title: "Natural Language Processing",
+    desc: "Text analysis, sentiment detection, document processing, and language understanding. Extract meaning from unstructured text at scale.",
+    gradient: "from-indigo-500/20 to-violet-500/20",
+    iconColor: "text-indigo-600",
+  },
+  {
+    id: "06",
+    icon: Cpu,
+    title: "Custom ML Models",
+    desc: "Bespoke machine learning solutions for your unique business problems. From data preparation to model deployment and monitoring.",
+    gradient: "from-rose-500/20 to-red-500/20",
+    iconColor: "text-rose-600",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Practical AI",
+    desc: "We focus on AI that delivers tangible business value, not just impressive demos.",
+  },
+  {
+    title: "End-to-End Solutions",
+    desc: "From data preparation to production deployment and ongoing monitoring.",
+  },
+  {
+    title: "Latest Technologies",
+    desc: "Stay ahead with OpenAI, Claude, Gemini, and cutting-edge open-source models.",
+  },
+  {
+    title: "Responsible AI",
+    desc: "We build AI systems that are fair, transparent, and respect user privacy.",
+  },
+  {
+    title: "Scalable Infrastructure",
+    desc: "ML infrastructure that handles growing data and user demands efficiently.",
+  },
+  {
+    title: "Knowledge Transfer",
+    desc: "We empower your team to maintain and evolve AI solutions independently.",
   },
 ];
 
 const techStack = [
+  "Python",
   "TensorFlow",
   "PyTorch",
-  "Scikit-learn",
-  "Keras",
-  "H2O.ai",
+  "OpenAI",
+  "LangChain",
+  "Hugging Face",
+  "AWS SageMaker",
+  "PostgreSQL",
+  "Vector DBs",
 ];
 ---
 
 <ServicePageLayout
   title="AI/ML Integration"
-  description="AI-Driven Intelligence. Integrating Smart Solutions That Transform Data Into Action."
-  heroBadge="AI/ML Integration"
-  heroTitle="AI-Driven Intelligence"
-  heroSubtitle="Intelligence That Empowers"
-  heroDescription="Harness the power of AI and machine learning to deliver innovative, data-driven solutions. We build intelligent systems that automate complexity, reveal insights, and drive measurable business impact."
-  servicesTitle="Our AI & ML Integration Services Include"
-  servicesDescription="Above all, we deliver strategic, data-driven solutions—predictive models, intelligent workflows, and adaptive systems that combine automation, insight, and growth."
+  description="Data-driven decision making with AI and machine learning. Chatbots, predictive analytics, computer vision, and custom ML solutions."
+  heroBadge="AI & Machine Learning"
+  heroTitle="Intelligent"
+  heroSubtitle="Solutions."
+  heroDescription="Data-driven decision making, predictive modeling, recommendation engines, chatbot automation, and AI-driven features. We help businesses harness the power of artificial intelligence to automate, optimize, and innovate."
+  introTitle="AI That Delivers Real Value"
+  introText="Artificial intelligence isn't just for tech giants anymore. From automating customer support to predicting market trends, AI can transform how your business operates and competes. We cut through the AI hype to deliver practical solutions that solve real business problems. Our team combines deep technical expertise with business acumen to identify high-impact AI opportunities and execute them effectively."
+  servicesTitle="AI & ML Services"
+  servicesDescription="Practical AI solutions that automate, optimize, and create new possibilities."
   services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for AI"
+  whyChooseDescription="AI expertise grounded in practical business applications."
   techStack={techStack}
 />

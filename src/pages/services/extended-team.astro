@@ -1,0 +1,120 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import {
+    Users,
+    Code,
+    MessagesSquare,
+    UserCheck,
+    Cog,
+    ShieldCheck,
+} from "lucide-astro";
+
+const services = [
+    {
+        id: "01",
+        icon: Users,
+        title: "Dedicated Developers",
+        desc: "Hire dedicated developers who work exclusively on your project, integrating seamlessly with your in-house team as if they were your own employees.",
+        gradient: "from-blue-500/20 to-indigo-500/20",
+        iconColor: "text-blue-600",
+    },
+    {
+        id: "02",
+        icon: UserCheck,
+        title: "Agile Teams",
+        desc: "Complete cross-functional teams with developers, designers, QA, and project managers. Ready to hit the ground running on your projects.",
+        gradient: "from-green-500/20 to-emerald-500/20",
+        iconColor: "text-green-600",
+    },
+    {
+        id: "03",
+        icon: Code,
+        title: "Specialized Expertise",
+        desc: "Access experts in React, Node.js, Python, Mobile, DevOps, and more. Fill skill gaps in your team with exactly the expertise you need.",
+        gradient: "from-purple-500/20 to-fuchsia-500/20",
+        iconColor: "text-purple-600",
+    },
+    {
+        id: "04",
+        icon: Cog,
+        title: "DevOps Engineers",
+        desc: "CI/CD pipeline setup, cloud infrastructure management, containerization, and monitoring. Scale your operations with expert DevOps support.",
+        gradient: "from-orange-500/20 to-amber-500/20",
+        iconColor: "text-orange-600",
+    },
+    {
+        id: "05",
+        icon: ShieldCheck,
+        title: "QA Engineers",
+        desc: "Manual and automated testing experts who ensure your software meets the highest quality standards before reaching your users.",
+        gradient: "from-teal-500/20 to-cyan-500/20",
+        iconColor: "text-teal-600",
+    },
+    {
+        id: "06",
+        icon: MessagesSquare,
+        title: "Technical Leads",
+        desc: "Experienced architects and tech leads who can guide your development strategy, mentor your team, and make critical technical decisions.",
+        gradient: "from-gray-500/20 to-slate-500/20",
+        iconColor: "text-gray-600",
+    },
+];
+
+const whyChooseUs = [
+    {
+        title: "Solution-Oriented",
+        desc: "Our developers focus on solving problems, not just writing code. They bring creative solutions to complex challenges.",
+    },
+    {
+        title: "Quick Response",
+        desc: "Fast turnaround on requests and real-time problem solving. Our team operates in overlapping time zones for smooth communication.",
+    },
+    {
+        title: "Continuous Learning",
+        desc: "Our team stays current with emerging technologies and trends, always searching for better ways to deliver results.",
+    },
+    {
+        title: "Self-Managed",
+        desc: "Dedicated professionals who take ownership of their work and continuously deliver high-quality results without micromanagement.",
+    },
+    {
+        title: "Transparent Communication",
+        desc: "Regular updates via project management tools. Technical or business problems are communicated honestly and openly.",
+    },
+    {
+        title: "Flexible Engagement",
+        desc: "Scale up or down as needed. Hourly, part-time, or full-time engagement models to match your requirements.",
+    },
+];
+
+const techStack = [
+    "React",
+    "Node.js",
+    "Python",
+    "Java",
+    ".NET",
+    "DevOps",
+    "AWS",
+    "Docker",
+    "Kubernetes",
+    "QA Engineers",
+];
+---
+
+<ServicePageLayout
+    title="Extended Team"
+    description="Scale your development capacity with experienced agile developers. Dedicated teams, staff augmentation, and specialized expertise on demand."
+    heroBadge="Team Extension"
+    heroTitle="Scale Your Team"
+    heroSubtitle="On Demand."
+    heroDescription="Whether you need to expand in-house development capabilities or need an offshore team to develop a project from scratch, our experienced developers will work as a seamless extension of your IT staff and help you continue from where you left off."
+    introTitle="Why Agile Developers?"
+    introText="We believe valuable software development is much more than just writing code by following instructions. The provided solution that actually solves problems—and developers focusing on building quality into deliverables—is the most important factor to achieve success. At Aexaware, we've practiced agile since inception. By creating an open, collaborative, and inspiring work culture, we motivate our developers to focus more on problem-solving abilities instead of simple software programming. Each developer works one client at a time, ensuring full dedication to your project."
+    servicesTitle="Extended Team Services"
+    servicesDescription="Flexible staffing solutions to power your digital transformation."
+    services={services}
+    whyChooseUs={whyChooseUs}
+    whyChooseTitle="Why Choose Aexaware for Team Extension"
+    whyChooseDescription="Our developers communicate business value for any requirements before jumping into programming."
+    techStack={techStack}
+/>

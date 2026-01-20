@@ -1,0 +1,113 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Rocket, Target, Zap, Layers, CloudCog, Users } from "lucide-astro";
+
+const services = [
+    {
+        id: "01",
+        icon: Rocket,
+        title: "Prototype Design",
+        desc: "Verify and present a prototype to clients and investors. We create visual mockups and interactive demos to validate your concept before development begins.",
+        gradient: "from-orange-500/20 to-red-500/20",
+        iconColor: "text-orange-600",
+    },
+    {
+        id: "02",
+        icon: Target,
+        title: "Single Feature MVP",
+        desc: "Build an app focused on one core feature that resonates with early users. Solve fundamental problems and validate your primary value proposition efficiently.",
+        gradient: "from-blue-500/20 to-cyan-500/20",
+        iconColor: "text-blue-600",
+    },
+    {
+        id: "03",
+        icon: Zap,
+        title: "Pilot MVP Development",
+        desc: "Create a usable 'Version 1.0' of your product to showcase to prospective investors and customers. Perfect for securing funding and project approval.",
+        gradient: "from-yellow-500/20 to-amber-500/20",
+        iconColor: "text-yellow-600",
+    },
+    {
+        id: "04",
+        icon: Layers,
+        title: "Product Redesign MVP",
+        desc: "Great ideas can fail due to poor UX. We redesign existing products to reduce complexity and facilitate easy user adoption when switching platforms.",
+        gradient: "from-purple-500/20 to-pink-500/20",
+        iconColor: "text-purple-600",
+    },
+    {
+        id: "05",
+        icon: CloudCog,
+        title: "Hybrid Cloud MVP",
+        desc: "Design cloud-based MVP models using disruptive technologies. We leverage major cloud platforms (AWS, GCP, Azure) to bring your ideas to market faster.",
+        gradient: "from-green-500/20 to-teal-500/20",
+        iconColor: "text-green-600",
+    },
+    {
+        id: "06",
+        icon: Users,
+        title: "Dedicated MVP Developers",
+        desc: "Hire expert developers in React, Node.js, and trending technologies on hourly or project-based terms. You design your MVP while we provide the resources.",
+        gradient: "from-indigo-500/20 to-violet-500/20",
+        iconColor: "text-indigo-600",
+    },
+];
+
+const whyChooseUs = [
+    {
+        title: "Speed to Market",
+        desc: "Launch your MVP in weeks, not months. Our agile methodology ensures rapid development without sacrificing quality.",
+    },
+    {
+        title: "Cost-Effective",
+        desc: "Control your burn rate by building only essential features first. Validate before you invest heavily.",
+    },
+    {
+        title: "Market Validation",
+        desc: "Test your assumptions with real users and gather crucial feedback to guide your product roadmap.",
+    },
+    {
+        title: "Investor Ready",
+        desc: "Create a compelling demo that helps secure funding by showing tangible progress and market potential.",
+    },
+    {
+        title: "Scalable Architecture",
+        desc: "We build MVPs with growth in mind, using modern tech that scales as your user base expands.",
+    },
+    {
+        title: "Iterative Approach",
+        desc: "Continuously improve based on user feedback. We help you evolve from MVP to full product.",
+    },
+];
+
+const techStack = [
+    "React",
+    "Next.js",
+    "Node.js",
+    "Supabase",
+    "Firebase",
+    "Tailwind CSS",
+    "TypeScript",
+    "Vercel",
+    "AWS",
+    "PostgreSQL",
+];
+---
+
+<ServicePageLayout
+    title="MVP Development"
+    description="Transform your breakthrough idea into reality with our MVP software development services. Validate your concept, acquire early adopters, and secure funding."
+    heroBadge="MVP Development"
+    heroTitle="Transform Your Idea"
+    heroSubtitle="Into Reality."
+    heroDescription="The goal of a Minimum Viable Product is to prove your concept with an initial version that has enough features to satisfy early adopters. We help startups and enterprises validate ideas quickly, control burn rates, and bring products to market faster."
+    introTitle="What is MVP Development?"
+    introText="A Proof of Concept (PoC) determines feasibility—whether your software idea can be developed within budget and fills a market gap. The next step is creating a Minimum Viable Product (MVP): a test product with minimum features to validate your idea and estimate development parameters. Typically, an MVP is created within a very short duration—generally not more than a couple of months—to derive insights about your final marketable product and how you'll develop it. At Aexaware, we understand the critical importance of MVP development in the fast-paced world of technology."
+    servicesTitle="Our MVP Development Services"
+    servicesDescription="Depending on your unique requirements, we build MVPs that validate the workability of your idea or even become fully-featured applications."
+    services={services}
+    whyChooseUs={whyChooseUs}
+    whyChooseTitle="Why Choose Aexaware for MVP Development"
+    whyChooseDescription="We combine speed, technical expertise, and deep architectural know-how to effectively bring your business ideas to life."
+    techStack={techStack}
+/>

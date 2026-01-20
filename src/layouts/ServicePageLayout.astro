@@ -1,38 +1,42 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { Schema } from 'astro-seo-schema';
-import { ArrowRight, Sparkles } from "lucide-astro";
-import { buttonVariants } from '@/components/ui/button-variants';
-import { cn } from '@/lib/utils';
-import CTA from '@/components/astro/CTA.astro';
-import BackgroundGrid from '@/components/astro/BackgroundGrid.astro';
-import { 
-  Code2, 
-  Braces, 
-  FileCode, 
-  Server, 
-  Database, 
-  Cloud, 
-  Container, 
-  Smartphone, 
-  Palette, 
-  Layers, 
-  GitBranch, 
-  Terminal, 
-  Globe, 
-  Cpu, 
+import Layout from "@/layouts/Layout.astro";
+import { Schema } from "astro-seo-schema";
+import { ArrowRight, Sparkles, CheckCircle2 } from "lucide-astro";
+import { buttonVariants } from "@/components/ui/button-variants";
+import { cn } from "@/lib/utils";
+import CTA from "@/components/astro/CTA.astro";
+import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
+import {
+  Code2,
+  Braces,
+  FileCode,
+  Server,
+  Database,
+  Cloud,
+  Container,
+  Smartphone,
+  Palette,
+  Layers,
+  GitBranch,
+  Terminal,
+  Globe,
+  Cpu,
   Wrench,
-  Cog
+  Cog,
 } from "lucide-astro";
 
 interface ServiceItem {
   id: string;
-  // FIX: Loosened type to 'any' to accept Astro components (Lucide icons) without TS friction
-  icon: any; 
+  icon: any;
   title: string;
   desc: string;
   gradient: string;
   iconColor: string;
+}
+
+interface WhyChooseItem {
+  title: string;
+  desc: string;
 }
 
 interface Props {
@@ -42,10 +46,20 @@ interface Props {
   heroSubtitle: string;
   heroDescription: string;
   heroBadge: string;
+  // NEW: Intro section
+  introTitle?: string;
+  introText?: string;
+  // Services section
   servicesTitle: string;
   servicesDescription: string;
   services: ServiceItem[];
+  // NEW: Why Choose Us section
+  whyChooseUs?: WhyChooseItem[];
+  whyChooseTitle?: string;
+  whyChooseDescription?: string;
+  // Tech stack
   techStack: string[];
+  // CTA
   ctaTitle?: string;
   ctaDescription?: string;
 }
@@ -57,9 +71,14 @@ const {
   heroSubtitle,
   heroDescription,
   heroBadge,
+  introTitle,
+  introText,
   servicesTitle,
   servicesDescription,
   services,
+  whyChooseUs = [],
+  whyChooseTitle = "Why Choose Us",
+  whyChooseDescription,
   techStack,
   ctaTitle = "Ready to transform your business?",
   ctaDescription = "Let's build something extraordinary together.",
@@ -67,76 +86,69 @@ const {
 
 // Icon mapping for common technologies
 const techIconMap: Record<string, any> = {
-  // Languages & Frameworks
-  "React": Braces,
+  React: Braces,
   "Next.js": Layers,
-  "TypeScript": FileCode,
-  "JavaScript": Code2,
+  TypeScript: FileCode,
+  JavaScript: Code2,
   "Node.js": Server,
-  "Python": Terminal,
+  Python: Terminal,
   "Vue.js": Braces,
-  "Angular": Braces,
-  "Svelte": Braces,
-  "Astro": Globe,
-  
-  // Mobile
+  Angular: Braces,
+  Svelte: Braces,
+  Astro: Globe,
   "React Native": Smartphone,
-  "Flutter": Smartphone,
-  "Swift": Smartphone,
-  "Kotlin": Smartphone,
-  "iOS": Smartphone,
-  "Android": Smartphone,
-  
-  // Databases
-  "PostgreSQL": Database,
-  "MongoDB": Database,
-  "MySQL": Database,
-  "Redis": Database,
-  "Firebase": Database,
-  "Supabase": Database,
-  
-  // Cloud & DevOps
-  "AWS": Cloud,
-  "Azure": Cloud,
-  "GCP": Cloud,
-  "Docker": Container,
-  "Kubernetes": Container,
-  "Vercel": Cloud,
-  "Netlify": Cloud,
-  
-  // Design
-  "Figma": Palette,
+  Flutter: Smartphone,
+  Swift: Smartphone,
+  Kotlin: Smartphone,
+  iOS: Smartphone,
+  Android: Smartphone,
+  PostgreSQL: Database,
+  MongoDB: Database,
+  MySQL: Database,
+  Redis: Database,
+  Firebase: Database,
+  Supabase: Database,
+  AWS: Cloud,
+  Azure: Cloud,
+  GCP: Cloud,
+  Docker: Container,
+  Kubernetes: Container,
+  Vercel: Cloud,
+  Netlify: Cloud,
+  Figma: Palette,
   "Adobe XD": Palette,
-  "Sketch": Palette,
-  
-  // Other
-  "GraphQL": GitBranch,
+  Sketch: Palette,
+  GraphQL: GitBranch,
   "REST API": GitBranch,
   "Tailwind CSS": Palette,
-  "TensorFlow": Cpu,
-  "PyTorch": Cpu,
-  "OpenAI": Cpu,
-  "Shopify": Globe,
-  "WooCommerce": Globe,
-  "Stripe": Globe,
-  "Jenkins": Cog,
+  TensorFlow: Cpu,
+  PyTorch: Cpu,
+  OpenAI: Cpu,
+  Shopify: Globe,
+  WooCommerce: Globe,
+  WordPress: Globe,
+  PHP: Code2,
+  Laravel: Code2,
+  Stripe: Globe,
+  Jenkins: Cog,
   "GitHub Actions": GitBranch,
   "CI/CD": Cog,
-  "Terraform": Wrench,
-  "Ansible": Wrench,
+  Terraform: Wrench,
+  Ansible: Wrench,
+  Sanity: Database,
+  Strapi: Database,
+  Liquid: Code2,
+  Java: Code2,
+  ".NET": Code2,
+  DevOps: Cog,
+  "QA Engineers": Wrench,
 };
 
-// Get icon for a tech, with fallback
 const getTechIcon = (tech: string) => techIconMap[tech] || Code2;
-
-// Generate breadcrumb schema
-const siteUrl = Astro.site || 'https://aexaware.com';
+const siteUrl = Astro.site || "https://aexaware.com";
 ---
 
-<Layout 
-  title={`${title} – Aexaware Infotech`} 
-  description={description}
->
+<Layout title={`${title} – Aexaware Infotech`} description={description}>
   <Fragment slot="head">
     <Schema
       item={{
@@ -150,7 +162,7 @@ const siteUrl = Astro.site || 'https://aexaware.com';
         },
         areaServed: {
           "@type": "Country",
-          name: "India"
+          name: "India",
         },
         description: description,
       }}
@@ -170,54 +182,70 @@ const siteUrl = Astro.site || 'https://aexaware.com';
             "@type": "ListItem",
             position: 2,
             name: "Services",
-            item: new URL('/services', siteUrl).href,
+            item: new URL("/services", siteUrl).href,
           },
           {
             "@type": "ListItem",
             position: 3,
             name: title,
           },
-        ]
+        ],
       }}
     />
   </Fragment>
-  
+
   {/* Hero Section */}
-  {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}
-  <section class="relative w-full min-h-dvh flex flex-col justify-center pt-32 pb-16 lg:pb-24 overflow-hidden border-b border-border/40">
-    
-    {/* FIX: Semantic Grid Background */}
-    <BackgroundGrid density="sm" mask="top" />
-    
+  <section
+    class="relative w-full min-h-dvh flex flex-col justify-center pt-32 pb-16 lg:pb-24 overflow-hidden border-b border-border/40"
+  >
+    <BackgroundGrid density="md" mask="top" />
+
     <div class="container-normal relative z-10">
       <div class="max-w-5xl mx-auto text-center">
-        
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8">
+        <div
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8"
+        >
           <Sparkles className="w-4 h-4 text-primary" />
-          <span class="text-sm font-semibold text-primary tracking-wide uppercase">{heroBadge}</span>
+          <span
+            class="text-sm font-semibold text-primary tracking-wide uppercase"
+            >{heroBadge}</span
+          >
         </div>
 
-        <h1 class="font-heading font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8">
-          {heroTitle} <br class="hidden md:block" />
-          <span class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
+        <h1
+          class="font-heading font-bold text-5xl sm:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-foreground mb-8"
+        >
+          {heroTitle}
+          <br class="hidden md:block" />
+          <span
+            class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
+          >
             {heroSubtitle}
           </span>
         </h1>
-        
-        <p class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed whitespace-pre-line text-pretty">
+
+        <p
+          class="mx-auto mt-8 max-w-3xl text-xl text-muted-foreground leading-relaxed text-pretty"
+        >
           {heroDescription}
         </p>
-        
+
         <div class="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/contact" 
-            class={cn(buttonVariants({ size: "lg" }), "h-14 rounded-full px-10 text-lg shadow-lg hover:shadow-primary/20 transition-all")}
+          <a
+            href="/contact"
+            class={cn(
+              buttonVariants({ size: "lg" }),
+              "h-14 rounded-full px-10 text-lg shadow-lg hover:shadow-primary/20 transition-all",
+            )}
           >
             Start Project <ArrowRight className="ml-2 h-5 w-5" />
           </a>
-          <a 
-            href="#services" 
-            class={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-14 rounded-full px-10 text-lg bg-background/50 hover:bg-background")}
+          <a
+            href="#services"
+            class={cn(
+              buttonVariants({ variant: "outline", size: "lg" }),
+              "h-14 rounded-full px-10 text-lg bg-background/50 hover:bg-background",
+            )}
           >
             Explore Services
           </a>
@@ -226,64 +254,169 @@ const siteUrl = Astro.site || 'https://aexaware.com';
     </div>
   </section>
 
+  {/* Intro Section - Redesigned */}
+  {
+    introText && (
+      <section class="section-padding bg-background border-b border-border/40 relative overflow-hidden">
+        {/* Background decoration */}
+        <BackgroundGrid density="md" opacity={0.03} class="opacity-50" />
+
+        <div class="container-normal relative z-10">
+          <div class="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+            <div class="lg:col-span-5 lg:sticky lg:top-32">
+              {introTitle && (
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-6">
+                  {introTitle}
+                </h2>
+              )}
+              <div class="h-1.5 w-24 bg-primary rounded-full mb-8" />
+              {/* Decorative quote idea */}
+              <div class="hidden lg:block text-9xl leading-none text-primary/10 font-serif absolute -left-12 -top-12 -z-10 select-none">
+                &ldquo;
+              </div>
+            </div>
+
+            <div class="lg:col-span-7">
+              <div class="prose prose-lg md:prose-xl prose-neutral dark:prose-invert max-w-none text-muted-foreground">
+                <p class="leading-relaxed whitespace-pre-line text-pretty">
+                  {introText}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   {/* Services Section */}
-  <section id="services" class="section-padding relative overflow-hidden bg-background">
-     {/* Subtle grid background */}
+  <section
+    id="services"
+    class="section-padding relative overflow-hidden bg-secondary/5"
+  >
     <BackgroundGrid density="md" opacity={0.03} class="opacity-50" />
 
     <div class="container-normal relative z-10">
-      
-      <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-border/40 pb-8">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 pb-8"
+      >
         <div class="max-w-3xl">
-          <span class="text-sm font-semibold text-primary uppercase tracking-widest mb-3 block">Our Capabilities</span>
-          <h2 class="font-heading text-4xl md:text-5xl font-bold leading-tight text-foreground">
+          <span
+            class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4 border border-primary/20"
+          >
+            Our Capabilities
+          </span>
+          <h2
+            class="font-heading text-4xl md:text-5xl font-bold leading-tight text-foreground"
+          >
             {servicesTitle}
           </h2>
-          <p class="mt-4 text-xl text-muted-foreground">
+          <p class="mt-6 text-xl text-muted-foreground">
             {servicesDescription}
           </p>
         </div>
       </div>
 
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <div class="group relative bg-card/50 backdrop-blur-xs p-10 rounded-card-lg border border-border/50 hover:border-primary/50 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 overflow-hidden">
-            
-            {/* Hover Gradient Background */}
-            <div class={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {
+          services.map((service, index) => (
+            <div class="group relative bg-background p-8 rounded-3xl border border-border/60 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 overflow-hidden flex flex-col h-full">
+              <div
+                class={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+              />
 
-            <div class="relative z-10">
-              <div class="flex justify-between items-start mb-8">
-                <div class={`h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-500`}>
-                  <service.icon className={cn("h-7 w-7", service.iconColor)} strokeWidth={1.5} />
+              <div class="relative z-10 flex-1 flex flex-col">
+                <div class="flex justify-between items-start mb-8">
+                  <div
+                    class={`h-14 w-14 rounded-2xl bg-secondary/50 border border-border/50 flex items-center justify-center shadow-xs group-hover:scale-110 group-hover:bg-background transition-all duration-500`}
+                  >
+                    <service.icon
+                      className={cn(
+                        "h-7 w-7 transition-colors duration-300",
+                        service.iconColor,
+                      )}
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <span class="text-6xl font-bold font-heading text-muted-foreground/10 group-hover:text-primary/10 transition-colors select-none">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
-                <span class="text-6xl font-bold font-heading text-muted-foreground/5 group-hover:text-foreground/5 transition-colors select-none">
-                  {service.id}
-                </span>
-              </div>
 
-              <h3 class="font-heading text-2xl font-bold text-foreground mb-4">
-                {service.title}
-              </h3>
-              <p class="text-muted-foreground leading-relaxed text-base">
-                {service.desc}
-              </p>
+                <h3 class="font-heading text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p class="text-muted-foreground leading-relaxed text-base flex-1">
+                  {service.desc}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
 
+  {/* Why Choose Us Section - Redesigned */}
+  {
+    whyChooseUs.length > 0 && (
+      <section class="section-padding bg-background border-y border-border/40 relative overflow-hidden">
+        <BackgroundGrid density="md" opacity={0.03} class="opacity-50" />
+
+        <div class="container-normal relative z-10">
+          <div class="text-center mb-20">
+            <span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold uppercase tracking-wider mb-4 border border-primary/20">
+              The Advantage
+            </span>
+            <h2 class="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6">
+              {whyChooseTitle}
+            </h2>
+            {whyChooseDescription && (
+              <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+                {whyChooseDescription}
+              </p>
+            )}
+          </div>
+
+          <div class="grid gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+            {whyChooseUs.map((item) => (
+              <div class="flex gap-5 group">
+                <div class="shrink-0">
+                  <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                    <CheckCircle2 className="h-6 w-6" />
+                  </div>
+                </div>
+                <div>
+                  <h3 class="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p class="text-muted-foreground leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   {/* Technical Toolbox */}
-  <section class="section-padding border-y border-border/40 bg-linear-to-b from-secondary/5 to-background relative overflow-hidden">
-    {/* Decorative background elements */}
-    <BackgroundGrid density="lg" opacity={0.02} />
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-    
+  <section
+    class="section-padding border-b border-border/40 bg-linear-to-b from-background to-secondary/5 relative overflow-hidden"
+  >
+    <BackgroundGrid density="md" opacity={0.02} />
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none"
+    >
+    </div>
+
     <div class="container-normal relative z-10">
       <div class="text-center mb-16">
-        <span class="text-sm font-semibold text-muted-foreground uppercase tracking-widest block mb-4">
+        <span
+          class="text-sm font-semibold text-muted-foreground uppercase tracking-widest block mb-4"
+        >
           Powered By Modern Tech
         </span>
         <h2 class="font-heading text-3xl md:text-4xl font-bold text-foreground">
@@ -291,27 +424,27 @@ const siteUrl = Astro.site || 'https://aexaware.com';
         </h2>
       </div>
 
-      {/* Tech Stack Grid */}
-      <div class="flex flex-wrap justify-center gap-4 md:gap-5 max-w-5xl mx-auto">
-        {techStack.map((tech) => {
-          const IconComponent = getTechIcon(tech);
-          return (
-            <div class="group flex items-center gap-3 px-5 py-3 rounded-full bg-card/80 backdrop-blur-xs border border-border/50 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default">
-              <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                <IconComponent className="h-4 w-4" aria-hidden="true" />
+      <div
+        class="flex flex-wrap justify-center gap-4 md:gap-5 max-w-5xl mx-auto"
+      >
+        {
+          techStack.map((tech) => {
+            const IconComponent = getTechIcon(tech);
+            return (
+              <div class="group flex items-center gap-3 px-5 py-3 rounded-full bg-card/80 backdrop-blur-xs border border-border/50 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default">
+                <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
+                  <IconComponent className="h-4 w-4" aria-hidden="true" />
+                </div>
+                <span class="font-medium text-base text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
+                  {tech}
+                </span>
               </div>
-              <span class="font-medium text-base text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
-                {tech}
-              </span>
-            </div>
-          );
-        })}
+            );
+          })
+        }
       </div>
     </div>
   </section>
 
-  <CTA 
-    buttonText="Start Project"
-    description={ctaDescription}
-  />
+  <CTA buttonText="Start Project" description={ctaDescription} />
 </Layout>

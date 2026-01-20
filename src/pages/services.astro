@@ -13,6 +13,12 @@ import {
   Zap,
   Layers,
   Sparkles,
+  Rocket,
+  Layout as LayoutIcon,
+  Cpu,
+  Users,
+  TrendingUp,
+  Ghost,
 } from "lucide-astro";
 import { Schema } from "astro-seo-schema";
 import CTA from "@/components/astro/CTA.astro";
@@ -61,24 +67,70 @@ const services = [
     tags: ["Shopify", "WooCommerce", "Custom"],
     path: "/services/ecommerce",
   },
+  {
+    icon: Rocket,
+    title: "MVP Development",
+    desc: "Rapid prototyping and core feature development to validate your startup ideas quickly.",
+    tags: ["Prototyping", "Lean Startup", "Speed"],
+    path: "/services/mvp-development",
+  },
+  {
+    icon: LayoutIcon,
+    title: "CMS Development",
+    desc: "Custom themes and plugins for WordPress, Shopify, and modern Headless CMS solutions.",
+    tags: ["WordPress", "Shopify", "Strapi"],
+    path: "/services/cms-development",
+  },
+  {
+    icon: Cpu,
+    title: "Custom Software",
+    desc: "Tailored software solutions designed to address your specific business challenges and workflows.",
+    tags: ["Enterprise", "SaaS", "Automation"],
+    path: "/services/software-solutions",
+  },
+  {
+    icon: Users,
+    title: "Extended Team",
+    desc: "Augment your existing team with our skilled developers, engineers, and digital experts.",
+    tags: ["Staff Augmentation", "Dedicated Team", "Remote"],
+    path: "/services/extended-team",
+  },
+  {
+    icon: TrendingUp,
+    title: "Digital Marketing",
+    desc: "Data-driven marketing strategies to increase your online visibility and drive growth.",
+    tags: ["SEO", "PPC", "Social Media"],
+    path: "/services/digital-marketing",
+  },
+  {
+    icon: Ghost,
+    title: "White Label Services",
+    desc: "Silent partnership services for agencies looking to scale their production capabilities.",
+    tags: ["Confidential", "Agency Support", "Scalable"],
+    path: "/services/white-label-services",
+  },
 ];
 
 const solutions = [
   {
     title: "E-Commerce",
     desc: "High-converting online stores with seamless checkout experiences.",
+    href: "/services/ecommerce",
   },
   {
     title: "Healthcare",
     desc: "HIPAA-compliant applications for patient management and telemedicine.",
+    href: "/contact",
   },
   {
     title: "FinTech",
     desc: "Secure and robust financial platforms for banking and payments.",
+    href: "/contact",
   },
   {
     title: "Education",
     desc: "Interactive learning management systems and educational portals.",
+    href: "/contact",
   },
 ];
 
@@ -263,7 +315,7 @@ const techStack = [
           <div class="space-y-8">
             {
               solutions.map((item) => (
-                <div class="flex gap-6 group">
+                <a href={item.href} class="flex gap-6 group cursor-pointer">
                   <div class="mt-1 p-2 rounded-full bg-primary/10 text-primary h-fit group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
                     <ArrowRight className="h-5 w-5" aria-hidden="true" />
                   </div>
@@ -273,7 +325,7 @@ const techStack = [
                     </h3>
                     <p class="text-muted-foreground text-lg">{item.desc}</p>
                   </div>
-                </div>
+                </a>
               ))
             }
           </div>

@@ -1,51 +1,118 @@
 ---
-import ServicePageLayout from '@/layouts/ServicePageLayout.astro';
-import { Palette, Layout, PenTool, Smartphone } from "lucide-astro";
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import {
+  Palette,
+  Layers,
+  MousePointer,
+  Smartphone,
+  Users,
+  Sparkles,
+} from "lucide-astro";
 
 const services = [
   {
     id: "01",
-    icon: Smartphone,
-    title: "UX and UI Design for Mobile Apps and Games",
-    desc: "We create beautiful, intuitive mobile experiences with user-driven interfaces engineered to perform, be user-centered, and visually aesthetic in apps and games.",
-    gradient: "from-pink-500/20 to-rose-500/20",
-    iconColor: "text-pink-600",
+    icon: Palette,
+    title: "UI Design",
+    desc: "Beautiful, intuitive interfaces that capture your brand essence. From color palettes to typography, we craft visual experiences that users love.",
+    gradient: "from-purple-500/20 to-pink-500/20",
+    iconColor: "text-purple-600",
   },
   {
     id: "02",
-    icon: Layout,
-    title: "UX and UI Design for Websites and Saas Products",
-    desc: "We develop clean conversion driven experiences and designs for websites, websites, SaaS products, focusing on single user journey, responsive interfaces, navigation, and satisfaction.",
+    icon: MousePointer,
+    title: "UX Research",
+    desc: "Data-driven insights through user interviews, surveys, and usability testing. We understand your users to design solutions that truly resonate.",
     gradient: "from-blue-500/20 to-cyan-500/20",
     iconColor: "text-blue-600",
   },
   {
     id: "03",
-    icon: PenTool,
-    title: "Graphic Design and Logo Design",
-    desc: "We design outstanding visual identities; logo to brand graphics, expressing your mission and values so you are recognizable in any market. Space.",
-    gradient: "from-violet-500/20 to-purple-500/20",
-    iconColor: "text-violet-600",
+    icon: Layers,
+    title: "Wireframing & Prototyping",
+    desc: "Interactive prototypes that bring your ideas to life before development. Test concepts, gather feedback, and iterate quickly.",
+    gradient: "from-green-500/20 to-emerald-500/20",
+    iconColor: "text-green-600",
+  },
+  {
+    id: "04",
+    icon: Smartphone,
+    title: "Mobile App Design",
+    desc: "Platform-specific design for iOS and Android that follows Human Interface and Material Design guidelines for native experiences.",
+    gradient: "from-orange-500/20 to-amber-500/20",
+    iconColor: "text-orange-600",
+  },
+  {
+    id: "05",
+    icon: Users,
+    title: "Design Systems",
+    desc: "Scalable component libraries and style guides that ensure consistency across your entire product ecosystem.",
+    gradient: "from-indigo-500/20 to-violet-500/20",
+    iconColor: "text-indigo-600",
+  },
+  {
+    id: "06",
+    icon: Sparkles,
+    title: "Brand Identity",
+    desc: "Logo design, visual identity, and brand guidelines that communicate your values and differentiate you from competitors.",
+    gradient: "from-rose-500/20 to-red-500/20",
+    iconColor: "text-rose-600",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "User-Centered Approach",
+    desc: "Every design decision is based on user needs, behaviors, and feedback—not assumptions.",
+  },
+  {
+    title: "Aesthetics + Function",
+    desc: "We create designs that are both visually stunning and highly functional.",
+  },
+  {
+    title: "Collaborative Process",
+    desc: "Regular design reviews and feedback loops keep you involved throughout the creative process.",
+  },
+  {
+    title: "Developer-Friendly",
+    desc: "Our designs come with detailed specs, assets, and documentation for seamless handoff.",
+  },
+  {
+    title: "Accessibility First",
+    desc: "WCAG-compliant designs that ensure your product is usable by everyone.",
+  },
+  {
+    title: "Rapid Iteration",
+    desc: "Quick turnaround on revisions so you can move from concept to launch faster.",
   },
 ];
 
 const techStack = [
-  "Figma Software",
+  "Figma",
   "Adobe XD",
-  "Adobe Photoshop",
-  "Sketch Software",
+  "Sketch",
+  "Framer",
+  "InVision",
+  "Principle",
+  "Tailwind CSS",
+  "Storybook",
 ];
 ---
 
 <ServicePageLayout
   title="UI/UX Design"
-  description="User-First Design. Designing User-Centric Experiences That Inspire Interaction and Trust."
-  heroBadge="UI/UX Design"
-  heroTitle="User-First Design"
-  heroSubtitle="Design That Connects"
-  heroDescription="We deliver user experiences that are both beautiful and intentional, designing seamless interfaces that inspire trust. Our user-centric approach ensures accessible, responsive, and conversion-oriented designs."
-  servicesTitle="Our UI/UX Design Services Include"
-  servicesDescription="Above all, we provide thoughtful, user-first design services - wireframes, interfaces, and experiences that integrate form, function, and conversion."
+  description="User-centric UI/UX design services that blend aesthetics with functionality. From research to prototypes to polished designs."
+  heroBadge="Design Excellence"
+  heroTitle="Design That"
+  heroSubtitle="Delights Users."
+  heroDescription="User-centric design that blends aesthetics with functionality to create intuitive digital products. We craft experiences that not only look beautiful but solve real user problems and drive business results."
+  introTitle="Our Design Philosophy"
+  introText="Great design is invisible. It guides users effortlessly toward their goals without friction or confusion. We believe in designing with empathy—understanding your users deeply and creating solutions that feel natural and intuitive. Our design process combines creativity with rigorous research and testing. Every decision is intentional, backed by data and user feedback. The result? Products that users love to use and businesses love to build."
+  servicesTitle="UI/UX Design Services"
+  servicesDescription="Comprehensive design services from research and strategy to pixel-perfect delivery."
   services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Design"
+  whyChooseDescription="Design that drives engagement, conversion, and customer satisfaction."
   techStack={techStack}
 />

@@ -1,52 +1,119 @@
 ---
-import ServicePageLayout from '@/layouts/ServicePageLayout.astro';
-import { ShoppingCart, CreditCard, Package } from "lucide-astro";
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import {
+  ShoppingCart,
+  CreditCard,
+  Package,
+  TrendingUp,
+  Globe,
+  Smartphone,
+} from "lucide-astro";
 
 const services = [
   {
     id: "01",
     icon: ShoppingCart,
-    title: "Custom Online Store Development",
-    desc: "We develop responsive and scalable e-commerce websites built specifically for your brand that provide your customers with a uniform checkout experience from all devices and platforms",
+    title: "Custom E-commerce Development",
+    desc: "Bespoke online stores built from the ground up. Unique designs, custom features, and seamless integrations tailored to your business.",
     gradient: "from-green-500/20 to-emerald-500/20",
     iconColor: "text-green-600",
   },
   {
     id: "02",
-    icon: CreditCard,
-    title: "Secure Payment Gateway Integration",
-    desc: "We provide fast, secure, and easy transactions for your customers with application of trusted payment gateways like Razorpay, Stripe, PayPal.",
-    gradient: "from-blue-500/20 to-cyan-500/20",
+    icon: Globe,
+    title: "Shopify & WooCommerce",
+    desc: "Expert development on the world's leading e-commerce platforms. Custom themes, apps, and integrations that extend functionality.",
+    gradient: "from-blue-500/20 to-indigo-500/20",
     iconColor: "text-blue-600",
   },
   {
     id: "03",
+    icon: CreditCard,
+    title: "Payment Integration",
+    desc: "Secure payment processing with Stripe, PayPal, Razorpay, and more. Multiple currencies, subscriptions, and flexible checkout experiences.",
+    gradient: "from-purple-500/20 to-pink-500/20",
+    iconColor: "text-purple-600",
+  },
+  {
+    id: "04",
     icon: Package,
-    title: "Inventory & Order Management System",
-    desc: "Leverage intelligent Inventory and Order Management solution so, real time inventory, automated order processing, and centralized products, shipping, and return management systems supports seamless operational management and tracking capabilities.",
-    gradient: "from-orange-500/20 to-red-500/20",
+    title: "Inventory Management",
+    desc: "Real-time inventory tracking, multi-warehouse support, and automated reordering. Keep stock optimized and customers happy.",
+    gradient: "from-orange-500/20 to-amber-500/20",
     iconColor: "text-orange-600",
+  },
+  {
+    id: "05",
+    icon: TrendingUp,
+    title: "Conversion Optimization",
+    desc: "A/B testing, analytics, and UX improvements to increase sales. Turn more visitors into customers with data-driven optimizations.",
+    gradient: "from-teal-500/20 to-cyan-500/20",
+    iconColor: "text-teal-600",
+  },
+  {
+    id: "06",
+    icon: Smartphone,
+    title: "Mobile Commerce",
+    desc: "Mobile-first shopping experiences and native shopping apps. Reach customers wherever they are with seamless mobile purchasing.",
+    gradient: "from-rose-500/20 to-red-500/20",
+    iconColor: "text-rose-600",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Conversion Focused",
+    desc: "Every design decision is made to maximize sales and reduce cart abandonment.",
+  },
+  {
+    title: "Scalable Architecture",
+    desc: "Handle traffic spikes during sales events without breaking a sweat.",
+  },
+  {
+    title: "Secure Transactions",
+    desc: "PCI-compliant payment processing and robust security measures.",
+  },
+  {
+    title: "SEO Optimized",
+    desc: "Built for search engines to help customers find your products.",
+  },
+  {
+    title: "Fast Performance",
+    desc: "Speed matters for conversions. We optimize for sub-second load times.",
+  },
+  {
+    title: "Ongoing Support",
+    desc: "Continuous monitoring, updates, and improvements to keep your store thriving.",
   },
 ];
 
 const techStack = [
-  "Bootstrap",
-  "Tailwind CSS",
   "Shopify",
-  "Laravel",
-  "jQuery",
+  "WooCommerce",
+  "Next.js",
+  "Stripe",
+  "PayPal",
+  "Razorpay",
+  "Medusa",
+  "Tailwind CSS",
+  "PostgreSQL",
 ];
 ---
 
 <ServicePageLayout
-  title="E-Com Development"
-  description="Smart E-commerce. Custom E-commerce Solutions That Drive Sales and Scale Your Brand."
-  heroBadge="E-Com Development"
-  heroTitle="Smart E-commerce"
-  heroSubtitle="Transform Clicks into Customers"
-  heroDescription="We build powerful, user-friendly e-commerce websites that help you sell more and scale faster. Our custom platforms offer seamless performance, secure payments, and conversion-focused design."
-  servicesTitle="Complete E-commerce Development Solutions"
-  servicesDescription="At Aexaware Infotech, we develop scalable, secure, and conversion-driven online stores which simplify selling and boost your online revenue."
+  title="E-commerce Development"
+  description="High-converting e-commerce solutions. Custom stores, Shopify, WooCommerce, payment integration, and inventory management."
+  heroBadge="E-commerce"
+  heroTitle="Sell More."
+  heroSubtitle="Grow Faster."
+  heroDescription="Secure online stores with payment integration, inventory management, and responsive design. We build e-commerce experiences that convert visitors into customers and customers into loyal advocates."
+  introTitle="E-commerce That Converts"
+  introText="In e-commerce, every detail matters. From page load speed to checkout flow, small improvements can mean thousands in additional revenue. We obsess over these details so you don't have to. Whether you're launching your first online store or scaling an established business, we provide the technical expertise and e-commerce strategy to help you succeed in a competitive digital marketplace."
+  servicesTitle="E-commerce Services"
+  servicesDescription="End-to-end e-commerce solutions from store development to optimization."
   services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for E-commerce"
+  whyChooseDescription="E-commerce expertise that drives revenue growth."
   techStack={techStack}
 />

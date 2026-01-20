@@ -1,65 +1,82 @@
 ---
-import ServicePageLayout from '@/layouts/ServicePageLayout.astro';
-import {
-  Layout,
-  Globe,
-  Database,
-  Users,
-  Server,
-  Settings,
-  Code2,
-  Zap,
-  ShieldCheck,
-} from "lucide-astro";
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Globe, Server, Braces, Layers, Zap, Smartphone } from "lucide-astro";
 
 const services = [
   {
     id: "01",
-    icon: Layout,
-    title: "Development of Open Source (CMS)",
-    desc: "We use open-source content management systems (CMS) like WordPress, Joomla, and Drupal to create scalable, adaptable websites that make content management simple.",
+    icon: Braces,
+    title: "React & Next.js Development",
+    desc: "Modern, fast web applications with React and Next.js. Server-side rendering, static generation, and dynamic features for optimal performance and SEO.",
     gradient: "from-blue-500/20 to-cyan-500/20",
     iconColor: "text-blue-600",
   },
   {
     id: "02",
-    icon: Globe,
-    title: "Online Portals Development",
-    desc: "Custom portals for education, business, and communities—designed to provide users access, control their content, and engage now.",
-    gradient: "from-purple-500/20 to-pink-500/20",
-    iconColor: "text-purple-600",
-  },
-  {
-    id: "03",
-    icon: Database,
-    title: "CRM Applications Development",
-    desc: "Custom customer relationship management systems tailored to monitor interactions with your treasured customers to increase sell, automate workflow, and provide customer engagement throughout your entire business.",
-    gradient: "from-amber-500/20 to-orange-500/20",
-    iconColor: "text-amber-600",
-  },
-  {
-    id: "04",
-    icon: Users,
-    title: "Social Networking Portal",
-    desc: "We create social networking portals with interactive, real-time messaging, sharing content, user management, and modern, appealing UI/UX design.",
+    icon: Server,
+    title: "Node.js Development",
+    desc: "Scalable backend services with Node.js and Express. Real-time applications, REST APIs, GraphQL servers, and microservices architecture.",
     gradient: "from-green-500/20 to-emerald-500/20",
     iconColor: "text-green-600",
   },
   {
+    id: "03",
+    icon: Layers,
+    title: "Python & Django Development",
+    desc: "Robust web applications with Python and Django. Perfect for data-intensive applications, admin dashboards, and complex business logic.",
+    gradient: "from-yellow-500/20 to-amber-500/20",
+    iconColor: "text-yellow-600",
+  },
+  {
+    id: "04",
+    icon: Globe,
+    title: "PHP & Laravel Development",
+    desc: "Enterprise-grade web applications with PHP and Laravel. E-commerce platforms, CRM systems, and content management solutions.",
+    gradient: "from-purple-500/20 to-pink-500/20",
+    iconColor: "text-purple-600",
+  },
+  {
     id: "05",
-    icon: Server,
-    title: "Website Hosting",
-    desc: "Hosting that is reliable, safe, and fast, to keep your website online, optimized, and available 24/7.",
-    gradient: "from-red-500/20 to-rose-500/20",
-    iconColor: "text-red-600",
+    icon: Zap,
+    title: "Full-Stack Development",
+    desc: "End-to-end web development from database design to frontend implementation. Modern tech stacks tailored to your project requirements.",
+    gradient: "from-orange-500/20 to-red-500/20",
+    iconColor: "text-orange-600",
   },
   {
     id: "06",
-    icon: Settings,
-    title: "Website Maintenance",
-    desc: "The care that a website demands on an ongoing basis. Updates, backups, bug fixes, search engine optimization and many others to ensure its safety and reduce risk of failure.",
+    icon: Smartphone,
+    title: "Progressive Web Apps",
+    desc: "Web apps that work like native apps. Offline functionality, push notifications, and installable on any device for maximum reach.",
     gradient: "from-indigo-500/20 to-violet-500/20",
     iconColor: "text-indigo-600",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Modern Tech Stack",
+    desc: "We use the latest frameworks and tools to build fast, scalable, and maintainable web applications.",
+  },
+  {
+    title: "SEO Optimized",
+    desc: "Every website we build is optimized for search engines from the ground up, helping you rank higher.",
+  },
+  {
+    title: "Responsive Design",
+    desc: "Cross-browser and cross-device compatibility ensures your website looks great everywhere.",
+  },
+  {
+    title: "Performance Focused",
+    desc: "We optimize for Core Web Vitals and page speed, critical factors for user experience and SEO.",
+  },
+  {
+    title: "Security First",
+    desc: "From HTTPS to input validation, we implement security best practices to protect your users.",
+  },
+  {
+    title: "Scalable Architecture",
+    desc: "Built to handle growth—from your first visitors to millions of monthly users.",
   },
 ];
 
@@ -68,44 +85,31 @@ const techStack = [
   "Next.js",
   "TypeScript",
   "Node.js",
-  "Tailwind CSS",
-  "WordPress",
-  "Drupal",
-  "Joomla",
+  "Python",
+  "PHP",
+  "Laravel",
   "PostgreSQL",
   "MongoDB",
-];
-
-const features = [
-  {
-    icon: Zap,
-    title: "Lightning Fast",
-    desc: "Optimized for speed and performance"
-  },
-  {
-    icon: ShieldCheck,
-    title: "Secure & Reliable",
-    desc: "Enterprise-grade security standards"
-  },
-  {
-    icon: Code2,
-    title: "Scalable Code",
-    desc: "Built to grow with your business"
-  },
+  "Tailwind CSS",
+  "AWS",
+  "Vercel",
 ];
 ---
 
 <ServicePageLayout
   title="Web Development"
-  description="Creating Stunning, Scalable, and Quick Websites That Get Results."
+  description="Custom web development services including React, Next.js, Node.js, Python, and PHP. From simple websites to complex web applications."
   heroBadge="Web Development"
-  heroTitle="Modern Web Solutions"
-  heroSubtitle="Fast. Modern. Built to scale."
-  heroDescription="We design fast, secure, and beautiful websites and web applications optimized for performance and usability. Our future-proof, scalable solutions are tailored to meet your specific business needs."
-  servicesTitle="Our Web Development Services Include"
-  servicesDescription="We offer high-performance, scalable, and secure solutions that are customized for your company, from intricate web apps to unique websites."
+  heroTitle="Websites That"
+  heroSubtitle="Drive Results."
+  heroDescription="Cross-browser and cross-device compatibility, driven by mobile responsiveness—all under one roof. From basic website designs to highly complex business web apps, we customize the best web development solutions for you."
+  introTitle="Our Web Development Expertise"
+  introText="We are a leading web development company with expertise of over six years and hands-on experience creating 100+ successful web applications. Our team of web design and development experts constantly experiment and implement innovative ideas that transform website designs into a gold mine for your business. We're not just a web development company—we're your team of experts committed to bringing your digital vision to life. Our goal is to exceed your expectations with custom web development services that make your digital space shine."
+  servicesTitle="Web Development Services"
+  servicesDescription="We offer comprehensive web application development services for every framework and use case."
   services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Web Development"
+  whyChooseDescription="With deep expertise across frameworks and technologies, we deliver web experiences that stand out."
   techStack={techStack}
-  ctaTitle="Ready to build your web presence?"
-  ctaDescription="Let's create a stunning website that drives results for your business."
 />

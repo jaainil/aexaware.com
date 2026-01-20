@@ -1,0 +1,119 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import {
+    Ghost,
+    ShieldCheck,
+    Handshake,
+    Rocket,
+    Palette,
+    Zap,
+} from "lucide-astro";
+
+const services = [
+    {
+        id: "01",
+        icon: Ghost,
+        title: "Silent Partnership",
+        desc: "We work behind the scenes as your silent partner, delivering high-quality work under your brand name. Your clients never know we exist.",
+        gradient: "from-gray-500/20 to-slate-500/20",
+        iconColor: "text-gray-600",
+    },
+    {
+        id: "02",
+        icon: Rocket,
+        title: "Web Development",
+        desc: "Custom websites, web applications, and e-commerce solutions delivered under your brand. React, Next.js, WordPress, and more.",
+        gradient: "from-blue-500/20 to-indigo-500/20",
+        iconColor: "text-blue-600",
+    },
+    {
+        id: "03",
+        icon: Palette,
+        title: "UI/UX Design",
+        desc: "Professional design services including wireframes, prototypes, and final designs. Delivered in your brand's design system.",
+        gradient: "from-purple-500/20 to-pink-500/20",
+        iconColor: "text-purple-600",
+    },
+    {
+        id: "04",
+        icon: Zap,
+        title: "Mobile Development",
+        desc: "iOS, Android, React Native, and Flutter apps developed and delivered as white-label solutions for your clients.",
+        gradient: "from-green-500/20 to-emerald-500/20",
+        iconColor: "text-green-600",
+    },
+    {
+        id: "05",
+        icon: ShieldCheck,
+        title: "Confidentiality Assured",
+        desc: "Your client relationships are protected. We adhere to strict NDAs and confidentiality agreements to safeguard your business.",
+        gradient: "from-orange-500/20 to-amber-500/20",
+        iconColor: "text-orange-600",
+    },
+    {
+        id: "06",
+        icon: Handshake,
+        title: "Agency Support",
+        desc: "Expand your service offerings without increasing overhead. We handle development and design, you handle the client relationship.",
+        gradient: "from-teal-500/20 to-cyan-500/20",
+        iconColor: "text-teal-600",
+    },
+];
+
+const whyChooseUs = [
+    {
+        title: "100% Confidential",
+        desc: "Strict NDAs protect your client relationships. We never contact your clients or reveal our involvement.",
+    },
+    {
+        title: "Quality Guaranteed",
+        desc: "Same high standards we apply to our own projects. Your reputation is safe with our deliverables.",
+    },
+    {
+        title: "Flexible Capacity",
+        desc: "Scale up for large projects, scale down when quiet. No fixed overhead or long-term commitments.",
+    },
+    {
+        title: "Fast Turnaround",
+        desc: "Meet tight deadlines with our experienced team. We're used to working within agency timelines.",
+    },
+    {
+        title: "Direct Communication",
+        desc: "Slack, email, or project management tools—we integrate with your existing workflow.",
+    },
+    {
+        title: "Competitive Pricing",
+        desc: "Wholesale pricing that allows healthy margins for your agency while delivering premium quality.",
+    },
+];
+
+const techStack = [
+    "React",
+    "Next.js",
+    "WordPress",
+    "Shopify",
+    "React Native",
+    "Flutter",
+    "Node.js",
+    "Figma",
+    "AWS",
+];
+---
+
+<ServicePageLayout
+    title="White Label Services"
+    description="Expand your agency's capabilities with reliable white-label development and design services. We work, your brand grows."
+    heroBadge="White Label"
+    heroTitle="Your Brand."
+    heroSubtitle="Our Tech."
+    heroDescription="Scale your agency without the growing pains. We provide white-label development, design, and digital marketing services that allow you to offer more to your clients while maintaining your brand identity."
+    introTitle="Grow Without Limits"
+    introText="As an agency, you know the challenge: a big project comes in, but you don't have the capacity to deliver. Or a client needs a skill set outside your core expertise. That's where we come in. Our white-label partnership model lets you take on more projects, offer new services, and grow your business—all without hiring full-time staff or turning away opportunities. Your clients get excellent work, you get the credit, and everyone wins."
+    servicesTitle="White Label Services We Offer"
+    servicesDescription="Reliable, confidential, and high-quality solutions for agencies of all sizes."
+    services={services}
+    whyChooseUs={whyChooseUs}
+    whyChooseTitle="Benefits of Partnering with Us"
+    whyChooseDescription="A true partnership that helps your agency scale sustainably."
+    techStack={techStack}
+/>

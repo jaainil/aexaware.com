@@ -1,52 +1,120 @@
 ---
-import ServicePageLayout from '@/layouts/ServicePageLayout.astro';
-import { Cloud, GitBranch, ShieldCheck } from "lucide-astro";
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import {
+  Cloud,
+  Container,
+  GitBranch,
+  Shield,
+  Gauge,
+  Server,
+} from "lucide-astro";
 
 const services = [
   {
     id: "01",
     icon: Cloud,
-    title: "Cloud Infrastructure Installation",
-    desc: "Define, build, and manage scalable cloud environments using AWS, Azure, or GCP tailored for your organization.",
-    gradient: "from-sky-500/20 to-blue-500/20",
-    iconColor: "text-sky-600",
+    title: "Cloud Architecture",
+    desc: "Design and implement cloud infrastructure on AWS, Azure, or GCP. Scalable, secure, and cost-optimized architectures for any workload.",
+    gradient: "from-blue-500/20 to-cyan-500/20",
+    iconColor: "text-blue-600",
   },
   {
     id: "02",
-    icon: GitBranch,
-    title: "CI/CD Pipeline Automation",
-    desc: "Automate builds, testing, and deployments to speedup release cycles, reduce errors, and build more streamlined development lifecycles.",
-    gradient: "from-indigo-500/20 to-violet-500/20",
-    iconColor: "text-indigo-600",
+    icon: Container,
+    title: "Containerization",
+    desc: "Docker and Kubernetes expertise for container orchestration. Microservices architecture, auto-scaling, and high availability.",
+    gradient: "from-purple-500/20 to-indigo-500/20",
+    iconColor: "text-purple-600",
   },
   {
     id: "03",
-    icon: ShieldCheck,
-    title: "Cloud Security & Monitoring",
-    desc: "Define, build, and manage cloud security and monitoring systems for real-time logging and planned security measures to protect integrity, availability, and confidentiality for your cloud platforms",
-    gradient: "from-red-500/20 to-rose-500/20",
+    icon: GitBranch,
+    title: "CI/CD Pipelines",
+    desc: "Automated build, test, and deployment pipelines with GitHub Actions, Jenkins, or GitLab CI. Ship faster with confidence.",
+    gradient: "from-green-500/20 to-emerald-500/20",
+    iconColor: "text-green-600",
+  },
+  {
+    id: "04",
+    icon: Shield,
+    title: "Security & Compliance",
+    desc: "Infrastructure security, vulnerability scanning, secrets management, and compliance automation for regulated industries.",
+    gradient: "from-red-500/20 to-orange-500/20",
     iconColor: "text-red-600",
+  },
+  {
+    id: "05",
+    icon: Gauge,
+    title: "Monitoring & Observability",
+    desc: "Real-time monitoring, logging, and alerting with tools like Datadog, Prometheus, and Grafana. Know before your users do.",
+    gradient: "from-yellow-500/20 to-amber-500/20",
+    iconColor: "text-yellow-600",
+  },
+  {
+    id: "06",
+    icon: Server,
+    title: "Infrastructure as Code",
+    desc: "Terraform, Ansible, and CloudFormation for reproducible, version-controlled infrastructure. Eliminate configuration drift.",
+    gradient: "from-gray-500/20 to-slate-500/20",
+    iconColor: "text-gray-600",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Cloud-Native Expertise",
+    desc: "Deep experience with all major cloud providers and modern DevOps practices.",
+  },
+  {
+    title: "Cost Optimization",
+    desc: "We design for efficiency, helping you minimize cloud spend without sacrificing performance.",
+  },
+  {
+    title: "Scalability Built-In",
+    desc: "Architectures designed to handle growth from day one—auto-scaling, load balancing, and more.",
+  },
+  {
+    title: "Security First",
+    desc: "Infrastructure security is never an afterthought. We implement best practices from the start.",
+  },
+  {
+    title: "24/7 Reliability",
+    desc: "High availability, disaster recovery, and automated failover for business-critical applications.",
+  },
+  {
+    title: "Knowledge Transfer",
+    desc: "We document everything and train your team to manage infrastructure independently.",
   },
 ];
 
 const techStack = [
-  "ReactJS",
-  "Tailwind CSS",
-  "Laravel",
-  "Flutter",
-  "MongoDB",
+  "AWS",
+  "Azure",
+  "GCP",
+  "Docker",
+  "Kubernetes",
+  "Terraform",
+  "GitHub Actions",
+  "Jenkins",
+  "Prometheus",
+  "Grafana",
 ];
 ---
 
 <ServicePageLayout
   title="Cloud & DevOps"
-  description="Powered by the Cloud. Driven by DevOps. Scalable Cloud & DevOps Solutions for an Agile Journey."
+  description="Secure, scalable cloud infrastructure and DevOps solutions. AWS, Azure, GCP, Kubernetes, CI/CD pipelines, and infrastructure automation."
   heroBadge="Cloud & DevOps"
-  heroTitle="Powered by the Cloud."
-  heroSubtitle="Speed. Scale. Stability."
-  heroDescription="Combine the power of cloud infrastructure with agile DevOps practices for faster, smarter digital solutions. We automate processes and scale applications to ensure continuous integration and delivery."
-  servicesTitle="Cloud & DevOps Services Customized for Efficiency"
-  servicesDescription="Enabling organizations with the automated, secure, and scalable cloud-native solutions using the best in industry DevOps with modern cloud infrastructure."
+  heroTitle="Scale With"
+  heroSubtitle="Confidence."
+  heroDescription="Secure and scalable cloud infrastructure setup, migration, and management services. We help you build, deploy, and operate applications with modern DevOps practices that accelerate delivery and improve reliability."
+  introTitle="Modern Infrastructure for Modern Teams"
+  introText="The cloud has transformed how businesses build and deliver software. But without the right expertise, you can end up with sprawling infrastructure, security vulnerabilities, and runaway costs. We bring order to cloud chaos. Our DevOps engineers design infrastructure that's secure, scalable, and cost-effective. We implement automation that lets your team focus on building features instead of fighting fires."
+  servicesTitle="Cloud & DevOps Services"
+  servicesDescription="End-to-end cloud solutions from architecture design to ongoing operations."
   services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Cloud & DevOps"
+  whyChooseDescription="Infrastructure expertise that keeps your applications running smoothly."
   techStack={techStack}
 />
