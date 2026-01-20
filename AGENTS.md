@@ -27,6 +27,8 @@ bunx eslint .      # Run ESLint on all files
 bunx tsc --noEmit  # Run TypeScript type checking
 ```
 
+**Testing:** No test framework currently configured. Manual testing only.
+
 ---
 
 ## Project Architecture
@@ -37,6 +39,8 @@ bunx tsc --noEmit  # Run TypeScript type checking
 - **Content**: Blog and portfolio via `src/content/config.ts` with Zod schemas
 - **Fonts**: Plus Jakarta Sans (body), Space Grotesk (headings), Inter
 - **Dark Mode**: Class-based (`.dark`)
+- **Search**: Fuse.js integration with automatic index generation
+- **Integrations**: MDX, Sitemap, Umami Analytics, Lighthouse, Mermaid diagrams
 
 ---
 
@@ -47,6 +51,7 @@ bunx tsc --noEmit  # Run TypeScript type checking
 - Import icons from `lucide-astro`
 - Destructure `Astro.props` at top of frontmatter
 - Use `cn()` from `@/lib/utils` for className merging
+- Use `.astro` extension for components that don't need client interactivity
 
 ### React (.tsx)
 
@@ -55,6 +60,7 @@ bunx tsc --noEmit  # Run TypeScript type checking
 - Use `class-variance-authority` (CVA) for variants
 - Import icons from `lucide-react`
 - Set `displayName` for components with forwardRef
+- Group related components in logical folders (ui/, astro/, react/)
 
 ```tsx
 const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
@@ -87,6 +93,7 @@ Component.displayName = "Component";
 - Use `z.object()` for content collection schemas
 - Use `React.HTMLAttributes<HTMLElement>` for extending native element props
 - Import types: `import type { SomeType }`
+- Enable strict flags: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`
 
 ---
 
@@ -97,7 +104,8 @@ Component.displayName = "Component";
 // 2. Radix UI / shadcn components (@/components/ui/*)
 // 3. Internal components (@/components/*)
 // 4. Utilities (@/lib/utils)
-// 5. Icons (lucide-react)
+// 5. Icons (lucide-react or lucide-astro)
+// 6. Types and schemas
 ```
 
 Use `@/` alias for all src/ imports.
@@ -110,6 +118,7 @@ Use `@/` alias for all src/ imports.
 - **Components**: PascalCase (Hero, SearchDialog)
 - **Functions/Variables**: camelCase (formatDate, isActive)
 - **Constants**: UPPER_SNAKE_CASE for true constants
+- **Props Interfaces**: ComponentName + Props (e.g., `ButtonProps`)
 
 ---
 
@@ -120,12 +129,17 @@ Use `@/` alias for all src/ imports.
 - **Error handling**: Use `.catch(console.error)` for async operations
 - **Accessibility**: Include `aria-label` for interactive elements without text
 - **Comments**: JSDoc for props, inline comments only when necessary
+- **React hooks**: Follow rules of hooks, use proper dependencies
+
+---
 
 ## Testing
 
 - **No test framework currently configured** (check roadmap for future testing setup)
+- **No automated tests available** - cannot run a single test or test suite
 - Manual testing required for component changes
 - Test responsive behavior at mobile, tablet, and desktop breakpoints
+- Test search functionality across blog and portfolio content
 
 ---
 
@@ -133,13 +147,14 @@ Use `@/` alias for all src/ imports.
 
 ```
 src/
+├── assets/         # Images processed by Astro
 ├── components/     # astro/, react/, ui/
-├── layouts/        # Page layouts
-├── pages/          # File-based routing (blog/, portfolio/, services/)
+├── content/        # Content collections (blog/, portfolio/) with MDX files
 ├── hooks/          # Custom React hooks
+├── layouts/        # Page layouts (Layout.astro, ServicePageLayout.astro)
 ├── lib/            # Utilities (utils.ts)
-├── styles/         # Global CSS
-└── content/        # Content collections (blog/, portfolio/)
+├── pages/          # File-based routing (blog/, portfolio/, services/)
+└── styles/         # Global CSS
 ```
 
 Astro components → `src/components/astro/`
@@ -153,6 +168,9 @@ Astro components → `src/components/astro/`
 - Include canonical URLs via `canonical` prop (defaults to `Astro.url.href`)
 - Images require descriptive `alt` text
 - Open Graph requires: `title`, `type`, `image`, `url`
+- Umami Analytics configured for privacy-friendly tracking
+- Sitemap auto-generated with weekly changefreq
+- Robots.txt configured with strategic disallow rules
 
 ---
 
@@ -162,3 +180,35 @@ Astro components → `src/components/astro/`
 - Source images in `src/assets/` (processed) or `public/` (static)
 - Specify width/height for layout
 - Use `format="webp"` for better compression
+- Use descriptive alt text for accessibility
+
+---
+
+## Content Management
+
+### Blog & Portfolio Collections
+
+- **Blog schema**: title, description, author, date, image
+- **Portfolio schema**: title, client, category, description, date, technologies, duration, year, website, image
+- Use MDX files with frontmatter in respective collection folders
+- Content files live in `src/content/blog/` and `src/content/portfolio/`
+- Each content piece should be in its own folder with an index.mdx file
+
+### Search Integration
+
+- Fuse.js index automatically generated during build
+- Searchable fields: title, description, content
+- Search is case-insensitive with threshold 0.3
+- Static pages also included in search results
+- Command-K keyboard shortcut triggers search dialog
+
+---
+
+## Security & Performance
+
+- Output: Static Site Generation (SSG) for security and speed
+- Allowed hosts restricted in config to prevent Host Header attacks
+- Responsive images enabled globally with experimentalLayout
+- Compression via astro-compressor and @playform/compress
+- Lighthouse integration for performance monitoring
+- Robot.txt rules to prevent crawling of low-value pages
