@@ -217,9 +217,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
         >
           {heroTitle}
           <br />
-          <span
-            class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent"
-          >
+          <span class="text-primary">
             {heroSubtitle}
           </span>
         </h1>
@@ -321,9 +319,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
         {
           services.map((service, index) => (
             <div class="group relative bg-background p-8 rounded-3xl border border-border/60 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-1 overflow-hidden flex flex-col h-full">
-              <div
-                class={`absolute inset-0 bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
-              />
+              <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               <div class="relative z-10 flex-1 flex flex-col">
                 <div class="flex justify-between items-start mb-8">

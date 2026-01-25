@@ -53,13 +53,7 @@ const features = [
 ];
 ---
 
-<section class="section-padding bg-background relative overflow-hidden">
-  {/* Background Decor */}
-  <div
-    class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-primary/10 via-background to-background opacity-50"
-  >
-  </div>
-
+<section class="section-padding bg-secondary/5 relative overflow-hidden">
   <div class="container-normal relative z-10">
     <div class="text-center max-w-3xl mx-auto mb-16">
       <div
@@ -71,10 +65,7 @@ const features = [
       <h2
         class="font-heading text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6"
       >
-        Speed is a <span
-          class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent font-serif"
-          >Feature.</span
-        >
+        Speed is a <span class="text-primary font-serif">Feature.</span>
       </h2>
       <p class="text-xl text-muted-foreground leading-relaxed">
         We have optimized our development pipeline to eliminate bureaucracy and
@@ -88,7 +79,7 @@ const features = [
           <div
             class={`group relative p-8 rounded-card border overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-primary/30 ${item.colSpan} ${item.bgClass} flex flex-col justify-between`}
           >
-            <div class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             <div>
               <div class="flex items-center justify-between mb-6">

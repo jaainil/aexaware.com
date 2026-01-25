@@ -70,10 +70,7 @@ const services = [
           class="font-heading text-4xl md:text-6xl font-bold leading-tight tracking-tight text-foreground mb-4"
         >
           Services Beyond <br />
-          <span
-            class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent font-serif"
-            >Expectation.</span
-          >
+          <span class="text-primary font-serif">Expectation.</span>
         </h2>
         <p class="text-xl text-muted-foreground max-w-lg">
           We don't just write code. We engineer digital dominance for your
@@ -106,13 +103,8 @@ const services = [
             )}
             aria-label={`Learn more about ${service.title}`}
           >
-            {/* Hover Gradient */}
-            <div
-              class={cn(
-                "absolute inset-0 bg-linear-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out",
-                service.gradient,
-              )}
-            />
+            {/* Hover Background */}
+            <div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out" />
 
             <div class="relative z-10">
               <div class="h-14 w-14 rounded-2xl bg-background border border-border/50 flex items-center justify-center text-foreground mb-6 shadow-xs group-hover:scale-110 transition-transform duration-500">

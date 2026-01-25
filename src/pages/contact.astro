@@ -1,7 +1,7 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import { Schema } from 'astro-seo-schema';
-import ContactForm from '@/components/ContactForm.astro';
+import Layout from "@/layouts/Layout.astro";
+import { Schema } from "astro-seo-schema";
+import ContactForm from "@/components/ContactForm.astro";
 import {
   Mail,
   MapPin,
@@ -12,20 +12,28 @@ import {
   GitBranch,
   ArrowRight,
   Sparkles,
-  Calendar
+  Calendar,
 } from "lucide-astro";
 import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
 
 const socialLinks = [
-  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/107112329/" },
-  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/aexaware/" },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/107112329/",
+  },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/aexaware/",
+  },
   { icon: Twitter, label: "X (Twitter)", href: "https://x.com/aexaware" },
   { icon: GitBranch, label: "Codeberg", href: "https://codeberg.org/Aexaware" },
 ];
 ---
 
-<Layout 
-  title="Contact Aexaware Infotech – Let’s Build Together" 
+<Layout
+  title="Contact Aexaware Infotech – Let’s Build Together"
   description="Get in touch with Aexaware Infotech for custom web, mobile & AI solutions."
 >
   <Fragment slot="head">
@@ -33,89 +41,126 @@ const socialLinks = [
       item={{
         "@context": "https://schema.org",
         "@type": "ContactPage",
-        "mainEntity": {
+        mainEntity: {
           "@type": "ProfessionalService",
-          "name": "Aexaware Infotech",
-          "telephone": "+918140734392",
-          "email": "info@aexaware.com",
-          "url": "https://aexaware.com",
-          "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+91-8140734392",
-              "contactType": "customer service",
-              "areaServed": "IN",
-              "availableLanguage": "en"
-          }
-        }
+          name: "Aexaware Infotech",
+          telephone: "+918140734392",
+          email: "info@aexaware.com",
+          url: "https://aexaware.com",
+          contactPoint: {
+            "@type": "ContactPoint",
+            telephone: "+91-8140734392",
+            contactType: "customer service",
+            areaServed: "IN",
+            availableLanguage: "en",
+          },
+        },
       }}
     />
   </Fragment>
-  
+
   {/* Modern Grid Background - Fixed to cover the whole page */}
   {/* FIX: Semantic Grid Background */}
   <BackgroundGrid density="sm" fixed mask="top" class="-z-10" />
 
   {/* FIX: Use min-h-dvh for mobile stability */}
-  <section class="relative w-full min-h-dvh flex flex-col justify-start lg:justify-center pt-32 pb-16 lg:pb-24 overflow-hidden">
+  <section
+    class="relative w-full min-h-dvh flex flex-col justify-start lg:justify-center pt-32 pb-16 lg:pb-24 overflow-hidden"
+  >
     <div class="container-normal">
       <div class="grid gap-16 lg:grid-cols-2 lg:gap-24 items-start">
-        
         {/* Left Column: Copy & Info */}
         <div>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-xs mb-8"
+          >
             <Sparkles className="w-4 h-4 text-primary" />
-            <span class="text-sm font-semibold text-primary tracking-wide uppercase">Contact Us</span>
+            <span
+              class="text-sm font-semibold text-primary tracking-wide uppercase"
+              >Contact Us</span
+            >
           </div>
 
-          <h1 class="font-heading font-bold leading-[0.9] text-foreground text-5xl md:text-7xl mb-8">
+          <h1
+            class="font-heading font-bold leading-[0.9] text-foreground text-5xl md:text-7xl mb-8"
+          >
             Let’s start a <br />
-            <span class="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent font-serif">conversation.</span>
+            <span class="text-primary font-serif">conversation.</span>
           </h1>
-          <p class="text-xl text-muted-foreground leading-relaxed mb-12 max-w-lg">
-            Whether you have a concrete project in mind or just a vague idea, we're here to listen and help you build the extraordinary.
+          <p
+            class="text-xl text-muted-foreground leading-relaxed mb-12 max-w-lg"
+          >
+            Whether you have a concrete project in mind or just a vague idea,
+            we're here to listen and help you build the extraordinary.
           </p>
 
           <div class="space-y-10">
             <div class="flex items-start gap-6 group">
-              <div class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-secondary border border-border/50 text-foreground group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 shadow-xs">
+              <div
+                class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-secondary border border-border/50 text-foreground group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 shadow-xs"
+              >
                 <Mail className="size-6" />
               </div>
               <div>
-                <h3 class="font-heading text-xl font-medium text-foreground mb-1">Email Us</h3>
-                <p class="text-sm text-muted-foreground mb-2">For general inquiries and support</p>
+                <h3
+                  class="font-heading text-xl font-medium text-foreground mb-1"
+                >
+                  Email Us
+                </h3>
+                <p class="text-sm text-muted-foreground mb-2">
+                  For general inquiries and support
+                </p>
                 <a
                   href="mailto:info@aexaware.com"
                   class="text-lg font-medium text-foreground hover:text-primary transition-colors flex items-center gap-2 group/link"
                 >
                   info@aexaware.com
-                  <ArrowRight class="size-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                  <ArrowRight
+                    class="size-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all"
+                  />
                 </a>
               </div>
             </div>
 
             <div class="flex items-start gap-6 group">
-              <div class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-secondary border border-border/50 text-foreground group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 shadow-xs">
+              <div
+                class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-secondary border border-border/50 text-foreground group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 shadow-xs"
+              >
                 <Phone className="size-6" />
               </div>
               <div>
-                <h3 class="font-heading text-xl font-medium text-foreground mb-1">Call Us</h3>
-                 <p class="text-sm text-muted-foreground mb-2">Mon-Fri from 9am to 6pm</p>
+                <h3
+                  class="font-heading text-xl font-medium text-foreground mb-1"
+                >
+                  Call Us
+                </h3>
+                <p class="text-sm text-muted-foreground mb-2">
+                  Mon-Fri from 9am to 6pm
+                </p>
                 <a
                   href="tel:+918140734392"
                   class="text-lg font-medium text-foreground hover:text-primary transition-colors flex items-center gap-2 group/link"
                 >
                   +91 81407 34392
-                   <ArrowRight class="size-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                  <ArrowRight
+                    class="size-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all"
+                  />
                 </a>
               </div>
             </div>
 
             <div class="flex items-start gap-6 group">
-              <div class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-secondary border border-border/50 text-foreground group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 shadow-xs">
+              <div
+                class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-secondary border border-border/50 text-foreground group-hover:border-primary/50 group-hover:text-primary transition-colors duration-300 shadow-xs"
+              >
                 <MapPin className="size-6" />
               </div>
               <div>
-                <h3 class="font-heading text-xl font-medium text-foreground mb-1">Visit Office</h3>
+                <h3
+                  class="font-heading text-xl font-medium text-foreground mb-1"
+                >
+                  Visit Office
+                </h3>
                 <p class="text-muted-foreground max-w-xs leading-relaxed">
                   Office no 13, 3rd Floor Aarya’s landmark, Canal Ring Road,
                   Sevasi Vadodara, Gujarat 391101
@@ -124,12 +169,20 @@ const socialLinks = [
             </div>
 
             <div class="flex items-start gap-6 group">
-              <div class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-xs">
+              <div
+                class="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-xs"
+              >
                 <Calendar className="size-6" />
               </div>
               <div>
-                <h3 class="font-heading text-xl font-medium text-foreground mb-1">Schedule a Meeting</h3>
-                <p class="text-sm text-muted-foreground mb-2">Book a call at your convenience</p>
+                <h3
+                  class="font-heading text-xl font-medium text-foreground mb-1"
+                >
+                  Schedule a Meeting
+                </h3>
+                <p class="text-sm text-muted-foreground mb-2">
+                  Book a call at your convenience
+                </p>
                 <a
                   href="https://cal.com/aexaware-infotech"
                   target="_blank"
@@ -137,18 +190,23 @@ const socialLinks = [
                   class="text-lg font-medium text-primary hover:text-primary/80 transition-colors flex items-center gap-2 group/link"
                 >
                   Book a Call
-                  <ArrowRight class="size-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all" />
+                  <ArrowRight
+                    class="size-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all"
+                  />
                 </a>
               </div>
             </div>
           </div>
 
-           <div class="mt-16 pt-10 border-t border-border/40">
-              <h3 class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-6">
-                Follow our journey
-              </h3>
-              <div class="flex gap-4">
-                {socialLinks.map((social) => (
+          <div class="mt-16 pt-10 border-t border-border/40">
+            <h3
+              class="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-6"
+            >
+              Follow our journey
+            </h3>
+            <div class="flex gap-4">
+              {
+                socialLinks.map((social) => (
                   <a
                     href={social.href}
                     target="_blank"
@@ -158,26 +216,36 @@ const socialLinks = [
                   >
                     <social.icon className="size-5" />
                   </a>
-                ))}
-              </div>
+                ))
+              }
             </div>
+          </div>
         </div>
 
         {/* Right Column: Form */}
         <div>
-            <div class="rounded-section bg-card/30 backdrop-blur-xl p-8 md:p-12 border border-border/50 shadow-2xl relative overflow-hidden">
-              
-             {/* Decorative gradient blob */}
-             <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 blur-[80px] rounded-full pointer-events-none" />
-             
-              <div class="relative z-10">
-                  <h2 class="font-heading text-3xl font-medium mb-2 text-foreground">Send us a message</h2>
-                  <p class="text-muted-foreground mb-8">We usually respond within 24 hours.</p>
-                  <ContactForm />
-              </div>
+          <div
+            class="rounded-section bg-card/30 backdrop-blur-xl p-8 md:p-12 border border-border/50 shadow-2xl relative overflow-hidden"
+          >
+            {/* Decorative gradient blob */}
+            <div
+              class="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 blur-[80px] rounded-full pointer-events-none"
+            >
             </div>
-        </div>
 
+            <div class="relative z-10">
+              <h2
+                class="font-heading text-3xl font-medium mb-2 text-foreground"
+              >
+                Send us a message
+              </h2>
+              <p class="text-muted-foreground mb-8">
+                We usually respond within 24 hours.
+              </p>
+              <ContactForm />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
