@@ -13,7 +13,6 @@ import llmsTxtIntegration from "astro-llms-txt-generator";
 import compressor from "astro-compressor";
 import compress from "@playform/compress";
 import writenex from "@imjp/writenex-astro";
-import fuse from "astro-fuse";
 
 // Reading time integration (must come before mdx)
 import readingTime from "astro-reading-time";
@@ -51,13 +50,7 @@ export default defineConfig({
       },
     }),
 
-    // Search - Fuse.js index generation
-    fuse(["frontmatter.title", "frontmatter.description", "content"], {
-      basedOn: "source",
-      filter: (path) =>
-        path.startsWith("/src/content/blog/") ||
-        path.startsWith("/src/content/portfolio/"),
-    }),
+
 
     // Analytics & SEO
     // Note: Ensure Lighthouse only runs in the environments you want (e.g. not every local dev save)
