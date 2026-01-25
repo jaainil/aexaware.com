@@ -21,7 +21,6 @@ import {
   Ghost,
 } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
-import SearchDialog from "@/components/react/SearchDialog";
 
 const pathname = new URL(Astro.request.url).pathname;
 
@@ -179,9 +178,8 @@ const isActive = (linkPath: string) => {
         </ul>
       </div>
 
-      {/* Search + CTA Button */}
-      <div class="hidden lg:flex items-center gap-2 shrink-0">
-        <SearchDialog client:load />
+      {/* CTA Button */}
+      <div class="hidden lg:flex items-center shrink-0">
         <a
           href="https://cal.com/aexaware-infotech"
           target="_blank"
