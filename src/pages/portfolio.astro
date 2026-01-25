@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { Schema } from "astro-seo-schema";
 import { getCollection } from "astro:content";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
@@ -51,12 +52,68 @@ const faqs = [
       "Yes, we offer comprehensive post-launch support and maintenance packages. We ensure your application stays updated, secure, and performs optimally as your user base grows.",
   },
 ];
+
+const siteUrl = Astro.site || "https://aexaware.com";
 ---
 
 <Layout
   title="Portfolio – Aexaware Projects"
-  description="Explore Aexaware’s recent projects in web, mobile and AI development for global clients."
+  description="Explore Aexaware's recent projects in web, mobile and AI development for global clients."
 >
+  <Fragment slot="head">
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: "Portfolio – Aexaware Projects",
+        description:
+          "Explore Aexaware's recent projects in web, mobile and AI development for global clients.",
+        url: new URL("/portfolio", siteUrl).href,
+        mainEntity: {
+          "@type": "ItemList",
+          itemListElement: projects.map((project, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: project.data.title,
+            url: new URL(`/portfolio/${project.slug}`, siteUrl).href,
+          })),
+        },
+      }}
+    />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      }}
+    />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: siteUrl.toString(),
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Portfolio",
+          },
+        ],
+      }}
+    />
+  </Fragment>
   {/* Hero Section */}
   {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}
   <section
