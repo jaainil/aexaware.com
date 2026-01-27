@@ -35,8 +35,8 @@ const { minimal = false } = Astro.props;
             src={company.logo}
             alt={`${company.name} logo`}
             width={140}
-            layout="none"
-            class="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300 dark:brightness-0 dark:invert"
+            height={40}
+            class="h-8 md:h-10 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
             loading="eager"
           />
         ))}
@@ -57,10 +57,10 @@ const { minimal = false } = Astro.props;
           {companies.map((company) => (
             <Image
               src={company.logo}
-              layout="none"
               alt={`${company.name} logo`}
               width={200}
-              class="h-16 md:h-20 w-auto object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 dark:brightness-0 dark:invert"
+              height={80}
+              class="h-16 md:h-20 w-auto object-contain opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               loading="lazy"
             />
           ))}
