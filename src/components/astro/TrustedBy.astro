@@ -26,10 +26,10 @@ const { minimal = false } = Astro.props;
 {
   minimal && (
     <div class="mt-4 md:mt-8 border-t border-border/20 pt-8">
-      <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-6">
-        Trusted by innovative companies
+      <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-6 select-none">
+        Partnering with ambitious brands
       </p>
-      <div class="relative z-10 flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-80">
+      <div class="relative z-10 flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-80 select-none">
         {companies.map((company) => (
           <Image
             src={company.logo}
@@ -50,10 +50,10 @@ const { minimal = false } = Astro.props;
   !minimal && (
     <section class="py-12 border-b border-border/40 bg-secondary/5">
       <div class="container-normal text-center">
-        <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8">
-          Trusted by innovative companies
+        <p class="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-8 select-none">
+          Partnering with ambitious brands
         </p>
-        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 select-none">
           {companies.map((company) => (
             <Image
               src={company.logo}

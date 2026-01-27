@@ -29,6 +29,7 @@ const navLinks = [
   {
     name: "Services",
     path: "/services",
+    hasDropdown: true,
     dropdown: [
       { name: "All Services", path: "/services", icon: Layers },
       {
@@ -90,14 +91,15 @@ const isActive = (linkPath: string) => {
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-6 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 py-4 px-4 md:px-6 transition-all duration-300 translate-y-0"
   id="main-header"
+  data-hide-on-scroll="true"
 >
   <nav
     id="navbar-inner"
     role="navigation"
     aria-label="Main navigation"
-    class="relative mx-auto w-full max-w-7xl transition-all duration-500 ease-in-out border border-border bg-background/70 backdrop-blur-xl rounded-full"
+    class="relative mx-auto w-full max-w-7xl transition-all duration-500 ease-in-out border border-border bg-background/95 backdrop-blur-xl rounded-full shadow-lg shadow-black/5"
   >
     <div
       class="flex items-center justify-between px-4 py-2 lg:px-6 lg:py-3 relative z-50"
@@ -105,7 +107,7 @@ const isActive = (linkPath: string) => {
       {/* Logo */}
       <a
         href="/"
-        class="flex items-center gap-2 group shrink-0"
+        class="flex items-center gap-2 group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
         aria-label="Aexaware Infotech Home"
       >
         <img
@@ -119,29 +121,42 @@ const isActive = (linkPath: string) => {
 
       {/* Desktop Navigation */}
       <div class="hidden lg:flex items-center justify-center flex-1 px-2">
-        <ul class="flex items-center gap-1" role="list">
+        <ul class="flex items-center gap-1" role="menubar">
           {
             navLinks.map((link) => (
-              <li class="relative group">
-                {link.dropdown ? (
+              <li class="relative" role="none">
+                {link.hasDropdown ? (
                   <div class="dropdown-container relative">
                     <button
-                      class={`flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-hidden hover:bg-accent hover:text-accent-foreground ${
+                      type="button"
+                      role="menuitem"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      id="services-menu-button"
+                      class={`nav-dropdown-btn flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                         isActive(link.path)
                           ? "text-primary bg-primary/10"
                           : "text-muted-foreground"
                       }`}
                     >
                       {link.name}
-                      <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-rotate-180" />
+                      <ChevronDown 
+                        className="h-3.5 w-3.5 transition-transform duration-300 dropdown-chevron" 
+                        aria-hidden="true"
+                      />
                     </button>
 
-                    <div class="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out min-w-[600px] perspective-[1000px]">
-                      <div class="bg-background/90 backdrop-blur-2xl border border-border rounded-card-lg shadow-2xl p-6 grid grid-cols-2 gap-4 origin-top rotate-x-[-10deg] opacity-0 translate-y-4 group-hover:rotate-x-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ring-1 ring-black/5">
-                        {link.dropdown.map((item) => (
+                    <div 
+                      class="services-dropdown absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible transition-all duration-300 ease-out min-w-[700px]"
+                      role="menu"
+                      aria-labelledby="services-menu-button"
+                    >
+                      <div class="bg-background/98 backdrop-blur-2xl border border-border rounded-card-lg shadow-2xl p-6 grid grid-cols-3 gap-3 ring-1 ring-black/5">
+                        {link.dropdown?.map((item) => (
                           <a
                             href={item.path}
-                            class="group/item flex items-start gap-3 rounded-xl p-3 no-underline outline-hidden transition-all hover:bg-primary/5 hover:text-primary focus:bg-primary/5"
+                            role="menuitem"
+                            class="group/item flex items-start gap-3 rounded-xl p-3 no-underline outline-none transition-all hover:bg-primary/5 hover:text-primary focus-visible:bg-primary/5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset rounded-lg"
                           >
                             <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/50 text-muted-foreground group-hover/item:bg-primary/10 group-hover/item:text-primary transition-colors">
                               {item.icon && <item.icon className="h-4 w-4" />}
@@ -162,8 +177,9 @@ const isActive = (linkPath: string) => {
                 ) : (
                   <a
                     href={link.path}
+                    role="menuitem"
                     class:list={[
-                      "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 hover:bg-accent hover:text-accent-foreground",
+                      "px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 outline-none hover:bg-accent hover:text-accent-foreground focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                       isActive(link.path)
                         ? "text-primary font-bold bg-primary/10"
                         : "text-muted-foreground",
@@ -181,25 +197,25 @@ const isActive = (linkPath: string) => {
       {/* CTA Button */}
       <div class="hidden lg:flex items-center shrink-0">
         <a
-          href="https://cal.com/aexaware-infotech"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/contact"
           class={buttonVariants({
             size: "sm",
             className:
-              "rounded-full px-5 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow duration-300",
+              "rounded-full px-5 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           })}
         >
-          Book a Call <ArrowUpRight className="ml-2 h-3.5 w-3.5" />
+          Get in Touch <ArrowUpRight className="ml-2 h-3.5 w-3.5" aria-hidden="true" />
         </a>
       </div>
 
       {/* Mobile Menu Toggle */}
       <button
         id="mobile-menu-toggle"
-        class="lg:hidden p-2 text-foreground hover:text-primary transition-colors rounded-full z-[60] relative"
+        type="button"
+        class="lg:hidden p-2 text-foreground hover:text-primary transition-colors rounded-full z-[60] relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         aria-label="Toggle menu"
         aria-expanded="false"
+        aria-controls="mobile-menu"
       >
         <div
           class="relative w-6 h-6 flex items-center justify-center overflow-hidden"
@@ -207,37 +223,38 @@ const isActive = (linkPath: string) => {
           <Menu
             id="menu-icon"
             class="absolute w-6 h-6 transition-all duration-300 transform opacity-100 rotate-0 scale-100"
+            aria-hidden="true"
           />
           <X
             id="close-icon"
             class="absolute w-6 h-6 transition-all duration-300 transform opacity-0 -rotate-90 scale-0"
+            aria-hidden="true"
           />
         </div>
       </button>
     </div>
 
-    {
-      /* FIX: Mobile Menu moved INSIDE navbar-inner so it respects the capsule width */
-    }
+    {/* Mobile Menu */}
     <div
       id="mobile-menu"
-      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/90 backdrop-blur-2xl border border-border shadow-2xl rounded-card-lg p-6 invisible opacity-0 max-h-[85vh] overflow-y-auto no-scrollbar"
+      class="absolute top-full left-0 w-full mt-2 z-40 bg-background/98 backdrop-blur-2xl border border-border shadow-2xl rounded-card-lg p-6 invisible opacity-0 max-h-[85vh] overflow-y-auto no-scrollbar transition-all duration-300"
+      aria-hidden="true"
     >
       <div class="flex flex-col space-y-2">
         {
           navLinks.map((link, idx) => (
             <div class="mobile-nav-item">
-              {link.dropdown ? (
+              {link.hasDropdown ? (
                 <details class="group/details">
-                  <summary class="list-none flex items-center justify-between text-xl font-bold text-foreground py-3 cursor-pointer select-none transition-colors hover:text-primary">
+                  <summary class="list-none flex items-center justify-between text-xl font-bold text-foreground py-3 cursor-pointer select-none transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-lg px-2">
                     {link.name}
-                    <ChevronDown class="h-5 w-5 text-muted-foreground transition-transform duration-300 group-open/details:-rotate-180" />
+                    <ChevronDown class="h-5 w-5 text-muted-foreground transition-transform duration-300 group-open/details:-rotate-180" aria-hidden="true" />
                   </summary>
                   <div class="pl-2 pt-2 pb-2 space-y-2 border-l-2 border-primary/10 ml-2">
-                    {link.dropdown.map((item) => (
+                    {link.dropdown?.map((item) => (
                       <a
                         href={item.path}
-                        class="flex items-center gap-3 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors"
+                        class="flex items-center gap-3 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                       >
                         <span class="font-medium text-base">{item.name}</span>
                       </a>
@@ -248,7 +265,7 @@ const isActive = (linkPath: string) => {
                 <a
                   href={link.path}
                   class:list={[
-                    "block text-xl font-bold py-3 transition-colors hover:text-primary",
+                    "block text-xl font-bold py-3 px-2 rounded-lg transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
                     isActive(link.path) ? "text-primary" : "text-foreground",
                   ]}
                 >
@@ -261,15 +278,13 @@ const isActive = (linkPath: string) => {
 
         <div class="pt-6 mt-2 border-t border-border/10 mobile-nav-item">
           <a
-            href="https://cal.com/aexaware-infotech"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/contact"
             class={buttonVariants({
               size: "lg",
-              className: "w-full rounded-full text-lg h-14 shadow-md",
+              className: "w-full rounded-full text-lg h-14 shadow-md focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
             })}
           >
-            Book a Call <ArrowUpRight className="ml-2 h-5 w-5" />
+            Get in Touch <ArrowUpRight className="ml-2 h-5 w-5" aria-hidden="true" />
           </a>
         </div>
       </div>
@@ -285,35 +300,161 @@ const isActive = (linkPath: string) => {
     const mobileMenu = document.getElementById("mobile-menu");
     const menuIcon = document.getElementById("menu-icon");
     const closeIcon = document.getElementById("close-icon");
+    const dropdownBtn = document.querySelector(".nav-dropdown-btn");
+    const dropdown = document.querySelector(".services-dropdown");
+    const chevron = document.querySelector(".dropdown-chevron");
 
-    // SCROLL CAPSULE LOGIC
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    // SCROLL LOGIC - Hide on scroll down, show on scroll up
     function handleScroll() {
       const scrollY = window.scrollY;
       const isDesktop = window.innerWidth >= 1024;
 
+      // Hide/show header based on scroll direction
+      if (scrollY > lastScrollY && scrollY > 100) {
+        // Scrolling down - hide header
+        header?.classList.add("-translate-y-[calc(100%+2rem)]");
+      } else {
+        // Scrolling up - show header
+        header?.classList.remove("-translate-y-[calc(100%+2rem)]");
+      }
+      lastScrollY = scrollY;
+
+      // Shrink capsule on scroll
       if (scrollY > 20 && isDesktop) {
-        // Shrink on Scroll (Desktop only)
         navbarInner?.classList.remove("max-w-7xl");
         navbarInner?.classList.add("max-w-5xl");
-
-        // Remove shadow, keep border
-        navbarInner?.classList.remove("shadow-lg", "shadow-xl");
-
-        // Remove padding from outer header to tighten fit
         header?.classList.remove("py-4");
         header?.classList.add("py-2");
       } else {
-        // Default Large Capsule (or Mobile state)
         navbarInner?.classList.add("max-w-7xl");
         navbarInner?.classList.remove("max-w-5xl");
-
-        // Restore padding
         header?.classList.add("py-4");
         header?.classList.remove("py-2");
       }
+
+      ticking = false;
     }
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(handleScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // DROPDOWN ACCESSIBILITY - WCAG Disclosure Widget Pattern
+    let dropdownOpen = false;
+    let closeTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function openDropdown() {
+      if (!dropdown || !dropdownBtn) return;
+      dropdownOpen = true;
+      dropdown.classList.remove("opacity-0", "invisible");
+      dropdown.classList.add("opacity-100", "visible");
+      dropdownBtn.setAttribute("aria-expanded", "true");
+      chevron?.classList.add("-rotate-180");
+      
+      // Focus first menu item
+      const firstItem = dropdown.querySelector('a[role="menuitem"]') as HTMLElement;
+      if (firstItem) {
+        setTimeout(() => firstItem.focus(), 50);
+      }
+    }
+
+    function closeDropdown(focusBtn = false) {
+      if (!dropdown || !dropdownBtn) return;
+      dropdownOpen = false;
+      dropdown.classList.add("opacity-0", "invisible");
+      dropdown.classList.remove("opacity-100", "visible");
+      dropdownBtn.setAttribute("aria-expanded", "false");
+      chevron?.classList.remove("-rotate-180");
+      if (focusBtn) {
+        (dropdownBtn as HTMLElement).focus();
+      }
+    }
+
+    // Mouse events for hover
+    const dropdownContainer = document.querySelector(".dropdown-container");
+    dropdownContainer?.addEventListener("mouseenter", () => {
+      if (closeTimeout) {
+        clearTimeout(closeTimeout);
+        closeTimeout = null;
+      }
+      openDropdown();
+    });
+
+    dropdownContainer?.addEventListener("mouseleave", () => {
+      closeTimeout = setTimeout(() => closeDropdown(), 150);
+    });
+
+    // Keyboard events
+    dropdownBtn?.addEventListener("keydown", (e) => {
+      const event = e as KeyboardEvent;
+      
+      switch (event.key) {
+        case "Enter":
+        case " ":
+          event.preventDefault();
+          if (dropdownOpen) {
+            closeDropdown();
+          } else {
+            openDropdown();
+          }
+          break;
+        case "ArrowDown":
+          event.preventDefault();
+          if (!dropdownOpen) openDropdown();
+          break;
+        case "Escape":
+          if (dropdownOpen) {
+            event.preventDefault();
+            closeDropdown(true);
+          }
+          break;
+      }
+    });
+
+    // Handle focus within dropdown
+    dropdown?.addEventListener("keydown", (e) => {
+      const event = e as KeyboardEvent;
+      const items = dropdown.querySelectorAll('a[role="menuitem"]');
+      const currentIndex = Array.from(items).indexOf(document.activeElement as Element);
+
+      switch (event.key) {
+        case "ArrowDown":
+          event.preventDefault();
+          const nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+          (items[nextIndex] as HTMLElement)?.focus();
+          break;
+        case "ArrowUp":
+          event.preventDefault();
+          const prevIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+          (items[prevIndex] as HTMLElement)?.focus();
+          break;
+        case "Escape":
+          event.preventDefault();
+          closeDropdown(true);
+          break;
+        case "Tab":
+          if (event.shiftKey && currentIndex === 0) {
+            event.preventDefault();
+            closeDropdown(true);
+          } else if (!event.shiftKey && currentIndex === items.length - 1) {
+            closeDropdown();
+          }
+          break;
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (dropdownOpen && !dropdownContainer?.contains(e.target as Node)) {
+        closeDropdown();
+      }
+    });
 
     // MOBILE MENU LOGIC
     function toggleMenu() {
@@ -322,39 +463,47 @@ const isActive = (linkPath: string) => {
       if (isHidden) {
         // OPEN
         mobileMenu?.classList.remove("invisible", "opacity-0");
-        mobileMenu?.classList.add("opacity-100");
+        mobileMenu?.classList.add("opacity-100", "visible");
+        mobileMenu?.setAttribute("aria-hidden", "false");
+        mobileMenuToggle?.setAttribute("aria-expanded", "true");
 
-        // Icon Animation - Hide hamburger, show X
+        // Icon Animation
         menuIcon?.classList.remove("opacity-100", "rotate-0", "scale-100");
         menuIcon?.classList.add("opacity-0", "rotate-90", "scale-0");
         closeIcon?.classList.remove("opacity-0", "-rotate-90", "scale-0");
         closeIcon?.classList.add("opacity-100", "rotate-0", "scale-100");
 
-        // Ensure background is solid when menu is open, even at top of page
-        if (window.scrollY < 20) {
-          navbarInner?.classList.add("bg-background");
-          navbarInner?.classList.remove("bg-transparent");
-        }
+        // Ensure background is solid
+        navbarInner?.classList.add("bg-background");
+        navbarInner?.classList.remove("bg-background/95");
       } else {
         // CLOSE
         mobileMenu?.classList.add("invisible", "opacity-0");
-        mobileMenu?.classList.remove("opacity-100");
+        mobileMenu?.classList.remove("opacity-100", "visible");
+        mobileMenu?.setAttribute("aria-hidden", "true");
+        mobileMenuToggle?.setAttribute("aria-expanded", "false");
 
-        // Icon Animation - Show hamburger, hide X
+        // Icon Animation
         menuIcon?.classList.remove("opacity-0", "rotate-90", "scale-0");
         menuIcon?.classList.add("opacity-100", "rotate-0", "scale-100");
         closeIcon?.classList.remove("opacity-100", "rotate-0", "scale-100");
         closeIcon?.classList.add("opacity-0", "-rotate-90", "scale-0");
 
-        // Revert background if at top
-        if (window.scrollY < 20) {
-          navbarInner?.classList.remove("bg-background");
-          navbarInner?.classList.add("bg-transparent");
-        }
+        // Revert background
+        navbarInner?.classList.remove("bg-background");
+        navbarInner?.classList.add("bg-background/95");
       }
     }
 
     mobileMenuToggle?.addEventListener("click", toggleMenu);
+
+    // Close mobile menu on escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !mobileMenu?.classList.contains("invisible")) {
+        toggleMenu();
+        mobileMenuToggle?.focus();
+      }
+    });
 
     // Initial check
     handleScroll();
