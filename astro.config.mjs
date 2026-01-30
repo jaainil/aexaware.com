@@ -54,7 +54,7 @@ export default defineConfig({
 
     // Analytics & SEO
     // Note: Ensure Lighthouse only runs in the environments you want (e.g. not every local dev save)
-    lighthouse(),
+    // lighthouse(),
     umami({ id: "7401816d-713e-4916-960b-d314f2b36d3d" }),
 
     sitemap({
