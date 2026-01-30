@@ -33,8 +33,8 @@ bunx tsc --noEmit  # Run TypeScript type checking
 
 ## Project Architecture
 
-- **Framework**: Astro 5.16 with React 19 (Islands Architecture)
-- **Styling**: Tailwind CSS with HSL color variables
+- **Framework**: Astro 5.17 with React 19 (Islands Architecture)
+- **Styling**: Tailwind CSS v4 with HSL color variables
 - **Output**: Static Site Generation (SSG)
 - **Content**: Blog and portfolio via `src/content/config.ts` with Zod schemas
 - **Fonts**: Plus Jakarta Sans (body), Space Grotesk (headings), Inter
@@ -55,7 +55,7 @@ bunx tsc --noEmit  # Run TypeScript type checking
 
 ### React (.tsx)
 
-- Add `"use client"` directive at top
+- Add `"use client"` directive at top for client components
 - Use `React.forwardRef` with proper typing
 - Use `class-variance-authority` (CVA) for variants
 - Import icons from `lucide-react`
@@ -208,7 +208,8 @@ Astro components → `src/components/astro/`
 
 - Output: Static Site Generation (SSG) for security and speed
 - Allowed hosts restricted in config to prevent Host Header attacks
-- Responsive images enabled globally with experimentalLayout
+- Responsive images enabled globally with Sharp (lanczos3 kernel)
 - Compression via astro-compressor and @playform/compress
 - Lighthouse integration for performance monitoring
-- Robot.txt rules to prevent crawling of low-value pages
+- Robots.txt rules to prevent crawling of low-value pages
+

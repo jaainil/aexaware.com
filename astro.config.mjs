@@ -104,14 +104,20 @@ export default defineConfig({
 
   output: "static",
 
+  devToolbar: {
+    placement: "bottom-right",
+  },
+
   image: {
-    // FIX: 'domains' is deprecated in favor of strict remotePatterns in newer Astro versions,
-    // but if on older versions, this is fine. Ideally, migrate to:
-    // remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }]
-    domains: [],
-    // Responsive images enabled globally (great for MDX/MD content)
-    // For component images that need Tailwind styling, add layout="none" to the <Image /> component
-    experimentalLayout: "responsive",
+    // Optimized image service configuration (Astro 5.17+)
+    service: {
+      entrypoint: "astro/assets/services/sharp",
+      config: {
+        // Options: lanczos3 (default), lanczos2, cubic, mitchell, catrom, etc.
+        kernel: "mks2021",
+      },
+    },
+    // Note: 'domains' and 'experimentalLayout' are deprecated/removed in favor of standard patterns
   },
 
   server: {
