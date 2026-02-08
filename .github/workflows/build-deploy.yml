@@ -1,0 +1,41 @@
+name: Build & Deploy to Coolify
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to push to deploy branch
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build Astro site
+        run: bun run build
+
+      - name: Prepare deploy files
+        run: cp Dockerfile.static ./dist/Dockerfile
+
+      - name: Deploy to branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: deploy
+          force_orphan: true # Keeps deploy branch clean (single commit)
+          commit_message: "Deploy: ${{ github.sha }}"
