@@ -2,7 +2,7 @@ name: Build & Deploy to Coolify
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch: # Allow manual trigger
 
 jobs:
