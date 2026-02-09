@@ -162,7 +162,7 @@ const { vertical = false } = Astro.props;
         (newTrigger as HTMLElement).addEventListener("click", (e) => {
           e.stopPropagation();
           const isExpanded =
-            newTrigger.getAttribute("aria-expanded") === "true";
+            (newTrigger as HTMLElement).getAttribute("aria-expanded") === "true";
           closeAll(); // Close others first
 
           if (!isExpanded) {
@@ -241,10 +241,7 @@ After the summary, add a short CTA encouraging the reader to connect with Aexawa
           if (shareUrl) window.open(shareUrl, "_blank");
         } else if (action === "copy") {
           navigator.clipboard.writeText(url).then(() => {
-            // Visual feedback can be added here
-            const originalText = target.innerText;
-            // Temporarily change text or show a checkmark
-            // For now, simple alert is fine or just silent
+            // Simple alert feedback
             alert("Link copied!");
           });
         }

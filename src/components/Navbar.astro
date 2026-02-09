@@ -5,7 +5,6 @@ import {
   X,
   ArrowUpRight,
   ChevronDown,
-  Code2,
   Smartphone,
   Palette,
   Globe,
@@ -242,7 +241,7 @@ const isActive = (linkPath: string) => {
     >
       <div class="flex flex-col space-y-2">
         {
-          navLinks.map((link, idx) => (
+          navLinks.map((link) => (
             <div class="mobile-nav-item">
               {link.hasDropdown ? (
                 <details class="group/details">

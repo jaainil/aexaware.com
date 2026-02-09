@@ -2,11 +2,9 @@
 import {
   Zap,
   Clock,
-  Code2,
   Users,
   Layers,
   GitBranch,
-  Terminal,
   Shield,
 } from "lucide-astro";
 
@@ -75,7 +73,7 @@ const features = [
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       {
-        features.map((item, i) => (
+        features.map((item) => (
           <div
             class={`group relative p-8 rounded-card border overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-primary/30 ${item.colSpan} ${item.bgClass} flex flex-col justify-between`}
           >

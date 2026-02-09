@@ -6,7 +6,6 @@ import sitemap from "@astrojs/sitemap";
 
 // Integrations
 import mermaid from "astro-mermaid";
-import lighthouse from "astro-lighthouse";
 import robotsTxt from "astro-robots-txt";
 import umami from "@yeskunall/astro-umami";
 import llmsTxtIntegration from "astro-llms-txt-generator";

@@ -1,6 +1,5 @@
 ---
 import { ArrowLeft, ArrowRight, Quote } from "lucide-astro";
-import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
@@ -80,7 +79,7 @@ const testimonials = [
         aria-label="Customer testimonials carousel"
       >
         {
-          testimonials.map((testimonial, i) => (
+          testimonials.map((testimonial) => (
             /* FIX: Reverted to w-full for centering, kept smaller fonts/padding */
             <div class="snap-start shrink-0 w-full md:w-[600px]">
               <div class="h-full flex flex-col justify-between rounded-card-lg bg-white/5 border border-white/10 p-6 md:p-10 hover:border-primary/30 transition-colors duration-500 relative group/card">

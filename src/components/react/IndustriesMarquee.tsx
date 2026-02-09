@@ -1,4 +1,3 @@
-import React from "react";
 import MarqueeComponent from "react-fast-marquee";
 
 // Handle CJS/ESM interop for react-fast-marquee

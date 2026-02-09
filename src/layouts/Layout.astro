@@ -71,12 +71,14 @@ const imageUrl = image.startsWith('http')
           locale: "en_US",
           description: description,
         },
-        article: type === 'article' ? {
-          publishedTime: publishedTime,
-          modifiedTime: modifiedTime,
-          authors: author ? [author] : undefined,
-          tags: tags,
-        } : undefined,
+        ...(type === 'article' && {
+          article: {
+            ...(publishedTime && { publishedTime }),
+            ...(modifiedTime && { modifiedTime }),
+            ...(author && { authors: [author] }),
+            ...(tags && { tags }),
+          }
+        }),
       }}
       twitter={{
         card: "summary_large_image",
