@@ -490,10 +490,14 @@ const timelines = [
 
             // Update Summary in Details step
             if (stepName === "details") {
-                if (summaryType) summaryType.textContent = data.type;
-                if (summaryBudget) summaryBudget.textContent = data.budget;
-                if (summaryTimeline)
-                    summaryTimeline.textContent = data.timeline;
+                // Re-query elements as they might be inside a cloned form
+                const currentSummaryType = document.getElementById("summary-type");
+                const currentSummaryBudget = document.getElementById("summary-budget");
+                const currentSummaryTimeline = document.getElementById("summary-timeline");
+
+                if (currentSummaryType) currentSummaryType.textContent = data.type;
+                if (currentSummaryBudget) currentSummaryBudget.textContent = data.budget;
+                if (currentSummaryTimeline) currentSummaryTimeline.textContent = data.timeline;
             }
 
             // Highlight selected options
