@@ -13,6 +13,9 @@ import {
 } from "lucide-astro";
 import { cn } from "@/lib/utils";
 
+const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_PROJECT_ID;
+const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
+
 const projectTypes = [
     {
         id: "mobile",
@@ -55,7 +58,7 @@ const timelines = [
 ];
 ---
 
-<div class="w-full max-w-4xl mx-auto p-4" id="project-calculator">
+<div class="w-full max-w-4xl mx-auto p-4" id="project-calculator" data-formspree-endpoint={FORMSPREE_ENDPOINT}>
     {/* Progress Header */}
     <div class="mb-12 relative px-4">
         <div class="flex justify-between items-center relative">
@@ -618,8 +621,10 @@ const timelines = [
                 newSubmitBtn.innerHTML = "Sending...";
 
                 try {
+                    const calculatorEl = document.getElementById("project-calculator");
+                    const formspreeEndpoint = calculatorEl?.getAttribute("data-formspree-endpoint") || "";
                     const response = await fetch(
-                        "https://formspree.io/f/mblnozpl",
+                        formspreeEndpoint,
                         {
                             method: "POST",
                             headers: {

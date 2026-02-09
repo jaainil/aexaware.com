@@ -1,10 +1,18 @@
 ---
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
+
+const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_CONTACT_ID;
+const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
 ---
 
 <div id="form-container" class="relative">
-  <form class="space-y-6" id="contact-form">
+  <form
+    class="space-y-6"
+    id="contact-form"
+    action={FORMSPREE_ENDPOINT}
+    method="POST"
+  >
     <div class="space-y-2">
       <label
         for="name"
@@ -126,12 +134,13 @@ import { cn } from "@/lib/utils";
   </form>
 </div>
 
+<!-- Success Message -->
 <div
   id="success-message"
   class="hidden flex-col items-center justify-center py-12 text-center space-y-6"
 >
   <div
-    class="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center border border-success/20"
+    class="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center border border-green-500/20"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -143,10 +152,118 @@ import { cn } from "@/lib/utils";
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="w-10 h-10 text-success"
-      ><path d="m5 12 7 7 13-13"></path><path
-        d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"
-      ></path></svg
+      class="w-10 h-10 text-green-500"
     >
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+    </svg>
+  </div>
+  <div>
+    <h3 class="text-2xl font-heading font-semibold text-foreground mb-2">
+      Message Sent!
+    </h3>
+    <p class="text-muted-foreground max-w-sm">
+      Thanks for reaching out! We'll get back to you within 24 hours.
+    </p>
   </div>
 </div>
+
+<!-- Error Message -->
+<div
+  id="error-message"
+  class="hidden flex-col items-center justify-center py-12 text-center space-y-6"
+>
+  <div
+    class="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center border border-red-500/20"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="w-10 h-10 text-red-500"
+    >
+      <circle cx="12" cy="12" r="10"></circle>
+      <line x1="15" y1="9" x2="9" y2="15"></line>
+      <line x1="9" y1="9" x2="15" y2="15"></line>
+    </svg>
+  </div>
+  <div>
+    <h3 class="text-2xl font-heading font-semibold text-foreground mb-2">
+      Oops! Something went wrong
+    </h3>
+    <p class="text-muted-foreground max-w-sm mb-4">
+      Please try again or contact us directly at info@aexaware.com
+    </p>
+    <button
+      id="retry-btn"
+      class="text-primary hover:underline font-medium"
+    >
+      Try Again
+    </button>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const formContainer = document.getElementById("form-container");
+  const successMessage = document.getElementById("success-message");
+  const errorMessage = document.getElementById("error-message");
+  const retryBtn = document.getElementById("retry-btn");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      Sending...
+    `;
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        // Hide form and show success message
+        form.classList.add("hidden");
+        successMessage?.classList.remove("hidden");
+        successMessage?.classList.add("flex");
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      // Hide form and show error message
+      form.classList.add("hidden");
+      errorMessage?.classList.remove("hidden");
+      errorMessage?.classList.add("flex");
+    }
+  });
+
+  // Retry button handler
+  retryBtn?.addEventListener("click", () => {
+    // Reset and show form
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = "Send Message";
+    form.classList.remove("hidden");
+    errorMessage?.classList.add("hidden");
+    errorMessage?.classList.remove("flex");
+  });
+</script>
