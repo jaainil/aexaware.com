@@ -2,11 +2,11 @@
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 
-const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_CONTACT_ID;
-const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
+// Hardcoded for static build - Formspree Contact Form
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpwvdjyq";
 ---
 
-<div id="form-container" class="relative">
+<div id="form-container" class="relative" data-formspree-endpoint={FORMSPREE_ENDPOINT}>
   <form
     class="space-y-6"
     id="contact-form"
@@ -217,6 +217,9 @@ const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
   const errorMessage = document.getElementById("error-message");
   const retryBtn = document.getElementById("retry-btn");
 
+  // Get endpoint from data attribute
+  const formspreeEndpoint = formContainer?.getAttribute("data-formspree-endpoint") || "";
+
   form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -231,8 +234,13 @@ const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
     `;
 
     try {
+      if (!formspreeEndpoint) {
+        console.error("Formspree endpoint not configured");
+        throw new Error("Form endpoint not configured");
+      }
+
       const formData = new FormData(form);
-      const response = await fetch(form.action, {
+      const response = await fetch(formspreeEndpoint, {
         method: "POST",
         body: formData,
         headers: {
@@ -246,9 +254,12 @@ const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
         successMessage?.classList.remove("hidden");
         successMessage?.classList.add("flex");
       } else {
+        const errorData = await response.text();
+        console.error("Formspree error:", errorData);
         throw new Error("Form submission failed");
       }
     } catch (error) {
+      console.error("Form submission error:", error);
       // Hide form and show error message
       form.classList.add("hidden");
       errorMessage?.classList.remove("hidden");

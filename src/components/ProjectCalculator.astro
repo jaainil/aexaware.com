@@ -14,7 +14,9 @@ import {
 import { cn } from "@/lib/utils";
 
 const FORMSPREE_ID = import.meta.env.PUBLIC_FORMSPREE_PROJECT_ID;
-const FORMSPREE_ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
+const FORMSPREE_ENDPOINT = FORMSPREE_ID 
+    ? `https://formspree.io/f/${FORMSPREE_ID}` 
+    : "https://formspree.io/f/mblnozpl"; // Fallback to hardcoded
 
 const projectTypes = [
     {
