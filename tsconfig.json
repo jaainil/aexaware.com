@@ -4,16 +4,20 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "baseUrl": ".",
+
+    "skipLibCheck": true,
+    "incremental": true,
+    "noEmit": true,
+
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
+
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+      "@/*": ["src/*"]
+    },
+
+    "types": ["astro/client"]
   },
-  "include": [
-    "src/**/*",
-    "astro.config.mjs"
-  ]
+  "include": ["src", "astro.config.mjs"],
+  "exclude": ["node_modules", "dist", ".astro", ".vercel"]
 }

@@ -14,13 +14,14 @@ bun run build      # Build static site to /dist for production
 bun run preview    # Preview production build locally on http://localhost:4321
 bun start          # Serve dist at localhost:4321
 bun run astro      # Direct access to Astro CLI
+bun run typecheck  # Run TypeScript type checking
 ```
 
 ## Code Quality Commands
 
 ```bash
 bunx eslint .      # Run ESLint on all files
-bunx tsc --noEmit  # Run TypeScript type checking
+bun run typecheck # Run TypeScript type checking
 ```
 
 **Testing:** No test framework configured. Manual testing only - verify changes at mobile, tablet, and desktop breakpoints.
@@ -33,8 +34,8 @@ bunx tsc --noEmit  # Run TypeScript type checking
 - **Content**: Blog and portfolio via `src/content/config.ts` with Zod schemas
 - **Fonts**: Plus Jakarta Sans (body), Space Grotesk (headings), Inter
 - **Dark Mode**: Class-based (`.dark`)
-- **Search**: Fuse.js with automatic index generation
-- **Integrations**: MDX, Sitemap, Umami Analytics, Lighthouse, Mermaid
+- **Search**: Fuse.js with automatic index generation (Command-K)
+- **Integrations**: MDX, Sitemap, Umami Analytics, Lighthouse, Mermaid, Robots TXT, RSS
 
 ## Component Guidelines
 
@@ -123,14 +124,29 @@ import type { ComponentProps } from "@/types"
 
 ```
 src/
-├── assets/         # Images processed by Astro
-├── components/     # astro/, react/, ui/
-├── content/        # Blog & portfolio collections (MDX)
-├── hooks/          # Custom React hooks
-├── layouts/        # Page layouts
-├── lib/            # Utilities (utils.ts)
-├── pages/          # File-based routing
-└── styles/         # Global CSS
+├── assets/           # Images processed by Astro
+├── components/
+│   ├── astro/        # Static Astro components (use for no interactivity)
+│   ├── blog/         # Blog-specific components
+│   ├── contact/     # Contact form components
+│   ├── global/      # Global components (Navbar, Footer)
+│   ├── home/        # Homepage sections
+│   ├── portfolio/   # Portfolio-specific components
+│   ├── react/       # Interactive React components (use client)
+│   ├── services/    # Service-related components
+│   ├── shared/      # Shared across multiple pages
+│   └── ui/          # shadcn/ui components
+├── content/
+│   ├── blog/        # Blog posts (MDX)
+│   └── portfolio/   # Portfolio projects (MD/MDX)
+├── hooks/           # Custom React hooks
+├── layouts/         # Page layouts
+├── lib/             # Utilities (utils.ts)
+├── pages/           # File-based routing
+│   ├── blog/        # Blog routes
+│   ├── portfolio/   # Portfolio routes
+│   └── services/    # Service pages
+└── styles/          # Global CSS
 ```
 
 ## SEO & Analytics
@@ -146,7 +162,7 @@ src/
 - **Blog schema**: title, description, author, date, image
 - **Portfolio schema**: title, client, category, description, date, technologies, duration, year, website, image
 - Content files in `src/content/blog/` and `src/content/portfolio/`
-- Each content piece in its own folder with `index.mdx` file
+- Each content piece in its own folder with `index.md` or `index.mdx` file
 
 ## Security & Performance
 
@@ -155,3 +171,5 @@ src/
 - Use Astro's `<Image />` component with width/height and `format="webp"`
 - Fuse.js search with case-insensitive matching (threshold 0.3)
 - Command-K keyboard shortcut triggers search dialog
+- Use `astro-compressor` for gzip compression
+- Use `sharp` for image optimization

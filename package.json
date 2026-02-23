@@ -4,10 +4,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "bunx --bun astro dev",
-    "start": "bunx --bun serve dist -l 4321",
-    "build": "bunx --bun astro build",
-    "preview": "bunx --bun astro preview --host",
+    "dev": "astro dev",
+    "start": "serve dist -l 4321",
+    "build": "astro build",
+    "preview": "astro preview --host",
+    "typecheck": "tsc --noEmit",
     "astro": "astro"
   },
   "dependencies": {
