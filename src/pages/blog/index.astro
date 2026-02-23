@@ -12,7 +12,7 @@ import {
 import { Image } from "astro:assets";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button-variants";
-import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
+import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 
 const allPosts = (await getCollection("blog")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),

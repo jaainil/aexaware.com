@@ -5,10 +5,10 @@ import { getCollection } from "astro:content";
 import { buttonVariants } from "@/components/ui/button-variants";
 import { cn } from "@/lib/utils";
 import { Image } from "astro:assets";
-import PortfolioFAQ from "@/components/PortfolioFAQ.astro";
+import PortfolioFAQ from "@/components/portfolio/PortfolioFAQ.astro";
 import { ArrowRight, Sparkles } from "lucide-astro";
-import CTA from "@/components/astro/CTA.astro";
-import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
+import CTA from "@/components/home/CTA.astro";
+import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 
 // Ensure content collection exists and is sorted by date
 const projects = (await getCollection("portfolio")).sort(

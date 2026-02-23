@@ -12,9 +12,9 @@ import {
   Layers,
   Sparkles,
 } from "lucide-astro";
-import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
-import CTA from "@/components/astro/CTA.astro";
-import Prose from "@/components/Prose.astro";
+import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
+import CTA from "@/components/home/CTA.astro";
+import Prose from "@/components/blog/Prose.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("portfolio");

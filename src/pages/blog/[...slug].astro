@@ -3,13 +3,13 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import { Calendar, User, Clock, ChevronRight } from "lucide-astro";
 import { Image } from "astro:assets";
-import Comments from "@/components/Comments.astro";
-import BlogSidebar from "@/components/BlogSidebar.astro";
-import ReadNext from "@/components/ReadNext.astro";
+import Comments from "@/components/blog/Comments.astro";
+import BlogSidebar from "@/components/blog/BlogSidebar.astro";
+import ReadNext from "@/components/blog/ReadNext.astro";
 import { Schema } from "astro-seo-schema";
-import BackgroundGrid from "@/components/astro/BackgroundGrid.astro";
-import CTA from "@/components/astro/CTA.astro";
-import Prose from "@/components/Prose.astro";
+import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
+import CTA from "@/components/home/CTA.astro";
+import Prose from "@/components/blog/Prose.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
