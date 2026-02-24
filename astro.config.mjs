@@ -113,6 +113,11 @@ export default defineConfig({
     allowedHosts: ["aexaware.com", "localhost", ".aexaware.com"],
   },
 
+  // Enable caching for incremental builds
+  cache: {
+    enabled: true,
+  },
+
   // Developer Experience
   vite: {
     plugins: [tailwindcss()],
