@@ -66,28 +66,16 @@ export default defineConfig({
     robotsTxt({
       sitemap: true,
       policy: [
+        // Allow ALL bots/crawlers to index the site
         {
           userAgent: "*",
           allow: "/",
           disallow: [
-            "/api/",
-            "/admin/",
-            "/tags/", // Low-value tag aggregation pages
+            "/api/",      // Backend endpoints — no crawling needed
+            "/admin/",    // Private admin area
+            "/tags/",     // Low-value tag aggregation pages
             "/category/", // Low-value category pages
-          ],
-          // Note: Googlebot ignores crawlDelay, but useful for other bots
-          crawlDelay: 2,
-        },
-        // Specific rule for Googlebot to clean params
-        {
-          userAgent: "Googlebot",
-          allow: "/",
-          disallow: [
-            "/api/",
-            "/admin/",
-            "/tags/",
-            "/category/",
-            "/*?*", // Disallow all query parameter URLs
+            "/*?*",       // Block query-param variants (duplicate content prevention)
           ],
         },
       ],
