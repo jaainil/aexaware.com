@@ -8,7 +8,7 @@ import sitemap from "@astrojs/sitemap";
 import mermaid from "astro-mermaid";
 import robotsTxt from "astro-robots-txt";
 import umami from "@yeskunall/astro-umami";
-import llmsTxtIntegration from "astro-llms-txt-generator";
+import pageMarkdown from "@nuasite/llm-enhancements";
 import compressor from "astro-compressor";
 import compress from "@playform/compress";
 import writenex from "@imjp/writenex-astro";
@@ -36,7 +36,20 @@ export default defineConfig({
 
     // Content & Generators
     writenex({ allowProduction: false }),
-    llmsTxtIntegration(),
+    pageMarkdown({
+      includeStaticPages: true,
+      includeFrontmatter: true,
+      llmEndpoint: {
+        siteName: "Aexaware Infotech",
+        description: "Full-service digital agency specializing in web development, mobile apps, AI/ML integration, and cloud solutions",
+      },
+      llmsTxt: {
+        siteName: "Aexaware Infotech",
+        description: "Full-service digital agency specializing in web development, mobile apps, AI/ML integration, and cloud solutions",
+        allowCrawling: true,
+        instructions: "Aexaware Infotech is a software development company based in Vadodara, Gujarat, India. We specialize in building scalable web, mobile, AI, and DevOps solutions.",
+      },
+    }),
     mermaid({
       theme: "default",
       autoTheme: true,
@@ -66,7 +79,7 @@ export default defineConfig({
     robotsTxt({
       sitemap: true,
       policy: [
-        // Allow ALL bots/crawlers to index the site
+        // Allow ALL bots including AI crawlers
         {
           userAgent: "*",
           allow: "/",
@@ -77,6 +90,31 @@ export default defineConfig({
             "/category/", // Low-value category pages
             "/*?*",       // Block query-param variants (duplicate content prevention)
           ],
+        },
+        // AI Crawlers - Allow all for AI citation
+        {
+          userAgent: "GPTBot",
+          allow: "/",
+        },
+        {
+          userAgent: "ChatGPT-User",
+          allow: "/",
+        },
+        {
+          userAgent: "Claude-Web",
+          allow: "/",
+        },
+        {
+          userAgent: "claude-bot",
+          allow: "/",
+        },
+        {
+          userAgent: "PerplexityBot",
+          allow: "/",
+        },
+        {
+          userAgent: "Google-Extended",
+          allow: "/",
         },
       ],
     }),

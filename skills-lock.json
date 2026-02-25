@@ -11,6 +11,21 @@
       "sourceType": "github",
       "computedHash": "1da4c9b595db349b7ddee3622eea0acdf0318048384137f0ef41bcfc76b27679"
     },
+    "frontend-dev-guidelines": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "computedHash": "581441afedd9b2094314a3876f734fa54351c5c9c0aa65c6c135819c6f311164"
+    },
+    "frontend-ui-dark-ts": {
+      "source": "schoi80/antigravity-awesome-skills",
+      "sourceType": "github",
+      "computedHash": "64d191fbe230453c933c7d1d3959d4c2f169e5e2d8b443b928b6f4abbe59710e"
+    },
+    "geo-fundamentals": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "computedHash": "461ca2b3c68536067c4fd9423ff4428687d3764a6a89cac59af19bae2e816894"
+    },
     "shadcn-ui": {
       "source": "giuseppe-trisciuoglio/developer-kit",
       "sourceType": "github",

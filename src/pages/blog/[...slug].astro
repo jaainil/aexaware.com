@@ -44,6 +44,40 @@ const siteUrl = Astro.site || "https://aexaware.com";
   modifiedTime={post.data.date.toISOString()}
   author={post.data.author}
 >
+  {/* Person Schema for Author with credentials */}
+  <Schema
+    slot="head"
+    item={{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: post.data.author,
+      jobTitle: post.data.authorTitle || "Software Engineer",
+      url: siteUrl.toString(),
+      worksFor: {
+        "@type": "Organization",
+        name: "Aexaware Infotech",
+        url: siteUrl.toString()
+      }
+    }}
+  />
+  {/* FAQPage Schema - Only if FAQ exists */}
+  {post.data.faq && post.data.faq.length > 0 && (
+    <Schema
+      slot="head"
+      item={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.data.faq.map(faq => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer
+          }
+        }))
+      }}
+    />
+  )}
   <Schema
     slot="head"
     item={{

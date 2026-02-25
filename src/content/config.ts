@@ -5,8 +5,13 @@ const blogCollection = defineCollection({
         title: z.string(),
         description: z.string(),
         author: z.string(),
+        authorTitle: z.string().optional().default("Software Engineer"),
         date: z.string().or(z.date()).transform((val) => new Date(val)),
         image: image().optional(),
+        faq: z.array(z.object({
+            question: z.string(),
+            answer: z.string(),
+        })).optional().default([]),
     }),
 });
 
