@@ -1,10 +1,20 @@
 {
   "version": 1,
   "skills": {
+    "astro": {
+      "source": "astrolicious/agent-skills",
+      "sourceType": "github",
+      "computedHash": "597a4587f30f1152d3ab2923e84db842a18604e09e16885ffa067730fb435d9d"
+    },
     "design-system-patterns": {
       "source": "wshobson/agents",
       "sourceType": "github",
       "computedHash": "1da4c9b595db349b7ddee3622eea0acdf0318048384137f0ef41bcfc76b27679"
+    },
+    "shadcn-ui": {
+      "source": "giuseppe-trisciuoglio/developer-kit",
+      "sourceType": "github",
+      "computedHash": "fc286bef24c7ed9f6d22410ee524b3a83cc38825fb06313d46b5b13a90454135"
     },
     "tailwind-design-system": {
       "source": "wshobson/agents",
