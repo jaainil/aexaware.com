@@ -72,9 +72,13 @@ export default defineConfig({
     sitemap({
       changefreq: "weekly",
       priority: 0.7,
-      // FIX: Removed 'lastmod: new Date()' to prevent false SEO updates.
-      // Let the integration detect file modification times if possible,
-      // or manage this manually per page.
+      lastmod: new Date(),
+      namespaces: {
+        news: false,
+        xhtml: false,
+        image: true,
+        video: true,
+      },
     }),
     robotsTxt({
       sitemap: true,

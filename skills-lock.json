@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "597a4587f30f1152d3ab2923e84db842a18604e09e16885ffa067730fb435d9d"
     },
+    "clean-code": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "computedHash": "723e4955a7f12526cc4a182f085e41495bcbb8fae232e491e82e10926597624b"
+    },
     "design-system-patterns": {
       "source": "wshobson/agents",
       "sourceType": "github",
@@ -26,6 +31,11 @@
       "sourceType": "github",
       "computedHash": "461ca2b3c68536067c4fd9423ff4428687d3764a6a89cac59af19bae2e816894"
     },
+    "mobile-design": {
+      "source": "davila7/claude-code-templates",
+      "sourceType": "github",
+      "computedHash": "27e338f7267fed0ce198852af954f79ce6746b9c94e4e530e581e19e568b8ba0"
+    },
     "shadcn-ui": {
       "source": "giuseppe-trisciuoglio/developer-kit",
       "sourceType": "github",
@@ -45,6 +55,11 @@
       "source": "samhvw8/dot-claude",
       "sourceType": "github",
       "computedHash": "e3618600c5afe99fd04a7d3c36a54c27badbf762b4f6093684ccf86bff87ef84"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "computedHash": "e688fcd4c5693e14ebd00d48e982dbd2be060fbea89f5f60531e79c704a1bc28"
     }
   }
 }
