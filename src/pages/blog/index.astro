@@ -190,7 +190,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
         {
           remainingPosts.map((post) => (
             <a href={`/blog/${post.slug}`} class="group flex flex-col">
-              <div class="aspect-[16/10] overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
+              <div class="aspect-16/10 overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
                 {post.data.image && (
                   <Image
                     src={post.data.image}

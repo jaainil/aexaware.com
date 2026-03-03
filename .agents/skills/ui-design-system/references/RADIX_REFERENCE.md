@@ -413,7 +413,7 @@ export function CustomSlider() {
       max={100}
       step={1}
     >
-      <Slider.Track className="relative h-1 bg-gray-200 rounded-full flex-grow">
+      <Slider.Track className="relative h-1 bg-gray-200 rounded-full grow">
         <Slider.Range className="absolute h-full bg-blue-600 rounded-full" />
       </Slider.Track>
       <Slider.Thumb className="block w-5 h-5 bg-white border-2 border-blue-600 rounded-full" />

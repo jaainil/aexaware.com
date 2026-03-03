@@ -131,7 +131,7 @@ Add semantic border radius:
 }
 ```
 
-Usage: `className="rounded-[var(--radius-lg)]"`
+Usage: `className="rounded-lg"`
 
 ### Component Variants Pattern
 

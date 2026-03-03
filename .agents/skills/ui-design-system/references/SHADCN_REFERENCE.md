@@ -441,7 +441,7 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground",
         // Add custom variant
-        custom: "bg-gradient-to-r from-purple-500 to-pink-500",
+        custom: "bg-linear-to-r from-purple-500 to-pink-500",
       },
       size: {
         default: "h-10 px-4 py-2",

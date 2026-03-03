@@ -1382,7 +1382,7 @@ const buttonVariants = cva(
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-input bg-background hover:bg-accent",
         // Add custom variant
-        custom: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
+        custom: "bg-linear-to-r from-purple-500 to-pink-500 text-white",
       },
       size: {
         default: "h-10 px-4 py-2",

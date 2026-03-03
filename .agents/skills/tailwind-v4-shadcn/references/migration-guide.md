@@ -92,12 +92,12 @@ This guide helps you migrate from hardcoded Tailwind colors (`bg-blue-600`) to s
 
 ❌ **Before:**
 ```tsx
-<div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20">
+<div className="bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-950/20 dark:to-emerald-950/20">
 ```
 
 ✅ **After:**
 ```tsx
-<div className="bg-gradient-to-r from-success/10 to-success/20">
+<div className="bg-linear-to-r from-success/10 to-success/20">
 ```
 
 ---

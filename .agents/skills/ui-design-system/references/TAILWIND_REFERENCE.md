@@ -152,7 +152,7 @@ Complete reference for TailwindCSS utilities and patterns within the UI design s
 ```html
 <p class="truncate">Truncate with ellipsis on one line</p>
 <p class="line-clamp-3">Truncate after 3 lines</p>
-<p class="overflow-ellipsis">Ellipsis overflow</p>
+<p class="text-ellipsis">Ellipsis overflow</p>
 ```
 
 ## Colors & Backgrounds
@@ -178,14 +178,14 @@ Each color has 11 shades:
 <div class="bg-white">White background</div>
 <div class="bg-gray-100">Light gray</div>
 <div class="bg-blue-500">Blue background</div>
-<div class="bg-gradient-to-r from-blue-500 to-purple-600">Gradient</div>
+<div class="bg-linear-to-r from-blue-500 to-purple-600">Gradient</div>
 ```
 
 ### Opacity Modifiers
 ```html
 <div class="bg-black/75">75% opacity</div>
 <div class="text-blue-500/30">30% opacity text</div>
-<div class="bg-purple-500/[0.87]">87% opacity (arbitrary)</div>
+<div class="bg-purple-500/87">87% opacity (arbitrary)</div>
 ```
 
 ## Responsive Design
@@ -396,7 +396,7 @@ export default {
 ```html
 <div class="aspect-square">Square (1:1)</div>
 <div class="aspect-video">Video (16:9)</div>
-<div class="aspect-[4/3]">Custom ratio</div>
+<div class="aspect-4/3">Custom ratio</div>
 ```
 
 ### Smooth Scrolling
