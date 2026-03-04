@@ -91,6 +91,25 @@ const techStack = [
   "AWS",
   "Azure",
 ];
+
+const faqs = [
+  {
+    question: "What processes should we automate first?",
+    answer: "We prioritize based on frequency and impact: infrastructure provisioning, build processes, testing, deployments, and monitoring. High-frequency tasks with manual effort are top candidates.",
+  },
+  {
+    question: "How long does automation implementation take?",
+    answer: "Basic automation takes 2-4 weeks, comprehensive frameworks take 2-4 months. We deliver incremental automation so you see benefits early.",
+  },
+  {
+    question: "Can automation work with our existing tools?",
+    answer: "Yes, we integrate with Jenkins, GitHub Actions, GitLab, Azure DevOps, and more. We work with your existing toolchain and add automation layers.",
+  },
+  {
+    question: "How do you handle automation failures?",
+    answer: "We implement proper error handling, rollback mechanisms, and alerting. Automated tests validate changes before production deployment.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for DevOps Automation"
   whyChooseDescription="Enterprise-grade automation for modern teams."
   techStack={techStack}
+  faqs={faqs}
 />
