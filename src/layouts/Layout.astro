@@ -106,27 +106,44 @@ const imageUrl = image.startsWith('http')
         '@type': 'Organization',
         name: "Aexaware Infotech",
         url: siteUrl.toString(),
-        logo: new URL('/og-image.png', siteUrl).href,
-        description: "Full-service digital agency specializing in web development, mobile apps, AI/ML integration, and cloud solutions",
+        logo: {
+          '@type': 'ImageObject',
+          url: new URL('/og-image.png', siteUrl).href,
+          width: 1200,
+          height: 630,
+        },
+        description: "Full-service software development company specializing in web development, mobile apps, AI/ML integration, DevOps, and cloud solutions. Founded in 2025, based in Vadodara, Gujarat, India.",
+        foundingDate: "2025",
         sameAs: [
           "https://www.linkedin.com/company/aexaware",
           "https://twitter.com/aexaware",
-          "https://github.com/aexaware"
+          "https://github.com/aexaware",
+          "https://www.instagram.com/aexaware/"
         ],
-        contactPoint: {
-          '@type': 'ContactPoint',
-          telephone: "+91-8140734392",
-          contactType: "Customer Service",
-          email: "info@aexaware.com"
-        },
+        contactPoint: [
+          {
+            '@type': 'ContactPoint',
+            telephone: "+91-8140734392",
+            contactType: "Customer Service",
+            email: "info@aexaware.com",
+            areaServed: ["IN", "US", "GB", "AE", "CA", "AU"],
+            availableLanguage: ["en", "hi"],
+          },
+        ],
         address: {
           '@type': 'PostalAddress',
-          streetAddress: "Anand",
+          streetAddress: "Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road, Sevasi",
           addressLocality: "Vadodara",
           addressRegion: "Gujarat",
-          postalCode: "388001",
+          postalCode: "391101",
           addressCountry: "IN"
-        }
+        },
+        areaServed: "Worldwide",
+        knowsAbout: [
+          "Web Development", "Mobile App Development", "AI/ML Integration",
+          "Cloud Computing", "DevOps", "UI/UX Design", "Generative AI",
+          "React", "Next.js", "Node.js", "Python", "TensorFlow"
+        ]
       }}
     />
     <Schema
@@ -135,7 +152,15 @@ const imageUrl = image.startsWith('http')
         '@type': 'WebSite',
         name: "Aexaware Infotech",
         url: siteUrl.toString(),
-        description: "Building Digital Excellence - Web, Mobile, AI/ML Solutions"
+        description: "Custom web, mobile, AI/ML, and DevOps solutions for startups and enterprises – built in Vadodara, serving globally.",
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${siteUrl.toString()}blog?q={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
       }}
     />
     <slot name="head" />

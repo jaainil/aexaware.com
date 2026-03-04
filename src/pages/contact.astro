@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from "@/layouts/Layout.astro";
 import { Schema } from "astro-seo-schema";
 import ContactForm from "@/components/contact/ContactForm.astro";
@@ -33,8 +33,8 @@ const socialLinks = [
 ---
 
 <Layout
-  title="Contact Aexaware Infotech – Let’s Build Together"
-  description="Get in touch with Aexaware Infotech for custom web, mobile & AI solutions."
+  title="Contact Aexaware Infotech - Start Your Software Project Today"
+  description="Contact Aexaware Infotech for custom web development, mobile apps, AI/ML integration, and cloud solutions. Based in Vadodara, India. Book a free consultation."
 >
   <Fragment slot="head">
     <Schema
@@ -55,6 +55,26 @@ const socialLinks = [
             availableLanguage: ["en", "hi"],
           },
         },
+      }}
+    />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://aexaware.com" },
+          { "@type": "ListItem", position: 2, name: "Contact" },
+        ],
+      }}
+    />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://aexaware.com" },
+          { "@type": "ListItem", position: 2, name: "Contact" },
+        ],
       }}
     />
   </Fragment>

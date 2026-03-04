@@ -157,9 +157,10 @@ const techIconMap: Record<string, any> = {
 
 const getTechIcon = (tech: string) => techIconMap[tech] || Code2;
 const siteUrl = Astro.site || "https://aexaware.com";
+const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
 
 const today = new Date();
-const datePublished = "2024-01-15";
+const datePublished = "2025-01-01";
 const dateModified = today.toISOString().split('T')[0];
 ---
 
@@ -169,24 +170,63 @@ const dateModified = today.toISOString().split('T')[0];
       item={{
         "@context": "https://schema.org",
         "@type": "Service",
+        name: title,
         serviceType: title,
+        url: pageUrl,
+        description: description,
         provider: {
           "@type": "Organization",
           name: "Aexaware Infotech",
           url: siteUrl.toString(),
         },
-        areaServed: {
-          "@type": "Place",
-          name: "Global",
+        areaServed: [
+          { "@type": "Country", name: "India" },
+          { "@type": "Country", name: "United States" },
+          { "@type": "Country", name: "United Kingdom" },
+          { "@type": "Country", name: "United Arab Emirates" },
+          { "@type": "Country", name: "Canada" },
+          { "@type": "Country", name: "Australia" },
+        ],
+        datePublished: datePublished,
+        dateModified: dateModified,
+        offers: {
+          "@type": "Offer",
+          availability: "https://schema.org/InStock",
+          url: pageUrl,
         },
+      }}
+    />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        name: `${title} – Aexaware Infotech`,
+        url: pageUrl,
         description: description,
         datePublished: datePublished,
         dateModified: dateModified,
-        author: {
-          "@type": "Person",
-          name: "Aexaware Team",
-          url: siteUrl.toString()
-        }
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["h1", "h2"],
+        },
+        breadcrumb: {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: siteUrl.toString() },
+            { "@type": "ListItem", position: 2, name: "Services", item: new URL("/services", siteUrl).href },
+            { "@type": "ListItem", position: 3, name: title, item: pageUrl },
+          ],
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "Aexaware Infotech",
+          url: siteUrl.toString(),
+        },
+        isPartOf: {
+          "@type": "WebSite",
+          url: siteUrl.toString(),
+          name: "Aexaware Infotech",
+        },
       }}
     />
     {faqs.length > 0 && (
