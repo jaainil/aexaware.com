@@ -91,6 +91,25 @@ const techStack = [
   "Databricks",
   "dbt",
 ];
+
+const faqs = [
+  {
+    question: "What is a data lake and do I need one?",
+    answer: "A data lake stores raw data in its native format, unlike structured data warehouses. You need one if you have diverse data sources (logs, sensors, social media), want to enable advanced analytics, or need to preserve data for future use cases.",
+  },
+  {
+    question: "How long does big data implementation take?",
+    answer: "Basic data infrastructure takes 2-3 months, while enterprise-scale implementations take 6-12 months. We provide phased implementations so you can start seeing value quickly.",
+  },
+  {
+    question: "Can you migrate our existing data to the cloud?",
+    answer: "Yes, we have extensive experience migrating on-premise data infrastructure to AWS, Azure, or GCP. We minimize downtime and ensure data integrity throughout the migration.",
+  },
+  {
+    question: "How do you ensure data security?",
+    answer: "We implement encryption at rest and in transit, fine-grained access controls, audit logging, VPC isolation, and compliance with GDPR, HIPAA, and SOC 2 requirements.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for Big Data"
   whyChooseDescription="Enterprise-grade big data engineering."
   techStack={techStack}
+  faqs={faqs}
 />

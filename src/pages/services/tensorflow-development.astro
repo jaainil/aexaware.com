@@ -91,6 +91,25 @@ const techStack = [
   "Kubernetes",
   "AWS SageMaker",
 ];
+
+const faqs = [
+  {
+    question: "Why choose TensorFlow for enterprise ML projects?",
+    answer: "TensorFlow offers production-grade scalability, extensive tooling, TensorFlow Serving for deployment, TensorFlow Lite for edge, and strong enterprise support. It's ideal for large-scale deployments and has a mature ecosystem.",
+  },
+  {
+    question: "How long does TensorFlow model development take?",
+    answer: "Simple models take 2-4 weeks, complex production systems take 2-4 months. We provide detailed timelines based on your specific requirements and data availability.",
+  },
+  {
+    question: "Can you deploy TensorFlow models to production?",
+    answer: "Yes, we handle the entire deployment pipeline including TensorFlow Serving, Docker containers, Kubernetes clusters, and edge deployment with TensorFlow Lite.",
+  },
+  {
+    question: "Do you offer TensorFlow training and support?",
+    answer: "Yes, we provide comprehensive training for your team and ongoing support including model monitoring, optimization, and updates.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for TensorFlow"
   whyChooseDescription="Certified TensorFlow experts for your AI projects."
   techStack={techStack}
+  faqs={faqs}
 />

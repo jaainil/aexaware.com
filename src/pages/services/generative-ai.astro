@@ -91,6 +91,25 @@ const techStack = [
   "FastAPI",
   "AWS Lambda",
 ];
+
+const faqs = [
+  {
+    question: "What can generative AI do for my business?",
+    answer: "Generative AI can create content, images, videos, and code automatically. It helps reduce content creation costs by up to 70%, speeds up product development, and enables new revenue streams through AI-powered products and services.",
+  },
+  {
+    question: "Is my data secure when using generative AI services?",
+    answer: "Yes, we implement strict data security measures. We offer on-premise deployment options, data encryption, and ensure no customer data is used for training public models unless explicitly authorized.",
+  },
+  {
+    question: "How much does generative AI development cost?",
+    answer: "Costs vary based on complexity and usage. We offer flexible pricing including per-token usage models, fixed-price projects, and enterprise agreements. Initial consultation helps determine the most cost-effective approach for your needs.",
+  },
+  {
+    question: "Can we fine-tune AI models on our proprietary data?",
+    answer: "Absolutely. We can fine-tune models on your proprietary data to achieve domain-specific accuracy. This is particularly valuable for specialized industries like legal, medical, or technical fields.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for Generative AI"
   whyChooseDescription="Leading-edge generative AI expertise for business transformation."
   techStack={techStack}
+  faqs={faqs}
 />

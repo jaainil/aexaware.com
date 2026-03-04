@@ -91,6 +91,25 @@ const techStack = [
   "Domo",
   "Metabase",
 ];
+
+const faqs = [
+  {
+    question: "Which BI tool is right for our business?",
+    answer: "The best tool depends on your needs: Tableau excels at visualization, Power BI offers excellent Microsoft integration, Looker is great for embedded analytics, and Metabase is ideal for self-service. We help you choose based on your requirements, budget, and existing tools.",
+  },
+  {
+    question: "How long does BI implementation take?",
+    answer: "Basic dashboards take 2-4 weeks, while enterprise implementations with multiple data sources take 2-4 months. We prioritize high-value dashboards so you can start benefiting quickly.",
+  },
+  {
+    question: "Can you integrate BI with our existing systems?",
+    answer: "Yes, we connect to databases, ERPs (SAP, Oracle), CRMs (Salesforce), marketing platforms, and custom APIs. We build a unified data layer for comprehensive analytics.",
+  },
+  {
+    question: "Do you provide BI training?",
+    answer: "Yes, we offer training for administrators, developers, and end users. We also create documentation and self-service guides to help your team use BI effectively.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for BI"
   whyChooseDescription="Enterprise BI solutions tailored to your business."
   techStack={techStack}
+  faqs={faqs}
 />

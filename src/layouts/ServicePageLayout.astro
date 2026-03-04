@@ -157,6 +157,10 @@ const techIconMap: Record<string, any> = {
 
 const getTechIcon = (tech: string) => techIconMap[tech] || Code2;
 const siteUrl = Astro.site || "https://aexaware.com";
+
+const today = new Date();
+const datePublished = "2024-01-15";
+const dateModified = today.toISOString().split('T')[0];
 ---
 
 <Layout title={`${title} – Aexaware Infotech`} description={description}>
@@ -176,6 +180,13 @@ const siteUrl = Astro.site || "https://aexaware.com";
           name: "Global",
         },
         description: description,
+        datePublished: datePublished,
+        dateModified: dateModified,
+        author: {
+          "@type": "Person",
+          name: "Aexaware Team",
+          url: siteUrl.toString()
+        }
       }}
     />
     {faqs.length > 0 && (

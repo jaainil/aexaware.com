@@ -99,6 +99,25 @@ const techStack = [
   "Prometheus",
   "Grafana",
 ];
+
+const faqs = [
+  {
+    question: "Which cloud provider should we choose?",
+    answer: "We help you select based on your requirements: AWS has the largest services ecosystem, Azure integrates best with Microsoft tools, and GCP excels in data/AI. We can also implement multi-cloud strategies.",
+  },
+  {
+    question: "How long does cloud migration take?",
+    answer: "Migration timelines vary: lift-and-shift takes 2-4 months, re-architecture takes 4-8 months, and modernization takes 6-12 months. We provide detailed roadmaps with phased approaches.",
+  },
+  {
+    question: "How do you ensure cloud security?",
+    answer: "We implement defense-in-depth with IAM, network security, encryption, vulnerability scanning, and compliance automation. We follow Well-Architected Framework best practices.",
+  },
+  {
+    question: "Do you provide ongoing DevOps support?",
+    answer: "Yes, we offer 24/7 support packages including monitoring, incident response, optimization, and continuous improvement. We can also train your team to manage infrastructure.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -117,4 +136,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for Cloud & DevOps"
   whyChooseDescription="Infrastructure expertise that keeps your applications running smoothly."
   techStack={techStack}
+  faqs={faqs}
 />

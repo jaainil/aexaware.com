@@ -91,6 +91,25 @@ const techStack = [
   "AWS SageMaker",
   "Google Cloud AI",
 ];
+
+const faqs = [
+  {
+    question: "When should I use deep learning vs. traditional ML?",
+    answer: "Deep learning excels with complex patterns in unstructured data (images, text, audio) and large datasets. Traditional ML works better for structured data with smaller datasets where interpretability is important. We help you choose the right approach.",
+  },
+  {
+    question: "How much data is needed for deep learning models?",
+    answer: "It depends on complexity. Simple tasks may need thousands of samples, while complex tasks like image recognition need millions. We use transfer learning to reduce data requirements and can help implement data collection strategies.",
+  },
+  {
+    question: "Can deep learning models run on edge devices?",
+    answer: "Yes, we optimize models for edge deployment using techniques like quantization, pruning, and knowledge distillation. Our models can run efficiently on mobile devices, IoT hardware, and embedded systems.",
+  },
+  {
+    question: "What industries benefit most from deep learning?",
+    answer: "Healthcare (medical imaging), automotive (autonomous driving), finance (fraud detection), retail (computer vision), and manufacturing (quality inspection) see the highest benefits from deep learning solutions.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for Deep Learning"
   whyChooseDescription="Research-grade deep learning with production-ready engineering."
   techStack={techStack}
+  faqs={faqs}
 />

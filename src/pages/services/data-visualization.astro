@@ -91,6 +91,25 @@ const techStack = [
   "ECharts",
   "Apache ECharts",
 ];
+
+const faqs = [
+  {
+    question: "What visualization tools do you use?",
+    answer: "We use industry-leading tools including Tableau, Power BI, and Looker for BI dashboards. For custom web visualizations, we use D3.js, Chart.js, and ECharts. We choose the best tool based on your requirements and existing infrastructure.",
+  },
+  {
+    question: "Can visualizations be embedded in our existing applications?",
+    answer: "Yes, we can embed dashboards and visualizations in web apps, mobile apps, portals, and presentations. We provide APIs and embed codes for easy integration.",
+  },
+  {
+    question: "Do you offer self-service visualization tools?",
+    answer: "Yes, we implement self-service BI solutions that empower non-technical users to create their own reports and dashboards without coding knowledge.",
+  },
+  {
+    question: "How do you handle real-time data in visualizations?",
+    answer: "We implement streaming data pipelines that feed live data to dashboards. This includes WebSocket connections, API polling, and integration with real-time data warehouses.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for Data Visualization"
   whyChooseDescription="Stunning visuals that reveal insights."
   techStack={techStack}
+  faqs={faqs}
 />

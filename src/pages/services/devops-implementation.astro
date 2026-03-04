@@ -91,6 +91,25 @@ const techStack = [
   "Prometheus",
   "Grafana",
 ];
+
+const faqs = [
+  {
+    question: "How long does cloud migration take?",
+    answer: "Migration timelines depend on complexity: lift-and-shift 2-4 months, re-platforming 4-6 months, re-architecting 6-12 months. We provide detailed migration plans with risk mitigation.",
+  },
+  {
+    question: "What about data migration and downtime?",
+    answer: "We use strategies like database replication, blue-green deployments, and phased cutovers to minimize downtime. Most migrations have less than 1 hour of planned downtime.",
+  },
+  {
+    question: "Can you support our existing infrastructure?",
+    answer: "Yes, we support hybrid cloud, multi-cloud, and on-premises infrastructure. We can also gradually migrate workloads over time.",
+  },
+  {
+    question: "Do you provide training for our team?",
+    answer: "Yes, we provide comprehensive training including infrastructure management, cloud best practices, and ongoing documentation. We ensure knowledge transfer at every stage.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for Implementation"
   whyChooseDescription="Professional DevOps implementation you can trust."
   techStack={techStack}
+  faqs={faqs}
 />

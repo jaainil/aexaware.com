@@ -91,6 +91,25 @@ const techStack = [
   "Jenkins",
   "Ansible",
 ];
+
+const faqs = [
+  {
+    question: "What does a DevOps assessment cover?",
+    answer: "Our assessment covers: CI/CD pipelines, deployment frequency, lead time, MTTR, change failure rate, automation levels, team structure, tooling, and culture. We provide a detailed maturity model with recommendations.",
+  },
+  {
+    question: "How long does DevOps transformation take?",
+    answer: "Transformation is a journey: initial wins in 3-6 months, foundational capabilities in 6-12 months, and mature practices in 12-24 months. We prioritize high-impact improvements for quick wins.",
+  },
+  {
+    question: "Will DevOps work for our team size?",
+    answer: "DevOps principles scale from startups to enterprises. We tailor practices to your team size and culture. Even small teams can benefit from automation and improved processes.",
+  },
+  {
+    question: "How do you measure DevOps success?",
+    answer: "We track DORA metrics: deployment frequency, lead time for changes, MTTR, and change failure rate. We also measure business outcomes like customer satisfaction and time-to-market.",
+  },
+];
 ---
 
 <ServicePageLayout
@@ -109,4 +128,5 @@ const techStack = [
   whyChooseTitle="Why Choose Aexaware for DevOps"
   whyChooseDescription="Expert guidance for DevOps transformation."
   techStack={techStack}
+  faqs={faqs}
 />
