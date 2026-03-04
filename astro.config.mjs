@@ -73,29 +73,131 @@ export default defineConfig({
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
-      namespaces: {
-        news: false,
-        xhtml: false,
-        image: true,
-        video: true,
-      },
     }),
     robotsTxt({
       sitemap: true,
       policy: [
-        // Allow ALL bots including AI crawlers
+        // ─── Default: All Bots ──────────────────────────────────────────────
         {
           userAgent: "*",
           allow: "/",
-          disallow: [
-            "/api/",      // Backend endpoints — no crawling needed
-            "/admin/",    // Private admin area
-            "/tags/",     // Low-value tag aggregation pages
-            "/category/", // Low-value category pages
-            "/*?*",       // Block query-param variants (duplicate content prevention)
-          ],
+          crawlDelay: 5, // Respected by Bing, Yandex, Baidu and others
         },
-        // AI Crawlers - Allow all for AI citation
+
+        // ─── Google Family ──────────────────────────────────────────────────
+        // Googlebot IGNORES crawlDelay — it self-regulates via Search Console
+        {
+          userAgent: "Googlebot",
+          allow: "/",
+        },
+        {
+          userAgent: "Googlebot-Image",
+          allow: "/",
+        },
+        {
+          userAgent: "Googlebot-Video",
+          allow: "/",
+        },
+        {
+          userAgent: "AdsBot-Google",
+          allow: "/",
+        },
+        // Google-Extended = Gemini / AI Overviews training token (not a crawlDelay bot)
+        {
+          userAgent: "Google-Extended",
+          allow: "/",
+        },
+
+        // ─── Bing / Microsoft ────────────────────────────────────────────────
+        {
+          userAgent: "Bingbot",
+          allow: "/",
+          crawlDelay: 2, // Bingbot respects crawl-delay
+        },
+        {
+          userAgent: "msnbot",
+          allow: "/",
+          crawlDelay: 2,
+        },
+        {
+          userAgent: "BingPreview",
+          allow: "/",
+        },
+
+        // ─── Yandex ─────────────────────────────────────────────────────────
+        {
+          userAgent: "YandexBot",
+          allow: "/",
+          crawlDelay: 3,
+        },
+        {
+          userAgent: "YandexImages",
+          allow: "/",
+        },
+
+        // ─── Baidu ──────────────────────────────────────────────────────────
+        {
+          userAgent: "Baiduspider",
+          allow: "/",
+          crawlDelay: 5,
+        },
+
+        // ─── Apple ──────────────────────────────────────────────────────────
+        {
+          userAgent: "Applebot",
+          allow: "/",
+        },
+        {
+          userAgent: "Applebot-Extended",
+          allow: "/",
+        },
+
+        // ─── DuckDuckGo ─────────────────────────────────────────────────────
+        {
+          userAgent: "DuckDuckBot",
+          allow: "/",
+        },
+
+        // ─── Yahoo ──────────────────────────────────────────────────────────
+        {
+          userAgent: "Slurp",
+          allow: "/",
+          crawlDelay: 3,
+        },
+
+        // ─── Social / Preview Bots ───────────────────────────────────────────
+        // These need access to render OG/Twitter card previews
+        {
+          userAgent: "facebookexternalhit",
+          allow: "/",
+        },
+        {
+          userAgent: "Twitterbot",
+          allow: "/",
+        },
+        {
+          userAgent: "LinkedInBot",
+          allow: "/",
+        },
+        {
+          userAgent: "WhatsApp",
+          allow: "/",
+        },
+        {
+          userAgent: "Discordbot",
+          allow: "/",
+        },
+        {
+          userAgent: "Slackbot",
+          allow: "/",
+        },
+        {
+          userAgent: "TelegramBot",
+          allow: "/",
+        },
+
+        // ─── AI Crawlers — Allow all for AI citation ─────────────────────────
+        // Note: AI bots generally do NOT respect crawl-delay; omitted intentionally
         {
           userAgent: "GPTBot",
           allow: "/",
@@ -113,11 +215,23 @@ export default defineConfig({
           allow: "/",
         },
         {
+          userAgent: "ClaudeBot",
+          allow: "/",
+        },
+        {
           userAgent: "PerplexityBot",
           allow: "/",
         },
         {
-          userAgent: "Google-Extended",
+          userAgent: "cohere-ai",
+          allow: "/",
+        },
+        {
+          userAgent: "meta-externalagent",
+          allow: "/",
+        },
+        {
+          userAgent: "Amazonbot",
           allow: "/",
         },
       ],
