@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Image, Video, Sparkles, Wand2, Clapperboard, Camera } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: Image,
+    title: "AI Image Generation",
+    desc: "Create stunning visuals from text descriptions. Product images, marketing assets, and custom illustrations at scale.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Video,
+    title: "AI Video Creation",
+    desc: "Generate videos from text, images, or existing footage. Marketing videos, tutorials, and social content in minutes.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Wand2,
+    title: "Image Editing & Enhancement",
+    desc: "AI-powered image editing for background removal, color correction, upscaling, and style transfer.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Clapperboard,
+    title: "Video Editing AI",
+    desc: "Automated video editing, scene detection, and highlights generation. Edit hours of footage in minutes.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Camera,
+    title: "Virtual Try-On",
+    desc: "AI-powered virtual try-on for e-commerce. Let customers visualize products before purchase.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Sparkles,
+    title: "Custom AI Models",
+    desc: "Train custom image and video generation models for your brand. Unique visuals that stand out.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "State-of-the-Art Models",
+    desc: "Access to DALL-E, Midjourney, Stable Diffusion, and custom-trained models.",
+  },
+  {
+    title: "Brand Consistency",
+    desc: "Maintain consistent visual identity across all AI-generated content.",
+  },
+  {
+    title: "Batch Processing",
+    desc: "Generate thousands of images or videos in bulk for large-scale needs.",
+  },
+  {
+    title: "Cost Reduction",
+    desc: "Reduce creative costs by up to 70% compared to traditional production.",
+  },
+  {
+    title: "Quick Turnaround",
+    desc: "Generate content in minutes instead of days or weeks.",
+  },
+  {
+    title: "Custom Training",
+    desc: "Train models on your product catalog for accurate, on-brand results.",
+  },
+];
+
+const techStack = [
+  "DALL-E",
+  "Midjourney",
+  "Stable Diffusion",
+  "Runway",
+  "Python",
+  "TensorFlow",
+  "PyTorch",
+  "FFmpeg",
+  "AWS",
+];
+---
+
+<ServicePageLayout
+  title="AI Image & Video Generation"
+  description="Create stunning visuals and videos with AI. From product imagery to marketing videos, generate content at scale."
+  heroBadge="AI Media"
+  heroTitle="Visual"
+  heroSubtitle="Magic."
+  heroDescription="AI-powered image and video generation that transforms your creative workflow. Create stunning visuals and engaging videos in minutes, not days."
+  introTitle="Unlimited Creative Possibilities"
+  introText="AI is revolutionizing visual content creation. Whether you need product images, marketing videos, social media content, or custom illustrations, our AI solutions help you create faster and more affordably. Say goodbye to expensive photoshoots and video productions. Our AI-powered tools generate professional-quality visuals from simple text descriptions."
+  servicesTitle="AI Media Services"
+  servicesDescription="Create visuals that captivate."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for AI Media"
+  whyChooseDescription="Next-generation AI media generation for modern brands."
+  techStack={techStack}
+/>

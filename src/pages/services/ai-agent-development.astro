@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Bot, Workflow, Shield, Brain, Zap, Globe } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: Workflow,
+    title: "Workflow Automation Agents",
+    desc: "AI agents that automate complex business workflows. From data entry to approval processes, reduce manual work by 80%.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Shield,
+    title: "Autonomous Security Agents",
+    desc: "AI-powered threat detection and response. Real-time security monitoring with automated incident handling.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Brain,
+    title: "Research & Analysis Agents",
+    desc: "AI agents that conduct research, analyze data, and generate insights. Accelerate decision-making with automated intelligence.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Zap,
+    title: "Customer Service Agents",
+    desc: "Intelligent AI agents that handle customer inquiries 24/7. Resolve issues faster with context-aware responses.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Globe,
+    title: "Multi-Agent Systems",
+    desc: "Coordinating AI agents that work together to solve complex problems. Distributed intelligence for enterprise-scale operations.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Bot,
+    title: "Custom Agent Development",
+    desc: "Build purpose-built AI agents for your specific business needs. From concept to deployment and ongoing optimization.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Autonomous Operation",
+    desc: "Agents that work independently with minimal human intervention.",
+  },
+  {
+    title: "Continuous Learning",
+    desc: "Agents that improve over time through feedback and data accumulation.",
+  },
+  {
+    title: "Enterprise-Grade",
+    desc: "Secure, scalable, and compliant AI agents for business-critical operations.",
+  },
+  {
+    title: "Multi-Source Integration",
+    desc: "Connect agents to APIs, databases, and third-party services seamlessly.",
+  },
+  {
+    title: "Custom Training",
+    desc: "Train agents on your proprietary data for domain-specific expertise.",
+  },
+  {
+    title: "24/7 Availability",
+    desc: "Round-the-clock operation without breaks or downtime.",
+  },
+];
+
+const techStack = [
+  "Python",
+  "LangChain",
+  "AutoGPT",
+  "CrewAI",
+  "OpenAI",
+  "Anthropic",
+  "AWS",
+  "Azure",
+  "Docker",
+];
+---
+
+<ServicePageLayout
+  title="AI Agent Development"
+  description="Build autonomous AI agents that automate workflows, handle customer service, and drive business operations 24/7."
+  heroBadge="AI Agents"
+  heroTitle="Intelligent"
+  heroSubtitle="Agents."
+  heroDescription="Autonomous AI agents that handle complex tasks independently. From customer service to workflow automation, our AI agents transform how your business operates."
+  introTitle="The Future of Work is Agentic"
+  introText="AI agents are the next evolution in artificial intelligence. Unlike traditional automation, AI agents can reason, make decisions, and learn from interactions. Whether you need sales agents that nurture leads, support agents that resolve issues, or research agents that analyze data, we build custom AI agents tailored to your business needs."
+  servicesTitle="AI Agent Services"
+  servicesDescription="Autonomous agents that work for you."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for AI Agents"
+  whyChooseDescription="Cutting-edge AI agent development for modern businesses."
+  techStack={techStack}
+/>

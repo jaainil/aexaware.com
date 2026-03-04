@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Wifi, Cpu, Database, Globe, Shield, Zap } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: Wifi,
+    title: "IoT Device Development",
+    desc: "Design and develop custom IoT devices. Sensors, actuators, and embedded systems.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Cpu,
+    title: "Firmware Development",
+    desc: "Embedded firmware for microcontrollers. C, C++, and Rust for resource-efficient code.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Database,
+    title: "IoT Platform",
+    desc: "Build or integrate IoT platforms. Device management, data collection, and analytics.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Globe,
+    title: "Cloud Integration",
+    desc: "Connect devices to the cloud. AWS IoT, Azure IoT, or custom solutions.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Shield,
+    title: "IoT Security",
+    desc: "Secure your IoT infrastructure. Device authentication, data encryption, and security audits.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Zap,
+    title: "Edge Computing",
+    desc: "Process data at the edge. Reduce latency and bandwidth with edge computing solutions.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "End-to-End IoT",
+    desc: "From hardware to cloud, we build complete solutions.",
+  },
+  {
+    title: "Hardware Expertise",
+    desc: "Experience with various microcontrollers and sensors.",
+  },
+  {
+    title: "Scalability",
+    desc: "Solutions that grow from prototype to millions of devices.",
+  },
+  {
+    title: "Security First",
+    desc: "Security embedded in every layer of the solution.",
+  },
+  {
+    title: "Real-Time Data",
+    desc: "Live monitoring and instant alerts.",
+  },
+  {
+    title: "Industry Experience",
+    desc: "Successfully delivered IoT projects across industries.",
+  },
+];
+
+const techStack = [
+  "Arduino",
+  "Raspberry Pi",
+  "ESP32",
+  "AWS IoT",
+  "Azure IoT",
+  "MQTT",
+  "Node-RED",
+  "Docker",
+  "Kubernetes",
+];
+---
+
+<ServicePageLayout
+  title="IoT Development Services"
+  description="Internet of Things development. IoT devices, firmware, platforms, and cloud integration for smart solutions."
+  heroBadge="IoT Solutions"
+  heroTitle="Connect"
+  heroSubtitle="Everything."
+  heroDescription="Transform your business with IoT. Connect devices, gather data, and create smart systems that improve efficiency and innovation."
+  introTitle="IoT Innovation"
+  introText="The Internet of Things is revolutionizing how businesses operate. From smart factories to connected products, IoT enables new levels of efficiency, insight, and innovation. Our IoT development services cover the full spectrum - from hardware design and firmware development to cloud platforms and analytics. We build connected solutions that deliver real business value."
+  servicesTitle="IoT Services"
+  servicesDescription="Connect and transform."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for IoT"
+  whyChooseDescription="Complete IoT solutions from hardware to cloud."
+  techStack={techStack}
+/>

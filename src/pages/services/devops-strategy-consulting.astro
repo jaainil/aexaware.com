@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Compass, Map, Route, Target, Zap, Shield } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: Compass,
+    title: "DevOps Assessment",
+    desc: "Evaluate your current DevOps maturity and identify improvement opportunities. Comprehensive audit of processes and tools.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Map,
+    title: "Roadmap Development",
+    desc: "Create a customized DevOps transformation roadmap aligned with your business goals and timeline.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Route,
+    title: "Pipeline Architecture",
+    desc: "Design and implement CI/CD pipelines tailored to your applications and infrastructure.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Target,
+    title: "Tool Selection",
+    desc: "Choose the right tools for your stack. GitHub Actions, Jenkins, GitLab, ArgoCD, and more.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Zap,
+    title: "Performance Optimization",
+    desc: "Optimize build times, deployment frequency, and overall delivery performance.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Shield,
+    title: "Security Integration",
+    desc: "Embed security into every stage of your DevOps pipeline. DevSecOps best practices.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Proven Framework",
+    desc: "Time-tested methodologies based on industry best practices.",
+  },
+  {
+    title: "Tailored Approach",
+    desc: "Solutions designed for your specific technology stack and culture.",
+  },
+  {
+    title: "Measurable Results",
+    desc: "Clear KPIs to track DevOps transformation progress.",
+  },
+  {
+    title: "Team Training",
+    desc: "Upskill your team with hands-on workshops and knowledge transfer.",
+  },
+  {
+    title: "Vendor Neutral",
+    desc: "Independent advice that selects the best tools for your needs.",
+  },
+  {
+    title: "Ongoing Support",
+    desc: "Continue optimizing after initial implementation.",
+  },
+];
+
+const techStack = [
+  "AWS",
+  "Azure",
+  "GCP",
+  "Kubernetes",
+  "Docker",
+  "Terraform",
+  "GitHub Actions",
+  "Jenkins",
+  "Ansible",
+];
+---
+
+<ServicePageLayout
+  title="DevOps Strategy & Consulting"
+  description="Expert DevOps consulting and strategy. Transform your software delivery with proven methodologies and best practices."
+  heroBadge="DevOps Consulting"
+  heroTitle="Strategy for"
+  heroSubtitle="Success."
+  heroDescription="DevOps strategy that accelerates your software delivery. From assessment to implementation, we help you transform how you build and deploy software."
+  introTitle="DevOps Excellence"
+  introText="DevOps is more than just tools - it's a culture and methodology that transforms how you deliver software. Our DevOps consulting services help you assess your current state, develop a transformation roadmap, and implement best practices that improve delivery speed, quality, and reliability. Whether you're starting your DevOps journey or looking to optimize, we guide you every step of the way."
+  servicesTitle="DevOps Services"
+  servicesDescription="Transform your delivery."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for DevOps"
+  whyChooseDescription="Expert guidance for DevOps transformation."
+  techStack={techStack}
+/>

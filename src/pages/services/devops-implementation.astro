@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Rocket, Server, Cloud, Database, Globe, Cpu } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: Rocket,
+    title: "Cloud Migration",
+    desc: "Move your applications to AWS, Azure, or GCP. Minimize downtime and ensure smooth transitions.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Server,
+    title: "Infrastructure Setup",
+    desc: "Design and provision cloud infrastructure. VPCs, compute, storage, and networking.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Cloud,
+    title: "Cloud-Native Development",
+    desc: "Build applications designed for the cloud. Microservices, serverless, and container-native.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Database,
+    title: "Database Implementation",
+    desc: "Deploy and manage databases in the cloud. RDS, Aurora, Cloud SQL, and NoSQL solutions.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Globe,
+    title: "Global Deployment",
+    desc: "Deploy across multiple regions for high availability and low latency worldwide.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Cpu,
+    title: "Hybrid Cloud",
+    desc: "Connect on-premises infrastructure with cloud. Hybrid architectures for flexibility.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Certified Experts",
+    desc: "AWS, Azure, and GCP certified professionals.",
+  },
+  {
+    title: "Best Practices",
+    desc: "Architecture based on well-architected frameworks.",
+  },
+  {
+    title: "Cost Optimization",
+    desc: "Right-size resources and leverage savings plans.",
+  },
+  {
+    title: "Security First",
+    desc: "Security baked into every layer of the infrastructure.",
+  },
+  {
+    title: "High Availability",
+    desc: "Design for failure with redundant architectures.",
+  },
+  {
+    title: "24/7 Support",
+    desc: "Ongoing support and monitoring for your infrastructure.",
+  },
+];
+
+const techStack = [
+  "AWS",
+  "Azure",
+  "GCP",
+  "Kubernetes",
+  "Terraform",
+  "Docker",
+  "Vault",
+  "Prometheus",
+  "Grafana",
+];
+---
+
+<ServicePageLayout
+  title="DevOps Implementation Services"
+  description="Full DevOps implementation and cloud infrastructure. From migration to managed services, we build your DevOps foundation."
+  heroBadge="DevOps Implementation"
+  heroTitle="Build"
+  heroSubtitle="Foundation."
+  heroDescription="Complete DevOps implementation for your business. Cloud infrastructure, migration, and managed services that scale."
+  introTitle="Implementation Excellence"
+  introText="Transform your software delivery with professional DevOps implementation. We design, build, and manage cloud infrastructure that supports your applications and scales with your business. From initial setup to ongoing optimization, our team ensures your infrastructure is secure, reliable, and cost-effective."
+  servicesTitle="Implementation Services"
+  servicesDescription="Build it right."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Implementation"
+  whyChooseDescription="Professional DevOps implementation you can trust."
+  techStack={techStack}
+/>

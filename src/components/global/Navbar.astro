@@ -18,6 +18,18 @@ import {
   Users,
   TrendingUp,
   Ghost,
+  Wand2,
+  Bot,
+  Eye,
+  FlaskConical,
+  BarChart3,
+  LineChart,
+  Server,
+  Settings,
+  Zap,
+  Wifi,
+  Target,
+  Megaphone,
 } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
 
@@ -29,51 +41,74 @@ const navLinks = [
     name: "Services",
     path: "/services",
     hasDropdown: true,
-    dropdown: [
-      { name: "All Services", path: "/services", icon: Layers },
+    dropdownCategories: [
       {
-        name: "Web Development",
-        path: "/services/web-development",
-        icon: Globe,
+        title: "AI & Generative AI",
+        items: [
+          { name: "AI/ML Integration", path: "/services/ai-ml-integration", icon: BrainCircuit },
+          { name: "Generative AI", path: "/services/generative-ai", icon: Wand2 },
+          { name: "AI Agent Development", path: "/services/ai-agent-development", icon: Bot },
+          { name: "AI Image & Video", path: "/services/ai-image-video-generation", icon: Eye },
+        ]
       },
       {
-        name: "Mobile App Development",
-        path: "/services/mobile-development",
-        icon: Smartphone,
-      },
-      { name: "UI/UX Design", path: "/services/ui-ux-design", icon: Palette },
-      { name: "Cloud & DevOps", path: "/services/cloud-devops", icon: Cloud },
-      {
-        name: "AI/ML Integration",
-        path: "/services/ai-ml-integration",
-        icon: BrainCircuit,
-      },
-      { name: "E-Commerce", path: "/services/ecommerce", icon: ShoppingCart },
-      {
-        name: "MVP Development",
-        path: "/services/mvp-development",
-        icon: Rocket,
+        title: "Machine Learning",
+        items: [
+          { name: "Deep Learning", path: "/services/deep-learning", icon: BrainCircuit },
+          { name: "TensorFlow Development", path: "/services/tensorflow-development", icon: FlaskConical },
+        ]
       },
       {
-        name: "CMS Development",
-        path: "/services/cms-development",
-        icon: Layout,
+        title: "Data Engineering",
+        items: [
+          { name: "Data Analysis", path: "/services/data-analysis", icon: BarChart3 },
+          { name: "Data Visualization", path: "/services/data-visualization", icon: LineChart },
+          { name: "Big Data Solutions", path: "/services/big-data-solutions", icon: Server },
+          { name: "Business Intelligence", path: "/services/business-intelligence", icon: TrendingUp },
+          { name: "Data Science", path: "/services/data-science", icon: BrainCircuit },
+        ]
       },
       {
-        name: "Custom Software",
-        path: "/services/software-solutions",
-        icon: Cpu,
-      },
-      { name: "Extended Team", path: "/services/extended-team", icon: Users },
-      {
-        name: "Digital Marketing",
-        path: "/services/digital-marketing",
-        icon: TrendingUp,
+        title: "DevOps",
+        items: [
+          { name: "Cloud Solutions", path: "/services/cloud-devops", icon: Cloud },
+          { name: "DevOps Strategy", path: "/services/devops-strategy-consulting", icon: Settings },
+          { name: "DevOps Automation", path: "/services/devops-automation", icon: Zap },
+          { name: "DevOps Implementation", path: "/services/devops-implementation", icon: Server },
+        ]
       },
       {
-        name: "White Label",
-        path: "/services/white-label-services",
-        icon: Ghost,
+        title: "App Development",
+        items: [
+          { name: "Web Development", path: "/services/web-development", icon: Globe },
+          { name: "Mobile Development", path: "/services/mobile-development", icon: Smartphone },
+          { name: "E-Commerce", path: "/services/ecommerce", icon: ShoppingCart },
+          { name: "MVP Development", path: "/services/mvp-development", icon: Rocket },
+          { name: "CMS Development", path: "/services/cms-development", icon: Layout },
+          { name: "Custom Software", path: "/services/software-solutions", icon: Cpu },
+        ]
+      },
+      {
+        title: "Advanced Tech",
+        items: [
+          { name: "IoT Development", path: "/services/iot", icon: Wifi },
+        ]
+      },
+      {
+        title: "Digital Marketing",
+        items: [
+          { name: "Digital Marketing", path: "/services/digital-marketing", icon: TrendingUp },
+          { name: "Conversion Rate Opt.", path: "/services/conversion-rate-optimization", icon: Target },
+          { name: "Branding & Position", path: "/services/branding-positioning", icon: Megaphone },
+        ]
+      },
+      {
+        title: "Other Services",
+        items: [
+          { name: "UI/UX Design", path: "/services/ui-ux-design", icon: Palette },
+          { name: "Extended Team", path: "/services/extended-team", icon: Users },
+          { name: "White Label", path: "/services/white-label-services", icon: Ghost },
+        ]
       },
     ],
   },
@@ -146,30 +181,89 @@ const isActive = (linkPath: string) => {
                     </button>
 
                     <div 
-                      class="services-dropdown absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible transition-all duration-300 ease-out min-w-[700px]"
+                      class="services-dropdown absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible transition-all duration-300 ease-out w-[760px]"
                       role="menu"
                       aria-labelledby="services-menu-button"
                     >
-                      <div class="bg-background/98 backdrop-blur-2xl border border-border rounded-card-lg shadow-2xl p-6 grid grid-cols-3 gap-3 ring-1 ring-black/5">
-                        {link.dropdown?.map((item) => (
+                      <div class="bg-background/98 backdrop-blur-2xl border border-border rounded-card-lg shadow-2xl ring-1 ring-black/5 flex h-[380px]">
+                        {/* Left: Category rows — scrollable so they never clip */}
+                        <div class="w-[210px] shrink-0 border-r border-border bg-secondary/20 rounded-l-card-lg py-3 overflow-y-auto" id="category-col">
+                          {link.dropdownCategories?.map((category, idx) => (
+                            <div
+                              class="service-category px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 cursor-pointer transition-all flex items-center justify-between rounded-lg mx-2 gap-2"
+                              data-category-idx={idx}
+                            >
+                              <span class="truncate">{category.title}</span>
+                              <ChevronDown className="h-3.5 w-3.5 shrink-0 -rotate-90 opacity-40" />
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Right: Panel area */}
+                        <div class="flex-1 relative flex flex-col">
+                          {/* DEFAULT: All Services — fills full space when nothing hovered */}
                           <a
-                            href={item.path}
+                            href="/services"
                             role="menuitem"
-                            class="group/item flex items-start gap-3 rounded-xl p-3 no-underline outline-none transition-all hover:bg-primary/5 hover:text-primary focus-visible:bg-primary/5 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset rounded-lg"
+                            id="all-services-panel"
+                            class="absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-r-card-lg no-underline outline-none transition-all duration-200 hover:bg-primary/3 group p-8 text-center z-10"
                           >
-                            <div class="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-secondary/50 text-muted-foreground group-hover/item:bg-primary/10 group-hover/item:text-primary transition-colors">
-                              {item.icon && <item.icon className="h-4 w-4" />}
+                            <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300">
+                              <Layers className="h-8 w-8" />
                             </div>
                             <div>
-                              <div class="text-sm font-semibold leading-none mb-1 group-hover/item:text-primary transition-colors">
-                                {item.name}
-                              </div>
-                              <p class="text-xs text-muted-foreground line-clamp-1 opacity-70">
-                                Explore our {item.name.toLowerCase()} solutions.
-                              </p>
+                              <p class="text-xl font-bold text-foreground group-hover:text-primary transition-colors">All Services</p>
+                              <p class="text-sm text-muted-foreground mt-1">Browse our complete service portfolio</p>
                             </div>
+                            <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-primary border border-primary/20 rounded-full px-4 py-1.5 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                              View All <ChevronDown className="h-3.5 w-3.5 -rotate-90" />
+                            </span>
                           </a>
-                        ))}
+
+                          {/* Per-category panels — flex-1 so footer stays pinned */}
+                          <div class="flex-1 p-5 overflow-y-auto">
+                            {link.dropdownCategories?.map((category, idx) => (
+                              <div
+                                class="service-panel hidden"
+                                data-panel-idx={idx}
+                              >
+                                <p class="text-xs font-bold text-primary uppercase tracking-wider mb-3">{category.title}</p>
+                                <div class="grid grid-cols-2 gap-1">
+                                  {category.items.map((item) => (
+                                    <a
+                                      href={item.path}
+                                      role="menuitem"
+                                      class="flex items-center gap-2 rounded-lg px-3 py-2 no-underline outline-none transition-all hover:bg-primary/5 group"
+                                    >
+                                      <div class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-secondary/60 text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                                        {item.icon && <item.icon className="h-4 w-4" />}
+                                      </div>
+                                      <span class="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                                        {item.name}
+                                      </span>
+                                    </a>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Persistent footer — always visible so user can always reach All Services */}
+                          <div class="border-t border-border mx-5 pb-3 pt-2 shrink-0">
+                            <a
+                              href="/services"
+                              role="menuitem"
+                              class="flex items-center justify-between w-full px-3 py-2 rounded-lg no-underline outline-none transition-all hover:bg-primary/5 group"
+                            >
+                              <span class="text-sm font-semibold text-primary flex items-center gap-1.5">
+                                <Layers className="h-3.5 w-3.5" /> View all services
+                              </span>
+                              <span class="text-xs text-muted-foreground group-hover:text-primary transition-colors flex items-center gap-1">
+                                Browse complete portfolio <ChevronDown className="h-3 w-3 -rotate-90" />
+                              </span>
+                            </a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -249,14 +343,24 @@ const isActive = (linkPath: string) => {
                     {link.name}
                     <ChevronDown class="h-5 w-5 text-muted-foreground transition-transform duration-300 group-open/details:-rotate-180" aria-hidden="true" />
                   </summary>
-                  <div class="pl-2 pt-2 pb-2 space-y-2 border-l-2 border-primary/10 ml-2">
-                    {link.dropdown?.map((item) => (
-                      <a
-                        href={item.path}
-                        class="flex items-center gap-3 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-                      >
-                        <span class="font-medium text-base">{item.name}</span>
-                      </a>
+                  <div class="pl-2 pt-2 pb-2 space-y-4 border-l-2 border-primary/10 ml-2">
+                    {link.dropdownCategories?.map((category) => (
+                      <div>
+                        <h4 class="text-xs font-bold text-primary uppercase tracking-wider mb-2 px-2">
+                          {category.title}
+                        </h4>
+                        <div class="flex flex-col space-y-1">
+                          {category.items.map((item) => (
+                            <a
+                              href={item.path}
+                              class="flex items-center gap-2 p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                            >
+                              {item.icon && <item.icon className="h-4 w-4" />}
+                              <span class="font-medium text-sm">{item.name}</span>
+                            </a>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </details>
@@ -348,6 +452,44 @@ const isActive = (linkPath: string) => {
     let dropdownOpen = false;
     let closeTimeout: ReturnType<typeof setTimeout> | null = null;
 
+    // Category panel switching
+    const categoryItems = document.querySelectorAll<HTMLElement>(".service-category");
+    const panels = document.querySelectorAll<HTMLElement>(".service-panel");
+    const allServicesPanel = document.getElementById("all-services-panel");
+
+    function showAllServices() {
+      panels.forEach((p) => p.classList.add("hidden"));
+      allServicesPanel?.classList.remove("hidden");
+      categoryItems.forEach((cat) => {
+        cat.classList.remove("text-foreground", "bg-primary/5");
+        cat.classList.add("text-muted-foreground");
+      });
+    }
+
+    function activateCategory(idx: number) {
+      // Hide All Services panel, show matching category panel
+      allServicesPanel?.classList.add("hidden");
+      panels.forEach((panel, i) => {
+        if (i === idx) panel.classList.remove("hidden");
+        else panel.classList.add("hidden");
+      });
+      categoryItems.forEach((cat, i) => {
+        if (i === idx) {
+          cat.classList.add("text-foreground", "bg-primary/5");
+          cat.classList.remove("text-muted-foreground");
+        } else {
+          cat.classList.remove("text-foreground", "bg-primary/5");
+          cat.classList.add("text-muted-foreground");
+        }
+      });
+    }
+
+    // Hover category → show its services (panel stays stable even when moving to right panel)
+    categoryItems.forEach((cat, idx) => {
+      cat.addEventListener("mouseenter", () => activateCategory(idx));
+    });
+    // NOTE: No mouseleave restore — avoids panels disappearing when crossing to right panel to click
+
     function openDropdown() {
       if (!dropdown || !dropdownBtn) return;
       dropdownOpen = true;
@@ -355,12 +497,8 @@ const isActive = (linkPath: string) => {
       dropdown.classList.add("opacity-100", "visible");
       dropdownBtn.setAttribute("aria-expanded", "true");
       chevron?.classList.add("-rotate-180");
-      
-      // Focus first menu item
-      const firstItem = dropdown.querySelector('a[role="menuitem"]') as HTMLElement;
-      if (firstItem) {
-        setTimeout(() => firstItem.focus(), 50);
-      }
+      // Always open to the "All Services" state
+      showAllServices();
     }
 
     function closeDropdown(focusBtn = false) {

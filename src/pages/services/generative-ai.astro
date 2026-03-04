@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Wand2, Image, Video, FileText, Copy, Sparkles, Palette } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: Wand2,
+    title: "Text Generation",
+    desc: "AI-powered content creation for blogs, marketing copy, product descriptions, and technical documentation. Generate high-quality content at scale.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Image,
+    title: "Image Generation",
+    desc: "Create stunning visuals using DALL-E, Midjourney, and Stable Diffusion. From product imagery to marketing assets, generate unique images on demand.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Video,
+    title: "Video Generation",
+    desc: "AI-generated videos for marketing, training, and social media. Turn text into engaging video content with virtual actors and animations.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: FileText,
+    title: "Code Generation",
+    desc: "AI-assisted coding that speeds up development. From code completion to full function generation, boost your developer productivity.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Copy,
+    title: "Document Intelligence",
+    desc: "Extract, summarize, and generate documents automatically. Contract analysis, report generation, and intelligent document processing.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Palette,
+    title: "Design Automation",
+    desc: "AI-assisted design for logos, UI mockups, and branding assets. Generate design concepts in seconds, not hours.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Latest Models",
+    desc: "Access to GPT-4, Claude, DALL-E, and open-source alternatives for best results.",
+  },
+  {
+    title: "Custom Fine-tuning",
+    desc: "Fine-tune models on your proprietary data for domain-specific accuracy.",
+  },
+  {
+    title: "Scalable APIs",
+    desc: "Production-ready APIs that handle millions of requests with low latency.",
+  },
+  {
+    title: "Cost Optimization",
+    desc: "Optimize AI costs through efficient prompting and model selection.",
+  },
+  {
+    title: "Enterprise Security",
+    desc: "Data privacy and security compliance for sensitive business applications.",
+  },
+  {
+    title: "Integration Support",
+    desc: "Seamless integration with your existing systems and workflows.",
+  },
+];
+
+const techStack = [
+  "OpenAI",
+  "Anthropic",
+  "Midjourney",
+  "Stable Diffusion",
+  "LangChain",
+  "Hugging Face",
+  "Python",
+  "FastAPI",
+  "AWS Lambda",
+];
+---
+
+<ServicePageLayout
+  title="Generative AI Services"
+  description="Transform your business with generative AI. Content creation, image/video generation, code assistance, and AI-powered automation."
+  heroBadge="Generative AI"
+  heroTitle="Create with"
+  heroSubtitle="AI Power."
+  heroDescription="Harness the power of generative AI to create content, images, videos, and code at scale. From marketing copy to product imagery, our AI solutions help you innovate faster and reduce costs."
+  introTitle="AI That Creates"
+  introText="Generative AI is revolutionizing how businesses create content and solve problems. Whether you need to generate marketing materials, create product visuals, automate documentation, or build AI-powered products, we help you leverage the latest in generative AI technology. Our team stays at the forefront of AI advancements to deliver cutting-edge solutions that give you a competitive edge."
+  servicesTitle="Generative AI Services"
+  servicesDescription="Unlimited creative possibilities with AI."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Generative AI"
+  whyChooseDescription="Leading-edge generative AI expertise for business transformation."
+  techStack={techStack}
+/>

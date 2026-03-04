@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { FlaskConical, Brain, Code2, Database, LineChart, Target } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: FlaskConical,
+    title: "Predictive Modeling",
+    desc: "Build ML models that forecast outcomes. Demand forecasting, risk prediction, and trend analysis.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Brain,
+    title: "Machine Learning",
+    desc: "Supervised and unsupervised learning for classification, regression, clustering, and recommendation.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Code2,
+    title: "Statistical Analysis",
+    desc: "Hypothesis testing, A/B analysis, and statistical modeling for data-driven decisions.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Database,
+    title: "Data Processing",
+    desc: "Clean, transform, and prepare data for analysis. Feature engineering and data preprocessing.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: LineChart,
+    title: "Time Series Analysis",
+    desc: "Forecast trends over time. Seasonality detection and long-term predictions.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Target,
+    title: "Custom Algorithms",
+    desc: "Build bespoke algorithms tailored to your specific business problems and data.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Domain Expertise",
+    desc: "Data scientists with deep industry knowledge and business acumen.",
+  },
+  {
+    title: "Full Lifecycle",
+    desc: "From problem definition to model deployment and monitoring.",
+  },
+  {
+    title: "State-of-the-Art",
+    desc: "Latest ML techniques and research for best-in-class results.",
+  },
+  {
+    title: "Interpretable Models",
+    desc: "Models that are transparent and explainable to stakeholders.",
+  },
+  {
+    title: "Scalable Solutions",
+    desc: "Models that handle growing data and business needs.",
+  },
+  {
+    title: "Production Ready",
+    desc: "Deployment-ready models with API integration and monitoring.",
+  },
+];
+
+const techStack = [
+  "Python",
+  "R",
+  "TensorFlow",
+  "PyTorch",
+  "Scikit-learn",
+  "XGBoost",
+  "SQL",
+  "AWS SageMaker",
+  "Docker",
+];
+---
+
+<ServicePageLayout
+  title="Data Science Services"
+  description="Advanced data science solutions. Machine learning, predictive analytics, and custom algorithms that drive business value."
+  heroBadge="Data Science"
+  heroTitle="Science of"
+  heroSubtitle="Data."
+  heroDescription="Unlock the power of your data with advanced data science. Machine learning models and predictive analytics that transform raw data into strategic assets."
+  introTitle="Data Science for Business"
+  introText="Data science combines statistics, machine learning, and domain expertise to extract insights from data. Our data science services help you discover patterns, predict outcomes, and make smarter decisions. Whether you need customer churn prediction, demand forecasting, or product recommendations, we build custom solutions that deliver measurable business value."
+  servicesTitle="Data Science Services"
+  servicesDescription="Insights that create value."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Data Science"
+  whyChooseDescription="Expert data scientists for complex business challenges."
+  techStack={techStack}
+/>

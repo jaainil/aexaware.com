@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { BarChart3, TrendingUp, PieChart, Activity, Target, Zap } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: BarChart3,
+    title: "Descriptive Analytics",
+    desc: "Understand what happened with comprehensive data analysis. Historical trends, patterns, and business insights.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: TrendingUp,
+    title: "Predictive Analytics",
+    desc: "Forecast future trends with machine learning. Demand forecasting, risk assessment, and outcome prediction.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: PieChart,
+    title: "Customer Analytics",
+    desc: "Deep customer insights for segmentation, churn prediction, and lifetime value analysis.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Activity,
+    title: "Operations Analytics",
+    desc: "Optimize operations with data-driven insights. Process efficiency, resource planning, and performance metrics.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Target,
+    title: "Marketing Analytics",
+    desc: "Measure marketing ROI and optimize campaigns. Attribution, conversion tracking, and customer acquisition.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Zap,
+    title: "Real-Time Analytics",
+    desc: "Instant insights for real-time decision making. Streaming data processing and live dashboards.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Business Focus",
+    desc: "Analysis that drives actionable insights, not just numbers.",
+  },
+  {
+    title: "Advanced Techniques",
+    desc: "Statistical modeling, machine learning, and AI for deeper insights.",
+  },
+  {
+    title: "Any Data Source",
+    desc: "Integrate data from databases, APIs, files, and streaming sources.",
+  },
+  {
+    title: "Scalable Processing",
+    desc: "Handle datasets of any size from GB to PB scale.",
+  },
+  {
+    title: "Clear Reporting",
+    desc: "Actionable reports and dashboards that stakeholders understand.",
+  },
+  {
+    title: "Continuous Improvement",
+    desc: "Ongoing analysis that evolves with your business.",
+  },
+];
+
+const techStack = [
+  "Python",
+  "R",
+  "SQL",
+  "Pandas",
+  "NumPy",
+  "Scikit-learn",
+  "AWS",
+  "Snowflake",
+  "BigQuery",
+];
+---
+
+<ServicePageLayout
+  title="Data Analysis Services"
+  description="Turn your data into actionable insights. Descriptive and predictive analytics, customer insights, and business intelligence."
+  heroBadge="Data Analysis"
+  heroTitle="Insights from"
+  heroSubtitle="Data."
+  heroDescription="Data analysis that reveals the story in your numbers. From descriptive analytics to predictive modeling, we help you make data-driven decisions."
+  introTitle="Data-Driven Decisions"
+  introText="Your data holds the answers to your biggest business questions. Our data analysis services uncover hidden patterns, predict future trends, and provide actionable insights. Whether you're looking to understand customers, optimize operations, or identify new opportunities, we turn raw data into strategic advantage."
+  servicesTitle="Data Analysis Services"
+  servicesDescription="Transform data into decisions."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Data Analysis"
+  whyChooseDescription="Expert analysis that drives business results."
+  techStack={techStack}
+/>

@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Database, Server, Zap, Shield, Globe, Cpu } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: Database,
+    title: "Data Lake Architecture",
+    desc: "Scalable data lakes for storing structured and unstructured data. Raw data storage with organized access layers.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Server,
+    title: "ETL/ELT Pipelines",
+    desc: "Automated data pipelines that extract, transform, and load data from any source to any destination.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Zap,
+    title: "Stream Processing",
+    desc: "Real-time data processing for instant insights. Process millions of events per second with low latency.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Shield,
+    title: "Data Governance",
+    desc: "Data quality, lineage tracking, and compliance. Ensure your data is accurate, secure, and auditable.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Globe,
+    title: "Cloud Data Platform",
+    desc: "Modern data infrastructure on AWS, Azure, or GCP. Managed services that scale automatically.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Cpu,
+    title: "Data Warehouse",
+    desc: "High-performance analytical databases. Snowflake, BigQuery, Redshift, and custom solutions.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Modern Architecture",
+    desc: "Latest big data technologies for performance and scalability.",
+  },
+  {
+    title: "Cost Optimization",
+    desc: "Reduce data infrastructure costs by 40-60% with efficient design.",
+  },
+  {
+    title: "Any Scale",
+    desc: "Handle gigabytes to petabytes with the same expertise.",
+  },
+  {
+    title: "Cloud-Native",
+    desc: "Fully managed services that eliminate operational overhead.",
+  },
+  {
+    title: "Real-Time Ready",
+    desc: "Architecture built for both batch and streaming workloads.",
+  },
+  {
+    title: "Enterprise Security",
+    desc: "Encryption, access control, and compliance built in.",
+  },
+];
+
+const techStack = [
+  "Apache Spark",
+  "Airflow",
+  "Apache Kafka",
+  "Snowflake",
+  "AWS",
+  "Azure",
+  "GCP",
+  "Databricks",
+  "dbt",
+];
+---
+
+<ServicePageLayout
+  title="Big Data Solutions"
+  description="Enterprise big data architecture and engineering. Data lakes, ETL pipelines, and scalable data infrastructure."
+  heroBadge="Big Data"
+  heroTitle="Data at"
+  heroSubtitle="Scale."
+  heroDescription="Big data solutions that handle any volume, velocity, and variety. From data lakes to real-time analytics, we build the infrastructure that powers data-driven enterprises."
+  introTitle="Big Data, Big Results"
+  introText="Modern businesses generate more data than ever before. Our big data solutions help you capture, process, and derive value from all your data - structured and unstructured, batch and streaming. We design and implement scalable architectures that grow with your business while keeping costs under control."
+  servicesTitle="Big Data Services"
+  servicesDescription="Infrastructure for the data age."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Big Data"
+  whyChooseDescription="Enterprise-grade big data engineering."
+  techStack={techStack}
+/>

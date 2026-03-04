@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { Palette, Target, Zap, Globe, Star, Megaphone } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: Palette,
+    title: "Brand Identity",
+    desc: "Create a distinctive brand that stands out. Logo, colors, typography, and brand guidelines.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Target,
+    title: "Brand Positioning",
+    desc: "Define your unique market position. Differentiate from competitors and own your space.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Zap,
+    title: "Brand Strategy",
+    desc: "Strategic direction for your brand. Values, personality, and messaging that resonates.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: Globe,
+    title: "Digital Branding",
+    desc: "Consistent brand presence across all digital touchpoints. Websites, social media, and ads.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Star,
+    title: "Brand Messaging",
+    desc: "Compelling copy that communicates your value. Taglines, elevator pitches, and content.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Megaphone,
+    title: "Brand Launch",
+    desc: "Launch your brand with impact. Go-to-market strategies and campaigns that create buzz.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Strategic Thinking",
+    desc: "Branding based on business strategy, not just design.",
+  },
+  {
+    title: "Unique Identity",
+    desc: "Distinctive designs that set you apart.",
+  },
+  {
+    title: "Consistency",
+    desc: "Brand guidelines that ensure consistency everywhere.",
+  },
+  {
+    title: "Market Research",
+    desc: "Deep understanding of your audience and competition.",
+  },
+  {
+    title: "Measurable Impact",
+    desc: "Brand equity improvements you can track.",
+  },
+  {
+    title: "Long-Term Partnership",
+    desc: "Ongoing support to evolve and grow your brand.",
+  },
+];
+
+const techStack = [
+  "Figma",
+  "Adobe Creative Cloud",
+  "Canva",
+  "Sketch",
+  "Illustrator",
+  "Photoshop",
+  "InVision",
+  "Miro",
+  "Brandboard",
+];
+---
+
+<ServicePageLayout
+  title="Branding & Positioning Services"
+  description="Strategic branding and brand positioning services. Create a powerful brand identity that differentiates you in the market."
+  heroBadge="Branding"
+  heroTitle="Own Your"
+  heroSubtitle="Brand."
+  heroDescription="Build a brand that stands out. Strategic branding and positioning that creates lasting impressions and customer loyalty."
+  introTitle="Brand Power"
+  introText="Your brand is more than a logo - it's what customers think and feel about your business. Our branding services help you define who you are, why you matter, and how to communicate that effectively. From brand strategy to visual identity, we create brands that connect with audiences and drive business growth."
+  servicesTitle="Branding Services"
+  servicesDescription="Build a powerful brand."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Branding"
+  whyChooseDescription="Strategic branding that makes an impact."
+  techStack={techStack}
+/>

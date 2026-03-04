@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { BarChart, PieChart, Map, LineChart, Table2, Monitor } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: BarChart,
+    title: "Interactive Dashboards",
+    desc: "Real-time dashboards that update automatically. Drill-down capabilities and customizable views for every stakeholder.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: PieChart,
+    title: "Charts & Graphs",
+    desc: "Beautiful, accurate visualizations for any data. Bar charts, pie charts, and custom visualizations.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: Map,
+    title: "Geographic Visualization",
+    desc: "Map-based insights for location data. Regional performance, customer distribution, and spatial analysis.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: LineChart,
+    title: "Trend Analysis",
+    desc: "Visualize trends over time with animated charts. Historical patterns and future projections.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Table2,
+    title: "Data Tables",
+    desc: "Interactive data tables with sorting, filtering, and aggregation. Handle millions of rows efficiently.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Monitor,
+    title: "Custom Visualizations",
+    desc: "Build unique visualizations tailored to your data and requirements. Stand out with custom graphics.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Design Excellence",
+    desc: "Visuals that are both beautiful and effective at communicating insights.",
+  },
+  {
+    title: "Any Data Volume",
+    desc: "Efficient rendering for small datasets to billions of rows.",
+  },
+  {
+    title: "Real-Time Updates",
+    desc: "Live data refresh for always-current insights.",
+  },
+  {
+    title: "Mobile-Ready",
+    desc: "Responsive visualizations that work on all devices.",
+  },
+  {
+    title: "Easy to Use",
+    desc: "Self-service tools that empower non-technical users.",
+  },
+  {
+    title: "Embed Anywhere",
+    desc: "Share visualizations in apps, portals, or presentations.",
+  },
+];
+
+const techStack = [
+  "D3.js",
+  "Chart.js",
+  "Tableau",
+  "Power BI",
+  "Looker",
+  "Python",
+  "React",
+  "ECharts",
+  "Apache ECharts",
+];
+---
+
+<ServicePageLayout
+  title="Data Visualization Services"
+  description="Transform complex data into beautiful, interactive visuals. Dashboards, charts, and custom visualizations that tell your data story."
+  heroBadge="Data Viz"
+  heroTitle="See the"
+  heroSubtitle="Story."
+  heroDescription="Data visualization that makes insights obvious. Interactive dashboards and custom graphics that everyone can understand."
+  introTitle="Visualize Your Success"
+  introText="Data is only as good as your ability to understand it. Our data visualization services turn complex datasets into clear, compelling visuals that drive action. From executive dashboards to interactive reports, we create visualizations that make insights accessible to everyone in your organization."
+  servicesTitle="Visualization Services"
+  servicesDescription="Data that delights the eye."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for Data Visualization"
+  whyChooseDescription="Stunning visuals that reveal insights."
+  techStack={techStack}
+/>

@@ -1,0 +1,112 @@
+---
+import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
+import { TrendingUp, Target, MousePointer, BarChart, Zap, Globe } from "lucide-astro";
+
+const services = [
+  {
+    id: "01",
+    icon: TrendingUp,
+    title: "Conversion Audits",
+    desc: "Analyze your funnel and identify conversion barriers. Data-driven recommendations for improvement.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Target,
+    title: "A/B Testing",
+    desc: "Test variations of pages and elements. Make data-driven decisions with statistically significant results.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "03",
+    icon: MousePointer,
+    title: "Landing Page Optimization",
+    desc: "Design and test high-converting landing pages. Focus on copy, design, and user experience.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "04",
+    icon: BarChart,
+    title: "Funnel Analysis",
+    desc: "Understand user behavior at each funnel stage. Identify drop-offs and optimization opportunities.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "05",
+    icon: Zap,
+    title: "Site Speed Optimization",
+    desc: "Make your site lightning fast. Faster pages mean higher conversions and better SEO.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Globe,
+    title: "UX Optimization",
+    desc: "Improve user experience to drive conversions. Navigation, forms, and checkout optimization.",
+    gradient: "from-info/20 to-info/20",
+    iconColor: "text-info",
+  },
+];
+
+const whyChooseUs = [
+  {
+    title: "Data-Driven",
+    desc: "Every decision backed by analytics and testing.",
+  },
+  {
+    title: "Proven Results",
+    desc: "Track record of significant conversion improvements.",
+  },
+  {
+    title: "Holistic Approach",
+    desc: "Look at the entire user journey, not just pages.",
+  },
+  {
+    title: "Quick Wins",
+    desc: "Identify high-impact changes first.",
+  },
+  {
+    title: "Ongoing Optimization",
+    desc: "Continuous testing and improvement over time.",
+  },
+  {
+    title: "Clear Reporting",
+    desc: "Transparent results and actionable insights.",
+  },
+];
+
+const techStack = [
+  "Google Analytics",
+  "Hotjar",
+  "Optimizely",
+  "VWO",
+  "Google Optimize",
+  "Crazy Egg",
+  "GTM",
+  "Ahrefs",
+  "SEMrush",
+];
+---
+
+<ServicePageLayout
+  title="Conversion Rate Optimization Services"
+  description="CRO services that increase conversions. A/B testing, landing page optimization, and funnel analysis."
+  heroBadge="CRO"
+  heroTitle="Convert"
+  heroSubtitle="More."
+  heroDescription="Turn more visitors into customers with conversion rate optimization. Data-driven testing and improvements that grow your business."
+  introTitle="Convert More"
+  introText="Getting traffic is only half the battle. Conversion Rate Optimization (CRO) ensures more of your visitors take action. Our CRO services analyze user behavior, test variations, and implement improvements that increase conversions. Whether you need higher sales, more leads, or better engagement, we optimize every step of your funnel."
+  servicesTitle="CRO Services"
+  servicesDescription="Optimize for results."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Choose Aexaware for CRO"
+  whyChooseDescription="Data-driven conversion optimization."
+  techStack={techStack}
+/>
