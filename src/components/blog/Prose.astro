@@ -30,13 +30,13 @@ const sizeClasses = {
   class={cn(
     sizeClasses[size],
     "dark:prose-invert max-w-none",
-    // Headings
+    // Headings - match global.css base styles
     "prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-foreground",
-    "prose-h1:text-4xl prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6",
-    // Paragraphs
-    "prose-p:text-muted-foreground prose-p:leading-relaxed",
+    "prose-h1:text-4xl prose-h1:leading-[1.1] prose-h2:text-3xl prose-h2:leading-[1.2] prose-h2:mt-12 prose-h2:mb-6 prose-h3:leading-[1.3]",
+    // Paragraphs - match global.css base p styles
+    "prose-p:text-muted-foreground prose-p:leading-[1.625] prose-p:text-base",
     // Lists
-    "prose-ul:font-sans prose-ol:font-sans prose-li:font-sans prose-li:text-base prose-li:leading-relaxed",
+    "prose-ul:font-sans prose-ol:font-sans prose-li:font-sans prose-li:text-base prose-li:leading-[1.625]",
     "prose-li:text-muted-foreground prose-li:marker:text-muted-foreground",
     // Strong/Bold
     "prose-strong:text-foreground prose-strong:font-semibold",
