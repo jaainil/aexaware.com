@@ -5,34 +5,25 @@ import type { APIContext } from 'astro';
 export async function GET(context: APIContext) {
     const blog = await getCollection('blog');
 
-    // Sort by date descending
     const sortedPosts = blog.sort((a, b) =>
         new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
     );
 
     return rss({
-        // Required: Your site's title
         title: 'Aexaware Infotech Blog',
-
-        // Required: Your site's description
-        description: 'Insights on web development, AI/ML, cloud solutions, and digital innovation from Aexaware Infotech',
-
-        // Required: Your site's base URL (from astro.config.mjs site property)
+        description: 'Insights on web development, AI/ML, cloud solutions, and digital innovation from Aexaware Infotech - your trusted software development partner in Vadodara, Gujarat, India.',
         site: context.site!,
-
-        // Optional: Add stylesheet for better browser viewing
-        // stylesheet: '/rss/styles.xsl',
-
-        // Optional: Custom XML elements
-        customData: `<language>en-us</language>`,
-
-        // Required: Array of RSS feed items
+        customData: `<language>en-us</language>
+        <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+        <sy:updatePeriod>weekly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>`,
         items: sortedPosts.map((post) => ({
             title: post.data.title,
             description: post.data.description,
             pubDate: new Date(post.data.date),
-            // Compute RSS link from post `id` (recommended in Astro v5)
             link: `/blog/${post.id}/`,
+            categories: ['Technology', 'Web Development', 'AI/ML'] as const,
+            author: post.data.author,
         })),
     });
 }

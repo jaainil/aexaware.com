@@ -204,11 +204,7 @@ const dateModified = today.toISOString().split('T')[0];
         url: pageUrl,
         description: description,
         datePublished: datePublished,
-        dateModified: dateModified,
-        speakable: {
-          "@type": "SpeakableSpecification",
-          cssSelector: ["h1", "h2"],
-        },
+        dateModified: dateModified || datePublished,
         breadcrumb: {
           "@type": "BreadcrumbList",
           itemListElement: [

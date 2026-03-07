@@ -78,6 +78,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
       }}
     />
   )}
+  {/* Complete BlogPosting Schema */}
   <Schema
     slot="head"
     item={{
@@ -93,6 +94,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
       author: {
         "@type": "Person",
         name: post.data.author,
+        url: siteUrl.toString(),
       },
       publisher: {
         "@type": "Organization",
@@ -101,6 +103,18 @@ const siteUrl = Astro.site || "https://aexaware.com";
           "@type": "ImageObject",
           url: new URL("/og-image.png", siteUrl).href,
         },
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": new URL(`/blog/${post.slug}/`, siteUrl).href,
+      },
+      articleSection: "Technology",
+      inLanguage: "en",
+      isAccessibleForFree: true,
+      isPartOf: {
+        "@type": "Blog",
+        name: "Aexaware Infotech Blog",
+        url: new URL("/blog", siteUrl).href,
       },
     }}
   />

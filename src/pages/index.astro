@@ -26,38 +26,45 @@ import CTA from '@/components/home/CTA.astro';
         "@id": "https://aexaware.com",
         "url": "https://aexaware.com",
         "telephone": "+918140734392",
+        "priceRange": "$$$",
+        "description": "Full-service software development company specializing in web development, mobile apps, AI/ML integration, DevOps, cloud solutions, UI/UX design, and e-commerce development. Founded in 2024, based in Vadodara, Gujarat, India.",
+        "founder": {
+          "@type": "Person",
+          "name": "Axit Padaliya",
+          "jobTitle": "Founder & CEO",
+          "url": "https://www.linkedin.com/in/axit-padaliya-451463202/"
+        },
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Office no 13, 3rd Floor Aarya’s landmark, Canal Ring Road, Sevasi",
+          "streetAddress": "Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road, Sevasi",
           "addressLocality": "Vadodara",
           "addressRegion": "Gujarat",
           "postalCode": "391101",
           "addressCountry": "IN"
         },
-        "priceRange": "$$",
         "geo": {
           "@type": "GeoCoordinates",
           "latitude": 22.316837,
           "longitude": 73.136081
         },
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "09:00",
-          "closes": "18:00"
-        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          }
+        ],
         "sameAs": [
+          "https://www.linkedin.com/in/axit-padaliya-451463202/",
           "https://www.linkedin.com/company/aexaware",
           "https://twitter.com/aexaware",
           "https://github.com/aexaware",
-          "https://www.instagram.com/aexaware/"
-        ]
+          "https://www.instagram.com/aexaware/",
+          "https://www.youtube.com/@aexaware"
+        ],
+        "areaServed": ["Worldwide", "IN", "US", "GB", "AE", "CA", "AU"],
+        "serviceType": ["Web Development", "Mobile App Development", "AI/ML Solutions", "Cloud DevOps", "UI/UX Design", "E-commerce Development"]
       }}
     />
   </Fragment>

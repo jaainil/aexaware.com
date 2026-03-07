@@ -6,12 +6,7 @@ import BackToTop from '@/components/global/BackToTop.astro';
 import { Schema } from 'astro-seo-schema';
 import { SEO } from "astro-seo";
 
-// FIX: Removed @fontsource imports. 
-// We are handling fonts in globals.css/tailwind.config to avoid render-blocking and duplicate loads.
-// Fonts - Plus Jakarta Sans
 import "@fontsource-variable/plus-jakarta-sans";
-
-// Fonts - Space Grotesk (Headings/Display)
 import "@fontsource-variable/space-grotesk";
 
 interface Props {
@@ -24,28 +19,32 @@ interface Props {
   author?: string;
   tags?: string[];
   lang?: string;
+  noIndex?: boolean;
 }
 
 const { 
   title, 
-  description = "Aexaware Infotech - Building Digital Excellence", 
-  image = "/og-image.png",
+  description,
+  image,
   type = "website",
   publishedTime,
   modifiedTime,
   author,
   tags,
-  lang = "en"
+  lang = "en",
+  noIndex = false
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
 const siteUrl = Astro.site ? Astro.site.href : 'https://aexaware.com';
 const canonicalURL = new URL(currentPath, siteUrl).href;
 
-// FIX: Handle external images (e.g., from Unsplash/CMS) preventing build crashes
-const imageUrl = image.startsWith('http') 
-  ? image 
-  : new URL(image, siteUrl).href;
+const imageUrl = image 
+  ? (image.startsWith('http') ? image : new URL(image, siteUrl).href)
+  : new URL('/og-image.png', siteUrl).href;
+
+const siteName = "Aexaware Infotech";
+const twitterHandle = "@aexaware";
 ---
 
 <!doctype html>
@@ -56,9 +55,12 @@ const imageUrl = image.startsWith('http')
     <meta name="theme-color" content="#3347F3" />
     <meta name="generator" content={Astro.generator} />
     
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    
     <SEO
       title={title}
-      description={description}
+      description={description || `${siteName} - Custom web, mobile, AI/ML, and DevOps solutions for startups and enterprises.`}
+      noindex={noIndex}
       openGraph={{
         basic: {
           title: title,
@@ -67,9 +69,9 @@ const imageUrl = image.startsWith('http')
           url: canonicalURL,
         },
         optional: {
-          siteName: "Aexaware Infotech",
+          siteName: siteName,
           locale: "en_US",
-          description: description,
+          description: description || `${siteName} - Custom web, mobile, AI/ML, and DevOps solutions for startups and enterprises.`,
         },
         ...(type === 'article' && {
           article: {
@@ -81,92 +83,127 @@ const imageUrl = image.startsWith('http')
         }),
       }}
       twitter={{
-        card: "summary_large_image",
-        site: "@aexaware",
-        creator: "@aexaware",
+        card: image ? "summary_large_image" : "summary",
+        site: twitterHandle,
+        creator: twitterHandle,
         title: title,
-        description: description,
-        image: imageUrl,
+        ...(description && { description }),
+        ...(image && { image: imageUrl }),
       }}
       extend={{
         link: [
           { rel: "icon", type: "image/png", href: "/favicon.png" },
           { rel: "apple-touch-icon", href: "/favicon.png" },
           { rel: "canonical", href: canonicalURL },
+          { rel: "alternate", type: "application/rss+xml", title: `${siteName} Blog`, href: "/rss.xml" },
+        ],
+        meta: [
+          { name: "author", content: author || siteName },
+          ...(tags ? tags.map((tag: string) => ({ name: "keywords", content: tag })) : []),
         ],
       }}
     />
     
     {import.meta.env.PROD && <link rel="sitemap" href="/sitemap-index.xml" />}
-    <link rel="alternate" type="application/rss+xml" title="Aexaware Infotech Blog" href="/rss.xml" />
     
     <Schema
       item={{
         '@context': 'https://schema.org',
-        '@type': 'Organization',
-        name: "Aexaware Infotech",
-        url: siteUrl.toString(),
-        logo: {
-          '@type': 'ImageObject',
-          url: new URL('/og-image.png', siteUrl).href,
-          width: 1200,
-          height: 630,
-        },
-        description: "Full-service software development company specializing in web development, mobile apps, AI/ML integration, DevOps, and cloud solutions. Founded in 2025, based in Vadodara, Gujarat, India.",
-        foundingDate: "2025",
-        sameAs: [
-          "https://www.linkedin.com/company/aexaware",
-          "https://twitter.com/aexaware",
-          "https://github.com/aexaware",
-          "https://www.instagram.com/aexaware/"
-        ],
-        contactPoint: [
+        '@graph': [
           {
-            '@type': 'ContactPoint',
-            telephone: "+91-8140734392",
-            contactType: "Customer Service",
-            email: "info@aexaware.com",
-            areaServed: ["IN", "US", "GB", "AE", "CA", "AU"],
-            availableLanguage: ["en", "hi"],
+            '@type': 'Organization',
+            name: siteName,
+            url: siteUrl,
+            logo: {
+              '@type': 'ImageObject',
+              url: new URL('/og-image.png', siteUrl).href,
+            },
+            description: "Full-service software development company specializing in web development, mobile apps, AI/ML integration, DevOps, cloud solutions, and digital marketing. Founded in 2024, based in Vadodara, Gujarat, India.",
+            foundingDate: "2024",
+            founder: {
+              '@type': 'Person',
+              name: 'Axit Padaliya',
+              jobTitle: 'Founder & CEO',
+              url: 'https://www.linkedin.com/in/axit-padaliya-451463202/',
+            },
+            numberOfEmployees: {
+              '@type': 'QuantitativeValue',
+              minValue: 2,
+              maxValue: 10,
+            },
+            areaServed: ['Worldwide', 'IN', 'US', 'GB', 'AE', 'CA', 'AU'],
+            sameAs: [
+              'https://www.linkedin.com/company/aexaware',
+              'https://twitter.com/aexaware',
+              'https://github.com/aexaware',
+              'https://www.instagram.com/aexaware/',
+              'https://www.youtube.com/@aexaware'
+            ],
+            contactPoint: {
+              '@type': 'ContactPoint',
+              telephone: '+91-8140734392',
+              contactType: 'Customer Service',
+              email: 'info@aexaware.com',
+              areaServed: ['IN', 'US', 'GB', 'AE', 'CA', 'AU'],
+              availableLanguage: ['English', 'Hindi', 'Gujarati'],
+            },
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: 'Office no 13, 3rd Floor Aarya\'s landmark, Canal Ring Road, Sevasi',
+              addressLocality: 'Vadodara',
+              addressRegion: 'Gujarat',
+              postalCode: '391101',
+              addressCountry: 'IN',
+            },
+            knowsAbout: [
+              'React', 'Next.js', 'Node.js', 'Python', 'PHP', 'Laravel', 'TypeScript', 
+              'Tailwind CSS', 'Astro', 'PostgreSQL', 'MongoDB', 'Redis',
+              'AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'Terraform',
+              'TensorFlow', 'PyTorch', 'OpenAI', 'LangChain', 'LLM Integration',
+              'WordPress', 'Ghost CMS', 'WooCommerce',
+              'Web Development', 'Mobile Development', 'AI Development', 'Cloud DevOps'
+            ],
+          },
+          {
+            '@type': 'WebSite',
+            name: siteName,
+            url: siteUrl,
+            description: 'Custom web, mobile, AI/ML, and DevOps solutions for startups and enterprises – built in Vadodara, serving globally.',
+            publisher: {
+              '@type': 'Organization',
+              name: siteName,
+            },
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: `${siteUrl}blog?q={search_term_string}`,
+            },
+          },
+          {
+            '@type': 'Person',
+            name: 'Axit Padaliya',
+            url: siteUrl,
+            jobTitle: 'Founder & CEO',
+            worksFor: {
+              '@type': 'Organization',
+              name: siteName,
+              url: siteUrl,
+            },
+            sameAs: [
+              'https://www.linkedin.com/in/axit-padaliya-451463202/',
+            ],
           },
         ],
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: "Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road, Sevasi",
-          addressLocality: "Vadodara",
-          addressRegion: "Gujarat",
-          postalCode: "391101",
-          addressCountry: "IN"
-        },
-        areaServed: "Worldwide",
-        knowsAbout: [
-          "Web Development", "Mobile App Development", "AI/ML Integration",
-          "Cloud Computing", "DevOps", "UI/UX Design", "Generative AI",
-          "React", "Next.js", "Node.js", "Python", "TensorFlow"
-        ]
       }}
     />
-    <Schema
-      item={{
-        '@context': 'https://schema.org',
-        '@type': 'WebSite',
-        name: "Aexaware Infotech",
-        url: siteUrl.toString(),
-        description: "Custom web, mobile, AI/ML, and DevOps solutions for startups and enterprises – built in Vadodara, serving globally.",
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: {
-            '@type': 'EntryPoint',
-            urlTemplate: `${siteUrl.toString()}blog?q={search_term_string}`,
-          },
-          'query-input': 'required name=search_term_string',
-        },
-      }}
-    />
+    
     <slot name="head" />
   </head>
  
   <body class="min-h-screen bg-background font-sans antialiased flex flex-col overflow-x-hidden">
+    <div class="sr-only">
+      <p>Aexaware Infotech is a full-service software development company based in Vadodara, Gujarat, India. Founded in 2024, we specialize in web development, mobile app development, AI/ML integration, cloud DevOps solutions, UI/UX design, and e-commerce development. Our team works with React, Next.js, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, Astro, AWS, GCP, Azure, Docker, Kubernetes, TensorFlow, PyTorch, OpenAI, and LangChain. We serve clients worldwide including India, USA, UK, UAE, Canada, and Australia. Contact us at info@aexaware.com or +91 8140734392.</p>
+    </div>
+    
     <a 
       href="#main-content" 
       class="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md transition-all"
