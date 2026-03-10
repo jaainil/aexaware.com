@@ -58,7 +58,6 @@ const twitterHandle = "@aexaware";
     <SEO
       title={title}
       description={description || `${siteName} - Custom web, mobile, AI/ML, and DevOps solutions for startups and enterprises.`}
-      noindex={noIndex}
       openGraph={{
         basic: {
           title: title,
@@ -115,7 +114,7 @@ const twitterHandle = "@aexaware";
         '@context': 'https://schema.org',
         '@graph': [
           {
-            '@type': 'Organization',
+            '@type': 'Organization' as const,
             '@id': `${siteUrl}#organization`,
             name: siteName,
             url: siteUrl,
@@ -182,7 +181,8 @@ const twitterHandle = "@aexaware";
             potentialAction: {
               '@type': 'SearchAction',
               target: `${siteUrl}blog?q={search_term_string}`,
-            },
+              'query-input': 'required name=search_term_string',
+            } as any,
           },
           {
             '@type': 'Person',

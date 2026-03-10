@@ -47,9 +47,9 @@ export default defineConfig({
 
 Full sitemap: https://aexaware.com/sitemap-0.xml
 
-## Services (All 28 Pages)
+## Services (All 19 Pages)
 
-Aexaware Infotech offers 28 specialized technology services across six capability areas:
+Aexaware Infotech offers 19 specialized technology services across six capability areas:
 
 ### Web & Application Development
 - [Web Development](https://aexaware.com/services/web-development) – React, Next.js, Node.js, Python, PHP, Full-Stack, Progressive Web Apps
@@ -64,25 +64,16 @@ Aexaware Infotech offers 28 specialized technology services across six capabilit
 - [AI Agent Development](https://aexaware.com/services/ai-agent-development) – Autonomous LLM agents, multi-agent systems, RAG pipelines
 - [Generative AI](https://aexaware.com/services/generative-ai) – ChatGPT, Claude, Gemini, custom LLM application development
 - [AI Image & Video Generation](https://aexaware.com/services/ai-image-video-generation) – Stable Diffusion, DALL·E, Sora, custom generative pipelines
-- [TensorFlow Development](https://aexaware.com/services/tensorflow-development) – Model training, fine-tuning, TFX production pipelines
-- [Deep Learning](https://aexaware.com/services/deep-learning) – Computer vision, NLP, speech recognition, predictive modeling
 - [Data Science](https://aexaware.com/services/data-science) – Statistical modeling, EDA, hypothesis testing, ML workflows
-- [Data Analysis](https://aexaware.com/services/data-analysis) – Business reporting, KPI dashboards, actionable insights
-- [Data Visualization](https://aexaware.com/services/data-visualization) – D3.js, Plotly, Tableau, interactive business dashboards
 - [Big Data Solutions](https://aexaware.com/services/big-data-solutions) – Data lakes, ETL pipelines, Spark, Kafka, data warehousing
 
 ### Cloud & DevOps
 - [Cloud & DevOps](https://aexaware.com/services/cloud-devops) – AWS, GCP, Azure, multi-cloud architecture and management
-- [DevOps Implementation](https://aexaware.com/services/devops-implementation) – Docker, Kubernetes, Terraform, CI/CD pipeline setup
-- [DevOps Automation](https://aexaware.com/services/devops-automation) – Infrastructure as code, monitoring, GitOps, automated testing
-- [DevOps Strategy Consulting](https://aexaware.com/services/devops-strategy-consulting) – DevOps maturity assessment, toolchain selection, roadmapping
-- [Business Intelligence](https://aexaware.com/services/business-intelligence) – Tableau, Power BI, Looker, custom BI dashboards
 
 ### Design & Marketing
 - [UI/UX Design](https://aexaware.com/services/ui-ux-design) – Figma, user research, wireframing, prototyping, design systems
 - [Branding & Positioning](https://aexaware.com/services/branding-positioning) – Brand identity, visual strategy, positioning frameworks
 - [Digital Marketing](https://aexaware.com/services/digital-marketing) – SEO, SEM, social media, content marketing, performance marketing
-- [Conversion Rate Optimization](https://aexaware.com/services/conversion-rate-optimization) – A/B testing, heatmaps, UX audits, funnel analysis
 
 ### Engagement Models
 - [Extended Team](https://aexaware.com/services/extended-team) – Dedicated developers, staff augmentation, team extension
@@ -147,7 +138,7 @@ XML Sitemap: https://aexaware.com/sitemap-0.xml
 - Terms of Service: https://aexaware.com/terms
 - Book a Free Consultation: https://cal.com/aexaware-infotech
 
-## Services (28 Specialized Services)
+## Services (19 Specialized Services)
 
 ### Web & Application Development
 - Web Development: https://aexaware.com/services/web-development
@@ -172,30 +163,14 @@ XML Sitemap: https://aexaware.com/sitemap-0.xml
   ChatGPT, Claude, Gemini, custom LLM application development
 - AI Image & Video Generation: https://aexaware.com/services/ai-image-video-generation
   Stable Diffusion, DALL·E, Sora, custom generative pipelines
-- TensorFlow Development: https://aexaware.com/services/tensorflow-development
-  Model training, fine-tuning, TFX production pipelines
-- Deep Learning: https://aexaware.com/services/deep-learning
-  Computer vision, NLP, speech recognition, predictive modeling
 - Data Science: https://aexaware.com/services/data-science
   Statistical modeling, EDA, hypothesis testing, ML workflows
-- Data Analysis: https://aexaware.com/services/data-analysis
-  Business reporting, KPI dashboards, actionable insights
-- Data Visualization: https://aexaware.com/services/data-visualization
-  D3.js, Plotly, Tableau, interactive business dashboards
 - Big Data Solutions: https://aexaware.com/services/big-data-solutions
   Data lakes, ETL pipelines, Spark, Kafka, data warehousing
 
 ### Cloud & DevOps
 - Cloud & DevOps: https://aexaware.com/services/cloud-devops
   AWS, GCP, Azure, multi-cloud architecture and management
-- DevOps Implementation: https://aexaware.com/services/devops-implementation
-  Docker, Kubernetes, Terraform, CI/CD pipeline setup
-- DevOps Automation: https://aexaware.com/services/devops-automation
-  Infrastructure as code, monitoring, GitOps, automated testing
-- DevOps Strategy Consulting: https://aexaware.com/services/devops-strategy-consulting
-  DevOps maturity assessment, toolchain selection, roadmapping
-- Business Intelligence: https://aexaware.com/services/business-intelligence
-  Tableau, Power BI, Looker, custom BI dashboards
 
 ### Design & Marketing
 - UI/UX Design: https://aexaware.com/services/ui-ux-design
@@ -204,8 +179,6 @@ XML Sitemap: https://aexaware.com/sitemap-0.xml
   Brand identity, visual strategy, positioning frameworks
 - Digital Marketing: https://aexaware.com/services/digital-marketing
   SEO, SEM, social media, content marketing, performance marketing
-- Conversion Rate Optimization: https://aexaware.com/services/conversion-rate-optimization
-  A/B testing, heatmaps, UX audits, funnel analysis
 
 ### Engagement Models
 - Extended Team: https://aexaware.com/services/extended-team

@@ -240,31 +240,7 @@ const dateModified = today.toISOString().split('T')[0];
       }}
     />
     )}
-    <Schema
-      item={{
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: siteUrl.toString(),
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Services",
-            item: new URL("/services", siteUrl).href,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: title,
-          },
-        ],
-      }}
-    />
+
   </Fragment>
 
   {/* Hero Section */}
