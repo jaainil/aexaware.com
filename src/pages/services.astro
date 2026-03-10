@@ -29,266 +29,104 @@ import {
   Wifi,
   Target,
   Megaphone,
+  BrainCircuit,
+  BarChart3,
 } from "lucide-astro";
 import { Schema } from "astro-seo-schema";
 import CTA from "@/components/home/CTA.astro";
 import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 
-const services = [
+const serviceCategories = [
   {
+    id: "ai",
+    title: "AI & Intelligence",
+    description: "From predictive models to autonomous agents, we build AI solutions that transform how your business operates and makes decisions.",
+    icon: BrainCircuit,
+    services: [
+      { icon: Brain, title: "AI/ML Integration", desc: "Data-driven decision making, predictive modelling, recommendation engines, and AI-driven features.", tags: ["Python", "TensorFlow", "OpenAI"], path: "/services/ai-ml-integration" },
+      { icon: Wand2, title: "Generative AI", desc: "AI-powered content creation, code assistance, and automation for modern businesses.", tags: ["GPT-4", "Custom LLMs", "RAG"], path: "/services/generative-ai" },
+      { icon: Bot, title: "AI Agent Development", desc: "Autonomous AI agents that automate workflows and drive business operations 24/7.", tags: ["LangChain", "AutoGPT", "Custom Agents"], path: "/services/ai-agent-development" },
+      { icon: Eye, title: "AI Image & Video", desc: "Generate stunning visuals and videos with AI at scale for marketing and products.", tags: ["DALL-E", "Stable Diffusion", "Midjourney"], path: "/services/ai-image-video-generation" },
+      { icon: Brain, title: "Deep Learning", desc: "Advanced neural networks for computer vision, NLP, and complex pattern recognition.", tags: ["PyTorch", "TensorFlow", "Neural Networks"], path: "/services/deep-learning" },
+      { icon: FlaskConical, title: "TensorFlow Development", desc: "Enterprise-grade models for production with custom ML deployment and monitoring.", tags: ["TensorFlow", "Keras", "MLOps"], path: "/services/tensorflow-development" },
+      { icon: BarChart3, title: "Data Science & Analytics", desc: "Advanced analytics, data visualization, and business intelligence for smarter decisions.", tags: ["Python", "Tableau", "Power BI"], path: "/services/data-science" },
+      { icon: Database, title: "Data Analysis", desc: "Turn raw data into actionable insights with descriptive and predictive analytics.", tags: ["Python", "R", "SQL"], path: "/services/data-analysis" },
+      { icon: LineChart, title: "Data Visualization", desc: "Interactive dashboards and custom visualizations that make data accessible.", tags: ["Tableau", "D3.js", "Power BI"], path: "/services/data-visualization" },
+      { icon: Server, title: "Big Data Solutions", desc: "Scalable data infrastructure, data lakes, ETL pipelines, and real-time processing.", tags: ["Spark", "Kafka", "Snowflake"], path: "/services/big-data-solutions" },
+      { icon: TrendingUp, title: "Business Intelligence", desc: "Executive dashboards and reporting that drive informed decision-making.", tags: ["Tableau", "Looker", "Power BI"], path: "/services/business-intelligence" },
+    ],
+  },
+  {
+    id: "development",
+    title: "App Development",
+    description: "Full-stack web, mobile, and software development built with modern frameworks for speed, scalability, and reliability.",
     icon: Code2,
-    title: "Web Development",
-    desc: "Custom websites and web applications built with modern frameworks for speed, scalability, and SEO.",
-    tags: ["React", "Next.js", "TypeScript"],
-    path: "/services/web-development",
+    services: [
+      { icon: Code2, title: "Web Development", desc: "Custom websites and web applications built with modern frameworks for speed, scalability, and SEO.", tags: ["React", "Next.js", "TypeScript"], path: "/services/web-development" },
+      { icon: Smartphone, title: "Mobile App Development", desc: "Native and cross-platform mobile apps delivering seamless user experiences on iOS and Android.", tags: ["React Native", "Flutter", "iOS/Android"], path: "/services/mobile-development" },
+      { icon: LineChart, title: "E-Commerce", desc: "Secure online stores with payment integration, inventory management, and responsive design.", tags: ["Shopify", "WooCommerce", "Custom"], path: "/services/ecommerce" },
+      { icon: Rocket, title: "MVP Development", desc: "Rapid prototyping and core feature development to validate your startup ideas quickly.", tags: ["Prototyping", "Lean Startup", "Speed"], path: "/services/mvp-development" },
+      { icon: LayoutIcon, title: "CMS Development", desc: "Custom themes and plugins for WordPress, Shopify, and modern Headless CMS solutions.", tags: ["WordPress", "Shopify", "Strapi"], path: "/services/cms-development" },
+      { icon: Cpu, title: "Custom Software", desc: "Tailored software solutions designed to address your specific business challenges.", tags: ["Enterprise", "SaaS", "Automation"], path: "/services/software-solutions" },
+    ],
   },
   {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    desc: "Native and cross-platform mobile apps that deliver seamless user experiences on iOS and Android.",
-    tags: ["React Native", "Flutter", "iOS/Android"],
-    path: "/services/mobile-development",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    desc: "User-centric design that blends aesthetics with functionality to create intuitive digital products.",
-    tags: ["Figma", "Prototyping", "User Research"],
-    path: "/services/ui-ux-design",
-  },
-  {
+    id: "cloud",
+    title: "Cloud & DevOps",
+    description: "Scalable cloud infrastructure, automated pipelines, and expert DevOps consulting to accelerate your delivery.",
     icon: Cloud,
-    title: "Cloud Solutions",
-    desc: "Secure and scalable cloud infrastructure setup, migration, and management services.",
-    tags: ["AWS", "Azure", "GCP", "Kubernetes"],
-    path: "/services/cloud-devops",
+    services: [
+      { icon: Cloud, title: "Cloud Solutions", desc: "Secure and scalable cloud infrastructure setup, migration, and management services.", tags: ["AWS", "Azure", "GCP", "Kubernetes"], path: "/services/cloud-devops" },
+      { icon: Settings, title: "DevOps Strategy", desc: "Transform your software delivery with expert DevOps consulting and transformation roadmaps.", tags: ["CI/CD", "Cloud Native", "Agile"], path: "/services/devops-strategy-consulting" },
+      { icon: Zap, title: "DevOps Automation", desc: "Automate your entire delivery pipeline with infrastructure as code and CI/CD.", tags: ["Terraform", "Ansible", "Jenkins"], path: "/services/devops-automation" },
+      { icon: Server, title: "DevOps Implementation", desc: "Full DevOps implementation with cloud infrastructure, migration, and managed services.", tags: ["AWS", "Kubernetes", "Docker"], path: "/services/devops-implementation" },
+      { icon: Wifi, title: "IoT Development", desc: "Connect devices and build smart systems with IoT platforms, firmware, and cloud integration.", tags: ["Sensors", "Embedded", "Cloud"], path: "/services/iot" },
+    ],
   },
   {
-    icon: Brain,
-    title: "AI/ML Integration",
-    desc: "Data-driven decision making, predictive modelling, recommendation engines, chatbot automation, and AI-driven features.",
-    tags: ["Python", "TensorFlow", "OpenAI"],
-    path: "/services/ai-ml-integration",
+    id: "design",
+    title: "Design & Marketing",
+    description: "User-centric design combined with data-driven marketing to create products people love and campaigns that convert.",
+    icon: Palette,
+    services: [
+      { icon: Palette, title: "UI/UX Design", desc: "User-centric design that blends aesthetics with functionality to create intuitive digital products.", tags: ["Figma", "Prototyping", "User Research"], path: "/services/ui-ux-design" },
+      { icon: TrendingUp, title: "Digital Marketing", desc: "Data-driven marketing strategies to increase your online visibility and drive growth.", tags: ["SEO", "PPC", "Social Media"], path: "/services/digital-marketing" },
+      { icon: Target, title: "Conversion Rate Optimization", desc: "Data-driven CRO with A/B testing, landing page optimization, and funnel analysis.", tags: ["A/B Testing", "Analytics", "Funnel"], path: "/services/conversion-rate-optimization" },
+      { icon: Megaphone, title: "Branding & Positioning", desc: "Strategic branding that differentiates you in the market with identity and positioning.", tags: ["Brand Identity", "Strategy", "Positioning"], path: "/services/branding-positioning" },
+    ],
   },
   {
-    icon: Wand2,
-    title: "Generative AI",
-    desc: "AI-powered content creation, image/video generation, code assistance, and automation for modern businesses.",
-    tags: ["GPT-4", "DALL-E", "Custom LLMs"],
-    path: "/services/generative-ai",
-  },
-  {
-    icon: Bot,
-    title: "AI Agent Development",
-    desc: "Autonomous AI agents that automate workflows, handle customer service, and drive business operations 24/7.",
-    tags: ["LangChain", "AutoGPT", "Custom Agents"],
-    path: "/services/ai-agent-development",
-  },
-  {
-    icon: Eye,
-    title: "AI Image & Video Generation",
-    desc: "Create stunning visuals and videos with AI. Generate content at scale for marketing and products.",
-    tags: ["DALL-E", "Midjourney", "Stable Diffusion"],
-    path: "/services/ai-image-video-generation",
-  },
-  {
-    icon: Brain,
-    title: "Deep Learning",
-    desc: "Advanced neural networks for computer vision, NLP, speech recognition, and complex pattern recognition.",
-    tags: ["PyTorch", "TensorFlow", "Neural Networks"],
-    path: "/services/deep-learning",
-  },
-  {
-    icon: FlaskConical,
-    title: "TensorFlow Development",
-    desc: "Enterprise-grade TensorFlow models for production. Custom ML solutions with deployment and monitoring.",
-    tags: ["TensorFlow", "Keras", "MLOps"],
-    path: "/services/tensorflow-development",
-  },
-  {
-    icon: Database,
-    title: "Data Analysis",
-    desc: "Turn raw data into actionable insights. Descriptive and predictive analytics for better decisions.",
-    tags: ["Python", "R", "Statistical Analysis"],
-    path: "/services/data-analysis",
-  },
-  {
-    icon: LineChart,
-    title: "Data Visualization",
-    desc: "Interactive dashboards and custom visualizations that make data accessible and actionable.",
-    tags: ["Tableau", "D3.js", "Power BI"],
-    path: "/services/data-visualization",
-  },
-  {
-    icon: Server,
-    title: "Big Data Solutions",
-    desc: "Scalable data infrastructure. Data lakes, ETL pipelines, and real-time processing at any scale.",
-    tags: ["Spark", "Kafka", "Snowflake"],
-    path: "/services/big-data-solutions",
-  },
-  {
-    icon: TrendingUp,
-    title: "Business Intelligence",
-    desc: "Executive dashboards and reporting that drive informed decision-making across your organization.",
-    tags: ["Tableau", "Looker", "Power BI"],
-    path: "/services/business-intelligence",
-  },
-  {
-    icon: Brain,
-    title: "Data Science",
-    desc: "Advanced analytics and machine learning models that predict outcomes and uncover hidden opportunities.",
-    tags: ["ML", "Python", "Predictive Models"],
-    path: "/services/data-science",
-  },
-  {
-    icon: Settings,
-    title: "DevOps Strategy & Consulting",
-    desc: "Transform your software delivery with expert DevOps consulting and transformation roadmaps.",
-    tags: ["CI/CD", "Cloud Native", "Agile"],
-    path: "/services/devops-strategy-consulting",
-  },
-  {
-    icon: Zap,
-    title: "DevOps Automation",
-    desc: "Automate your entire delivery pipeline. Infrastructure as code, CI/CD, and configuration management.",
-    tags: ["Terraform", "Ansible", "Jenkins"],
-    path: "/services/devops-automation",
-  },
-  {
-    icon: Server,
-    title: "DevOps Implementation",
-    desc: "Full DevOps implementation and cloud infrastructure. Migration, setup, and managed services.",
-    tags: ["AWS", "Kubernetes", "Cloud"],
-    path: "/services/devops-implementation",
-  },
-  {
-    icon: Wifi,
-    title: "IoT Development",
-    desc: "Connect devices and build smart systems. IoT platforms, firmware, and cloud integration.",
-    tags: ["Sensors", "Embedded", "Cloud"],
-    path: "/services/iot",
-  },
-  {
-    icon: Target,
-    title: "Conversion Rate Optimization",
-    desc: "Data-driven CRO that increases conversions. A/B testing, landing pages, and funnel optimization.",
-    tags: ["A/B Testing", "Analytics", "Funnel"],
-    path: "/services/conversion-rate-optimization",
-  },
-  {
-    icon: Megaphone,
-    title: "Branding & Positioning",
-    desc: "Strategic branding that differentiates you. Brand identity, strategy, and positioning in the market.",
-    tags: ["Brand Identity", "Strategy", "Positioning"],
-    path: "/services/branding-positioning",
-  },
-  {
-    icon: LineChart,
-    title: "E-commerce Development",
-    desc: "Secure online stores with payment integration, inventory management, and responsive design.",
-    tags: ["Shopify", "WooCommerce", "Custom"],
-    path: "/services/ecommerce",
-  },
-  {
-    icon: Rocket,
-    title: "MVP Development",
-    desc: "Rapid prototyping and core feature development to validate your startup ideas quickly.",
-    tags: ["Prototyping", "Lean Startup", "Speed"],
-    path: "/services/mvp-development",
-  },
-  {
-    icon: LayoutIcon,
-    title: "CMS Development",
-    desc: "Custom themes and plugins for WordPress, Shopify, and modern Headless CMS solutions.",
-    tags: ["WordPress", "Shopify", "Strapi"],
-    path: "/services/cms-development",
-  },
-  {
-    icon: Cpu,
-    title: "Custom Software",
-    desc: "Tailored software solutions designed to address your specific business challenges and workflows.",
-    tags: ["Enterprise", "SaaS", "Automation"],
-    path: "/services/software-solutions",
-  },
-  {
+    id: "team",
+    title: "Team & Partnership",
+    description: "Scale your team with dedicated experts or leverage our white-label services to expand your agency capabilities.",
     icon: Users,
-    title: "Extended Team",
-    desc: "Augment your existing team with our skilled developers, engineers, and digital experts.",
-    tags: ["Staff Augmentation", "Dedicated Team", "Remote"],
-    path: "/services/extended-team",
-  },
-  {
-    icon: TrendingUp,
-    title: "Digital Marketing",
-    desc: "Data-driven marketing strategies to increase your online visibility and drive growth.",
-    tags: ["SEO", "PPC", "Social Media"],
-    path: "/services/digital-marketing",
-  },
-  {
-    icon: Ghost,
-    title: "White Label Services",
-    desc: "Silent partnership services for agencies looking to scale their production capabilities.",
-    tags: ["Confidential", "Agency Support", "Scalable"],
-    path: "/services/white-label-services",
+    services: [
+      { icon: Users, title: "Extended Team", desc: "Augment your existing team with our skilled developers, engineers, and digital experts.", tags: ["Staff Augmentation", "Dedicated Team", "Remote"], path: "/services/extended-team" },
+      { icon: Ghost, title: "White Label Services", desc: "Silent partnership services for agencies looking to scale their production capabilities.", tags: ["Confidential", "Agency Support", "Scalable"], path: "/services/white-label-services" },
+    ],
   },
 ];
 
+const allServices = serviceCategories.flatMap(cat => cat.services);
+
 const solutions = [
-  {
-    title: "E-Commerce",
-    desc: "High-converting online stores with seamless checkout experiences.",
-    href: "/services/ecommerce",
-  },
-  {
-    title: "Healthcare",
-    desc: "HIPAA-compliant applications for patient management and telemedicine.",
-    href: "/contact",
-  },
-  {
-    title: "FinTech",
-    desc: "Secure and robust financial platforms for banking and payments.",
-    href: "/contact",
-  },
-  {
-    title: "Education",
-    desc: "Interactive learning management systems and educational portals.",
-    href: "/contact",
-  },
+  { title: "E-Commerce", desc: "High-converting online stores with seamless checkout experiences.", href: "/services/ecommerce" },
+  { title: "Healthcare", desc: "HIPAA-compliant applications for patient management and telemedicine.", href: "/contact" },
+  { title: "FinTech", desc: "Secure and robust financial platforms for banking and payments.", href: "/contact" },
+  { title: "Education", desc: "Interactive learning management systems and educational portals.", href: "/contact" },
 ];
 
 const techStack = [
-  "React",
-  "Next.js",
-  "TypeScript",
-  "Node.js",
-  "Python",
-  "Go",
-  "Java",
-  "PHP",
-  "PostgreSQL",
-  "AWS",
-  "Azure",
-  "GCP",
-  "Docker",
-  "Kubernetes",
-  "Flutter",
-  "React Native",
-  "Tailwind CSS",
-  "Figma",
-  "GraphQL",
-  "TensorFlow",
-  "PyTorch",
-  "MongoDB",
-  "Redis",
-  "Terraform",
+  "React", "Next.js", "TypeScript", "Node.js", "Python", "Go", "Java",
+  "PostgreSQL", "AWS", "Azure", "GCP", "Docker", "Kubernetes",
+  "Flutter", "React Native", "Tailwind CSS", "Figma", "GraphQL",
+  "TensorFlow", "PyTorch", "MongoDB", "Redis", "Terraform",
 ];
-
-// No schema generation variable needed
 ---
 
 <Layout
   title="Software Development Services – Web, Mobile, AI/ML & Cloud | Aexaware Infotech"
-  description="Explore 28+ software development services from Aexaware Infotech: web development, mobile apps, AI/ML integration, generative AI, DevOps, cloud, UI/UX design, and more. Serving startups and enterprises worldwide."
+  description="Explore our software development services: web & mobile development, AI/ML integration, generative AI, cloud & DevOps, UI/UX design, and digital marketing. Serving startups and enterprises worldwide."
 >
   <Fragment slot="head">
     <Schema
@@ -308,7 +146,7 @@ const techStack = [
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "IT Services",
-          itemListElement: services.map((service) => ({
+          itemListElement: allServices.map((service) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
@@ -341,11 +179,9 @@ const techStack = [
   </Fragment>
 
   {/* Hero Section */}
-  {/* FIX: Use 100dvh for full-screen hero on mobile and desktop */}
   <section
     class="relative w-full min-h-dvh flex flex-col justify-center pt-(--navbar-height) pb-16 lg:pb-24 overflow-hidden border-b border-border/40"
   >
-    {/* FIX: Semantic Grid Background */}
     <BackgroundGrid density="sm" mask="top" />
 
     <div class="container-normal relative z-10">
@@ -369,8 +205,8 @@ const techStack = [
         <p
           class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty"
         >
-          We provide custom web development, mobile-app development, UI/UX
-          design, cloud and DevOps support, and AI/ML integration.
+          We provide custom web development, mobile apps, AI/ML integration,
+          cloud & DevOps, UI/UX design, and digital marketing services.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
@@ -391,7 +227,7 @@ const techStack = [
     </div>
   </section>
 
-  {/* Core Capabilities */}
+  {/* Service Categories */}
   <section id="capabilities" class="section-padding bg-background relative">
     <div class="container-normal">
       <div class="text-center max-w-3xl mx-auto mb-20">
@@ -401,43 +237,59 @@ const techStack = [
           Core Capabilities
         </h2>
         <p class="text-xl text-muted-foreground leading-relaxed">
-          We offer a comprehensive suite of digital services designed to meet
-          the evolving needs of modern businesses.
+          A comprehensive suite of digital services organized into five
+          practice areas, designed to meet the evolving needs of modern businesses.
         </p>
       </div>
 
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {
-          services.map((service) => (
-            <a
-              href={service.path}
-              class="group relative bg-secondary/5 p-8 rounded-card-lg border border-white/10 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden"
-            >
-              <div class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <div class="mb-8 inline-flex p-4 rounded-2xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
-                <service.icon className="h-8 w-8" aria-hidden="true" />
-              </div>
-
-              <h3 class="font-heading text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
-                {service.title}
+      {serviceCategories.map((category) => (
+        <div class="mb-20 last:mb-0" id={category.id}>
+          <div class="flex items-start gap-5 mb-10">
+            <div class="shrink-0 h-14 w-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+              <category.icon className="h-7 w-7" aria-hidden="true" />
+            </div>
+            <div>
+              <h3 class="font-heading text-3xl md:text-4xl font-bold text-foreground mb-2">
+                {category.title}
               </h3>
-
-              <p class="text-muted-foreground leading-relaxed mb-8 text-base">
-                {service.desc}
+              <p class="text-lg text-muted-foreground max-w-2xl">
+                {category.description}
               </p>
+            </div>
+          </div>
 
-              <div class="flex flex-wrap gap-2 mt-auto">
-                {service.tags.map((tag) => (
-                  <span class="px-3 py-1 rounded-full bg-white/5 border border-white/5 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </a>
-          ))
-        }
-      </div>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {category.services.map((service) => (
+              <a
+                href={service.path}
+                class="group relative bg-secondary/5 p-8 rounded-card-lg border border-border/40 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden"
+              >
+                <div class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div class="mb-6 inline-flex p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
+                  <service.icon className="h-6 w-6" aria-hidden="true" />
+                </div>
+
+                <h4 class="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h4>
+
+                <p class="text-muted-foreground leading-relaxed mb-6 text-sm">
+                  {service.desc}
+                </p>
+
+                <div class="flex flex-wrap gap-2 mt-auto">
+                  {service.tags.map((tag) => (
+                    <span class="px-2.5 py-1 rounded-full bg-secondary/30 border border-border/30 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -486,12 +338,11 @@ const techStack = [
             >
             </div>
 
-            {/* Abstract Visual Grid */}
             <div
               class="grid grid-cols-2 gap-3 lg:gap-6 p-4 lg:p-12 h-full content-center"
             >
               <div
-                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg"
+                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-border/20 hover:border-primary/30 transition-colors duration-500 shadow-lg"
               >
                 <Globe
                   className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4"
@@ -502,7 +353,7 @@ const techStack = [
                 >
               </div>
               <div
-                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg"
+                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-border/20 hover:border-primary/30 transition-colors duration-500 shadow-lg"
               >
                 <ShieldCheck
                   className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4"
@@ -513,7 +364,7 @@ const techStack = [
                 >
               </div>
               <div
-                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg"
+                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-border/20 hover:border-primary/30 transition-colors duration-500 shadow-lg"
               >
                 <Zap
                   className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4"
@@ -524,7 +375,7 @@ const techStack = [
                 >
               </div>
               <div
-                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-white/10 hover:border-primary/30 transition-colors duration-500 shadow-lg"
+                class="bg-card/50 backdrop-blur-xs rounded-card-lg p-4 lg:p-8 flex flex-col justify-center items-center text-center border border-border/20 hover:border-primary/30 transition-colors duration-500 shadow-lg"
               >
                 <Layers
                   className="h-8 w-8 lg:h-12 lg:w-12 text-primary mb-2 lg:mb-4"

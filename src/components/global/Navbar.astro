@@ -13,23 +13,17 @@ import {
   BrainCircuit,
   Layers,
   Rocket,
-  Layout,
   Cpu,
   Users,
   TrendingUp,
   Ghost,
   Wand2,
   Bot,
-  Eye,
-  FlaskConical,
   BarChart3,
-  LineChart,
-  Server,
-  Settings,
   Zap,
-  Wifi,
   Target,
   Megaphone,
+  Code2,
 } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
 
@@ -43,71 +37,46 @@ const navLinks = [
     hasDropdown: true,
     dropdownCategories: [
       {
-        title: "AI & Generative AI",
+        title: "AI & Intelligence",
         items: [
           { name: "AI/ML Integration", path: "/services/ai-ml-integration", icon: BrainCircuit },
           { name: "Generative AI", path: "/services/generative-ai", icon: Wand2 },
-          { name: "AI Agent Development", path: "/services/ai-agent-development", icon: Bot },
-          { name: "AI Image & Video", path: "/services/ai-image-video-generation", icon: Eye },
-        ]
-      },
-      {
-        title: "Machine Learning",
-        items: [
-          { name: "Deep Learning", path: "/services/deep-learning", icon: BrainCircuit },
-          { name: "TensorFlow Development", path: "/services/tensorflow-development", icon: FlaskConical },
-        ]
-      },
-      {
-        title: "Data Engineering",
-        items: [
-          { name: "Data Analysis", path: "/services/data-analysis", icon: BarChart3 },
-          { name: "Data Visualization", path: "/services/data-visualization", icon: LineChart },
-          { name: "Big Data Solutions", path: "/services/big-data-solutions", icon: Server },
-          { name: "Business Intelligence", path: "/services/business-intelligence", icon: TrendingUp },
-          { name: "Data Science", path: "/services/data-science", icon: BrainCircuit },
-        ]
-      },
-      {
-        title: "DevOps",
-        items: [
-          { name: "Cloud Solutions", path: "/services/cloud-devops", icon: Cloud },
-          { name: "DevOps Strategy", path: "/services/devops-strategy-consulting", icon: Settings },
-          { name: "DevOps Automation", path: "/services/devops-automation", icon: Zap },
-          { name: "DevOps Implementation", path: "/services/devops-implementation", icon: Server },
+          { name: "AI Agents", path: "/services/ai-agent-development", icon: Bot },
+          { name: "Data Science & Analytics", path: "/services/data-science", icon: BarChart3 },
         ]
       },
       {
         title: "App Development",
         items: [
           { name: "Web Development", path: "/services/web-development", icon: Globe },
-          { name: "Mobile Development", path: "/services/mobile-development", icon: Smartphone },
+          { name: "Mobile Apps", path: "/services/mobile-development", icon: Smartphone },
           { name: "E-Commerce", path: "/services/ecommerce", icon: ShoppingCart },
-          { name: "MVP Development", path: "/services/mvp-development", icon: Rocket },
-          { name: "CMS Development", path: "/services/cms-development", icon: Layout },
+          { name: "MVP & Startups", path: "/services/mvp-development", icon: Rocket },
           { name: "Custom Software", path: "/services/software-solutions", icon: Cpu },
         ]
       },
       {
-        title: "Advanced Tech",
+        title: "Cloud & DevOps",
         items: [
-          { name: "IoT Development", path: "/services/iot", icon: Wifi },
+          { name: "Cloud Solutions", path: "/services/cloud-devops", icon: Cloud },
+          { name: "DevOps Automation", path: "/services/devops-automation", icon: Zap },
+          { name: "IoT Development", path: "/services/iot", icon: Code2 },
         ]
       },
       {
-        title: "Digital Marketing",
-        items: [
-          { name: "Digital Marketing", path: "/services/digital-marketing", icon: TrendingUp },
-          { name: "Conversion Rate Opt.", path: "/services/conversion-rate-optimization", icon: Target },
-          { name: "Branding & Position", path: "/services/branding-positioning", icon: Megaphone },
-        ]
-      },
-      {
-        title: "Other Services",
+        title: "Design & Marketing",
         items: [
           { name: "UI/UX Design", path: "/services/ui-ux-design", icon: Palette },
+          { name: "Digital Marketing", path: "/services/digital-marketing", icon: TrendingUp },
+          { name: "Branding & CRO", path: "/services/branding-positioning", icon: Target },
+        ]
+      },
+      {
+        title: "Team & Partnership",
+        items: [
           { name: "Extended Team", path: "/services/extended-team", icon: Users },
           { name: "White Label", path: "/services/white-label-services", icon: Ghost },
+          { name: "CMS Development", path: "/services/cms-development", icon: Megaphone },
         ]
       },
     ],
@@ -181,13 +150,13 @@ const isActive = (linkPath: string) => {
                     </button>
 
                     <div 
-                      class="services-dropdown absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible transition-all duration-300 ease-out w-[760px]"
+                      class="services-dropdown absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible pointer-events-none transition-all duration-300 ease-out w-190"
                       role="menu"
                       aria-labelledby="services-menu-button"
                     >
-                      <div class="bg-background/98 backdrop-blur-2xl border border-border rounded-card-lg shadow-2xl ring-1 ring-black/5 flex h-[380px]">
+                      <div class="bg-background/98 backdrop-blur-2xl border border-border rounded-card-lg shadow-2xl ring-1 ring-black/5 flex h-95">
                         {/* Left: Category rows — scrollable so they never clip */}
-                        <div class="w-[210px] shrink-0 border-r border-border bg-secondary/20 rounded-l-card-lg py-3 overflow-y-auto" id="category-col">
+                        <div class="w-52.5 shrink-0 border-r border-border bg-secondary/20 rounded-l-card-lg py-3 overflow-y-auto" id="category-col">
                           {link.dropdownCategories?.map((category, idx) => (
                             <div
                               class="service-category px-3 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-primary/5 cursor-pointer transition-all flex items-center justify-between rounded-lg mx-2 gap-2"
@@ -493,8 +462,8 @@ const isActive = (linkPath: string) => {
     function openDropdown() {
       if (!dropdown || !dropdownBtn) return;
       dropdownOpen = true;
-      dropdown.classList.remove("opacity-0", "invisible");
-      dropdown.classList.add("opacity-100", "visible");
+      dropdown.classList.remove("opacity-0", "invisible", "pointer-events-none");
+      dropdown.classList.add("opacity-100", "visible", "pointer-events-auto");
       dropdownBtn.setAttribute("aria-expanded", "true");
       chevron?.classList.add("-rotate-180");
       // Always open to the "All Services" state
@@ -504,8 +473,8 @@ const isActive = (linkPath: string) => {
     function closeDropdown(focusBtn = false) {
       if (!dropdown || !dropdownBtn) return;
       dropdownOpen = false;
-      dropdown.classList.add("opacity-0", "invisible");
-      dropdown.classList.remove("opacity-100", "visible");
+      dropdown.classList.add("opacity-0", "invisible", "pointer-events-none");
+      dropdown.classList.remove("opacity-100", "visible", "pointer-events-auto");
       dropdownBtn.setAttribute("aria-expanded", "false");
       chevron?.classList.remove("-rotate-180");
       if (focusBtn) {

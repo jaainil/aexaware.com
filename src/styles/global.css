@@ -62,9 +62,9 @@
   /* ========== Light Theme Colors ========== */
   --color-background: hsl(220 20% 98%);
   --color-foreground: hsl(228 45% 8%);
-  --color-card: hsl(0 0% 100%);
+  --color-card: hsl(204 56% 97%);
   --color-card-foreground: hsl(228 45% 8%);
-  --color-popover: hsl(0 0% 100%);
+  --color-popover: hsl(204 56% 97%);
   --color-popover-foreground: hsl(228 45% 8%);
   --color-primary: hsl(233 90% 57%);
   --color-primary-foreground: hsl(220 100% 98%);
@@ -162,11 +162,11 @@
 /* Navbar Height Contract */
 :root {
   --navbar-height: 96px;
-  --background: oklch(1 0 0);
+  --background: oklch(0.978 0.008 230);
   --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
+  --card: oklch(0.978 0.008 230);
   --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
+  --popover: oklch(0.978 0.008 230);
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.488 0.243 264.376);
   --primary-foreground: oklch(0.97 0.014 254.604);
@@ -186,7 +186,7 @@
   --chart-4: oklch(0.488 0.243 264.376);
   --chart-5: oklch(0.424 0.199 265.638);
   --radius: 0.875rem;
-  --sidebar: oklch(0.985 0 0);
+  --sidebar: oklch(0.978 0.008 230);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.546 0.245 262.881);
   --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
@@ -403,9 +403,10 @@
   }
 
   .glass-panel {
-    background-color: rgb(255 255 255 / 0.5);
+    background-color: rgb(242 248 252 / 0.5);
+    -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
-    border: 1px solid rgb(255 255 255 / 0.2);
+    border: 1px solid rgb(242 248 252 / 0.2);
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   }
 
