@@ -7,6 +7,8 @@ import {
     Share2,
     Mail,
     BarChart,
+    Target,
+    Zap,
 } from "lucide-astro";
 
 const services = [
@@ -52,9 +54,25 @@ const services = [
     },
     {
         id: "06",
+        icon: Target,
+        title: "Conversion Rate Optimization",
+        desc: "A/B testing, landing page optimization, funnel analysis, and UX improvements that turn more visitors into customers. Data-driven CRO.",
+        gradient: "from-destructive/20 to-destructive/20",
+        iconColor: "text-destructive",
+    },
+    {
+        id: "07",
+        icon: Zap,
+        title: "Site Speed & Performance",
+        desc: "Make your site lightning fast. Faster pages mean higher conversions, better SEO rankings, and improved user experience.",
+        gradient: "from-info/20 to-info/20",
+        iconColor: "text-info",
+    },
+    {
+        id: "08",
         icon: BarChart,
         title: "Analytics & Reporting",
-        desc: "Data-driven insights to optimize your marketing efforts. Custom dashboards, conversion tracking, and actionable recommendations.",
+        desc: "Data-driven insights to optimize your marketing efforts. Custom dashboards, conversion tracking, attribution modeling, and actionable recommendations.",
         gradient: "from-primary/20 to-primary/20",
         iconColor: "text-primary",
     },
@@ -71,19 +89,19 @@ const whyChooseUs = [
     },
     {
         title: "Full-Funnel Strategy",
-        desc: "From awareness to conversion, we create integrated campaigns that guide customers through their journey.",
+        desc: "From awareness to conversion, we create integrated campaigns that guide customers through their entire journey.",
+    },
+    {
+        title: "Proven CRO Results",
+        desc: "Track record of significant conversion improvements through systematic testing and optimization.",
     },
     {
         title: "Transparent Reporting",
         desc: "Regular reports with clear metrics so you always know how your campaigns are performing.",
     },
     {
-        title: "Industry Expertise",
-        desc: "Experience across B2B, B2C, e-commerce, and SaaS industries with proven results.",
-    },
-    {
         title: "Agile Optimization",
-        desc: "Continuous testing and optimization to improve performance over time.",
+        desc: "Continuous testing and optimization to improve performance over time — quick wins first.",
     },
 ];
 
@@ -96,23 +114,50 @@ const techStack = [
     "LinkedIn Ads",
     "HubSpot",
     "Mailchimp",
+    "Hotjar",
+    "Optimizely",
+    "GTM",
+];
+
+const faqs = [
+    {
+        question: "What digital marketing services do you offer?",
+        answer: "We offer a comprehensive suite including SEO, PPC advertising, social media marketing, email marketing, content marketing, conversion rate optimization, and analytics. We create integrated strategies tailored to your goals.",
+    },
+    {
+        question: "How do you approach conversion rate optimization?",
+        answer: "We start with a conversion audit to identify barriers, then implement A/B testing, landing page optimization, funnel analysis, and UX improvements. Every decision is backed by statistically significant data.",
+    },
+    {
+        question: "How long until we see results?",
+        answer: "PPC campaigns can show results in days, CRO improvements in weeks. SEO typically takes 3-6 months for significant organic growth. We prioritize quick wins while building long-term sustainable growth.",
+    },
+    {
+        question: "How do you measure marketing ROI?",
+        answer: "We track key metrics including cost per acquisition, customer lifetime value, conversion rates, organic traffic growth, and revenue attribution. Custom dashboards give you real-time visibility into performance.",
+    },
+    {
+        question: "Can you work with our existing marketing tools?",
+        answer: "Yes, we integrate with Google Analytics, HubSpot, Mailchimp, Salesforce, and other popular platforms. We work with your existing toolchain and add optimization layers.",
+    },
 ];
 ---
 
 <ServicePageLayout
-    title="Digital Marketing"
-    description="Data-driven digital marketing services including SEO, PPC, social media marketing, email marketing, and content strategy to grow your online presence."
+    title="Digital Marketing & CRO"
+    description="Data-driven digital marketing services: SEO, PPC, social media, email marketing, content strategy, conversion rate optimization, and analytics to grow your online presence."
     heroBadge="Digital Growth"
     heroTitle="Drive Traffic."
-    heroSubtitle="Boost Sales."
-    heroDescription="We help you reach your target audience and convert them into loyal customers. Our digital marketing strategies are built on data, creativity, and a focus on ROI to deliver measurable growth for your business."
+    heroSubtitle="Convert More."
+    heroDescription="We help you reach your target audience and convert them into loyal customers. From SEO and PPC to conversion rate optimization, our marketing strategies are built on data, creativity, and a relentless focus on ROI."
     introTitle="Strategic Marketing That Delivers"
-    introText="In today's digital landscape, effective marketing requires more than just posting ads. It demands a strategic, data-driven approach that connects with your audience at every touchpoint. We combine creativity with analytics to create marketing campaigns that not only look great but deliver real business results. From increasing brand awareness to driving conversions, our team develops integrated strategies tailored to your unique goals and market."
-    servicesTitle="Digital Marketing Services"
-    servicesDescription="Comprehensive marketing solutions designed to elevate your brand and grow your business."
+    introText="In today's digital landscape, effective marketing requires more than just posting ads. It demands a strategic, data-driven approach that connects with your audience at every touchpoint — and then converts them. We combine creativity with analytics to create marketing campaigns that not only drive traffic but systematically optimize every step of the funnel. From increasing brand awareness and organic traffic to A/B testing landing pages and improving checkout flows, our team develops integrated strategies tailored to your unique goals and market."
+    servicesTitle="Digital Marketing & CRO Services"
+    servicesDescription="Comprehensive marketing solutions from traffic acquisition to conversion optimization."
     services={services}
     whyChooseUs={whyChooseUs}
     whyChooseTitle="Why Choose Aexaware for Digital Marketing"
     whyChooseDescription="Strategic marketing expertise combined with deep technical knowledge for results that matter."
     techStack={techStack}
+    faqs={faqs}
 />
