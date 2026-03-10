@@ -10,22 +10,72 @@ import DeliveryStandards from '@/components/home/DeliveryStandards.astro';
 import EngineeringLogs from '@/components/home/EngineeringLogs.astro';
 import Testimonials from '@/components/shared/Testimonials.astro';
 import CTA from '@/components/home/CTA.astro';
+
+const siteUrl = "https://aexaware.com";
+const todayDate = new Date().toISOString().slice(0, 10);
+
+// Homepage FAQ for GEO optimization (AI citation readiness)
+const homeFAQ = [
+  {
+    question: "What services does Aexaware Infotech offer?",
+    answer: "Aexaware Infotech offers web development (React, Next.js, Node.js), mobile app development (React Native, Flutter), AI/ML integration (LLM agents, TensorFlow, PyTorch), cloud DevOps (AWS, GCP, Azure, Kubernetes), UI/UX design, e-commerce development, and digital marketing services."
+  },
+  {
+    question: "Where is Aexaware Infotech located?",
+    answer: "Aexaware Infotech is headquartered in Vadodara, Gujarat, India. We serve clients globally across India, the United States, United Kingdom, UAE, Canada, and Australia."
+  },
+  {
+    question: "What industries does Aexaware Infotech serve?",
+    answer: "We work with startups, SMBs, and enterprises across technology, agriculture, e-commerce, healthcare, education, and finance. Our portfolio includes projects for SaaS platforms, corporate websites, and e-commerce stores."
+  },
+  {
+    question: "How long does a typical project take at Aexaware?",
+    answer: "Project timelines vary by scope. A standard corporate website takes 3-4 weeks, e-commerce platforms 4-6 weeks, and complex AI/ML integrations 8-12 weeks. We follow agile methodology with weekly milestone reviews."
+  },
+  {
+    question: "Does Aexaware Infotech offer free consultations?",
+    answer: "Yes. We offer a free initial consultation to understand your project requirements, discuss technical approach, and provide a detailed quote. You can book a call at cal.com/aexaware-infotech."
+  },
+];
 ---
 
 <Layout 
-  title="Aexaware Infotech – Custom Web, Mobile & AI Solutions from Vadodara, Gujarat" 
-  description="Aexaware Infotech builds scalable web, mobile, AI, and DevOps solutions for startups and enterprises – Made in Vadodara, Serving Globally."
+  title="Aexaware Infotech | Custom Web, Mobile & AI Development Company in India" 
+  description="Aexaware Infotech is a software development company in Vadodara, India. We build scalable web apps, mobile apps, AI/ML solutions, and cloud infrastructure for startups and enterprises worldwide."
+  tags={["web development company India", "custom software development", "AI ML development", "mobile app development", "React Next.js development", "cloud DevOps solutions", "Vadodara IT company"]}
 >
   <Fragment slot="head">
+    <!-- WebPage Schema -->
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": `${siteUrl}/#webpage`,
+        "url": siteUrl,
+        "name": "Aexaware Infotech | Custom Web, Mobile & AI Development Company in India",
+        "description": "Aexaware Infotech is a software development company in Vadodara, India. We build scalable web apps, mobile apps, AI/ML solutions, and cloud infrastructure for startups and enterprises worldwide.",
+        "isPartOf": { "@type": "WebSite", "@id": `${siteUrl}/#website` },
+        "about": { "@type": "Organization", "@id": `${siteUrl}/#organization` },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/og-image.png`,
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": todayDate,
+        "inLanguage": "en-US",
+      }}
+    />
+    <!-- ProfessionalService Schema (Local Business) -->
     <Schema
       item={{
         "@context": "https://schema.org",
         "@type": "ProfessionalService",
         "name": "Aexaware Infotech",
-        "image": "https://aexaware.com/og-image.png",
-        "@id": "https://aexaware.com",
-        "url": "https://aexaware.com",
+        "image": `${siteUrl}/og-image.png`,
+        "@id": `${siteUrl}/#organization`,
+        "url": siteUrl,
         "telephone": "+918140734392",
+        "email": "info@aexaware.com",
         "priceRange": "$$$",
         "description": "Full-service software development company specializing in web development, mobile apps, AI/ML integration, DevOps, cloud solutions, UI/UX design, and e-commerce development. Founded in 2024, based in Vadodara, Gujarat, India.",
         "founder": {
@@ -34,6 +84,7 @@ import CTA from '@/components/home/CTA.astro';
           "jobTitle": "Founder & CEO",
           "url": "https://www.linkedin.com/in/axit-padaliya-451463202/"
         },
+        "foundingDate": "2024",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road, Sevasi",
@@ -63,8 +114,59 @@ import CTA from '@/components/home/CTA.astro';
           "https://www.instagram.com/aexaware/",
           "https://www.youtube.com/@aexaware"
         ],
-        "areaServed": ["Worldwide", "IN", "US", "GB", "AE", "CA", "AU"],
-        "serviceType": ["Web Development", "Mobile App Development", "AI/ML Solutions", "Cloud DevOps", "UI/UX Design", "E-commerce Development"]
+        "areaServed": [
+          { "@type": "Country", "name": "India" },
+          { "@type": "Country", "name": "United States" },
+          { "@type": "Country", "name": "United Kingdom" },
+          { "@type": "Country", "name": "United Arab Emirates" },
+          { "@type": "Country", "name": "Canada" },
+          { "@type": "Country", "name": "Australia" },
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Software Development Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development", "url": `${siteUrl}/services/web-development` } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development", "url": `${siteUrl}/services/mobile-development` } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI/ML Integration", "url": `${siteUrl}/services/ai-ml-integration` } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud & DevOps", "url": `${siteUrl}/services/cloud-devops` } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design", "url": `${siteUrl}/services/ui-ux-design` } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce Development", "url": `${siteUrl}/services/ecommerce` } },
+          ]
+        },
+        "serviceType": ["Web Development", "Mobile App Development", "AI/ML Solutions", "Cloud DevOps", "UI/UX Design", "E-commerce Development"],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "5",
+          "bestRating": "5",
+          "worstRating": "1",
+        },
+      }}
+    />
+    <!-- BreadcrumbList Schema -->
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+        ],
+      }}
+    />
+    <!-- FAQPage Schema for GEO/AI citation optimization -->
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": homeFAQ.map(faq => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer,
+          },
+        })),
       }}
     />
   </Fragment>
@@ -76,5 +178,34 @@ import CTA from '@/components/home/CTA.astro';
   <Testimonials />
   <DeliveryStandards />
   <EngineeringLogs />
+
+  <!-- FAQ Section - Matches FAQPage schema for SEO/GEO optimization -->
+  <section class="section-padding bg-secondary/5 border-t border-border/40">
+    <div class="container-normal">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-sm font-bold uppercase tracking-widest text-primary mb-4 block">Frequently Asked Questions</span>
+        <h2 class="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+          Common Questions About Our Services
+        </h2>
+        <p class="text-lg text-muted-foreground">
+          Everything you need to know about working with Aexaware Infotech.
+        </p>
+      </div>
+      <div class="max-w-3xl mx-auto space-y-4">
+        {homeFAQ.map((faq) => (
+          <details class="group rounded-card border border-border/50 bg-background hover:border-primary/30 transition-colors">
+            <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-medium text-foreground">
+              <span>{faq.question}</span>
+              <span class="ml-4 shrink-0 text-muted-foreground group-open:rotate-45 transition-transform duration-200 text-2xl leading-none">+</span>
+            </summary>
+            <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <CTA />
 </Layout>

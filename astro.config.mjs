@@ -318,6 +318,46 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
+      serialize(item) {
+        // Homepage: highest priority
+        if (item.url === "https://aexaware.com/" || item.url === "https://aexaware.com") {
+          item.priority = 1.0;
+          item.changefreq = "daily";
+        }
+        // Core landing pages: high priority
+        else if (
+          item.url.match(/\/(services|portfolio|about|contact|start-project)\/?$/)
+        ) {
+          item.priority = 0.9;
+          item.changefreq = "weekly";
+        }
+        // Individual service pages: high priority (money pages)
+        else if (item.url.includes("/services/")) {
+          item.priority = 0.8;
+          item.changefreq = "monthly";
+        }
+        // Blog index
+        else if (item.url.match(/\/blog\/?$/)) {
+          item.priority = 0.8;
+          item.changefreq = "daily";
+        }
+        // Individual blog posts
+        else if (item.url.includes("/blog/")) {
+          item.priority = 0.6;
+          item.changefreq = "monthly";
+        }
+        // Portfolio case studies
+        else if (item.url.includes("/portfolio/")) {
+          item.priority = 0.7;
+          item.changefreq = "monthly";
+        }
+        // Legal/utility pages
+        else if (item.url.match(/\/(privacy-policy|terms)\/?$/)) {
+          item.priority = 0.3;
+          item.changefreq = "yearly";
+        }
+        return item;
+      },
     }),
     robotsTxt({
       sitemap: true,

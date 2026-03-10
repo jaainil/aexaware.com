@@ -55,8 +55,6 @@ const twitterHandle = "@aexaware";
     <meta name="theme-color" content="#3347F3" />
     <meta name="generator" content={Astro.generator} />
     
-    {noIndex && <meta name="robots" content="noindex, nofollow" />}
-    
     <SEO
       title={title}
       description={description || `${siteName} - Custom web, mobile, AI/ML, and DevOps solutions for startups and enterprises.`}
@@ -90,16 +88,22 @@ const twitterHandle = "@aexaware";
         ...(description && { description }),
         ...(image && { image: imageUrl }),
       }}
+      canonical={canonicalURL}
       extend={{
         link: [
           { rel: "icon", type: "image/png", href: "/favicon.png" },
           { rel: "apple-touch-icon", href: "/favicon.png" },
-          { rel: "canonical", href: canonicalURL },
           { rel: "alternate", type: "application/rss+xml", title: `${siteName} Blog`, href: "/rss.xml" },
+          { rel: "alternate", hreflang: "en", href: canonicalURL },
+          { rel: "alternate", hreflang: "x-default", href: canonicalURL },
         ],
         meta: [
           { name: "author", content: author || siteName },
-          ...(tags ? tags.map((tag: string) => ({ name: "keywords", content: tag })) : []),
+          ...(tags && tags.length > 0 ? [{ name: "keywords", content: tags.join(", ") }] : []),
+          { name: "robots", content: noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+          { property: "og:image:width", content: "1200" },
+          { property: "og:image:height", content: "630" },
+          { property: "og:image:type", content: "image/png" },
         ],
       }}
     />
@@ -112,6 +116,7 @@ const twitterHandle = "@aexaware";
         '@graph': [
           {
             '@type': 'Organization',
+            '@id': `${siteUrl}#organization`,
             name: siteName,
             url: siteUrl,
             logo: {
@@ -166,6 +171,7 @@ const twitterHandle = "@aexaware";
           },
           {
             '@type': 'WebSite',
+            '@id': `${siteUrl}#website`,
             name: siteName,
             url: siteUrl,
             description: 'Custom web, mobile, AI/ML, and DevOps solutions for startups and enterprises – built in Vadodara, serving globally.',
@@ -180,6 +186,7 @@ const twitterHandle = "@aexaware";
           },
           {
             '@type': 'Person',
+            '@id': `${siteUrl}#founder`,
             name: 'Axit Padaliya',
             url: siteUrl,
             jobTitle: 'Founder & CEO',
@@ -200,8 +207,8 @@ const twitterHandle = "@aexaware";
   </head>
  
   <body class="min-h-screen bg-background font-sans antialiased flex flex-col overflow-x-hidden">
-    <div class="sr-only">
-      <p>Aexaware Infotech is a full-service software development company based in Vadodara, Gujarat, India. Founded in 2024, we specialize in web development, mobile app development, AI/ML integration, cloud DevOps solutions, UI/UX design, and e-commerce development. Our team works with React, Next.js, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, Astro, AWS, GCP, Azure, Docker, Kubernetes, TensorFlow, PyTorch, OpenAI, and LangChain. We serve clients worldwide including India, USA, UK, UAE, Canada, and Australia. Contact us at info@aexaware.com or +91 8140734392.</p>
+    <div class="sr-only" role="contentinfo" aria-label="Company information">
+      <p>Aexaware Infotech — Software development company in Vadodara, Gujarat, India. We build web, mobile, and AI solutions for startups and enterprises worldwide.</p>
     </div>
     
     <a 

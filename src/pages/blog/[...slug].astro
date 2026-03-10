@@ -78,7 +78,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
       }}
     />
   )}
-  {/* Complete BlogPosting Schema */}
+  {/* Complete Article Schema with GEO-optimized fields */}
   <Schema
     slot="head"
     item={{
@@ -94,14 +94,22 @@ const siteUrl = Astro.site || "https://aexaware.com";
       author: {
         "@type": "Person",
         name: post.data.author,
+        jobTitle: post.data.authorTitle || "Software Engineer",
         url: siteUrl.toString(),
+        worksFor: {
+          "@type": "Organization",
+          name: "Aexaware Infotech",
+        },
       },
       publisher: {
         "@type": "Organization",
         name: "Aexaware Infotech",
+        url: siteUrl.toString(),
         logo: {
           "@type": "ImageObject",
           url: new URL("/og-image.png", siteUrl).href,
+          width: 1200,
+          height: 630,
         },
       },
       mainEntityOfPage: {
@@ -116,6 +124,13 @@ const siteUrl = Astro.site || "https://aexaware.com";
         name: "Aexaware Infotech Blog",
         url: new URL("/blog", siteUrl).href,
       },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["article h1", "article [data-description]", "article .prose h2"],
+      },
+      wordCount: remarkPluginFrontmatter.minutesRead 
+        ? parseInt(remarkPluginFrontmatter.minutesRead) * 250 
+        : undefined,
     }}
   />
   <Schema
@@ -178,7 +193,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
           {/* Description */}
           {
             post.data.description && (
-              <p class="text-xl text-muted-foreground mt-4 mb-8 max-w-2xl mx-auto leading-relaxed">
+              <p data-description class="text-xl text-muted-foreground mt-4 mb-8 max-w-2xl mx-auto leading-relaxed">
                 {post.data.description}
               </p>
             )

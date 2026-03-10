@@ -15,6 +15,7 @@ import {
 import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 import CTA from "@/components/home/CTA.astro";
 import Prose from "@/components/blog/Prose.astro";
+import { Schema } from "astro-seo-schema";
 
 export async function getStaticPaths() {
   const posts = await getCollection("portfolio");
@@ -26,12 +27,58 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+const siteUrl = Astro.site?.href || "https://aexaware.com";
+const pageUrl = new URL(`/portfolio/${post.slug}`, siteUrl).href;
+const imageUrl = post.data.image ? new URL(post.data.image.src, siteUrl).href : new URL("/og-image.png", siteUrl).href;
 ---
 
 <Layout
-  title={`${post.data.title} | Case Study`}
+  title={`${post.data.title} – Case Study | Aexaware Infotech`}
   description={post.data.description}
+  image={post.data.image?.src}
+  tags={post.data.technologies}
 >
+  <Fragment slot="head">
+    <!-- CreativeWork Schema for portfolio case study -->
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": post.data.title,
+        "description": post.data.description,
+        "url": pageUrl,
+        "image": imageUrl,
+        "datePublished": post.data.date.toISOString(),
+        "author": {
+          "@type": "Organization",
+          "name": "Aexaware Infotech",
+          "url": siteUrl,
+        },
+        "creator": {
+          "@type": "Organization",
+          "name": "Aexaware Infotech",
+          "url": siteUrl,
+        },
+        ...(post.data.client && { "about": { "@type": "Organization", "name": post.data.client } }),
+        "keywords": post.data.technologies?.join(", "),
+        "genre": post.data.category,
+        "inLanguage": "en",
+      }}
+    />
+    <!-- BreadcrumbList Schema -->
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": siteUrl },
+          { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": new URL("/portfolio", siteUrl).href },
+          { "@type": "ListItem", "position": 3, "name": post.data.title },
+        ],
+      }}
+    />
+  </Fragment>
   {/* Modern Grid Background - Fixed to stay behind content */}
   {/* FIX: Semantic Grid Background */}
   <BackgroundGrid density="sm" fixed mask="top" class="-z-10" />

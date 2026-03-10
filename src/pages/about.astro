@@ -117,39 +117,43 @@ const capabilities = [
     <Schema
       item={{
         "@context": "https://schema.org",
-
         "@type": "AboutPage",
-
+        "name": "About Aexaware Infotech",
+        "url": "https://aexaware.com/about",
         mainEntity: {
           "@type": "ProfessionalService",
-
           name: "Aexaware Infotech",
-
           description:
             "A full-service digital agency specializing in web development, mobile apps, AI/ML integration, and cloud solutions.",
-
           url: "https://aexaware.com",
-
           logo: "https://aexaware.com/og-image.png",
-
-          foundingDate: "2025",
-
+          foundingDate: "2024",
           address: {
             "@type": "PostalAddress",
-
+            streetAddress: "Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road, Sevasi",
             addressLocality: "Vadodara",
-
             addressRegion: "Gujarat",
-
+            postalCode: "391101",
             addressCountry: "IN",
           },
-
           sameAs: [
             "https://www.linkedin.com/company/aexaware",
-
             "https://twitter.com/aexaware",
+            "https://github.com/aexaware",
+            "https://www.instagram.com/aexaware/",
+            "https://www.youtube.com/@aexaware",
           ],
         },
+      }}
+    />
+    <Schema
+      item={{
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aexaware.com" },
+          { "@type": "ListItem", "position": 2, "name": "About", "item": "https://aexaware.com/about" },
+        ],
       }}
     />
   </Fragment>
@@ -242,7 +246,7 @@ const capabilities = [
           >
             <Image
               src={teamCollaborationImg}
-              alt="Team collaboration"
+              alt="Aexaware Infotech team collaborating on software development projects in Vadodara office"
               width={800}
               height={800}
               layout="none"
