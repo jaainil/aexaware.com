@@ -6,6 +6,11 @@
       "sourceType": "github",
       "computedHash": "597a4587f30f1152d3ab2923e84db842a18604e09e16885ffa067730fb435d9d"
     },
+    "blog": {
+      "source": "agricidaniel/claude-blog",
+      "sourceType": "github",
+      "computedHash": "8e338568c656c26d72efc0d8f19d961f53e39ed4802d1a49344244acd16b29fd"
+    },
     "clean-code": {
       "source": "davila7/claude-code-templates",
       "sourceType": "github",
