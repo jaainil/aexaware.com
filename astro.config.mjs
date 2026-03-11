@@ -19,7 +19,9 @@ import readingTime from "astro-reading-time";
 // https://astro.build/config
 export default defineConfig({
   site: "https://aexaware.com",
-
+  experimental: {
+    rustCompiler: true,
+  },
   // FIX: Updated from boolean to object for Astro 4/5+
   prefetch: {
     prefetchAll: true,
@@ -540,4 +542,5 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
       chunkSizeWarningLimit: 1000,
     },
   },
+
 });
