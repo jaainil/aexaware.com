@@ -16,7 +16,7 @@ const sortedPosts = allPosts.sort(
 );
 
 // Get the next most recent post (excluding current)
-const nextPost = sortedPosts.find((post) => post.slug !== currentSlug);
+const nextPost = sortedPosts.find((post) => post.id !== currentSlug);
 ---
 
 {
@@ -29,7 +29,7 @@ const nextPost = sortedPosts.find((post) => post.slug !== currentSlug);
         </p>
       </div>
 
-      <a href={`/blog/${nextPost.slug}`} class="group block">
+      <a href={`/blog/${nextPost.id}`} class="group block">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center bg-secondary/5 rounded-section p-6 md:p-8 border border-border/50 hover:border-primary/30 transition-all duration-500">
           {/* Content */}
           <div class="space-y-6 order-2 md:order-1">

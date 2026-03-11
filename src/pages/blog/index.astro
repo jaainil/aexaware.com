@@ -62,7 +62,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
             "@type": "Person",
             name: post.data.author,
           },
-          url: new URL(`/blog/${post.slug}`, siteUrl).href,
+          url: new URL(`/blog/${post.id}`, siteUrl).href,
         })),
       }}
     />
@@ -133,7 +133,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
               Latest Insights
             </span>
             <a
-              href={`/blog/${featuredPost.slug}`}
+              href={`/blog/${featuredPost.id}`}
               class="group grid lg:grid-cols-2 gap-12 items-center bg-secondary/5 rounded-section border border-border/50 p-6 lg:p-12 hover:border-primary/50 transition-colors duration-500"
             >
               <div class="aspect-16/10 overflow-hidden rounded-card relative shadow-2xl">
@@ -189,7 +189,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
       <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
         {
           remainingPosts.map((post) => (
-            <a href={`/blog/${post.slug}`} class="group flex flex-col">
+            <a href={`/blog/${post.id}`} class="group flex flex-col">
               <div class="aspect-16/10 overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
                 {post.data.image && (
                   <Image

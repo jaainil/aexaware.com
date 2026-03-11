@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { buttonVariants } from "@/components/ui/button-variants";
@@ -20,16 +20,16 @@ import { Schema } from "astro-seo-schema";
 export async function getStaticPaths() {
   const posts = await getCollection("portfolio");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const siteUrl = Astro.site?.href || "https://aexaware.com";
-const pageUrl = new URL(`/portfolio/${post.slug}`, siteUrl).href;
+const pageUrl = new URL(`/portfolio/${post.id}`, siteUrl).href;
 const imageUrl = post.data.image ? new URL(post.data.image.src, siteUrl).href : new URL("/og-image.png", siteUrl).href;
 ---
 

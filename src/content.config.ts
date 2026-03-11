@@ -1,6 +1,9 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, render } from 'astro:content';
+import { glob } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 const blogCollection = defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/blog' }),
     schema: ({ image }) => z.object({
         title: z.string(),
         description: z.string(),
@@ -16,6 +19,7 @@ const blogCollection = defineCollection({
 });
 
 const portfolioCollection = defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/portfolio' }),
     schema: ({ image }) => z.object({
         title: z.string(),
         client: z.string().optional(),
@@ -25,7 +29,7 @@ const portfolioCollection = defineCollection({
         technologies: z.array(z.string()),
         duration: z.string().optional(),
         year: z.string().or(z.number()).transform((val) => String(val)).optional(),
-        website: z.string().url().optional(),
+        website: z.url().optional(),
         image: image(),
     }),
 });
@@ -34,3 +38,5 @@ export const collections = {
     'blog': blogCollection,
     'portfolio': portfolioCollection,
 };
+
+export { render };

@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import { Calendar, User, Clock, ChevronRight } from "lucide-astro";
 import { Image } from "astro:assets";
@@ -14,13 +14,13 @@ import Prose from "@/components/blog/Prose.astro";
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content, headings, remarkPluginFrontmatter } = await post.render();
+const { Content, headings, remarkPluginFrontmatter } = await render(post);
 
 // Helper to format date
 const formatDate = (date: Date) => {
@@ -114,7 +114,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
       },
       mainEntityOfPage: {
         "@type": "WebPage",
-        "@id": new URL(`/blog/${post.slug}/`, siteUrl).href,
+        "@id": new URL(`/blog/${post.id}/`, siteUrl).href,
       },
       articleSection: "Technology",
       inLanguage: "en",
@@ -259,7 +259,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
             <Content />
           </Prose>
 
-          <ReadNext currentSlug={post.slug} />
+          <ReadNext currentSlug={post.id} />
           <Comments />
         </div>
 
