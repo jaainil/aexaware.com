@@ -75,7 +75,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
             "@type": "ListItem",
             position: index + 1,
             name: project.data.title,
-            url: new URL(`/portfolio/${project.slug}`, siteUrl).href,
+            url: new URL(`/portfolio/${project.id}`, siteUrl).href,
           })),
         },
       }}
@@ -156,7 +156,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
       <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
         {
           projects.map((project) => (
-            <a href={`/portfolio/${project.slug}`} class="group flex flex-col">
+            <a href={`/portfolio/${project.id}`} class="group flex flex-col">
               <div class="aspect-16/10 overflow-hidden rounded-card-lg bg-muted mb-6 relative border border-border/50">
                 <Image
                   src={project.data.image}

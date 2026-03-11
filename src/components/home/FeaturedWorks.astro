@@ -66,7 +66,7 @@ const projects = allProjects
       {
         projects.map((project, i) => (
           <a
-            href={`/portfolio/${project.slug}`}
+            href={`/portfolio/${project.id}`}
             class={cn(
               "group relative overflow-hidden rounded-card-lg border border-border/40 bg-card transition-all duration-500 hover:border-primary/50 hover:shadow-2xl block",
               i === 0 ? "md:col-span-2" : "",
