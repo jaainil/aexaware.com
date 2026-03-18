@@ -12,7 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/compiler-rs": "^0.1.4",
+    "@astrojs/compiler-rs": "^0.1.5",
     "@astrojs/mdx": "5.0.0",
     "@astrojs/react": "5.0.0",
     "@astrojs/rss": "4.0.17",
@@ -41,7 +41,7 @@
     "astro-robots-txt": "^1.0.0",
     "astro-seo": "^1.1.0",
     "astro-seo-schema": "^5.2.0",
-    "astro-typewriter": "^1.1.0",
+    "astro-typewriter": "^1.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -57,7 +57,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
     "schema-dts": "^1.1.5",
-    "shadcn": "^4.0.5",
+    "shadcn": "^4.0.8",
     "sharp": "^0.34.5",
     "simple-icons-astro": "^16.1.0",
     "tailwind-merge": "^3.5.0",
@@ -69,13 +69,13 @@
     "@eslint/js": "^10.0.1",
     "@mdx-js/react": "^3.1.1",
     "@nuasite/llm-enhancements": "^0.12.4",
-    "@playform/compress": "^0.2.1",
+    "@playform/compress": "^0.2.2",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
-    "@types/node": "^25.4.0",
+    "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react-swc": "^4.2.3",
+    "@vitejs/plugin-react-swc": "^4.3.0",
     "autoprefixer": "^10.4.27",
     "eslint": "^10.0.3",
     "eslint-plugin-react-hooks": "^7.0.1",
@@ -84,7 +84,7 @@
     "remark-mdx-images": "^3.0.0",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.0",
+    "typescript-eslint": "^8.57.1",
     "vite": "^7.3.1"
   }
 }
