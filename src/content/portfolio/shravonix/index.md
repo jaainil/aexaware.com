@@ -1,7 +1,7 @@
 ---
 title: Shravonix – Custom CMS Website & Performance-Optimized Platform
 draft: false
-date: 2025-12-01
+date: "2025-12-01T00:00:00.000Z"
 description: Aexaware Infotech designed and developed a custom, high-performance website for Shravonix using a modern JavaScript stack and Ghost CMS. The project included a fully bespoke Ghost theme, scalable content architecture, CDN-driven performance optimization, analytics integration, and community engagement features—delivering a fast, secure, and future-ready digital presence.
 category: Website Development
 image: ./screenshot-2025-12-27-at-15-00-06-shravonix-signal-mjo3nu1f.png
