@@ -24,8 +24,8 @@ export default defineConfig({
   },
   // FIX: Updated from boolean to object for Astro 4/5+
   prefetch: {
-    prefetchAll: true,
-    defaultStrategy: "viewport",
+    prefetchAll: false,
+    defaultStrategy: "hover",
   },
 
   integrations: [
