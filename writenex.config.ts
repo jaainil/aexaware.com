@@ -3,6 +3,21 @@ import { defineConfig, collection, fields } from "@imjp/writenex-astro/config";
 export default defineConfig({
   collections: [
     collection({
+      name: "authors",
+      path: "src/content/authors",
+      filePattern: "{slug}.md",
+      previewUrl: "/authors/{slug}",
+      schema: {
+        name: fields.text({ label: "Name", validation: { isRequired: true } }),
+        title: fields.text({ label: "Title", defaultValue: "Software Engineer" }),
+        bio: fields.text({ label: "Bio", multiline: true }),
+        image: fields.image({ label: "Profile Image" }),
+        twitter: fields.url({ label: "Twitter URL" }),
+        github: fields.url({ label: "GitHub URL" }),
+        linkedin: fields.url({ label: "LinkedIn URL" }),
+      },
+    }),
+    collection({
       name: "blog",
       path: "src/content/blog",
       filePattern: "{slug}/index.mdx",
@@ -10,20 +25,9 @@ export default defineConfig({
       schema: {
         title: fields.text({ label: "Title", validation: { isRequired: true } }),
         description: fields.text({ label: "Description", multiline: true, validation: { isRequired: true } }),
-        author: fields.text({ label: "Author", validation: { isRequired: true } }),
-        authorTitle: fields.text({ label: "Author Title", defaultValue: "Software Engineer" }),
+        author: fields.relationship({ label: "Author", collection: "authors", displayField: "name", validation: { isRequired: true } }),
         date: fields.date({ label: "Date", validation: { isRequired: true } }),
         image: fields.image({ label: "Cover Image" }),
-        faq: fields.array({
-          label: "FAQ",
-          itemLabel: "Question",
-          itemField: fields.object({
-            fields: {
-              question: fields.text({ label: "Question" }),
-              answer: fields.text({ label: "Answer", multiline: true }),
-            }
-          })
-        }),
         body: fields.mdx({ label: "Content", validation: { isRequired: true } }),
       },
     }),
