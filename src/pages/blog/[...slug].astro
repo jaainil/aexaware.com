@@ -10,6 +10,7 @@ import { Schema } from "astro-seo-schema";
 import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 import CTA from "@/components/home/CTA.astro";
 import Prose from "@/components/blog/Prose.astro";
+import MobileBlogDock from "@/components/blog/MobileBlogDock.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -224,7 +225,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
       </div>
     </section>
 
-    <div class="container-normal pb-16 lg:pb-24">
+    <div class="container-normal pb-32 lg:pb-24">
       {/* Cinematic Image */}
       {
         post.data.image && (
@@ -282,5 +283,12 @@ const siteUrl = Astro.site || "https://aexaware.com";
     description="Turn these insights into action. Let's build your next big project together."
     buttonText="Get Expert Help"
     class="mb-24"
+  />
+
+  {/* Mobile Dock — TOC, AI Summarize, Share (hidden on lg+) */}
+  <MobileBlogDock
+    headings={headings}
+    url={Astro.url.href}
+    title={post.data.title}
   />
 </Layout>
