@@ -52,13 +52,26 @@ const sizeClasses = {
     "prose-code:before:content-none prose-code:after:content-none prose-code:wrap-break-word",
     // Pre (code blocks)
     "prose-pre:bg-(--shiki-dark-bg) prose-pre:border prose-pre:border-border/50",
-    // Tables
-    "prose-table:text-sm prose-table:font-sans prose-th:font-heading prose-th:font-semibold prose-th:text-foreground prose-th:tracking-tight",
-    "prose-th:border prose-th:border-border prose-th:px-4 prose-th:py-3 prose-th:bg-secondary/30",
-    "prose-td:border prose-td:border-border prose-td:px-4 prose-td:py-3 prose-td:text-muted-foreground",
-    "prose-table:rounded-card-lg prose-table:overflow-hidden prose-table:border prose-table:border-border",
+    // Tables - styled via scoped CSS below to enable scroll wrapper
+    "prose-th:font-heading prose-th:font-semibold prose-th:text-foreground prose-th:tracking-tight prose-th:bg-secondary/30",
+    "prose-th:border prose-th:border-border prose-th:px-4 prose-th:py-3",
+    "prose-td:border prose-td:border-border prose-td:px-4 prose-td:py-3 prose-td:text-muted-foreground prose-td:text-sm",
     className,
   )}
 >
   <slot />
 </div>
+
+<style>
+  /* Wrap every table in a scroll container so only the table scrolls on mobile */
+  div :global(table) {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    border-radius: var(--radius-card-lg);
+    border: 1px solid var(--color-border);
+  }
+</style>
