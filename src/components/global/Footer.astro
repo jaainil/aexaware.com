@@ -11,6 +11,8 @@ import {
   Calendar,
 } from "lucide-astro";
 import Logo from "@/assets/logo 2.svg";
+import ClutchLogo from "@/assets/clutch.svg";
+import GoodfirmsLogo from "@/assets/goodfirms.svg";
 import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 
 const currentYear = new Date().getFullYear();
@@ -162,6 +164,37 @@ const companyLinks = ["About", "Portfolio", "Blog", "Contact"];
               </a>
             ))
           }
+        </div>
+        <div class="pt-4 border-t border-border/30">
+          <p class="text-xs text-muted-foreground mb-4 uppercase tracking-wider font-medium">Recognitions & Reviews</p>
+          <div class="flex items-center gap-6 flex-wrap">
+            <a
+              href="https://clutch.co/profile/aexawareinfotech"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Clutch Profile"
+              class="group flex items-center justify-center px-4 py-2.5 rounded-lg bg-black/60 border border-border/50 hover:border-primary/30 transition-all duration-300"
+            >
+              <img
+                src={ClutchLogo.src}
+                alt="Clutch"
+                class="h-7 w-auto opacity-90 group-hover:opacity-100 transition-opacity object-contain"
+              />
+            </a>
+            <a
+              href="https://www.goodfirms.co/company/aexaware-infotech-pvt-ltd"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Goodfirms Profile"
+              class="group flex items-center justify-center px-4 py-2.5 rounded-lg bg-black/60 border border-border/50 hover:border-primary/30 transition-all duration-300"
+            >
+              <img
+                src={GoodfirmsLogo.src}
+                alt="Goodfirms"
+                class="h-7 w-auto opacity-90 group-hover:opacity-100 transition-opacity object-contain"
+              />
+            </a>
+          </div>
         </div>
       </div>
 
