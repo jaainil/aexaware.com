@@ -298,18 +298,18 @@ const differentiators = [
     <meta name="robots" content="index, follow" />
   </Fragment>
 
-  <section class="relative py-24 overflow-hidden">
+  <section class="relative py-32 overflow-hidden">
     <BackgroundGrid density="md" mask="both" class="absolute inset-0 -z-10" />
 
     <div class="container-normal">
 
       {/* ── HERO ── */}
-      <div class="text-center max-w-4xl mx-auto mb-10">
+      <div class="text-center max-w-4xl mx-auto mb-16">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
           <BarChart3 class="h-4 w-4" />
           Competitive Intelligence · Updated April 2026
         </div>
-        <h1 class="font-heading text-5xl md:text-6xl font-bold text-foreground mb-4">
+        <h1 class="font-heading text-5xl md:text-6xl font-bold text-foreground mb-6">
           Newer agency. Sharper tech.<br />
           <span class="text-primary">Zero billing surprises.</span>
         </h1>
@@ -319,10 +319,10 @@ const differentiators = [
       </div>
 
       {/* ── STATS BAR — visible immediately ── */}
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 max-w-4xl mx-auto">
         {stats.map((stat) => (
           <div class="bg-background rounded-card-lg p-6 border border-border/50 text-center">
-            <div class="text-4xl md:text-5xl font-bold text-primary mb-1">
+            <div class="text-4xl md:text-5xl font-bold text-primary mb-2">
               {stat.value}<span class="text-2xl">{stat.suffix}</span>
             </div>
             <div class="text-sm text-muted-foreground leading-tight">{stat.label}</div>
@@ -331,7 +331,7 @@ const differentiators = [
       </div>
 
       {/* ── TEAM PHOTO ── */}
-      <div class="mb-16 max-w-3xl mx-auto">
+      <div class="mb-20 max-w-3xl mx-auto">
         <div class="relative rounded-card-lg overflow-hidden border border-border/50">
           <img
             src={TeamImage.src}
