@@ -65,19 +65,19 @@ const homeFAQ = [
         "inLanguage": "en-US",
       }}
     />
-    <!-- ProfessionalService Schema (Local Business) -->
+    <!-- LocalBusiness Schema for GEO optimization -->
     <Schema
       item={{
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
+        "@type": "LocalBusiness",
+        "@id": `${siteUrl}/#localbusiness`,
         "name": "Aexaware Infotech",
         "image": `${siteUrl}/og-image.png`,
-        "@id": `${siteUrl}/#organization`,
         "url": siteUrl,
         "telephone": "+918140734392",
         "email": "info@aexaware.com",
         "priceRange": "$$$",
-        "description": "Full-service software development company specializing in web development, mobile apps, AI/ML integration, DevOps, cloud solutions, UI/UX design, and e-commerce development. Founded in 2024, based in Vadodara, Gujarat, India.",
+        "description": "Aexaware Infotech is a software development company in Vadodara, Gujarat, India. We build scalable web apps, mobile apps, AI/ML solutions, and cloud infrastructure for startups and enterprises worldwide.",
         "founder": {
           "@type": "Person",
           "name": "Axit Padaliya",
@@ -115,6 +115,8 @@ const homeFAQ = [
           "https://www.youtube.com/@aexaware"
         ],
         "areaServed": [
+          { "@type": "City", "name": "Vadodara" },
+          { "@type": "State", "name": "Gujarat" },
           { "@type": "Country", "name": "India" },
           { "@type": "Country", "name": "United States" },
           { "@type": "Country", "name": "United Kingdom" },
@@ -134,7 +136,6 @@ const homeFAQ = [
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce Development", "url": `${siteUrl}/services/ecommerce` } },
           ]
         },
-        "serviceType": ["Web Development", "Mobile App Development", "AI/ML Solutions", "Cloud DevOps", "UI/UX Design", "E-commerce Development"],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5",

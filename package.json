@@ -57,7 +57,7 @@
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
     "schema-dts": "^1.1.5",
-    "shadcn": "^4.5.0",
+    "shadcn": "^4.6.0",
     "sharp": "^0.34.5",
     "simple-icons-astro": "^16.1.0",
     "tailwind-merge": "^3.5.0",
@@ -84,7 +84,7 @@
     "remark-mdx-images": "^3.0.0",
     "tailwindcss": "^4.2.4",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.59.0",
+    "typescript-eslint": "^8.59.1",
     "vite": "^7.3.2"
   }
 }

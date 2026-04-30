@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets";
+import { Linkedin, Twitter, Github, Globe } from "lucide-astro";
+import { cn } from "@/lib/utils";
+
+interface AuthorData {
+  name: string;
+  title?: string;
+  bio?: string;
+  image?: any;
+  twitter?: string;
+  github?: string;
+  linkedin?: string;
+}
+
+interface Props {
+  author: AuthorData;
+  class?: string;
+}
+
+const { author, class: className } = Astro.props;
+
+const socialLinks = [
+  author.linkedin && {
+    href: author.linkedin,
+    icon: Linkedin,
+    label: "LinkedIn",
+  },
+  author.twitter && {
+    href: author.twitter,
+    icon: Twitter,
+    label: "Twitter",
+  },
+  author.github && {
+    href: author.github,
+    icon: Github,
+    label: "GitHub",
+  },
+].filter(Boolean);
+---
+
+<div
+  class={cn(
+    "flex flex-col sm:flex-row gap-6 p-6 rounded-3xl bg-muted/30 border border-border/50",
+    className
+  )}
+>
+  <div class="shrink-0">
+    {
+      author.image ? (
+        <Image
+          src={author.image}
+          alt={author.name}
+          width={80}
+          height={80}
+          class="size-20 rounded-full object-cover border-2 border-border"
+        />
+      ) : (
+        <div class="size-20 rounded-full bg-primary/10 flex items-center justify-center border-2 border-border">
+          <span class="text-2xl font-bold text-primary">
+            {author.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </span>
+        </div>
+      )
+    }
+  </div>
+
+  <div class="flex-1 min-w-0">
+    <div class="flex flex-wrap items-center gap-3 mb-2">
+      <h3 class="font-heading text-xl font-bold text-foreground">
+        {author.name}
+      </h3>
+      {
+        author.title && (
+          <span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
+            {author.title}
+          </span>
+        )
+      }
+    </div>
+
+    {
+      author.bio && (
+        <p class="text-muted-foreground text-sm leading-relaxed mb-4">
+          {author.bio}
+        </p>
+      )
+    }
+
+    {
+      socialLinks.length > 0 && (
+        <div class="flex items-center gap-3">
+          {socialLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              aria-label={`Follow on ${link.label}`}
+            >
+              <link.icon className="size-4" />
+              <span class="sr-only">{link.label}</span>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>

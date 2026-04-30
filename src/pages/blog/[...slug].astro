@@ -11,6 +11,7 @@ import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 import CTA from "@/components/home/CTA.astro";
 import Prose from "@/components/blog/Prose.astro";
 import MobileBlogDock from "@/components/blog/MobileBlogDock.astro";
+import AuthorBio from "@/components/blog/AuthorBio.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -22,6 +23,25 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content, headings, remarkPluginFrontmatter } = await render(post);
+
+// Resolve author data from slug
+const authors = await getCollection("authors");
+const authorSlug = post.data.author;
+const authorEntry = authors.find((a) => a.id === authorSlug);
+const authorData = authorEntry
+  ? {
+      name: authorEntry.data.name,
+      title: authorEntry.data.title || "Software Engineer",
+      bio: authorEntry.data.bio,
+      image: authorEntry.data.image,
+      twitter: authorEntry.data.twitter?.toString(),
+      github: authorEntry.data.github?.toString(),
+      linkedin: authorEntry.data.linkedin?.toString(),
+    }
+  : {
+      name: authorSlug.split("-").map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(" "),
+      title: "Software Engineer",
+    };
 
 // Helper to format date
 const formatDate = (date: Date) => {
@@ -43,7 +63,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
   type="article"
   publishedTime={post.data.date.toISOString()}
   modifiedTime={post.data.date.toISOString()}
-  author={post.data.author}
+  author={authorData.name}
 >
   {/* Person Schema for Author with credentials */}
   <Schema
@@ -51,9 +71,11 @@ const siteUrl = Astro.site || "https://aexaware.com";
     item={{
       "@context": "https://schema.org",
       "@type": "Person",
-      name: post.data.author,
-      jobTitle: post.data.authorTitle || "Software Engineer",
+      name: authorData.name,
+      jobTitle: authorData.title,
+      description: authorData.bio,
       url: siteUrl.toString(),
+      ...(authorData.linkedin && { sameAs: [authorData.linkedin] }),
       worksFor: {
         "@type": "Organization",
         name: "Aexaware Infotech",
@@ -94,9 +116,16 @@ const siteUrl = Astro.site || "https://aexaware.com";
       dateModified: post.data.date.toISOString(),
       author: {
         "@type": "Person",
-        name: post.data.author,
-        jobTitle: post.data.authorTitle || "Software Engineer",
-        url: siteUrl.toString(),
+        name: authorData.name,
+        jobTitle: authorData.title,
+        description: authorData.bio,
+        url: authorData.linkedin || siteUrl.toString(),
+        ...(authorData.image && {
+          image: {
+            "@type": "ImageObject",
+            url: new URL(authorData.image.src, siteUrl).href,
+          }
+        }),
         worksFor: {
           "@type": "Organization",
           name: "Aexaware Infotech",
@@ -129,8 +158,8 @@ const siteUrl = Astro.site || "https://aexaware.com";
         "@type": "SpeakableSpecification",
         cssSelector: ["article h1", "article [data-description]", "article .prose h2"],
       },
-      wordCount: remarkPluginFrontmatter.minutesRead 
-        ? parseInt(remarkPluginFrontmatter.minutesRead) * 250 
+      wordCount: remarkPluginFrontmatter.minutesRead
+        ? parseInt(remarkPluginFrontmatter.minutesRead) * 250
         : undefined,
     }}
   />
@@ -209,8 +238,7 @@ const siteUrl = Astro.site || "https://aexaware.com";
               >
                 <User className="size-4" />
               </div>
-              <span class="font-medium text-foreground">{post.data.author}</span
-              >
+              <span class="font-medium text-foreground">{authorData.name}</span>
             </div>
             <div class="flex items-center gap-2">
               <Calendar className="size-4" />
@@ -261,6 +289,9 @@ const siteUrl = Astro.site || "https://aexaware.com";
           </Prose>
 
           <ReadNext currentSlug={post.id} />
+
+          <AuthorBio author={authorData} class="mt-12" />
+
           <Comments />
         </div>
 

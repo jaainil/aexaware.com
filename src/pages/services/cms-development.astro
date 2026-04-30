@@ -99,6 +99,29 @@ const techStack = [
     "MySQL",
     "GraphQL",
 ];
+
+const faqs = [
+    {
+        question: "Which CMS is right for my business?",
+        answer: "WordPress is ideal for blogs and straightforward sites with a massive plugin ecosystem. Shopify excels at e-commerce. Headless CMS (Sanity, Strapi, Contentful) suits projects needing maximum performance and custom frontends. We help you choose based on content complexity, e-commerce needs, and scalability requirements.",
+    },
+    {
+        question: "Can you migrate our existing website to a new CMS?",
+        answer: "Yes, we specialize in CMS migrations with zero content loss. We handle data migration, URL redirects for SEO preservation, and provide training so your team feels confident with the new platform.",
+    },
+    {
+        question: "How long does WordPress development take?",
+        answer: "Simple WordPress sites take 3-5 weeks, while custom themes with advanced functionality take 6-10 weeks. E-commerce with Shopify typically takes 4-8 weeks for custom builds.",
+    },
+    {
+        question: "Do you provide ongoing support after CMS launch?",
+        answer: "Yes, we offer maintenance packages including security updates, plugin updates, performance optimization, and content support. We also provide training sessions for your team.",
+    },
+    {
+        question: "What is headless CMS and do we need one?",
+        answer: "A headless CMS separates content management from the frontend display. You get an intuitive admin interface with full control over content, while your frontend (React, Next.js) consumes content via API. Ideal for performance-critical sites, multi-channel content, or complex content relationships.",
+    },
+];
 ---
 
 <ServicePageLayout
@@ -117,4 +140,5 @@ const techStack = [
     whyChooseTitle="Why WordPress & Modern CMS"
     whyChooseDescription="The right CMS transforms how your team creates and manages content."
     techStack={techStack}
+    faqs={faqs}
 />
