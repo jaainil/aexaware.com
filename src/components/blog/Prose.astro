@@ -63,15 +63,29 @@ const sizeClasses = {
 </div>
 
 <style>
-  /* Wrap every table in a scroll container so only the table scrolls on mobile */
-  div :global(table) {
+  div :global(.table-scroll-wrapper) {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+  }
+
+  div :global(table) {
+    display: table;
+    width: 100%;
+    margin: 0;
     border-collapse: collapse;
     font-size: 0.875rem;
-    border-radius: var(--radius-card-lg);
-    border: 1px solid var(--color-border);
   }
 </style>
+
+<script>
+  // Wrap every table in a scroll div for overflow + border-radius
+  document.querySelectorAll(".prose table").forEach((table) => {
+    if (table.parentElement?.classList.contains("table-scroll-wrapper")) return;
+    const wrapper = document.createElement("div");
+    wrapper.className = "table-scroll-wrapper";
+    table.parentNode?.insertBefore(wrapper, table);
+    wrapper.appendChild(table);
+  });
+</script>
