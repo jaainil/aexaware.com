@@ -19,9 +19,7 @@ import readingTime from "astro-reading-time";
 // https://astro.build/config
 export default defineConfig({
   site: "https://aexaware.com",
-  experimental: {
-    rustCompiler: true,
-  },
+
   // FIX: Updated from boolean to object for Astro 4/5+
   prefetch: {
     prefetchAll: false,
@@ -527,11 +525,6 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
     host: true, // Listens on all addresses (0.0.0.0)
     // FIX: Explicitly allow only your production domain and localhost to prevent Host Header attacks
     allowedHosts: ["aexaware.com", "localhost", ".aexaware.com"],
-  },
-
-  // Enable caching for incremental builds
-  cache: {
-    enabled: true,
   },
 
   // Developer Experience
