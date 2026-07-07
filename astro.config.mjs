@@ -496,11 +496,14 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
     }),
 
     // Optimization (Always keep last)
-    compress(),
-    compressor({
-      gzip: true,
-      brotli: true,
-    }),
+  compress(),
+  compress({
+    CSS: false,
+      }),
+     compressor({
+       gzip: true,
+       brotli: true,
+     }),
   ],
 
   output: "static",
