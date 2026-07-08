@@ -496,14 +496,16 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
     }),
 
     // Optimization (Always keep last)
-  compress(),
-  compress({
-    CSS: false,
-      }),
-     compressor({
-       gzip: true,
-       brotli: true,
-     }),
+    // NOTE: Single @playform/compress pass — CSS is skipped because Vite/Rollup
+    // already minifies CSS during the build step. Running it again wastes memory
+    // and was causing SIGKILL (OOM) in CI when combined with astro-compressor.
+    compress({
+      CSS: false,
+    }),
+    compressor({
+      gzip: true,
+      brotli: true,
+    }),
   ],
 
   output: "static",
