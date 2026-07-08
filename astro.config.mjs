@@ -502,9 +502,12 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
     compress({
       CSS: false,
     }),
+    // NOTE: Brotli disabled — it is ~10x more CPU/memory intensive than gzip and
+    // was silently OOM-killing the GitHub Actions runner after compressing 174 files.
+    // Gzip pre-compression is sufficient for Coolify/Nginx serving.
     compressor({
       gzip: true,
-      brotli: true,
+      brotli: false,
     }),
   ],
 
