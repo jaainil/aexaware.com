@@ -9,7 +9,6 @@ import mermaid from "astro-mermaid";
 import robotsTxt from "astro-robots-txt";
 import umami from "@yeskunall/astro-umami";
 import pageMarkdown from "@nuasite/llm-enhancements";
-import compressor from "astro-compressor";
 import writenex from "@imjp/writenex-astro";
 
 // Reading time integration (must come before mdx)
@@ -495,13 +494,6 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
     }),
 
 
-    // NOTE: Brotli disabled — it is ~10x more CPU/memory intensive than gzip and
-    // was silently OOM-killing the GitHub Actions runner after compressing 174 files.
-    // Gzip pre-compression is sufficient for Coolify/Nginx serving.
-    compressor({
-      gzip: true,
-      brotli: false,
-    }),
   ],
 
   output: "static",
