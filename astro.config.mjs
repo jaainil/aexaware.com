@@ -10,7 +10,6 @@ import robotsTxt from "astro-robots-txt";
 import umami from "@yeskunall/astro-umami";
 import pageMarkdown from "@nuasite/llm-enhancements";
 import compressor from "astro-compressor";
-import compress from "@playform/compress";
 import writenex from "@imjp/writenex-astro";
 
 // Reading time integration (must come before mdx)
@@ -495,19 +494,7 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
       ],
     }),
 
-    // Optimization (Always keep last)
-    // NOTE: Single @playform/compress pass — CSS is skipped because Vite/Rollup
-    // already minifies CSS during the build step. Running it again wastes memory
-    // and was causing SIGKILL (OOM) in CI when combined with astro-compressor.
-    compress({
-      CSS: false,
-      HTML: {
-        "html-minifier-terser": {
-          minifyCSS: false,
-          removeAttributeQuotes: false,
-        }
-      }
-    }),
+
     // NOTE: Brotli disabled — it is ~10x more CPU/memory intensive than gzip and
     // was silently OOM-killing the GitHub Actions runner after compressing 174 files.
     // Gzip pre-compression is sufficient for Coolify/Nginx serving.
