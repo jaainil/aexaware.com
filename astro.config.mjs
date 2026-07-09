@@ -501,6 +501,12 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
     // and was causing SIGKILL (OOM) in CI when combined with astro-compressor.
     compress({
       CSS: false,
+      HTML: {
+        "html-minifier-terser": {
+          minifyCSS: false,
+          removeAttributeQuotes: false,
+        }
+      }
     }),
     // NOTE: Brotli disabled — it is ~10x more CPU/memory intensive than gzip and
     // was silently OOM-killing the GitHub Actions runner after compressing 174 files.
