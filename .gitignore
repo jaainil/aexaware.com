@@ -76,3 +76,8 @@ scripts/*.tmp
 # ---------------------------------------------------
 .kilocodemodes
 nul
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
