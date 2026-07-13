@@ -14,6 +14,8 @@ import writenex from "@imjp/writenex-astro";
 // Reading time integration (must come before mdx)
 import readingTime from "astro-reading-time";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://aexaware.com",
@@ -529,4 +531,5 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
     },
   },
 
+  adapter: cloudflare(),
 });
