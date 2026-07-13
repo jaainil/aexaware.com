@@ -1,6 +1,4 @@
 ---
-import IndustriesMarquee from "@/components/react/IndustriesMarquee";
-
 const industries = [
   "Finance & Banking",
   "E-Commerce & Retail",
@@ -16,6 +14,9 @@ const industries = [
 
 const firstRow = industries.slice(0, Math.ceil(industries.length / 2));
 const secondRow = industries.slice(Math.ceil(industries.length / 2));
+
+// ponytail: pure-CSS marquee, mirrors TechStackMarquee.astro — drops the react-fast-marquee island.
+const loop = (row: string[]) => [...row, ...row, ...row, ...row];
 ---
 
 <section
@@ -40,27 +41,64 @@ const secondRow = industries.slice(Math.ceil(industries.length / 2));
   </div>
 
   <div class="flex flex-col gap-10 relative z-10">
-    {
-      /* NOTE: I removed the absolute "Fade Masks" from here. 
-        They are now handled inside the React component so they rotate correctly with the marquee.
-    */
-    }
-
     <div
       class="-rotate-1 hover:rotate-0 transition-transform duration-700 ease-out will-change-transform"
     >
-      <IndustriesMarquee client:visible items={firstRow} speed={40} />
+      <div
+        class="relative flex overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4"
+      >
+        <div class="flex animate-marquee min-w-full items-center">
+          {
+            loop(firstRow).map((name) => (
+              <div class="mx-3 px-6 md:px-8 py-3 rounded-full text-sm md:text-base font-medium whitespace-nowrap shadow-xs border border-border/50 bg-background/50 backdrop-blur-md text-foreground/80 hover:text-primary transition-all duration-300 hover:bg-secondary/80 hover:border-primary/20 cursor-default select-none shrink-0">
+                {name}
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
 
     <div
       class="rotate-1 hover:rotate-0 transition-transform duration-700 ease-out will-change-transform"
     >
-      <IndustriesMarquee
-        client:visible
-        items={secondRow}
-        direction="right"
-        speed={40}
-      />
+      <div
+        class="relative flex overflow-hidden mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] py-4"
+      >
+        <div class="flex animate-marquee-reverse min-w-full items-center">
+          {
+            loop(secondRow).map((name) => (
+              <div class="mx-3 px-6 md:px-8 py-3 rounded-full text-sm md:text-base font-medium whitespace-nowrap shadow-xs border border-border/50 bg-background/50 backdrop-blur-md text-foreground/80 hover:text-primary transition-all duration-300 hover:bg-secondary/80 hover:border-primary/20 cursor-default select-none shrink-0">
+                {name}
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee 40s linear infinite reverse;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee:hover,
+  .animate-marquee-reverse:hover {
+    animation-play-state: paused;
+  }
+</style>
