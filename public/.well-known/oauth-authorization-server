@@ -1,0 +1,25 @@
+{
+  "issuer": "https://aexaware.com",
+  "authorization_endpoint": "https://aexaware.com/contact",
+  "token_endpoint": null,
+  "jwks_uri": null,
+  "response_types_supported": [],
+  "grant_types_supported": [],
+  "token_endpoint_auth_methods_supported": [],
+  "scopes_supported": [],
+  "subject_types_supported": ["public"],
+  "service_documentation": "https://aexaware.com/services",
+  "op_policy_uri": "https://aexaware.com/privacy-policy",
+  "op_tos_uri": "https://aexaware.com/terms",
+  "registration_endpoint": null,
+  "agent_auth": {
+    "skill": "https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md",
+    "register_uri": "https://aexaware.com/contact",
+    "identity_types_supported": ["anonymous"],
+    "anonymous": {
+      "credential_types_supported": [],
+      "claim_uri": "https://aexaware.com/contact"
+    }
+  },
+  "_comment": "Aexaware Infotech does not currently operate an OAuth authorization server. This document is published for agent discovery compliance. Agents may contact us via https://aexaware.com/contact for API access."
+}

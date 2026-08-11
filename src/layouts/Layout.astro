@@ -111,6 +111,11 @@ const twitterHandle = "@aexaware";
     
     {import.meta.env.PROD && <link rel="sitemap" href="/sitemap-index.xml" />}
     
+    {/* RFC 8288 Link relations for agent discovery */}
+    <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
+    <link rel="describedby" href="/llms.txt" type="text/plain" />
+    <link rel="service-desc" href="/.well-known/mcp/server-card.json" type="application/json" />
+
     <Schema
       item={{
         '@context': 'https://schema.org',
@@ -228,5 +233,110 @@ const twitterHandle = "@aexaware";
     
     <Footer />
     <BackToTop />
+
+    {/* WebMCP - Expose site tools to AI agents via the browser (https://webmachinelearning.github.io/webmcp/) */}
+    <script is:inline>
+      (function () {
+        if (typeof navigator === "undefined" || !("modelContext" in navigator)) return;
+        var mc = navigator.modelContext;
+        if (typeof mc === "undefined" || typeof mc.registerTool !== "function") return;
+
+        var controller = new AbortController();
+        var signal = controller.signal;
+
+        // Tool: Search the blog
+        mc.registerTool({
+          name: "search_blog",
+          description: "Search Aexaware Infotech's engineering blog for articles on web development, AI/ML, DevOps, and software engineering.",
+          inputSchema: {
+            type: "object",
+            properties: {
+              query: { type: "string", description: "Search term or topic to look up" }
+            },
+            required: ["query"]
+          },
+          execute: function (params) {
+            var query = params.query;
+            window.location.href = "/blog?q=" + encodeURIComponent(query);
+            return Promise.resolve({ redirected: true, url: "/blog?q=" + encodeURIComponent(query) });
+          }
+        }, { signal: signal });
+
+        // Tool: Get services list
+        mc.registerTool({
+          name: "list_services",
+          description: "Get the full list of software development services offered by Aexaware Infotech, including web, mobile, AI/ML, cloud, and design services.",
+          inputSchema: { type: "object", properties: {} },
+          execute: function () {
+            return Promise.resolve({
+              services: [
+                { name: "Web Development", url: "https://aexaware.com/services/web-development", stack: "React, Next.js, Node.js, Python, PHP" },
+                { name: "Mobile Development", url: "https://aexaware.com/services/mobile-development", stack: "React Native, Flutter, iOS, Android" },
+                { name: "AI/ML Integration", url: "https://aexaware.com/services/ai-ml-integration", stack: "LLM agents, TensorFlow, PyTorch, LangChain" },
+                { name: "AI Agent Development", url: "https://aexaware.com/services/ai-agent-development", stack: "Autonomous agents, RAG, multi-agent systems" },
+                { name: "Generative AI", url: "https://aexaware.com/services/generative-ai", stack: "ChatGPT, Claude, Gemini, custom LLMs" },
+                { name: "Cloud & DevOps", url: "https://aexaware.com/services/cloud-devops", stack: "AWS, GCP, Azure, Kubernetes, Terraform" },
+                { name: "UI/UX Design", url: "https://aexaware.com/services/ui-ux-design", stack: "Figma, design systems, user research" },
+                { name: "E-Commerce Development", url: "https://aexaware.com/services/ecommerce", stack: "WooCommerce, custom platforms" },
+                { name: "CMS Development", url: "https://aexaware.com/services/cms-development", stack: "WordPress, Ghost, headless CMS" },
+                { name: "MVP Development", url: "https://aexaware.com/services/mvp-development", stack: "Rapid prototyping, idea validation" },
+                { name: "Data Science", url: "https://aexaware.com/services/data-science", stack: "Statistical modeling, EDA, ML workflows" },
+                { name: "Big Data Solutions", url: "https://aexaware.com/services/big-data-solutions", stack: "Spark, Kafka, ETL, data lakes" },
+                { name: "Digital Marketing", url: "https://aexaware.com/services/digital-marketing", stack: "SEO, SEM, content marketing" },
+                { name: "Branding & Positioning", url: "https://aexaware.com/services/branding-positioning", stack: "Brand identity, visual strategy" },
+                { name: "Extended Team", url: "https://aexaware.com/services/extended-team", stack: "Staff augmentation, dedicated developers" },
+                { name: "White Label Services", url: "https://aexaware.com/services/white-label-services", stack: "White-label development for agencies" },
+                { name: "IoT Solutions", url: "https://aexaware.com/services/iot", stack: "Connected devices, firmware, IoT dashboards" },
+                { name: "Software Solutions", url: "https://aexaware.com/services/software-solutions", stack: "Enterprise software, SaaS platforms" },
+                { name: "AI Image & Video", url: "https://aexaware.com/services/ai-image-video-generation", stack: "Stable Diffusion, DALL-E, Sora" }
+              ]
+            });
+          }
+        }, { signal: signal });
+
+        // Tool: Get company contact info
+        mc.registerTool({
+          name: "get_contact_info",
+          description: "Get Aexaware Infotech's contact information, office address, and ways to start a project.",
+          inputSchema: { type: "object", properties: {} },
+          execute: function () {
+            return Promise.resolve({
+              company: "Aexaware Infotech",
+              email: "hello@aexaware.com",
+              phone: "+91 81407 34392",
+              address: "Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road, Sevasi, Vadodara, Gujarat 391101, India",
+              contact_url: "https://aexaware.com/contact",
+              start_project_url: "https://aexaware.com/start-project",
+              book_call_url: "https://cal.com/aexaware-infotech",
+              social: {
+                linkedin: "https://www.linkedin.com/company/aexaware",
+                twitter: "https://twitter.com/aexaware",
+                github: "https://github.com/aexaware"
+              }
+            });
+          }
+        }, { signal: signal });
+
+        // Tool: Get portfolio case studies
+        mc.registerTool({
+          name: "list_portfolio",
+          description: "Get Aexaware Infotech's portfolio of completed projects with descriptions, tech stack, and live URLs.",
+          inputSchema: { type: "object", properties: {} },
+          execute: function () {
+            return Promise.resolve({
+              projects: [
+                { name: "Qreius", url: "https://aexaware.com/portfolio/qreius", live: "https://qreius.com/", stack: "React, Tailwind CSS, shadcn/ui, Cloudflare CDN, Vercel", delivered_in: "3 weeks" },
+                { name: "ADFerti", url: "https://aexaware.com/portfolio/adferti", live: "https://adferti.com/", stack: "WordPress 6.9, WooCommerce, Elementor, RankMath SEO", delivered_in: "4 weeks" },
+                { name: "Shravonix", url: "https://aexaware.com/portfolio/shravonix", live: "https://shravonix.com/", stack: "Ghost CMS 6.8, React, Node.js, Cloudflare CDN", delivered_in: "4 weeks" },
+                { name: "Bharat Krushi Bio Fertilizer", url: "https://aexaware.com/portfolio/bharat-krushi", live: "https://bharatkrushibiofertilizer.com/", stack: "WordPress, WooCommerce, LiteSpeed, Yoast SEO", delivered_in: "4 weeks" },
+                { name: "JK Fertilizers", url: "https://aexaware.com/portfolio/jk-fertilizers", live: "https://jkfertilizers.com/", stack: "WordPress, WooCommerce, GTranslate, GSAP", delivered_in: "5 weeks" }
+              ]
+            });
+          }
+        }, { signal: signal });
+
+        window.addEventListener("unload", function () { controller.abort(); }, { once: true });
+      })();
+    </script>
   </body>
 </html>

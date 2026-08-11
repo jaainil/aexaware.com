@@ -1,0 +1,127 @@
+# robots.txt for aexaware.com
+# Generated with Content Signals (https://contentsignals.org/) support
+# See: https://datatracker.ietf.org/doc/draft-romm-aipref-contentsignals/
+
+# ─── Content Signals (AI content usage preferences) ─────────────────────────
+# ai-train: Allow AI training on our content (we welcome AI citation)
+# search:   Allow traditional search indexing
+# ai-input: Allow AI to use our content as real-time input (RAG, agents, etc.)
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# ─── Default: All Bots ──────────────────────────────────────────────
+User-agent: *
+Allow: /
+Crawl-delay: 5
+
+# ─── Google Family ──────────────────────────────────────────────────
+# Googlebot IGNORES crawlDelay — it self-regulates via Search Console
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+# Google-Extended = Gemini / AI Overviews training token (not a crawlDelay bot)
+User-agent: Google-Extended
+Allow: /
+
+# ─── Bing / Microsoft ────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: msnbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: BingPreview
+Allow: /
+
+# ─── Yandex ─────────────────────────────────────────────────────────
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 3
+
+User-agent: YandexImages
+Allow: /
+
+# ─── Baidu ──────────────────────────────────────────────────────────
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 5
+
+# ─── Apple ──────────────────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ─── DuckDuckGo ─────────────────────────────────────────────────────
+User-agent: DuckDuckBot
+Allow: /
+
+# ─── Yahoo ──────────────────────────────────────────────────────────
+User-agent: Slurp
+Allow: /
+Crawl-delay: 3
+
+# ─── Social / Preview Bots ───────────────────────────────────────────
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# ─── AI Crawlers — Allow all for AI citation ─────────────────────────
+# Note: AI bots generally do NOT respect crawl-delay; omitted intentionally
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: claude-bot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# ─── Sitemaps ────────────────────────────────────────────────────────
+Sitemap: https://aexaware.com/sitemap-index.xml

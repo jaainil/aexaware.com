@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "mcp-server-card",
+      "type": "skill-md",
+      "description": "MCP Server Card (SEP-1649) for Aexaware Infotech describing site capabilities and resource endpoints for AI agent discovery",
+      "url": "https://aexaware.com/.well-known/mcp/server-card.json",
+      "digest": "sha256:36b7b6eda1a5e3fcf05971c98eb745c6f1de24a0d62d22a8a841291153e120b9"
+    }
+  ]
+}

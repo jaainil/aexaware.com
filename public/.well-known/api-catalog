@@ -1,0 +1,55 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://aexaware.com/",
+      "service-desc": [
+        {
+          "href": "https://aexaware.com/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://aexaware.com/services",
+          "type": "text/html"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://aexaware.com/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "anchor": "https://aexaware.com/services",
+      "service-doc": [
+        {
+          "href": "https://aexaware.com/services",
+          "type": "text/html"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://aexaware.com/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://aexaware.com/blog",
+      "service-doc": [
+        {
+          "href": "https://aexaware.com/blog",
+          "type": "text/html"
+        }
+      ],
+      "alternate": [
+        {
+          "href": "https://aexaware.com/rss.xml",
+          "type": "application/rss+xml"
+        }
+      ]
+    }
+  ]
+}

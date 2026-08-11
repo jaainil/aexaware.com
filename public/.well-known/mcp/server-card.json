@@ -1,0 +1,37 @@
+{
+  "serverInfo": {
+    "name": "Aexaware Infotech",
+    "version": "1.0.0",
+    "description": "Aexaware Infotech - Full-service software development company. Web, Mobile, AI/ML, Cloud & DevOps solutions.",
+    "homepage": "https://aexaware.com",
+    "contact": {
+      "email": "hello@aexaware.com",
+      "url": "https://aexaware.com/contact"
+    }
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://aexaware.com"
+  },
+  "capabilities": {
+    "resources": {
+      "description": "Site content, blog posts, service pages, portfolio case studies, and company information",
+      "endpoints": [
+        { "path": "/llms.txt", "description": "LLMs.txt - machine-readable site overview for AI agents" },
+        { "path": "/llms-full.txt", "description": "Full LLMs.txt with complete content for AI agents" },
+        { "path": "/sitemap-0.xml", "description": "XML sitemap of all pages" },
+        { "path": "/rss.xml", "description": "RSS feed for blog posts" },
+        { "path": "/.well-known/api-catalog", "description": "API catalog (RFC 9727)" }
+      ]
+    },
+    "prompts": {
+      "description": "Contact and project inquiry workflows",
+      "endpoints": [
+        { "path": "/contact", "description": "Contact form for inquiries" },
+        { "path": "/start-project", "description": "Start a new project inquiry" }
+      ]
+    }
+  },
+  "protocolVersion": "2025-03-26",
+  "schema": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127"
+}
