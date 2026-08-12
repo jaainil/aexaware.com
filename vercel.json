@@ -6,6 +6,10 @@
         {
           "key": "Link",
           "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </llms.txt>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"service-desc\", </services>; rel=\"service-doc\""
+        },
+        {
+          "key": "Content-Signal",
+          "value": "ai-train=yes, search=yes, ai-input=yes"
         }
       ]
     },

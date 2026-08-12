@@ -6,10 +6,10 @@
 # ai-train: Allow AI training on our content (we welcome AI citation)
 # search:   Allow traditional search indexing
 # ai-input: Allow AI to use our content as real-time input (RAG, agents, etc.)
-Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # ─── Default: All Bots ──────────────────────────────────────────────
 User-agent: *
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 Allow: /
 Crawl-delay: 5
 
