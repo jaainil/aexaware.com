@@ -10,6 +10,7 @@ RUN echo 'server { \
     listen 80; \
     root /usr/share/nginx/html; \
     index index.html; \
+    add_header Link "</.well-known/api-catalog>; rel=\"api-catalog\", </llms.txt>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"service-desc\", </services>; rel=\"service-doc\""; \
     location / { \
     try_files $uri $uri/ $uri.html /index.html; \
     } \
