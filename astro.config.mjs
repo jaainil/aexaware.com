@@ -43,7 +43,7 @@ export default defineConfig({
           "Aexaware Infotech is a full-service software development company based in Vadodara, Gujarat, India. Founded in 2024, we help startups and enterprises turn ideas into scalable web, mobile, AI/ML, and cloud solutions. Our team specializes in React, Next.js, Node.js, Python, and modern cloud infrastructure.",
         additionalContent: `## Sitemap
 
-Full sitemap: https://aexaware.com/sitemap-0.xml
+Full sitemap: https://aexaware.com/sitemap-index.xml
 
 ## Services (All 19 Pages)
 
@@ -121,7 +121,7 @@ Twitter/X: https://twitter.com/aexaware
 
 ## Sitemap
 
-XML Sitemap: https://aexaware.com/sitemap-0.xml
+XML Sitemap: https://aexaware.com/sitemap-index.xml
 
 ## Key Pages
 
