@@ -1,9 +1,15 @@
 {
   "resource": "https://aexaware.com",
-  "authorization_servers": [],
-  "scopes_supported": [],
-  "bearer_methods_supported": ["header"],
+  "authorization_servers": [
+    "https://aexaware.com"
+  ],
+  "scopes_supported": [
+    "read"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
   "resource_documentation": "https://aexaware.com/services",
   "resource_name": "Aexaware Infotech Website",
-  "resource_description": "Aexaware Infotech is a public informational website. No authentication is required to access content. Protected endpoints (if any) will return WWW-Authenticate with resource_metadata pointing to this document."
+  "resource_description": "Aexaware Infotech provides software development, AI agents, and cloud consulting. Protected resources accept OAuth Bearer tokens in headers."
 }

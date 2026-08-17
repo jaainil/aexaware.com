@@ -332,6 +332,16 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
     }),
     robotsTxt({
       sitemap: true,
+      transform(content) {
+        const topHeader = "Content-Signal: ai-train=yes, search=yes, ai-input=yes\n\n";
+        return (
+          topHeader +
+          content.replace(
+            "User-agent: *\n",
+            "User-agent: *\nContent-Signal: ai-train=yes, search=yes, ai-input=yes\n"
+          )
+        );
+      },
       policy: [
         // ─── Default: All Bots ──────────────────────────────────────────────
         {

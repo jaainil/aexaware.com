@@ -59,6 +59,15 @@ export async function onRequest(context) {
 
   const response = await context.next();
   response.headers.append("Vary", "Accept");
+  if (!response.headers.has("Link")) {
+    response.headers.set(
+      "Link",
+      '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </services>; rel="service-doc", </auth.md>; rel="author-doc"'
+    );
+  }
+  if (!response.headers.has("Content-Signal")) {
+    response.headers.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
+  }
   return response;
 }
 

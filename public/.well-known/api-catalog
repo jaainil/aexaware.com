@@ -6,6 +6,10 @@
         {
           "href": "https://aexaware.com/.well-known/api-catalog",
           "type": "application/linkset+json"
+        },
+        {
+          "href": "https://aexaware.com/.well-known/http-message-signatures-directory",
+          "type": "application/http-message-signatures-directory+json"
         }
       ],
       "service-doc": [
