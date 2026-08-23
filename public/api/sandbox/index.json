@@ -1,0 +1,8 @@
+{
+  "status": "success",
+  "environment": "sandbox",
+  "message": "Sandbox root endpoint active. Use /api/inquiry/sandbox to test write actions.",
+  "quota_remaining": 9980,
+  "timestamp": "2026-08-23T19:43:00.000Z",
+  "resolution_hint": "Sandbox mode allows agents and developers to test integrations without triggering live transactional operations."
+}

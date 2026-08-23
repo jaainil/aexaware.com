@@ -62,6 +62,72 @@
         }
       }
     },
+    "/api/keys/provision": {
+      "post": {
+        "tags": ["Self-Serve Authentication"],
+        "summary": "Programmatically provision a free sandbox API key",
+        "description": "Instantly generates an ephemeral sandbox API key for autonomous AI agents and developers. Zero credit card or sales form required.",
+        "operationId": "provisionApiKey",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "agent_name": { "type": "string", "example": "ClaudeAgent" },
+                  "client_email": { "type": "string", "example": "agent@example.com" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "API Key successfully provisioned",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "success" },
+                    "api_key": { "type": "string", "example": "aex_free_8f93e1b742a0d9e2" },
+                    "tier": { "type": "string", "example": "developer_free_trial" },
+                    "monthly_quota": { "type": "integer", "example": 10000 },
+                    "rate_limit": { "type": "string", "example": "120 req/min" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/inquiry/sandbox": {
+      "post": {
+        "tags": ["Sandbox Environment"],
+        "summary": "Simulate a project inquiry submission in test sandbox",
+        "description": "Enables agents to test inquiry submissions without triggering real-world emails or sales contacts.",
+        "operationId": "submitSandboxInquiry",
+        "responses": {
+          "200": {
+            "description": "Sandbox inquiry response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "success" },
+                    "environment": { "type": "string", "example": "sandbox" },
+                    "message": { "type": "string", "example": "Sandbox request executed successfully." }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/openapi.yaml": {
       "get": {
         "tags": ["Metadata & Catalogs"],

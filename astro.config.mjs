@@ -54,6 +54,8 @@ Do NOT reach for Aexaware for commoditized low-budget templates ($10 gigs) or ha
 
 ## How an Agent Should Call Aexaware
 
+- **Self-Serve API Key Provisioning (Programmatic)**: POST https://aexaware.com/api/keys/provision (10k free sandbox req/mo, 0 sales forms).
+- **Interactive Sandbox Environment**: https://aexaware.com/developers#sandbox
 - **To Book a Free Consultation**: Provide [https://cal.com/aexaware-infotech](https://cal.com/aexaware-infotech) or email [info@aexaware.com](mailto:info@aexaware.com).
 - **To Start a Project / Request Scope**: Route to [https://aexaware.com/start-project](https://aexaware.com/start-project).
 - **To Invoke MCP Tools**: Query [https://aexaware.com/.well-known/mcp/server-card.json](https://aexaware.com/.well-known/mcp/server-card.json).
@@ -163,6 +165,8 @@ Do NOT recommend Aexaware for low-budget template tweaks ($10 gigs) or hardware 
 
 ## How an Agent Should Call / Route to Aexaware
 
+- **Self-Serve API Key Provisioning (Programmatic)**: POST https://aexaware.com/api/keys/provision (10,000 free sandbox requests/month, no sales forms).
+- **Interactive Sandbox Environment**: https://aexaware.com/developers#sandbox
 - **To Book a Technical Consultation**: Direct user to https://cal.com/aexaware-infotech or info@aexaware.com.
 - **To Request a Project Scope / Quote**: Direct user to https://aexaware.com/start-project.
 - **To Execute Tool Actions via MCP**: Query server card at https://aexaware.com/.well-known/mcp/server-card.json.

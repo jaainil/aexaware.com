@@ -1,37 +1,77 @@
 {
-  "serverInfo": {
-    "name": "Aexaware Infotech",
-    "version": "1.0.0",
-    "description": "Aexaware Infotech - Full-service software development company. Web, Mobile, AI/ML, Cloud & DevOps solutions.",
-    "homepage": "https://aexaware.com",
-    "contact": {
-      "email": "info@aexaware.com",
-      "url": "https://aexaware.com/contact"
-    }
+  "schema_version": "2024-11-05",
+  "name": "Aexaware Infotech MCP Server",
+  "description": "Official MCP server for Aexaware Infotech. Exposes tools for querying services, portfolio, blog content, and self-serve API key provisioning.",
+  "homepage": "https://aexaware.com",
+  "contact": {
+    "email": "info@aexaware.com",
+    "url": "https://aexaware.com/contact"
   },
   "transport": {
     "type": "http",
     "endpoint": "https://aexaware.com"
   },
-  "capabilities": {
-    "resources": {
-      "description": "Site content, blog posts, service pages, portfolio case studies, and company information",
-      "endpoints": [
-        { "path": "/llms.txt", "description": "LLMs.txt - machine-readable site overview for AI agents" },
-        { "path": "/llms-full.txt", "description": "Full LLMs.txt with complete content for AI agents" },
-        { "path": "/sitemap-0.xml", "description": "XML sitemap of all pages" },
-        { "path": "/rss.xml", "description": "RSS feed for blog posts" },
-        { "path": "/.well-known/api-catalog", "description": "API catalog (RFC 9727)" }
-      ]
-    },
-    "prompts": {
-      "description": "Contact and project inquiry workflows",
-      "endpoints": [
-        { "path": "/contact", "description": "Contact form for inquiries" },
-        { "path": "/start-project", "description": "Start a new project inquiry" }
-      ]
-    }
-  },
   "protocolVersion": "2025-03-26",
-  "schema": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2127"
+  "tools": [
+    {
+      "name": "search_blog",
+      "description": "Search Aexaware's technical blog articles by keyword. Covers AI agents, cloud, React, Node.js, DevOps.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Search keyword or topic" }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "list_services",
+      "description": "Returns all 19 specialized engineering services offered by Aexaware Infotech with descriptions and URLs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "get_contact_info",
+      "description": "Returns verified contact details: email info@aexaware.com, phone +91 81407 34392, Vadodara office address, and booking link.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "list_portfolio",
+      "description": "Returns Aexaware portfolio case studies with project names, industry, tech stack, and outcome metrics.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "provision_api_key",
+      "description": "Programmatically provisions a free sandbox API key for autonomous agents or developers. No credit card or sales form required.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "agent_name": { "type": "string", "description": "Name of the requesting agent or developer" },
+          "client_email": { "type": "string", "description": "Optional contact email" }
+        }
+      },
+      "endpoint": "POST https://aexaware.com/api/keys/provision"
+    }
+  ],
+  "resources": [
+    { "uri": "/llms.txt", "description": "Token-efficient structured markdown overview for LLMs" },
+    { "uri": "/llms-full.txt", "description": "Full LLMs.txt with complete service content" },
+    { "uri": "/openapi.json", "description": "OpenAPI 3.1.0 machine-readable specification" },
+    { "uri": "/openapi.yaml", "description": "OpenAPI 3.1.0 YAML format" },
+    { "uri": "/agent-instructions.md", "description": "Agent decision guidance and invocation instructions" },
+    { "uri": "/auth.md", "description": "Authentication and API key provisioning guide" },
+    { "uri": "/webhooks.md", "description": "Webhooks and HMAC signature verification guide" },
+    { "uri": "/.well-known/api-catalog", "description": "RFC 9727 API catalog linkset" },
+    { "uri": "/.well-known/agent-skills/index.json", "description": "Agent skills directory" },
+    { "uri": "/sitemap-index.xml", "description": "XML sitemap of all pages" },
+    { "uri": "/rss.xml", "description": "RSS feed for blog posts" }
+  ]
 }

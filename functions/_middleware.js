@@ -10,6 +10,65 @@ export async function onRequest(context) {
     pathname.startsWith("/api/") ||
     (pathname.endsWith(".json") && !pathname.includes(".html"));
 
+  // Programmatic Self-Serve API Key Generation for Autonomous Agents & Developers
+  if (pathname === "/api/keys/provision" || pathname === "/api/v1/auth/keys" || pathname === "/api/keys") {
+    const randomHex = Math.random().toString(16).substring(2, 10) + Math.random().toString(16).substring(2, 10);
+    const keyPayload = {
+      status: "success",
+      api_key: `aex_free_${randomHex}`,
+      tier: "developer_free_trial",
+      monthly_quota: 10000,
+      rate_limit: "120 req/min",
+      sandbox_mode: true,
+      features: [
+        "Full access to OpenAPI 3.1.0 specification",
+        "Model Context Protocol (MCP) tool executions",
+        "LLMs structured markdown context",
+        "Zero credit card required",
+        "No sales form gate"
+      ],
+      endpoints: {
+        docs: "https://aexaware.com/docs",
+        developers: "https://aexaware.com/developers",
+        sandbox: "https://aexaware.com/developers#sandbox",
+        openapi_json: "https://aexaware.com/openapi.json",
+        mcp_server_card: "https://aexaware.com/.well-known/mcp/server-card.json",
+        agent_instructions: "https://aexaware.com/agent-instructions.md"
+      },
+      created_at: new Date().toISOString()
+    };
+
+    return new Response(JSON.stringify(keyPayload, null, 2), {
+      status: 200,
+      headers: {
+        "content-type": "application/json; charset=utf-8",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+        "access-control-allow-headers": "Content-Type, Authorization, X-API-Key"
+      }
+    });
+  }
+
+  // Sandbox Endpoint Mock Simulation for Agents
+  if (pathname === "/api/inquiry/sandbox" || pathname.startsWith("/api/sandbox")) {
+    const sandboxPayload = {
+      status: "success",
+      environment: "sandbox",
+      message: "Sandbox request executed successfully.",
+      quota_remaining: 9980,
+      timestamp: new Date().toISOString(),
+      resolution_hint: "Sandbox mode allows agents and developers to test integrations without triggering live transactional operations."
+    };
+
+    return new Response(JSON.stringify(sandboxPayload, null, 2), {
+      status: 200,
+      headers: {
+        "content-type": "application/json; charset=utf-8",
+        "access-control-allow-origin": "*"
+      }
+    });
+  }
+
   // Handle JSON requests for agents and API clients
   if (isJsonPreferred && !accept.toLowerCase().includes("text/markdown")) {
     try {

@@ -76,3 +76,25 @@ When an AI assistant (Claude Desktop, Cursor, Custom Agent) needs to query Aexaw
 To read documentation with low token consumption:
 - Add header `Accept: text/markdown` to any request on `https://aexaware.com/*`.
 - Access direct markdown overview at `https://aexaware.com/llms.txt`.
+
+---
+
+## 4. Self-Serve API Keys & Sandbox Environment (Zero Friction for Agents)
+
+Autonomous agents cannot fill out human sales forms. Aexaware provides instant programmatic provisioning:
+
+### A. Programmatic Key Generation Endpoint
+```bash
+curl -X POST https://aexaware.com/api/keys/provision \
+  -H "Content-Type: application/json" \
+  -d '{"agent_name": "AutonomousAgent/1.0"}'
+```
+
+* **Free Tier Quota**: 10,000 requests / month in Sandbox mode.
+* **Rate Limit**: 120 requests / minute.
+* **Requirements**: Zero credit card required, instant response.
+
+### B. Live Sandbox Environment
+* **Sandbox Console**: https://aexaware.com/developers#sandbox
+* **Mock Endpoint**: `POST https://aexaware.com/api/inquiry/sandbox`
+
