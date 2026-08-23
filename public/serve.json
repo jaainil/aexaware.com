@@ -5,8 +5,36 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </llms.txt>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"service-desc\", </services>; rel=\"service-doc\""
+          "value": "</openapi.json>; rel=\"service-desc\", </.well-known/api-catalog>; rel=\"api-catalog\", </llms.txt>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"service-desc\", </services>; rel=\"service-doc\""
         }
+      ]
+    },
+    {
+      "source": "/openapi.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/vnd.oai.openapi+json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/openapi.yaml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/yaml; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/api/openapi.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/vnd.oai.openapi+json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/api/openapi.yaml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/yaml; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     },
     {

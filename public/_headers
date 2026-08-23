@@ -1,6 +1,22 @@
 /*
-  Link: </.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </services>; rel="service-doc"
+  Link: </openapi.json>; rel="service-desc", </.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </services>; rel="service-doc"
   Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+/openapi.json
+  Content-Type: application/vnd.oai.openapi+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/openapi.yaml
+  Content-Type: application/yaml; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/api/openapi.json
+  Content-Type: application/vnd.oai.openapi+json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/api/openapi.yaml
+  Content-Type: application/yaml; charset=utf-8
+  Access-Control-Allow-Origin: *
 
 /.well-known/api-catalog
   Content-Type: application/linkset+json
@@ -29,5 +45,6 @@
 /auth.md
   Content-Type: text/markdown; charset=utf-8
   Access-Control-Allow-Origin: *
+
 
 

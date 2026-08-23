@@ -1,0 +1,279 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Aexaware Infotech Public API & Service Catalog",
+    "summary": "Machine-readable API surface, AI discovery endpoints, and content resources for Aexaware Infotech.",
+    "description": "Comprehensive OpenAPI specification for Aexaware Infotech (https://aexaware.com). This specification details our public API surface, AI crawler metadata feeds, RFC 9727 API Catalog, Model Context Protocol (MCP) server endpoints, and structured content resources.",
+    "termsOfService": "https://aexaware.com/terms",
+    "contact": {
+      "name": "Aexaware Infotech Support & Inquiries",
+      "url": "https://aexaware.com/contact",
+      "email": "info@aexaware.com"
+    },
+    "license": {
+      "name": "Proprietary / Open Discovery",
+      "url": "https://aexaware.com/privacy-policy"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://aexaware.com",
+      "description": "Production Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "AI & Agent Discovery",
+      "description": "Endpoints and files designed for LLMs, autonomous agents, and search crawlers."
+    },
+    {
+      "name": "Metadata & Catalogs",
+      "description": "RFC-compliant discovery catalogs, MCP server cards, and sitemaps."
+    },
+    {
+      "name": "Content & Feeds",
+      "description": "Public content feeds, blog articles, and service documentation."
+    }
+  ],
+  "paths": {
+    "/openapi.json": {
+      "get": {
+        "tags": ["Metadata & Catalogs"],
+        "summary": "Get OpenAPI 3.1.0 Specification in JSON format",
+        "description": "Returns the machine-readable OpenAPI specification describing the API surface of Aexaware Infotech.",
+        "operationId": "getOpenApiJson",
+        "responses": {
+          "200": {
+            "description": "OpenAPI specification document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/vnd.oai.openapi+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/openapi.yaml": {
+      "get": {
+        "tags": ["Metadata & Catalogs"],
+        "summary": "Get OpenAPI 3.1.0 Specification in YAML format",
+        "description": "Returns the machine-readable OpenAPI specification in YAML format.",
+        "operationId": "getOpenApiYaml",
+        "responses": {
+          "200": {
+            "description": "OpenAPI YAML document",
+            "content": {
+              "application/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/yaml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "tags": ["AI & Agent Discovery"],
+        "summary": "Get LLMs.txt site overview",
+        "description": "Returns a concise, structured markdown file providing an overview of Aexaware Infotech, its 19 specialized services, portfolio, and contact details for LLMs and AI agents.",
+        "operationId": "getLlmsTxt",
+        "responses": {
+          "200": {
+            "description": "Standard LLMs.txt document",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/llms-full.txt": {
+      "get": {
+        "tags": ["AI & Agent Discovery"],
+        "summary": "Get full LLMs.txt comprehensive content",
+        "description": "Returns an expanded markdown document containing comprehensive information about all company offerings, case studies, and engineering blog posts.",
+        "operationId": "getLlmsFullTxt",
+        "responses": {
+          "200": {
+            "description": "Full LLMs.txt document",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/api-catalog": {
+      "get": {
+        "tags": ["Metadata & Catalogs"],
+        "summary": "RFC 9727 API Catalog",
+        "description": "Machine-readable Linkset discovery document pointing to service documentation and API descriptions across the site.",
+        "operationId": "getApiCatalog",
+        "responses": {
+          "200": {
+            "description": "Linkset JSON document",
+            "content": {
+              "application/linkset+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "linkset": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/mcp/server-card.json": {
+      "get": {
+        "tags": ["Metadata & Catalogs"],
+        "summary": "Model Context Protocol (MCP) Server Card",
+        "description": "Returns the MCP Server Card describing server capabilities, tools, resources, and prompt endpoints.",
+        "operationId": "getMcpServerCard",
+        "responses": {
+          "200": {
+            "description": "MCP Server Card JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "serverInfo": { "type": "object" },
+                    "transport": { "type": "object" },
+                    "capabilities": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/agent-skills/index.json": {
+      "get": {
+        "tags": ["Metadata & Catalogs"],
+        "summary": "Agent Skills Directory",
+        "description": "Returns the registry of capabilities, tools, and skills available for AI agent workflows.",
+        "operationId": "getAgentSkills",
+        "responses": {
+          "200": {
+            "description": "Agent skills index",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth.md": {
+      "get": {
+        "tags": ["AI & Agent Discovery"],
+        "summary": "AI & Agent Permissions and Usage Policy",
+        "description": "Returns the authorization and licensing policy for AI agents, crawlers, and researchers.",
+        "operationId": "getAuthDoc",
+        "responses": {
+          "200": {
+            "description": "Markdown authorization policy",
+            "content": {
+              "text/markdown": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sitemap-index.xml": {
+      "get": {
+        "tags": ["Content & Feeds"],
+        "summary": "XML Sitemap Index",
+        "description": "Returns the primary XML Sitemap index linking to all indexed pages, services, portfolio items, and blog articles.",
+        "operationId": "getSitemapIndex",
+        "responses": {
+          "200": {
+            "description": "XML Sitemap Index",
+            "content": {
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rss.xml": {
+      "get": {
+        "tags": ["Content & Feeds"],
+        "summary": "Engineering Blog RSS Feed",
+        "description": "Returns the latest technical articles, engineering updates, and tutorials published by Aexaware Infotech.",
+        "operationId": "getRssFeed",
+        "responses": {
+          "200": {
+            "description": "RSS 2.0 XML Feed",
+            "content": {
+              "application/rss+xml": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

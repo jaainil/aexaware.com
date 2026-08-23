@@ -11,7 +11,7 @@ For automated agents requiring identified or privileged integration, programmati
 ## Agent Registration Discovery
 
 - **Registration & Provisioning Endpoint**: `https://aexaware.com/contact`
-- **Inquiries & Manual Key Issuance**: `hello@aexaware.com`
+- **Inquiries & Manual Key Issuance**: `info@aexaware.com`
 - **Supported Identity Types**:
   - `anonymous`: Open access for non-identified agents.
   - `identity_assertion`: Cryptographically verified agent identities (e.g. ID-JAG, verified email).

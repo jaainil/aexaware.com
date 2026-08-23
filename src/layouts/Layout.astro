@@ -112,6 +112,7 @@ const twitterHandle = "@aexaware";
     <link rel="sitemap" href="/sitemap-index.xml" />
     
     {/* RFC 8288 Link relations for agent discovery */}
+    <link rel="service-desc" href="/openapi.json" type="application/vnd.oai.openapi+json" />
     <link rel="api-catalog" href="/.well-known/api-catalog" type="application/linkset+json" />
     <link rel="describedby" href="/llms.txt" type="text/plain" />
     <link rel="service-desc" href="/.well-known/mcp/server-card.json" type="application/json" />
@@ -303,7 +304,7 @@ const twitterHandle = "@aexaware";
           execute: function () {
             return Promise.resolve({
               company: "Aexaware Infotech",
-              email: "hello@aexaware.com",
+              email: "info@aexaware.com",
               phone: "+91 81407 34392",
               address: "Office no 13, 3rd Floor Aarya's landmark, Canal Ring Road, Sevasi, Vadodara, Gujarat 391101, India",
               contact_url: "https://aexaware.com/contact",

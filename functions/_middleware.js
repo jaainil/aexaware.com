@@ -95,7 +95,7 @@ export async function onRequest(context) {
   if (!response.headers.has("Link")) {
     response.headers.set(
       "Link",
-      '</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </services>; rel="service-doc", </auth.md>; rel="author-doc"'
+      '</openapi.json>; rel="service-desc", </.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </services>; rel="service-doc", </auth.md>; rel="author-doc"'
     );
   }
   if (!response.headers.has("Content-Signal")) {

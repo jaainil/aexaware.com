@@ -114,7 +114,7 @@ We are a customer-centric, full-stack technology partner helping startups and en
 - E-commerce platforms (WooCommerce, custom solutions)
 - CMS implementations (WordPress, Ghost, headless CMS)
 
-Contact: hello@aexaware.com | +91 81407 34392
+Contact: info@aexaware.com | +91 81407 34392
 Location: Vadodara, Gujarat, India
 LinkedIn: https://www.linkedin.com/company/aexaware
 Twitter/X: https://twitter.com/aexaware

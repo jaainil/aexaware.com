@@ -4,6 +4,14 @@
       "anchor": "https://aexaware.com/",
       "service-desc": [
         {
+          "href": "https://aexaware.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        },
+        {
+          "href": "https://aexaware.com/openapi.yaml",
+          "type": "application/yaml"
+        },
+        {
           "href": "https://aexaware.com/.well-known/api-catalog",
           "type": "application/linkset+json"
         },
