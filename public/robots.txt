@@ -91,12 +91,15 @@ Allow: /
 User-agent: TelegramBot
 Allow: /
 
-# ─── AI Crawlers — Allow all for AI citation ─────────────────────────
+# ─── AI Crawlers & Agents — Allow all for AI discovery & citation ────
 # Note: AI bots generally do NOT respect crawl-delay; omitted intentionally
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: Claude-Web
@@ -108,7 +111,22 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: GoogleOther-Image
+Allow: /
+
+User-agent: GoogleOther-Video
 Allow: /
 
 User-agent: cohere-ai
@@ -117,7 +135,28 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
+User-agent: FacebookBot
+Allow: /
+
 User-agent: Amazonbot
+Allow: /
+
+User-agent: MistralBot
+Allow: /
+
+User-agent: DeepSeekBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: YouBot
 Allow: /
 
 # ─── Sitemaps ────────────────────────────────────────────────────────

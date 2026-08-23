@@ -462,7 +462,7 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
           allow: "/",
         },
 
-        // ─── AI Crawlers — Allow all for AI citation ─────────────────────────
+        // ─── AI Crawlers & Agents — Allow all for AI citation & discovery ──
         // Note: AI bots generally do NOT respect crawl-delay; omitted intentionally
         {
           userAgent: "GPTBot",
@@ -470,6 +470,10 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
         },
         {
           userAgent: "ChatGPT-User",
+          allow: "/",
+        },
+        {
+          userAgent: "OAI-SearchBot",
           allow: "/",
         },
         {
@@ -485,7 +489,27 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
           allow: "/",
         },
         {
+          userAgent: "anthropic-ai",
+          allow: "/",
+        },
+        {
           userAgent: "PerplexityBot",
+          allow: "/",
+        },
+        {
+          userAgent: "Perplexity-User",
+          allow: "/",
+        },
+        {
+          userAgent: "GoogleOther",
+          allow: "/",
+        },
+        {
+          userAgent: "GoogleOther-Image",
+          allow: "/",
+        },
+        {
+          userAgent: "GoogleOther-Video",
           allow: "/",
         },
         {
@@ -497,7 +521,35 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
           allow: "/",
         },
         {
+          userAgent: "FacebookBot",
+          allow: "/",
+        },
+        {
           userAgent: "Amazonbot",
+          allow: "/",
+        },
+        {
+          userAgent: "MistralBot",
+          allow: "/",
+        },
+        {
+          userAgent: "DeepSeekBot",
+          allow: "/",
+        },
+        {
+          userAgent: "Bytespider",
+          allow: "/",
+        },
+        {
+          userAgent: "CCBot",
+          allow: "/",
+        },
+        {
+          userAgent: "Diffbot",
+          allow: "/",
+        },
+        {
+          userAgent: "YouBot",
           allow: "/",
         },
       ],
