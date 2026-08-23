@@ -129,6 +129,46 @@ export async function onRequest(context) {
     }
   }
 
+  // DNS for AI Discovery (DNS-AID) Manifest Handler
+  if (pathname === "/.well-known/dns-aid.json") {
+    try {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.ok) {
+        const text = await assetRes.text();
+        return new Response(text, {
+          status: 200,
+          headers: {
+            "content-type": "application/json; charset=utf-8",
+            "access-control-allow-origin": "*",
+            "vary": "Accept"
+          }
+        });
+      }
+    } catch (e) {
+      // fallback
+    }
+  }
+
+  // DNS for AI Discovery (DNS-AID) BIND Zone File Handler
+  if (pathname === "/.well-known/dns-aid.zone") {
+    try {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.ok) {
+        const text = await assetRes.text();
+        return new Response(text, {
+          status: 200,
+          headers: {
+            "content-type": "text/plain; charset=utf-8",
+            "access-control-allow-origin": "*",
+            "vary": "Accept"
+          }
+        });
+      }
+    } catch (e) {
+      // fallback
+    }
+  }
+
   // Direct Markdown file request handler (e.g. /auth.md, /agent-instructions.md)
   if (pathname.endsWith(".md")) {
     try {

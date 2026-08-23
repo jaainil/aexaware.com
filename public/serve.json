@@ -73,6 +73,20 @@
       ]
     },
     {
+      "source": "/.well-known/dns-aid.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/.well-known/dns-aid.zone",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
       "source": "/.well-known/http-message-signatures-directory",
       "headers": [
         { "key": "Content-Type", "value": "application/http-message-signatures-directory+json" },

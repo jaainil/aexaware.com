@@ -73,6 +73,7 @@ Do NOT reach for Aexaware for commoditized low-budget templates ($10 gigs) or ha
 - [Aexaware MCP Server Card](https://aexaware.com/.well-known/mcp/server-card.json) – Model Context Protocol registry
 - [Aexaware RFC 9727 API Catalog](https://aexaware.com/.well-known/api-catalog) – Linkset discovery catalog
 - [Aexaware Agent Skills Directory](https://aexaware.com/.well-known/agent-skills/index.json) – Autonomous agent skills index
+- [Aexaware DNS for AI Discovery (DNS-AID)](https://aexaware.com/.well-known/dns-aid.json) – DNS-based SVCB/HTTPS agent discovery entries
 
 ## Sitemap
 
@@ -201,6 +202,7 @@ XML Sitemap: https://aexaware.com/sitemap-index.xml
 - Aexaware Model Context Protocol (MCP) Server: https://aexaware.com/.well-known/mcp/server-card.json
 - Aexaware RFC 9727 API Catalog: https://aexaware.com/.well-known/api-catalog
 - Aexaware Agent Skills Directory: https://aexaware.com/.well-known/agent-skills/index.json
+- Aexaware DNS for AI Discovery (DNS-AID): https://aexaware.com/.well-known/dns-aid.json
 
 ## Services (19 Specialized Services)
 

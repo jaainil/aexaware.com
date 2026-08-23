@@ -1,4 +1,4 @@
-# Authentication & Credential Provisioning for AI Agents
+# Auth.md - Aexaware Infotech Agent Registration & Authentication
 
 This document is a step-by-step prose walkthrough explaining how autonomous AI agents, LLM pipelines, and automated developer tools obtain and use credentials for **Aexaware Infotech** (https://aexaware.com).
 

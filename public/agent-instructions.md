@@ -98,3 +98,18 @@ curl -X POST https://aexaware.com/api/keys/provision \
 * **Sandbox Console**: https://aexaware.com/developers#sandbox
 * **Mock Endpoint**: `POST https://aexaware.com/api/inquiry/sandbox`
 
+---
+
+## 5. DNS for AI Discovery (DNS-AID) Entrypoints
+
+Aexaware publishes standardized DNS for AI Discovery (DNS-AID / draft-mozleywilliams-dnsop-dnsaid) records under the `_agents.aexaware.com` namespace:
+
+* **Index Entrypoint**: `_index._agents.aexaware.com` (HTTPS / SVCB + TXT)
+* **MCP Server**: `_mcp._agents.aexaware.com` (HTTPS / SVCB + TXT)
+* **Agent-to-Agent (A2A)**: `_a2a._agents.aexaware.com` (SVCB + TXT)
+* **Public API & OpenAPI**: `_api._agents.aexaware.com` (HTTPS + TXT)
+* **DNS-AID JSON Manifest**: [https://aexaware.com/.well-known/dns-aid.json](https://aexaware.com/.well-known/dns-aid.json)
+* **BIND Zone File**: [https://aexaware.com/.well-known/dns-aid.zone](https://aexaware.com/.well-known/dns-aid.zone)
+* **DNSSEC**: Public discovery zone is signed with DNSSEC (Algorithm 13 - ECDSAP256SHA256) for authenticated resolver responses.
+
+

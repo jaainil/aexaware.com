@@ -78,6 +78,7 @@ export const CONTACT = {
 export const MCP_CONFIG = {
   endpoint:         'https://aexaware.com/api/mcp',
   serverCard:       'https://aexaware.com/.well-known/mcp/server-card.json',
+  dnsAid:           'https://aexaware.com/.well-known/dns-aid.json',
   protocolVersion:  '2025-03-26',
   transport:        'streamable-http',
   tools: ['list_services', 'list_portfolio', 'search_blog', 'get_contact_info', 'provision_api_key', 'submit_sandbox_inquiry', 'get_openapi_spec'],

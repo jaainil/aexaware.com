@@ -51,6 +51,11 @@
           "title": "Aexaware Agent Skills Directory"
         },
         {
+          "href": "https://aexaware.com/.well-known/dns-aid.json",
+          "type": "application/json",
+          "title": "Aexaware DNS for AI Discovery (DNS-AID) Manifest"
+        },
+        {
           "href": "https://aexaware.com/agent-instructions.md",
           "type": "text/markdown",
           "title": "Aexaware AI Agent Invocation Instructions"

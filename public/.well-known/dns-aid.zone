@@ -1,0 +1,32 @@
+; ==============================================================================
+; DNS for AI Discovery (DNS-AID) Zone File for Aexaware Infotech
+; Specification: draft-mozleywilliams-dnsop-dnsaid / RFC 9460
+; Domain: aexaware.com
+; Generated: 2026-08-23
+; ==============================================================================
+
+$ORIGIN aexaware.com.
+$TTL 3600
+
+; --- 1. Primary AI Agent Index Entrypoint (_index._agents) ---
+_index._agents      IN HTTPS 1 aexaware.com. alpn="h2,h3" port=443 mandatory=alpn,port key65300="/.well-known/mcp/server-card.json"
+_index._agents      IN TXT   "v=dnsaid1; proto=mcp,a2a; uri=https://aexaware.com/.well-known/mcp/server-card.json; mcp=https://aexaware.com/api/mcp; openapi=https://aexaware.com/openapi.json; auth=https://aexaware.com/auth.md; catalog=https://aexaware.com/.well-known/api-catalog"
+
+; --- 2. Model Context Protocol (MCP) Tool Server (_mcp._agents) ---
+_mcp._agents        IN HTTPS 1 aexaware.com. alpn="h2,h3" port=443 mandatory=alpn,port key65300="/api/mcp"
+_mcp._agents        IN TXT   "v=dnsaid1; proto=mcp; uri=https://aexaware.com/api/mcp; transport=streamable-http; tools=7; version=2025-03-26"
+
+; --- 3. Agent-to-Agent (A2A) Interaction Endpoint (_a2a._agents) ---
+_a2a._agents        IN SVCB  1 aexaware.com. alpn="a2a,h2,h3" port=443 mandatory=alpn,port
+_a2a._agents        IN TXT   "v=dnsaid1; proto=a2a; uri=https://aexaware.com/api/mcp; auth=https://aexaware.com/api/keys/provision; tier=developer_free_trial"
+
+; --- 4. Public API & OpenAPI Specification Discovery (_api._agents) ---
+_api._agents        IN HTTPS 1 aexaware.com. alpn="h2,h3" port=443 mandatory=alpn,port key65300="/openapi.json"
+_api._agents        IN TXT   "v=dnsaid1; proto=openapi; spec=https://aexaware.com/openapi.json; docs=https://aexaware.com/docs"
+
+; ==============================================================================
+; DNSSEC Notice:
+; Sign this zone with DNSSEC (Algorithm 13 - ECDSAP256SHA256) to ensure
+; validating resolvers (e.g., Cloudflare 1.1.1.1, Google 8.8.8.8) return
+; authenticated AD (Authenticated Data) flags for autonomous AI discovery.
+; ==============================================================================

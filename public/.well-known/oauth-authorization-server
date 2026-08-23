@@ -29,7 +29,8 @@
   "op_policy_uri": "https://aexaware.com/privacy-policy",
   "op_tos_uri": "https://aexaware.com/terms",
   "agent_auth": {
-    "skill": "https://aexaware.com/auth.md",
+    "skill": "https://isitagentready.com/.well-known/agent-skills/auth-md/SKILL.md",
+    "auth_md": "https://aexaware.com/auth.md",
     "register_uri": "https://aexaware.com/api/keys/provision",
     "identity_types_supported": [
       "anonymous",
@@ -52,7 +53,10 @@
         "bearer_token"
       ],
       "claim_uri": "https://aexaware.com/contact",
-      "revocation_uri": "https://aexaware.com/contact"
+      "revocation_uri": "https://aexaware.com/contact",
+      "events_supported": [
+        "revocation"
+      ]
     }
   }
 }

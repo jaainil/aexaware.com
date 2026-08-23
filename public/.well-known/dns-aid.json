@@ -1,0 +1,106 @@
+{
+  "$schema": "https://datatracker.ietf.org/doc/draft-mozleywilliams-dnsop-dnsaid/",
+  "domain": "aexaware.com",
+  "dnssec_enabled": true,
+  "description": "DNS for AI Discovery (DNS-AID) records and agent discovery configuration for Aexaware Infotech.",
+  "resolver_validation": {
+    "doh_resolvers": [
+      "https://cloudflare-dns.com/dns-query",
+      "https://dns.google/resolve"
+    ],
+    "verification_endpoint": "https://isitagentready.com/api/scan"
+  },
+  "entries": [
+    {
+      "name": "_index._agents.aexaware.com",
+      "purpose": "Primary Agent Index & Discovery Entrypoint",
+      "records": {
+        "HTTPS": {
+          "priority": 1,
+          "target": "aexaware.com.",
+          "params": {
+            "alpn": "h2,h3",
+            "port": 443,
+            "mandatory": "alpn,port",
+            "key65300": "/.well-known/mcp/server-card.json",
+            "key65301": "v=dnsaid1"
+          },
+          "presentation": "_index._agents.aexaware.com. 3600 IN HTTPS 1 aexaware.com. alpn=\"h2,h3\" port=443 mandatory=alpn,port key65300=\"/.well-known/mcp/server-card.json\""
+        },
+        "TXT": {
+          "value": "v=dnsaid1; proto=mcp,a2a; uri=https://aexaware.com/.well-known/mcp/server-card.json; mcp=https://aexaware.com/api/mcp; openapi=https://aexaware.com/openapi.json; auth=https://aexaware.com/auth.md; catalog=https://aexaware.com/.well-known/api-catalog",
+          "presentation": "_index._agents.aexaware.com. 3600 IN TXT \"v=dnsaid1; proto=mcp,a2a; uri=https://aexaware.com/.well-known/mcp/server-card.json; mcp=https://aexaware.com/api/mcp; openapi=https://aexaware.com/openapi.json; auth=https://aexaware.com/auth.md; catalog=https://aexaware.com/.well-known/api-catalog\""
+        }
+      }
+    },
+    {
+      "name": "_mcp._agents.aexaware.com",
+      "purpose": "Model Context Protocol (MCP) Streamable HTTP Tool Endpoint",
+      "records": {
+        "HTTPS": {
+          "priority": 1,
+          "target": "aexaware.com.",
+          "params": {
+            "alpn": "h2,h3",
+            "port": 443,
+            "mandatory": "alpn,port",
+            "key65300": "/api/mcp",
+            "key65301": "transport=streamable-http"
+          },
+          "presentation": "_mcp._agents.aexaware.com. 3600 IN HTTPS 1 aexaware.com. alpn=\"h2,h3\" port=443 mandatory=alpn,port key65300=\"/api/mcp\""
+        },
+        "TXT": {
+          "value": "v=dnsaid1; proto=mcp; uri=https://aexaware.com/api/mcp; transport=streamable-http; tools=7; version=2025-03-26",
+          "presentation": "_mcp._agents.aexaware.com. 3600 IN TXT \"v=dnsaid1; proto=mcp; uri=https://aexaware.com/api/mcp; transport=streamable-http; tools=7; version=2025-03-26\""
+        }
+      }
+    },
+    {
+      "name": "_a2a._agents.aexaware.com",
+      "purpose": "Autonomous Agent-to-Agent (A2A) Interaction Endpoint",
+      "records": {
+        "SVCB": {
+          "priority": 1,
+          "target": "aexaware.com.",
+          "params": {
+            "alpn": "a2a,h2,h3",
+            "port": 443,
+            "mandatory": "alpn,port",
+            "key65300": "/api/mcp"
+          },
+          "presentation": "_a2a._agents.aexaware.com. 3600 IN SVCB 1 aexaware.com. alpn=\"a2a,h2,h3\" port=443 mandatory=alpn,port"
+        },
+        "TXT": {
+          "value": "v=dnsaid1; proto=a2a; uri=https://aexaware.com/api/mcp; auth=https://aexaware.com/api/keys/provision; tier=developer_free_trial",
+          "presentation": "_a2a._agents.aexaware.com. 3600 IN TXT \"v=dnsaid1; proto=a2a; uri=https://aexaware.com/api/mcp; auth=https://aexaware.com/api/keys/provision; tier=developer_free_trial\""
+        }
+      }
+    },
+    {
+      "name": "_api._agents.aexaware.com",
+      "purpose": "Public REST & OpenAPI Specification Discovery",
+      "records": {
+        "HTTPS": {
+          "priority": 1,
+          "target": "aexaware.com.",
+          "params": {
+            "alpn": "h2,h3",
+            "port": 443,
+            "mandatory": "alpn,port",
+            "key65300": "/openapi.json"
+          },
+          "presentation": "_api._agents.aexaware.com. 3600 IN HTTPS 1 aexaware.com. alpn=\"h2,h3\" port=443 mandatory=alpn,port key65300=\"/openapi.json\""
+        },
+        "TXT": {
+          "value": "v=dnsaid1; proto=openapi; spec=https://aexaware.com/openapi.json; docs=https://aexaware.com/docs",
+          "presentation": "_api._agents.aexaware.com. 3600 IN TXT \"v=dnsaid1; proto=openapi; spec=https://aexaware.com/openapi.json; docs=https://aexaware.com/docs\""
+        }
+      }
+    }
+  ],
+  "dnssec_instructions": {
+    "cloudflare": "In Cloudflare Dashboard -> DNS -> Settings -> Enable DNSSEC. Add the provided DS record at your domain registrar.",
+    "algorithm": "ECDSAP256SHA256 (13)",
+    "digest_type": "SHA-256 (2)"
+  }
+}
