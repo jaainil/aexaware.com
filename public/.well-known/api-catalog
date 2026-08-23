@@ -103,6 +103,10 @@
         {
           "href": "https://aexaware.com/webhooks.md",
           "type": "text/markdown"
+        },
+        {
+          "href": "https://aexaware.com/agent-instructions.md",
+          "type": "text/markdown"
         }
       ]
     }
