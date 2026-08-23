@@ -80,7 +80,7 @@ export const MCP_CONFIG = {
   serverCard:       'https://aexaware.com/.well-known/mcp/server-card.json',
   protocolVersion:  '2025-03-26',
   transport:        'streamable-http',
-  tools: ['list_services', 'list_portfolio', 'search_blog', 'get_contact_info', 'provision_api_key', 'get_openapi_spec'],
+  tools: ['list_services', 'list_portfolio', 'search_blog', 'get_contact_info', 'provision_api_key', 'submit_sandbox_inquiry', 'get_openapi_spec'],
 };
 
 export const API_BASE = 'https://aexaware.com';

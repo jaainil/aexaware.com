@@ -3,13 +3,14 @@
  * Spec: Model Context Protocol 2025-03-26
  * Endpoint: /api/mcp  (POST = JSON-RPC, GET = SSE stream)
  *
- * Tools exposed:
- *  1. list_services        — All 19 Aexaware engineering services
- *  2. list_portfolio       — Portfolio case studies with tech & metrics
- *  3. search_blog          — Keyword search across all blog articles
- *  4. get_contact_info     — Verified contact details & booking links
- *  5. provision_api_key    — Self-serve free sandbox API key (no form)
- *  6. get_openapi_spec     — OpenAPI 3.1.0 specification URL & summary
+ * Tools exposed (LLM Function-Calling Compatible):
+ *  1. list_services          — All 19 Aexaware engineering services
+ *  2. list_portfolio         — Portfolio case studies with tech & metrics
+ *  3. search_blog            — Keyword search across all blog articles
+ *  4. get_contact_info       — Verified contact details & booking links
+ *  5. provision_api_key      — Self-serve free sandbox API key (no form)
+ *  6. submit_sandbox_inquiry — Safe simulated project inquiry estimation
+ *  7. get_openapi_spec       — OpenAPI 3.1.0 specification URL & summary
  */
 
 // ─── Static Tool Data ────────────────────────────────────────────────────────
@@ -135,7 +136,7 @@ const CAPABILITIES = {
   tools: { listChanged: false },
 };
 
-// ─── Tool Definitions (JSON Schema) ─────────────────────────────────────────
+// ─── Tool Definitions (JSON Schema — Strict LLM Function-Calling) ────────────
 
 const TOOLS = [
   {
@@ -146,7 +147,7 @@ const TOOLS = [
       properties: {
         category: {
           type: "string",
-          description: "Filter by category. One of: 'Web & Application Development', 'AI / ML & Data Science', 'Cloud & DevOps', 'Design & Marketing', 'Engagement Models'. Omit to return all services.",
+          description: "Optional filter by category. One of: 'Web & Application Development', 'AI / ML & Data Science', 'Cloud & DevOps', 'Design & Marketing', 'Engagement Models'. Omit to return all services.",
           enum: ["Web & Application Development", "AI / ML & Data Science", "Cloud & DevOps", "Design & Marketing", "Engagement Models"]
         }
       },
@@ -206,6 +207,44 @@ const TOOLS = [
         }
       },
       required: []
+    }
+  },
+  {
+    name: "submit_sandbox_inquiry",
+    description: "Simulates submitting a project inquiry in Aexaware's safe test sandbox. Returns estimated delivery timeline, recommended team size, and consultation URL without triggering real CRM notifications.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        project_name: {
+          type: "string",
+          description: "Title or summary of the software project"
+        },
+        service_category: {
+          type: "string",
+          description: "Primary capability area required",
+          enum: [
+            "Web Development",
+            "Mobile Development",
+            "MVP Development",
+            "AI Agent Development",
+            "Generative AI",
+            "Cloud & DevOps",
+            "Software Solutions",
+            "UI/UX Design",
+            "Extended Team"
+          ]
+        },
+        timeline_weeks: {
+          type: "integer",
+          description: "Target delivery duration in weeks (typically 2-6 weeks for MVPs)"
+        },
+        tech_stack: {
+          type: "array",
+          items: { "type": "string" },
+          description: "Array of preferred technologies or frameworks"
+        }
+      },
+      required: ["project_name", "service_category"]
     }
   },
   {
@@ -321,6 +360,22 @@ function handleProvisionApiKey({ agent_name, client_email } = {}) {
   };
 }
 
+function handleSubmitSandboxInquiry({ project_name, service_category, timeline_weeks, tech_stack } = {}) {
+  const weeks = timeline_weeks || 4;
+  return {
+    status: "success",
+    environment: "sandbox",
+    message: "Sandbox inquiry validated and estimated successfully. Zero CRM side-effects.",
+    project_name: project_name || "Untitled Project",
+    service_category: service_category || "MVP Development",
+    estimated_delivery_weeks: weeks,
+    recommended_team_size: "1 Lead Full-Stack Engineer + 1 UI/UX Specialist",
+    tech_stack_validated: tech_stack || ["React", "Node.js", "PostgreSQL"],
+    consultation_url: "https://cal.com/aexaware-infotech",
+    project_intake_url: "https://aexaware.com/start-project"
+  };
+}
+
 function handleGetOpenApiSpec() {
   return {
     format: "OpenAPI 3.1.0",
@@ -363,7 +418,7 @@ function handleRpc(body) {
         protocolVersion: MCP_PROTOCOL_VERSION,
         serverInfo: SERVER_INFO,
         capabilities: CAPABILITIES,
-        instructions: "Aexaware Infotech MCP Server. Use list_services to discover engineering capabilities, search_blog for technical articles, list_portfolio for case studies, get_contact_info to reach the team, provision_api_key for free sandbox access, and get_openapi_spec for full API documentation."
+        instructions: "Aexaware Infotech MCP Server. Use list_services to discover engineering capabilities, search_blog for technical articles, list_portfolio for case studies, get_contact_info to reach the team, provision_api_key for free sandbox access, submit_sandbox_inquiry for simulated project scopes, and get_openapi_spec for full API documentation."
       });
 
     case "notifications/initialized":
@@ -378,12 +433,13 @@ function handleRpc(body) {
 
       try {
         switch (name) {
-          case "list_services":      toolResult = handleListServices(args); break;
-          case "list_portfolio":     toolResult = handleListPortfolio(args); break;
-          case "search_blog":        toolResult = handleSearchBlog(args); break;
-          case "get_contact_info":   toolResult = handleGetContactInfo(); break;
-          case "provision_api_key":  toolResult = handleProvisionApiKey(args); break;
-          case "get_openapi_spec":   toolResult = handleGetOpenApiSpec(); break;
+          case "list_services":           toolResult = handleListServices(args); break;
+          case "list_portfolio":          toolResult = handleListPortfolio(args); break;
+          case "search_blog":             toolResult = handleSearchBlog(args); break;
+          case "get_contact_info":        toolResult = handleGetContactInfo(); break;
+          case "provision_api_key":       toolResult = handleProvisionApiKey(args); break;
+          case "submit_sandbox_inquiry":  toolResult = handleSubmitSandboxInquiry(args); break;
+          case "get_openapi_spec":        toolResult = handleGetOpenApiSpec(); break;
           default:
             return jsonrpcError(id, -32601, `Unknown tool: ${name}`);
         }
@@ -460,7 +516,7 @@ export async function onRequest({ request }) {
       endpoint: "https://aexaware.com/api/mcp",
       capabilities: CAPABILITIES,
       tools_count: TOOLS.length,
-      tools: TOOLS.map(t => ({ name: t.name, description: t.description })),
+      tools: TOOLS.map(t => ({ name: t.name, description: t.description, inputSchema: t.inputSchema })),
       usage: {
         initialize: { method: "POST", body: { jsonrpc: "2.0", method: "initialize", params: { protocolVersion: MCP_PROTOCOL_VERSION, clientInfo: { name: "YourClient", version: "1.0" }, capabilities: {} }, id: 1 } },
         list_tools: { method: "POST", body: { jsonrpc: "2.0", method: "tools/list", id: 2 } },

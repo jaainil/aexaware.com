@@ -69,6 +69,88 @@ export async function onRequest(context) {
     });
   }
 
+  // RFC 9728 OAuth Protected Resource Metadata Handler
+  if (pathname === "/.well-known/oauth-protected-resource") {
+    try {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.ok) {
+        const text = await assetRes.text();
+        return new Response(text, {
+          status: 200,
+          headers: {
+            "content-type": "application/json; charset=utf-8",
+            "access-control-allow-origin": "*",
+            "vary": "Accept"
+          }
+        });
+      }
+    } catch (e) {
+      // fallback
+    }
+  }
+
+  // RFC 8414 OAuth Authorization Server Metadata Handler (with WorkOS auth.md agent_auth block)
+  if (pathname === "/.well-known/oauth-authorization-server") {
+    try {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.ok) {
+        const text = await assetRes.text();
+        return new Response(text, {
+          status: 200,
+          headers: {
+            "content-type": "application/json; charset=utf-8",
+            "access-control-allow-origin": "*",
+            "vary": "Accept"
+          }
+        });
+      }
+    } catch (e) {
+      // fallback
+    }
+  }
+
+  // MCP Server Card Discovery Handler
+  if (pathname === "/.well-known/mcp/server-card.json") {
+    try {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.ok) {
+        const text = await assetRes.text();
+        return new Response(text, {
+          status: 200,
+          headers: {
+            "content-type": "application/json; charset=utf-8",
+            "access-control-allow-origin": "*",
+            "vary": "Accept"
+          }
+        });
+      }
+    } catch (e) {
+      // fallback
+    }
+  }
+
+  // Direct Markdown file request handler (e.g. /auth.md, /agent-instructions.md)
+  if (pathname.endsWith(".md")) {
+    try {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.ok) {
+        const mdText = await assetRes.text();
+        const tokens = Math.max(1, Math.ceil(mdText.length / 4));
+        return new Response(mdText, {
+          status: 200,
+          headers: {
+            "content-type": "text/markdown; charset=utf-8",
+            "x-markdown-tokens": String(tokens),
+            "access-control-allow-origin": "*",
+            "vary": "Accept"
+          }
+        });
+      }
+    } catch (e) {
+      // fallback
+    }
+  }
+
   // Handle JSON requests for agents and API clients
   if (isJsonPreferred && !accept.toLowerCase().includes("text/markdown")) {
     try {

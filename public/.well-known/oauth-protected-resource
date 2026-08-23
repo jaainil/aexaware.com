@@ -4,12 +4,14 @@
     "https://aexaware.com"
   ],
   "scopes_supported": [
-    "read"
+    "api:read",
+    "api:sandbox",
+    "mcp:tools"
   ],
   "bearer_methods_supported": [
     "header"
   ],
-  "resource_documentation": "https://aexaware.com/services",
-  "resource_name": "Aexaware Infotech Website",
-  "resource_description": "Aexaware Infotech provides software development, AI agents, and cloud consulting. Protected resources accept OAuth Bearer tokens in headers."
+  "resource_documentation": "https://aexaware.com/docs",
+  "resource_name": "Aexaware Infotech API & MCP Resource Server",
+  "resource_description": "RFC 9728 Protected Resource Server for Aexaware Infotech, providing engineering developer APIs, Model Context Protocol (MCP) streamable tools, and sandbox simulation environments."
 }
