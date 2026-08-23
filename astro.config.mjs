@@ -617,6 +617,22 @@ React, Next.js, Astro, Node.js, Python, PHP, Laravel, TypeScript, Tailwind CSS, 
           allow: "/",
         },
         {
+          userAgent: "ora-agent",
+          allow: "/",
+        },
+        {
+          userAgent: "Google-Extended",
+          allow: "/",
+        },
+        {
+          userAgent: "Applebot-Extended",
+          allow: "/",
+        },
+        {
+          userAgent: "Meta-ExternalFetcher",
+          allow: "/",
+        },
+        {
           userAgent: "YouBot",
           allow: "/",
         },
