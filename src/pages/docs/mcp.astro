@@ -1,7 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Bot, Terminal, Cpu, ArrowLeft, ExternalLink } from 'lucide-astro';
+import { Bot, Terminal, Cpu, ArrowLeft, ExternalLink, Sparkles } from 'lucide-astro';
 import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
+import CTA from '@/components/home/CTA.astro';
 ---
 
 <Layout
@@ -9,8 +10,15 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
   description="Official Model Context Protocol (MCP) server documentation for Aexaware Infotech. Connect AI assistants and autonomous agents to our tool registry and resources."
   tags={["Aexaware MCP server", "Model Context Protocol", "Aexaware AI tools", "Claude Desktop MCP", "Cursor MCP server"]}
 >
-  <div class="relative w-full bg-background min-h-dvh pt-32 pb-20 overflow-hidden">
+  <div class="relative w-full bg-background min-h-dvh pt-32 pb-24 overflow-hidden border-b border-border/40">
     <BackgroundGrid density="sm" mask="center" />
+
+    {/* Ambient Glow */}
+    <div
+      class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-[500px] w-[1000px] rounded-full bg-primary/10 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
 
     <div class="container-normal relative z-10 max-w-4xl">
       <a href="/docs" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors">
@@ -19,36 +27,36 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
 
       <div class="mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-          <Bot class="w-3.5 h-3.5" />
+          <Sparkles class="w-3.5 h-3.5" />
           Agent Protocol
         </div>
 
-        <h1 class="font-heading font-bold text-4xl sm:text-5xl text-foreground tracking-tight mb-6">
-          Aexaware Infotech <span class="text-primary">MCP Server & AI Tools</span>
+        <h1 class="font-heading font-bold text-4xl sm:text-5xl md:text-6xl text-foreground tracking-tight mb-6">
+          Aexaware Infotech <span class="text-primary font-serif">MCP Server & AI Tools</span>
         </h1>
 
-        <p class="text-lg text-muted-foreground leading-relaxed">
+        <p class="text-xl text-muted-foreground leading-relaxed">
           The official **Model Context Protocol (MCP)** server enabling AI models (Claude, ChatGPT, Cursor, custom agents) to invoke tools and access structured knowledge directly from **Aexaware Infotech**.
         </p>
       </div>
 
       <!-- Quick Action Card -->
-      <div class="bg-card border border-border/50 rounded-card-lg p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="bg-card/60 backdrop-blur-xs border border-border/50 rounded-card-lg p-8 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:border-primary/40 transition-all hover:shadow-xl">
         <div>
           <span class="text-xs font-bold uppercase text-primary tracking-wider">MCP Specification</span>
-          <h2 class="font-heading font-bold text-xl text-foreground mt-1">server-card.json Document</h2>
-          <p class="text-xs text-muted-foreground mt-1">Official MCP server descriptor card</p>
+          <h2 class="font-heading font-bold text-2xl text-foreground mt-1">server-card.json Document</h2>
+          <p class="text-sm text-muted-foreground mt-1">Official MCP server descriptor card</p>
         </div>
-        <div class="flex gap-3">
+        <div class="flex flex-wrap gap-3">
           <a
             href="/.well-known/mcp/server-card.json"
-            class="inline-flex items-center px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition-colors"
+            class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors shadow-md"
           >
             Server Card <ExternalLink class="ml-1.5 w-3.5 h-3.5" />
           </a>
           <a
             href="/mcp.md"
-            class="inline-flex items-center px-4 py-2 rounded-full bg-secondary border border-border/50 text-foreground text-xs font-semibold hover:bg-secondary/80 transition-colors"
+            class="inline-flex items-center px-5 py-2.5 rounded-full bg-secondary border border-border/50 text-foreground text-sm font-semibold hover:bg-secondary/80 transition-colors"
           >
             mcp.md <ExternalLink class="ml-1.5 w-3.5 h-3.5" />
           </a>
@@ -56,27 +64,27 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
       </div>
 
       <!-- Registered Tools -->
-      <div class="space-y-10">
+      <div class="space-y-12">
         <section class="space-y-4">
           <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
             Registered MCP Tools
           </h2>
           <div class="space-y-4">
-            <div class="p-5 bg-card/60 border border-border/40 rounded-card">
-              <h3 class="font-heading font-bold text-base text-foreground mb-1"><code>search_blog</code></h3>
-              <p class="text-xs text-muted-foreground">Search Aexaware's technical blog for articles on AI/ML, React, Next.js, and cloud engineering.</p>
+            <div class="p-6 bg-card/60 backdrop-blur-xs border border-border/40 rounded-card-lg">
+              <h3 class="font-heading font-bold text-lg text-foreground mb-1"><code>search_blog</code></h3>
+              <p class="text-sm text-muted-foreground">Search Aexaware's technical blog for articles on AI/ML, React, Next.js, and cloud engineering.</p>
             </div>
-            <div class="p-5 bg-card/60 border border-border/40 rounded-card">
-              <h3 class="font-heading font-bold text-base text-foreground mb-1"><code>list_services</code></h3>
-              <p class="text-xs text-muted-foreground">Retrieve all 19 specialized technology services offered by Aexaware Infotech.</p>
+            <div class="p-6 bg-card/60 backdrop-blur-xs border border-border/40 rounded-card-lg">
+              <h3 class="font-heading font-bold text-lg text-foreground mb-1"><code>list_services</code></h3>
+              <p class="text-sm text-muted-foreground">Retrieve all 19 specialized technology services offered by Aexaware Infotech.</p>
             </div>
-            <div class="p-5 bg-card/60 border border-border/40 rounded-card">
-              <h3 class="font-heading font-bold text-base text-foreground mb-1"><code>get_contact_info</code></h3>
-              <p class="text-xs text-muted-foreground">Fetch official contact details, Vadodara office address, and meeting links.</p>
+            <div class="p-6 bg-card/60 backdrop-blur-xs border border-border/40 rounded-card-lg">
+              <h3 class="font-heading font-bold text-lg text-foreground mb-1"><code>get_contact_info</code></h3>
+              <p class="text-sm text-muted-foreground">Fetch official contact details, Vadodara office address, and meeting links.</p>
             </div>
-            <div class="p-5 bg-card/60 border border-border/40 rounded-card">
-              <h3 class="font-heading font-bold text-base text-foreground mb-1"><code>list_portfolio</code></h3>
-              <p class="text-xs text-muted-foreground">Query live client case studies, technology stacks, and performance metrics.</p>
+            <div class="p-6 bg-card/60 backdrop-blur-xs border border-border/40 rounded-card-lg">
+              <h3 class="font-heading font-bold text-lg text-foreground mb-1"><code>list_portfolio</code></h3>
+              <p class="text-sm text-muted-foreground">Query live client case studies, technology stacks, and performance metrics.</p>
             </div>
           </div>
         </section>
@@ -89,7 +97,7 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
           <p class="text-muted-foreground leading-relaxed text-sm">
             Add the following snippet to your <code class="text-foreground">claude_desktop_config.json</code>:
           </p>
-          <div class="bg-secondary/30 border border-border/50 rounded-card p-4 font-mono text-xs text-foreground overflow-x-auto">
+          <div class="bg-secondary/40 border border-border/50 rounded-card p-5 font-mono text-xs text-foreground overflow-x-auto">
             <pre><code>{`{
   "mcpServers": {
     "aexaware": {
@@ -103,4 +111,14 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
       </div>
     </div>
   </div>
+
+  <CTA
+    title="Deploy Autonomous AI Agents"
+    titleHighlight="Powered by MCP."
+    description="We build customized MCP servers, multi-agent frameworks, and retrieval-augmented generation (RAG) pipelines."
+    buttonText="Schedule Consultation"
+    buttonHref="https://cal.com/aexaware-infotech"
+    secondaryButtonText="Explore AI Services"
+    secondaryButtonHref="/services/ai-agent-development"
+  />
 </Layout>

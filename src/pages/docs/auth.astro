@@ -1,7 +1,8 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { Key, Shield, FileText, ArrowLeft, ExternalLink } from 'lucide-astro';
+import { Key, Shield, FileText, ArrowLeft, ExternalLink, Sparkles } from 'lucide-astro';
 import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
+import CTA from '@/components/home/CTA.astro';
 ---
 
 <Layout
@@ -9,8 +10,15 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
   description="Official authentication and permissions guide for Aexaware Infotech. Understand Bearer tokens, OAuth 2.0 metadata, and identity assertions for AI agents."
   tags={["Aexaware auth docs", "Aexaware authentication", "Aexaware OAuth", "Aexaware API security", "agent permissions"]}
 >
-  <div class="relative w-full bg-background min-h-dvh pt-32 pb-20 overflow-hidden">
+  <div class="relative w-full bg-background min-h-dvh pt-32 pb-24 overflow-hidden border-b border-border/40">
     <BackgroundGrid density="sm" mask="center" />
+
+    {/* Ambient Glow */}
+    <div
+      class="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 -z-10 h-[500px] w-[1000px] rounded-full bg-primary/10 blur-3xl"
+      aria-hidden="true"
+    >
+    </div>
 
     <div class="container-normal relative z-10 max-w-4xl">
       <a href="/docs" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors">
@@ -19,41 +27,41 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
 
       <div class="mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
-          <Key class="w-3.5 h-3.5" />
+          <Sparkles class="w-3.5 h-3.5" />
           Security & Access
         </div>
 
-        <h1 class="font-heading font-bold text-4xl sm:text-5xl text-foreground tracking-tight mb-6">
-          Aexaware Infotech <span class="text-primary">Authentication & Permissions</span>
+        <h1 class="font-heading font-bold text-4xl sm:text-5xl md:text-6xl text-foreground tracking-tight mb-6">
+          Aexaware Infotech <span class="text-primary font-serif">Authentication & Permissions</span>
         </h1>
 
-        <p class="text-lg text-muted-foreground leading-relaxed">
+        <p class="text-xl text-muted-foreground leading-relaxed">
           Detailed security policies, identity assertion specifications, and OAuth 2.0 metadata endpoints for **Aexaware Infotech** integrations and autonomous AI agents.
         </p>
       </div>
 
       <!-- Quick Action Card -->
-      <div class="bg-card border border-border/50 rounded-card-lg p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="bg-card/60 backdrop-blur-xs border border-border/50 rounded-card-lg p-8 mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 hover:border-primary/40 transition-all hover:shadow-xl">
         <div>
           <span class="text-xs font-bold uppercase text-primary tracking-wider">Raw Markdown Spec</span>
-          <h2 class="font-heading font-bold text-xl text-foreground mt-1">auth.md Document</h2>
-          <p class="text-xs text-muted-foreground mt-1">Standardized agent registration & discovery document</p>
+          <h2 class="font-heading font-bold text-2xl text-foreground mt-1">auth.md Document</h2>
+          <p class="text-sm text-muted-foreground mt-1">Standardized agent registration & discovery document</p>
         </div>
         <a
           href="/auth.md"
-          class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+          class="inline-flex items-center px-6 py-3 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors shadow-lg"
         >
           View auth.md <ExternalLink class="ml-2 w-4 h-4" />
         </a>
       </div>
 
       <!-- Core Auth Sections -->
-      <div class="space-y-10">
+      <div class="space-y-12">
         <section class="space-y-4">
           <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
             1. Public Access & Agent Permissions
           </h2>
-          <p class="text-muted-foreground leading-relaxed">
+          <p class="text-muted-foreground leading-relaxed text-base">
             All public resources, service listings, blogs, and documentation on <strong class="text-foreground">https://aexaware.com</strong> are completely open for web crawlers and LLM search agents without authentication.
           </p>
         </section>
@@ -62,10 +70,10 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
           <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
             2. Privileged Agent Credentials
           </h2>
-          <p class="text-muted-foreground leading-relaxed">
+          <p class="text-muted-foreground leading-relaxed text-base">
             For authenticated API access, dedicated integrations, and programmatic inquiries, pass credentials via standard HTTP headers:
           </p>
-          <div class="bg-secondary/30 border border-border/50 rounded-card p-4 font-mono text-sm text-foreground">
+          <div class="bg-secondary/40 border border-border/50 rounded-card p-5 font-mono text-sm text-foreground space-y-1">
             <code>Authorization: Bearer &lt;aexaware_token&gt;</code><br />
             <code>X-API-Key: &lt;aexaware_api_key&gt;</code>
           </div>
@@ -76,12 +84,12 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
             3. OAuth 2.0 & Key Metadata Endpoints
           </h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="p-4 bg-card/60 border border-border/40 rounded-card">
-              <h3 class="font-heading font-semibold text-sm text-foreground mb-1">Protected Resource Metadata</h3>
+            <div class="p-6 bg-card/60 backdrop-blur-xs border border-border/40 rounded-card-lg">
+              <h3 class="font-heading font-semibold text-base text-foreground mb-1">Protected Resource Metadata</h3>
               <a href="/.well-known/oauth-protected-resource" class="text-xs text-primary hover:underline break-all">/.well-known/oauth-protected-resource</a>
             </div>
-            <div class="p-4 bg-card/60 border border-border/40 rounded-card">
-              <h3 class="font-heading font-semibold text-sm text-foreground mb-1">Authorization Server Metadata</h3>
+            <div class="p-6 bg-card/60 backdrop-blur-xs border border-border/40 rounded-card-lg">
+              <h3 class="font-heading font-semibold text-base text-foreground mb-1">Authorization Server Metadata</h3>
               <a href="/.well-known/oauth-authorization-server" class="text-xs text-primary hover:underline break-all">/.well-known/oauth-authorization-server</a>
             </div>
           </div>
@@ -89,4 +97,14 @@ import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
       </div>
     </div>
   </div>
+
+  <CTA
+    title="Need Secure Enterprise Integrations?"
+    titleHighlight="Talk to Us."
+    description="We build zero-trust architectures, OAuth2 SSO systems, and encrypted data pipelines."
+    buttonText="Schedule Consultation"
+    buttonHref="https://cal.com/aexaware-infotech"
+    secondaryButtonText="Contact Security Team"
+    secondaryButtonHref="/contact"
+  />
 </Layout>
