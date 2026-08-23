@@ -14,6 +14,7 @@ server { \
     listen 80; \
     root /usr/share/nginx/html; \
     index index.html; \
+    error_page 404 /404.html; \
     add_header Link "</.well-known/api-catalog>; rel=\"api-catalog\", </llms.txt>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"service-desc\", </services>; rel=\"service-doc\""; \
     add_header Vary Accept; \
     location / { \
@@ -22,12 +23,16 @@ server { \
             rewrite ^/(.+)/$ /$1.md last; \
             rewrite ^/(.+)$ /$1.md last; \
         } \
-        try_files $uri $uri/ $uri.html /index.html; \
+        try_files $uri $uri/ $uri.html =404; \
     } \
     location ~ \.md$ { \
         default_type text/markdown; \
         add_header Content-Type "text/markdown; charset=utf-8"; \
         add_header Vary Accept; \
+        try_files $uri =404; \
+    } \
+    location = /404.html { \
+        internal; \
     } \
     gzip on; \
     gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/markdown; \

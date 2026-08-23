@@ -53,8 +53,41 @@ export async function onRequest(context) {
           }
         });
       }
+      return htmlRes;
     }
-    return htmlRes;
+
+    // For nonexistent routes, return real HTTP 404 with helpful markdown pointers
+    try {
+      const notFoundReq = new Request(new URL("/404.md", request.url).toString(), request);
+      const notFoundRes = await env.ASSETS.fetch(notFoundReq);
+      if (notFoundRes.ok) {
+        const mdText = await notFoundRes.text();
+        const tokens = Math.max(1, Math.ceil(mdText.length / 4));
+        return new Response(mdText, {
+          status: 404,
+          headers: {
+            "content-type": "text/markdown; charset=utf-8",
+            "x-markdown-tokens": String(tokens),
+            "vary": "Accept",
+            "access-control-allow-origin": "*"
+          }
+        });
+      }
+    } catch (e) {
+      // continue to default fallback
+    }
+
+    const default404Md = `# 404 - Page Not Found\n\nThe requested path \`${pathname}\` does not exist on **Aexaware Infotech**.\n\n## Helpful Navigation Links\n- [Homepage](/)\n- [LLMs Summary & System Docs](/llms.txt)\n- [Sitemap](/sitemap-index.xml)\n- [Services Directory](/services)\n- [Portfolio](/portfolio)\n- [API Catalog](/.well-known/api-catalog)\n- [MCP Server Card](/.well-known/mcp/server-card.json)\n`;
+    const tokens = Math.max(1, Math.ceil(default404Md.length / 4));
+    return new Response(default404Md, {
+      status: 404,
+      headers: {
+        "content-type": "text/markdown; charset=utf-8",
+        "x-markdown-tokens": String(tokens),
+        "vary": "Accept",
+        "access-control-allow-origin": "*"
+      }
+    });
   }
 
   const response = await context.next();
