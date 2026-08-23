@@ -34,9 +34,98 @@
     {
       "name": "Content & Feeds",
       "description": "Public content feeds, blog articles, and service documentation."
+    },
+    {
+      "name": "MCP Server",
+      "description": "Model Context Protocol Streamable HTTP server exposing Aexaware tools to Claude, ChatGPT, and autonomous agents."
+    },
+    {
+      "name": "Self-Serve Authentication",
+      "description": "Programmatic API key provisioning for developers and autonomous agents."
+    },
+    {
+      "name": "Sandbox Environment",
+      "description": "Safe mock endpoints for testing integrations without real-world side effects."
     }
   ],
   "paths": {
+    "/api/mcp": {
+      "get": {
+        "tags": ["MCP Server"],
+        "summary": "MCP Server — capability discovery or SSE stream",
+        "description": "GET without Accept: text/event-stream returns the server capabilities as JSON. GET with Accept: text/event-stream opens an SSE stream for server-initiated messages (Streamable HTTP transport).",
+        "operationId": "mcpGet",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Server capabilities JSON or SSE stream",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "server": { "type": "object" },
+                    "protocol": { "type": "string", "example": "2025-03-26" },
+                    "transport": { "type": "string", "example": "streamable-http" },
+                    "tools_count": { "type": "integer", "example": 6 },
+                    "tools": { "type": "array" }
+                  }
+                }
+              },
+              "text/event-stream": {
+                "schema": { "type": "string", "description": "Server-Sent Events stream" }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["MCP Server"],
+        "summary": "MCP Server — JSON-RPC 2.0 message handler",
+        "description": "Accepts MCP JSON-RPC 2.0 messages (single or batch). Supported methods: initialize, tools/list, tools/call, ping. Supported tools: list_services, list_portfolio, search_blog, get_contact_info, provision_api_key, get_openapi_spec.",
+        "operationId": "mcpPost",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "jsonrpc": { "type": "string", "example": "2.0" },
+                  "method": { "type": "string", "example": "tools/call" },
+                  "params": { "type": "object" },
+                  "id": { "type": "integer", "example": 1 }
+                },
+                "required": ["jsonrpc", "method", "id"]
+              },
+              "examples": {
+                "initialize": { "value": { "jsonrpc": "2.0", "method": "initialize", "params": { "protocolVersion": "2025-03-26", "clientInfo": { "name": "MyAgent", "version": "1.0" }, "capabilities": {} }, "id": 1 } },
+                "tools_list": { "value": { "jsonrpc": "2.0", "method": "tools/list", "id": 2 } },
+                "call_list_services": { "value": { "jsonrpc": "2.0", "method": "tools/call", "params": { "name": "list_services", "arguments": {} }, "id": 3 } },
+                "call_search_blog": { "value": { "jsonrpc": "2.0", "method": "tools/call", "params": { "name": "search_blog", "arguments": { "query": "LLM agents" } }, "id": 4 } }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "JSON-RPC 2.0 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "jsonrpc": { "type": "string" },
+                    "id": { "type": "integer" },
+                    "result": { "type": "object" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/openapi.json": {
       "get": {
         "tags": ["Metadata & Catalogs"],

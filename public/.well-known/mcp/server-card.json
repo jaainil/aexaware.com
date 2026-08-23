@@ -1,77 +1,91 @@
 {
   "schema_version": "2024-11-05",
   "name": "Aexaware Infotech MCP Server",
-  "description": "Official MCP server for Aexaware Infotech. Exposes tools for querying services, portfolio, blog content, and self-serve API key provisioning.",
+  "description": "Official MCP server for Aexaware Infotech. Exposes 6 tools for discovering services, portfolio case studies, blog articles, contact info, sandbox API keys, and the OpenAPI specification.",
   "homepage": "https://aexaware.com",
   "contact": {
     "email": "info@aexaware.com",
     "url": "https://aexaware.com/contact"
   },
   "transport": {
-    "type": "http",
-    "endpoint": "https://aexaware.com"
+    "type": "streamable-http",
+    "endpoint": "https://aexaware.com/api/mcp"
   },
   "protocolVersion": "2025-03-26",
   "tools": [
     {
-      "name": "search_blog",
-      "description": "Search Aexaware's technical blog articles by keyword. Covers AI agents, cloud, React, Node.js, DevOps.",
+      "name": "list_services",
+      "description": "Returns all 19 specialized engineering services offered by Aexaware Infotech with category, description, and tech stack.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "query": { "type": "string", "description": "Search keyword or topic" }
+          "category": {
+            "type": "string",
+            "description": "Optional filter. One of: 'Web & Application Development', 'AI / ML & Data Science', 'Cloud & DevOps', 'Design & Marketing', 'Engagement Models'."
+          }
+        }
+      }
+    },
+    {
+      "name": "list_portfolio",
+      "description": "Returns Aexaware portfolio case studies with project name, industry, tech stack, delivery timeline, and live URL.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "industry": { "type": "string", "description": "Optional industry filter keyword (e.g. 'agriculture', 'media')." }
+        }
+      }
+    },
+    {
+      "name": "search_blog",
+      "description": "Keyword search across 21 Aexaware technical blog articles covering AI, cloud, DevOps, web, mobile, and security.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string", "description": "Search keyword (e.g. 'docker security', 'LLM agents', 'React Native')." }
         },
         "required": ["query"]
       }
     },
     {
-      "name": "list_services",
-      "description": "Returns all 19 specialized engineering services offered by Aexaware Infotech with descriptions and URLs.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {}
-      }
-    },
-    {
       "name": "get_contact_info",
-      "description": "Returns verified contact details: email info@aexaware.com, phone +91 81407 34392, Vadodara office address, and booking link.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {}
-      }
-    },
-    {
-      "name": "list_portfolio",
-      "description": "Returns Aexaware portfolio case studies with project names, industry, tech stack, and outcome metrics.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {}
-      }
+      "description": "Returns verified contact details: email info@aexaware.com, phone +91 81407 34392, office address, and booking/project form links.",
+      "inputSchema": { "type": "object", "properties": {} }
     },
     {
       "name": "provision_api_key",
-      "description": "Programmatically provisions a free sandbox API key for autonomous agents or developers. No credit card or sales form required.",
+      "description": "Programmatically provisions a free sandbox API key. No credit card or sales form required. 10,000 req/month.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "agent_name": { "type": "string", "description": "Name of the requesting agent or developer" },
-          "client_email": { "type": "string", "description": "Optional contact email" }
+          "agent_name": { "type": "string", "description": "Name of the requesting agent or app." },
+          "client_email": { "type": "string", "description": "Optional contact email." }
         }
       },
       "endpoint": "POST https://aexaware.com/api/keys/provision"
+    },
+    {
+      "name": "get_openapi_spec",
+      "description": "Returns the URL and summary of Aexaware's OpenAPI 3.1.0 specification with all defined paths.",
+      "inputSchema": { "type": "object", "properties": {} }
     }
   ],
   "resources": [
     { "uri": "/llms.txt", "description": "Token-efficient structured markdown overview for LLMs" },
-    { "uri": "/llms-full.txt", "description": "Full LLMs.txt with complete service content" },
-    { "uri": "/openapi.json", "description": "OpenAPI 3.1.0 machine-readable specification" },
+    { "uri": "/openapi.json", "description": "OpenAPI 3.1.0 machine-readable JSON specification" },
     { "uri": "/openapi.yaml", "description": "OpenAPI 3.1.0 YAML format" },
     { "uri": "/agent-instructions.md", "description": "Agent decision guidance and invocation instructions" },
-    { "uri": "/auth.md", "description": "Authentication and API key provisioning guide" },
-    { "uri": "/webhooks.md", "description": "Webhooks and HMAC signature verification guide" },
+    { "uri": "/auth.md", "description": "Authentication, free tier, and API key provisioning guide" },
     { "uri": "/.well-known/api-catalog", "description": "RFC 9727 API catalog linkset" },
-    { "uri": "/.well-known/agent-skills/index.json", "description": "Agent skills directory" },
-    { "uri": "/sitemap-index.xml", "description": "XML sitemap of all pages" },
-    { "uri": "/rss.xml", "description": "RSS feed for blog posts" }
-  ]
+    { "uri": "/sitemap-index.xml", "description": "XML sitemap of all pages" }
+  ],
+  "mcp_endpoint": "https://aexaware.com/api/mcp",
+  "claude_desktop_config": {
+    "mcpServers": {
+      "aexaware": {
+        "command": "npx",
+        "args": ["-y", "mcp-remote", "https://aexaware.com/api/mcp"]
+      }
+    }
+  }
 }
