@@ -129,6 +129,26 @@ export async function onRequest(context) {
     }
   }
 
+  // ARD (Agentic Resource Discovery) ai-catalog.json Manifest Handler
+  if (pathname === "/.well-known/ai-catalog.json" || pathname === "/ai-catalog.json") {
+    try {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.ok) {
+        const text = await assetRes.text();
+        return new Response(text, {
+          status: 200,
+          headers: {
+            "content-type": "application/json; charset=utf-8",
+            "access-control-allow-origin": "*",
+            "vary": "Accept"
+          }
+        });
+      }
+    } catch (e) {
+      // fallback
+    }
+  }
+
   // DNS for AI Discovery (DNS-AID) Manifest Handler
   if (pathname === "/.well-known/dns-aid.json") {
     try {

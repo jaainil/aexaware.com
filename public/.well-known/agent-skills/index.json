@@ -9,6 +9,13 @@
       "digest": "sha256:36b7b6eda1a5e3fcf05971c98eb745c6f1de24a0d62d22a8a841291153e120b9"
     },
     {
+      "name": "ard",
+      "type": "skill-md",
+      "description": "Agentic Resource Discovery (ARD / ai-catalog) capability manifest describing Aexaware MCP tools, OpenAPI specs, and agent services",
+      "url": "https://aexaware.com/.well-known/ai-catalog.json",
+      "digest": "sha256:8f4b23c923d874512e09b30ec12b489a3f2409823ef0b991823901bcae871239"
+    },
+    {
       "name": "dns-aid",
       "type": "skill-md",
       "description": "DNS for AI Discovery (DNS-AID / draft-mozleywilliams-dnsop-dnsaid) zone configuration and entrypoint records for Aexaware Infotech",

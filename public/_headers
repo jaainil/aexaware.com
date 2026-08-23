@@ -1,6 +1,14 @@
 /*
-  Link: </openapi.json>; rel="service-desc", </.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </services>; rel="service-doc"
+  Link: </openapi.json>; rel="service-desc", </.well-known/api-catalog>; rel="api-catalog", </.well-known/ai-catalog.json>; rel="ai-catalog", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </services>; rel="service-doc"
   Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+/.well-known/ai-catalog.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/ai-catalog.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
 
 /api/mcp
   Access-Control-Allow-Origin: *
