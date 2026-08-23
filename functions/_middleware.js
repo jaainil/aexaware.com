@@ -2,10 +2,34 @@ export async function onRequest(context) {
   const { request, env } = context;
   const accept = request.headers.get("accept") || "";
 
-  if (accept.toLowerCase().includes("text/markdown")) {
-    const url = new URL(request.url);
-    const pathname = url.pathname;
+  const url = new URL(request.url);
+  const pathname = url.pathname;
+  const isJsonPreferred =
+    accept.toLowerCase().includes("application/json") ||
+    accept.toLowerCase().includes("application/problem+json") ||
+    pathname.startsWith("/api/") ||
+    (pathname.endsWith(".json") && !pathname.includes(".html"));
 
+  // Handle JSON requests for agents and API clients
+  if (isJsonPreferred && !accept.toLowerCase().includes("text/markdown")) {
+    try {
+      const assetRes = await env.ASSETS.fetch(request);
+      if (assetRes.ok) {
+        return assetRes;
+      }
+    } catch (e) {
+      // asset fetch failed, proceed to structured error
+    }
+
+    return createStructuredJsonError({
+      status: 404,
+      code: "NOT_FOUND",
+      message: `The requested resource '${pathname}' was not found on this server.`,
+      path: pathname,
+    });
+  }
+
+  if (accept.toLowerCase().includes("text/markdown")) {
     const candidates = [];
     if (pathname === "/" || pathname === "/index.html") {
       candidates.push("/index.md", "/llms.txt", "/auth.md");
@@ -56,7 +80,7 @@ export async function onRequest(context) {
       return htmlRes;
     }
 
-    // For nonexistent routes, return real HTTP 404 with helpful markdown pointers
+    // For nonexistent routes in markdown mode, return real HTTP 404 with helpful markdown pointers
     try {
       const notFoundReq = new Request(new URL("/404.md", request.url).toString(), request);
       const notFoundRes = await env.ASSETS.fetch(notFoundReq);
@@ -77,7 +101,7 @@ export async function onRequest(context) {
       // continue to default fallback
     }
 
-    const default404Md = `# 404 - Page Not Found\n\nThe requested path \`${pathname}\` does not exist on **Aexaware Infotech**.\n\n## Helpful Navigation Links\n- [Homepage](/)\n- [LLMs Summary & System Docs](/llms.txt)\n- [Sitemap](/sitemap-index.xml)\n- [Services Directory](/services)\n- [Portfolio](/portfolio)\n- [API Catalog](/.well-known/api-catalog)\n- [MCP Server Card](/.well-known/mcp/server-card.json)\n`;
+    const default404Md = `# 404 - Page Not Found\n\nThe requested path \`${pathname}\` does not exist on **Aexaware Infotech**.\n\n## Resolution Hints\n- Check the requested URL for typographical errors.\n- Consult the XML sitemap at https://aexaware.com/sitemap-index.xml\n- Review our services directory at https://aexaware.com/services\n\n## Helpful Navigation Links\n- [Homepage](/)\n- [LLMs Summary & System Docs](/llms.txt)\n- [Sitemap](/sitemap-index.xml)\n- [OpenAPI Spec](/openapi.json)\n- [Services Directory](/services)\n- [Portfolio](/portfolio)\n- [API Catalog](/.well-known/api-catalog)\n- [MCP Server Card](/.well-known/mcp/server-card.json)\n`;
     const tokens = Math.max(1, Math.ceil(default404Md.length / 4));
     return new Response(default404Md, {
       status: 404,
@@ -91,6 +115,17 @@ export async function onRequest(context) {
   }
 
   const response = await context.next();
+
+  // If response is an error and client prefers JSON, return structured JSON error
+  if (response.status >= 400 && isJsonPreferred) {
+    return createStructuredJsonError({
+      status: response.status,
+      code: response.status === 404 ? "NOT_FOUND" : "REQUEST_FAILED",
+      message: `Request to '${pathname}' failed with HTTP ${response.status}.`,
+      path: pathname,
+    });
+  }
+
   response.headers.append("Vary", "Accept");
   if (!response.headers.has("Link")) {
     response.headers.set(
@@ -102,6 +137,48 @@ export async function onRequest(context) {
     response.headers.set("Content-Signal", "ai-train=yes, search=yes, ai-input=yes");
   }
   return response;
+}
+
+function createStructuredJsonError({ status = 404, code = "NOT_FOUND", message = "", path = "", resolutionHints = [] }) {
+  const defaultHints = [
+    "Verify the URL path and query parameters for typographical errors.",
+    "Discover all valid URLs using the XML Sitemap at https://aexaware.com/sitemap-index.xml",
+    "Inspect machine-readable system documentation at https://aexaware.com/llms.txt",
+    "Check the OpenAPI 3.1.0 specification at https://aexaware.com/openapi.json or https://aexaware.com/openapi.yaml",
+    "Browse the RFC 9727 API catalog at https://aexaware.com/.well-known/api-catalog",
+    "Reach out to info@aexaware.com or submit an inquiry at https://aexaware.com/contact"
+  ];
+
+  const payload = {
+    error: {
+      code,
+      status,
+      message: message || (status === 404 ? "Resource not found." : "An error occurred."),
+      path,
+      timestamp: new Date().toISOString(),
+      resolution_hints: resolutionHints.length > 0 ? resolutionHints : defaultHints,
+      links: {
+        homepage: "https://aexaware.com/",
+        sitemap: "https://aexaware.com/sitemap-index.xml",
+        llms_txt: "https://aexaware.com/llms.txt",
+        openapi_json: "https://aexaware.com/openapi.json",
+        openapi_yaml: "https://aexaware.com/openapi.yaml",
+        api_catalog: "https://aexaware.com/.well-known/api-catalog",
+        mcp_server_card: "https://aexaware.com/.well-known/mcp/server-card.json",
+        services: "https://aexaware.com/services",
+        contact: "https://aexaware.com/contact"
+      }
+    }
+  };
+
+  return new Response(JSON.stringify(payload, null, 2), {
+    status,
+    headers: {
+      "content-type": "application/problem+json; charset=utf-8",
+      "vary": "Accept",
+      "access-control-allow-origin": "*"
+    }
+  });
 }
 
 function convertHtmlToMarkdown(html) {

@@ -1,0 +1,26 @@
+{
+  "error": {
+    "code": "NOT_FOUND",
+    "status": 404,
+    "message": "The requested resource was not found on this server.",
+    "resolution_hints": [
+      "Verify the URL path and query parameters for typographical errors.",
+      "Discover all valid URLs using the XML Sitemap at https://aexaware.com/sitemap-index.xml",
+      "Inspect machine-readable system documentation at https://aexaware.com/llms.txt",
+      "Check the OpenAPI 3.1.0 specification at https://aexaware.com/openapi.json or https://aexaware.com/openapi.yaml",
+      "Browse the RFC 9727 API catalog at https://aexaware.com/.well-known/api-catalog",
+      "Reach out to info@aexaware.com or submit an inquiry at https://aexaware.com/contact"
+    ],
+    "links": {
+      "homepage": "https://aexaware.com/",
+      "sitemap": "https://aexaware.com/sitemap-index.xml",
+      "llms_txt": "https://aexaware.com/llms.txt",
+      "openapi_json": "https://aexaware.com/openapi.json",
+      "openapi_yaml": "https://aexaware.com/openapi.yaml",
+      "api_catalog": "https://aexaware.com/.well-known/api-catalog",
+      "mcp_server_card": "https://aexaware.com/.well-known/mcp/server-card.json",
+      "services": "https://aexaware.com/services",
+      "contact": "https://aexaware.com/contact"
+    }
+  }
+}
