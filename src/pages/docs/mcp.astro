@@ -1,0 +1,106 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Bot, Terminal, Cpu, ArrowLeft, ExternalLink } from 'lucide-astro';
+import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
+---
+
+<Layout
+  title="Aexaware Infotech Model Context Protocol (MCP) Server"
+  description="Official Model Context Protocol (MCP) server documentation for Aexaware Infotech. Connect AI assistants and autonomous agents to our tool registry and resources."
+  tags={["Aexaware MCP server", "Model Context Protocol", "Aexaware AI tools", "Claude Desktop MCP", "Cursor MCP server"]}
+>
+  <div class="relative w-full bg-background min-h-dvh pt-32 pb-20 overflow-hidden">
+    <BackgroundGrid density="sm" mask="center" />
+
+    <div class="container-normal relative z-10 max-w-4xl">
+      <a href="/docs" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors">
+        <ArrowLeft class="mr-2 w-4 h-4" /> Back to Developer Resources
+      </a>
+
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <Bot class="w-3.5 h-3.5" />
+          Agent Protocol
+        </div>
+
+        <h1 class="font-heading font-bold text-4xl sm:text-5xl text-foreground tracking-tight mb-6">
+          Aexaware Infotech <span class="text-primary">MCP Server & AI Tools</span>
+        </h1>
+
+        <p class="text-lg text-muted-foreground leading-relaxed">
+          The official **Model Context Protocol (MCP)** server enabling AI models (Claude, ChatGPT, Cursor, custom agents) to invoke tools and access structured knowledge directly from **Aexaware Infotech**.
+        </p>
+      </div>
+
+      <!-- Quick Action Card -->
+      <div class="bg-card border border-border/50 rounded-card-lg p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase text-primary tracking-wider">MCP Specification</span>
+          <h2 class="font-heading font-bold text-xl text-foreground mt-1">server-card.json Document</h2>
+          <p class="text-xs text-muted-foreground mt-1">Official MCP server descriptor card</p>
+        </div>
+        <div class="flex gap-3">
+          <a
+            href="/.well-known/mcp/server-card.json"
+            class="inline-flex items-center px-4 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold hover:bg-primary/90 transition-colors"
+          >
+            Server Card <ExternalLink class="ml-1.5 w-3.5 h-3.5" />
+          </a>
+          <a
+            href="/mcp.md"
+            class="inline-flex items-center px-4 py-2 rounded-full bg-secondary border border-border/50 text-foreground text-xs font-semibold hover:bg-secondary/80 transition-colors"
+          >
+            mcp.md <ExternalLink class="ml-1.5 w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Registered Tools -->
+      <div class="space-y-10">
+        <section class="space-y-4">
+          <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
+            Registered MCP Tools
+          </h2>
+          <div class="space-y-4">
+            <div class="p-5 bg-card/60 border border-border/40 rounded-card">
+              <h3 class="font-heading font-bold text-base text-foreground mb-1"><code>search_blog</code></h3>
+              <p class="text-xs text-muted-foreground">Search Aexaware's technical blog for articles on AI/ML, React, Next.js, and cloud engineering.</p>
+            </div>
+            <div class="p-5 bg-card/60 border border-border/40 rounded-card">
+              <h3 class="font-heading font-bold text-base text-foreground mb-1"><code>list_services</code></h3>
+              <p class="text-xs text-muted-foreground">Retrieve all 19 specialized technology services offered by Aexaware Infotech.</p>
+            </div>
+            <div class="p-5 bg-card/60 border border-border/40 rounded-card">
+              <h3 class="font-heading font-bold text-base text-foreground mb-1"><code>get_contact_info</code></h3>
+              <p class="text-xs text-muted-foreground">Fetch official contact details, Vadodara office address, and meeting links.</p>
+            </div>
+            <div class="p-5 bg-card/60 border border-border/40 rounded-card">
+              <h3 class="font-heading font-bold text-base text-foreground mb-1"><code>list_portfolio</code></h3>
+              <p class="text-xs text-muted-foreground">Query live client case studies, technology stacks, and performance metrics.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Claude Desktop Config -->
+        <section class="space-y-4">
+          <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
+            Claude Desktop Setup
+          </h2>
+          <p class="text-muted-foreground leading-relaxed text-sm">
+            Add the following snippet to your <code class="text-foreground">claude_desktop_config.json</code>:
+          </p>
+          <div class="bg-secondary/30 border border-border/50 rounded-card p-4 font-mono text-xs text-foreground overflow-x-auto">
+            <pre><code>{`{
+  "mcpServers": {
+    "aexaware": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch", "https://aexaware.com/.well-known/mcp/server-card.json"]
+    }
+  }
+}`}</code></pre>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>

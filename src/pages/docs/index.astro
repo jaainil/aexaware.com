@@ -1,0 +1,163 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { BookOpen, Key, Webhook, Bot, FileCode, CheckCircle2, ArrowRight } from 'lucide-astro';
+import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
+
+const docCards = [
+  {
+    title: "Aexaware OpenAPI Specification",
+    description: "Machine-readable OpenAPI 3.1.0 specification defining our public API endpoints, schemas, parameters, and responses.",
+    href: "/docs/openapi",
+    badge: "OpenAPI 3.1",
+    icon: FileCode,
+    links: [
+      { label: "View JSON Spec", url: "/openapi.json" },
+      { label: "View YAML Spec", url: "/openapi.yaml" }
+    ]
+  },
+  {
+    title: "Aexaware Authentication & Agent Permissions",
+    description: "Authorization flows, OAuth 2.0 metadata, Bearer token integration, and identity assertion verification for AI agents.",
+    href: "/docs/auth",
+    badge: "OAuth & Auth.md",
+    icon: Key,
+    links: [
+      { label: "Read auth.md", url: "/auth.md" },
+      { label: "OAuth Server Card", url: "/.well-known/oauth-authorization-server" }
+    ]
+  },
+  {
+    title: "Aexaware Webhooks & Event Notifications",
+    description: "Subscribe to real-time events with HMAC-SHA256 signature verification and exponential backoff retry handling.",
+    href: "/docs/webhooks",
+    badge: "Webhooks",
+    icon: Webhook,
+    links: [
+      { label: "Read webhooks.md", url: "/webhooks.md" }
+    ]
+  },
+  {
+    title: "Aexaware Model Context Protocol (MCP) Server",
+    description: "Connect Claude, ChatGPT, Cursor, and custom agent workflows directly to Aexaware Infotech tools and resources.",
+    href: "/docs/mcp",
+    badge: "MCP Server",
+    icon: Bot,
+    links: [
+      { label: "MCP Server Card", url: "/.well-known/mcp/server-card.json" },
+      { label: "Read mcp.md", url: "/mcp.md" }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Aexaware Infotech Developer Documentation & API Reference"
+  description="Official developer documentation for Aexaware Infotech. Access our OpenAPI specification, authentication guide, webhooks documentation, and MCP server endpoints."
+  tags={["Aexaware developer docs", "Aexaware API documentation", "Aexaware OpenAPI spec", "Aexaware auth docs", "Aexaware webhooks", "Aexaware MCP server"]}
+>
+  <div class="relative w-full bg-background min-h-dvh pt-32 pb-20 overflow-hidden">
+    <BackgroundGrid density="md" mask="center" />
+
+    <div class="container-normal relative z-10">
+      <!-- Breadcrumb & Header -->
+      <div class="max-w-3xl mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <BookOpen class="w-3.5 h-3.5" />
+          Developer Portal
+        </div>
+
+        <h1 class="font-heading font-bold text-4xl sm:text-5xl md:text-6xl text-foreground tracking-tight mb-6">
+          Aexaware Infotech <span class="text-primary">Developer Resources</span>
+        </h1>
+
+        <p class="text-xl text-muted-foreground leading-relaxed">
+          Comprehensive API specifications, security standards, real-time webhooks, and Model Context Protocol (MCP) server guides built for engineers and autonomous AI agents.
+        </p>
+      </div>
+
+      <!-- Quick Resource Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {docCards.map((doc) => (
+          <div class="group bg-card/60 backdrop-blur-xs border border-border/50 rounded-card-lg p-8 flex flex-col justify-between hover:border-primary/40 transition-all hover:shadow-xl">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <div class="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                  <doc.icon class="h-6 w-6" />
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-secondary rounded-full border border-border/60 text-muted-foreground">
+                  {doc.badge}
+                </span>
+              </div>
+
+              <h2 class="font-heading font-bold text-2xl text-foreground mb-3 group-hover:text-primary transition-colors">
+                <a href={doc.href} class="hover:underline">
+                  {doc.title}
+                </a>
+              </h2>
+
+              <p class="text-muted-foreground leading-relaxed mb-6">
+                {doc.description}
+              </p>
+            </div>
+
+            <div class="border-t border-border/40 pt-6 flex flex-wrap items-center justify-between gap-4">
+              <div class="flex flex-wrap gap-3">
+                {doc.links.map((link) => (
+                  <a
+                    href={link.url}
+                    class="text-xs font-medium text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+
+              <a
+                href={doc.href}
+                class="inline-flex items-center text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+              >
+                Documentation <ArrowRight class="ml-1 w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Agent Discovery Standards Section -->
+      <div class="bg-secondary/10 border border-border/60 rounded-card-lg p-8 md:p-12">
+        <h2 class="font-heading font-bold text-2xl md:text-3xl text-foreground mb-4">
+          Aexaware Machine-Readable Standards
+        </h2>
+        <p class="text-muted-foreground text-base md:text-lg mb-8 max-w-2xl">
+          We implement open standards enabling autonomous agents and LLM crawlers to inspect our capabilities programmatically.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-background border border-border/40 rounded-card p-5">
+            <h3 class="font-heading font-semibold text-base text-foreground mb-2">RFC 9727 API Catalog</h3>
+            <p class="text-xs text-muted-foreground mb-4">Machine-readable Linkset directory.</p>
+            <a href="/.well-known/api-catalog" class="text-xs font-semibold text-primary hover:underline">View Catalog &rarr;</a>
+          </div>
+
+          <div class="bg-background border border-border/40 rounded-card p-5">
+            <h3 class="font-heading font-semibold text-base text-foreground mb-2">MCP Server Card</h3>
+            <p class="text-xs text-muted-foreground mb-4">Model Context Protocol endpoint registry.</p>
+            <a href="/.well-known/mcp/server-card.json" class="text-xs font-semibold text-primary hover:underline">View Server Card &rarr;</a>
+          </div>
+
+          <div class="bg-background border border-border/40 rounded-card p-5">
+            <h3 class="font-heading font-semibold text-base text-foreground mb-2">LLMs.txt Overview</h3>
+            <p class="text-xs text-muted-foreground mb-4">Structured markdown context for LLMs.</p>
+            <a href="/llms.txt" class="text-xs font-semibold text-primary hover:underline">Read llms.txt &rarr;</a>
+          </div>
+
+          <div class="bg-background border border-border/40 rounded-card p-5">
+            <h3 class="font-heading font-semibold text-base text-foreground mb-2">Agent Skills</h3>
+            <p class="text-xs text-muted-foreground mb-4">Autonomous agent tooling registry.</p>
+            <a href="/.well-known/agent-skills/index.json" class="text-xs font-semibold text-primary hover:underline">View Skills &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

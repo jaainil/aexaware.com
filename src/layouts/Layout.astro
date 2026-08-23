@@ -126,10 +126,18 @@ const twitterHandle = "@aexaware";
             '@type': 'Organization' as const,
             '@id': `${siteUrl}#organization`,
             name: siteName,
+            legalName: 'Aexaware Infotech',
+            alternateName: ['Aexaware', 'Aexaware Infotech', 'Aexaware Infotech Pvt Ltd', 'aexaware.com'],
             url: siteUrl,
             logo: {
               '@type': 'ImageObject',
               url: new URL('/og-image.png', siteUrl).href,
+            },
+            brand: {
+              '@type': 'Brand',
+              name: 'Aexaware',
+              alternateName: 'Aexaware Infotech',
+              url: siteUrl,
             },
             description: "Full-service software development company specializing in web development, mobile apps, AI/ML integration, DevOps, cloud solutions, and digital marketing. Founded in 2024, based in Vadodara, Gujarat, India.",
             foundingDate: "2024",
@@ -148,9 +156,13 @@ const twitterHandle = "@aexaware";
             sameAs: [
               'https://www.linkedin.com/company/aexaware',
               'https://twitter.com/aexaware',
+              'https://x.com/aexaware',
               'https://github.com/aexaware',
               'https://www.instagram.com/aexaware/',
-              'https://www.youtube.com/@aexaware'
+              'https://www.youtube.com/@aexaware',
+              'https://clutch.co/profile/aexaware-infotech',
+              'https://www.goodfirms.co/company/aexaware-infotech',
+              'https://codeberg.org/Aexaware'
             ],
             contactPoint: {
               '@type': 'ContactPoint',

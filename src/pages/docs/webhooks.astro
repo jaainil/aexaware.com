@@ -1,0 +1,90 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Webhook, ShieldCheck, ArrowLeft, ExternalLink } from 'lucide-astro';
+import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
+---
+
+<Layout
+  title="Aexaware Infotech Webhooks & Event Notifications"
+  description="Official Webhooks guide for Aexaware Infotech. Subscribe to real-time events with HMAC-SHA256 signature verification and automated retries."
+  tags={["Aexaware webhooks", "Aexaware event notifications", "Aexaware API webhooks", "HMAC SHA256 webhook", "realtime events"]}
+>
+  <div class="relative w-full bg-background min-h-dvh pt-32 pb-20 overflow-hidden">
+    <BackgroundGrid density="sm" mask="center" />
+
+    <div class="container-normal relative z-10 max-w-4xl">
+      <a href="/docs" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors">
+        <ArrowLeft class="mr-2 w-4 h-4" /> Back to Developer Resources
+      </a>
+
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <Webhook class="w-3.5 h-3.5" />
+          Realtime Events
+        </div>
+
+        <h1 class="font-heading font-bold text-4xl sm:text-5xl text-foreground tracking-tight mb-6">
+          Aexaware Infotech <span class="text-primary">Webhooks Documentation</span>
+        </h1>
+
+        <p class="text-lg text-muted-foreground leading-relaxed">
+          Learn how to receive and verify real-time event notifications from **Aexaware Infotech** for project inquiries, consultations, milestones, and deployments.
+        </p>
+      </div>
+
+      <!-- Quick Action Card -->
+      <div class="bg-card border border-border/50 rounded-card-lg p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase text-primary tracking-wider">Raw Markdown Spec</span>
+          <h2 class="font-heading font-bold text-xl text-foreground mt-1">webhooks.md Document</h2>
+          <p class="text-xs text-muted-foreground mt-1">Event definitions, HMAC signing, and payload schemas</p>
+        </div>
+        <a
+          href="/webhooks.md"
+          class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+        >
+          View webhooks.md <ExternalLink class="ml-2 w-4 h-4" />
+        </a>
+      </div>
+
+      <!-- Core Content -->
+      <div class="space-y-10">
+        <section class="space-y-4">
+          <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
+            Supported Event Types
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-card/60 border border-border/40 rounded-card">
+              <code class="text-sm font-bold text-primary">inquiry.received</code>
+              <p class="text-xs text-muted-foreground mt-1">Triggered when a client submits a new project or contact form.</p>
+            </div>
+            <div class="p-4 bg-card/60 border border-border/40 rounded-card">
+              <code class="text-sm font-bold text-primary">consultation.scheduled</code>
+              <p class="text-xs text-muted-foreground mt-1">Triggered when an initial technical consultation call is booked.</p>
+            </div>
+            <div class="p-4 bg-card/60 border border-border/40 rounded-card">
+              <code class="text-sm font-bold text-primary">deployment.completed</code>
+              <p class="text-xs text-muted-foreground mt-1">Triggered when an application or cloud deployment completes.</p>
+            </div>
+            <div class="p-4 bg-card/60 border border-border/40 rounded-card">
+              <code class="text-sm font-bold text-primary">agent.task_executed</code>
+              <p class="text-xs text-muted-foreground mt-1">Triggered when an autonomous AI agent executes a tool action.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
+            Signature Verification
+          </h2>
+          <p class="text-muted-foreground leading-relaxed">
+            Every webhook request includes an <code class="text-foreground">X-Aexaware-Signature</code> header with an HMAC-SHA256 digest of the raw request payload.
+          </p>
+          <div class="bg-secondary/30 border border-border/50 rounded-card p-4 font-mono text-sm text-foreground overflow-x-auto">
+            <pre><code>const signature = crypto.createHmac('sha256', secret).update(rawPayload).digest('hex');</code></pre>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>

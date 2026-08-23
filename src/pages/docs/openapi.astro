@@ -1,0 +1,104 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { FileCode, Download, ExternalLink, ArrowLeft } from 'lucide-astro';
+import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
+---
+
+<Layout
+  title="Aexaware Infotech OpenAPI Specification & Swagger Reference"
+  description="Official OpenAPI 3.1.0 specification for Aexaware Infotech. Access JSON and YAML definitions for all public API endpoints and AI discovery resources."
+  tags={["Aexaware OpenAPI spec", "Aexaware Swagger", "Aexaware API documentation", "Aexaware OpenAPI 3.1.0", "OpenAPI JSON YAML"]}
+>
+  <div class="relative w-full bg-background min-h-dvh pt-32 pb-20 overflow-hidden">
+    <BackgroundGrid density="sm" mask="center" />
+
+    <div class="container-normal relative z-10 max-w-4xl">
+      <a href="/docs" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors">
+        <ArrowLeft class="mr-2 w-4 h-4" /> Back to Developer Resources
+      </a>
+
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <FileCode class="w-3.5 h-3.5" />
+          API Specification
+        </div>
+
+        <h1 class="font-heading font-bold text-4xl sm:text-5xl text-foreground tracking-tight mb-6">
+          Aexaware Infotech <span class="text-primary">OpenAPI Specification</span>
+        </h1>
+
+        <p class="text-lg text-muted-foreground leading-relaxed">
+          The official machine-readable OpenAPI 3.1.0 specification describing all public endpoints, discovery resources, and metadata schemas on <strong class="text-foreground">https://aexaware.com</strong>.
+        </p>
+      </div>
+
+      <!-- Download & Format Buttons -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+        <a
+          href="/openapi.json"
+          class="flex items-center justify-between p-6 bg-card border border-border/50 rounded-card hover:border-primary/40 transition-all group"
+        >
+          <div>
+            <span class="text-xs font-bold uppercase text-primary tracking-wider">JSON Format</span>
+            <h2 class="font-heading font-bold text-xl text-foreground mt-1 group-hover:text-primary transition-colors">openapi.json</h2>
+            <p class="text-xs text-muted-foreground mt-1">OpenAPI 3.1.0 specification in JSON</p>
+          </div>
+          <ExternalLink class="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+        </a>
+
+        <a
+          href="/openapi.yaml"
+          class="flex items-center justify-between p-6 bg-card border border-border/50 rounded-card hover:border-primary/40 transition-all group"
+        >
+          <div>
+            <span class="text-xs font-bold uppercase text-primary tracking-wider">YAML Format</span>
+            <h2 class="font-heading font-bold text-xl text-foreground mt-1 group-hover:text-primary transition-colors">openapi.yaml</h2>
+            <p class="text-xs text-muted-foreground mt-1">OpenAPI 3.1.0 specification in YAML</p>
+          </div>
+          <ExternalLink class="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
+        </a>
+      </div>
+
+      <!-- Endpoints Overview -->
+      <div class="space-y-8">
+        <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
+          Documented Endpoints
+        </h2>
+
+        <div class="space-y-4">
+          <div class="p-5 bg-card/60 border border-border/40 rounded-card">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/20 text-primary">GET</span>
+              <code class="text-sm font-semibold text-foreground">/openapi.json</code>
+            </div>
+            <p class="text-sm text-muted-foreground">Self-describing OpenAPI 3.1.0 specification in JSON.</p>
+          </div>
+
+          <div class="p-5 bg-card/60 border border-border/40 rounded-card">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/20 text-primary">GET</span>
+              <code class="text-sm font-semibold text-foreground">/llms.txt</code>
+            </div>
+            <p class="text-sm text-muted-foreground">Concise site overview and service catalog for LLM agents.</p>
+          </div>
+
+          <div class="p-5 bg-card/60 border border-border/40 rounded-card">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/20 text-primary">GET</span>
+              <code class="text-sm font-semibold text-foreground">/.well-known/api-catalog</code>
+            </div>
+            <p class="text-sm text-muted-foreground">RFC 9727 Linkset API catalog describing discovery endpoints.</p>
+          </div>
+
+          <div class="p-5 bg-card/60 border border-border/40 rounded-card">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-primary/20 text-primary">GET</span>
+              <code class="text-sm font-semibold text-foreground">/.well-known/mcp/server-card.json</code>
+            </div>
+            <p class="text-sm text-muted-foreground">Model Context Protocol server description and tool endpoints.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

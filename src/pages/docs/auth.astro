@@ -1,0 +1,92 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { Key, Shield, FileText, ArrowLeft, ExternalLink } from 'lucide-astro';
+import BackgroundGrid from '@/components/home/BackgroundGrid.astro';
+---
+
+<Layout
+  title="Aexaware Infotech Authentication & API Security Documentation"
+  description="Official authentication and permissions guide for Aexaware Infotech. Understand Bearer tokens, OAuth 2.0 metadata, and identity assertions for AI agents."
+  tags={["Aexaware auth docs", "Aexaware authentication", "Aexaware OAuth", "Aexaware API security", "agent permissions"]}
+>
+  <div class="relative w-full bg-background min-h-dvh pt-32 pb-20 overflow-hidden">
+    <BackgroundGrid density="sm" mask="center" />
+
+    <div class="container-normal relative z-10 max-w-4xl">
+      <a href="/docs" class="inline-flex items-center text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors">
+        <ArrowLeft class="mr-2 w-4 h-4" /> Back to Developer Resources
+      </a>
+
+      <div class="mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+          <Key class="w-3.5 h-3.5" />
+          Security & Access
+        </div>
+
+        <h1 class="font-heading font-bold text-4xl sm:text-5xl text-foreground tracking-tight mb-6">
+          Aexaware Infotech <span class="text-primary">Authentication & Permissions</span>
+        </h1>
+
+        <p class="text-lg text-muted-foreground leading-relaxed">
+          Detailed security policies, identity assertion specifications, and OAuth 2.0 metadata endpoints for **Aexaware Infotech** integrations and autonomous AI agents.
+        </p>
+      </div>
+
+      <!-- Quick Action Card -->
+      <div class="bg-card border border-border/50 rounded-card-lg p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase text-primary tracking-wider">Raw Markdown Spec</span>
+          <h2 class="font-heading font-bold text-xl text-foreground mt-1">auth.md Document</h2>
+          <p class="text-xs text-muted-foreground mt-1">Standardized agent registration & discovery document</p>
+        </div>
+        <a
+          href="/auth.md"
+          class="inline-flex items-center px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+        >
+          View auth.md <ExternalLink class="ml-2 w-4 h-4" />
+        </a>
+      </div>
+
+      <!-- Core Auth Sections -->
+      <div class="space-y-10">
+        <section class="space-y-4">
+          <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
+            1. Public Access & Agent Permissions
+          </h2>
+          <p class="text-muted-foreground leading-relaxed">
+            All public resources, service listings, blogs, and documentation on <strong class="text-foreground">https://aexaware.com</strong> are completely open for web crawlers and LLM search agents without authentication.
+          </p>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
+            2. Privileged Agent Credentials
+          </h2>
+          <p class="text-muted-foreground leading-relaxed">
+            For authenticated API access, dedicated integrations, and programmatic inquiries, pass credentials via standard HTTP headers:
+          </p>
+          <div class="bg-secondary/30 border border-border/50 rounded-card p-4 font-mono text-sm text-foreground">
+            <code>Authorization: Bearer &lt;aexaware_token&gt;</code><br />
+            <code>X-API-Key: &lt;aexaware_api_key&gt;</code>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <h2 class="font-heading font-bold text-2xl text-foreground border-b border-border/50 pb-3">
+            3. OAuth 2.0 & Key Metadata Endpoints
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-card/60 border border-border/40 rounded-card">
+              <h3 class="font-heading font-semibold text-sm text-foreground mb-1">Protected Resource Metadata</h3>
+              <a href="/.well-known/oauth-protected-resource" class="text-xs text-primary hover:underline break-all">/.well-known/oauth-protected-resource</a>
+            </div>
+            <div class="p-4 bg-card/60 border border-border/40 rounded-card">
+              <h3 class="font-heading font-semibold text-sm text-foreground mb-1">Authorization Server Metadata</h3>
+              <a href="/.well-known/oauth-authorization-server" class="text-xs text-primary hover:underline break-all">/.well-known/oauth-authorization-server</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>

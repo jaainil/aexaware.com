@@ -62,6 +62,49 @@
           "type": "application/rss+xml"
         }
       ]
+    },
+    {
+      "anchor": "https://aexaware.com/docs",
+      "service-doc": [
+        {
+          "href": "https://aexaware.com/docs",
+          "type": "text/html"
+        },
+        {
+          "href": "https://aexaware.com/docs/auth",
+          "type": "text/html"
+        },
+        {
+          "href": "https://aexaware.com/docs/webhooks",
+          "type": "text/html"
+        },
+        {
+          "href": "https://aexaware.com/docs/mcp",
+          "type": "text/html"
+        },
+        {
+          "href": "https://aexaware.com/docs/openapi",
+          "type": "text/html"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://aexaware.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        },
+        {
+          "href": "https://aexaware.com/.well-known/mcp/server-card.json",
+          "type": "application/json"
+        },
+        {
+          "href": "https://aexaware.com/auth.md",
+          "type": "text/markdown"
+        },
+        {
+          "href": "https://aexaware.com/webhooks.md",
+          "type": "text/markdown"
+        }
+      ]
     }
   ]
 }

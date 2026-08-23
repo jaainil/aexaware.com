@@ -1,4 +1,4 @@
-# auth.md
+# Aexaware Infotech Authentication & Agent Permissions Documentation
 
 Auth.md metadata and Agent Registration guide for **Aexaware Infotech** (https://aexaware.com).
 
@@ -31,13 +31,16 @@ For automated agents requiring identified or privileged integration, programmati
 - **Authorization Server Metadata**: `https://aexaware.com/.well-known/oauth-authorization-server`
 - **Web Bot Auth Key Directory (JWKS)**: `https://aexaware.com/.well-known/http-message-signatures-directory`
 
-## Machine-Readable Resources
+## Developer Resources & Machine-Readable Endpoints
 
+- **Aexaware Developer Portal**: https://aexaware.com/docs
+- **Aexaware OpenAPI Spec**: https://aexaware.com/openapi.json
+- **Aexaware Webhooks Guide**: https://aexaware.com/webhooks.md
+- **Aexaware MCP Server Card**: https://aexaware.com/.well-known/mcp/server-card.json
+- **Aexaware API Catalog**: https://aexaware.com/.well-known/api-catalog
+- **Aexaware Agent Skills Registry**: https://aexaware.com/.well-known/agent-skills/index.json
 - **LLMs.txt**: https://aexaware.com/llms.txt
 - **Full LLMs.txt**: https://aexaware.com/llms-full.txt
-- **API Catalog**: https://aexaware.com/.well-known/api-catalog
-- **MCP Server Card**: https://aexaware.com/.well-known/mcp/server-card.json
-- **Agent Skills**: https://aexaware.com/.well-known/agent-skills/index.json
 - **Sitemap**: https://aexaware.com/sitemap-index.xml
 - **RSS Feed**: https://aexaware.com/rss.xml
 
@@ -45,3 +48,4 @@ For automated agents requiring identified or privileged integration, programmati
 
 - **Privacy Policy**: https://aexaware.com/privacy-policy
 - **Terms of Service**: https://aexaware.com/terms
+

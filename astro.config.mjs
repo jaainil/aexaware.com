@@ -41,7 +41,18 @@ export default defineConfig({
         siteName: "Aexaware Infotech",
         description:
           "Aexaware Infotech is a full-service software development company based in Vadodara, Gujarat, India. Founded in 2024, we help startups and enterprises turn ideas into scalable web, mobile, AI/ML, and cloud solutions. Our team specializes in React, Next.js, Node.js, Python, and modern cloud infrastructure.",
-        additionalContent: `## Sitemap
+        additionalContent: `## Developer Resources & Agent Tooling
+
+- [Aexaware Developer Portal](https://aexaware.com/docs) – API documentation, security, webhooks, and MCP guide
+- [Aexaware OpenAPI JSON Specification](https://aexaware.com/openapi.json) – Machine-readable OpenAPI 3.1.0 JSON
+- [Aexaware OpenAPI YAML Specification](https://aexaware.com/openapi.yaml) – Machine-readable OpenAPI 3.1.0 YAML
+- [Aexaware Authentication Guide (auth.md)](https://aexaware.com/auth.md) – Agent registration & OAuth metadata
+- [Aexaware Webhooks Guide (webhooks.md)](https://aexaware.com/webhooks.md) – Event notifications & HMAC verification
+- [Aexaware MCP Server Card](https://aexaware.com/.well-known/mcp/server-card.json) – Model Context Protocol registry
+- [Aexaware RFC 9727 API Catalog](https://aexaware.com/.well-known/api-catalog) – Linkset discovery catalog
+- [Aexaware Agent Skills Directory](https://aexaware.com/.well-known/agent-skills/index.json) – Autonomous agent skills index
+
+## Sitemap
 
 Full sitemap: https://aexaware.com/sitemap-index.xml
 
@@ -135,6 +146,17 @@ XML Sitemap: https://aexaware.com/sitemap-index.xml
 - Privacy Policy: https://aexaware.com/privacy-policy
 - Terms of Service: https://aexaware.com/terms
 - Book a Free Consultation: https://cal.com/aexaware-infotech
+
+## Developer Resources & Agent Tooling
+
+- Aexaware Developer Portal: https://aexaware.com/docs
+- Aexaware OpenAPI Specification (JSON): https://aexaware.com/openapi.json
+- Aexaware OpenAPI Specification (YAML): https://aexaware.com/openapi.yaml
+- Aexaware Authentication & Permissions (auth.md): https://aexaware.com/auth.md
+- Aexaware Webhooks & Event Notifications (webhooks.md): https://aexaware.com/webhooks.md
+- Aexaware Model Context Protocol (MCP) Server: https://aexaware.com/.well-known/mcp/server-card.json
+- Aexaware RFC 9727 API Catalog: https://aexaware.com/.well-known/api-catalog
+- Aexaware Agent Skills Directory: https://aexaware.com/.well-known/agent-skills/index.json
 
 ## Services (19 Specialized Services)
 
