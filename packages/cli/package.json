@@ -1,0 +1,45 @@
+{
+  "name": "@aexaware/cli",
+  "version": "1.0.0",
+  "description": "Official CLI for Aexaware Infotech — query services, portfolio, blog, provision sandbox API keys, and connect to the MCP server. Works standalone for agents and developers.",
+  "author": "Aexaware Infotech <info@aexaware.com> (https://aexaware.com)",
+  "license": "MIT",
+  "homepage": "https://aexaware.com/developers",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aexaware/aexaware.com.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/aexaware/aexaware.com/issues",
+    "email": "info@aexaware.com"
+  },
+  "keywords": [
+    "aexaware",
+    "aexaware-cli",
+    "web-development",
+    "ai-agents",
+    "mcp",
+    "model-context-protocol",
+    "software-development",
+    "api-tools",
+    "developer-tools",
+    "cli"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "aexaware": "./bin/aexaware.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "node bin/aexaware.js",
+    "test": "node bin/aexaware.js --version"
+  }
+}
