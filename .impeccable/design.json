@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-28T00:00:00Z",
+  "title": "Design System: Aexaware",
+  "extensions": {
+    "colorMeta": {
+      "electric-cobalt": {
+        "role": "primary",
+        "displayName": "Electric Cobalt",
+        "canonical": "oklch(0.488 0.243 264.376)",
+        "tonalRamp": ["oklch(0.15 0.06 264)", "oklch(0.25 0.11 264)", "oklch(0.35 0.17 264)", "oklch(0.424 0.199 265.638)", "oklch(0.488 0.243 264.376)", "oklch(0.623 0.214 259.815)", "oklch(0.809 0.105 251.813)", "oklch(0.95 0.04 254)"]
+      },
+      "cobalt-tint": {
+        "role": "primary-foreground",
+        "displayName": "Cobalt Tint",
+        "canonical": "oklch(0.97 0.014 254.604)",
+        "tonalRamp": ["oklch(0.55 0.1 254)", "oklch(0.65 0.09 254)", "oklch(0.75 0.07 254)", "oklch(0.82 0.06 254)", "oklch(0.88 0.045 254)", "oklch(0.92 0.03 254)", "oklch(0.95 0.02 254)", "oklch(0.97 0.014 254.604)"]
+      },
+      "frost-paper": {
+        "role": "neutral",
+        "displayName": "Frost Paper",
+        "canonical": "oklch(0.978 0.008 230)",
+        "tonalRamp": ["oklch(0.5 0.02 230)", "oklch(0.6 0.018 230)", "oklch(0.7 0.015 230)", "oklch(0.78 0.013 230)", "oklch(0.85 0.011 230)", "oklch(0.9 0.01 230)", "oklch(0.95 0.009 230)", "oklch(0.978 0.008 230)"]
+      },
+      "graphite-ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "oklch(0.145 0 0)",
+        "tonalRamp": ["oklch(0.145 0 0)", "oklch(0.25 0 0)", "oklch(0.37 0 0)", "oklch(0.45 0 0)", "oklch(0.556 0 0)", "oklch(0.65 0 0)", "oklch(0.8 0 0)", "oklch(0.92 0 0)"]
+      },
+      "navy-ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "canonical": "hsl(228 45% 8%)",
+        "tonalRamp": ["hsl(228 45% 8%)", "hsl(228 40% 16%)", "hsl(228 35% 26%)", "hsl(228 30% 38%)", "hsl(228 25% 52%)", "hsl(228 22% 66%)", "hsl(228 20% 80%)", "hsl(228 20% 92%)"]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "oklch(0.967 0.001 286.375)",
+        "tonalRamp": ["oklch(0.4 0.005 286)", "oklch(0.55 0.004 286)", "oklch(0.68 0.003 286)", "oklch(0.78 0.002 286)", "oklch(0.86 0.002 286)", "oklch(0.91 0.001 286)", "oklch(0.94 0.001 286)", "oklch(0.967 0.001 286.375)"]
+      },
+      "hairline": {
+        "role": "border",
+        "displayName": "Hairline",
+        "canonical": "oklch(0.922 0 0)",
+        "tonalRamp": ["oklch(0.55 0 0)", "oklch(0.65 0 0)", "oklch(0.74 0 0)", "oklch(0.8 0 0)", "oklch(0.85 0 0)", "oklch(0.89 0 0)", "oklch(0.91 0 0)", "oklch(0.922 0 0)"]
+      },
+      "smoke": {
+        "role": "muted-foreground",
+        "displayName": "Smoke",
+        "canonical": "oklch(0.556 0 0)",
+        "tonalRamp": ["oklch(0.145 0 0)", "oklch(0.25 0 0)", "oklch(0.37 0 0)", "oklch(0.45 0 0)", "oklch(0.556 0 0)", "oklch(0.65 0 0)", "oklch(0.8 0 0)", "oklch(0.92 0 0)"]
+      },
+      "electric-cobalt-deep": {
+        "role": "primary-dark",
+        "displayName": "Electric Cobalt Deep",
+        "canonical": "oklch(0.424 0.199 265.638)",
+        "tonalRamp": ["oklch(0.15 0.06 264)", "oklch(0.25 0.11 264)", "oklch(0.35 0.17 264)", "oklch(0.424 0.199 265.638)", "oklch(0.488 0.243 264.376)", "oklch(0.623 0.214 259.815)", "oklch(0.809 0.105 251.813)", "oklch(0.95 0.04 254)"]
+      },
+      "midnight": {
+        "role": "dark-background",
+        "displayName": "Midnight",
+        "canonical": "oklch(0.145 0 0)",
+        "tonalRamp": ["oklch(0.145 0 0)", "oklch(0.205 0 0)", "oklch(0.27 0 0)", "oklch(0.37 0 0)", "oklch(0.5 0 0)", "oklch(0.65 0 0)", "oklch(0.8 0 0)", "oklch(0.92 0 0)"]
+      },
+      "midnight-card": {
+        "role": "dark-surface",
+        "displayName": "Midnight Card",
+        "canonical": "oklch(0.205 0 0)",
+        "tonalRamp": ["oklch(0.145 0 0)", "oklch(0.205 0 0)", "oklch(0.27 0 0)", "oklch(0.37 0 0)", "oklch(0.5 0 0)", "oklch(0.65 0 0)", "oklch(0.8 0 0)", "oklch(0.92 0 0)"]
+      },
+      "alarm-red": {
+        "role": "destructive",
+        "displayName": "Alarm Red",
+        "canonical": "oklch(0.58 0.22 27)",
+        "tonalRamp": ["oklch(0.25 0.09 27)", "oklch(0.35 0.13 27)", "oklch(0.45 0.18 27)", "oklch(0.58 0.22 27)", "oklch(0.68 0.19 27)", "oklch(0.77 0.14 27)", "oklch(0.85 0.09 27)", "oklch(0.93 0.04 27)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines only; multi-line, one cobalt keyword." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, paired with a single cobalt-accented word." },
+      "title": { "displayName": "Title", "purpose": "Card and feature titles." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs in Smoke, measured containers, text-pretty." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, badges, nav links, metadata; uppercase." }
+    },
+    "shadows": [
+      { "name": "intent", "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)", "purpose": "Default button hover lift only." },
+      { "name": "signature-glow", "value": "0 20px 25px -5px oklch(0.488 0.243 264.376 / 0.3), 0 8px 10px -6px oklch(0.488 0.243 264.376 / 0.3)", "purpose": "Cobalt light under the hero gradient button." },
+      { "name": "command", "value": "0 25px 50px -12px rgb(0 0 0 / 0.25)", "purpose": "Card hover and the dark CTA panel's resting presence." },
+      { "name": "ambient-bloom", "value": "radial blur layer, bg oklch(0.488 0.243 264.376 / 0.2), blur(120px), rounded-full", "purpose": "Cobalt light source behind dark panels; pointer-events-none." },
+      { "name": "focus-ring", "value": "outline 2px solid var(--primary); outline-offset 2px", "purpose": "Accessibility lift on every focusable element." }
+    ],
+    "motion": [
+      { "name": "duration-standard", "value": "200ms", "purpose": "All state transitions on buttons, links, inputs." },
+      { "name": "duration-emphasis", "value": "300-500ms", "purpose": "Card hover choreography: icon scale, arrow rise, wash fade." },
+      { "name": "easing", "value": "cubic-bezier(0, 0, 0.2, 1)", "purpose": "Default ease-out for entrances and hovers." },
+      { "name": "press", "value": "active: scale(0.98)", "purpose": "Springy compression on every pressed control." },
+      { "name": "scroll", "value": "scroll-behavior smooth; scroll-padding-top var(--navbar-height)", "purpose": "Anchor navigation clears the floating pill navbar." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pill-shaped cobalt action; the system's default call to action.",
+      "html": "<button class=\"ds-btn-primary\">Start Project</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; white-space: nowrap; background: var(--primary); color: var(--primary-foreground); font-family: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; height: 2.5rem; padding: 0 1rem; border: none; border-radius: 9999px; cursor: pointer; transition: all 200ms cubic-bezier(0, 0, 0.2, 1); } .ds-btn-primary:hover { background: oklch(0.488 0.243 264.376 / 0.9); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); } .ds-btn-primary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; } .ds-btn-primary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Hero Gradient Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single loudest action of a page: cobalt gradient with signature glow.",
+      "html": "<button class=\"ds-btn-hero\">Get Free Consultation</button>",
+      "css": ".ds-btn-hero { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; white-space: nowrap; background: linear-gradient(to right, var(--primary), oklch(0.488 0.243 264.376 / 0.9), oklch(0.488 0.243 264.376 / 0.8)); color: var(--primary-foreground); font-family: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; font-weight: 700; height: 3.5rem; padding: 0 2.5rem; border: none; border-radius: 9999px; cursor: pointer; box-shadow: 0 20px 25px -5px oklch(0.488 0.243 264.376 / 0.3), 0 8px 10px -6px oklch(0.488 0.243 264.376 / 0.3); transition: all 300ms cubic-bezier(0, 0, 0.2, 1); } .ds-btn-hero:hover { filter: brightness(1.1); transform: scale(1.05); } .ds-btn-hero:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; } .ds-btn-hero:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action; hairline pill that fills cobalt on hover.",
+      "html": "<button class=\"ds-btn-outline\">Our Work</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; white-space: nowrap; background: transparent; color: var(--foreground); font-family: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 500; height: 3.5rem; padding: 0 2.5rem; border: 1px solid var(--input); border-radius: 9999px; cursor: pointer; transition: all 200ms cubic-bezier(0, 0, 0.2, 1); } .ds-btn-outline:hover { background: var(--primary); color: var(--primary-foreground); } .ds-btn-outline:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; } .ds-btn-outline:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Eyebrow Badge",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "Section eyebrow: cobalt-washed pill with uppercase label.",
+      "html": "<span class=\"ds-badge\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z\"/></svg>Full-Service Digital Agency</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: 9999px; border: 1px solid oklch(0.488 0.243 264.376 / 0.2); background: oklch(0.488 0.243 264.376 / 0.05); color: var(--primary); font-family: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.025em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Text field: 12px-height pill-adjacent rounded-xl, Mist fill, cobalt focus.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Your Name\" />",
+      "css": ".ds-input { display: flex; width: 100%; height: 3rem; align-items: center; padding: 0 1rem; font-family: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; color: var(--foreground); background: oklch(0.967 0.001 286.375 / 0.5); border: 1px solid var(--input); border-radius: 1.225rem; transition: all 300ms cubic-bezier(0, 0, 0.2, 1); } .ds-input::placeholder { color: var(--muted-foreground); } .ds-input:focus-visible { outline: none; border-color: oklch(0.488 0.243 264.376 / 0.5); box-shadow: 0 0 0 2px oklch(0.488 0.243 264.376 / 0.2); } .ds-input:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Bento Card",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Frosted bento tile: flat at rest, cobalt border + command shadow + arrow reveal on hover.",
+      "html": "<a class=\"ds-card\" href=\"#\"><span class=\"ds-card-tile\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m16 18 6-6-6-6\"/><path d=\"m8 6-6 6 6 6\"/></svg></span><span class=\"ds-card-body\"><span class=\"ds-card-title\">Custom Web Platforms</span><span class=\"ds-card-desc\">Architecting secure, scalable web solutions.</span></span><span class=\"ds-card-arrow\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></span></a>",
+      "css": ".ds-card { display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 2rem; border: 1px solid oklch(0.922 0 0 / 0.4); background: oklch(0.978 0.008 230 / 0.5); backdrop-filter: blur(4px); text-decoration: none; transition: all 300ms cubic-bezier(0, 0, 0.2, 1); } .ds-card:hover { border-color: oklch(0.488 0.243 264.376 / 0.5); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); } .ds-card-tile { display: inline-flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem; margin-bottom: 1.5rem; border-radius: 1.575rem; background: var(--primary); color: var(--primary-foreground); transition: transform 500ms cubic-bezier(0, 0, 0.2, 1); } .ds-card:hover .ds-card-tile { transform: scale(1.1); } .ds-card-body { display: flex; flex-direction: column; gap: 0.75rem; } .ds-card-title { font-family: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; color: var(--foreground); } .ds-card-desc { font-family: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif; font-size: 1rem; line-height: 1.625; color: var(--muted-foreground); } .ds-card-arrow { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; margin-top: 2rem; align-self: flex-end; border-radius: 9999px; background: var(--foreground); color: var(--background); opacity: 0; transform: translateY(1rem); transition: all 300ms cubic-bezier(0, 0, 0.2, 1); } .ds-card:hover .ds-card-arrow { opacity: 1; transform: translateY(0); }"
+    },
+    {
+      "name": "Icon Tile",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "56px cobalt square with rounded-2xl corners; the recurring component chip.",
+      "html": "<span class=\"ds-icon-tile\"><svg width=\"26\" height=\"26\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2v4\"/><path d=\"m16.2 7.8 2.9-2.9\"/><path d=\"M18 12h4\"/><path d=\"m16.2 16.2 2.9 2.9\"/><path d=\"M12 18v4\"/><path d=\"m4.9 19.1 2.9-2.9\"/><path d=\"M2 12h4\"/><path d=\"m4.9 4.9 2.9 2.9\"/></svg></span>",
+      "css": ".ds-icon-tile { display: inline-flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem; border-radius: 1.575rem; background: var(--primary); color: var(--primary-foreground); box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); }"
+    },
+    {
+      "name": "Navbar Pill",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Floating frosted-glass pill navbar; the persistent technical signature.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-logo\">AEXAWARE</span><span class=\"ds-nav-links\"><a href=\"#\" class=\"ds-nav-link ds-nav-active\">Home</a><a href=\"#\" class=\"ds-nav-link\">Services</a><a href=\"#\" class=\"ds-nav-link\">Portfolio</a><a href=\"#\" class=\"ds-nav-link\">Blog</a></span><a href=\"#\" class=\"ds-nav-cta\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.5rem 1rem; border-radius: 9999px; border: 1px solid var(--border); background: oklch(0.978 0.008 230 / 0.95); backdrop-filter: blur(24px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05); font-family: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif; } .ds-nav-logo { font-family: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif; font-weight: 700; letter-spacing: -0.025em; color: var(--foreground); padding-left: 0.5rem; } .ds-nav-links { display: flex; gap: 0.25rem; } .ds-nav-link { padding: 0.5rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; text-decoration: none; color: var(--muted-foreground); transition: all 200ms cubic-bezier(0, 0, 0.2, 1); } .ds-nav-link:hover { background: oklch(0.967 0.001 286.375); color: var(--foreground); } .ds-nav-active { color: var(--primary); } .ds-nav-cta { display: inline-flex; align-items: center; height: 2.25rem; padding: 0 1.25rem; border-radius: 9999px; background: var(--primary); color: var(--primary-foreground); font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: all 200ms cubic-bezier(0, 0, 0.2, 1); } .ds-nav-cta:hover { background: oklch(0.488 0.243 264.376 / 0.9); } .ds-nav-link:focus-visible, .ds-nav-cta:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Blueprint Atelier",
+    "overview": "Aexaware's site is a working drawing, not a brochure. Every major surface sits on a faint blueprint grid — the drafting table under the paint — while cobalt ink marks exactly what matters: the action, the keyword, the focus. The palette is paper-and-ink engineering: frost-white paper, navy ink, one electric cobalt. Precision is the aesthetic, and the site's own performance and finish are the portfolio's first exhibit (\"the site is the demo\"). The system is precise · energetic · engineered. Density is generous — sections breathe at 4–8rem vertical rhythm — but every element carries technical intent: hairline borders instead of heavy chrome, grids instead of gradients, one accent doing one job. Motion is small and springy (200ms, active scale 0.98), the confidence of machined parts, not fireworks.",
+    "keyCharacteristics": [
+      "Blueprint grid underlays on hero, section, and CTA surfaces (≤5% opacity, masked)",
+      "One accent color — Electric Cobalt — used sparingly for action and emphasis",
+      "Pill geometry for all interactive controls; soft-rounded (24–40px) content containers",
+      "Flat surfaces at rest; shadows, glows, and scale appear only as intent feedback",
+      "Space Grotesk headings with tightened tracking over Plus Jakarta Sans body",
+      "Frosted-glass floating navbar as the persistent technical signature"
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Electric Cobalt speaks for ≤10% of any screen. Its rarity is the point — when cobalt appears, it means \"act here\" or \"read this.\"", "section": "colors" },
+      { "name": "The Blueprint Underlay Rule", "body": "The grid is texture, never decoration louder than content: opacity ≤0.05 under content, always masked to fade before the section edge.", "section": "colors" },
+      { "name": "The Monochrome Ramp Rule", "body": "Charts and data visuals stay inside the cobalt family (a single-hue ramp, blue-300→800). A second accent hue never enters the system.", "section": "colors" },
+      { "name": "The Cobalt Keyword Rule", "body": "One emphasized phrase per heading, set in Electric Cobalt — \"Services Beyond Expectation.\", \"Let's Build Something Extraordinary.\" Never two accents in one heading; the accent is punctuation, not confetti.", "section": "typography" },
+      { "name": "The Flat-At-Rest Rule", "body": "Cards and content surfaces cast no shadow until hovered or focused. The two sanctioned exceptions: the dark CTA panel and the floating navbar, both conversion/persistent chrome.", "section": "elevation" },
+      { "name": "The Pill Rule", "body": "Anything clickable is a pill; anything containing content is a soft-rounded rectangle. The two never swap.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do set every heading in Space Grotesk with tightened tracking (-0.025em standard, -0.05em display) and mark exactly one keyword in cobalt.",
+      "Do lay the blueprint grid under major marketing surfaces: density lg for CTA/hero moments, md for content, opacity ≤0.05, masked.",
+      "Do make all interactive elements pills with 200ms transitions and active:scale-[0.98].",
+      "Do reserve cobalt for action and emphasis — buttons, focus rings, one keyword per heading, icon tiles.",
+      "Do use Navy Ink as the typographic ink and Frost Paper as the canvas; keep body copy in Smoke inside a measured container."
+    ],
+    "donts": [
+      "Don't set text on gradients, or apply gradient text — ink is ink.",
+      "Don't put shadows on resting cards or panels (only the dark CTA panel and navbar may rest elevated).",
+      "Don't introduce a second accent hue; success/warning/info are status colors, never decoration.",
+      "Don't square the corners of buttons, inputs, or badges — the Pill Rule is absolute.",
+      "Don't let a grid, glow, or bloom out-shout the content above it; ambience stays under 10% opacity and pointer-events-none."
+    ]
+  }
+}
