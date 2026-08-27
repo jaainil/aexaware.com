@@ -18,6 +18,21 @@ import readingTime from "astro-reading-time";
 export default defineConfig({
   site: "https://aexaware.com",
 
+  // Service consolidation (19 → 8 pillars): 301 the absorbed URLs
+  redirects: {
+    "/services/software-solutions": "/services/web-development",
+    "/services/cms-development": "/services/web-development",
+    "/services/ecommerce": "/services/web-development",
+    "/services/generative-ai": "/services/ai-ml-integration",
+    "/services/ai-agent-development": "/services/ai-ml-integration",
+    "/services/ai-image-video-generation": "/services/ai-ml-integration",
+    "/services/data-science": "/services/ai-ml-integration",
+    "/services/big-data-solutions": "/services/ai-ml-integration",
+    "/services/iot": "/services/cloud-devops",
+    "/services/digital-marketing": "/services/branding-positioning",
+    "/services/white-label-services": "/services/extended-team",
+  },
+
   // FIX: Updated from boolean to object for Astro 4/5+
   prefetch: {
     prefetchAll: false,

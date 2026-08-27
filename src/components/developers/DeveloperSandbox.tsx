@@ -43,7 +43,7 @@ const endpoints: Endpoint[] = [
       name: "Aexaware Infotech MCP Server",
       tools: [
         { name: "search_blog", description: "Search technical blog articles" },
-        { name: "list_services", description: "List all 19 engineering capabilities" },
+        { name: "list_services", description: "List all engineering service pillars" },
         { name: "get_contact_info", description: "Get official office contact details" },
         { name: "list_portfolio", description: "Query case studies and project metrics" }
       ]

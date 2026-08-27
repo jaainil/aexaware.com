@@ -4,30 +4,19 @@
  */
 
 export const SERVICES = [
-  // Web & Application Development
-  { name: 'Web Development',        category: 'Web & App',    tech: 'React, Next.js, Node.js, Python, PostgreSQL', url: 'https://aexaware.com/services/web-development' },
-  { name: 'Mobile Development',     category: 'Web & App',    tech: 'React Native, Flutter, Expo, Firebase',       url: 'https://aexaware.com/services/mobile-development' },
-  { name: 'E-Commerce Development', category: 'Web & App',    tech: 'WooCommerce, Stripe, Shopify',                url: 'https://aexaware.com/services/ecommerce' },
-  { name: 'CMS Development',        category: 'Web & App',    tech: 'WordPress, Ghost, Contentful, Strapi',        url: 'https://aexaware.com/services/cms-development' },
-  { name: 'MVP Development',        category: 'Web & App',    tech: 'React, Node.js, Supabase, Vercel',            url: 'https://aexaware.com/services/mvp-development' },
-  { name: 'Software Solutions',     category: 'Web & App',    tech: 'Node.js, Python, PostgreSQL, Redis',          url: 'https://aexaware.com/services/software-solutions' },
-  // AI / ML
-  { name: 'AI/ML Integration',      category: 'AI / ML',      tech: 'OpenAI API, LangChain, FastAPI, pgvector',    url: 'https://aexaware.com/services/ai-ml-integration' },
-  { name: 'AI Agent Development',   category: 'AI / ML',      tech: 'LangChain, LlamaIndex, FastMCP, Pinecone',    url: 'https://aexaware.com/services/ai-agent-development' },
-  { name: 'Generative AI',          category: 'AI / ML',      tech: 'OpenAI, Claude, Gemini, Mistral',             url: 'https://aexaware.com/services/generative-ai' },
-  { name: 'AI Image & Video Gen',   category: 'AI / ML',      tech: 'Stable Diffusion, DALL·E 3, Replicate',       url: 'https://aexaware.com/services/ai-image-video-generation' },
-  { name: 'Data Science',           category: 'AI / ML',      tech: 'Python, Pandas, scikit-learn, dbt',           url: 'https://aexaware.com/services/data-science' },
-  { name: 'Big Data Solutions',     category: 'AI / ML',      tech: 'Spark, Kafka, Snowflake, Airflow',            url: 'https://aexaware.com/services/big-data-solutions' },
-  // Cloud & DevOps
-  { name: 'Cloud & DevOps',         category: 'Cloud',        tech: 'AWS, GCP, Docker, Kubernetes, Terraform',     url: 'https://aexaware.com/services/cloud-devops' },
-  // Design & Marketing
-  { name: 'UI/UX Design',           category: 'Design',       tech: 'Figma, User Research, Design Systems',        url: 'https://aexaware.com/services/ui-ux-design' },
-  { name: 'Branding & Positioning', category: 'Design',       tech: 'Brand Identity, Strategy, Frameworks',        url: 'https://aexaware.com/services/branding-positioning' },
-  { name: 'Digital Marketing',      category: 'Design',       tech: 'SEO, SEM, GA4, Meta Ads, Ahrefs',             url: 'https://aexaware.com/services/digital-marketing' },
-  // Engagement Models
-  { name: 'Extended Team',          category: 'Engagement',   tech: 'Staff Augmentation, Any Stack',               url: 'https://aexaware.com/services/extended-team' },
-  { name: 'White Label Services',   category: 'Engagement',   tech: 'White-Label, NDA, Any Stack',                 url: 'https://aexaware.com/services/white-label-services' },
-  { name: 'IoT Solutions',          category: 'Engagement',   tech: 'MQTT, Arduino, AWS IoT, Node.js',             url: 'https://aexaware.com/services/iot' },
+  // Build
+  { name: 'Web & Software Development', category: 'Build',    tech: 'React, Next.js, Node.js, Python, Shopify, WordPress', url: 'https://aexaware.com/services/web-development' },
+  { name: 'Mobile App Development',     category: 'Build',    tech: 'React Native, Flutter, Expo, Firebase',               url: 'https://aexaware.com/services/mobile-development' },
+  { name: 'MVP Development',            category: 'Build',    tech: 'React, Node.js, Supabase, Vercel',                    url: 'https://aexaware.com/services/mvp-development' },
+  // AI & Data
+  { name: 'AI & Machine Learning',      category: 'AI & Data', tech: 'OpenAI, Anthropic, LangChain, Python, pgvector',     url: 'https://aexaware.com/services/ai-ml-integration' },
+  // Infrastructure
+  { name: 'Cloud, DevOps & IoT',        category: 'Infrastructure', tech: 'AWS, GCP, Docker, Kubernetes, Terraform, MQTT', url: 'https://aexaware.com/services/cloud-devops' },
+  // Design & Growth
+  { name: 'UI/UX Design',               category: 'Design & Growth', tech: 'Figma, User Research, Design Systems',        url: 'https://aexaware.com/services/ui-ux-design' },
+  { name: 'Branding & Marketing',       category: 'Design & Growth', tech: 'Brand Identity, SEO, Google Ads, Meta Ads',   url: 'https://aexaware.com/services/branding-positioning' },
+  // Team
+  { name: 'Hire Developers',            category: 'Team',     tech: 'Staff Augmentation, White-Label, Any Stack',          url: 'https://aexaware.com/services/extended-team' },
 ];
 
 export const PORTFOLIO = [

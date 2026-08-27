@@ -4,12 +4,9 @@ import {
   Cloud,
   Container,
   GitBranch,
-  Shield,
-  Gauge,
-  Server,
-  Compass,
-  Zap,
-  Globe,
+  FileCode,
+  ShieldCheck,
+  Wifi,
 } from "lucide-astro";
 
 const services = [
@@ -39,141 +36,111 @@ const services = [
   },
   {
     id: "04",
-    icon: Server,
+    icon: FileCode,
     title: "Infrastructure as Code",
     desc: "Terraform, Ansible, and CloudFormation for reproducible, version-controlled infrastructure. Configuration management at scale.",
-    gradient: "from-secondary/20 to-muted/20",
-    iconColor: "text-muted-foreground",
-  },
-  {
-    id: "05",
-    icon: Shield,
-    title: "Security & Compliance",
-    desc: "DevSecOps best practices — automated security scanning, vulnerability management, secrets management, and compliance automation for regulated industries.",
-    gradient: "from-destructive/20 to-warning/20",
-    iconColor: "text-destructive",
-  },
-  {
-    id: "06",
-    icon: Gauge,
-    title: "Monitoring & Observability",
-    desc: "Real-time monitoring, logging, and alerting with Datadog, Prometheus, and Grafana. Incident response and performance optimization.",
     gradient: "from-warning/20 to-warning/20",
     iconColor: "text-warning",
   },
   {
-    id: "07",
-    icon: Compass,
-    title: "DevOps Strategy & Assessment",
-    desc: "Evaluate your DevOps maturity, develop transformation roadmaps, and select the right tools. DORA metrics tracking and measurable KPIs.",
-    gradient: "from-info/20 to-info/20",
-    iconColor: "text-info",
+    id: "05",
+    icon: ShieldCheck,
+    title: "Security & Compliance",
+    desc: "DevSecOps practices: automated security scanning, vulnerability management, secrets management, and compliance automation for regulated industries.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
   },
   {
-    id: "08",
-    icon: Globe,
-    title: "Multi-Region & Hybrid Cloud",
-    desc: "Deploy across multiple regions for high availability worldwide. Connect on-premises infrastructure with cloud for hybrid architectures.",
-    gradient: "from-primary/20 to-primary/20",
+    id: "06",
+    icon: Wifi,
+    title: "IoT & Edge Computing",
+    desc: "Connected devices from firmware to cloud: embedded development in C/C++/Rust, device management with AWS IoT and Azure IoT, plus edge deployment for low-latency processing.",
+    gradient: "from-primary/20 to-success/20",
     iconColor: "text-primary",
-  },
-  {
-    id: "09",
-    icon: Zap,
-    title: "Release & Deployment Automation",
-    desc: "One-click deployments, automated rollbacks, and progressive delivery. Reduce deployment time from days to minutes with zero-downtime releases.",
-    gradient: "from-success/20 to-success/20",
-    iconColor: "text-success",
   },
 ];
 
 const whyChooseUs = [
   {
-    title: "Cloud-Native Expertise",
-    desc: "AWS, Azure, and GCP certified professionals with deep experience in modern DevOps practices.",
+    title: "Uptime Matters",
+    desc: "Monitoring, alerting, and incident runbooks ship with every deployment. You know about problems before your customers do.",
   },
   {
-    title: "Cost Optimization",
-    desc: "We design for efficiency — right-size resources and leverage savings plans to minimize cloud spend.",
+    title: "Cost Awareness",
+    desc: "Cloud bills grow quietly. We right-size resources, set budgets and alerts, and review spend as part of the work.",
   },
   {
-    title: "Security First",
-    desc: "Infrastructure security is never an afterthought. DevSecOps embedded into every pipeline stage.",
+    title: "Security Built In",
+    desc: "Scanning, secrets management, and least-privilege access from day one, not bolted on before an audit.",
   },
   {
-    title: "Measurable Results",
-    desc: "Track DORA metrics: deployment frequency, lead time, MTTR, and change failure rate.",
+    title: "Documented Handover",
+    desc: "Every pipeline, cluster, and runbook is documented. Your team can operate without us on the call.",
   },
   {
-    title: "24/7 Reliability",
-    desc: "High availability, disaster recovery, and automated failover for business-critical applications.",
+    title: "Automation First",
+    desc: "If a human does it twice, it becomes a script. Manual deploys and snowflake servers don't survive an engagement with us.",
   },
   {
-    title: "Knowledge Transfer",
-    desc: "We document everything and train your team to manage infrastructure independently.",
+    title: "Hands-On Firmware to Cloud",
+    desc: "IoT work spans embedded code and cloud backends. One team owns both ends of the wire.",
   },
 ];
 
 const techStack = [
   "AWS",
-  "Azure",
   "GCP",
+  "Azure",
   "Docker",
   "Kubernetes",
   "Terraform",
-  "Ansible",
   "GitHub Actions",
-  "Jenkins",
-  "GitLab CI",
   "Prometheus",
   "Grafana",
-  "Vault",
-  "ArgoCD",
+  "AWS IoT",
+  "MQTT",
+  "C/C++",
 ];
 
 const faqs = [
   {
-    question: "Which cloud provider should we choose?",
-    answer: "We help you select based on your requirements: AWS has the largest services ecosystem, Azure integrates best with Microsoft tools, and GCP excels in data/AI. We can also implement multi-cloud and hybrid strategies.",
+    question: "Can you migrate us to the cloud without downtime?",
+    answer: "In most cases, yes: phased migrations with parallel running, data replication, and DNS cutover keep the old system serving until the new one proves itself. Truly zero-downtime depends on your legacy constraints, and we'll tell you honestly what's possible.",
   },
   {
-    question: "How long does cloud migration take?",
-    answer: "Lift-and-shift takes 2-4 months, re-platforming 4-6 months, and re-architecting 6-12 months. We use phased approaches with blue-green deployments and database replication to minimize downtime.",
+    question: "We already have DevOps engineers. How do you fit in?",
+    answer: "Two common modes: a focused project (migration, pipeline overhaul, security hardening) delivered alongside your team, or specialized coverage (IoT, Kubernetes, compliance) for skills you don't need full-time.",
   },
   {
-    question: "What does a DevOps assessment cover?",
-    answer: "Our assessment covers CI/CD pipelines, deployment frequency, lead time, MTTR, change failure rate, automation levels, team structure, tooling, and culture. We deliver a maturity model with a prioritized improvement roadmap.",
+    question: "How do you handle cloud costs?",
+    answer: "Right-sizing from the start, budgets and alerts per project, autoscaling where it pays, and a monthly spend review. Most migrations we take over were paying for idle resources nobody owned.",
   },
   {
-    question: "What processes should we automate first?",
-    answer: "We prioritize based on frequency and impact: infrastructure provisioning, build processes, testing, deployments, and monitoring. High-frequency manual tasks deliver the biggest automation ROI.",
+    question: "Do you work with regulated industries?",
+    answer: "Yes. We implement compliance automation for SOC 2 and HIPAA-style requirements: audit logging, access controls, encryption, and the evidence collection auditors ask for.",
   },
   {
-    question: "How do you ensure cloud security?",
-    answer: "We implement defense-in-depth with IAM, network security, encryption, vulnerability scanning, secrets management, and compliance automation. We follow Well-Architected Framework best practices.",
-  },
-  {
-    question: "Do you provide ongoing DevOps support?",
-    answer: "Yes, we offer 24/7 support packages including monitoring, incident response, optimization, and continuous improvement. We can also upskill your team with hands-on workshops.",
+    question: "Can you build both our devices and the cloud backend?",
+    answer: "Yes. Firmware, connectivity, device management, and the cloud pipeline for device data are one engagement, so protocol decisions and backend schema are designed together.",
   },
 ];
 ---
 
 <ServicePageLayout
-  title="Cloud & DevOps"
-  description="End-to-end cloud infrastructure and DevOps services: AWS, Azure, GCP, Kubernetes, CI/CD pipelines, infrastructure as code, DevOps strategy, security automation, and 24/7 monitoring."
+  title="Cloud, DevOps & IoT"
+  description="Cloud architecture, Kubernetes, CI/CD, infrastructure as code, DevSecOps, and IoT device-to-cloud development on AWS, GCP, and Azure."
   heroBadge="Cloud & DevOps"
-  heroTitle="Scale With"
-  heroSubtitle="Confidence."
-  heroDescription="From cloud architecture and migration to CI/CD automation, security, and monitoring — we build and operate the infrastructure that powers your applications. Modern DevOps practices that accelerate delivery and improve reliability."
-  introTitle="Modern Infrastructure for Modern Teams"
-  introText="The cloud has transformed how businesses build and deliver software. But without the right expertise, you can end up with sprawling infrastructure, security vulnerabilities, and runaway costs. We bring order to cloud chaos. Whether you're starting your DevOps journey or optimizing a mature practice, our engineers design infrastructure that's secure, scalable, and cost-effective. We implement automation from strategy through implementation, replacing manual processes with reliable pipelines so your team can focus on building features instead of fighting fires."
+  heroTitle="Infrastructure That"
+  heroSubtitle="Runs Itself."
+  heroDescription="Cloud architecture, pipelines, and connected devices built to be boring: automated, monitored, documented, and cheap to operate. You ship features; the platform takes care of itself."
+  introTitle="Operations without the 3am surprises"
+  introText="Good infrastructure is invisible until it fails, so we build for the failure: automated deploys with rollback, monitoring that pages a human before customers notice, and runbooks that don't require tribal knowledge. From a single staging server to multi-cloud Kubernetes to fleets of connected devices, the setup is documented enough for your team to own."
   servicesTitle="Cloud & DevOps Services"
-  servicesDescription="End-to-end cloud solutions — from architecture design and DevOps strategy to automation and ongoing operations."
+  servicesDescription="From your first pipeline to device fleets at the edge."
   services={services}
   whyChooseUs={whyChooseUs}
   whyChooseTitle="Why Choose Aexaware for Cloud & DevOps"
-  whyChooseDescription="Infrastructure expertise that keeps your applications running smoothly."
+  whyChooseDescription="Infrastructure engineered for uptime, cost, and handover."
   techStack={techStack}
   faqs={faqs}
 />

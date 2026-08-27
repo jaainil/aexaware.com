@@ -1,167 +1,146 @@
 ---
 import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
-import { Brain, Bot, LineChart, Eye, Cpu, Sparkles, Network, Mic, Gamepad2 } from "lucide-astro";
+import {
+  Bot,
+  MessageSquare,
+  ImagePlus,
+  LineChart,
+  ScanEye,
+  Database,
+} from "lucide-astro";
 
 const services = [
   {
     id: "01",
-    icon: Bot,
-    title: "Chatbot & Conversational AI",
-    desc: "Intelligent chatbots and virtual assistants powered by GPT, Claude, and custom LLMs. Automate customer support, sales, and internal processes.",
+    icon: MessageSquare,
+    title: "LLM Integration & Chatbots",
+    desc: "Customer support bots, document intelligence, and content generation built on GPT, Claude, and open models. Grounded in your data with RAG, priced with token budgets in mind.",
     gradient: "from-primary/20 to-info/20",
     iconColor: "text-primary",
   },
   {
     id: "02",
-    icon: LineChart,
-    title: "Predictive Analytics",
-    desc: "Machine learning models that forecast trends, predict outcomes, and identify opportunities. Demand forecasting, risk prediction, and time-series analysis.",
-    gradient: "from-success/20 to-success/20",
-    iconColor: "text-success",
-  },
-  {
-    id: "03",
-    icon: Eye,
-    title: "Computer Vision",
-    desc: "Image recognition, object detection, facial recognition, scene understanding, and visual inspection systems for quality control and AR applications.",
+    icon: Bot,
+    title: "AI Agent Development",
+    desc: "Agents that handle workflows end to end: customer service, research, data entry, multi-step automation. Custom MCP servers, tool use, and multi-agent orchestration.",
     gradient: "from-primary/20 to-primary/20",
     iconColor: "text-primary",
   },
   {
+    id: "03",
+    icon: ImagePlus,
+    title: "Generative Media",
+    desc: "Image and video generation pipelines with Stable Diffusion, DALL-E, and custom-trained models. Product imagery, marketing assets, and virtual try-on at scale.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
     id: "04",
-    icon: Sparkles,
-    title: "Recommendation Engines",
-    desc: "Personalized recommendations that increase engagement and conversions. Content, products, and user experiences tailored to each individual.",
+    icon: LineChart,
+    title: "Predictive Analytics",
+    desc: "Demand forecasting, churn prediction, risk scoring, and trend analysis. Models that plug into your existing dashboards and return numbers you can act on.",
     gradient: "from-warning/20 to-warning/20",
     iconColor: "text-warning",
   },
   {
     id: "05",
-    icon: Brain,
-    title: "NLP & Text Intelligence",
-    desc: "Text analysis, sentiment detection, document processing, language translation, and deep learning for text classification and generation at scale.",
+    icon: ScanEye,
+    title: "Computer Vision & NLP",
+    desc: "Image recognition, visual inspection, sentiment analysis, document processing, and translation. Classic ML and deep learning, chosen by what the problem needs.",
     gradient: "from-primary/20 to-primary/20",
     iconColor: "text-primary",
   },
   {
     id: "06",
-    icon: Network,
-    title: "Deep Learning & Neural Networks",
-    desc: "Custom neural architectures from CNNs to Transformers. State-of-the-art models for image, text, and audio processing at superhuman levels.",
-    gradient: "from-info/20 to-info/20",
-    iconColor: "text-info",
-  },
-  {
-    id: "07",
-    icon: Mic,
-    title: "Speech & Audio AI",
-    desc: "Voice-to-text systems, speaker identification, and audio classification. Real-time speech recognition and synthesis powered by deep learning.",
-    gradient: "from-destructive/20 to-destructive/20",
-    iconColor: "text-destructive",
-  },
-  {
-    id: "08",
-    icon: Cpu,
-    title: "Custom ML Models & MLOps",
-    desc: "Bespoke machine learning solutions with TensorFlow, PyTorch, and Keras. Model optimization, distributed training, edge deployment, and production monitoring.",
-    gradient: "from-success/20 to-success/20",
-    iconColor: "text-success",
-  },
-  {
-    id: "09",
-    icon: Gamepad2,
-    title: "Reinforcement Learning",
-    desc: "AI that learns through interaction. Robotics control, game AI, autonomous decision systems, and optimization of complex processes.",
-    gradient: "from-warning/20 to-warning/20",
+    icon: Database,
+    title: "Data Engineering & BI",
+    desc: "The plumbing AI depends on: ETL pipelines, data warehouses on Snowflake and BigQuery, streaming with Kafka, and executive dashboards your team actually opens.",
+    gradient: "from-warning/20 to-info/20",
     iconColor: "text-warning",
   },
 ];
 
 const whyChooseUs = [
   {
-    title: "Practical AI",
-    desc: "We focus on AI that delivers tangible business value, not just impressive demos.",
+    title: "Production First",
+    desc: "Demos are easy. We ship models with monitoring, fallbacks, and cost controls so they survive real traffic.",
   },
   {
-    title: "Research-Backed",
-    desc: "Latest architectures and techniques from top AI research, adapted for production.",
+    title: "Model Agnostic",
+    desc: "We pick per problem: hosted APIs when they're enough, fine-tuned or open models when they're not. No vendor lock-in.",
   },
   {
-    title: "End-to-End Solutions",
-    desc: "From data preparation to production deployment, monitoring, and retraining.",
+    title: "Your Data Stays Yours",
+    desc: "Private deployments, data agreements, and pipelines that keep sensitive information inside your infrastructure.",
   },
   {
-    title: "GPU Optimization",
-    desc: "Optimized models for fast inference on edge devices, mobile, and cloud at scale.",
+    title: "Measured Outcomes",
+    desc: "Every engagement defines success metrics up front: accuracy, cost per task, hours saved. We report against them.",
   },
   {
-    title: "Responsible AI",
-    desc: "We build AI systems that are fair, transparent, explainable, and respect user privacy.",
+    title: "Full Stack Delivery",
+    desc: "From data pipelines to API to frontend, one team owns the whole path so nothing falls between vendors.",
   },
   {
-    title: "Knowledge Transfer",
-    desc: "We empower your team to maintain and evolve AI solutions independently.",
+    title: "Ongoing Optimization",
+    desc: "Models drift and prompts age. We monitor, retrain, and tune after launch as part of the engagement.",
   },
 ];
 
 const techStack = [
   "Python",
+  "OpenAI",
+  "Anthropic",
+  "LangChain",
   "TensorFlow",
   "PyTorch",
-  "Keras",
-  "OpenAI",
-  "LangChain",
-  "Hugging Face",
-  "OpenCV",
-  "NVIDIA CUDA",
-  "AWS SageMaker",
-  "Google Cloud AI",
-  "Vector DBs",
+  "pgvector",
+  "Pinecone",
+  "Stable Diffusion",
+  "Kafka",
+  "Spark",
+  "Snowflake",
 ];
 
 const faqs = [
   {
-    question: "How can AI/ML benefit my specific industry?",
-    answer: "AI/ML benefits vary by industry: retail sees improved personalization and inventory management, healthcare gains predictive diagnostics and medical imaging, finance detects fraud, manufacturing achieves predictive maintenance and quality inspection, and automotive advances autonomous systems. We assess your specific challenges to identify the highest-impact AI applications.",
-  },
-  {
-    question: "When should I use deep learning vs. traditional ML?",
-    answer: "Deep learning excels with complex patterns in unstructured data (images, text, audio) and large datasets. Traditional ML works better for structured data with smaller datasets where interpretability is important. We help you choose the right approach for each use case.",
-  },
-  {
-    question: "What data is needed for AI/ML integration?",
-    answer: "The data needed depends on your use case. Simple tasks may need thousands of samples, while complex tasks like image recognition need millions. We use transfer learning to reduce data requirements and work with structured, unstructured, and time-series data.",
-  },
-  {
-    question: "Can AI models run on edge devices?",
-    answer: "Yes, we optimize models for edge deployment using quantization, pruning, and knowledge distillation. Our models can run efficiently on mobile devices, IoT hardware, and embedded systems using TensorFlow Lite and ONNX.",
-  },
-  {
     question: "How long does it take to implement AI solutions?",
-    answer: "Simple AI integrations take 4-8 weeks, while enterprise solutions with custom deep learning models take 3-6 months. We follow an agile approach with regular deliverables so you can see progress and adjust as needed.",
+    answer: "A focused LLM integration or chatbot typically ships in 4-8 weeks. Custom model training and data-heavy pipelines take 8-12 weeks or more. We scope honestly after seeing your data.",
   },
   {
-    question: "Do you provide ongoing support after AI implementation?",
-    answer: "Yes, we offer comprehensive support packages including model monitoring, performance optimization, retraining with new data, and feature enhancements to ensure your AI solutions continue to deliver value.",
+    question: "What data do you need to start?",
+    answer: "For chatbots and agents: your docs, FAQs, and past support tickets. For predictive models: historical records with the outcomes you want to predict. If your data is messy, cleaning it is part of the engagement.",
+  },
+  {
+    question: "Can AI models run on our own infrastructure?",
+    answer: "Yes. We deploy open-weight models on your cloud or on-prem when data can't leave your environment, and use hosted APIs when that's overkill. The tradeoffs are cost, control, and speed — we walk through them with you.",
+  },
+  {
+    question: "How do you keep AI costs under control?",
+    answer: "Token budgets, response caching, model routing (small models for easy tasks, large for hard ones), and per-feature cost monitoring. You see the spend per feature, not one mystery bill.",
+  },
+  {
+    question: "Do you provide support after launch?",
+    answer: "Yes: monitoring for accuracy and drift, prompt and model updates as providers ship new versions, and retraining pipelines when your data grows.",
   },
 ];
 ---
 
 <ServicePageLayout
-  title="AI & Machine Learning Services"
-  description="End-to-end AI and machine learning services: chatbots, predictive analytics, computer vision, deep learning, NLP, speech recognition, and custom ML solutions with TensorFlow and PyTorch."
+  title="AI & Machine Learning"
+  description="AI development services: LLM integration, AI agents, generative media, predictive analytics, computer vision, and data engineering."
   heroBadge="AI & Machine Learning"
-  heroTitle="Intelligent"
-  heroSubtitle="Solutions."
-  heroDescription="From conversational AI to deep learning, we build machine learning solutions that automate, optimize, and transform how your business operates. Practical AI that delivers measurable value."
-  introTitle="AI That Delivers Real Value"
-  introText="Artificial intelligence isn't just for tech giants anymore. From automating customer support to predicting market trends, from computer vision that beats human performance to autonomous systems that learn through interaction — AI can transform every aspect of how your business operates and competes. We cut through the AI hype to deliver practical solutions. Our team combines deep research expertise in neural networks, NLP, and computer vision with production engineering to identify high-impact AI opportunities and ship them to production."
+  heroTitle="AI That"
+  heroSubtitle="Ships."
+  heroDescription="Chatbots, agents, generative media, and predictive models — built on GPT, Claude, and open models, wired into your actual systems, and measured on results instead of demos."
+  introTitle="Practical AI, production-grade"
+  introText="Most AI projects die between the demo and the deployment. Ours don't, because we build the boring parts first: clean data pipelines, evaluation suites, and cost controls. Then the model goes live with monitoring, and you get reports on what it actually does for your business."
   servicesTitle="AI & ML Services"
-  servicesDescription="Comprehensive AI solutions from chatbots and analytics to deep learning and edge deployment."
+  servicesDescription="Six ways we put AI to work, from a support bot to a full data platform."
   services={services}
   whyChooseUs={whyChooseUs}
-  whyChooseTitle="Why Choose Aexaware for AI"
-  whyChooseDescription="Research-grade AI expertise grounded in practical business applications."
+  whyChooseTitle="Why Choose Aexaware for AI & ML"
+  whyChooseDescription="Research-grade models, production engineering habits, and no hype."
   techStack={techStack}
   faqs={faqs}
 />

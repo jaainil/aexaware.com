@@ -6,98 +6,89 @@ import {
   Smartphone,
   Palette,
   Cloud,
-  Database,
-  LineChart,
+  BrainCircuit,
+  Users,
+  Target,
+  Rocket,
   Globe,
   ShieldCheck,
   Zap,
   Layers,
   Sparkles,
-  Rocket,
-  Layout as LayoutIcon,
-  Cpu,
-  Users,
-  TrendingUp,
-  Ghost,
-  Brain,
-  Bot,
-  Wand2,
-  Eye,
-  Wifi,
-  Megaphone,
-  BrainCircuit,
-  BarChart3,
 } from "lucide-astro";
 import { Schema } from "astro-seo-schema";
 import CTA from "@/components/home/CTA.astro";
 import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 
-const serviceCategories = [
+const pillars = [
   {
-    id: "ai",
-    title: "AI & Intelligence",
-    description: "From predictive models to autonomous agents, we build AI solutions that transform how your business operates and makes decisions.",
-    icon: BrainCircuit,
-    services: [
-      { icon: Brain, title: "AI & Machine Learning", desc: "Deep learning, computer vision, NLP, speech recognition, and custom ML models with TensorFlow and PyTorch.", tags: ["Python", "TensorFlow", "PyTorch"], path: "/services/ai-ml-integration" },
-      { icon: Wand2, title: "Generative AI", desc: "AI-powered content creation, code assistance, and automation for modern businesses.", tags: ["GPT-4", "Custom LLMs", "RAG"], path: "/services/generative-ai" },
-      { icon: Bot, title: "AI Agent Development", desc: "Autonomous AI agents that automate workflows and drive business operations 24/7.", tags: ["LangChain", "AutoGPT", "Custom Agents"], path: "/services/ai-agent-development" },
-      { icon: Eye, title: "AI Image & Video", desc: "Generate stunning visuals and videos with AI at scale for marketing and products.", tags: ["DALL-E", "Stable Diffusion", "Midjourney"], path: "/services/ai-image-video-generation" },
-      { icon: BarChart3, title: "Data Science & Analytics", desc: "Predictive modeling, customer analytics, statistical analysis, and real-time insights.", tags: ["Python", "Scikit-learn", "R"], path: "/services/data-science" },
-      { icon: Database, title: "Data Engineering & BI", desc: "Data lakes, ETL pipelines, interactive dashboards, and business intelligence.", tags: ["Spark", "Snowflake", "Tableau"], path: "/services/big-data-solutions" },
-    ],
+    id: "web",
+    icon: Code2,
+    title: "Web & Software Development",
+    desc: "Websites, e-commerce, CMS, SaaS platforms, and custom business software on React, Next.js, Node.js, and Python.",
+    tags: ["React", "Next.js", "Shopify", "WordPress"],
+    path: "/services/web-development",
   },
   {
-    id: "development",
-    title: "App Development",
-    description: "Full-stack web, mobile, and software development built with modern frameworks for speed, scalability, and reliability.",
-    icon: Code2,
-    services: [
-      { icon: Code2, title: "Web Development", desc: "Custom websites and web applications built with modern frameworks for speed, scalability, and SEO.", tags: ["React", "Next.js", "TypeScript"], path: "/services/web-development" },
-      { icon: Smartphone, title: "Mobile App Development", desc: "Native and cross-platform mobile apps delivering seamless user experiences on iOS and Android.", tags: ["React Native", "Flutter", "iOS/Android"], path: "/services/mobile-development" },
-      { icon: LineChart, title: "E-Commerce", desc: "Secure online stores with payment integration, inventory management, and responsive design.", tags: ["Shopify", "WooCommerce", "Custom"], path: "/services/ecommerce" },
-      { icon: Rocket, title: "MVP Development", desc: "Rapid prototyping and core feature development to validate your startup ideas quickly.", tags: ["Prototyping", "Lean Startup", "Speed"], path: "/services/mvp-development" },
-      { icon: LayoutIcon, title: "CMS Development", desc: "Custom themes and plugins for WordPress, Shopify, and modern Headless CMS solutions.", tags: ["WordPress", "Shopify", "Strapi"], path: "/services/cms-development" },
-      { icon: Cpu, title: "Custom Software", desc: "Tailored software solutions designed to address your specific business challenges.", tags: ["Enterprise", "SaaS", "Automation"], path: "/services/software-solutions" },
-    ],
+    id: "mobile",
+    icon: Smartphone,
+    title: "Mobile App Development",
+    desc: "Native and cross-platform apps for iOS and Android with React Native and Flutter, from prototype to store listing.",
+    tags: ["React Native", "Flutter", "iOS/Android"],
+    path: "/services/mobile-development",
+  },
+  {
+    id: "mvp",
+    icon: Rocket,
+    title: "MVP Development",
+    desc: "Idea to first users in weeks, not quarters. Core features only, built to validate before you over-invest.",
+    tags: ["Prototyping", "Lean Startup", "Speed"],
+    path: "/services/mvp-development",
+  },
+  {
+    id: "ai",
+    icon: BrainCircuit,
+    title: "AI & Machine Learning",
+    desc: "LLM chatbots, AI agents, generative media, predictive analytics, and the data pipelines underneath them.",
+    tags: ["OpenAI", "LangChain", "Python"],
+    path: "/services/ai-ml-integration",
   },
   {
     id: "cloud",
-    title: "Cloud & DevOps",
-    description: "Scalable cloud infrastructure, automated pipelines, and expert DevOps consulting to accelerate your delivery.",
     icon: Cloud,
-    services: [
-      { icon: Cloud, title: "Cloud & DevOps", desc: "Cloud architecture, CI/CD pipelines, infrastructure as code, DevOps strategy, and 24/7 monitoring.", tags: ["AWS", "Azure", "GCP", "Kubernetes"], path: "/services/cloud-devops" },
-      { icon: Wifi, title: "IoT Development", desc: "Connect devices and build smart systems with IoT platforms, firmware, and cloud integration.", tags: ["Sensors", "Embedded", "Cloud"], path: "/services/iot" },
-    ],
+    title: "Cloud, DevOps & IoT",
+    desc: "Cloud architecture, CI/CD, Kubernetes, infrastructure as code, and connected devices from firmware to dashboard.",
+    tags: ["AWS", "Kubernetes", "Terraform"],
+    path: "/services/cloud-devops",
   },
   {
     id: "design",
-    title: "Design & Marketing",
-    description: "User-centric design combined with data-driven marketing to create products people love and campaigns that convert.",
     icon: Palette,
-    services: [
-      { icon: Palette, title: "UI/UX Design", desc: "User-centric design that blends aesthetics with functionality to create intuitive digital products.", tags: ["Figma", "Prototyping", "User Research"], path: "/services/ui-ux-design" },
-      { icon: TrendingUp, title: "Digital Marketing & CRO", desc: "SEO, PPC, social media, email marketing, and conversion rate optimization.", tags: ["SEO", "PPC", "A/B Testing"], path: "/services/digital-marketing" },
-      { icon: Megaphone, title: "Branding & Positioning", desc: "Strategic branding that differentiates you in the market with identity and positioning.", tags: ["Brand Identity", "Strategy", "Positioning"], path: "/services/branding-positioning" },
-    ],
+    title: "UI/UX Design",
+    desc: "Research, wireframes, design systems, and prototypes for products people can actually use.",
+    tags: ["Figma", "Prototyping", "User Research"],
+    path: "/services/ui-ux-design",
+  },
+  {
+    id: "growth",
+    icon: Target,
+    title: "Branding & Marketing",
+    desc: "Brand identity and positioning plus SEO, paid ads, content, and CRO — measured on customers, not impressions.",
+    tags: ["SEO", "Brand Identity", "CRO"],
+    path: "/services/branding-positioning",
   },
   {
     id: "team",
-    title: "Team & Partnership",
-    description: "Scale your team with dedicated experts or leverage our white-label services to expand your agency capabilities.",
     icon: Users,
-    services: [
-      { icon: Users, title: "Extended Team", desc: "Augment your existing team with our skilled developers, engineers, and digital experts.", tags: ["Staff Augmentation", "Dedicated Team", "Remote"], path: "/services/extended-team" },
-      { icon: Ghost, title: "White Label Services", desc: "Silent partnership services for agencies looking to scale their production capabilities.", tags: ["Confidential", "Agency Support", "Scalable"], path: "/services/white-label-services" },
-    ],
+    title: "Hire Developers",
+    desc: "Dedicated developers and full pods in your standups and tools, with white-label delivery for agencies.",
+    tags: ["Staff Augmentation", "White Label", "NDA"],
+    path: "/services/extended-team",
   },
 ];
 
-const allServices = serviceCategories.flatMap(cat => cat.services);
-
 const solutions = [
-  { title: "E-Commerce", desc: "High-converting online stores with seamless checkout experiences.", href: "/services/ecommerce" },
+  { title: "E-Commerce", desc: "High-converting online stores with seamless checkout experiences.", href: "/services/web-development" },
   { title: "Healthcare", desc: "HIPAA-compliant applications for patient management and telemedicine.", href: "/contact" },
   { title: "FinTech", desc: "Secure and robust financial platforms for banking and payments.", href: "/contact" },
   { title: "Education", desc: "Interactive learning management systems and educational portals.", href: "/contact" },
@@ -133,12 +124,12 @@ const techStack = [
         hasOfferCatalog: {
           "@type": "OfferCatalog",
           name: "IT Services",
-          itemListElement: allServices.map((service) => ({
+          itemListElement: pillars.map((pillar) => ({
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
-              name: service.title,
-              description: service.desc,
+              name: pillar.title,
+              description: pillar.desc,
             },
           })),
         },
@@ -192,8 +183,8 @@ const techStack = [
         <p
           class="mx-auto mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed text-pretty"
         >
-          We provide custom web development, mobile apps, AI/ML integration,
-          cloud & DevOps, UI/UX design, and digital marketing services.
+          Eight services, one team: web and mobile apps, AI, cloud, design,
+          marketing, and engineers you can hire directly.
         </p>
         <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
@@ -214,69 +205,52 @@ const techStack = [
     </div>
   </section>
 
-  {/* Service Categories */}
+  {/* Services */}
   <section id="capabilities" class="section-padding bg-background relative">
     <div class="container-normal">
       <div class="text-center max-w-3xl mx-auto mb-20">
         <h2
           class="font-heading text-4xl md:text-5xl font-bold text-foreground mb-6"
         >
-          Core Capabilities
+          What we do
         </h2>
         <p class="text-xl text-muted-foreground leading-relaxed">
-          A comprehensive suite of digital services organized into five
-          practice areas, designed to meet the evolving needs of modern businesses.
+          Eight services covering everything from a first MVP to a full
+          platform, an AI feature, or an entire engineering team.
         </p>
       </div>
 
-      {serviceCategories.map((category) => (
-        <div class="mb-20 last:mb-0" id={category.id}>
-          <div class="flex items-start gap-5 mb-10">
-            <div class="shrink-0 h-14 w-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
-              <category.icon className="h-7 w-7" aria-hidden="true" />
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {pillars.map((pillar) => (
+          <a
+            href={pillar.path}
+            id={pillar.id}
+            class="group relative bg-secondary/5 p-8 rounded-card-lg border border-border/40 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden flex flex-col"
+          >
+            <div class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+            <div class="mb-6 inline-flex p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500 w-fit">
+              <pillar.icon className="h-6 w-6" aria-hidden="true" />
             </div>
-            <div>
-              <h3 class="font-heading text-3xl md:text-4xl font-bold text-foreground mb-2">
-                {category.title}
-              </h3>
-              <p class="text-lg text-muted-foreground max-w-2xl">
-                {category.description}
-              </p>
+
+            <h3 class="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+              {pillar.title}
+            </h3>
+
+            <p class="text-muted-foreground leading-relaxed mb-6 text-sm grow">
+              {pillar.desc}
+            </p>
+
+            <div class="flex flex-wrap gap-2 mt-auto">
+              {pillar.tags.map((tag) => (
+                <span class="px-2.5 py-1 rounded-full bg-secondary/30 border border-border/30 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+                  {tag}
+                </span>
+              ))}
             </div>
-          </div>
-
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {category.services.map((service) => (
-              <a
-                href={service.path}
-                class="group relative bg-secondary/5 p-8 rounded-card-lg border border-border/40 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300 block overflow-hidden"
-              >
-                <div class="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                <div class="mb-6 inline-flex p-3 rounded-xl bg-primary/10 text-primary group-hover:scale-110 transition-transform duration-500">
-                  <service.icon className="h-6 w-6" aria-hidden="true" />
-                </div>
-
-                <h4 class="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h4>
-
-                <p class="text-muted-foreground leading-relaxed mb-6 text-sm">
-                  {service.desc}
-                </p>
-
-                <div class="flex flex-wrap gap-2 mt-auto">
-                  {service.tags.map((tag) => (
-                    <span class="px-2.5 py-1 rounded-full bg-secondary/30 border border-border/30 text-xs font-medium text-muted-foreground group-hover:text-foreground transition-colors">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      ))}
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 

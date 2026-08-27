@@ -66,7 +66,7 @@ export function verifyAexawareWebhook(
     "inquiry_id": "inq_7741029",
     "name": "Sarah Connor",
     "email": "sarah@cyberdyne.example",
-    "service_category": "ai-agent-development",
+    "service_category": "ai-ml-integration",
     "estimated_budget": "$10,000 - $25,000",
     "description": "Looking to build a multi-agent RAG workflow for enterprise document analysis."
   }

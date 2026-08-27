@@ -256,17 +256,14 @@ const techComparison = [
 ];
 
 const aexawareAIServices = [
-  { name: "AI/ML Integration", path: "/services/ai-ml-integration", icon: Cpu, description: "LLM agents, TensorFlow, PyTorch integration" },
-  { name: "Generative AI", path: "/services/generative-ai", icon: Zap, description: "GPT, Claude, custom AI model development" },
-  { name: "AI Agents", path: "/services/ai-agent-development", icon: Target, description: "Autonomous AI agents for business automation" },
-  { name: "Data Science", path: "/services/data-science", icon: BarChart3, description: "Predictive analytics, data pipelines" },
+  { name: "AI & Machine Learning", path: "/services/ai-ml-integration", icon: Cpu, description: "LLM integration, AI agents, generative media, predictive analytics, data engineering" },
 ];
 
 const differentiators = [
   {
     icon: Zap,
     title: "AI-First by Design",
-    description: "Where competitors treat AI as an afterthought, we've built four distinct AI service lines. Your project starts with AI architecture from day one — not bolted on after scope is locked.",
+    description: "Where competitors treat AI as an afterthought, we run a dedicated AI service pillar. Your project starts with AI architecture from day one — not bolted on after scope is locked.",
     stat: "3 AI agents shipped for US logistics startup in Q1 2026",
   },
   {
@@ -601,10 +598,10 @@ const differentiators = [
             AI-First <span class="text-primary">by Design</span>
           </h2>
           <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-            While competitors treat AI as a buzzword, we've built our entire service architecture around it. Four dedicated service lines. Zero afterthoughts.
+            While competitors treat AI as a buzzword, we've built a full AI service pillar. Model choice, data pipelines, and production monitoring included. Zero afterthoughts.
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {aexawareAIServices.map((service) => (
             <a href={service.path}
               class="group bg-secondary/30 rounded-card-lg p-6 border border-border/50 hover:border-primary/30 hover:bg-secondary/50 transition-all duration-300">

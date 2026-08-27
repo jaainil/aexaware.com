@@ -15,7 +15,7 @@ Two audiences, confirmed equal priority:
 
 ## Product Purpose
 
-The marketing site for **Aexaware Infotech**, a full-service digital agency based in Vadodara, Gujarat, India. It exists to convert visitors into client projects: surface the 19 services, prove capability with real case studies, demonstrate engineering depth through the blog, and route buyers to contact (form, email, phone, cal.com booking). Success = qualified project inquiries ("do the best we need clients" — the user's stated goal).
+The marketing site for **Aexaware Infotech**, a full-service digital agency based in Vadodara, Gujarat, India. It exists to convert visitors into client projects: surface the 8 service pillars, prove capability with real case studies, demonstrate engineering depth through the blog, and route buyers to contact (form, email, phone, cal.com booking). Success = qualified project inquiries ("do the best we need clients" — the user's stated goal).
 
 ## Positioning
 

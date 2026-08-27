@@ -4,7 +4,7 @@
  * Endpoint: /api/mcp  (POST = JSON-RPC, GET = SSE stream)
  *
  * Tools exposed (LLM Function-Calling Compatible):
- *  1. list_services          — All 19 Aexaware engineering services
+ *  1. list_services          — All 8 Aexaware engineering services
  *  2. list_portfolio         — Portfolio case studies with tech & metrics
  *  3. search_blog            — Keyword search across all blog articles
  *  4. get_contact_info       — Verified contact details & booking links
@@ -16,30 +16,19 @@
 // ─── Static Tool Data ────────────────────────────────────────────────────────
 
 const SERVICES = [
-  // Web & Application Development
-  { name: "Web Development", slug: "web-development", category: "Web & Application Development", description: "Full-stack web applications using React, Next.js, Node.js, Python, PHP/Laravel. Progressive Web Apps, SaaS platforms, enterprise portals.", url: "https://aexaware.com/services/web-development", techStack: ["React", "Next.js", "Node.js", "Python", "PostgreSQL", "TypeScript"] },
-  { name: "Mobile Development", slug: "mobile-development", category: "Web & Application Development", description: "Cross-platform iOS and Android applications using React Native and Flutter with OTA updates and App Store / Google Play publishing.", url: "https://aexaware.com/services/mobile-development", techStack: ["React Native", "Flutter", "Expo", "Firebase", "Fastlane"] },
-  { name: "E-Commerce Development", slug: "ecommerce", category: "Web & Application Development", description: "WooCommerce, custom e-commerce platforms, payment gateway integration, inventory management, and checkout optimization.", url: "https://aexaware.com/services/ecommerce", techStack: ["WooCommerce", "Stripe", "PayPal", "Shopify", "PostgreSQL"] },
-  { name: "CMS Development", slug: "cms-development", category: "Web & Application Development", description: "WordPress, Ghost, headless CMS, Contentful, and custom CMS implementations with editorial workflows.", url: "https://aexaware.com/services/cms-development", techStack: ["WordPress", "Ghost", "Contentful", "Strapi", "Headless CMS"] },
-  { name: "MVP Development", slug: "mvp-development", category: "Web & Application Development", description: "Rapid 2–6 week MVP development for startups and idea validation. PRD to production-ready web or mobile product.", url: "https://aexaware.com/services/mvp-development", techStack: ["React", "Node.js", "Supabase", "Vercel", "Figma"] },
-  { name: "Software Solutions", slug: "software-solutions", category: "Web & Application Development", description: "Enterprise software, SaaS platforms, custom business applications, CRM/ERP integrations, and workflow automation.", url: "https://aexaware.com/services/software-solutions", techStack: ["Node.js", "Python", "PostgreSQL", "Redis", "Docker"] },
-  // AI / ML
-  { name: "AI/ML Integration", slug: "ai-ml-integration", category: "AI / ML & Data Science", description: "LLM API integration, ML model deployment, intelligent automation pipelines, and AI-augmented applications.", url: "https://aexaware.com/services/ai-ml-integration", techStack: ["OpenAI API", "LangChain", "FastAPI", "pgvector", "Python"] },
-  { name: "AI Agent Development", slug: "ai-agent-development", category: "AI / ML & Data Science", description: "Autonomous LLM agents, multi-agent orchestration, custom Model Context Protocol (MCP) servers, RAG pipelines with vector databases.", url: "https://aexaware.com/services/ai-agent-development", techStack: ["LangChain", "LlamaIndex", "FastMCP", "pgvector", "Pinecone", "Anthropic Claude"] },
-  { name: "Generative AI", slug: "generative-ai", category: "AI / ML & Data Science", description: "ChatGPT, Claude, Gemini integration, custom LLM fine-tuning, prompt engineering, and generative AI application development.", url: "https://aexaware.com/services/generative-ai", techStack: ["OpenAI", "Anthropic", "Google Gemini", "Mistral", "LangChain"] },
-  { name: "AI Image & Video Generation", slug: "ai-image-video-generation", category: "AI / ML & Data Science", description: "Stable Diffusion, DALL·E, Sora integrations, and custom generative media pipelines for creative applications.", url: "https://aexaware.com/services/ai-image-video-generation", techStack: ["Stable Diffusion", "DALL·E 3", "Replicate", "ComfyUI", "ControlNet"] },
-  { name: "Data Science", slug: "data-science", category: "AI / ML & Data Science", description: "Statistical modeling, exploratory data analysis, hypothesis testing, and end-to-end ML workflows.", url: "https://aexaware.com/services/data-science", techStack: ["Python", "Pandas", "scikit-learn", "Jupyter", "dbt"] },
-  { name: "Big Data Solutions", slug: "big-data-solutions", category: "AI / ML & Data Science", description: "Data lakes, ETL pipelines, Apache Spark, Kafka streaming, and data warehousing for large-scale analytics.", url: "https://aexaware.com/services/big-data-solutions", techStack: ["Apache Spark", "Kafka", "Snowflake", "dbt", "Airflow"] },
-  // Cloud & DevOps
-  { name: "Cloud & DevOps", slug: "cloud-devops", category: "Cloud & DevOps", description: "Multi-cloud architecture (AWS, GCP, Azure), Docker containerization, Kubernetes clustering, CI/CD automation, Terraform IaC, and security hardening.", url: "https://aexaware.com/services/cloud-devops", techStack: ["AWS", "GCP", "Azure", "Docker", "Kubernetes", "Terraform", "GitHub Actions"] },
-  // Design & Marketing
-  { name: "UI/UX Design", slug: "ui-ux-design", category: "Design & Marketing", description: "Figma-based design systems, user research, wireframing, interactive prototyping, and usability testing.", url: "https://aexaware.com/services/ui-ux-design", techStack: ["Figma", "FigJam", "Lottie", "Framer", "Hotjar"] },
-  { name: "Branding & Positioning", slug: "branding-positioning", category: "Design & Marketing", description: "Brand identity design, visual strategy, messaging frameworks, and competitive positioning.", url: "https://aexaware.com/services/branding-positioning", techStack: ["Adobe Illustrator", "Figma", "Notion", "Miro"] },
-  { name: "Digital Marketing", slug: "digital-marketing", category: "Design & Marketing", description: "SEO, SEM, social media marketing, content marketing, performance marketing, and conversion rate optimization.", url: "https://aexaware.com/services/digital-marketing", techStack: ["Google Ads", "GA4", "Semrush", "Ahrefs", "Meta Ads"] },
-  // Engagement Models
-  { name: "Extended Team", slug: "extended-team", category: "Engagement Models", description: "Vetted dedicated developers and engineering pods for staff augmentation. Full-time remote engineers embedded in your team.", url: "https://aexaware.com/services/extended-team", techStack: ["Any Stack", "Agile", "Scrum", "Jira", "Slack"] },
-  { name: "White Label Services", slug: "white-label-services", category: "Engagement Models", description: "White-label software development for digital agencies and SaaS resellers. Your brand, our engineering.", url: "https://aexaware.com/services/white-label-services", techStack: ["Any Stack", "NDA", "White-label"] },
-  { name: "IoT Solutions", slug: "iot", category: "Engagement Models", description: "Connected device firmware, IoT sensor networks, real-time dashboards, and edge computing solutions.", url: "https://aexaware.com/services/iot", techStack: ["MQTT", "Arduino", "Raspberry Pi", "AWS IoT", "Node.js"] },
+  // Build
+  { name: "Web & Software Development", slug: "web-development", category: "Build", description: "Websites, e-commerce (Shopify, WooCommerce, custom), CMS and headless content, SaaS platforms and APIs, and legacy modernization on React, Next.js, Node.js, Python, and PHP.", url: "https://aexaware.com/services/web-development", techStack: ["React", "Next.js", "Node.js", "Python", "PHP", "Shopify", "WooCommerce", "WordPress", "Stripe", "PostgreSQL"] },
+  { name: "Mobile App Development", slug: "mobile-development", category: "Build", description: "Cross-platform iOS and Android applications using React Native and Flutter with OTA updates and App Store / Google Play publishing.", url: "https://aexaware.com/services/mobile-development", techStack: ["React Native", "Flutter", "Expo", "Firebase", "Fastlane"] },
+  { name: "MVP Development", slug: "mvp-development", category: "Build", description: "Rapid 2–6 week MVP development for startups and idea validation. PRD to production-ready web or mobile product.", url: "https://aexaware.com/services/mvp-development", techStack: ["React", "Node.js", "Supabase", "Vercel", "Figma"] },
+  // AI & Data
+  { name: "AI & Machine Learning", slug: "ai-ml-integration", category: "AI & Data", description: "LLM integration and chatbots, AI agent development with MCP servers and RAG, generative image/video pipelines, predictive analytics, computer vision, NLP, and data engineering with BI.", url: "https://aexaware.com/services/ai-ml-integration", techStack: ["OpenAI", "Anthropic", "LangChain", "Python", "pgvector", "Pinecone", "Stable Diffusion", "Kafka", "Spark", "Snowflake"] },
+  // Infrastructure
+  { name: "Cloud, DevOps & IoT", slug: "cloud-devops", category: "Infrastructure", description: "Cloud architecture and migration (AWS, GCP, Azure), Docker/Kubernetes, CI/CD, Terraform IaC, DevSecOps, monitoring, and IoT devices from firmware to edge.", url: "https://aexaware.com/services/cloud-devops", techStack: ["AWS", "GCP", "Azure", "Docker", "Kubernetes", "Terraform", "GitHub Actions", "MQTT", "C/C++"] },
+  // Design & Growth
+  { name: "UI/UX Design", slug: "ui-ux-design", category: "Design & Growth", description: "Figma-based design systems, user research, wireframing, interactive prototyping, and usability testing.", url: "https://aexaware.com/services/ui-ux-design", techStack: ["Figma", "FigJam", "Lottie", "Framer", "Hotjar"] },
+  { name: "Branding & Marketing", slug: "branding-positioning", category: "Design & Growth", description: "Brand identity and positioning, messaging and content, SEO, paid advertising (Google, Meta, LinkedIn), social and email, and conversion rate optimization.", url: "https://aexaware.com/services/branding-positioning", techStack: ["Figma", "Google Ads", "GA4", "Semrush", "Ahrefs", "Meta Ads"] },
+  // Team
+  { name: "Hire Developers", slug: "extended-team", category: "Team", description: "Dedicated developers, cross-functional pods, and specialized roles embedded in your team, plus white-label delivery for agencies under NDA.", url: "https://aexaware.com/services/extended-team", techStack: ["Any Stack", "React", "Node.js", "Python", "Agile", "NDA"] },
 ];
 
 const PORTFOLIO = [
@@ -141,14 +130,14 @@ const CAPABILITIES = {
 const TOOLS = [
   {
     name: "list_services",
-    description: "Returns all 19 specialized engineering services offered by Aexaware Infotech, including service name, category, description, tech stack, and service URL. Use this when a user asks what Aexaware does, what services are available, or needs help finding the right service.",
+    description: "Returns all 8 engineering service pillars offered by Aexaware Infotech, including service name, category, description, tech stack, and service URL. Use this when a user asks what Aexaware does, what services are available, or needs help finding the right service.",
     inputSchema: {
       type: "object",
       properties: {
         category: {
           type: "string",
-          description: "Optional filter by category. One of: 'Web & Application Development', 'AI / ML & Data Science', 'Cloud & DevOps', 'Design & Marketing', 'Engagement Models'. Omit to return all services.",
-          enum: ["Web & Application Development", "AI / ML & Data Science", "Cloud & DevOps", "Design & Marketing", "Engagement Models"]
+          description: "Optional filter by category. One of: 'Build', 'AI & Data', 'Infrastructure', 'Design & Growth', 'Team'. Omit to return all services.",
+          enum: ["Build", "AI & Data", "Infrastructure", "Design & Growth", "Team"]
         }
       },
       required: []

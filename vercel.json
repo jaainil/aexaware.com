@@ -1,4 +1,17 @@
 {
+  "redirects": [
+    { "source": "/services/software-solutions", "destination": "/services/web-development", "permanent": true },
+    { "source": "/services/cms-development", "destination": "/services/web-development", "permanent": true },
+    { "source": "/services/ecommerce", "destination": "/services/web-development", "permanent": true },
+    { "source": "/services/generative-ai", "destination": "/services/ai-ml-integration", "permanent": true },
+    { "source": "/services/ai-agent-development", "destination": "/services/ai-ml-integration", "permanent": true },
+    { "source": "/services/ai-image-video-generation", "destination": "/services/ai-ml-integration", "permanent": true },
+    { "source": "/services/data-science", "destination": "/services/ai-ml-integration", "permanent": true },
+    { "source": "/services/big-data-solutions", "destination": "/services/ai-ml-integration", "permanent": true },
+    { "source": "/services/iot", "destination": "/services/cloud-devops", "permanent": true },
+    { "source": "/services/digital-marketing", "destination": "/services/branding-positioning", "permanent": true },
+    { "source": "/services/white-label-services", "destination": "/services/extended-team", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

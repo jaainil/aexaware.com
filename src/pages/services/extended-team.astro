@@ -1,120 +1,143 @@
 ---
 import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
 import {
-    Users,
-    Code,
-    MessagesSquare,
-    UserCheck,
-    Cog,
-    ShieldCheck,
+  UserCheck,
+  Users,
+  Wrench,
+  Compass,
+  EyeOff,
+  Lock,
 } from "lucide-astro";
 
 const services = [
-    {
-        id: "01",
-        icon: Users,
-        title: "Dedicated Developers",
-        desc: "Hire dedicated developers who work exclusively on your project, integrating seamlessly with your in-house team as if they were your own employees.",
-        gradient: "from-primary/20 to-primary/20",
-        iconColor: "text-primary",
-    },
-    {
-        id: "02",
-        icon: UserCheck,
-        title: "Agile Teams",
-        desc: "Complete cross-functional teams with developers, designers, QA, and project managers. Ready to hit the ground running on your projects.",
-        gradient: "from-success/20 to-success/20",
-        iconColor: "text-success",
-    },
-    {
-        id: "03",
-        icon: Code,
-        title: "Specialized Expertise",
-        desc: "Access experts in React, Node.js, Python, Mobile, DevOps, and more. Fill skill gaps in your team with exactly the expertise you need.",
-        gradient: "from-primary/20 to-primary/20",
-        iconColor: "text-primary",
-    },
-    {
-        id: "04",
-        icon: Cog,
-        title: "DevOps Engineers",
-        desc: "CI/CD pipeline setup, cloud infrastructure management, containerization, and monitoring. Scale your operations with expert DevOps support.",
-        gradient: "from-warning/20 to-warning/20",
-        iconColor: "text-warning",
-    },
-    {
-        id: "05",
-        icon: ShieldCheck,
-        title: "QA Engineers",
-        desc: "Manual and automated testing experts who ensure your software meets the highest quality standards before reaching your users.",
-        gradient: "from-success/20 to-info/20",
-        iconColor: "text-success",
-    },
-    {
-        id: "06",
-        icon: MessagesSquare,
-        title: "Technical Leads",
-        desc: "Experienced architects and tech leads who can guide your development strategy, mentor your team, and make critical technical decisions.",
-        gradient: "from-secondary/20 to-muted/20",
-        iconColor: "text-muted-foreground",
-    },
+  {
+    id: "01",
+    icon: UserCheck,
+    title: "Dedicated Developers",
+    desc: "Full-time engineers who work exclusively on your product and plug into your tools, standups, and process like your own hires.",
+    gradient: "from-primary/20 to-info/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "02",
+    icon: Users,
+    title: "Cross-Functional Teams",
+    desc: "Complete pods with developers, designers, QA, and a project manager. One contract, one team, ready to take a feature area end to end.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
+  },
+  {
+    id: "03",
+    icon: Wrench,
+    title: "Specialized Roles",
+    desc: "DevOps engineers, QA specialists, mobile and AI engineers when you need exactly that skill for exactly as long as you need it.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "04",
+    icon: Compass,
+    title: "Technical Leadership",
+    desc: "Architects and tech leads who set direction, review code, mentor your team, and make the calls that keep the platform healthy.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
+    id: "05",
+    icon: EyeOff,
+    title: "White-Label Delivery",
+    desc: "For agencies and resellers: we build under your brand, your clients never know we exist, and you keep the relationship.",
+    gradient: "from-destructive/20 to-destructive/20",
+    iconColor: "text-destructive",
+  },
+  {
+    id: "06",
+    icon: Lock,
+    title: "NDA-First Engagement",
+    desc: "Strict NDAs, isolated access, and confidentiality baked into every contract before any code or brief changes hands.",
+    gradient: "from-secondary/20 to-muted/20",
+    iconColor: "text-muted-foreground",
+  },
 ];
 
 const whyChooseUs = [
-    {
-        title: "Solution-Oriented",
-        desc: "Our developers focus on solving problems, not just writing code. They bring creative solutions to complex challenges.",
-    },
-    {
-        title: "Quick Response",
-        desc: "Fast turnaround on requests and real-time problem solving. Our team operates in overlapping time zones for smooth communication.",
-    },
-    {
-        title: "Continuous Learning",
-        desc: "Our team stays current with emerging technologies and trends, always searching for better ways to deliver results.",
-    },
-    {
-        title: "Self-Managed",
-        desc: "Dedicated professionals who take ownership of their work and continuously deliver high-quality results without micromanagement.",
-    },
-    {
-        title: "Transparent Communication",
-        desc: "Regular updates via project management tools. Technical or business problems are communicated honestly and openly.",
-    },
-    {
-        title: "Flexible Engagement",
-        desc: "Scale up or down as needed. Hourly, part-time, or full-time engagement models to match your requirements.",
-    },
+  {
+    title: "Engineers, Not Bodies",
+    desc: "Every developer passes a technical review before joining your project. You interview them too.",
+  },
+  {
+    title: "Your Process, Your Tools",
+    desc: "We join your Slack, your Jira, your standups. No parallel universe where work happens that you can't see.",
+  },
+  {
+    title: "No Ramp-Up Tax",
+    desc: "Our developers ship in week one because the bench covers the stacks we already work in daily.",
+  },
+  {
+    title: "Scale Both Ways",
+    desc: "Add two engineers for a launch, step back down after. Contracts flex with your roadmap.",
+  },
+  {
+    title: "IP Stays Yours",
+    desc: "Code, designs, and documentation are your property from the first commit. Full repository access, no vendor lock-in.",
+  },
+  {
+    title: "Direct Communication",
+    desc: "You talk to the engineers doing the work. No account-manager telephone game between you and the code.",
+  },
 ];
 
 const techStack = [
-    "React",
-    "Node.js",
-    "Python",
-    "Java",
-    ".NET",
-    "DevOps",
-    "AWS",
-    "Docker",
-    "Kubernetes",
-    "QA Engineers",
+  "React",
+  "React Native",
+  "Flutter",
+  "Node.js",
+  "Python",
+  "AWS",
+  "Docker",
+  "Kubernetes",
+  "Any stack on request",
+];
+
+const faqs = [
+  {
+    question: "How quickly can a developer start?",
+    answer: "Because we staff from our existing engineering bench rather than recruiting externally, we can usually put profiles in front of you within days. You interview and approve before anyone starts.",
+  },
+  {
+    question: "Who manages the developers day to day?",
+    answer: "You do, if you want: they join your standups and planning. If you'd rather not manage, our project leads run delivery and report to you on a cadence you choose.",
+  },
+  {
+    question: "What if it isn't working out?",
+    answer: "Tell us. We replace the engineer or restructure the engagement without friction. The point of the model is that staffing problems are ours to solve, not yours.",
+  },
+  {
+    question: "How does white-label work for agencies?",
+    answer: "You sell the project, we deliver it under your brand with NDA protection. Your clients see your name on the work and hear your name on the calls. We stay invisible by contract.",
+  },
+  {
+    question: "What are the contract terms?",
+    answer: "Monthly rolling engagements with a simple notice period, or fixed-scope statements of work for defined projects. No long lock-ins, and all IP transfers to you.",
+  },
 ];
 ---
 
 <ServicePageLayout
-    title="Extended Team"
-    description="Scale your development capacity with experienced agile developers. Dedicated teams, staff augmentation, and specialized expertise on demand."
-    heroBadge="Team Extension"
-    heroTitle="Scale Your Team"
-    heroSubtitle="On Demand."
-    heroDescription="Whether you need to expand in-house development capabilities or need an offshore team to develop a project from scratch, our experienced developers will work as a seamless extension of your IT staff and help you continue from where you left off."
-    introTitle="Why Agile Developers?"
-    introText="We believe valuable software development is much more than just writing code by following instructions. The provided solution that actually solves problems—and developers focusing on building quality into deliverables—is the most important factor to achieve success. At Aexaware, we've practiced agile since inception. By creating an open, collaborative, and inspiring work culture, we motivate our developers to focus more on problem-solving abilities instead of simple software programming. Each developer works one client at a time, ensuring full dedication to your project."
-    servicesTitle="Extended Team Services"
-    servicesDescription="Flexible staffing solutions to power your digital transformation."
-    services={services}
-    whyChooseUs={whyChooseUs}
-    whyChooseTitle="Why Choose Aexaware for Team Extension"
-    whyChooseDescription="Our developers communicate business value for any requirements before jumping into programming."
-    techStack={techStack}
+  title="Hire Developers"
+  description="Dedicated developers, cross-functional teams, and white-label engineering for agencies. Vetted engineers in your tools, your standups, under your brand."
+  heroBadge="Extended Team"
+  heroTitle="Engineers Who Join"
+  heroSubtitle="Your Team."
+  heroDescription="Dedicated developers, specialist roles, and complete pods that plug into your stack, your standups, and your roadmap — with white-label delivery for agencies who'd rather keep us invisible."
+  introTitle="Staffing without the gamble"
+  introText="Hiring takes months and a bad hire costs a quarter. Our engineers are already shipping on the stacks you use, they join your tools and standups from day one, and swapping one out is our problem, not a re-opening of your job post. For agencies, the same engineers deliver white-label under your brand, with NDAs signed before your client list ever reaches us."
+  servicesTitle="Extended Team Services"
+  servicesDescription="Ways to add engineering capacity without adding hiring risk."
+  services={services}
+  whyChooseUs={whyChooseUs}
+  whyChooseTitle="Why Hire Through Aexaware"
+  whyChooseDescription="Vetted engineers, your process, zero lock-in."
+  techStack={techStack}
+  faqs={faqs}
 />

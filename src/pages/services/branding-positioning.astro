@@ -1,132 +1,139 @@
 ---
 import ServicePageLayout from "@/layouts/ServicePageLayout.astro";
-import { Palette, Target, Zap, Globe, Star, Megaphone } from "lucide-astro";
+import {
+  Fingerprint,
+  MessageSquareText,
+  Search,
+  MousePointerClick,
+  Users,
+  Gauge,
+} from "lucide-astro";
 
 const services = [
   {
     id: "01",
-    icon: Palette,
-    title: "Brand Identity",
-    desc: "Create a distinctive brand that stands out. Logo, colors, typography, and brand guidelines.",
+    icon: Fingerprint,
+    title: "Brand Identity & Strategy",
+    desc: "Logo, colors, typography, and guidelines, plus the positioning work underneath: who you're for, what you say, and why anyone should care.",
     gradient: "from-primary/20 to-info/20",
     iconColor: "text-primary",
   },
   {
     id: "02",
-    icon: Target,
-    title: "Brand Positioning",
-    desc: "Define your unique market position. Differentiate from competitors and own your space.",
-    gradient: "from-success/20 to-success/20",
-    iconColor: "text-success",
-  },
-  {
-    id: "03",
-    icon: Zap,
-    title: "Brand Strategy",
-    desc: "Strategic direction for your brand. Values, personality, and messaging that resonates.",
-    gradient: "from-warning/20 to-warning/20",
-    iconColor: "text-warning",
-  },
-  {
-    id: "04",
-    icon: Globe,
-    title: "Digital Branding",
-    desc: "Consistent brand presence across all digital touchpoints. Websites, social media, and ads.",
+    icon: MessageSquareText,
+    title: "Messaging & Content",
+    desc: "Taglines, website copy, and a content engine: blog posts, video, and thought leadership that attract the customers you actually want.",
     gradient: "from-primary/20 to-primary/20",
     iconColor: "text-primary",
   },
   {
+    id: "03",
+    icon: Search,
+    title: "SEO",
+    desc: "Technical SEO, content optimization, and link building driven by data. We also fix site speed, since fast pages rank and convert better.",
+    gradient: "from-success/20 to-success/20",
+    iconColor: "text-success",
+  },
+  {
+    id: "04",
+    icon: MousePointerClick,
+    title: "Paid Advertising",
+    desc: "Google Ads, Meta, and LinkedIn campaigns managed against ROI, not impressions. Landing pages and funnels built to match every campaign.",
+    gradient: "from-warning/20 to-warning/20",
+    iconColor: "text-warning",
+  },
+  {
     id: "05",
-    icon: Star,
-    title: "Brand Messaging",
-    desc: "Compelling copy that communicates your value. Taglines, elevator pitches, and content.",
-    gradient: "from-destructive/20 to-destructive/20",
-    iconColor: "text-destructive",
+    icon: Users,
+    title: "Social & Email",
+    desc: "Organic social that builds an audience, plus automated email flows that nurture leads and win back customers. Segmented and A/B tested.",
+    gradient: "from-primary/20 to-primary/20",
+    iconColor: "text-primary",
   },
   {
     id: "06",
-    icon: Megaphone,
-    title: "Brand Launch",
-    desc: "Launch your brand with impact. Go-to-market strategies and campaigns that create buzz.",
-    gradient: "from-info/20 to-info/20",
-    iconColor: "text-info",
+    icon: Gauge,
+    title: "Conversion Rate Optimization",
+    desc: "A/B testing, funnel analysis, and UX fixes that turn more of the traffic you already have into customers.",
+    gradient: "from-success/20 to-info/20",
+    iconColor: "text-success",
   },
 ];
 
 const whyChooseUs = [
   {
-    title: "Strategic Thinking",
-    desc: "Branding based on business strategy, not just design.",
+    title: "Brand Meets Engineering",
+    desc: "Most agencies stop at the mockup. We design the brand and build the site, so nothing gets lost in translation.",
   },
   {
-    title: "Unique Identity",
-    desc: "Distinctive designs that set you apart.",
+    title: "Numbers Over Vibes",
+    desc: "Every campaign reports against traffic, conversion, and cost per acquisition. If a channel isn't working, we say so and move the budget.",
   },
   {
-    title: "Consistency",
-    desc: "Brand guidelines that ensure consistency everywhere.",
+    title: "Full-Funnel Thinking",
+    desc: "Identity, site, content, ads, and email work as one system instead of five vendors pointing at each other.",
   },
   {
-    title: "Market Research",
-    desc: "Deep understanding of your audience and competition.",
+    title: "Content That Compounds",
+    desc: "We write for search intent and real readers, so content keeps earning traffic months after publication.",
   },
   {
-    title: "Measurable Impact",
-    desc: "Brand equity improvements you can track.",
+    title: "Fast Iteration",
+    desc: "Monthly experiment cycles: hypothesis, launch, measure, keep or kill. Small bets, quick learnings.",
   },
   {
-    title: "Long-Term Partnership",
-    desc: "Ongoing support to evolve and grow your brand.",
+    title: "You Own Everything",
+    desc: "Accounts, data, creative files, and code are yours from day one. No hostage situations.",
   },
 ];
 
 const techStack = [
   "Figma",
-  "Adobe Creative Cloud",
-  "Canva",
-  "Sketch",
-  "Illustrator",
-  "Photoshop",
-  "InVision",
-  "Miro",
-  "Brandboard",
+  "Adobe Illustrator",
+  "Google Ads",
+  "GA4",
+  "Semrush",
+  "Ahrefs",
+  "Meta Ads",
+  "Hotjar",
+  "Search Console",
 ];
 
 const faqs = [
   {
-    question: "What makes branding different from just logo design?",
-    answer: "A logo is just one element. True branding encompasses your visual identity, brand voice, positioning, values, and the emotional connection you create with customers. It's the complete personality of your business that shapes how people perceive and relate to you.",
+    question: "We only need one of these. Can we start small?",
+    answer: "Yes. Common entry points are an SEO audit, a brand refresh, or a single paid channel. We'd rather prove value on one project than sell you a retainer you're not sure about.",
   },
   {
-    question: "How long does a branding project take?",
-    answer: "Typical branding projects run 4-8 weeks. Brand strategy and discovery take 2-3 weeks, visual identity development another 2-3 weeks, and guidelines documentation takes 1-2 weeks. We can accelerate timelines for urgent launches.",
+    question: "How long before we see results?",
+    answer: "Paid ads can produce qualified traffic within weeks. SEO and content compound over 3-6 months. Brand work pays off gradually across every touchpoint. We set expectations per channel up front, in writing.",
   },
   {
-    question: "Can you rebrand an existing company?",
-    answer: "Yes, we specialize in brand refreshes and complete rebrands. We conduct competitive analysis, stakeholder interviews, and market research to develop a positioning that better reflects your current goals and market opportunities.",
+    question: "Do you work with our in-house marketing team?",
+    answer: "Often. We can own specific channels (say, technical SEO or paid), handle execution while your team keeps strategy, or train your team on what we set up.",
   },
   {
-    question: "What's included in brand guidelines?",
-    answer: "Comprehensive guidelines cover logo usage, color palette with exact codes, typography specifications, imagery style, voice and tone, social media guidelines, and application examples. These ensure consistent brand expression across all touchpoints.",
+    question: "Can you redesign our website as part of this?",
+    answer: "Yes, and it's usually the right move when brand and marketing change together. Design, build, and migration are handled by the same team that runs this site.",
   },
 ];
 ---
 
 <ServicePageLayout
-  title="Branding & Positioning Services"
-  description="Strategic branding and brand positioning services. Create a powerful brand identity that differentiates you in the market."
-  heroBadge="Branding"
-  heroTitle="Own Your"
-  heroSubtitle="Brand."
-  heroDescription="Build a brand that stands out. Strategic branding and positioning that creates lasting impressions and customer loyalty."
-  introTitle="Brand Power"
-  introText="Your brand is more than a logo - it's what customers think and feel about your business. Our branding services help you define who you are, why you matter, and how to communicate that effectively. From brand strategy to visual identity, we create brands that connect with audiences and drive business growth."
-  servicesTitle="Branding Services"
-  servicesDescription="Build a powerful brand."
+  title="Branding & Marketing"
+  description="Brand identity and positioning, SEO, paid advertising, content, social, email, and conversion rate optimization — designed and measured as one system."
+  heroBadge="Branding & Marketing"
+  heroTitle="Brands Built"
+  heroSubtitle="To Convert."
+  heroDescription="Identity, website, content, and campaigns that work as one system — designed by the same team that builds the site, and measured on customers gained, not likes."
+  introTitle="Marketing with receipts"
+  introText="A brand is what people say about you when you're not in the room; marketing is getting them to say it to someone with a credit card. We handle both, report against traffic and conversion every month, and kill what isn't working. Because we also build the websites, nothing gets designed here and rebuilt there."
+  servicesTitle="Branding & Marketing Services"
+  servicesDescription="From first logo to a full acquisition funnel."
   services={services}
   whyChooseUs={whyChooseUs}
-  whyChooseTitle="Why Choose Aexaware for Branding"
-  whyChooseDescription="Strategic branding that makes an impact."
+  whyChooseTitle="Why Choose Aexaware for Branding & Marketing"
+  whyChooseDescription="Design and engineering under one roof, campaigns judged on revenue."
   techStack={techStack}
   faqs={faqs}
 />
