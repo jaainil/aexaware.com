@@ -2,7 +2,8 @@
 const row1 = [
   { name: "React", icon: "https://cdn.simpleicons.org/react/61DAFB" },
   { name: "Astro", icon: "https://cdn.simpleicons.org/astro/BC52EE" },
-  { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/000000" },
+  // Black icon vanishes on dark surfaces once a dark theme ships; invert it there
+  { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/000000", invertDark: true },
   { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
   {
     name: "Tailwind CSS",
@@ -47,8 +48,8 @@ const row2 = [
                 alt={tech.name}
                 width="24"
                 height="24"
-                class="h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0"
-                loading="eager"
+                class:list={["h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0", "invertDark" in tech && tech.invertDark ? "dark:invert" : ""]}
+                loading="lazy"
               />
               <span class="text-sm font-semibold text-muted-foreground group-hover/item:text-foreground transition-colors whitespace-nowrap pt-0.5">
                 {tech.name}
@@ -73,7 +74,7 @@ const row2 = [
                 width="24"
                 height="24"
                 class="h-6 w-6 dark:brightness-[1.5] transition-all duration-300 shrink-0"
-                loading="eager"
+                loading="lazy"
               />
               <span class="text-sm font-semibold text-muted-foreground group-hover/item:text-foreground transition-colors whitespace-nowrap pt-0.5">
                 {tech.name}

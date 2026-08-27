@@ -211,7 +211,8 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
               Your Ephemeral Sandbox API Key
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Use this pre-generated test key to experiment in the interactive sandbox below or authenticate requests locally against Aexaware endpoints.
+              Test key for the sandbox below and for local requests against
+              aexaware.com endpoints.
             </p>
           </div>
 
@@ -223,7 +224,7 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
                 className="ml-3 p-1.5 rounded-lg hover:bg-background/80 text-muted-foreground hover:text-foreground transition-colors"
                 title="Copy API Key"
               >
-                {copiedKey ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                {copiedKey ? <Check className="w-4 h-4 text-success" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
 
@@ -265,7 +266,7 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
                       <div className="flex items-center gap-2">
                         <span
                           className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md ${
-                            ep.method === 'POST' ? 'bg-amber-500/20 text-amber-500' : 'bg-primary/20 text-primary'
+                            ep.method === 'POST' ? 'bg-warning/15 text-warning' : 'bg-primary/15 text-primary'
                           }`}
                         >
                           {ep.method}
@@ -349,7 +350,7 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
               <div className="flex items-center gap-2 font-mono text-xs text-foreground">
                 <span
                   className={`px-2 py-0.5 rounded-md font-bold ${
-                    selectedEndpoint.method === 'POST' ? 'bg-amber-500/20 text-amber-500' : 'bg-primary/20 text-primary'
+                    selectedEndpoint.method === 'POST' ? 'bg-warning/15 text-warning' : 'bg-primary/15 text-primary'
                   }`}
                 >
                   {selectedEndpoint.method}
@@ -371,7 +372,7 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
             <div className="flex items-center justify-between text-xs font-mono text-muted-foreground mb-3 px-1">
               <div className="flex items-center gap-3">
                 <span className="flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                  <span className="w-2 h-2 rounded-full bg-success animate-pulse"></span>
                   Status: <strong className="text-foreground">{status} OK</strong>
                 </span>
                 <span>Latency: <strong className="text-foreground">{latency}ms</strong></span>

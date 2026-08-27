@@ -8,7 +8,6 @@ import FeaturedWorks from '@/components/home/FeaturedWorks.astro';
 import ProcessSteps from '@/components/home/ProcessSteps.astro';
 import DeliveryStandards from '@/components/home/DeliveryStandards.astro';
 import EngineeringLogs from '@/components/home/EngineeringLogs.astro';
-import Testimonials from '@/components/shared/Testimonials.astro';
 import CTA from '@/components/home/CTA.astro';
 
 const siteUrl = "https://aexaware.com";
@@ -142,13 +141,6 @@ const homeFAQ = [
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce Development", "url": `${siteUrl}/services/ecommerce` } },
           ]
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5",
-          "reviewCount": "5",
-          "bestRating": "5",
-          "worstRating": "1",
-        },
       }}
     />
     <!-- BreadcrumbList Schema -->
@@ -182,7 +174,6 @@ const homeFAQ = [
   <ServicesGrid />
   <ProcessSteps />
   <FeaturedWorks />
-  <Testimonials />
   <DeliveryStandards />
   <EngineeringLogs />
 

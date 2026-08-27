@@ -37,9 +37,8 @@ import { MessageSquare } from "lucide-astro";
     script.setAttribute("data-reactions-enabled", "1");
     script.setAttribute("data-emit-metadata", "1");
     script.setAttribute("data-input-position", "top");
-    // Note: 'transparent_dark' looks great on glass panels.
-    // If you need Light Mode support later, change this to 'preferred_color_scheme'
-    script.setAttribute("data-theme", "transparent_dark");
+    // Light theme: the site ships light-only (no dark toggle yet)
+    script.setAttribute("data-theme", "light");
     script.setAttribute("data-lang", "en");
     script.setAttribute("data-loading", "lazy");
     script.crossOrigin = "anonymous";

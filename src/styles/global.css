@@ -229,6 +229,36 @@
     color: var(--color-primary);
   }
 
+  /* Browser surfaces: caret and scrollbars carry the palette too */
+  caret-color: var(--color-primary);
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-muted-foreground);
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
   h1,
   h2,
   h3,

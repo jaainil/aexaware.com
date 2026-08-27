@@ -69,10 +69,11 @@ const companyLinks = ["About", "Why Us", "Portfolio", "Blog", "Contact"];
           <h3
             class="font-heading font-bold text-3xl md:text-4xl text-foreground leading-tight"
           >
-            Start your project <br /> with confidence.
+            Start your <br /> project today.
           </h3>
           <p class="text-muted-foreground text-lg max-w-sm">
-            Get a custom quote tailored to your business needs and goals.
+            Tell us the scope. We reply with a plan and a quote, usually
+            within 24 hours.
           </p>
           <div class="flex flex-wrap gap-4">
             <a
@@ -114,10 +115,10 @@ const companyLinks = ["About", "Why Us", "Portfolio", "Blog", "Contact"];
           <h3
             class="font-heading font-bold text-3xl md:text-4xl text-foreground leading-tight"
           >
-            Explore our <br /> success stories.
+            See the <br /> work itself.
           </h3>
           <p class="text-muted-foreground text-lg max-w-sm">
-            See how we've transformed other businesses with our tech.
+            Real case studies with stacks, timelines, and live URLs.
           </p>
           <a
             href="/portfolio"
@@ -147,8 +148,8 @@ const companyLinks = ["About", "Why Us", "Portfolio", "Blog", "Contact"];
           />
         </a>
         <p class="text-muted-foreground leading-relaxed max-w-xs text-lg">
-          Transforming ideas into cutting-edge digital experiences. <br />
-          Built for growth.
+          Web, mobile, and AI engineering from Vadodara, India, for clients
+          worldwide.
         </p>
         <div class="flex gap-4">
           {
@@ -256,18 +257,18 @@ const companyLinks = ["About", "Why Us", "Portfolio", "Blog", "Contact"];
             class="rounded-card bg-secondary/30 p-6 border border-border/50 backdrop-blur-xs"
           >
             <p class="text-sm text-muted-foreground mb-4 leading-relaxed">
-              Get the latest tech trends and insights delivered to your inbox.
+              One email when we publish a new engineering post. No spam.
             </p>
             <form
               class="flex flex-col gap-3"
-              action="/api/newsletter"
-              method="POST"
+              id="newsletter-form"
             >
               <input
                 type="email"
                 name="email"
                 placeholder="Enter your email"
                 required
+                aria-label="Email address for newsletter"
                 class="w-full h-10 px-4 rounded-full bg-background border border-border/50 text-sm focus:outline-hidden focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
               />
               <button
@@ -278,6 +279,12 @@ const companyLinks = ["About", "Why Us", "Portfolio", "Blog", "Contact"];
               >
                 Subscribe
               </button>
+              <p
+                id="newsletter-feedback"
+                class="hidden text-sm"
+                role="status"
+                aria-live="polite"
+              ></p>
             </form>
           </div>
         </div>
@@ -366,4 +373,62 @@ const companyLinks = ["About", "Why Us", "Portfolio", "Blog", "Contact"];
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
+  // Newsletter signup — routed through the Formspree contact endpoint
+  const newsletterForm = document.getElementById(
+    "newsletter-form",
+  ) as HTMLFormElement | null;
+  const newsletterFeedback = document.getElementById("newsletter-feedback");
+
+  newsletterForm?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const emailInput = newsletterForm.querySelector<HTMLInputElement>(
+      'input[name="email"]',
+    );
+    const submitBtn = newsletterForm.querySelector<HTMLButtonElement>(
+      'button[type="submit"]',
+    );
+    if (!emailInput?.value || !submitBtn) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Subscribing...";
+
+    try {
+      const response = await fetch(
+        "https://formspree.io/f/xpwvdjyq",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            email: emailInput.value,
+            _subject: "Newsletter signup from aexaware.com footer",
+          }),
+        },
+      );
+
+      if (newsletterFeedback) {
+        newsletterFeedback.classList.remove("hidden");
+        if (response.ok) {
+          newsletterFeedback.textContent =
+            "Subscribed. Watch your inbox for new engineering posts.";
+          newsletterForm.reset();
+        } else {
+          newsletterFeedback.textContent =
+            "Subscription failed. Email info@aexaware.com instead.";
+        }
+      }
+    } catch {
+      if (newsletterFeedback) {
+        newsletterFeedback.classList.remove("hidden");
+        newsletterFeedback.textContent =
+          "Subscription failed. Email info@aexaware.com instead.";
+      }
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Subscribe";
+    }
+  });
 </script>

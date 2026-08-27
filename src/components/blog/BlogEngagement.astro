@@ -51,7 +51,7 @@ const { vertical = false } = Astro.props;
           { name: "Gemini", color: "text-primary hover:bg-primary/10" },
           {
             name: "Grok",
-            color: "text-muted-foreground hover:bg-muted/10",
+            color: "text-muted-foreground hover:bg-muted",
           },
           { name: "Claude", color: "text-warning hover:bg-warning/10" },
           { name: "Perplexity", color: "text-success hover:bg-success/10" },
@@ -184,6 +184,16 @@ Here is the URL: ${url}
 After the summary, add a short CTA encouraging the reader to connect with Aexaware Infotech for scalable web, mobile, AI, and DevOps solutions.`;
     };
 
+    // Inline toast — replaces alert() feedback
+    const showToast = (message: string) => {
+      const toast = document.createElement("div");
+      toast.className =
+        "fixed bottom-4 right-4 max-w-sm bg-foreground text-background px-6 py-4 rounded-xl shadow-2xl z-100 animate-in slide-in-from-bottom-5 text-sm font-medium";
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    };
+
     document.querySelectorAll("[data-action]").forEach((btn) => {
       // Clone to remove old listeners
       const newBtn = btn.cloneNode(true);
@@ -220,7 +230,7 @@ After the summary, add a short CTA encouraging the reader to connect with Aexawa
             case "Mistral":
               navigator.clipboard.writeText(prompt);
               targetUrl = `https://chat.mistral.ai/`;
-              alert("Prompt copied to clipboard! Paste it into Mistral.");
+              showToast("Prompt copied. Paste it into Mistral.");
               break;
             default:
               targetUrl = `https://chat.openai.com/?q=${encodedPrompt}`;
@@ -241,8 +251,11 @@ After the summary, add a short CTA encouraging the reader to connect with Aexawa
           if (shareUrl) window.open(shareUrl, "_blank");
         } else if (action === "copy") {
           navigator.clipboard.writeText(url).then(() => {
-            // Simple alert feedback
-            alert("Link copied!");
+            const original = newBtn.innerHTML;
+            newBtn.textContent = "Copied!";
+            setTimeout(() => {
+              newBtn.innerHTML = original;
+            }, 1500);
           });
         }
       });
