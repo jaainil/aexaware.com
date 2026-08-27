@@ -25,10 +25,10 @@ import BackgroundGrid from "@/components/home/BackgroundGrid.astro";
 import TeamImage from "@/assets/team-collaboration.jpg";
 
 const stats = [
-  { value: "6", suffix: " weeks", label: "Average delivery for standard web projects" },
-  { value: "All", suffix: "", label: "Projects shipped on original timeline to date" },
-  { value: "3", suffix: "", label: "AI agents built for US logistics startup in Q1 2026" },
-  { value: "100", suffix: "%", label: "Transparent billing — zero surprise invoices" },
+  { value: "3–5", suffix: " weeks", label: "Delivery on our published case studies" },
+  { value: "5", suffix: "", label: "Client case studies with live URLs" },
+  { value: "24", suffix: "", label: "Engineering posts on our blog" },
+  { value: "0", suffix: "", label: "Surprise invoices — itemized quotes first" },
 ];
 
 const clientPains = [
@@ -36,25 +36,25 @@ const clientPains = [
     icon: DollarSign,
     title: "Scope Creep After the Contract",
     description: "You signed a quote for 40 hours. Now they're saying it's going to take 200. The budget is blown before the first review.",
-    frequency: "Happens in 67% of agency projects industry-wide",
+    frequency: "The most common complaint we hear from clients switching agencies",
   },
   {
     icon: Calendar,
     title: "Launches That Never Launch",
     description: "It's been 4 months. The website was supposed to take 6 weeks. You're still waiting for 'final' revisions.",
-    frequency: "Average software project runs 2.3x over schedule",
+    frequency: "Usually traced to specs nobody validated before coding started",
   },
   {
     icon: MessageSquare,
     title: "Disappearing Teams",
     description: "You signed with a senior team. Now your project is handled by juniors you've never met, and emails go unanswered for days.",
-    frequency: "70% of clients cite poor communication as top frustration",
+    frequency: "Why we put you in the standups instead of sending status decks",
   },
   {
     icon: AlertTriangle,
     title: "Tech Debt from Day One",
     description: "The 'modern' website they built runs on PHP and WordPress from 2012. Page speed is terrible. Google rankings are dropping.",
-    frequency: "Sites built on legacy stacks lose 50% more traffic yearly",
+    frequency: "Why every site we ship gets analytics from day one",
   },
 ];
 
@@ -215,19 +215,19 @@ const techComparison = [
     feature: "Modern JavaScript Framework",
     aexawareLabel: "Astro + React + Next.js",
     competitorLabel: "PHP + jQuery (most), Bootstrap (some)",
-    whyItMatters: "Modern frameworks are 40–60% faster and score higher on Core Web Vitals — directly affecting your Google ranking and conversion rate.",
+    whyItMatters: "Modern frameworks score better on Core Web Vitals, which directly affect your Google ranking and conversion rate.",
   },
   {
     feature: "AI-First Architecture",
     aexawareLabel: "4 dedicated AI service lines",
     competitorLabel: "0–1 services listed as afterthought",
-    whyItMatters: "AI built into architecture from day one costs 30% less to integrate than bolting it on after launch.",
+    whyItMatters: "AI built into the architecture from day one is cheaper to integrate than bolting it on after launch.",
   },
   {
     feature: "Page Speed Optimization",
     aexawareLabel: "Core Web Vitals optimized pre-launch",
     competitorLabel: "Not mentioned by most",
-    whyItMatters: "Every 1-second delay costs 7% of conversions. We optimize for speed before the first line goes live.",
+    whyItMatters: "Slow pages lose conversions before anyone reads a word. We optimize for speed before the first line goes live.",
   },
   {
     feature: "Transparent Pricing",
@@ -264,13 +264,13 @@ const differentiators = [
     icon: Zap,
     title: "AI-First by Design",
     description: "Where competitors treat AI as an afterthought, we run a dedicated AI service pillar. Your project starts with AI architecture from day one — not bolted on after scope is locked.",
-    stat: "3 AI agents shipped for US logistics startup in Q1 2026",
+    stat: "Dedicated AI pillar: LLMs, agents, vision, data engineering",
   },
   {
     icon: Shield,
     title: "Transparent Billing",
     description: "No hidden hours or scope creep. Detailed technical scoping before any quote. Fixed prices backed by thorough requirements analysis. You know what you're spending before we write a line.",
-    stat: "100% on-time delivery, zero surprise invoices since launch",
+    stat: "Itemized quotes before any work starts",
   },
   {
     icon: Clock,
@@ -282,7 +282,7 @@ const differentiators = [
     icon: Users,
     title: "Startup DNA",
     description: "We think like founders, not bureaucrats. Agile methodology, fast iterations, direct communication with the people actually building your product — not account managers relaying messages.",
-    stat: "Every project delivered on original timeline to date",
+    stat: "Weekly demos, so slips show up in days, not at launch",
   },
 ];
 ---
@@ -304,7 +304,7 @@ const differentiators = [
       <div class="text-center max-w-4xl mx-auto mb-16 px-4">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
           <BarChart3 class="h-4 w-4" />
-          Competitive Intelligence · Updated April 2026
+          Competitive Intelligence · Updated August 2026
         </div>
         <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
           Newer agency. Sharper tech.<br />
