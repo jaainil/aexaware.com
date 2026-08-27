@@ -9,7 +9,7 @@ export const SERVICES = [
   { name: 'Mobile App Development',     category: 'Build',    tech: 'React Native, Flutter, Expo, Firebase',               url: 'https://aexaware.com/services/mobile-development' },
   { name: 'MVP Development',            category: 'Build',    tech: 'React, Node.js, Supabase, Vercel',                    url: 'https://aexaware.com/services/mvp-development' },
   // AI & Data
-  { name: 'AI & Machine Learning',      category: 'AI & Data', tech: 'OpenAI, Anthropic, LangChain, Python, pgvector',     url: 'https://aexaware.com/services/ai-ml-integration' },
+  { name: 'AI & Machine Learning',      category: 'AI & Data', tech: 'Custom chatbots, RAG, AI agents, MCP, automation, OpenAI, LangChain', url: 'https://aexaware.com/services/ai-ml-integration' },
   // Infrastructure
   { name: 'Cloud, DevOps & IoT',        category: 'Infrastructure', tech: 'AWS, GCP, Docker, Kubernetes, Terraform, MQTT', url: 'https://aexaware.com/services/cloud-devops' },
   // Design & Growth
