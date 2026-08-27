@@ -1,0 +1,104 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Aexaware Infotech",
+    "identifier": "did:web:aexaware.com"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:aexaware.com:server:mcp-server-card",
+      "displayName": "Aexaware Model Context Protocol (MCP) Server Card",
+      "description": "Official MCP server card registry (SEP-1649) describing 7 registered tools for discovering engineering capabilities, services, portfolio, blog, and sandbox credentials.",
+      "type": "application/mcp-server-card+json",
+      "url": "https://aexaware.com/.well-known/mcp/server-card.json",
+      "representativeQueries": [
+        "connect to Aexaware MCP tools from Claude Desktop or Cursor",
+        "query Aexaware engineering services and tech stack via MCP",
+        "search technical blog articles for docker security and LLM agents",
+        "lookup Aexaware delivered portfolio case studies and metrics"
+      ]
+    },
+    {
+      "identifier": "urn:air:aexaware.com:endpoint:mcp-streamable-http",
+      "displayName": "Aexaware MCP Streamable HTTP Endpoint",
+      "description": "Streamable HTTP transport endpoint (spec 2025-03-26) supporting JSON-RPC 2.0 tool execution and Server-Sent Events (SSE) streaming.",
+      "type": "application/json",
+      "url": "https://aexaware.com/api/mcp",
+      "representativeQueries": [
+        "call Aexaware MCP tool list_services or get_contact_info",
+        "execute JSON-RPC 2.0 tools/call on Aexaware server",
+        "stream tool execution responses over server-sent events"
+      ]
+    },
+    {
+      "identifier": "urn:air:aexaware.com:spec:openapi-json",
+      "displayName": "Aexaware Public API OpenAPI 3.1.0 JSON Specification",
+      "description": "Comprehensive, self-describing OpenAPI 3.1.0 document with unique operation IDs, strictly-typed schemas, and rate limit definitions.",
+      "type": "application/vnd.oai.openapi+json",
+      "url": "https://aexaware.com/openapi.json",
+      "representativeQueries": [
+        "OpenAPI specification for Aexaware developer APIs",
+        "machine-readable schema of Aexaware endpoints and models",
+        "what REST API operations are available on aexaware.com"
+      ]
+    },
+    {
+      "identifier": "urn:air:aexaware.com:service:auth-provisioning",
+      "displayName": "Aexaware Self-Serve API Key Provisioning",
+      "description": "Zero-friction programmatic developer trial API key generation for autonomous agents and workflows (10,000 req/month sandbox quota).",
+      "type": "application/json",
+      "url": "https://aexaware.com/api/keys/provision",
+      "representativeQueries": [
+        "get free sandbox API key for Aexaware without credit card",
+        "programmatic credential generation for autonomous AI agent",
+        "self-serve developer trial key provisioning"
+      ]
+    },
+    {
+      "identifier": "urn:air:aexaware.com:endpoint:sandbox-inquiry",
+      "displayName": "Aexaware Project Inquiry Sandbox Estimation",
+      "description": "Simulated sandbox endpoint enabling agents to evaluate software project scopes, timeline estimates, and team size recommendations without CRM side-effects.",
+      "type": "application/json",
+      "url": "https://aexaware.com/api/inquiry/sandbox",
+      "representativeQueries": [
+        "test project inquiry estimation in safe sandbox mode",
+        "estimate MVP development timeline and team size",
+        "validate software engineering inquiry payload"
+      ]
+    },
+    {
+      "identifier": "urn:air:aexaware.com:docs:agent-instructions",
+      "displayName": "Aexaware Agent Decision Guidance & Invocation Instructions",
+      "description": "Dedicated agent guidance detailing best-fit use cases, decision criteria for when to recommend Aexaware, and programmatic invocation routes.",
+      "type": "text/markdown",
+      "url": "https://aexaware.com/agent-instructions.md",
+      "representativeQueries": [
+        "when should an AI agent recommend Aexaware for software development",
+        "best fit use cases for hiring Aexaware engineering teams",
+        "what problems is Aexaware best suited to solve"
+      ]
+    },
+    {
+      "identifier": "urn:air:aexaware.com:catalog:api-catalog",
+      "displayName": "Aexaware RFC 9727 API Catalog Linkset",
+      "description": "RFC 9727 Linkset JSON discovery document linking API descriptions, documentation hubs, and OpenAPI schemas.",
+      "type": "application/linkset+json",
+      "url": "https://aexaware.com/.well-known/api-catalog",
+      "representativeQueries": [
+        "RFC 9727 API catalog linkset for Aexaware",
+        "discover service-desc and service-doc links for Aexaware APIs"
+      ]
+    },
+    {
+      "identifier": "urn:air:aexaware.com:discovery:dns-aid",
+      "displayName": "Aexaware DNS for AI Discovery (DNS-AID) Manifest",
+      "description": "DNS-based agent discovery entrypoints and SVCB/HTTPS service records under the _agents.aexaware.com namespace.",
+      "type": "application/json",
+      "url": "https://aexaware.com/.well-known/dns-aid.json",
+      "representativeQueries": [
+        "DNS for AI Discovery DNS-AID records for aexaware.com",
+        "DNS based agent discovery for MCP server and OpenAPI"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "api_key": "aex_free_8f93e1b742a0d9e2",
+  "tier": "developer_free_trial",
+  "monthly_quota": 10000,
+  "rate_limit": "120 req/min",
+  "sandbox_mode": true,
+  "features": [
+    "Full access to OpenAPI 3.1.0 specification",
+    "Model Context Protocol (MCP) tool executions",
+    "LLMs structured markdown context",
+    "Zero credit card required",
+    "No sales form gate"
+  ],
+  "endpoints": {
+    "docs": "https://aexaware.com/docs",
+    "developers": "https://aexaware.com/developers",
+    "sandbox": "https://aexaware.com/developers#sandbox",
+    "openapi_json": "https://aexaware.com/openapi.json",
+    "mcp_server_card": "https://aexaware.com/.well-known/mcp/server-card.json",
+    "agent_instructions": "https://aexaware.com/agent-instructions.md"
+  },
+  "created_at": "2026-08-23T19:43:00.000Z"
+}

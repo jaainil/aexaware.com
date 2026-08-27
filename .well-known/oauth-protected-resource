@@ -1,0 +1,17 @@
+{
+  "resource": "https://aexaware.com",
+  "authorization_servers": [
+    "https://aexaware.com"
+  ],
+  "scopes_supported": [
+    "api:read",
+    "api:sandbox",
+    "mcp:tools"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_documentation": "https://aexaware.com/docs",
+  "resource_name": "Aexaware Infotech API & MCP Resource Server",
+  "resource_description": "RFC 9728 Protected Resource Server for Aexaware Infotech, providing engineering developer APIs, Model Context Protocol (MCP) streamable tools, and sandbox simulation environments."
+}

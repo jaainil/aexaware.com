@@ -1,0 +1,176 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://aexaware.com/api",
+      "item": [
+        {
+          "href": "https://aexaware.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "Aexaware Public API OpenAPI 3.1.0 Specification (JSON)"
+        },
+        {
+          "href": "https://aexaware.com/openapi.yaml",
+          "type": "application/yaml",
+          "title": "Aexaware Public API OpenAPI 3.1.0 Specification (YAML)"
+        },
+        {
+          "href": "https://aexaware.com/api/mcp",
+          "type": "application/json",
+          "title": "Aexaware Model Context Protocol (MCP) Streamable HTTP Server"
+        },
+        {
+          "href": "https://aexaware.com/api/keys/provision",
+          "type": "application/json",
+          "title": "Aexaware Self-Serve API Key Provisioning Endpoint"
+        },
+        {
+          "href": "https://aexaware.com/api/inquiry/sandbox",
+          "type": "application/json",
+          "title": "Aexaware Project Inquiry Sandbox Estimation Endpoint"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://aexaware.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "Aexaware OpenAPI 3.1.0 JSON"
+        },
+        {
+          "href": "https://aexaware.com/openapi.yaml",
+          "type": "application/yaml",
+          "title": "Aexaware OpenAPI 3.1.0 YAML"
+        },
+        {
+          "href": "https://aexaware.com/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "Aexaware MCP Server Card Registry (SEP-1649)"
+        },
+        {
+          "href": "https://aexaware.com/.well-known/agent-skills/index.json",
+          "type": "application/json",
+          "title": "Aexaware Agent Skills Directory"
+        },
+        {
+          "href": "https://aexaware.com/.well-known/dns-aid.json",
+          "type": "application/json",
+          "title": "Aexaware DNS for AI Discovery (DNS-AID) Manifest"
+        },
+        {
+          "href": "https://aexaware.com/agent-instructions.md",
+          "type": "text/markdown",
+          "title": "Aexaware AI Agent Invocation Instructions"
+        },
+        {
+          "href": "https://aexaware.com/auth.md",
+          "type": "text/markdown",
+          "title": "Aexaware Authentication & Free Tier Specification"
+        },
+        {
+          "href": "https://aexaware.com/webhooks.md",
+          "type": "text/markdown",
+          "title": "Aexaware Webhooks & HMAC Verification Guide"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://aexaware.com/developers",
+          "type": "text/html",
+          "title": "Aexaware Developer Portal & Interactive Sandbox"
+        },
+        {
+          "href": "https://aexaware.com/docs",
+          "type": "text/html",
+          "title": "Aexaware Developer Documentation Hub"
+        },
+        {
+          "href": "https://aexaware.com/docs/auth",
+          "type": "text/html",
+          "title": "Aexaware Authentication Documentation"
+        },
+        {
+          "href": "https://aexaware.com/docs/webhooks",
+          "type": "text/html",
+          "title": "Aexaware Webhooks Documentation"
+        },
+        {
+          "href": "https://aexaware.com/docs/mcp",
+          "type": "text/html",
+          "title": "Aexaware MCP Server Documentation"
+        },
+        {
+          "href": "https://aexaware.com/docs/openapi",
+          "type": "text/html",
+          "title": "Aexaware OpenAPI Reference Documentation"
+        },
+        {
+          "href": "https://aexaware.com/services",
+          "type": "text/html",
+          "title": "Aexaware Engineering Services Directory"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://aexaware.com/llms.txt",
+          "type": "text/markdown",
+          "title": "Aexaware LLMs.txt Structured Site Context"
+        },
+        {
+          "href": "https://aexaware.com/llms-full.txt",
+          "type": "text/markdown",
+          "title": "Aexaware Full LLMs.txt Extended Context"
+        }
+      ]
+    },
+    {
+      "anchor": "https://aexaware.com/",
+      "item": [
+        {
+          "href": "https://aexaware.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "Aexaware OpenAPI 3.1.0 Specification"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://aexaware.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "Aexaware OpenAPI 3.1.0 Specification"
+        },
+        {
+          "href": "https://aexaware.com/openapi.yaml",
+          "type": "application/yaml",
+          "title": "Aexaware OpenAPI 3.1.0 YAML"
+        },
+        {
+          "href": "https://aexaware.com/.well-known/api-catalog",
+          "type": "application/linkset+json;profile=\"https://www.rfc-editor.org/info/rfc9727\"",
+          "title": "RFC 9727 API Catalog"
+        },
+        {
+          "href": "https://aexaware.com/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP Server Card"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://aexaware.com/developers",
+          "type": "text/html",
+          "title": "Developer Portal"
+        },
+        {
+          "href": "https://aexaware.com/services",
+          "type": "text/html",
+          "title": "Engineering Services"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://aexaware.com/llms.txt",
+          "type": "text/markdown",
+          "title": "Aexaware LLMs.txt"
+        }
+      ]
+    }
+  ]
+}

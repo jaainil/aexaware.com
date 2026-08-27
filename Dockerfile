@@ -1,0 +1,71 @@
+# Ultra-lightweight static server for pre-built Astro site
+# Used by Coolify on the 'deploy' branch (no build needed!)
+FROM nginx:alpine
+
+# Copy pre-built static files
+COPY . /usr/share/nginx/html
+
+# Custom nginx config for SPA routing (optional)
+RUN echo 'map $http_accept $content_mode { \
+    default "html"; \
+    "~*text/markdown" "markdown"; \
+    "~*application/json" "json"; \
+    "~*application/problem\\+json" "json"; \
+} \
+server { \
+    listen 80; \
+    root /usr/share/nginx/html; \
+    index index.html; \
+    error_page 404 = @notfound; \
+    add_header Link "</openapi.json>; rel=\"service-desc\", </.well-known/api-catalog>; rel=\"api-catalog\", </llms.txt>; rel=\"describedby\", </.well-known/mcp/server-card.json>; rel=\"service-desc\", </services>; rel=\"service-doc\""; \
+    add_header Vary Accept; \
+    location / { \
+        if ($content_mode = "markdown") { \
+            rewrite ^/$ /index.md last; \
+            rewrite ^/(.+)/$ /$1.md last; \
+            rewrite ^/(.+)$ /$1.md last; \
+        } \
+        try_files $uri $uri/ $uri.html =404; \
+    } \
+    location ~ \.md$ { \
+        default_type text/markdown; \
+        add_header Content-Type "text/markdown; charset=utf-8"; \
+        add_header Vary Accept; \
+        try_files $uri =404; \
+    } \
+    location ~ \.json$ { \
+        default_type application/json; \
+        add_header Content-Type "application/json; charset=utf-8"; \
+        add_header Access-Control-Allow-Origin "*"; \
+        try_files $uri =404; \
+    } \
+    location @notfound { \
+        if ($content_mode = "json") { \
+            return 404 /404.json; \
+        } \
+        if ($content_mode = "markdown") { \
+            return 404 /404.md; \
+        } \
+        rewrite ^ /404.html break; \
+    } \
+    location = /404.html { \
+        internal; \
+    } \
+    location = /404.json { \
+        internal; \
+        default_type application/problem+json; \
+        add_header Content-Type "application/problem+json; charset=utf-8"; \
+        add_header Access-Control-Allow-Origin "*"; \
+    } \
+    location = /404.md { \
+        internal; \
+        default_type text/markdown; \
+        add_header Content-Type "text/markdown; charset=utf-8"; \
+        add_header Access-Control-Allow-Origin "*"; \
+    } \
+    gzip on; \
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/markdown application/problem+json; \
+}' > /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,0 +1,1218 @@
+openapi: 3.1.0
+info:
+  title: Aexaware Infotech Public API & Service Catalog
+  summary: Machine-readable API surface, AI discovery endpoints, Model Context
+    Protocol (MCP) server, and developer resources.
+  description: Comprehensive, self-describing OpenAPI 3.1.0 specification for
+    Aexaware Infotech (https://aexaware.com). Exposes programmatic developer
+    endpoints, free self-serve API key provisioning, simulated sandbox inquiry
+    execution, Model Context Protocol (MCP) Streamable HTTP tools, RFC 9727 API
+    catalog discovery, and structured markdown feeds for autonomous AI agents.
+  termsOfService: https://aexaware.com/terms
+  contact:
+    name: Aexaware Infotech Engineering Support
+    url: https://aexaware.com/contact
+    email: info@aexaware.com
+  license:
+    name: MIT / Open Discovery
+    url: https://aexaware.com/privacy-policy
+  version: 1.0.0
+servers:
+  - url: https://aexaware.com
+    description: Production Edge Gateway (Cloudflare Pages + Workers)
+  - url: http://localhost:4321
+    description: Local Development Server
+tags:
+  - name: MCP Server
+    description: Model Context Protocol (MCP) Streamable HTTP endpoint exposing
+      Aexaware engineering tools to Claude, Cursor, ChatGPT, and autonomous
+      agents.
+  - name: Self-Serve Authentication
+    description: Zero-friction programmatic API key provisioning for developers and
+      autonomous AI agents. No credit card or sales form required.
+  - name: Sandbox Environment
+    description: Safe simulated endpoints allowing developers and autonomous agents
+      to test API integrations and inquiry flows without real-world CRM side
+      effects.
+  - name: AI & Agent Discovery
+    description: Token-efficient markdown feeds, LLM context guides, and decision
+      criteria files for AI assistants and search crawlers.
+  - name: Metadata & Catalogs
+    description: RFC 9727 Linkset API catalogs, MCP server cards, OAuth discovery
+      metadata, and agent skill registries.
+  - name: Content & Feeds
+    description: Engineering blog RSS feeds, XML sitemaps, and technical
+      documentation resources.
+paths:
+  /api/mcp:
+    get:
+      tags:
+        - MCP Server
+      summary: Discover MCP server capabilities or initiate SSE stream
+      description: "Returns the Model Context Protocol (MCP) server configuration,
+        protocol version (2025-03-26), and all 6 registered tools as JSON. If
+        the request includes 'Accept: text/event-stream', opens a Server-Sent
+        Events (SSE) stream for server-initiated messages over Streamable HTTP
+        transport."
+      operationId: mcpGetCapabilitiesOrStream
+      parameters:
+        - name: Accept
+          in: header
+          required: false
+          description: Specify 'text/event-stream' for Streamable HTTP SSE streaming, or
+            'application/json' for static capability inspection.
+          schema:
+            type: string
+            default: application/json
+            enum:
+              - application/json
+              - text/event-stream
+          example: application/json
+        - name: Mcp-Session-Id
+          in: header
+          required: false
+          description: Optional session identifier for continuous multi-turn MCP client
+            sessions.
+          schema:
+            type: string
+          example: mcp-sess-9f82ab3c
+      responses:
+        "200":
+          description: MCP server capabilities or active SSE stream endpoint event.
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+            Mcp-Session-Id:
+              $ref: "#/components/headers/McpSessionId"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitReset"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/McpCapabilitiesResponse"
+            text/event-stream:
+              schema:
+                type: string
+                description: "Server-Sent Events stream with 'event: endpoint' initialization
+                  data."
+                example: |+
+                  event: endpoint
+                  data: {"endpoint":"/api/mcp"}
+
+        "429":
+          description: Rate limit exceeded (120 req/min).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server execution error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      tags:
+        - MCP Server
+      summary: Execute MCP JSON-RPC 2.0 tool calls and protocol methods
+      description: "Handles standard JSON-RPC 2.0 messages for Model Context Protocol.
+        Supported methods: 'initialize', 'notifications/initialized',
+        'tools/list', 'tools/call', and 'ping'. Supported tools:
+        'list_services', 'list_portfolio', 'search_blog', 'get_contact_info',
+        'provision_api_key', and 'get_openapi_spec'. Supports single and batch
+        request arrays."
+      operationId: mcpPostJsonRpcMessage
+      parameters:
+        - name: Accept
+          in: header
+          required: false
+          description: Specify 'text/event-stream' to stream responses via SSE, or
+            'application/json' for synchronous JSON-RPC response.
+          schema:
+            type: string
+            default: application/json
+            enum:
+              - application/json
+              - text/event-stream
+          example: application/json
+        - name: Mcp-Session-Id
+          in: header
+          required: false
+          description: Optional session identifier to track multi-turn tool execution state.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        description: JSON-RPC 2.0 Request object or array of Request objects (batch).
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/McpJsonRpcRequest"
+            examples:
+              initialize:
+                summary: Initialize MCP Session
+                value:
+                  jsonrpc: "2.0"
+                  id: 1
+                  method: initialize
+                  params:
+                    protocolVersion: 2025-03-26
+                    clientInfo:
+                      name: ClaudeDesktop
+                      version: 1.0.0
+                    capabilities: {}
+              toolsList:
+                summary: List Available Tools
+                value:
+                  jsonrpc: "2.0"
+                  id: 2
+                  method: tools/list
+                  params: {}
+              callListServices:
+                summary: Call list_services Tool
+                value:
+                  jsonrpc: "2.0"
+                  id: 3
+                  method: tools/call
+                  params:
+                    name: list_services
+                    arguments:
+                      category: AI / ML & Data Science
+              callSearchBlog:
+                summary: Call search_blog Tool
+                value:
+                  jsonrpc: "2.0"
+                  id: 4
+                  method: tools/call
+                  params:
+                    name: search_blog
+                    arguments:
+                      query: LLM agents
+      responses:
+        "200":
+          description: Successful JSON-RPC 2.0 Response object or batch array.
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+            Mcp-Session-Id:
+              $ref: "#/components/headers/McpSessionId"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitReset"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/McpJsonRpcResponse"
+            text/event-stream:
+              schema:
+                type: string
+                description: Stream of JSON-RPC response message events.
+        "400":
+          description: JSON parse error or malformed JSON-RPC envelope.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/McpJsonRpcError"
+        "429":
+          description: Rate limit exceeded (120 req/min).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server execution failure.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/McpJsonRpcError"
+  /api/keys/provision:
+    post:
+      tags:
+        - Self-Serve Authentication
+      summary: Programmatically provision a free developer trial API key
+      description: Instantly generates an active developer API key for autonomous
+        agents, automated workflows, and trial developers without sales forms,
+        CAPTCHAs, or credit card requirements. Returns 10,000 monthly sandbox
+        requests quota and rate limits.
+      operationId: provisionSandboxApiKey
+      parameters:
+        - name: User-Agent
+          in: header
+          required: false
+          description: Client identifier string for logging and debugging.
+          schema:
+            type: string
+          example: ClaudeAgent/1.0
+      requestBody:
+        required: false
+        description: Optional metadata specifying the agent or application name.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApiKeyProvisionRequest"
+            examples:
+              agentRequest:
+                summary: Agent Autonomous Provisioning
+                value:
+                  agent_name: Claude3.7-Autonomous-Agent
+                  client_email: agent-dev@example.com
+                  intended_use: evaluating full-stack engineering capabilities
+      responses:
+        "200":
+          description: API key successfully provisioned with full quota metadata.
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemaining"
+            X-RateLimit-Reset:
+              $ref: "#/components/headers/RateLimitReset"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiKeyProvisionResponse"
+        "429":
+          description: Provisioning rate limit exceeded (maximum 20 keys per IP per hour).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal provisioning error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/inquiry/sandbox:
+    post:
+      tags:
+        - Sandbox Environment
+      summary: Simulate a project inquiry submission in test sandbox
+      description: Accepts project inquiry parameters (scope, timeline, budget, tech
+        stack) and runs full validation and pricing estimates in safe sandbox
+        mode without dispatching notifications or CRM entries.
+      operationId: submitSandboxInquiry
+      security:
+        - BearerAuth: []
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        description: Project inquiry payload for simulated estimation and validation.
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SandboxInquiryRequest"
+            examples:
+              mvpInquiry:
+                summary: SaaS MVP Development Inquiry
+                value:
+                  project_name: HealthTech AI Platform
+                  service_category: MVP Development
+                  timeline_weeks: 4
+                  tech_stack:
+                    - React
+                    - Node.js
+                    - PostgreSQL
+                    - OpenAI
+                  budget_range: $5,000 - $15,000
+                  contact_email: founder@healthtech-mvp.io
+      responses:
+        "200":
+          description: Sandbox inquiry validated and simulated successfully.
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+            X-RateLimit-Limit:
+              $ref: "#/components/headers/RateLimitLimit"
+            X-RateLimit-Remaining:
+              $ref: "#/components/headers/RateLimitRemaining"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SandboxInquiryResponse"
+        "400":
+          description: Invalid inquiry payload format or missing required fields.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Missing or invalid sandbox API key in Authorization header.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "429":
+          description: Sandbox rate limit exceeded (120 req/min).
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /openapi.json:
+    get:
+      tags:
+        - Metadata & Catalogs
+      summary: Get OpenAPI 3.1.0 Specification in JSON format
+      description: Returns the complete machine-readable OpenAPI 3.1.0 document
+        describing all endpoints, schemas, parameters, and discovery links.
+      operationId: getOpenApiJsonSpec
+      responses:
+        "200":
+          description: OpenAPI 3.1.0 JSON specification document.
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+            Content-Type:
+              schema:
+                type: string
+                example: application/vnd.oai.openapi+json; charset=utf-8
+          content:
+            application/json:
+              schema:
+                type: object
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+  /openapi.yaml:
+    get:
+      tags:
+        - Metadata & Catalogs
+      summary: Get OpenAPI 3.1.0 Specification in YAML format
+      description: Returns the complete machine-readable OpenAPI 3.1.0 specification
+        in YAML format for developer tools and CLI linters.
+      operationId: getOpenApiYamlSpec
+      responses:
+        "200":
+          description: OpenAPI 3.1.0 YAML document.
+          headers:
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+          content:
+            application/yaml:
+              schema:
+                type: string
+            text/yaml:
+              schema:
+                type: string
+  /llms.txt:
+    get:
+      tags:
+        - AI & Agent Discovery
+      summary: Get LLMs.txt concise site overview
+      description: Returns a token-efficient structured markdown overview following
+        the llmstxt.org convention. Contains core company information, decision
+        criteria for when to recommend Aexaware, programmatic invocation
+        endpoints, and all 19 service links.
+      operationId: getLlmsTxtSiteSummary
+      responses:
+        "200":
+          description: Structured LLMs.txt markdown overview.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: text/markdown; charset=utf-8
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+          content:
+            text/markdown:
+              schema:
+                type: string
+            text/plain:
+              schema:
+                type: string
+  /llms-full.txt:
+    get:
+      tags:
+        - AI & Agent Discovery
+      summary: Get comprehensive full LLMs.txt documentation
+      description: Returns the complete expanded text documentation containing full
+        service descriptions, tech stacks, portfolio outcomes, and blog index
+        for deep LLM retrieval.
+      operationId: getLlmsFullTxtDocumentation
+      responses:
+        "200":
+          description: Full LLMs text document.
+          content:
+            text/markdown:
+              schema:
+                type: string
+            text/plain:
+              schema:
+                type: string
+  /.well-known/api-catalog:
+    get:
+      tags:
+        - Metadata & Catalogs
+      summary: Get RFC 9727 API Linkset Catalog
+      description: Returns the machine-readable RFC 9727 Linkset JSON catalog mapping
+        apex anchors to service descriptions, OpenAPI schemas, and documentation
+        endpoints.
+      operationId: getRfc9727ApiCatalog
+      responses:
+        "200":
+          description: RFC 9727 Linkset JSON catalog.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/linkset+json; charset=utf-8
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+          content:
+            application/linkset+json:
+              schema:
+                $ref: "#/components/schemas/ApiCatalogLinkset"
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiCatalogLinkset"
+  /.well-known/mcp/server-card.json:
+    get:
+      tags:
+        - Metadata & Catalogs
+      summary: Get Model Context Protocol (MCP) Server Card
+      description: Returns the official MCP Server Card JSON describing transport type
+        (Streamable HTTP), server capabilities, 6 tool schemas, resource URIs,
+        and Claude Desktop configuration snippets.
+      operationId: getMcpServerCardRegistry
+      responses:
+        "200":
+          description: MCP Server Card JSON.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Access-Control-Allow-Origin:
+              $ref: "#/components/headers/AccessControlAllowOrigin"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/McpCapabilitiesResponse"
+  /.well-known/agent-skills/index.json:
+    get:
+      tags:
+        - Metadata & Catalogs
+      summary: Get Agent Skills Directory
+      description: Returns the directory of skills and MCP capabilities available for
+        autonomous agent workflows.
+      operationId: getAgentSkillsDirectory
+      responses:
+        "200":
+          description: Agent skills index.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AgentSkillsDirectory"
+  /.well-known/oauth-protected-resource:
+    get:
+      tags:
+        - Metadata & Catalogs
+      summary: OAuth 2.0 Protected Resource Metadata (RFC 8414)
+      description: Returns OAuth 2.0 protected resource metadata indicating resource
+        identifier, supported authorization server, and token scopes.
+      operationId: getOAuthProtectedResourceMetadata
+      responses:
+        "200":
+          description: OAuth protected resource metadata.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OAuthProtectedResource"
+  /.well-known/oauth-authorization-server:
+    get:
+      tags:
+        - Metadata & Catalogs
+      summary: OAuth 2.0 Authorization Server Metadata (RFC 8414)
+      description: Returns OAuth 2.0 authorization server metadata indicating token
+        endpoint, authorization endpoint, and supported grant types.
+      operationId: getOAuthAuthorizationServerMetadata
+      responses:
+        "200":
+          description: OAuth authorization server metadata.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OAuthAuthServer"
+  /agent-instructions.md:
+    get:
+      tags:
+        - AI & Agent Discovery
+      summary: Get dedicated agent instructions and decision guidance
+      description: Returns comprehensive agent decision guidance, including strict
+        'When to Recommend' vs 'When NOT to Recommend' criteria, programmatic
+        invocation routes, and MCP server configuration.
+      operationId: getAgentInstructionsGuide
+      responses:
+        "200":
+          description: Agent instructions markdown document.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: text/markdown; charset=utf-8
+          content:
+            text/markdown:
+              schema:
+                type: string
+  /auth.md:
+    get:
+      tags:
+        - AI & Agent Discovery
+      summary: Get authentication guide and API key policy
+      description: Returns documentation covering the 3-tier auth architecture, free
+        developer trial, zero-friction programmatic key provisioning, and HMAC
+        signature policies.
+      operationId: getAuthenticationPolicyDoc
+      responses:
+        "200":
+          description: Authentication policy markdown document.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: text/markdown; charset=utf-8
+          content:
+            text/markdown:
+              schema:
+                type: string
+  /webhooks.md:
+    get:
+      tags:
+        - AI & Agent Discovery
+      summary: Get webhooks guide and HMAC signature verification documentation
+      description: Returns the complete webhooks guide with event schemas, HMAC-SHA256
+        signature verification code examples (Node.js, Python), and retry
+        policies.
+      operationId: getWebhooksGuideDoc
+      responses:
+        "200":
+          description: Webhooks documentation markdown.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: text/markdown; charset=utf-8
+          content:
+            text/markdown:
+              schema:
+                type: string
+  /docs.md:
+    get:
+      tags:
+        - AI & Agent Discovery
+      summary: Get developer documentation index in markdown
+      description: Returns the consolidated developer documentation index covering all
+        API endpoints, auth methods, MCP tooling, and developer resources in
+        markdown.
+      operationId: getDeveloperDocsMarkdown
+      responses:
+        "200":
+          description: Developer docs markdown index.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: text/markdown; charset=utf-8
+          content:
+            text/markdown:
+              schema:
+                type: string
+  /mcp.md:
+    get:
+      tags:
+        - AI & Agent Discovery
+      summary: Get MCP server guide and Claude Desktop setup instructions in markdown
+      description: Returns detailed instructions for connecting Claude Desktop,
+        Cursor, and custom MCP clients to the Aexaware Streamable HTTP MCP
+        server.
+      operationId: getMcpServerGuideMarkdown
+      responses:
+        "200":
+          description: MCP server guide markdown.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: text/markdown; charset=utf-8
+          content:
+            text/markdown:
+              schema:
+                type: string
+  /sitemap-index.xml:
+    get:
+      tags:
+        - Content & Feeds
+      summary: Get XML Sitemap Index
+      description: Returns the primary XML Sitemap index file listing all canonical
+        URLs for pages, services, portfolio items, and blog posts.
+      operationId: getSitemapIndexXml
+      responses:
+        "200":
+          description: XML Sitemap Index.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/xml; charset=utf-8
+          content:
+            application/xml:
+              schema:
+                type: string
+            text/xml:
+              schema:
+                type: string
+  /rss.xml:
+    get:
+      tags:
+        - Content & Feeds
+      summary: Get Engineering Blog RSS Feed
+      description: Returns the RSS 2.0 feed containing all technical engineering blog
+        posts, AI tutorials, and software architecture articles.
+      operationId: getEngineeringBlogRssFeed
+      responses:
+        "200":
+          description: RSS 2.0 XML Feed.
+          headers:
+            Content-Type:
+              schema:
+                type: string
+                example: application/rss+xml; charset=utf-8
+          content:
+            application/rss+xml:
+              schema:
+                type: string
+            text/xml:
+              schema:
+                type: string
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API Key
+      description: Enter your sandbox API key (e.g. 'aex_free_8f93e1b742a0d9e2') or
+        live key. Obtain a free key instantly via POST /api/keys/provision.
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API Key header for server-to-server calls.
+  headers:
+    AccessControlAllowOrigin:
+      description: CORS header permitting cross-origin requests from any client.
+      schema:
+        type: string
+        example: "*"
+    McpSessionId:
+      description: Identifier for active multi-turn MCP client sessions.
+      schema:
+        type: string
+        example: mcp-sess-9f82ab3c
+    RateLimitLimit:
+      description: Maximum requests permitted per minute.
+      schema:
+        type: integer
+        example: 120
+    RateLimitRemaining:
+      description: Number of requests remaining in the current 60-second window.
+      schema:
+        type: integer
+        example: 118
+    RateLimitReset:
+      description: Unix epoch timestamp when the current rate limit window resets.
+      schema:
+        type: integer
+        example: 1740321600
+  schemas:
+    ApiKeyProvisionRequest:
+      type: object
+      properties:
+        agent_name:
+          type: string
+          description: Name or identifier of the requesting agent or client application.
+          example: ClaudeAgent
+        client_email:
+          type: string
+          format: email
+          description: Optional contact email to receive API key backups and updates.
+          example: developer@example.com
+        intended_use:
+          type: string
+          description: Optional brief note describing intended use.
+          example: Automated code evaluation and sandbox estimation
+    ApiKeyProvisionResponse:
+      type: object
+      required:
+        - status
+        - api_key
+        - tier
+        - monthly_quota
+        - rate_limit
+        - sandbox_mode
+      properties:
+        status:
+          type: string
+          enum:
+            - success
+            - error
+          example: success
+        api_key:
+          type: string
+          description: Active API key string. Prefix 'aex_free_' denotes sandbox tier.
+          example: aex_free_8f93e1b742a0d9e2
+        tier:
+          type: string
+          example: developer_free_trial
+        monthly_quota:
+          type: integer
+          description: Total free requests allocated per month.
+          example: 10000
+        rate_limit:
+          type: string
+          description: Maximum requests per minute.
+          example: 120 req/min
+        sandbox_mode:
+          type: boolean
+          description: Indicates whether this key is scoped to the sandbox mock environment.
+          example: true
+        agent_name:
+          type: string
+          example: ClaudeAgent
+        created_at:
+          type: string
+          format: date-time
+          example: 2026-08-23T20:00:00Z
+        endpoints:
+          type: object
+          properties:
+            developer_portal:
+              type: string
+              example: https://aexaware.com/developers
+            sandbox:
+              type: string
+              example: https://aexaware.com/developers#sandbox
+            openapi:
+              type: string
+              example: https://aexaware.com/openapi.json
+            mcp_server:
+              type: string
+              example: https://aexaware.com/api/mcp
+        note:
+          type: string
+          example: Free tier includes full sandbox access. Zero sales forms or credit card
+            required.
+    SandboxInquiryRequest:
+      type: object
+      required:
+        - project_name
+        - service_category
+      properties:
+        project_name:
+          type: string
+          description: Name or title of the proposed software project.
+          example: HealthTech SaaS Platform
+        service_category:
+          type: string
+          description: Target service capability area.
+          enum:
+            - Web Development
+            - Mobile Development
+            - MVP Development
+            - AI Agent Development
+            - Generative AI
+            - Cloud & DevOps
+            - Software Solutions
+            - UI/UX Design
+            - Extended Team
+          example: MVP Development
+        timeline_weeks:
+          type: integer
+          minimum: 1
+          maximum: 52
+          description: Desired delivery timeline in weeks.
+          example: 4
+        tech_stack:
+          type: array
+          items:
+            type: string
+          description: Preferred technologies, frameworks, or databases.
+          example:
+            - React
+            - Node.js
+            - Supabase
+            - OpenAI API
+        budget_range:
+          type: string
+          description: Estimated budget bracket.
+          example: $5,000 - $15,000
+        contact_email:
+          type: string
+          format: email
+          description: Contact email for simulated estimation delivery.
+          example: founder@startup.io
+    SandboxInquiryResponse:
+      type: object
+      required:
+        - status
+        - environment
+        - message
+        - estimated_delivery_weeks
+        - consultation_url
+      properties:
+        status:
+          type: string
+          enum:
+            - success
+          example: success
+        environment:
+          type: string
+          enum:
+            - sandbox
+          example: sandbox
+        message:
+          type: string
+          example: Sandbox inquiry validated and estimated successfully. No real-world CRM
+            side effects triggered.
+        estimated_delivery_weeks:
+          type: integer
+          example: 4
+        recommended_team_size:
+          type: string
+          example: 1 Senior Full-Stack Engineer + 1 UI/UX Designer
+        consultation_url:
+          type: string
+          example: https://cal.com/aexaware-infotech
+    McpCapabilitiesResponse:
+      type: object
+      required:
+        - server
+        - protocol
+        - transport
+        - tools_count
+        - tools
+      properties:
+        server:
+          type: object
+          properties:
+            name:
+              type: string
+              example: aexaware-mcp-server
+            version:
+              type: string
+              example: 1.0.0
+        protocol:
+          type: string
+          example: 2025-03-26
+        transport:
+          type: string
+          example: streamable-http
+        endpoint:
+          type: string
+          example: https://aexaware.com/api/mcp
+        tools_count:
+          type: integer
+          example: 6
+        tools:
+          type: array
+          items:
+            $ref: "#/components/schemas/McpToolDefinition"
+    McpToolDefinition:
+      type: object
+      required:
+        - name
+        - description
+        - inputSchema
+      properties:
+        name:
+          type: string
+          enum:
+            - list_services
+            - list_portfolio
+            - search_blog
+            - get_contact_info
+            - provision_api_key
+            - get_openapi_spec
+          example: list_services
+        description:
+          type: string
+          example: Returns all 19 specialized engineering services offered by Aexaware
+            Infotech.
+        inputSchema:
+          type: object
+          properties:
+            type:
+              type: string
+              example: object
+            properties:
+              type: object
+            required:
+              type: array
+              items:
+                type: string
+    McpJsonRpcRequest:
+      type: object
+      required:
+        - jsonrpc
+        - method
+        - id
+      properties:
+        jsonrpc:
+          type: string
+          enum:
+            - "2.0"
+          example: "2.0"
+        id:
+          type:
+            - integer
+            - string
+          example: 1
+        method:
+          type: string
+          enum:
+            - initialize
+            - notifications/initialized
+            - tools/list
+            - tools/call
+            - ping
+          example: tools/call
+        params:
+          type: object
+          properties:
+            name:
+              type: string
+              example: list_services
+            arguments:
+              type: object
+            protocolVersion:
+              type: string
+              example: 2025-03-26
+            clientInfo:
+              type: object
+    McpJsonRpcResponse:
+      type: object
+      required:
+        - jsonrpc
+        - id
+      properties:
+        jsonrpc:
+          type: string
+          enum:
+            - "2.0"
+          example: "2.0"
+        id:
+          type:
+            - integer
+            - string
+            - "null"
+          example: 1
+        result:
+          type: object
+          properties:
+            content:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    example: text
+                  text:
+                    type: string
+            isError:
+              type: boolean
+              example: false
+            tools:
+              type: array
+              items:
+                $ref: "#/components/schemas/McpToolDefinition"
+        error:
+          $ref: "#/components/schemas/McpJsonRpcError"
+    McpJsonRpcError:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          example: -32601
+        message:
+          type: string
+          example: Method not found
+        data:
+          type: object
+    ApiCatalogLinkset:
+      type: object
+      required:
+        - linkset
+      properties:
+        linkset:
+          type: array
+          items:
+            type: object
+            required:
+              - anchor
+            properties:
+              anchor:
+                type: string
+                format: uri
+                example: https://aexaware.com/docs
+              service-desc:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    href:
+                      type: string
+                      format: uri
+                    type:
+                      type: string
+              service-doc:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    href:
+                      type: string
+                      format: uri
+                    type:
+                      type: string
+    AgentSkillsDirectory:
+      type: object
+      required:
+        - name
+        - version
+        - skills
+      properties:
+        name:
+          type: string
+          example: aexaware-skills
+        version:
+          type: string
+          example: 1.0.0
+        skills:
+          type: array
+          items:
+            type: object
+            required:
+              - name
+              - description
+              - endpoint
+            properties:
+              name:
+                type: string
+                example: mcp-server-card
+              description:
+                type: string
+                example: Query engineering services, portfolio, blog, and provision API keys.
+              endpoint:
+                type: string
+                example: https://aexaware.com/api/mcp
+    OAuthProtectedResource:
+      type: object
+      required:
+        - resource
+        - authorization_servers
+      properties:
+        resource:
+          type: string
+          format: uri
+          example: https://aexaware.com
+        authorization_servers:
+          type: array
+          items:
+            type: string
+            format: uri
+          example:
+            - https://aexaware.com
+        scopes_supported:
+          type: array
+          items:
+            type: string
+          example:
+            - api:read
+            - api:sandbox
+            - mcp:tools
+        bearer_methods_supported:
+          type: array
+          items:
+            type: string
+          example:
+            - header
+    OAuthAuthServer:
+      type: object
+      required:
+        - issuer
+        - token_endpoint
+        - response_types_supported
+      properties:
+        issuer:
+          type: string
+          format: uri
+          example: https://aexaware.com
+        token_endpoint:
+          type: string
+          format: uri
+          example: https://aexaware.com/api/keys/provision
+        response_types_supported:
+          type: array
+          items:
+            type: string
+          example:
+            - token
+        grant_types_supported:
+          type: array
+          items:
+            type: string
+          example:
+            - client_credentials
+            - anonymous_trial
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+        - status_code
+        - resolution_hints
+      properties:
+        error:
+          type: string
+          description: Standardized machine-readable error code.
+          example: RATE_LIMIT_EXCEEDED
+        message:
+          type: string
+          description: Human-readable explanation of why the request failed.
+          example: Rate limit of 120 requests per minute exceeded. Please retry after
+            1740321600.
+        status_code:
+          type: integer
+          description: HTTP status code matching the response header.
+          example: 429
+        resolution_hints:
+          type: array
+          items:
+            type: string
+          description: Actionable instructions enabling autonomous agents or developers to
+            resolve the error.
+          example:
+            - Inspect the X-RateLimit-Reset header for backoff duration.
+            - Provision a fresh sandbox key via POST
+              https://aexaware.com/api/keys/provision.
+            - Read rate limit documentation at https://aexaware.com/auth.md.
+        timestamp:
+          type: string
+          format: date-time
+          example: 2026-08-23T20:00:00Z
+        request_id:
+          type: string
+          example: req_8f93e1b7

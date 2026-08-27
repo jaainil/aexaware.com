@@ -1,0 +1,150 @@
+{
+  "name": "Aexaware Infotech MCP Server",
+  "description": "Official Model Context Protocol (MCP) server for Aexaware Infotech. Exposes 7 tools for discovering engineering services, portfolio case studies, technical blog articles, verified contact info, sandbox API keys, simulated project inquiry estimation, and the OpenAPI specification.",
+  "version": "1.0.0",
+  "serverUrl": "https://aexaware.com/api/mcp",
+  "tools": [
+    {
+      "name": "list_services",
+      "description": "Returns all 19 specialized engineering services offered by Aexaware Infotech with category, description, and tech stack.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Optional filter. One of: 'Web & Application Development', 'AI / ML & Data Science', 'Cloud & DevOps', 'Design & Marketing', 'Engagement Models'.",
+            "enum": ["Web & Application Development", "AI / ML & Data Science", "Cloud & DevOps", "Design & Marketing", "Engagement Models"]
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "list_portfolio",
+      "description": "Returns Aexaware portfolio case studies with project name, industry, tech stack, delivery timeline, and live URL.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "industry": {
+            "type": "string",
+            "description": "Optional industry filter keyword (e.g. 'agriculture', 'media', 'technology')."
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "search_blog",
+      "description": "Keyword search across 21 Aexaware technical blog articles covering AI, cloud, DevOps, web, mobile, and security.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Search keyword or topic (e.g. 'docker security', 'LLM agents', 'React Native OTA')."
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "get_contact_info",
+      "description": "Returns verified contact details: email info@aexaware.com, phone +91 81407 34392, office address, and booking/project form links.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "provision_api_key",
+      "description": "Programmatically provisions a free sandbox API key. No credit card or sales form required. 10,000 req/month.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "agent_name": { "type": "string", "description": "Name of the requesting agent or app." },
+          "client_email": { "type": "string", "description": "Optional contact email." }
+        },
+        "required": []
+      },
+      "endpoint": "POST https://aexaware.com/api/keys/provision"
+    },
+    {
+      "name": "submit_sandbox_inquiry",
+      "description": "Simulates submitting a project inquiry in safe test sandbox mode. Returns estimated delivery timeline, team size, and consultation URL without triggering real CRM notifications.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "project_name": {
+            "type": "string",
+            "description": "Title or summary of the proposed software project"
+          },
+          "service_category": {
+            "type": "string",
+            "description": "Primary capability area required",
+            "enum": [
+              "Web Development",
+              "Mobile Development",
+              "MVP Development",
+              "AI Agent Development",
+              "Generative AI",
+              "Cloud & DevOps",
+              "Software Solutions",
+              "UI/UX Design",
+              "Extended Team"
+            ]
+          },
+          "timeline_weeks": {
+            "type": "integer",
+            "description": "Target delivery duration in weeks (typically 2-6 weeks for MVPs)"
+          },
+          "tech_stack": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Array of preferred technologies or frameworks"
+          }
+        },
+        "required": ["project_name", "service_category"]
+      },
+      "endpoint": "POST https://aexaware.com/api/inquiry/sandbox"
+    },
+    {
+      "name": "get_openapi_spec",
+      "description": "Returns the URL and summary of Aexaware's OpenAPI 3.1.0 specification with all defined paths.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    }
+  ],
+  "schema_version": "2024-11-05",
+  "protocolVersion": "2025-03-26",
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://aexaware.com/api/mcp"
+  },
+  "homepage": "https://aexaware.com",
+  "contact": {
+    "email": "info@aexaware.com",
+    "url": "https://aexaware.com/contact"
+  },
+  "resources": [
+    { "uri": "/llms.txt", "description": "Token-efficient structured markdown overview for LLMs" },
+    { "uri": "/openapi.json", "description": "OpenAPI 3.1.0 machine-readable JSON specification" },
+    { "uri": "/openapi.yaml", "description": "OpenAPI 3.1.0 YAML format" },
+    { "uri": "/agent-instructions.md", "description": "Agent decision guidance and invocation instructions" },
+    { "uri": "/auth.md", "description": "Authentication, free tier, and API key provisioning guide" },
+    { "uri": "/.well-known/api-catalog", "description": "RFC 9727 API catalog linkset" },
+    { "uri": "/sitemap-index.xml", "description": "XML sitemap of all pages" }
+  ],
+  "mcp_endpoint": "https://aexaware.com/api/mcp",
+  "claude_desktop_config": {
+    "mcpServers": {
+      "aexaware": {
+        "command": "npx",
+        "args": ["-y", "mcp-remote", "https://aexaware.com/api/mcp"]
+      }
+    }
+  }
+}
