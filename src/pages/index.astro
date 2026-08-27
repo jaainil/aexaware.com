@@ -192,11 +192,11 @@ const homeFAQ = [
       <div class="max-w-3xl mx-auto space-y-4">
         {homeFAQ.map((faq) => (
           <details class="group rounded-card border border-border/50 bg-background hover:border-primary/30 transition-colors">
-            <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-medium text-foreground">
+            <summary class="flex items-center justify-between cursor-pointer p-6 text-lg font-medium text-foreground focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-xl">
               <span>{faq.question}</span>
               <span class="ml-4 shrink-0 text-muted-foreground group-open:rotate-45 transition-transform duration-200 text-2xl leading-none">+</span>
             </summary>
-            <div class="px-6 pb-6 text-muted-foreground leading-relaxed">
+            <div class="px-6 pb-6 text-muted-foreground leading-relaxed group-open:animate-in group-open:fade-in group-open:slide-in-from-top-1 group-open:duration-300">
               {faq.answer}
             </div>
           </details>

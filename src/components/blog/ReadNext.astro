@@ -33,7 +33,6 @@ const nextPost = sortedPosts.find((post) => post.id !== currentSlug);
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center bg-secondary/5 rounded-section p-6 md:p-8 border border-border/50 hover:border-primary/30 transition-all duration-500">
           {/* Content */}
           <div class="space-y-6 order-2 md:order-1">
-            {/* FIX: Use font-heading for the title */}
             <h3 class="font-heading text-2xl md:text-3xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
               {nextPost.data.title}
             </h3>
@@ -58,7 +57,7 @@ const nextPost = sortedPosts.find((post) => post.id !== currentSlug);
                 format="webp"
                 layout="none"
               />
-              <div class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none" />
+              <div class="absolute inset-0 bg-linear-to-t from-foreground/20 to-transparent pointer-events-none" />
             </div>
           )}
         </div>
