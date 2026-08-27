@@ -8203,6 +8203,12 @@
       "skillPath": "skills/unreal-engine-cpp-pro/SKILL.md",
       "computedHash": "5201f03431a43c321687dd7bcf743bddb48a4c20112617b124aaa2ad3e40e86c"
     },
+    "unslop": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "pstack/skills/unslop/SKILL.md",
+      "computedHash": "3dfc2afeda677e12c6065497a40df7d895859de1c7d1cffb899b1559d129fe4f"
+    },
     "unsloth": {
       "source": "davila7/claude-code-templates",
       "sourceType": "github",
