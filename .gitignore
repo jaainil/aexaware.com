@@ -75,4 +75,5 @@ scripts/*.tmp
 # 🔍 MISC
 # ---------------------------------------------------
 .kilocodemodes
+.kilo/
 nul

@@ -230,7 +230,10 @@
   }
 
   /* Browser surfaces: caret and scrollbars carry the palette too */
-  caret-color: var(--color-primary);
+  html,
+  body {
+    caret-color: var(--color-primary);
+  }
 
   * {
     scrollbar-width: thin;

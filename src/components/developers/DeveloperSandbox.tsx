@@ -1,43 +1,43 @@
-import React, { useState } from 'react';
-import { Key, Copy, Check, Play, RefreshCw, Terminal, Code, Cpu, Shield, Sparkles } from 'lucide-react';
+import { Check, Copy, Key, Play, RefreshCw } from "lucide-react";
+import { useState } from "react";
 
 interface Endpoint {
   id: string;
   name: string;
-  method: 'GET' | 'POST';
+  method: "GET" | "POST";
   path: string;
   description: string;
-  mockResponse: Record<string, any> | string;
-  requestBody?: Record<string, any>;
+  mockResponse: Record<string, unknown> | string;
+  requestBody?: Record<string, unknown>;
 }
 
 const endpoints: Endpoint[] = [
   {
-    id: 'openapi',
-    name: 'OpenAPI Specification',
-    method: 'GET',
-    path: '/openapi.json',
-    description: 'Fetch self-describing OpenAPI 3.1.0 JSON specification',
+    id: "openapi",
+    name: "OpenAPI Specification",
+    method: "GET",
+    path: "/openapi.json",
+    description: "Fetch self-describing OpenAPI 3.1.0 JSON specification",
     mockResponse: {
       openapi: "3.1.0",
       info: {
         title: "Aexaware Infotech Public API",
         version: "1.0.0",
-        description: "Official public API specification for Aexaware Infotech."
+        description: "Official public API specification for Aexaware Infotech.",
       },
       servers: [{ url: "https://aexaware.com" }],
       paths: {
         "/openapi.json": { get: { summary: "Fetch OpenAPI JSON" } },
-        "/llms.txt": { get: { summary: "Fetch LLM Context" } }
-      }
-    }
+        "/llms.txt": { get: { summary: "Fetch LLM Context" } },
+      },
+    },
   },
   {
-    id: 'mcp',
-    name: 'MCP Server Card',
-    method: 'GET',
-    path: '/.well-known/mcp/server-card.json',
-    description: 'Model Context Protocol server registry and registered tool definitions',
+    id: "mcp",
+    name: "MCP Server Card",
+    method: "GET",
+    path: "/.well-known/mcp/server-card.json",
+    description: "Model Context Protocol server registry and registered tool definitions",
     mockResponse: {
       schema_version: "2024-11-05",
       name: "Aexaware Infotech MCP Server",
@@ -45,16 +45,16 @@ const endpoints: Endpoint[] = [
         { name: "search_blog", description: "Search technical blog articles" },
         { name: "list_services", description: "List all engineering service pillars" },
         { name: "get_contact_info", description: "Get official office contact details" },
-        { name: "list_portfolio", description: "Query case studies and project metrics" }
-      ]
-    }
+        { name: "list_portfolio", description: "Query case studies and project metrics" },
+      ],
+    },
   },
   {
-    id: 'llms',
-    name: 'LLM Agent Context (llms.txt)',
-    method: 'GET',
-    path: '/llms.txt',
-    description: 'Token-efficient structured markdown overview for AI models',
+    id: "llms",
+    name: "LLM Agent Context (llms.txt)",
+    method: "GET",
+    path: "/llms.txt",
+    description: "Token-efficient structured markdown overview for AI models",
     mockResponse: `# Aexaware Infotech
 Full-service software development company based in Vadodara, Gujarat, India.
 We build scalable web apps, mobile apps, AI/ML agents, and cloud infrastructure.
@@ -63,20 +63,21 @@ We build scalable web apps, mobile apps, AI/ML agents, and cloud infrastructure.
 - Web Development: React, Next.js, Node.js, Python, PostgreSQL
 - AI Agent Development: Autonomous LLM agents, MCP servers, RAG pipelines
 - Mobile Development: React Native, Flutter cross-platform apps
-- Cloud & DevOps: AWS, GCP, Docker, Kubernetes, Terraform IaC`
+- Cloud & DevOps: AWS, GCP, Docker, Kubernetes, Terraform IaC`,
   },
   {
-    id: 'inquiry_sandbox',
-    name: 'Submit Sandbox Inquiry',
-    method: 'POST',
-    path: '/api/inquiry/sandbox',
-    description: 'Simulate submitting a project inquiry payload in test mode',
+    id: "inquiry_sandbox",
+    name: "Submit Sandbox Inquiry",
+    method: "POST",
+    path: "/api/inquiry/sandbox",
+    description: "Simulate submitting a project inquiry payload in test mode",
     requestBody: {
       name: "Alex Johnson",
       email: "alex@example.com",
       service: "AI Agent Development",
       budget: "$5,000 - $15,000",
-      description: "Looking to build a custom multi-agent RAG workflow with MCP server integration."
+      description:
+        "Looking to build a custom multi-agent RAG workflow with MCP server integration.",
     },
     mockResponse: {
       status: "success",
@@ -84,25 +85,26 @@ We build scalable web apps, mobile apps, AI/ML agents, and cloud infrastructure.
       inquiry_id: "inq_sbx_984128f7a",
       timestamp: new Date().toISOString(),
       message: "Sandbox project inquiry received successfully.",
-      resolution_hint: "In production, email confirmation is dispatched within 5 minutes."
-    }
-  }
+      resolution_hint: "In production, email confirmation is dispatched within 5 minutes.",
+    },
+  },
 ];
 
 export default function DeveloperSandbox() {
-  const [apiKey, setApiKey] = useState<string>('aex_sandbox_live_8f93e1b742a0');
+  const [apiKey, setApiKey] = useState<string>("aex_sandbox_live_8f93e1b742a0");
   const [copiedKey, setCopiedKey] = useState<boolean>(false);
-  const [selectedEndpoint, setSelectedEndpoint] = useState<Endpoint>(endpoints[0]);
+  const [selectedEndpoint, setSelectedEndpoint] = useState<Endpoint>(endpoints[0]!);
   const [responseOutput, setResponseOutput] = useState<string>(
-    JSON.stringify(endpoints[0].mockResponse, null, 2)
+    JSON.stringify(endpoints[0]!.mockResponse, null, 2),
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [status, setStatus] = useState<number>(200);
   const [latency, setLatency] = useState<number>(34);
-  const [activeTab, setActiveTab] = useState<'curl' | 'js' | 'python'>('curl');
+  const [activeTab, setActiveTab] = useState<"curl" | "js" | "python">("curl");
 
   const generateNewKey = () => {
-    const randomHex = Math.random().toString(16).substring(2, 10) + Math.random().toString(16).substring(2, 10);
+    const randomHex =
+      Math.random().toString(16).substring(2, 10) + Math.random().toString(16).substring(2, 10);
     const newKey = `aex_sandbox_live_${randomHex}`;
     setApiKey(newKey);
   };
@@ -120,7 +122,7 @@ export default function DeveloperSandbox() {
     setTimeout(() => {
       setStatus(200);
       setLatency(simulatedLatency);
-      if (typeof selectedEndpoint.mockResponse === 'string') {
+      if (typeof selectedEndpoint.mockResponse === "string") {
         setResponseOutput(selectedEndpoint.mockResponse);
       } else {
         setResponseOutput(JSON.stringify(selectedEndpoint.mockResponse, null, 2));
@@ -131,7 +133,7 @@ export default function DeveloperSandbox() {
 
   const selectEndpoint = (ep: Endpoint) => {
     setSelectedEndpoint(ep);
-    if (typeof ep.mockResponse === 'string') {
+    if (typeof ep.mockResponse === "string") {
       setResponseOutput(ep.mockResponse);
     } else {
       setResponseOutput(JSON.stringify(ep.mockResponse, null, 2));
@@ -139,7 +141,7 @@ export default function DeveloperSandbox() {
   };
 
   const getCurlSnippet = () => {
-    if (selectedEndpoint.method === 'POST') {
+    if (selectedEndpoint.method === "POST") {
       return `curl -X POST https://aexaware.com${selectedEndpoint.path} \\
   -H "Authorization: Bearer ${apiKey}" \\
   -H "Content-Type: application/json" \\
@@ -147,11 +149,11 @@ export default function DeveloperSandbox() {
     }
     return `curl -X GET https://aexaware.com${selectedEndpoint.path} \\
   -H "Authorization: Bearer ${apiKey}" \\
-  -H "Accept: ${selectedEndpoint.id === 'llms' ? 'text/plain' : 'application/json'}"`;
+  -H "Accept: ${selectedEndpoint.id === "llms" ? "text/plain" : "application/json"}"`;
   };
 
   const getJsSnippet = () => {
-    if (selectedEndpoint.method === 'POST') {
+    if (selectedEndpoint.method === "POST") {
       return `const response = await fetch("https://aexaware.com${selectedEndpoint.path}", {
   method: "POST",
   headers: {
@@ -168,12 +170,12 @@ console.log(data);`;
     "Authorization": "Bearer ${apiKey}"
   }
 });
-const data = await response.${selectedEndpoint.id === 'llms' ? 'text()' : 'json()'};
+const data = await response.${selectedEndpoint.id === "llms" ? "text()" : "json()"};
 console.log(data);`;
   };
 
   const getPythonSnippet = () => {
-    if (selectedEndpoint.method === 'POST') {
+    if (selectedEndpoint.method === "POST") {
       return `import requests
 
 url = "https://aexaware.com${selectedEndpoint.path}"
@@ -194,7 +196,7 @@ headers = {
 }
 
 response = requests.get(url, headers=headers)
-print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
+print(response.${selectedEndpoint.id === "llms" ? "text" : "json()"})`;
   };
 
   return (
@@ -211,8 +213,7 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
               Your Ephemeral Sandbox API Key
             </h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Test key for the sandbox below and for local requests against
-              aexaware.com endpoints.
+              Test key for the sandbox below and for local requests against aexaware.com endpoints.
             </p>
           </div>
 
@@ -220,15 +221,21 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
             <div className="flex items-center bg-secondary/50 border border-border/60 rounded-xl px-4 py-2.5 font-mono text-xs text-foreground">
               <span className="truncate max-w-[200px] sm:max-w-[260px]">{apiKey}</span>
               <button
+                type="button"
                 onClick={() => copyToClipboard(apiKey)}
                 className="ml-3 p-1.5 rounded-lg hover:bg-background/80 text-muted-foreground hover:text-foreground transition-colors"
                 title="Copy API Key"
               >
-                {copiedKey ? <Check className="w-4 h-4 text-success" /> : <Copy className="w-4 h-4" />}
+                {copiedKey ? (
+                  <Check className="w-4 h-4 text-success" />
+                ) : (
+                  <Copy className="w-4 h-4" />
+                )}
               </button>
             </div>
 
             <button
+              type="button"
               onClick={generateNewKey}
               className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-background hover:bg-secondary text-xs font-semibold text-foreground transition-colors"
             >
@@ -246,7 +253,9 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
           <div className="bg-card/60 backdrop-blur-xs border border-border/50 rounded-card-lg p-6 space-y-4">
             <h4 className="font-heading font-bold text-lg text-foreground border-b border-border/40 pb-3 flex items-center justify-between">
               <span>1. Choose Endpoint</span>
-              <span className="text-xs font-normal text-muted-foreground font-mono">Sandbox Target</span>
+              <span className="text-xs font-normal text-muted-foreground font-mono">
+                Sandbox Target
+              </span>
             </h4>
 
             <div className="space-y-2">
@@ -254,24 +263,29 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
                 const isSelected = selectedEndpoint.id === ep.id;
                 return (
                   <button
+                    type="button"
                     key={ep.id}
                     onClick={() => selectEndpoint(ep)}
                     className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-center justify-between gap-3 ${
                       isSelected
-                        ? 'border-primary bg-primary/10 shadow-sm'
-                        : 'border-border/40 bg-secondary/20 hover:border-border hover:bg-secondary/40'
+                        ? "border-primary bg-primary/10 shadow-sm"
+                        : "border-border/40 bg-secondary/20 hover:border-border hover:bg-secondary/40"
                     }`}
                   >
                     <div className="space-y-0.5">
                       <div className="flex items-center gap-2">
                         <span
                           className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded-md ${
-                            ep.method === 'POST' ? 'bg-warning/15 text-warning' : 'bg-primary/15 text-primary'
+                            ep.method === "POST"
+                              ? "bg-warning/15 text-warning"
+                              : "bg-primary/15 text-primary"
                           }`}
                         >
                           {ep.method}
                         </span>
-                        <span className="font-heading font-semibold text-sm text-foreground">{ep.name}</span>
+                        <span className="font-heading font-semibold text-sm text-foreground">
+                          {ep.name}
+                        </span>
                       </div>
                       <p className="text-xs text-muted-foreground font-mono">{ep.path}</p>
                     </div>
@@ -286,25 +300,34 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
             <div className="bg-secondary/40 px-4 py-2.5 border-b border-border/50 flex items-center justify-between">
               <div className="flex gap-1.5">
                 <button
-                  onClick={() => setActiveTab('curl')}
+                  type="button"
+                  onClick={() => setActiveTab("curl")}
                   className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors ${
-                    activeTab === 'curl' ? 'bg-background text-foreground shadow-xs' : 'text-muted-foreground hover:text-foreground'
+                    activeTab === "curl"
+                      ? "bg-background text-foreground shadow-xs"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   cURL
                 </button>
                 <button
-                  onClick={() => setActiveTab('js')}
+                  type="button"
+                  onClick={() => setActiveTab("js")}
                   className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors ${
-                    activeTab === 'js' ? 'bg-background text-foreground shadow-xs' : 'text-muted-foreground hover:text-foreground'
+                    activeTab === "js"
+                      ? "bg-background text-foreground shadow-xs"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   TypeScript
                 </button>
                 <button
-                  onClick={() => setActiveTab('python')}
+                  type="button"
+                  onClick={() => setActiveTab("python")}
                   className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors ${
-                    activeTab === 'python' ? 'bg-background text-foreground shadow-xs' : 'text-muted-foreground hover:text-foreground'
+                    activeTab === "python"
+                      ? "bg-background text-foreground shadow-xs"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   Python
@@ -312,13 +335,14 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
               </div>
 
               <button
+                type="button"
                 onClick={() => {
                   const snippet =
-                    activeTab === 'curl'
+                    activeTab === "curl"
                       ? getCurlSnippet()
-                      : activeTab === 'js'
-                      ? getJsSnippet()
-                      : getPythonSnippet();
+                      : activeTab === "js"
+                        ? getJsSnippet()
+                        : getPythonSnippet();
                   copyToClipboard(snippet);
                 }}
                 className="p-1.5 rounded-md hover:bg-background text-muted-foreground hover:text-foreground transition-colors"
@@ -331,11 +355,11 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
             <div className="p-4 bg-secondary/15 font-mono text-xs text-foreground overflow-x-auto max-h-[220px]">
               <pre className="whitespace-pre">
                 <code>
-                  {activeTab === 'curl'
+                  {activeTab === "curl"
                     ? getCurlSnippet()
-                    : activeTab === 'js'
-                    ? getJsSnippet()
-                    : getPythonSnippet()}
+                    : activeTab === "js"
+                      ? getJsSnippet()
+                      : getPythonSnippet()}
                 </code>
               </pre>
             </div>
@@ -350,7 +374,9 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
               <div className="flex items-center gap-2 font-mono text-xs text-foreground">
                 <span
                   className={`px-2 py-0.5 rounded-md font-bold ${
-                    selectedEndpoint.method === 'POST' ? 'bg-warning/15 text-warning' : 'bg-primary/15 text-primary'
+                    selectedEndpoint.method === "POST"
+                      ? "bg-warning/15 text-warning"
+                      : "bg-primary/15 text-primary"
                   }`}
                 >
                   {selectedEndpoint.method}
@@ -359,12 +385,13 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
               </div>
 
               <button
+                type="button"
                 onClick={handleRunRequest}
                 disabled={isLoading}
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary text-primary-foreground font-semibold text-xs hover:bg-primary/90 transition-all shadow-md active:scale-95 disabled:opacity-50"
               >
                 <Play className="w-3.5 h-3.5 fill-current" />
-                {isLoading ? 'Executing...' : 'Run Sandbox Request'}
+                {isLoading ? "Executing..." : "Run Sandbox Request"}
               </button>
             </div>
 
@@ -375,9 +402,13 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
                   <span className="w-2 h-2 rounded-full bg-success animate-pulse"></span>
                   Status: <strong className="text-foreground">{status} OK</strong>
                 </span>
-                <span>Latency: <strong className="text-foreground">{latency}ms</strong></span>
+                <span>
+                  Latency: <strong className="text-foreground">{latency}ms</strong>
+                </span>
               </div>
-              <span className="text-[11px] text-primary font-sans font-semibold uppercase">Sandbox Live Simulation</span>
+              <span className="text-[11px] text-primary font-sans font-semibold uppercase">
+                Sandbox Live Simulation
+              </span>
             </div>
 
             {/* Response Console */}
@@ -389,8 +420,13 @@ print(response.${selectedEndpoint.id === 'llms' ? 'text' : 'json()'})`;
           </div>
 
           <div className="mt-4 pt-4 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
-            <span>Auth: <code className="text-foreground font-mono">Bearer {apiKey.substring(0, 16)}...</code></span>
-            <span>Content-Type: <code className="text-foreground font-mono">application/json</code></span>
+            <span>
+              Auth:{" "}
+              <code className="text-foreground font-mono">Bearer {apiKey.substring(0, 16)}...</code>
+            </span>
+            <span>
+              Content-Type: <code className="text-foreground font-mono">application/json</code>
+            </span>
           </div>
         </div>
       </div>

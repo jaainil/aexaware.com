@@ -3,7 +3,6 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "react",
-    "baseUrl": ".",
     "ignoreDeprecations": "6.0",
 
     "skipLibCheck": true,
@@ -14,7 +13,7 @@
     "exactOptionalPropertyTypes": true,
 
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
 
     "types": ["astro/client"]
